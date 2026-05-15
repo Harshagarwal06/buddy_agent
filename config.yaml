@@ -1,0 +1,26 @@
+# News Buddy — edit feeds and LLM settings to taste.
+
+feeds:
+  - name: Hacker News
+    url: https://news.ycombinator.com/rss
+  - name: BBC World
+    url: http://feeds.bbci.co.uk/news/world/rss.xml
+  - name: The Verge
+    url: https://www.theverge.com/rss/index.xml
+  - name: Ars Technica
+    url: https://feeds.arstechnica.com/arstechnica/index
+  - name: TechCrunch
+    url: https://techcrunch.com/feed/
+
+output_dir: ~/news
+lookback_hours: 24
+max_items_per_feed: 10
+max_top_stories: 5
+summary_style: "concise, neutral, 2-3 sentences"
+
+llm:
+  provider: ollama
+  base_url: http://localhost:11434
+  main_model: llama3.1:8b
+  sub_model: llama3.2:3b
+  temperature: 0.2

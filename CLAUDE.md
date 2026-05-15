@@ -1,151 +1,243 @@
-# News Buddy — Component Plan
+# News Buddy — Agent Plan (`deepagents` 0.6)
 
 ## Context
 
-A "buddy agent" that runs once a day, reads news from a list of configured
-websites, curates a summary tuned for the user, and writes it to a Markdown
-file the user can open each morning. Goals:
+A daily news "buddy agent" built on **`langchain-ai/deepagents`** (v0.6, released
+2026-05-13). The agent reads a configured list of RSS feeds, deduplicates against
+prior runs, summarizes new articles, and writes a curated Markdown digest to
+`~/news/YYYY-MM-DD.md`. A scheduled Claude routine invokes it once per day.
 
-- Low-touch: user only edits a feed list; the agent handles the rest.
-- Trustworthy: deterministic fetch + dedup, with LLM only for summarization.
-- Cheap to run: Claude Haiku/Sonnet with prompt caching; ~one API call per item
-  plus one synthesis call per day.
+**Models**: starting with **local Ollama models** for both the curator and the
+summarizer sub-agent. All LLM construction is centralized in a single
+`llm.py` module so we can swap to Anthropic / OpenAI / a hosted provider later
+by changing one file.
 
-Decisions locked in:
-- Runtime: **Python**.
-- Schedule: **Claude scheduled routine (`/schedule`)** that invokes the CLI daily.
-- Output: **one Markdown file per day**, e.g. `~/news/2026-05-14.md`.
-- Sources: **YAML config of RSS feeds** (RSS is far more robust than scraping).
+Why an agent instead of a deterministic pipeline:
+- We get `write_todos` planning, sub-agent delegation, and auto-summarization
+  for free from deepagents.
+- The agent can adapt — e.g. skip a flaky feed, retry an extraction, group
+  themes intelligently — without us coding every branch.
+- Deterministic work (fetch, dedup, file write) still lives in **tools** so it
+  stays predictable and cheap.
 
-Project location: `~/Documents/buddy_agent/`.
+Project location: `~/Documents/buddy_agent/` (already a git repo, remote =
+`https://github.com/manishbabel/buddy_agent`).
 
-## Architecture at a glance
+## Architecture
 
 ```
-config.yaml ──► fetcher ──► extractor ──► dedup/state ──► summarizer ──► renderer ──► ~/news/YYYY-MM-DD.md
-                (RSS)       (full text)   (SQLite)        (Claude API)   (Markdown)
-                                                                ▲
-                                                                │
-                                                  Claude /schedule routine (daily)
+┌─────────────────────────────────────────────────────────────────┐
+│  News Curator Agent (create_deep_agent)                         │
+│   model: get_main_model() from llm.py  (Ollama: llama3.1:8b)    │
+│   built-in tools: write_todos, ls, read_file, write_file, task  │
+│   custom tools (see below)                                      │
+│   sub-agent: article-summarizer                                 │
+│     model: get_sub_model() from llm.py  (Ollama: llama3.2:3b)   │
+└─────────────────────────────────────────────────────────────────┘
+          │ tool calls
+          ▼
+┌────────────────────────────────────────────────────────────┐
+│  Custom tools  (Python @tool functions in news_buddy/tools.py)  │
+│   list_feeds()                → reads config.yaml          │
+│   fetch_feed(name)            → RSS via feedparser         │
+│   extract_article(url)        → trafilatura                │
+│   filter_unseen(items)        → SQLite check               │
+│   mark_seen(url, source, …)   → SQLite insert              │
+│   save_digest(date, markdown) → atomic write to ~/news/    │
+└────────────────────────────────────────────────────────────┘
+          │
+          ▼
+   ~/news/YYYY-MM-DD.md   +   state.db (sqlite)
 ```
+
+The Python entry point is thin: load config → build agent → invoke once with
+"run today's curation job" → exit. All orchestration lives inside the agent.
 
 ## Components
 
 ### 1. Config (`config.yaml`)
-- List of feeds: `name`, `url`, optional `weight`, optional `tags`.
+- `feeds`: list of `{name, url, weight?, tags?}`
 - Global options: `output_dir`, `max_items_per_feed`, `lookback_hours` (default 24),
-  `summary_style` (e.g. "concise, neutral, 2–3 sentences").
-- Keeps source list editable without touching code.
+  `summary_style`, `max_top_stories` (default 5)
+- `llm` block (consumed by `llm.py`):
+  ```yaml
+  llm:
+    provider: ollama
+    base_url: http://localhost:11434
+    main_model: llama3.1:8b      # tool-calling curator
+    sub_model: llama3.2:3b       # summarizer sub-agent
+    temperature: 0.2
+  ```
+- Loaded once at startup; exposed to the agent via the `list_feeds` tool.
 
-### 2. Feed fetcher (`news_buddy/fetcher.py`)
-- Use **`feedparser`** to parse RSS/Atom for each configured URL.
-- Filter to items published within `lookback_hours`.
-- Normalize to: `{source, title, url, published_at, rss_summary}`.
-- Concurrent fetch with `httpx.AsyncClient` + a small semaphore.
+### 1b. LLM module (`news_buddy/llm.py`)
+- Single source of truth for LLM client construction.
+- Starting with **Ollama** via `langchain-ollama`'s `ChatOllama`.
+- Reads the `llm` block from `config.yaml`. Verifies the configured models exist
+  at the Ollama server on first call; raises a clear error otherwise.
+- Public API:
+  - `get_main_model(config) -> BaseChatModel` — used by the curator agent.
+  - `get_sub_model(config) -> BaseChatModel` — used by the article-summarizer
+    sub-agent.
+- Internal `_build_ollama(...)` factory; later we add `_build_anthropic(...)`,
+  etc., and branch on `config.llm.provider`. Keeps the swap surface tiny.
+- Note: Ollama must be running locally (`ollama serve`) and the configured
+  models must be pulled (`ollama pull llama3.1:8b && ollama pull llama3.2:3b`).
+  Document this in `.env.example` / README.
 
-### 3. Article extractor (`news_buddy/extractor.py`)
-- For each item, GET the article URL and run **`trafilatura`** to get clean body
-  text (drops nav, ads, comments).
-- Truncate to N chars before sending to the LLM.
-- Fall back to `rss_summary` on extraction failure; never block the pipeline on
-  a single bad article.
+### 2. RSS helper (`news_buddy/feeds.py`)
+- Pure functions — not tools themselves.
+- `fetch_feed_items(url, lookback_hours) -> list[Item]` using `feedparser`.
+- Async with `httpx.AsyncClient` + a small semaphore for concurrent feeds.
+- Item dataclass: `source, title, url, published_at, rss_summary`.
+- Used by the `fetch_feed` tool.
+
+### 3. Article extractor (`news_buddy/extract.py`)
+- `extract_body(url) -> str` using `trafilatura`.
+- Truncate to N chars before returning.
+- Returns `""` on failure; tool will fall back to RSS summary.
+- Used by the `extract_article` tool.
 
 ### 4. State / dedup (`news_buddy/state.py`)
-- **SQLite** at `~/Documents/buddy_agent/state.db`.
-- Table `seen(url_hash PRIMARY KEY, first_seen_at, source, title)`.
-- Skip items already digested so re-runs are safe and the daily file isn't
-  padded with yesterday's content.
+- SQLite at `~/Documents/buddy_agent/state.db`.
+- Table: `seen(url_hash PRIMARY KEY, url, source, title, first_seen_at)`.
+- Helpers: `ensure_schema()`, `is_seen(url)`, `mark_seen(item)`,
+  `filter_unseen(items) -> list[Item]`.
+- Used by the `filter_unseen` and `mark_seen` tools.
 
-### 5. Summarizer (`news_buddy/summarizer.py`)
-- Anthropic SDK (`anthropic` package). Default model: **`claude-haiku-4-5-20251001`**
-  for per-article passes; **`claude-sonnet-4-6`** for the daily synthesis.
-- Two passes:
-  1. **Per-article**: input = title + extracted body → output = 2–3 sentence
-     summary + 1–3 topic tags + importance score (1–5).
-  2. **Daily synthesis**: input = all per-article summaries → output = Markdown
-     digest grouped by theme, with "top stories" lead.
-- **Prompt caching**: cache the system prompt (style guide + user preferences)
-  across all per-article calls in a run. Cuts cost meaningfully on busy days.
+### 5. Tools (`news_buddy/tools.py`)
+LangChain `@tool` decorators wrap the helpers above and the file writer.
 
-### 6. Renderer (`news_buddy/renderer.py`)
-- Writes `~/news/YYYY-MM-DD.md` with:
-  - H1 date header
-  - "Top stories" (3–5 cross-cutting picks from synthesis)
-  - Themed sections (e.g. *AI*, *Markets*, *Geopolitics*) — themes come from
-    summarizer tags
-  - Per-item line: `**Title** — 2-line summary. *[source]* [link](url)`
-- Atomic write: write to `.tmp` then `os.replace`.
+```python
+@tool
+def list_feeds() -> list[dict]: ...
+@tool
+def fetch_feed(name: str) -> list[dict]: ...
+@tool
+def extract_article(url: str) -> str: ...
+@tool
+def filter_unseen(items: list[dict]) -> list[dict]: ...
+@tool
+def mark_seen(url: str, source: str, title: str) -> None: ...
+@tool
+def save_digest(date: str, markdown: str) -> str: ...   # returns the file path
+```
 
-### 7. CLI entry (`news_buddy/__main__.py`)
-- One command: `python -m news_buddy run`
-- Flags: `--config`, `--date` (override "today"), `--dry-run` (no API calls,
-  print plan), `--force` (ignore dedup).
-- Exit code 0 on success, non-zero with stderr detail on failure (so the
-  scheduled routine can surface errors).
+Each tool returns JSON-friendly dicts so the agent can reason over them.
 
-### 8. Daily trigger via `/schedule`
-- A scheduled Claude routine fires each morning (user picks the time).
-- The routine:
-  1. `cd ~/Documents/buddy_agent && python -m news_buddy run`
-  2. Reads the produced Markdown file
-  3. (Optional) Sends a one-line `PushNotification` like "Today's digest: 12
-     stories across 4 themes — ~/news/2026-05-14.md"
-- The routine is a thin orchestrator; all logic lives in the Python CLI, so the
-  user can also run it manually any time.
+### 6. Sub-agent: `article-summarizer`
+- Defined via the `subagents=[...]` param of `create_deep_agent`.
+- Model: `anthropic:claude-haiku-4-5-20251001` (cheap, fast).
+- Isolated context — the main agent calls it via the built-in `task` tool with
+  a single article's `{title, url, body}`. It returns a structured summary:
+  `{summary: str (2-3 sentences), tags: list[str], importance: 1-5}`.
+- Keeps article bodies out of the curator's main context window.
 
-### 9. Project setup
-- Layout:
+### 7. Curator agent (`news_buddy/agent.py`)
+- One `create_deep_agent(...)` call:
+  - `model=get_main_model(config)`   # from llm.py
+  - `tools=[list_feeds, fetch_feed, extract_article, filter_unseen, mark_seen, save_digest]`
+  - `system_prompt=<contents of prompts/curator.md>`
+  - `subagents=[{"name": "article-summarizer", "description": "...", "prompt": "...", "model": get_sub_model(config)}]`
+- Returns a compiled LangGraph — exposed as `build_agent(config, dry_run, force)`
+  in this module. No model strings inside this file — all provider-specific
+  wiring lives in `llm.py`.
+
+### 8. Prompts (`prompts/`)
+- `prompts/curator.md` — system prompt for the main agent. Explains the daily
+  job, output structure (top stories + themed sections), style, and the
+  expectation to call `save_digest` exactly once at the end.
+- `prompts/summarizer.md` — sub-agent system prompt with the JSON output
+  contract.
+
+### 9. CLI entry (`news_buddy/__main__.py`)
+- Loads `.env`, parses flags, builds agent, invokes once.
+- Flags: `--config` (path), `--date` (override "today"), `--dry-run`
+  (substitute no-op tools that log instead of executing), `--force` (skip
+  dedup), `--verbose` (stream tool calls to stderr).
+- The invocation:
+  ```python
+  agent = build_agent(config, dry_run=args.dry_run, force=args.force)
+  agent.invoke({"messages": [{"role": "user",
+                              "content": f"Run the daily curation job for {date_str}."}]})
   ```
-  ~/Documents/buddy_agent/
-    CLAUDE.md          # this plan
-    pyproject.toml
-    config.yaml
-    news_buddy/
-      __init__.py
-      __main__.py
-      fetcher.py
-      extractor.py
-      state.py
-      summarizer.py
-      renderer.py
-    state.db           # gitignored
-    .env               # ANTHROPIC_API_KEY
+
+### 10. Daily trigger via `/schedule`
+- A Claude scheduled routine fires each morning.
+- Routine body: `cd ~/Documents/buddy_agent && uv run python -m news_buddy run`
+  (or `python -m news_buddy run` if not using uv).
+- On success, optionally `PushNotification` with the digest path + item count.
+
+## File layout
+
+```
+~/Documents/buddy_agent/
+  CLAUDE.md                  # this plan
+  pyproject.toml             # deps + entry
+  config.yaml                # feeds + preferences
+  .env.example               # ANTHROPIC_API_KEY
+  .gitignore                 # state.db, .env, __pycache__, .venv
+  prompts/
+    curator.md
+    summarizer.md
+  news_buddy/
+    __init__.py
+    __main__.py              # CLI
+    agent.py                 # create_deep_agent wiring
+    llm.py                   # LLM factories (Ollama first)
+    tools.py                 # @tool definitions
+    feeds.py                 # RSS helpers
+    extract.py               # trafilatura helpers
+    state.py                 # SQLite dedup
+  state.db                   # created at runtime, gitignored
+```
+
+## Dependencies
+
+- `deepagents` (≥0.6)
+- `langchain` (for `@tool` decorator)
+- `langchain-ollama` (Ollama chat model client)
+- `feedparser`, `trafilatura`, `httpx`, `pyyaml`, `python-dotenv`
+
+(Future provider additions: `langchain-anthropic`, `langchain-openai`. Add and
+wire into `llm.py` when needed; nothing else changes.)
+
+## External prerequisites
+
+- **Ollama** running locally: `brew install ollama && ollama serve`
+- Pull the default models:
   ```
-- Dependencies: `feedparser`, `trafilatura`, `httpx`, `pyyaml`, `anthropic`,
-  `python-dotenv`.
-- Output dir `~/news/` is created on first run.
+  ollama pull llama3.1:8b
+  ollama pull llama3.2:3b
+  ```
 
-## Files to be created (when we implement)
+## Verification
 
-| Path | Purpose |
-| --- | --- |
-| `~/Documents/buddy_agent/pyproject.toml` | deps + entry point |
-| `~/Documents/buddy_agent/config.yaml` | feed list + preferences |
-| `~/Documents/buddy_agent/news_buddy/__main__.py` | CLI |
-| `~/Documents/buddy_agent/news_buddy/fetcher.py` | RSS fetch |
-| `~/Documents/buddy_agent/news_buddy/extractor.py` | article body extraction |
-| `~/Documents/buddy_agent/news_buddy/state.py` | SQLite dedup |
-| `~/Documents/buddy_agent/news_buddy/summarizer.py` | Claude calls + prompt caching |
-| `~/Documents/buddy_agent/news_buddy/renderer.py` | Markdown writer |
-| `~/Documents/buddy_agent/.env.example` | API key template |
+0. **Ollama reachable**: `curl http://localhost:11434/api/tags` lists the two
+   configured models. `llm.py` raises a clear error if not.
+1. **Dry run**: `python -m news_buddy run --dry-run` → agent runs, tools log
+   intended actions but make no network/file calls; exits 0.
+2. **Live single source**: trim `config.yaml` to one feed → real run with
+   `ANTHROPIC_API_KEY` set → inspect `~/news/$(date +%F).md`. Verify file
+   exists, today's items present, summaries read cleanly, links resolve.
+3. **Dedup**: re-run immediately → second digest should be empty/short; `state.db`
+   has all yesterday's URLs.
+4. **Sub-agent isolation**: with `--verbose`, confirm article bodies appear in
+   the summarizer sub-agent's traces but not in the curator's main thread.
+5. **Scheduled routine**: invoke the `/schedule` routine on demand → file is
+   produced and notification (if enabled) fires.
+6. **Cost check**: after first real run, check Anthropic dashboard for
+   reasonable token usage (sub-agent ≪ curator tokens because article bodies
+   stay in the sub-agent).
 
-## Verification (how we'll know it works)
+## Open questions
 
-1. **Dry run**: `python -m news_buddy run --dry-run --config config.yaml` prints
-   the items it would summarize, exits 0, makes no API calls, writes no files.
-2. **Live single source**: config with one feed (e.g. one tech blog) → run →
-   inspect `~/news/$(date +%F).md`. Check: file exists, contains today's items,
-   summaries read cleanly, links resolve.
-3. **Dedup**: run twice in a row → second run produces an empty/short file
-   (because everything was already seen).
-4. **Scheduled routine**: invoke the `/schedule` routine on demand → confirm it
-   runs the CLI, the file is produced, and the optional notification fires.
-5. **Cost check**: after first real run, inspect the Anthropic dashboard to
-   confirm cache hits on the per-article system prompt.
-
-## Open questions to settle before we implement
-
-- Which feeds go in the seed `config.yaml`? (5–15 to start.)
-- What time of day should the scheduled routine fire?
+- Seed `config.yaml` feed list (5–15 to start)?
+- **Default Ollama models**: `llama3.1:8b` (curator) + `llama3.2:3b`
+  (summarizer) — confirm these match what you have / want pulled? Alternatives
+  with good tool-calling: `qwen2.5:7b`, `mistral-nemo`.
+- Time of day for the `/schedule` routine?
 - Push notification on completion, or quiet file write only?
-- Default summary tone — "neutral wire-service" vs "analytical/opinionated"?
+- Default summary tone — neutral wire-service vs analytical?
+- Do we want the agent to also write a `_history.jsonl` log of its tool calls
+  per run, for later eval / debugging?

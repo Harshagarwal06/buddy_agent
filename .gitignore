@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+build/
+dist/
+
+# Virtualenvs
+.venv/
+venv/
+.uv/
+
+# Local runtime
+.env
+state.db
+
+# Generated digests (outputs, not source)
+news/
+
+# macOS / editor cruft
+.DS_Store
+*.swp
