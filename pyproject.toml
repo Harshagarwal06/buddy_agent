@@ -7,12 +7,17 @@ dependencies = [
     "deepagents>=0.6",
     "langchain",
     "langchain-ollama",
+    "langchain-google-genai",
+    "langgraph>=1.0",
     "feedparser",
     "trafilatura",
     "httpx",
     "pyyaml",
     "python-dotenv",
 ]
+
+[project.scripts]
+news-buddy = "news_buddy.__main__:main"
 
 [build-system]
 requires = ["hatchling"]

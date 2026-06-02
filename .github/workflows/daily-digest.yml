@@ -1,0 +1,42 @@
+name: Daily News Digest
+
+# Runs in GitHub's cloud — your laptop does NOT need to be on.
+on:
+  schedule:
+    # 08:00 IST == 02:30 UTC (IST is UTC+5:30). GitHub cron uses UTC.
+    - cron: "30 2 * * *"
+  workflow_dispatch: {}   # lets you trigger a manual test run from the Actions tab
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install the project
+        run: |
+          python -m pip install --upgrade pip
+          pip install .
+
+      # Persist the dedup database between daily runs so the same article
+      # isn't summarised twice across overlapping 24h windows.
+      - name: Restore dedup state
+        uses: actions/cache@v4
+        with:
+          path: state.db
+          key: news-buddy-state-${{ github.run_id }}
+          restore-keys: news-buddy-state-
+
+      - name: Run the daily curation job
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python -m news_buddy run
