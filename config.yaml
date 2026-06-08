@@ -1,16 +1,37 @@
 # News Buddy — edit feeds and LLM settings to taste.
 
 feeds:
-  - name: Hacker News
-    url: https://news.ycombinator.com/rss
-  - name: BBC World
-    url: http://feeds.bbci.co.uk/news/world/rss.xml
-  - name: The Verge
-    url: https://www.theverge.com/rss/index.xml
-  - name: Ars Technica
-    url: https://feeds.arstechnica.com/arstechnica/index
-  - name: TechCrunch
-    url: https://techcrunch.com/feed/
+  - name: MIT Tech Review AI
+    url: https://www.technologyreview.com/feed/
+  - name: The Verge AI
+    url: https://www.theverge.com/rss/ai-artificial-intelligence/index.xml
+  - name: VentureBeat AI
+    url: https://venturebeat.com/category/ai/feed/
+  - name: TechCrunch AI
+    url: https://techcrunch.com/category/artificial-intelligence/feed/
+  - name: Ars Technica AI
+    url: https://feeds.arstechnica.com/arstechnica/technology-lab
+
+# Only articles whose title or summary contain these keywords are kept.
+# Case-insensitive. Add or remove words to tune what gets through.
+ai_keywords:
+  - artificial intelligence
+  - machine learning
+  - deep learning
+  - large language model
+  - llm
+  - generative ai
+  - openai
+  - anthropic
+  - google deepmind
+  - mistral
+  - gemini
+  - gpt
+  - claude
+  - neural network
+  - ai model
+  - ai agent
+  - foundation model
 
 output_dir: ~/news
 lookback_hours: 24
