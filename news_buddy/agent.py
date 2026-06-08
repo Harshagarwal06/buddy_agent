@@ -50,7 +50,7 @@ def _summarize_one(sub_llm, item: dict) -> tuple[dict, int]:
     """Summarize a single article. Returns (enriched item dict, tokens used)."""
     body = _extract.extract_body(item["url"]) or item.get("rss_summary", "")
     system = (_PROMPTS / "summarizer.md").read_text()
-    payload = json.dumps({"title": item["title"], "url": item["url"], "body": body[:3000]})
+    payload = json.dumps({"title": item["title"], "url": item["url"], "body": body[:1500]})
     resp = sub_llm.invoke([SystemMessage(content=system), HumanMessage(content=payload)])
     text = resp.content.strip()
 
@@ -200,7 +200,7 @@ def summarize_articles_node(state: DigestState) -> dict:
                      "tags": ["world"], "importance": 2}, 0)
 
     total_tokens = 0
-    with ThreadPoolExecutor(max_workers=3) as ex:
+    with ThreadPoolExecutor(max_workers=5) as ex:
         futures = {ex.submit(_process, item): item for item in unseen}
         for future in as_completed(futures):
             item_result, tokens = future.result()
