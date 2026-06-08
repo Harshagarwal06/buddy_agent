@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import os
 import sys
+import time
 from pathlib import Path
 
 import yaml
@@ -27,6 +28,7 @@ def _run(args: argparse.Namespace) -> None:
 
     from news_buddy.agent import run_pipeline
 
+    t_start = time.monotonic()
     result = run_pipeline(
         config,
         date_str=date_str,
@@ -34,6 +36,11 @@ def _run(args: argparse.Namespace) -> None:
         force=args.force,
         verbose=args.verbose,
     )
+    duration_secs = time.monotonic() - t_start
+
+    # Gemini 2.5 Flash pay-as-you-go rate: $0.15 / 1M input tokens (blended estimate)
+    tokens = result.get("total_tokens", 0)
+    est_cost_usd = (tokens / 1_000_000) * 0.15
 
     # ── Telegram notification ────────────────────────────────────────────────
     if use_tg:
@@ -41,7 +48,8 @@ def _run(args: argparse.Namespace) -> None:
         if result["error"]:
             send_error_alert(tg_token, tg_chat, result["error"], date_str)
         else:
-            send_digest(tg_token, tg_chat, result["digest"], date_str, result["item_count"])
+            send_digest(tg_token, tg_chat, result["digest"], date_str,
+                        result["item_count"], duration_secs, tokens, est_cost_usd)
 
     # ── Terminal output ──────────────────────────────────────────────────────
     if result["error"]:
@@ -52,7 +60,10 @@ def _run(args: argparse.Namespace) -> None:
         print(result["digest"])
     else:
         print(f"✅ Digest written → {result['output_path']}")
-        print(f"   Articles summarized: {result['item_count']}")
+        print(f"   Articles: {result['item_count']}  |  "
+              f"Tokens: {tokens:,}  |  "
+              f"Est. cost: ${est_cost_usd:.4f}  |  "
+              f"Duration: {duration_secs:.1f}s")
         tg_status = "sent to Telegram ✅" if use_tg else "Telegram not configured"
         print(f"   Notification: {tg_status}")
         print(f"\n--- Preview (first 20 lines) ---")
@@ -64,6 +75,10 @@ def _run(args: argparse.Namespace) -> None:
 
 def main() -> None:
     load_dotenv()
+
+    # Set up OTel/Phoenix tracing BEFORE the pipeline's LangChain models are built.
+    from news_buddy.observability import setup_tracing
+    setup_tracing()
 
     parser = argparse.ArgumentParser(prog="news-buddy")
     sub = parser.add_subparsers(dest="command")

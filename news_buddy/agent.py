@@ -36,6 +36,7 @@ class DigestState(TypedDict):
     enriched_items: list[dict]  # after extract + summarize
     digest: str                 # final markdown
     output_path: str            # written file path
+    total_tokens: int           # cumulative LLM tokens used this run
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -45,13 +46,18 @@ def _log(state: DigestState, msg: str) -> None:
         print(msg, file=sys.stderr)
 
 
-def _summarize_one(sub_llm, item: dict) -> dict:
-    """Call Ollama to summarize a single article. Returns enriched item dict."""
+def _summarize_one(sub_llm, item: dict) -> tuple[dict, int]:
+    """Summarize a single article. Returns (enriched item dict, tokens used)."""
     body = _extract.extract_body(item["url"]) or item.get("rss_summary", "")
     system = (_PROMPTS / "summarizer.md").read_text()
     payload = json.dumps({"title": item["title"], "url": item["url"], "body": body[:3000]})
     resp = sub_llm.invoke([SystemMessage(content=system), HumanMessage(content=payload)])
     text = resp.content.strip()
+
+    # Extract token usage from response metadata (Gemini returns this)
+    usage = getattr(resp, "usage_metadata", None) or {}
+    tokens = (usage.get("input_tokens", 0) or 0) + (usage.get("output_tokens", 0) or 0)
+
     # strip markdown code fences if model wraps JSON
     if text.startswith("```"):
         text = "\n".join(
@@ -62,12 +68,13 @@ def _summarize_one(sub_llm, item: dict) -> dict:
         data = json.loads(text)
     except json.JSONDecodeError:
         data = {"summary": item["title"], "tags": ["world"], "importance": 2}
-    return {
+    enriched = {
         **item,
         "summary": data.get("summary", item["title"]),
         "tags": data.get("tags", []),
         "importance": data.get("importance", 3),
     }
+    return enriched, tokens
 
 
 def _write_digest(output_dir: Path, date_str: str, markdown: str) -> Path:
@@ -118,6 +125,25 @@ def fetch_feeds_node(state: DigestState) -> dict:
     return {"raw_items": raw_items}
 
 
+def filter_ai_node(state: DigestState) -> dict:
+    """Keep only articles that mention AI-related keywords in title or summary."""
+    keywords = state["config"].get("ai_keywords", [])
+    if not keywords:
+        return {"raw_items": state["raw_items"]}  # no filter configured
+
+    kw_lower = [k.lower() for k in keywords]
+
+    def is_ai(item: dict) -> bool:
+        text = (item.get("title", "") + " " + item.get("rss_summary", "")).lower()
+        return any(kw in text for kw in kw_lower)
+
+    before = len(state["raw_items"])
+    filtered = [it for it in state["raw_items"] if is_ai(it)]
+    _log(state, f"AI filter: {before} → {len(filtered)} articles "
+                f"(kept articles matching {len(kw_lower)} keywords)")
+    return {"raw_items": filtered}
+
+
 def deduplicate_node(state: DigestState) -> dict:
     """Filter out already-seen articles."""
     raw = state["raw_items"]
@@ -161,25 +187,28 @@ def summarize_articles_node(state: DigestState) -> dict:
     enriched: list[dict] = []
     errors: list[str] = []
 
-    def _process(item: dict) -> dict:
+    def _process(item: dict) -> tuple[dict, int]:
         _log(state, f"Summarizing: {item['title'][:70]}")
         try:
-            result = _summarize_one(sub_llm, item)
+            enriched, tokens = _summarize_one(sub_llm, item)
             if not state["force"]:
                 _state.mark_seen(_DB, item)
-            return result
+            return enriched, tokens
         except Exception as e:
             print(f"[warn] summarize failed for {item['url']}: {e}", file=sys.stderr)
-            return {**item, "summary": item.get("rss_summary") or item["title"],
-                    "tags": ["world"], "importance": 2}
+            return ({**item, "summary": item.get("rss_summary") or item["title"],
+                     "tags": ["world"], "importance": 2}, 0)
 
+    total_tokens = 0
     with ThreadPoolExecutor(max_workers=3) as ex:
         futures = {ex.submit(_process, item): item for item in unseen}
         for future in as_completed(futures):
-            enriched.append(future.result())
+            item_result, tokens = future.result()
+            enriched.append(item_result)
+            total_tokens += tokens
 
-    _log(state, f"Summarized {len(enriched)} articles")
-    return {"enriched_items": enriched}
+    _log(state, f"Summarized {len(enriched)} articles — {total_tokens} tokens used")
+    return {"enriched_items": enriched, "total_tokens": total_tokens}
 
 
 def format_digest_node(state: DigestState) -> dict:
@@ -248,6 +277,7 @@ def build_graph(checkpointing: bool = True):
     graph = StateGraph(DigestState)
 
     graph.add_node("fetch_feeds",        fetch_feeds_node)
+    graph.add_node("filter_ai",          filter_ai_node)
     graph.add_node("deduplicate",        deduplicate_node)
     graph.add_node("summarize_articles", summarize_articles_node)
     graph.add_node("format_digest",      format_digest_node)
@@ -255,7 +285,8 @@ def build_graph(checkpointing: bool = True):
     graph.add_node("write_empty",        write_empty_node)
 
     graph.set_entry_point("fetch_feeds")
-    graph.add_edge("fetch_feeds",   "deduplicate")
+    graph.add_edge("fetch_feeds",   "filter_ai")
+    graph.add_edge("filter_ai",     "deduplicate")
     graph.add_conditional_edges("deduplicate", should_summarize)
     graph.add_edge("summarize_articles", "format_digest")
     graph.add_edge("format_digest",      "write_digest")
@@ -301,14 +332,16 @@ def run_pipeline(
                 "enriched_items": [],
                 "digest": "",
                 "output_path": "",
+                "total_tokens": 0,
             },
             config={"configurable": {"thread_id": "news-buddy"}},
         )
         return {
-            "digest":      result["digest"],
-            "output_path": result["output_path"],
-            "item_count":  len(result.get("enriched_items", [])),
-            "error":       None,
+            "digest":       result["digest"],
+            "output_path":  result["output_path"],
+            "item_count":   len(result.get("enriched_items", [])),
+            "total_tokens": result.get("total_tokens", 0),
+            "error":        None,
         }
     except Exception as exc:
         error_msg = f"{type(exc).__name__}: {exc}"

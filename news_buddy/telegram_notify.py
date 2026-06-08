@@ -67,13 +67,22 @@ def send_digest(
     digest_markdown: str,
     date_str: str,
     item_count: int,
+    duration_secs: float = 0.0,
+    total_tokens: int = 0,
+    est_cost_usd: float = 0.0,
 ) -> bool:
     """Send the full digest to Telegram, chunked if needed."""
     html = _md_to_html(digest_markdown)
     chunks = _chunk(html)
 
-    # Prepend a header to the first chunk
-    header = f"🗞️ <b>News Buddy — {date_str}</b>\n{item_count} articles summarised\n\n"
+    # Format duration nicely — e.g. "1m 23s" or "45s"
+    mins, secs = divmod(int(duration_secs), 60)
+    duration_str = f"{mins}m {secs}s" if mins else f"{secs}s"
+
+    header = (
+        f"🗞️ <b>News Buddy — {date_str}</b>\n"
+        f"{item_count} articles  |  ⏱ {duration_str}  |  🪙 {total_tokens:,} tokens  |  💰 ${est_cost_usd:.4f}\n\n"
+    )
     chunks[0] = header + chunks[0]
 
     # Add page indicator if multi-chunk
