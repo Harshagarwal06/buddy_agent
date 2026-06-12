@@ -12,6 +12,7 @@ from typing import TypedDict
 from langchain_core.messages import HumanMessage, SystemMessage
 from langgraph.graph import END, StateGraph
 from langgraph.checkpoint.memory import MemorySaver
+from tenacity import retry, stop_after_attempt, wait_exponential
 
 from news_buddy import extract as _extract
 from news_buddy import feeds as _feeds
@@ -46,12 +47,22 @@ def _log(state: DigestState, msg: str) -> None:
         print(msg, file=sys.stderr)
 
 
+@retry(
+    stop=stop_after_attempt(3),
+    wait=wait_exponential(multiplier=1, min=2, max=30),
+    reraise=True,
+)
+def _invoke_with_retry(llm, messages):
+    """Call the LLM with exponential-backoff retry for transient API errors (429, 503)."""
+    return llm.invoke(messages)
+
+
 def _summarize_one(sub_llm, item: dict) -> tuple[dict, int]:
     """Summarize a single article. Returns (enriched item dict, tokens used)."""
     body = _extract.extract_body(item["url"]) or item.get("rss_summary", "")
     system = (_PROMPTS / "summarizer.md").read_text()
     payload = json.dumps({"title": item["title"], "url": item["url"], "body": body[:1500]})
-    resp = sub_llm.invoke([SystemMessage(content=system), HumanMessage(content=payload)])
+    resp = _invoke_with_retry(sub_llm, [SystemMessage(content=system), HumanMessage(content=payload)])
     text = resp.content.strip()
 
     # Extract token usage from response metadata (Gemini returns this)

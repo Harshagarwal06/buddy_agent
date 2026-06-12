@@ -17,6 +17,7 @@ dependencies = [
     "httpx",
     "pyyaml",
     "python-dotenv",
+    "tenacity",
 ]
 
 [project.scripts]
