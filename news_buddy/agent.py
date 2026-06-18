@@ -52,9 +52,67 @@ def _log(state: DigestState, msg: str) -> None:
     wait=wait_exponential(multiplier=1, min=2, max=30),
     reraise=True,
 )
-def _invoke_with_retry(llm, messages):
+def _invoke_with_retry(llm, messages, middleware: "SummarizationMiddleware | None" = None):
     """Call the LLM with exponential-backoff retry for transient API errors (429, 503)."""
-    return llm.invoke(messages)
+    if middleware:
+        messages = middleware.before_invoke(messages)
+    resp = llm.invoke(messages)
+    if middleware:
+        middleware.after_invoke(resp)
+    return resp
+
+
+class SummarizationMiddleware:
+    """Middleware that compresses the article body before each LLM call if the
+    input exceeds the token budget — mirrors what LangChain's SummarizationMiddleware
+    does for agent message histories, adapted for this single-turn pipeline.
+
+    Hooks:
+      before_invoke — trims the body inside the HumanMessage payload if needed.
+      after_invoke  — logs token usage when the budget was exceeded.
+    """
+
+    def __init__(self, token_budget: int = 800) -> None:
+        # ~4 chars per token is a reasonable approximation for English text
+        self._budget_chars = token_budget * 4
+        self._compressed = False
+
+    def before_invoke(self, messages: list) -> list:
+        self._compressed = False
+        total_chars = sum(len(m.content) for m in messages)
+        if total_chars <= self._budget_chars:
+            return messages
+
+        result = []
+        for msg in messages:
+            if isinstance(msg, HumanMessage):
+                msg = self._compress_payload(msg, total_chars)
+            result.append(msg)
+        return result
+
+    def after_invoke(self, response) -> None:
+        if self._compressed:
+            usage = getattr(response, "usage_metadata", None) or {}
+            tokens = (usage.get("input_tokens", 0) or 0) + (usage.get("output_tokens", 0) or 0)
+            print(f"  [summarization-middleware] body compressed → {tokens} tokens used",
+                  file=sys.stderr)
+
+    def _compress_payload(self, msg: HumanMessage, total_chars: int) -> HumanMessage:
+        try:
+            payload = json.loads(msg.content)
+            body = payload.get("body", "")
+            overhead = total_chars - len(body)          # chars used by everything else
+            allowed_body = max(200, self._budget_chars - overhead)
+            if len(body) <= allowed_body:
+                return msg
+            payload["body"] = body[:allowed_body]
+            self._compressed = True
+            return HumanMessage(content=json.dumps(payload))
+        except (json.JSONDecodeError, KeyError):
+            return msg
+
+
+_summarization_middleware = SummarizationMiddleware(token_budget=800)
 
 
 def _summarize_one(sub_llm, item: dict) -> tuple[dict, int]:
@@ -62,7 +120,11 @@ def _summarize_one(sub_llm, item: dict) -> tuple[dict, int]:
     body = _extract.extract_body(item["url"]) or item.get("rss_summary", "")
     system = (_PROMPTS / "summarizer.md").read_text()
     payload = json.dumps({"title": item["title"], "url": item["url"], "body": body[:1500]})
-    resp = _invoke_with_retry(sub_llm, [SystemMessage(content=system), HumanMessage(content=payload)])
+    resp = _invoke_with_retry(
+        sub_llm,
+        [SystemMessage(content=system), HumanMessage(content=payload)],
+        middleware=_summarization_middleware,
+    )
     text = resp.content.strip()
 
     # Extract token usage from response metadata (Gemini returns this)
