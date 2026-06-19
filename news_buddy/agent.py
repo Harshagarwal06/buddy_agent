@@ -37,6 +37,7 @@ class DigestState(TypedDict):
     enriched_items: list[dict]  # after extract + summarize
     digest: str                 # final markdown
     output_path: str            # written file path
+    html_path: str              # written HTML file path
     total_tokens: int           # cumulative LLM tokens used this run
 
 
@@ -329,6 +330,19 @@ def write_digest_node(state: DigestState) -> dict:
     return {"output_path": str(path)}
 
 
+def write_html_node(state: DigestState) -> dict:
+    """Generate a styled HTML digest page alongside the Markdown file."""
+    if state["dry_run"]:
+        _log(state, "[dry-run] write_html — skipping")
+        return {"html_path": "/tmp/dry-run-digest.html"}
+
+    from news_buddy.html_writer import write_html
+    output_dir = Path(state["config"].get("output_dir", "~/news")).expanduser()
+    path = write_html(output_dir, state["date_str"], state.get("enriched_items", []))
+    _log(state, f"HTML digest written → {path}")
+    return {"html_path": str(path)}
+
+
 def write_empty_node(state: DigestState) -> dict:
     """Write a short digest noting no new stories."""
     date_str = state["date_str"]
@@ -356,15 +370,17 @@ def build_graph(checkpointing: bool = True):
     graph.add_node("format_digest",      format_digest_node)
     graph.add_node("write_digest",       write_digest_node)
     graph.add_node("write_empty",        write_empty_node)
+    graph.add_node("write_html",         write_html_node)
 
     graph.set_entry_point("fetch_feeds")
-    graph.add_edge("fetch_feeds",   "filter_ai")
-    graph.add_edge("filter_ai",     "deduplicate")
+    graph.add_edge("fetch_feeds",        "filter_ai")
+    graph.add_edge("filter_ai",          "deduplicate")
     graph.add_conditional_edges("deduplicate", should_summarize)
     graph.add_edge("summarize_articles", "format_digest")
     graph.add_edge("format_digest",      "write_digest")
-    graph.add_edge("write_digest",       END)
-    graph.add_edge("write_empty",        END)
+    graph.add_edge("write_digest",       "write_html")
+    graph.add_edge("write_empty",        "write_html")
+    graph.add_edge("write_html",         END)
 
     checkpointer = MemorySaver() if checkpointing else None
     return graph.compile(checkpointer=checkpointer)
@@ -405,6 +421,7 @@ def run_pipeline(
                 "enriched_items": [],
                 "digest": "",
                 "output_path": "",
+                "html_path": "",
                 "total_tokens": 0,
             },
             config={"configurable": {"thread_id": "news-buddy"}},
@@ -412,6 +429,7 @@ def run_pipeline(
         return {
             "digest":       result["digest"],
             "output_path":  result["output_path"],
+            "html_path":    result.get("html_path", ""),
             "item_count":   len(result.get("enriched_items", [])),
             "total_tokens": result.get("total_tokens", 0),
             "error":        None,

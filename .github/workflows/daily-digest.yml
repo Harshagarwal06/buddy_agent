@@ -11,6 +11,8 @@ jobs:
   digest:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    permissions:
+      contents: write   # needed to push the gh-pages branch
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -40,3 +42,23 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python -m news_buddy run
+
+      - name: Deploy digest to GitHub Pages
+        run: |
+          DATE=$(date -u +%F)
+          HTML_FILE="$HOME/news/${DATE}.html"
+          if [ ! -f "$HTML_FILE" ]; then
+            echo "No HTML file found at $HTML_FILE — skipping deploy"
+            exit 0
+          fi
+          mkdir gh-pages-out
+          cp "$HTML_FILE" gh-pages-out/index.html
+          cd gh-pages-out
+          git init -b gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Digest ${DATE}"
+          git push --force \
+            https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git \
+            gh-pages
