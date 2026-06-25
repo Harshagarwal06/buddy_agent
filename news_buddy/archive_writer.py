@@ -202,3 +202,12 @@ function toggleDark() {{
     tmp.write_text(html, encoding="utf-8")
     tmp.replace(target)
     return target
+
+
+if __name__ == "__main__":
+    import sys as _sys
+    if len(_sys.argv) != 2:
+        print("usage: python -m news_buddy.archive_writer <output-dir>", file=_sys.stderr)
+        _sys.exit(1)
+    result = write_archive(Path(_sys.argv[1]))
+    print(f"archive written → {result}")

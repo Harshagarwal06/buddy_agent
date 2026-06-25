@@ -85,12 +85,7 @@ jobs:
           cp "${NEWS_DIR}/${DATE}.html" "${DEPLOY_DIR}/${DATE}.html"
 
           # Regenerate the archive index from all dated files in the deploy dir
-          python -c "
-import sys, os; sys.path.insert(0, os.getcwd())
-from pathlib import Path
-from news_buddy.archive_writer import write_archive
-write_archive(Path('$DEPLOY_DIR'))
-          "
+          python -m news_buddy.archive_writer "$DEPLOY_DIR"
 
           # Commit and push
           cd "$DEPLOY_DIR"
