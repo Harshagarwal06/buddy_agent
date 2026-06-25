@@ -51,6 +51,17 @@ def _run(args: argparse.Namespace) -> None:
             send_digest(tg_token, tg_chat, result["digest"], date_str,
                         result["item_count"], duration_secs, tokens, est_cost_usd)
 
+    # ── Slack notification ───────────────────────────────────────────────────
+    slack_url = os.getenv("SLACK_WEBHOOK_URL", "").strip()
+    use_slack = bool(slack_url) and not args.dry_run
+    if use_slack:
+        from news_buddy import slack_notify
+        if result["error"]:
+            slack_notify.send_error_alert(slack_url, result["error"], date_str)
+        else:
+            slack_notify.send_digest(slack_url, result["digest"], date_str,
+                                     result["item_count"], duration_secs, tokens, est_cost_usd)
+
     # ── Terminal output ──────────────────────────────────────────────────────
     if result["error"]:
         print(f"\n❌ Pipeline failed: {result['error']}", file=sys.stderr)
@@ -60,12 +71,15 @@ def _run(args: argparse.Namespace) -> None:
         print(result["digest"])
     else:
         print(f"✅ Digest written → {result['output_path']}")
+        rubric_fails = result.get("rubric_failures", 0)
         print(f"   Articles: {result['item_count']}  |  "
               f"Tokens: {tokens:,}  |  "
               f"Est. cost: ${est_cost_usd:.4f}  |  "
-              f"Duration: {duration_secs:.1f}s")
-        tg_status = "sent to Telegram ✅" if use_tg else "Telegram not configured"
-        print(f"   Notification: {tg_status}")
+              f"Duration: {duration_secs:.1f}s  |  "
+              f"Rubric failures: {rubric_fails}")
+        tg_status = "sent ✅" if use_tg else "not configured"
+        slack_status = "sent ✅" if use_slack else "not configured"
+        print(f"   Telegram: {tg_status}  |  Slack: {slack_status}")
         print(f"\n--- Preview (first 20 lines) ---")
         lines = result["digest"].splitlines()
         print("\n".join(lines[:20]))

@@ -13,6 +13,7 @@ from langchain_core.tools import tool
 from news_buddy import feeds as _feeds
 from news_buddy import extract as _extract
 from news_buddy import state as _state
+from news_buddy import rag as _rag
 
 _CONFIG_PATH = Path(__file__).parent.parent / "config.yaml"
 _config: dict | None = None
@@ -71,10 +72,26 @@ def filter_unseen(items_json: str) -> str:
 
 
 @tool
-def mark_seen(url: str, source: str, title: str) -> str:
-    """Record a URL as seen so it is excluded from future runs."""
+def mark_seen(url: str, source: str, title: str, body: str = "") -> str:
+    """Record a URL as seen so it is excluded from future runs. Pass body to enable semantic search."""
     _state.mark_seen(_db_path(), {"url": url, "source": source, "title": title})
+    if body:
+        try:
+            _rag.embed_article(url=url, title=title, body=body, source=source)
+        except Exception:
+            pass  # embedding failure must never block the main pipeline
     return "ok"
+
+
+@tool
+def semantic_search(query: str, n_results: int = 5) -> str:
+    """
+    Find past articles semantically similar to a topic or query string.
+    Returns a JSON list of {title, source, url, similarity} dicts, ordered by relevance.
+    Use this to surface related prior coverage before writing the digest.
+    """
+    results = _rag.semantic_search(query, n_results=n_results)
+    return json.dumps(results)
 
 
 @tool

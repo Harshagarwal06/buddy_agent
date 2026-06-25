@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import calendar
+import html
 import re
 from datetime import datetime, timedelta, timezone
 
@@ -60,4 +61,5 @@ def _entry_datetime(entry) -> datetime | None:
 
 def _clean_html(text: str) -> str:
     text = re.sub(r"<[^>]+>", "", text)
+    text = html.unescape(text)
     return re.sub(r"\s+", " ", text).strip()

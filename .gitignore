@@ -14,6 +14,7 @@ venv/
 # Local runtime
 .env
 state.db
+chroma_db/
 
 # Generated digests (outputs, not source)
 news/
@@ -21,3 +22,6 @@ news/
 # macOS / editor cruft
 .DS_Store
 *.swp
+
+# Local Claude Code session data
+.claude/

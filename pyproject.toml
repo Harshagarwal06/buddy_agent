@@ -12,6 +12,7 @@ dependencies = [
     "arize-phoenix",
     "arize-phoenix-otel",
     "openinference-instrumentation-langchain",
+    "chromadb",
     "feedparser",
     "trafilatura",
     "httpx",

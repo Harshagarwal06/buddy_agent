@@ -40,12 +40,18 @@ max_articles: 5          # hard cap on articles summarized per run (protects API
 max_top_stories: 5
 summary_style: "concise, neutral, 2-3 sentences"
 
+rubric:
+  enabled: true
+  min_summary_length: 60     # minimum chars for a "complete" summary
+  importance_penalty: 2      # subtracted from importance when rubric fails
+  retry_on_failure: true     # retry once with a stricter prompt on failure
+
 llm:
   provider: google           # "google" (free Gemini API) or "ollama" (local)
   main_model: gemini-2.5-flash       # unused by the LangGraph pipeline (summaries only)
   sub_model: gemini-2.5-flash        # summarizer — the only model this pipeline calls
   temperature: 0.2
-  requests_per_minute: 9     # client-side throttle to stay under free-tier RPM
+  requests_per_minute: 14    # client-side throttle — free tier allows 15 RPM, 14 gives a safe buffer
   # For local Ollama instead, set provider: ollama and uncomment:
   # base_url: http://localhost:11434
   # main_model: llama3.1:8b
