@@ -5,14 +5,14 @@ on:
   schedule:
     # 08:00 IST == 02:30 UTC (IST is UTC+5:30). GitHub cron uses UTC.
     - cron: "30 2 * * *"
-  workflow_dispatch: {}   # lets you trigger a manual test run from the Actions tab
+  workflow_dispatch: {}   # trigger a manual test run from the Actions tab
 
 jobs:
   digest:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     permissions:
-      contents: write   # needed to push the gh-pages branch
+      contents: write   # needed to push to gh-pages
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -28,7 +28,7 @@ jobs:
           pip install .
 
       # Persist the dedup database between daily runs so the same article
-      # isn't summarised twice across overlapping 24h windows.
+      # is not summarised twice across overlapping 24h windows.
       - name: Restore dedup state
         uses: actions/cache@v4
         with:
@@ -36,29 +36,69 @@ jobs:
           key: news-buddy-state-${{ github.run_id }}
           restore-keys: news-buddy-state-
 
+      # Persist the RAG vector store so embeddings survive between runs.
+      - name: Restore RAG vector store
+        uses: actions/cache@v4
+        with:
+          path: chroma_db
+          key: news-buddy-chroma-${{ github.run_id }}
+          restore-keys: news-buddy-chroma-
+
       - name: Run the daily curation job
         env:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: python -m news_buddy run
 
+      # ── Deploy to GitHub Pages ────────────────────────────────────────────────
+      # Strategy: checkout the existing gh-pages branch so we keep every past
+      # dated HTML file, copy today's new files in, regenerate the archive
+      # index, then push back. This replaces the old force-push-from-scratch
+      # approach that wiped history on every run.
       - name: Deploy digest to GitHub Pages
         run: |
           DATE=$(date -u +%F)
-          HTML_FILE="$HOME/news/${DATE}.html"
-          if [ ! -f "$HTML_FILE" ]; then
-            echo "No HTML file found at $HTML_FILE — skipping deploy"
+          NEWS_DIR="$HOME/news"
+
+          # Bail early if the pipeline produced nothing
+          if [ ! -f "${NEWS_DIR}/${DATE}.html" ]; then
+            echo "No HTML file at ${NEWS_DIR}/${DATE}.html — skipping deploy"
             exit 0
           fi
-          mkdir gh-pages-out
-          cp "$HTML_FILE" gh-pages-out/index.html
-          cd gh-pages-out
-          git init -b gh-pages
-          git config user.name "github-actions[bot]"
+
+          # Clone (or init) the gh-pages branch into a staging directory
+          DEPLOY_DIR="$(mktemp -d)"
+          if git ls-remote --exit-code --heads origin gh-pages > /dev/null 2>&1; then
+            git clone --depth=1 --branch gh-pages \
+              "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" \
+              "$DEPLOY_DIR"
+          else
+            # First deploy — initialise a fresh gh-pages branch
+            git -C "$DEPLOY_DIR" init -b gh-pages
+            git -C "$DEPLOY_DIR" remote add origin \
+              "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+          fi
+
+          # Copy today's dated digest into the staging area
+          cp "${NEWS_DIR}/${DATE}.html" "${DEPLOY_DIR}/${DATE}.html"
+
+          # Regenerate the archive index from all dated files in the deploy dir
+          python -c "
+import sys, os; sys.path.insert(0, os.getcwd())
+from pathlib import Path
+from news_buddy.archive_writer import write_archive
+write_archive(Path('$DEPLOY_DIR'))
+          "
+
+          # Commit and push
+          cd "$DEPLOY_DIR"
+          git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add index.html
+          git add -A
+          git diff --cached --quiet && echo "Nothing new to commit" && exit 0
           git commit -m "Digest ${DATE}"
-          git push --force \
-            https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git \
-            gh-pages
+          git push origin gh-pages
+        env:
+          DEPLOY_DIR: ${{ runner.temp }}/gh-pages-deploy

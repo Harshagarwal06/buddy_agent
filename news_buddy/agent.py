@@ -17,7 +17,9 @@ from tenacity import retry, stop_after_attempt, wait_exponential
 from news_buddy import extract as _extract
 from news_buddy import feeds as _feeds
 from news_buddy import state as _state
+from news_buddy import rag as _rag
 from news_buddy.llm import get_sub_model
+from news_buddy.rubric import RubricMiddleware
 
 _ROOT = Path(__file__).parent.parent
 _PROMPTS = _ROOT / "prompts"
@@ -39,6 +41,7 @@ class DigestState(TypedDict):
     output_path: str            # written file path
     html_path: str              # written HTML file path
     total_tokens: int           # cumulative LLM tokens used this run
+    rubric_failures: int        # articles whose summary failed the rubric
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -116,10 +119,17 @@ class SummarizationMiddleware:
 _summarization_middleware = SummarizationMiddleware(token_budget=800)
 
 
-def _summarize_one(sub_llm, item: dict) -> tuple[dict, int]:
-    """Summarize a single article. Returns (enriched item dict, tokens used)."""
+def _summarize_one(sub_llm, item: dict, strict: bool = False) -> tuple[dict, int, str]:
+    """Summarize a single article. Returns (enriched item dict, tokens used, body)."""
     body = _extract.extract_body(item["url"]) or item.get("rss_summary", "")
     system = (_PROMPTS / "summarizer.md").read_text()
+    if strict:
+        system += (
+            "\n\nIMPORTANT: Your previous summary was too vague. "
+            "Name specific companies, people, technologies, or numbers. "
+            "Minimum 80 characters. Avoid phrases like 'a new development' "
+            "or 'it was announced'."
+        )
     payload = json.dumps({"title": item["title"], "url": item["url"], "body": body[:1500]})
     resp = _invoke_with_retry(
         sub_llm,
@@ -148,7 +158,7 @@ def _summarize_one(sub_llm, item: dict) -> tuple[dict, int]:
         "tags": data.get("tags", []),
         "importance": data.get("importance", 3),
     }
-    return enriched, tokens
+    return enriched, tokens, body
 
 
 def _write_digest(output_dir: Path, date_str: str, markdown: str) -> Path:
@@ -261,28 +271,69 @@ def summarize_articles_node(state: DigestState) -> dict:
     enriched: list[dict] = []
     errors: list[str] = []
 
-    def _process(item: dict) -> tuple[dict, int]:
+    rubric_cfg = state["config"].get("rubric", {})
+    rubric_enabled = rubric_cfg.get("enabled", True)
+    retry_on_failure = rubric_cfg.get("retry_on_failure", True)
+    rubric = RubricMiddleware(
+        min_length=rubric_cfg.get("min_summary_length", 60),
+        importance_penalty=rubric_cfg.get("importance_penalty", 2),
+    )
+
+    def _process(item: dict) -> tuple[dict, int, bool]:
         _log(state, f"Summarizing: {item['title'][:70]}")
+        rubric_failed = False
         try:
-            enriched, tokens = _summarize_one(sub_llm, item)
+            enriched_item, tokens, body = _summarize_one(sub_llm, item)
+
+            if rubric_enabled:
+                enriched_item = rubric.score(enriched_item)
+                if not enriched_item["rubric"]["passed"]:
+                    rubric_failed = True
+                    _log(state, f"  [rubric] FAILED: {item['title'][:60]}")
+                    if retry_on_failure:
+                        _log(state, "  [rubric] Retrying with strict prompt …")
+                        try:
+                            enriched_item2, tokens2, body2 = _summarize_one(sub_llm, item, strict=True)
+                            enriched_item2 = rubric.score(enriched_item2)
+                            tokens += tokens2
+                            if enriched_item2["rubric"]["passed"]:
+                                enriched_item = enriched_item2
+                                rubric_failed = False
+                                _log(state, "  [rubric] Retry PASSED")
+                        except Exception as e2:
+                            print(f"[warn] rubric retry failed for {item['url']}: {e2}", file=sys.stderr)
+
             if not state["force"]:
                 _state.mark_seen(_DB, item)
-            return enriched, tokens
+                try:
+                    _rag.embed_article(
+                        url=item["url"],
+                        title=item["title"],
+                        body=body,
+                        source=item["source"],
+                    )
+                except Exception as e:
+                    print(f"[warn] embed failed for {item['url']}: {e}", file=sys.stderr)
+            return enriched_item, tokens, rubric_failed
         except Exception as e:
             print(f"[warn] summarize failed for {item['url']}: {e}", file=sys.stderr)
             return ({**item, "summary": item.get("rss_summary") or item["title"],
-                     "tags": ["world"], "importance": 2}, 0)
+                     "tags": ["world"], "importance": 2}, 0, False)
 
     total_tokens = 0
+    rubric_failures = 0
     with ThreadPoolExecutor(max_workers=5) as ex:
         futures = {ex.submit(_process, item): item for item in unseen}
         for future in as_completed(futures):
-            item_result, tokens = future.result()
+            item_result, tokens, failed = future.result()
             enriched.append(item_result)
             total_tokens += tokens
+            if failed:
+                rubric_failures += 1
 
-    _log(state, f"Summarized {len(enriched)} articles — {total_tokens} tokens used")
-    return {"enriched_items": enriched, "total_tokens": total_tokens}
+    _log(state, f"Summarized {len(enriched)} articles — {total_tokens} tokens used"
+                f" — {rubric_failures} rubric failure(s)")
+    return {"enriched_items": enriched, "total_tokens": total_tokens, "rubric_failures": rubric_failures}
 
 
 def format_digest_node(state: DigestState) -> dict:
@@ -337,9 +388,32 @@ def write_html_node(state: DigestState) -> dict:
         return {"html_path": "/tmp/dry-run-digest.html"}
 
     from news_buddy.html_writer import write_html
+    from news_buddy.archive_writer import write_archive
+    import re as _re
+
     output_dir = Path(state["config"].get("output_dir", "~/news")).expanduser()
-    path = write_html(output_dir, state["date_str"], state.get("enriched_items", []))
+    date_str = state["date_str"]
+
+    # Discover neighbouring dates for prev/next navigation
+    pattern = _re.compile(r"^\d{4}-\d{2}-\d{2}\.html$")
+    existing = sorted([p.stem for p in output_dir.glob("*.html") if pattern.match(p.name)])
+    try:
+        idx = existing.index(date_str)
+        prev_date = existing[idx - 1] if idx > 0 else None
+        next_date = existing[idx + 1] if idx < len(existing) - 1 else None
+    except ValueError:
+        # today's file not yet written — it'll be the newest
+        prev_date = existing[-1] if existing else None
+        next_date = None
+
+    path = write_html(output_dir, date_str, state.get("enriched_items", []),
+                      prev_date=prev_date, next_date=next_date)
     _log(state, f"HTML digest written → {path}")
+
+    # Regenerate the archive index to include today
+    archive_path = write_archive(output_dir)
+    _log(state, f"Archive index updated → {archive_path}")
+
     return {"html_path": str(path)}
 
 
@@ -423,6 +497,7 @@ def run_pipeline(
                 "output_path": "",
                 "html_path": "",
                 "total_tokens": 0,
+                "rubric_failures": 0,
             },
             config={"configurable": {"thread_id": "news-buddy"}},
         )
@@ -430,9 +505,10 @@ def run_pipeline(
             "digest":       result["digest"],
             "output_path":  result["output_path"],
             "html_path":    result.get("html_path", ""),
-            "item_count":   len(result.get("enriched_items", [])),
-            "total_tokens": result.get("total_tokens", 0),
-            "error":        None,
+            "item_count":      len(result.get("enriched_items", [])),
+            "total_tokens":    result.get("total_tokens", 0),
+            "rubric_failures": result.get("rubric_failures", 0),
+            "error":           None,
         }
     except Exception as exc:
         error_msg = f"{type(exc).__name__}: {exc}"
