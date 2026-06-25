@@ -17,15 +17,13 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Set up Python + uv
+        uses: astral-sh/setup-uv@v5
         with:
           python-version: "3.11"
 
       - name: Install the project
-        run: |
-          python -m pip install --upgrade pip
-          pip install .
+        run: uv sync --frozen
 
       # Persist the dedup database between daily runs so the same article
       # is not summarised twice across overlapping 24h windows.
@@ -50,7 +48,7 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        run: python -m news_buddy run
+        run: uv run python -m news_buddy run
 
       # ── Deploy to GitHub Pages ────────────────────────────────────────────────
       # Strategy: checkout the existing gh-pages branch so we keep every past
@@ -85,7 +83,7 @@ jobs:
           cp "${NEWS_DIR}/${DATE}.html" "${DEPLOY_DIR}/${DATE}.html"
 
           # Regenerate the archive index from all dated files in the deploy dir
-          python -m news_buddy.archive_writer "$DEPLOY_DIR"
+          uv run python -m news_buddy.archive_writer "$DEPLOY_DIR"
 
           # Commit and push
           cd "$DEPLOY_DIR"
