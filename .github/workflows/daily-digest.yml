@@ -17,13 +17,18 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Set up Python + uv
-        uses: astral-sh/setup-uv@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Install the project
-        run: uv sync --frozen
+        run: |
+          pip install --upgrade pip
+          pip install .
+
+      - name: Install chromadb
+        run: pip install "chromadb==1.5.9"
 
       # Persist the dedup database between daily runs so the same article
       # is not summarised twice across overlapping 24h windows.
@@ -48,19 +53,13 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        run: uv run python -m news_buddy run
+        run: python -m news_buddy run
 
-      # ── Deploy to GitHub Pages ────────────────────────────────────────────────
-      # Strategy: checkout the existing gh-pages branch so we keep every past
-      # dated HTML file, copy today's new files in, regenerate the archive
-      # index, then push back. This replaces the old force-push-from-scratch
-      # approach that wiped history on every run.
       - name: Deploy digest to GitHub Pages
         run: |
           DATE=$(date -u +%F)
           NEWS_DIR="$HOME/news"
 
-          # Bail early if the pipeline produced nothing
           if [ ! -f "${NEWS_DIR}/${DATE}.html" ]; then
             echo "No HTML file at ${NEWS_DIR}/${DATE}.html — skipping deploy"
             exit 0
@@ -73,19 +72,14 @@ jobs:
               "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" \
               "$DEPLOY_DIR"
           else
-            # First deploy — initialise a fresh gh-pages branch
             git -C "$DEPLOY_DIR" init -b gh-pages
             git -C "$DEPLOY_DIR" remote add origin \
               "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
           fi
 
-          # Copy today's dated digest into the staging area
           cp "${NEWS_DIR}/${DATE}.html" "${DEPLOY_DIR}/${DATE}.html"
+          python -m news_buddy.archive_writer "$DEPLOY_DIR"
 
-          # Regenerate the archive index from all dated files in the deploy dir
-          uv run python -m news_buddy.archive_writer "$DEPLOY_DIR"
-
-          # Commit and push
           cd "$DEPLOY_DIR"
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
