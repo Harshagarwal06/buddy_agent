@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>News Buddy — 2026-06-26</title>
+<style>
+:root {
+  --bg: #f8f9fa;
+  --surface: #ffffff;
+  --border: #e0e0e0;
+  --text: #1a1a1a;
+  --text-muted: #666;
+  --text-faint: #999;
+  --accent: #1a73e8;
+  --accent-hover: #1557b0;
+  --header-bg: linear-gradient(135deg, #1a73e8, #0d47a1);
+  --shadow: 0 1px 4px rgba(0,0,0,.07);
+  --star-color: #f9a825;
+  --tag-bg: var(--tag-bg-light, #e8f0fe);
+  --tag-fg: var(--tag-fg-light, #1a73e8);
+}
+[data-theme="dark"] {
+  --bg: #111318;
+  --surface: #1e2128;
+  --border: #2e3240;
+  --text: #e8eaed;
+  --text-muted: #9aa0a6;
+  --text-faint: #5f6368;
+  --accent: #7ab3f5;
+  --accent-hover: #aecbfa;
+  --header-bg: linear-gradient(135deg, #1e3a5f, #0d2647);
+  --shadow: 0 1px 4px rgba(0,0,0,.3);
+  --star-color: #f6c84b;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  transition: background .2s, color .2s;
+}
+.wrap { max-width: 780px; margin: 0 auto; padding: 20px 16px 60px; }
+
+/* Header */
+.site-header {
+  background: var(--header-bg);
+  color: #fff;
+  border-radius: 14px;
+  padding: 22px 24px 18px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.header-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.header-label { font-size: 0.72rem; opacity: .75; letter-spacing: .07em; text-transform: uppercase; margin-bottom: 4px; }
+.header-date { font-size: 1.55rem; font-weight: 800; margin-bottom: 4px; }
+.header-count { font-size: 0.82rem; opacity: .8; }
+.dark-toggle {
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.3);
+  color: #fff;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background .15s;
+}
+.dark-toggle:hover { background: rgba(255,255,255,.28); }
+
+/* Source stats */
+.stats-bar {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-top: 12px; padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,.2);
+}
+.stat-pill {
+  font-size: 0.72rem; color: rgba(255,255,255,.8);
+  background: rgba(255,255,255,.12);
+  border-radius: 10px; padding: 2px 8px;
+}
+.stat-pill b { color: #fff; }
+
+/* Tag filter bar */
+.filter-bar {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-bottom: 18px;
+}
+.filter-btn {
+  background: var(--surface); border: 1.5px solid var(--border);
+  color: var(--text-muted); border-radius: 20px;
+  padding: 4px 12px; font-size: 0.75rem; font-weight: 600;
+  cursor: pointer; transition: all .15s;
+}
+.filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+.filter-btn.active {
+  background: var(--accent); border-color: var(--accent);
+  color: #fff;
+}
+
+/* Section headings */
+.section-heading {
+  font-size: 0.78rem; font-weight: 700; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: .08em;
+  border-bottom: 2px solid var(--border); padding-bottom: 6px;
+  margin: 28px 0 14px;
+}
+
+/* Cards */
+.article-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 18px; margin-bottom: 12px;
+  box-shadow: var(--shadow); transition: opacity .2s, transform .15s;
+}
+.article-card.card-large { padding: 20px 22px; }
+.article-card.hidden { display: none; }
+.card-header {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; gap: 10px; margin-bottom: 5px;
+}
+.card-title {
+  font-size: 0.96rem; font-weight: 700; color: var(--text);
+  text-decoration: none; line-height: 1.4; flex: 1;
+  transition: color .12s;
+}
+.card-large .card-title { font-size: 1.04rem; }
+.card-title:hover { color: var(--accent); }
+.card-stars { font-size: 0.85rem; color: var(--star-color); white-space: nowrap; letter-spacing: 1px; flex-shrink: 0; }
+.card-meta { font-size: 0.75rem; color: var(--text-faint); margin-bottom: 8px; }
+.card-summary { font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
+.card-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+
+/* Tag badges */
+.tag-badge {
+  background: var(--tag-bg); color: var(--tag-fg);
+  padding: 2px 9px; border-radius: 12px;
+  font-size: 0.7rem; font-weight: 600;
+}
+[data-theme="dark"] .tag-badge {
+  background: var(--tag-bg-dark, #1e3a5f);
+  color: var(--tag-fg-dark, #7ab3f5);
+}
+
+/* Navigation */
+.day-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin: 32px 0 20px; gap: 10px;
+}
+.nav-btn {
+  background: var(--surface); border: 1.5px solid var(--border);
+  color: var(--text-muted); border-radius: 8px;
+  padding: 8px 16px; font-size: 0.82rem; font-weight: 600;
+  text-decoration: none; transition: all .15s;
+}
+a.nav-btn:hover { border-color: var(--accent); color: var(--accent); }
+.nav-disabled { opacity: .4; cursor: default; }
+.nav-archive {
+  font-size: 0.78rem; color: var(--text-faint); text-align: center;
+}
+.nav-archive a { color: var(--accent); text-decoration: none; }
+.nav-archive a:hover { text-decoration: underline; }
+
+/* Empty state */
+.empty-msg { color: var(--text-faint); text-align: center; padding: 48px 0; }
+
+/* Footer */
+.site-footer {
+  text-align: center; font-size: 0.72rem; color: var(--text-faint);
+  margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border);
+}
+.site-footer a { color: var(--text-faint); }
+.site-footer a:hover { color: var(--accent); }
+
+@media (max-width: 600px) {
+  .wrap { padding: 12px 10px 40px; }
+  .site-header { border-radius: 10px; padding: 16px 16px 14px; }
+  .header-date { font-size: 1.3rem; }
+  .article-card { padding: 14px 14px; }
+  .article-card.card-large { padding: 16px 14px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="site-header">
+    <div class="header-top">
+      <div>
+        <div class="header-label">Daily News Digest</div>
+        <div class="header-date">2026-06-26</div>
+        <div class="header-count">5 articles</div>
+      </div>
+      <button class="dark-toggle" onclick="toggleDark()" id="dark-btn">🌙 Dark</button>
+    </div>
+    <div class="stats-bar"><span class='stat-pill'>TechCrunch AI <b>2</b></span><span class='stat-pill'>The Verge AI <b>1</b></span><span class='stat-pill'>MIT Tech Review AI <b>1</b></span><span class='stat-pill'>Ars Technica AI <b>1</b></span></div>
+  </div>
+
+  <div class="filter-bar"><button class="filter-btn" data-tag="ai">ai</button><button class="filter-btn" data-tag="politics">politics</button><button class="filter-btn" data-tag="technology">technology</button><button class="filter-btn" data-tag="world">world</button></div>
+
+  
+  <h2 class="section-heading">Top Stories</h2>
+  
+<div class="article-card card-large has-tag-technology has-tag-ai has-tag-politics" data-tags="technology,ai,politics">
+  <div class="card-header">
+    <a href="https://techcrunch.com/2026/06/25/the-white-house-is-asking-openai-to-slow-roll-the-release-of-its-new-model-over-safety-concerns/" target="_blank" rel="noopener" class="card-title">The White House is asking OpenAI to slow roll the release of its new model over safety concerns</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">TechCrunch AI &nbsp;·&nbsp; 2026-06-25</div>
+  <p class='card-summary'>OpenAI's new model, GPT 5.6, will reportedly be released to a select group of partners rather than the general public, following a request from the Trump administration. The White House, specifically the Office of the National Cyber Director and the Office of Science and Technology Policy, reportedly asked for this limited rollout due to safety concerns. This move reflects a recent shift by the administration towards increased federal oversight of new AI models.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span><span class="tag-badge" data-tag="politics" style="--tag-bg:#feefc3;--tag-fg:#b06000;--tag-bg-dark:#3d2800;--tag-fg-dark:#f6c84b">politics</span></div>
+</div>
+
+<div class="article-card card-large has-tag-world" data-tags="world">
+  <div class="card-header">
+    <a href="https://techcrunch.com/2026/06/25/patronus-ai-lands-50m-to-build-digital-worlds-that-stress-test-ai-agents/" target="_blank" rel="noopener" class="card-title">Patronus AI lands $50M to build ‘digital worlds’ that stress-test AI agents</a>
+    <span class="card-stars" title="Importance 2/5">★★☆☆☆</span>
+  </div>
+  <div class="card-meta">TechCrunch AI &nbsp;·&nbsp; 2026-06-25</div>
+  <p class='card-summary'>Agent-testing startup Patronus AI, founded by former Meta AI researchers, is experiencing nearly insatiable demand, its investor says.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="world" style="--tag-bg:#f3e8fd;--tag-fg:#7b1fa2;--tag-bg-dark:#2d0b40;--tag-fg-dark:#ce93d8">world</span></div>
+</div>
+
+<div class="article-card card-large has-tag-world" data-tags="world">
+  <div class="card-header">
+    <a href="https://www.theverge.com/ai-artificial-intelligence/957372/openai-will-delay-gpt-5-6-after-trump-administration-request" target="_blank" rel="noopener" class="card-title">OpenAI will delay GPT-5.6 after Trump administration request</a>
+    <span class="card-stars" title="Importance 2/5">★★☆☆☆</span>
+  </div>
+  <div class="card-meta">The Verge AI &nbsp;·&nbsp; 2026-06-25</div>
+  <p class='card-summary'>The Trump administration, apprehensive of potential security issues, has reportedly asked OpenAI to stagger the release of its next big-ticket model, GPT-5.6. The Information reported that OpenAI CEO Sam Altman told employees Wednesday in a company Q&A that it would release GPT-5.6 in limited preview form - granting access only to a small group of […]</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="world" style="--tag-bg:#f3e8fd;--tag-fg:#7b1fa2;--tag-bg-dark:#2d0b40;--tag-fg-dark:#ce93d8">world</span></div>
+</div>
+
+<div class="article-card card-large has-tag-world" data-tags="world">
+  <div class="card-header">
+    <a href="https://www.technologyreview.com/2026/06/25/1137848/repositioning-retail-for-the-ai-era/" target="_blank" rel="noopener" class="card-title">Repositioning retail for the AI era</a>
+    <span class="card-stars" title="Importance 2/5">★★☆☆☆</span>
+  </div>
+  <div class="card-meta">MIT Tech Review AI &nbsp;·&nbsp; 2026-06-25</div>
+  <p class='card-summary'>Artificial intelligence is rapidly reshaping retail, but not in the ways consumers might immediately notice. The biggest transformation may not be flashy virtual try-ons or chatbot shopping assistants, but in how decisions are made behind the scenes: how products surface in search results, how inventory moves through supply chains, how engineers ship code faster, and…</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="world" style="--tag-bg:#f3e8fd;--tag-fg:#7b1fa2;--tag-bg-dark:#2d0b40;--tag-fg-dark:#ce93d8">world</span></div>
+</div>
+
+<div class="article-card card-large has-tag-world" data-tags="world">
+  <div class="card-header">
+    <a href="https://arstechnica.com/gadgets/2026/06/notion-killing-skiff-influenced-email-app-since-most-users-use-ai-agents-instead/" target="_blank" rel="noopener" class="card-title">Notion killing Skiff-influenced email app since most users use AI agents instead</a>
+    <span class="card-stars" title="Importance 2/5">★★☆☆☆</span>
+  </div>
+  <div class="card-meta">Ars Technica AI &nbsp;·&nbsp; 2026-06-25</div>
+  <p class='card-summary'>Notion is "going all in on using agents to run your inbox."</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="world" style="--tag-bg:#f3e8fd;--tag-fg:#7b1fa2;--tag-bg-dark:#2d0b40;--tag-fg-dark:#ce93d8">world</span></div>
+</div>
+  
+  
+
+  <div class="day-nav">
+    <span class="nav-btn nav-disabled">&#8592; Earlier</span>
+    <div class="nav-archive"><a href="index.html">&#128197; Archive</a></div>
+    <span class="nav-btn nav-disabled">Later &#8594;</span>
+  </div>
+
+  <div class="site-footer">
+    News Buddy &nbsp;·&nbsp; 2026-06-26 &nbsp;·&nbsp;
+    <a href="https://github.com/Harshagarwal06/buddy_agent" target="_blank">source</a>
+  </div>
+
+</div>
+<script>
+// ── Dark mode ─────────────────────────────────────────────────────────────────
+function applyTheme(dark) {
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  document.getElementById('dark-btn').textContent = dark ? '☀ Light' : '🌙 Dark';
+}
+function toggleDark() {
+  const now = document.documentElement.getAttribute('data-theme') === 'dark';
+  localStorage.setItem('nb-theme', now ? 'light' : 'dark');
+  applyTheme(!now);
+}
+(function() {
+  const saved = localStorage.getItem('nb-theme');
+  const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(saved ? saved === 'dark' : sysDark);
+})();
+
+// ── Tag filter ────────────────────────────────────────────────────────────────
+var activeTag = null;
+document.querySelectorAll('.filter-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var tag = this.getAttribute('data-tag');
+    if (activeTag === tag) {
+      activeTag = null;
+      document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+      document.querySelectorAll('.article-card').forEach(function(c) { c.classList.remove('hidden'); });
+    } else {
+      activeTag = tag;
+      document.querySelectorAll('.filter-btn').forEach(function(b) {
+        b.classList.toggle('active', b.getAttribute('data-tag') === tag);
+      });
+      document.querySelectorAll('.article-card').forEach(function(c) {
+        var tags = (c.getAttribute('data-tags') || '').split(',');
+        c.classList.toggle('hidden', tags.indexOf(tag) === -1);
+      });
+    }
+  });
+});
+</script>
+</body>
+</html>
