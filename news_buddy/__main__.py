@@ -62,6 +62,14 @@ def _run(args: argparse.Namespace) -> None:
             slack_notify.send_digest(slack_url, result["digest"], date_str,
                                      result["item_count"], duration_secs, tokens, est_cost_usd)
 
+    # ── Buttondown email (subscriber list) ───────────────────────────────────
+    bd_key = os.getenv("BUTTONDOWN_API_KEY", "").strip()
+    use_bd = bool(bd_key) and not args.dry_run
+    if use_bd and not result["error"]:
+        from news_buddy import buttondown_notify
+        buttondown_notify.send_digest(bd_key, result["digest"], date_str,
+                                      result["item_count"])
+
     # ── Terminal output ──────────────────────────────────────────────────────
     if result["error"]:
         print(f"\n❌ Pipeline failed: {result['error']}", file=sys.stderr)
@@ -79,7 +87,8 @@ def _run(args: argparse.Namespace) -> None:
               f"Rubric failures: {rubric_fails}")
         tg_status = "sent ✅" if use_tg else "not configured"
         slack_status = "sent ✅" if use_slack else "not configured"
-        print(f"   Telegram: {tg_status}  |  Slack: {slack_status}")
+        bd_status = "sent ✅" if use_bd else "not configured"
+        print(f"   Telegram: {tg_status}  |  Slack: {slack_status}  |  Email: {bd_status}")
         print(f"\n--- Preview (first 20 lines) ---")
         lines = result["digest"].splitlines()
         print("\n".join(lines[:20]))
