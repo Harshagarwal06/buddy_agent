@@ -65,7 +65,11 @@ def _day_row(date_str: str, meta: dict, is_today: bool) -> str:
 
 
 def _signup_form() -> str:
-    """Buttondown signup embed; empty string when BUTTONDOWN_USERNAME is unset."""
+    """Buttondown signup embed; empty string when BUTTONDOWN_USERNAME is unset.
+
+    The form's CSS is emitted here (not in the page's main style block) so the
+    page carries zero signup artifacts when the feature is unconfigured.
+    """
     username = os.getenv("BUTTONDOWN_USERNAME", "").strip()
     if not username:
         return ""
@@ -96,7 +100,8 @@ def _signup_form() -> str:
     <form class="signup-form"
           action="https://buttondown.com/api/emails/embed-subscribe/{username}"
           method="post" target="_blank">
-      <input type="email" name="email" placeholder="you@example.com" required>
+      <input type="email" name="email" aria-label="Email address"
+             placeholder="you@example.com" required>
       <button type="submit">Subscribe</button>
     </form>
   </div>"""
