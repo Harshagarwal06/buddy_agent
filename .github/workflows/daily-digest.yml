@@ -3,8 +3,8 @@ name: Daily News Digest
 # Runs in GitHub's cloud — your laptop does NOT need to be on.
 on:
   schedule:
-    # 08:00 IST == 02:30 UTC (IST is UTC+5:30). GitHub cron uses UTC.
-    - cron: "30 2 * * *"
+    # 06:00 IST == 00:30 UTC (IST is UTC+5:30). GitHub cron uses UTC.
+    - cron: "30 0 * * *"
   workflow_dispatch: {}   # trigger a manual test run from the Actions tab
 
 jobs:
@@ -53,6 +53,7 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
         run: python -m news_buddy run
 
       - name: Deploy digest to GitHub Pages
@@ -89,3 +90,4 @@ jobs:
           git push origin gh-pages
         env:
           DEPLOY_DIR: ${{ runner.temp }}/gh-pages-deploy
+          BUTTONDOWN_USERNAME: ${{ secrets.BUTTONDOWN_USERNAME }}
