@@ -7,6 +7,7 @@ with date, article count, and top tags extracted from each file's metadata.
 from __future__ import annotations
 
 import json
+import os
 import re
 from pathlib import Path
 from datetime import date as _date
@@ -61,6 +62,44 @@ def _day_row(date_str: str, meta: dict, is_today: bool) -> str:
   </div>
   <span class="day-count">{count} article{"s" if count != 1 else ""} &rsaquo;</span>
 </a>"""
+
+
+def _signup_form() -> str:
+    """Buttondown signup embed; empty string when BUTTONDOWN_USERNAME is unset."""
+    username = os.getenv("BUTTONDOWN_USERNAME", "").strip()
+    if not username:
+        return ""
+    return f"""
+  <style>
+  .signup-box {{
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; box-shadow: var(--shadow);
+    padding: 20px 18px; margin-top: 24px; text-align: center;
+  }}
+  .signup-title {{ font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }}
+  .signup-sub {{ font-size: 0.78rem; color: var(--text-muted); margin-bottom: 12px; }}
+  .signup-form {{ display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }}
+  .signup-form input[type=email] {{
+    flex: 1 1 200px; max-width: 300px; padding: 8px 12px;
+    border: 1px solid var(--border); border-radius: 8px;
+    background: var(--bg); color: var(--text); font-size: 0.85rem;
+  }}
+  .signup-form button {{
+    background: var(--accent); color: #fff; border: none; border-radius: 8px;
+    padding: 8px 18px; font-weight: 600; font-size: 0.85rem; cursor: pointer;
+  }}
+  .signup-form button:hover {{ opacity: .9; }}
+  </style>
+  <div class="signup-box">
+    <div class="signup-title">&#128231; Get this digest by email</div>
+    <div class="signup-sub">One email every morning at 6am IST. Unsubscribe anytime.</div>
+    <form class="signup-form"
+          action="https://buttondown.com/api/emails/embed-subscribe/{username}"
+          method="post" target="_blank">
+      <input type="email" name="email" placeholder="you@example.com" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>"""
 
 
 def write_archive(output_dir: Path) -> Path:
@@ -172,7 +211,7 @@ body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans
   </div>
 
   {'<div class="day-list">' + rows_html + '</div>' if dated_files else empty_msg}
-
+{_signup_form()}
   <div class="site-footer">
     News Buddy &nbsp;·&nbsp;
     <a href="https://github.com/Harshagarwal06/buddy_agent" target="_blank">source</a>
