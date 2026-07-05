@@ -31,7 +31,10 @@ def send_digest(
         resp = httpx.post(
             API_URL,
             json=payload,
-            headers={"Authorization": f"Token {api_key}"},
+            headers={
+                "Authorization": f"Token {api_key}",
+                "X-Buttondown-Live-Dangerously": "true",
+            },
             timeout=15,
         )
         if resp.status_code != 201:

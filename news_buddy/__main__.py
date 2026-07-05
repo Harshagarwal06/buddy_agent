@@ -43,32 +43,35 @@ def _run(args: argparse.Namespace) -> None:
     est_cost_usd = (tokens / 1_000_000) * 0.15
 
     # ── Telegram notification ────────────────────────────────────────────────
+    tg_sent: bool | None = None
     if use_tg:
         from news_buddy.telegram_notify import send_digest, send_error_alert
         if result["error"]:
-            send_error_alert(tg_token, tg_chat, result["error"], date_str)
+            tg_sent = send_error_alert(tg_token, tg_chat, result["error"], date_str)
         else:
-            send_digest(tg_token, tg_chat, result["digest"], date_str,
-                        result["item_count"], duration_secs, tokens, est_cost_usd)
+            tg_sent = send_digest(tg_token, tg_chat, result["digest"], date_str,
+                                  result["item_count"], duration_secs, tokens, est_cost_usd)
 
     # ── Slack notification ───────────────────────────────────────────────────
     slack_url = os.getenv("SLACK_WEBHOOK_URL", "").strip()
     use_slack = bool(slack_url) and not args.dry_run
+    slack_sent: bool | None = None
     if use_slack:
         from news_buddy import slack_notify
         if result["error"]:
-            slack_notify.send_error_alert(slack_url, result["error"], date_str)
+            slack_sent = slack_notify.send_error_alert(slack_url, result["error"], date_str)
         else:
-            slack_notify.send_digest(slack_url, result["digest"], date_str,
-                                     result["item_count"], duration_secs, tokens, est_cost_usd)
+            slack_sent = slack_notify.send_digest(slack_url, result["digest"], date_str,
+                                                  result["item_count"], duration_secs, tokens, est_cost_usd)
 
     # ── Buttondown email (subscriber list) ───────────────────────────────────
     bd_key = os.getenv("BUTTONDOWN_API_KEY", "").strip()
     use_bd = bool(bd_key) and not args.dry_run
+    bd_sent: bool | None = None
     if use_bd and not result["error"]:
         from news_buddy import buttondown_notify
-        buttondown_notify.send_digest(bd_key, result["digest"], date_str,
-                                      result["item_count"])
+        bd_sent = buttondown_notify.send_digest(bd_key, result["digest"], date_str,
+                                                result["item_count"])
 
     # ── Terminal output ──────────────────────────────────────────────────────
     if result["error"]:
@@ -85,15 +88,25 @@ def _run(args: argparse.Namespace) -> None:
               f"Est. cost: ${est_cost_usd:.4f}  |  "
               f"Duration: {duration_secs:.1f}s  |  "
               f"Rubric failures: {rubric_fails}")
-        tg_status = "sent ✅" if use_tg else "not configured"
-        slack_status = "sent ✅" if use_slack else "not configured"
-        bd_status = "sent ✅" if use_bd else "not configured"
+        tg_status = _status(tg_sent, use_tg)
+        slack_status = _status(slack_sent, use_slack)
+        bd_status = _status(bd_sent, use_bd)
         print(f"   Telegram: {tg_status}  |  Slack: {slack_status}  |  Email: {bd_status}")
         print(f"\n--- Preview (first 20 lines) ---")
         lines = result["digest"].splitlines()
         print("\n".join(lines[:20]))
         if len(lines) > 20:
             print(f"… ({len(lines) - 20} more lines)")
+
+
+def _status(sent: bool | None, configured: bool) -> str:
+    if not configured:
+        return "not configured"
+    if sent is True:
+        return "sent ✅"
+    if sent is False:
+        return "failed ❌"
+    return "skipped"
 
 
 def main() -> None:
