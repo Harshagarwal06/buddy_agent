@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News Buddy — RAG Architecture</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0b0e17;
+    --surface: #12172a;
+    --surface2: #1a2035;
+    --border: #1f2d50;
+    --accent-blue: #3b82f6;
+    --accent-indigo: #6366f1;
+    --accent-purple: #a855f7;
+    --accent-cyan: #06b6d4;
+    --accent-green: #10b981;
+    --accent-amber: #f59e0b;
+    --accent-rose: #f43f5e;
+    --text: #e2e8f0;
+    --text-muted: #64748b;
+    --text-dim: #94a3b8;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', 'SF Pro Display', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Header ── */
+  .header {
+    padding: 40px 48px 24px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, #0d1220 0%, var(--bg) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: -60px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(99,102,241,0.15);
+    border: 1px solid rgba(99,102,241,0.3);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #818cf8;
+    margin-bottom: 16px;
+  }
+  .header-badge .dot {
+    width: 6px; height: 6px;
+    background: #818cf8;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  .header h1 {
+    font-size: 32px; font-weight: 700;
+    background: linear-gradient(135deg, #e2e8f0 0%, #a5b4fc 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  .header p {
+    color: var(--text-muted); font-size: 14px; line-height: 1.6;
+    max-width: 640px;
+  }
+
+  /* ── Legend ── */
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 16px;
+    padding: 20px 48px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .legend-item {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; color: var(--text-dim);
+  }
+  .legend-dot {
+    width: 10px; height: 10px; border-radius: 3px;
+  }
+
+  /* ── Main canvas ── */
+  .canvas {
+    padding: 40px 48px;
+    display: flex; flex-direction: column; gap: 0;
+  }
+
+  /* ── Pipeline row ── */
+  .pipeline-row {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    position: relative;
+  }
+
+  /* ── Layer label ── */
+  .layer-label {
+    width: 120px; min-width: 120px;
+    display: flex; align-items: center; justify-content: flex-end;
+    padding-right: 20px;
+    position: relative;
+  }
+  .layer-text {
+    writing-mode: horizontal-tb;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: right;
+  }
+
+  /* ── Nodes area ── */
+  .nodes-area {
+    flex: 1;
+    display: flex; align-items: center;
+    gap: 0;
+    padding: 28px 0;
+    position: relative;
+  }
+
+  /* ── Arrow connector ── */
+  .arrow {
+    display: flex; align-items: center;
+    padding: 0 8px;
+    color: var(--text-muted); font-size: 18px;
+    flex-shrink: 0;
+  }
+  .arrow svg { display: block; }
+
+  /* ── Node card ── */
+  .node {
+    display: flex; flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    min-width: 140px; max-width: 200px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .node:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  }
+  .node.active {
+    box-shadow: 0 0 0 2px var(--node-accent, var(--accent-blue)), 0 8px 32px rgba(0,0,0,0.5);
+    transform: translateY(-2px);
+  }
+  .node-icon {
+    font-size: 18px; margin-bottom: 6px;
+  }
+  .node-name {
+    font-size: 12px; font-weight: 600;
+    color: var(--text); line-height: 1.3; margin-bottom: 4px;
+  }
+  .node-sub {
+    font-size: 10px; color: var(--text-muted); line-height: 1.4;
+  }
+  .node-tag {
+    display: inline-block;
+    font-size: 9px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 2px 6px; border-radius: 4px; margin-top: 6px;
+    background: var(--node-tag-bg, rgba(59,130,246,0.15));
+    color: var(--node-tag-color, var(--accent-blue));
+    border: 1px solid var(--node-tag-border, rgba(59,130,246,0.25));
+  }
+
+  /* Color variants */
+  .node-blue    { --node-accent: var(--accent-blue);   --node-tag-bg: rgba(59,130,246,0.12);   --node-tag-color: #60a5fa; --node-tag-border: rgba(59,130,246,0.25); }
+  .node-indigo  { --node-accent: var(--accent-indigo); --node-tag-bg: rgba(99,102,241,0.12);   --node-tag-color: #818cf8; --node-tag-border: rgba(99,102,241,0.25); }
+  .node-purple  { --node-accent: var(--accent-purple); --node-tag-bg: rgba(168,85,247,0.12);   --node-tag-color: #c084fc; --node-tag-border: rgba(168,85,247,0.25); }
+  .node-cyan    { --node-accent: var(--accent-cyan);   --node-tag-bg: rgba(6,182,212,0.12);    --node-tag-color: #22d3ee; --node-tag-border: rgba(6,182,212,0.25); }
+  .node-green   { --node-accent: var(--accent-green);  --node-tag-bg: rgba(16,185,129,0.12);   --node-tag-color: #34d399; --node-tag-border: rgba(16,185,129,0.25); }
+  .node-amber   { --node-accent: var(--accent-amber);  --node-tag-bg: rgba(245,158,11,0.12);   --node-tag-color: #fbbf24; --node-tag-border: rgba(245,158,11,0.25); }
+  .node-rose    { --node-accent: var(--accent-rose);   --node-tag-bg: rgba(244,63,94,0.12);    --node-tag-color: #fb7185; --node-tag-border: rgba(244,63,94,0.25); }
+
+  /* border left accent */
+  .node-blue   { border-left: 3px solid var(--accent-blue); }
+  .node-indigo { border-left: 3px solid var(--accent-indigo); }
+  .node-purple { border-left: 3px solid var(--accent-purple); }
+  .node-cyan   { border-left: 3px solid var(--accent-cyan); }
+  .node-green  { border-left: 3px solid var(--accent-green); }
+  .node-amber  { border-left: 3px solid var(--accent-amber); }
+  .node-rose   { border-left: 3px solid var(--accent-rose); }
+
+  /* ── RAG highlight band ── */
+  .rag-band {
+    margin: 0 0 0 120px;
+    border: 1.5px solid rgba(168,85,247,0.4);
+    border-radius: 16px;
+    background: rgba(99,102,241,0.04);
+    padding: 24px 28px;
+    position: relative;
+  }
+  .rag-band-label {
+    position: absolute; top: -13px; left: 20px;
+    background: var(--bg);
+    padding: 0 10px;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: #a78bfa;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .rag-band-label .badge {
+    background: rgba(168,85,247,0.2);
+    border: 1px solid rgba(168,85,247,0.35);
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-size: 9px;
+  }
+  .rag-inner {
+    display: flex; gap: 0; align-items: flex-start;
+    position: relative;
+  }
+
+  /* ── RAG sub-columns ── */
+  .rag-col {
+    flex: 1;
+    display: flex; flex-direction: column; gap: 12px;
+    padding: 0 16px;
+    border-right: 1px dashed var(--border);
+  }
+  .rag-col:last-child { border-right: none; }
+  .rag-col-header {
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 4px;
+  }
+
+  /* ── Vertical connector ── */
+  .v-connector {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 0; padding: 4px 0;
+    margin: 0 120px;
+    color: var(--text-muted);
+  }
+  .v-line {
+    width: 2px; height: 28px;
+    background: linear-gradient(180deg, var(--border) 0%, transparent 100%);
+  }
+
+  /* ── Detail panel ── */
+  .detail-panel {
+    position: fixed;
+    right: 0; top: 0; bottom: 0;
+    width: 380px;
+    background: var(--surface2);
+    border-left: 1px solid var(--border);
+    padding: 28px;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    z-index: 100;
+  }
+  .detail-panel.open { transform: translateX(0); }
+  .detail-close {
+    position: absolute; top: 16px; right: 16px;
+    background: none; border: 1px solid var(--border);
+    color: var(--text-muted); border-radius: 6px;
+    width: 28px; height: 28px;
+    cursor: pointer; font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+  }
+  .detail-close:hover { color: var(--text); border-color: var(--text-dim); }
+  .detail-title { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .detail-file {
+    font-size: 11px; color: var(--accent-cyan);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    margin-bottom: 16px; opacity: 0.8;
+  }
+  .detail-section { margin-bottom: 20px; }
+  .detail-section h4 {
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 8px;
+  }
+  .detail-section p, .detail-section li {
+    font-size: 13px; color: var(--text-dim); line-height: 1.6;
+  }
+  .detail-section ul { padding-left: 16px; }
+  .detail-section li { margin-bottom: 4px; }
+  .code-block {
+    background: #0d1117;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 11px; line-height: 1.7;
+    color: #a9b1d6;
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .code-kw  { color: #bb9af7; }
+  .code-fn  { color: #7aa2f7; }
+  .code-str { color: #9ece6a; }
+  .code-num { color: #ff9e64; }
+  .code-cm  { color: #565f89; }
+
+  /* ── Flow divider ── */
+  .flow-divider {
+    display: flex; align-items: center; gap: 12px;
+    margin: 4px 0 4px 120px;
+    color: var(--text-muted); font-size: 11px;
+  }
+  .flow-divider-line {
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, var(--border), transparent);
+  }
+
+  /* ── Animations ── */
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  @keyframes flow-line {
+    0% { stroke-dashoffset: 24; }
+    100% { stroke-dashoffset: 0; }
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .header, .legend, .canvas { padding-left: 20px; padding-right: 20px; }
+    .layer-label { width: 80px; min-width: 80px; }
+    .rag-band, .flow-divider, .v-connector { margin-left: 80px; }
+    .detail-panel { width: 100%; }
+  }
+
+  /* ── Section separator ── */
+  .section-gap { height: 8px; }
+
+  /* ── Arrow SVG ── */
+  .flow-arrow-svg {
+    display: flex; align-items: center; padding: 0 6px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ HEADER ═══════════════════════════ -->
+<div class="header">
+  <div class="header-badge"><span class="dot"></span>News Buddy Agent</div>
+  <h1>RAG Architecture</h1>
+  <p>Retrieval-Augmented Generation pipeline — how past articles are embedded, stored in ChromaDB, and retrieved to enrich daily news digests. Click any node for implementation details.</p>
+</div>
+
+<!-- ═══════════════════════════ LEGEND ═══════════════════════════ -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#3b82f6"></div>Ingestion</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#06b6d4"></div>Filtering / Dedup</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#a855f7"></div>RAG Core</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#f59e0b"></div>LLM / Generation</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#10b981"></div>Output</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#f43f5e"></div>Backfill / Ops</div>
+</div>
+
+<!-- ═══════════════════════════ CANVAS ═══════════════════════════ -->
+<div class="canvas">
+
+  <!-- ── ROW 1: Ingestion ── -->
+  <div class="pipeline-row">
+    <div class="layer-label"><div class="layer-text">Ingestion</div></div>
+    <div class="nodes-area">
+
+      <div class="node node-blue" onclick="showDetail('rss')" id="n-rss">
+        <div class="node-icon">📡</div>
+        <div class="node-name">RSS Feeds</div>
+        <div class="node-sub">config.yaml feed list<br>feedparser + httpx</div>
+        <div class="node-tag">feeds.py</div>
+      </div>
+
+      <div class="arrow">
+        <svg width="32" height="16" fill="none"><path d="M2 8h24M18 2l8 6-8 6" stroke="#1f2d50" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+
+      <div class="node node-blue" onclick="showDetail('fetch')" id="n-fetch">
+        <div class="node-icon">⚡</div>
+        <div class="node-name">Parallel Fetch</div>
+        <div class="node-sub">ThreadPoolExecutor<br>all feeds at once</div>
+        <div class="node-tag">fetch_feeds_node</div>
+      </div>
+
+      <div class="arrow">
+        <svg width="32" height="16" fill="none"><path d="M2 8h24M18 2l8 6-8 6" stroke="#1f2d50" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+
+      <div class="node node-cyan" onclick="showDetail('aifilter')" id="n-aifilter">
+        <div class="node-icon">🔍</div>
+        <div class="node-name">AI Keyword Filter</div>
+        <div class="node-sub">title + rss_summary<br>keyword matching</div>
+        <div class="node-tag">filter_ai_node</div>
+      </div>
+
+      <div class="arrow">
+        <svg width="32" height="16" fill="none"><path d="M2 8h24M18 2l8 6-8 6" stroke="#1f2d50" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+
+      <div class="node node-cyan" onclick="showDetail('dedup')" id="n-dedup">
+        <div class="node-icon">🗃️</div>
+        <div class="node-name">Deduplication</div>
+        <div class="node-sub">SQLite seen table<br>URL-hash check</div>
+        <div class="node-tag">state.db</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-gap"></div>
+  <div class="flow-divider">
+    <div class="flow-divider-line"></div>
+    <span>new unseen articles pass through</span>
+    <div class="flow-divider-line" style="background: linear-gradient(90deg, transparent, var(--border))"></div>
+  </div>
+  <div class="section-gap"></div>
+
+  <!-- ── RAG BAND ── -->
+  <div class="rag-band" id="rag-section">
+    <div class="rag-band-label">
+      <span>RAG Core</span>
+      <span class="badge">rag.py · tools.py · backfill_rag.py</span>
+    </div>
+
+    <div class="rag-inner">
+
+      <!-- Column 1: Embed Path -->
+      <div class="rag-col">
+        <div class="rag-col-header" style="color:#a78bfa">📥 Document Embedding</div>
+
+        <div class="node node-purple" onclick="showDetail('extract')" id="n-extract">
+          <div class="node-icon">📄</div>
+          <div class="node-name">Article Extraction</div>
+          <div class="node-sub">trafilatura fetches<br>full body text (≤1500 chars)</div>
+          <div class="node-tag">extract.py</div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:center;padding:6px 0;color:var(--text-muted)">
+          <svg width="16" height="24" fill="none"><path d="M8 2v18M2 14l6 8 6-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+
+        <div class="node node-purple" onclick="showDetail('embed')" id="n-embed">
+          <div class="node-icon">🧠</div>
+          <div class="node-name">Gemini Embeddings</div>
+          <div class="node-sub">gemini-embedding-2<br>retrieval_document task</div>
+          <div class="node-tag">embed_article()</div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:center;padding:6px 0;color:var(--text-muted)">
+          <svg width="16" height="24" fill="none"><path d="M8 2v18M2 14l6 8 6-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+
+        <div class="node node-indigo" onclick="showDetail('chroma')" id="n-chroma">
+          <div class="node-icon">💾</div>
+          <div class="node-name">ChromaDB Store</div>
+          <div class="node-sub">Persistent vector DB<br>cosine similarity index<br>HNSW · chroma_db/</div>
+          <div class="node-tag">articles collection</div>
+        </div>
+
+      </div>
+
+      <!-- Column 2: Query Path -->
+      <div class="rag-col">
+        <div class="rag-col-header" style="color:#22d3ee">🔎 Semantic Retrieval</div>
+
+        <div class="node node-cyan" onclick="showDetail('semtool')" id="n-semtool">
+          <div class="node-icon">🛠️</div>
+          <div class="node-name">semantic_search tool</div>
+          <div class="node-sub">LangChain @tool<br>agent-callable</div>
+          <div class="node-tag">tools.py</div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:center;padding:6px 0;color:var(--text-muted)">
+          <svg width="16" height="24" fill="none"><path d="M8 2v18M2 14l6 8 6-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+
+        <div class="node node-cyan" onclick="showDetail('qembed')" id="n-qembed">
+          <div class="node-icon">🧠</div>
+          <div class="node-name">Query Embeddings</div>
+          <div class="node-sub">gemini-embedding-2<br>retrieval_query task</div>
+          <div class="node-tag">semantic_search()</div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:center;padding:6px 0;color:var(--text-muted)">
+          <svg width="16" height="24" fill="none"><path d="M8 2v18M2 14l6 8 6-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+
+        <div class="node node-indigo" onclick="showDetail('cosine')" id="n-cosine">
+          <div class="node-icon">📊</div>
+          <div class="node-name">Cosine Similarity</div>
+          <div class="node-sub">Top-N results<br>similarity = 1 − distance<br>returned to agent</div>
+          <div class="node-tag">chroma.query()</div>
+        </div>
+
+      </div>
+
+      <!-- Column 3: Backfill Path -->
+      <div class="rag-col">
+        <div class="rag-col-header" style="color:#fb7185">🔄 Backfill / Ops</div>
+
+        <div class="node node-rose" onclick="showDetail('statedb')" id="n-statedb">
+          <div class="node-icon">🗄️</div>
+          <div class="node-name">state.db</div>
+          <div class="node-sub">SQLite seen table<br>historical URLs<br>+ titles + sources</div>
+          <div class="node-tag">state.py</div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:center;padding:6px 0;color:var(--text-muted)">
+          <svg width="16" height="24" fill="none"><path d="M8 2v18M2 14l6 8 6-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+
+        <div class="node node-rose" onclick="showDetail('backfill')" id="n-backfill">
+          <div class="node-icon">⏪</div>
+          <div class="node-name">backfill_rag.py</div>
+          <div class="node-sub">One-shot backfill<br>rate-limited · ~85 req/min<br>idempotent (safe to re-run)</div>
+          <div class="node-tag">CLI script</div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:center;padding:6px 0;color:var(--text-muted)">
+          <svg width="16" height="24" fill="none"><path d="M8 2v18M2 14l6 8 6-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+
+        <div class="node node-rose" onclick="showDetail('env')" id="n-env">
+          <div class="node-icon">🔑</div>
+          <div class="node-name">GOOGLE_API_KEY</div>
+          <div class="node-sub">Required by all<br>embedding calls<br>env var · .env file</div>
+          <div class="node-tag">rag._api_key()</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-gap"></div>
+  <div class="flow-divider">
+    <div class="flow-divider-line"></div>
+    <span>enriched context passed to LLM</span>
+    <div class="flow-divider-line" style="background: linear-gradient(90deg, transparent, var(--border))"></div>
+  </div>
+  <div class="section-gap"></div>
+
+  <!-- ── ROW 3: Generation ── -->
+  <div class="pipeline-row">
+    <div class="layer-label"><div class="layer-text">Generation</div></div>
+    <div class="nodes-area">
+
+      <div class="node node-amber" onclick="showDetail('summarizer')" id="n-summarizer">
+        <div class="node-icon">✍️</div>
+        <div class="node-name">Gemini Summarizer</div>
+        <div class="node-sub">get_sub_model()<br>structured JSON out<br>{summary, tags, importance}</div>
+        <div class="node-tag">llm.py · gemini-flash</div>
+      </div>
+
+      <div class="arrow">
+        <svg width="32" height="16" fill="none"><path d="M2 8h24M18 2l8 6-8 6" stroke="#1f2d50" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+
+      <div class="node node-amber" onclick="showDetail('rubric')" id="n-rubric">
+        <div class="node-icon">📏</div>
+        <div class="node-name">Rubric Middleware</div>
+        <div class="node-sub">min_length check<br>importance penalty<br>strict-prompt retry</div>
+        <div class="node-tag">rubric.py</div>
+      </div>
+
+      <div class="arrow">
+        <svg width="32" height="16" fill="none"><path d="M2 8h24M18 2l8 6-8 6" stroke="#1f2d50" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+
+      <div class="node node-amber" onclick="showDetail('format')" id="n-format">
+        <div class="node-icon">📋</div>
+        <div class="node-name">Format Digest</div>
+        <div class="node-sub">rank by importance<br>top stories + tag sections<br>Markdown build</div>
+        <div class="node-tag">format_digest_node</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-gap"></div>
+  <div class="flow-divider">
+    <div class="flow-divider-line"></div>
+    <div class="flow-divider-line" style="background: linear-gradient(90deg, transparent, var(--border))"></div>
+  </div>
+  <div class="section-gap"></div>
+
+  <!-- ── ROW 4: Output ── -->
+  <div class="pipeline-row">
+    <div class="layer-label"><div class="layer-text">Output</div></div>
+    <div class="nodes-area">
+
+      <div class="node node-green" onclick="showDetail('mdout')" id="n-mdout">
+        <div class="node-icon">📝</div>
+        <div class="node-name">Markdown Digest</div>
+        <div class="node-sub">~/news/YYYY-MM-DD.md<br>atomic tmp → replace write</div>
+        <div class="node-tag">write_digest_node</div>
+      </div>
+
+      <div class="arrow">
+        <svg width="32" height="16" fill="none"><path d="M2 8h24M18 2l8 6-8 6" stroke="#1f2d50" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+
+      <div class="node node-green" onclick="showDetail('htmlout')" id="n-htmlout">
+        <div class="node-icon">🌐</div>
+        <div class="node-name">HTML Digest</div>
+        <div class="node-sub">Styled HTML page<br>prev/next navigation<br>dark-mode design</div>
+        <div class="node-tag">html_writer.py</div>
+      </div>
+
+      <div class="arrow">
+        <svg width="32" height="16" fill="none"><path d="M2 8h24M18 2l8 6-8 6" stroke="#1f2d50" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+
+      <div class="node node-green" onclick="showDetail('archive')" id="n-archive">
+        <div class="node-icon">📚</div>
+        <div class="node-name">Archive Index</div>
+        <div class="node-sub">Regenerated every run<br>all past digests linked</div>
+        <div class="node-tag">archive_writer.py</div>
+      </div>
+
+      <div class="arrow">
+        <svg width="32" height="16" fill="none"><path d="M2 8h24M18 2l8 6-8 6" stroke="#1f2d50" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+
+      <div class="node node-green" onclick="showDetail('notify')" id="n-notify">
+        <div class="node-icon">🔔</div>
+        <div class="node-name">Notifications</div>
+        <div class="node-sub">Buttondown email<br>Telegram · Slack</div>
+        <div class="node-tag">*_notify.py</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="height:60px"></div>
+
+</div>
+
+
+<!-- ═══════════════════════════ DETAIL PANEL ═══════════════════════════ -->
+<div class="detail-panel" id="detail-panel">
+  <button class="detail-close" onclick="closeDetail()">✕</button>
+  <div id="detail-content"></div>
+</div>
+
+
+<script>
+const details = {
+  rss: {
+    title: "RSS Feeds",
+    file: "news_buddy/feeds.py · config.yaml",
+    sections: [
+      { heading: "What it does", body: "Reads the feed list from <code>config.yaml</code> (name, url, tags, weight). Each feed is fetched using <code>feedparser</code> + <code>httpx</code> with a shared async semaphore to limit concurrency." },
+      { heading: "Output", body: "A list of <code>Item</code> dicts: <code>{ source, title, url, published_at, rss_summary }</code>" },
+      { heading: "Config keys", body: "<code>lookback_hours</code> (default 24), <code>max_items_per_feed</code>" },
+      { heading: "Code", code:
+`# feeds.py
+def fetch_feed_items(
+    url: str,
+    source_name: str,
+    lookback_hours: int = 24,
+    max_items: int = 10,
+) -> list[dict]:
+    parsed = feedparser.parse(url)
+    cutoff = datetime.now(tz=timezone.utc) \\
+             - timedelta(hours=lookback_hours)
+    items = []
+    for entry in parsed.entries[:max_items]:
+        pub = _parse_date(entry)
+        if pub < cutoff:
+            continue
+        items.append({
+            "source": source_name,
+            "title": entry.title,
+            "url":   entry.link,
+            "published_at": pub.isoformat(),
+            "rss_summary":  entry.get("summary",""),
+        })
+    return items`
+      }
+    ]
+  },
+
+  fetch: {
+    title: "Parallel Fetch Node",
+    file: "news_buddy/agent.py — fetch_feeds_node()",
+    sections: [
+      { heading: "What it does", body: "Dispatches one thread per feed using <code>ThreadPoolExecutor</code>. Results are collected with <code>as_completed</code> and merged into a single flat list." },
+      { heading: "Failure handling", body: "A failed feed logs a <code>[warn]</code> to stderr and returns an empty list — the pipeline continues with remaining feeds." },
+      { heading: "Code", code:
+`with ThreadPoolExecutor(
+    max_workers=len(feeds)
+) as ex:
+    futures = [
+        ex.submit(_fetch, feed)
+        for feed in feeds
+    ]
+    for future in as_completed(futures):
+        raw_items.extend(future.result())`
+      }
+    ]
+  },
+
+  aifilter: {
+    title: "AI Keyword Filter",
+    file: "news_buddy/agent.py — filter_ai_node()",
+    sections: [
+      { heading: "What it does", body: "Scans title + rss_summary of each article for any configured keyword (case-insensitive). Articles without a match are dropped before any LLM call happens." },
+      { heading: "Config key", body: "<code>ai_keywords</code> list in config.yaml. If empty, all articles pass through." },
+      { heading: "Code", code:
+`def _is_ai_item(item, keywords):
+    text = (item["title"] + " " +
+            item.get("rss_summary","")).lower()
+    return any(kw in text for kw in keywords)
+
+def filter_ai_node(state):
+    filtered = _filter_ai_items(
+        state["raw_items"], state["config"])
+    return {"raw_items": filtered}`
+      }
+    ]
+  },
+
+  dedup: {
+    title: "Deduplication",
+    file: "news_buddy/state.py · state.db",
+    sections: [
+      { heading: "What it does", body: "Queries SQLite for every article URL in the batch. Already-seen URLs are dropped. The <code>seen</code> table persists across runs so the same story is never summarised twice." },
+      { heading: "Schema", code:
+`CREATE TABLE IF NOT EXISTS seen (
+    url           TEXT PRIMARY KEY,
+    source        TEXT NOT NULL,
+    title         TEXT NOT NULL,
+    first_seen_at TEXT NOT NULL
+)`
+      },
+      { heading: "Backfill top-up", body: "If fewer than <code>min_articles</code> survive dedup, the pipeline doubles <code>lookback_hours</code> and re-fetches until the minimum is met or <code>max_backfill_lookback_hours</code> is reached." }
+    ]
+  },
+
+  extract: {
+    title: "Article Extraction",
+    file: "news_buddy/extract.py",
+    sections: [
+      { heading: "What it does", body: "Downloads the full article HTML and extracts clean body text using <code>trafilatura</code>. Returns empty string on any failure (network error, paywall, etc.) — the pipeline falls back to the RSS summary." },
+      { heading: "Truncation", body: "Body is capped at <strong>1500 characters</strong> before being sent to the LLM to control token costs." },
+      { heading: "RAG use", body: "The full extracted body is passed to <code>embed_article()</code> so the vector index captures article semantics beyond just the title." },
+      { heading: "Code", code:
+`# extract.py
+def extract_body(url: str) -> str:
+    try:
+        downloaded = trafilatura.fetch_url(url)
+        text = trafilatura.extract(downloaded)
+        return (text or "")[:8000]
+    except Exception:
+        return ""`
+      }
+    ]
+  },
+
+  embed: {
+    title: "Gemini Document Embedding",
+    file: "news_buddy/rag.py — embed_article()",
+    sections: [
+      { heading: "What it does", body: "After an article is summarised, <code>embed_article()</code> is called. It concatenates the title + extracted body, generates a vector via the Gemini embedding model (task type: <code>retrieval_document</code>), and stores it in ChromaDB." },
+      { heading: "Model", body: "<code>models/gemini-embedding-2</code> via <code>langchain_google_genai.GoogleGenerativeAIEmbeddings</code>" },
+      { heading: "Idempotent", body: "Checks <code>collection.get(ids=[url])</code> first — already-indexed articles are silently skipped." },
+      { heading: "Code", code:
+`def embed_article(
+    url: str, title: str,
+    body: str, source: str
+) -> None:
+    collection = _get_collection()
+    if collection.get(ids=[url])["ids"]:
+        return  # already indexed
+    text = f"{title}\\n\\n{body}" if body else title
+    vector = _get_doc_embedder().embed_query(text)
+    collection.add(
+        ids=[url],
+        embeddings=[vector],
+        documents=[text[:2000]],
+        metadatas=[{
+            "url": url,
+            "title": title,
+            "source": source
+        }],
+    )`
+      }
+    ]
+  },
+
+  chroma: {
+    title: "ChromaDB Vector Store",
+    file: "news_buddy/rag.py · chroma_db/",
+    sections: [
+      { heading: "What it does", body: "Persists article embedding vectors in a local ChromaDB collection. Uses HNSW cosine similarity for fast approximate nearest-neighbour search." },
+      { heading: "Location", body: "<code>chroma_db/</code> directory alongside <code>state.db</code> in the project root. Created on first use." },
+      { heading: "Collection config", code:
+`client = chromadb.PersistentClient(
+    path=str(_CHROMA_PATH)
+)
+collection = client.get_or_create_collection(
+    "articles",
+    metadata={"hnsw:space": "cosine"},
+)`
+      },
+      { heading: "Stored per document", body: "<ul><li><code>id</code>: article URL (primary key)</li><li><code>embedding</code>: float vector from Gemini</li><li><code>document</code>: first 2000 chars of text</li><li><code>metadata</code>: url, title, source</li></ul>" }
+    ]
+  },
+
+  semtool: {
+    title: "semantic_search LangChain Tool",
+    file: "news_buddy/tools.py — @tool semantic_search()",
+    sections: [
+      { heading: "What it does", body: "Exposes ChromaDB semantic search as a LangChain <code>@tool</code> so the agent can call it by name. Returns the N most similar past articles to a query string." },
+      { heading: "When the agent uses it", body: "Before writing the digest, the agent calls this tool with a topic string to surface related prior coverage — enabling it to annotate stories with context like 'Previously covered on…'" },
+      { heading: "Code", code:
+`@tool
+def semantic_search(
+    query: str, n_results: int = 5
+) -> str:
+    """Find past articles semantically
+    similar to a topic or query string."""
+    results = _rag.semantic_search(
+        query, n_results=n_results)
+    return json.dumps(results)`
+      }
+    ]
+  },
+
+  qembed: {
+    title: "Query Embeddings",
+    file: "news_buddy/rag.py — semantic_search()",
+    sections: [
+      { heading: "What it does", body: "Embeds the query string using the same Gemini model but with task type <code>retrieval_query</code> — a different embedding space optimised for query-time retrieval rather than document storage." },
+      { heading: "Why two embedders?", body: "Google's Gemini embedding API distinguishes <code>retrieval_document</code> (optimised for storage) vs <code>retrieval_query</code> (optimised for matching at query time). Using the correct task type improves cosine similarity scores." },
+      { heading: "Code", code:
+`_query_embedder = GoogleGenerativeAIEmbeddings(
+    model="models/gemini-embedding-2",
+    google_api_key=_api_key(),
+    task_type="retrieval_query",  # ← different!
+)
+
+def semantic_search(query, n_results=5):
+    vector = _get_query_embedder()\\
+             .embed_query(query)
+    results = collection.query(
+        query_embeddings=[vector],
+        n_results=min(n_results, total),
+        include=["metadatas","distances"],
+    )
+    return [{
+        "title": meta["title"],
+        "similarity": round(1 - dist, 3),
+        ...
+    } for meta, dist in zip(...)]`
+      }
+    ]
+  },
+
+  cosine: {
+    title: "Cosine Similarity Search",
+    file: "news_buddy/rag.py — chromadb.Collection.query()",
+    sections: [
+      { heading: "What it does", body: "Runs an HNSW approximate nearest-neighbour search in embedding space. ChromaDB returns distances in cosine space; similarity is computed as <code>1 − distance</code> and rounded to 3 decimal places." },
+      { heading: "Output format", body: "List of dicts: <code>{ title, source, url, similarity }</code> ordered by relevance." },
+      { heading: "Guard", body: "If the collection is empty (<code>total == 0</code>), returns <code>[]</code> immediately to avoid a ChromaDB query error on an empty index." }
+    ]
+  },
+
+  statedb: {
+    title: "state.db — Seen-Article Registry",
+    file: "news_buddy/state.py",
+    sections: [
+      { heading: "Dual role", body: "<ol style='padding-left:16px'><li style='margin-bottom:8px'><strong>Deduplication</strong> — URL primary key ensures each article is processed only once.</li><li><strong>Backfill source</strong> — <code>backfill_rag.py</code> reads every row to embed historical articles that pre-date the RAG layer.</li></ol>" },
+      { heading: "Key operations", body: "<ul><li><code>ensure_schema()</code> — creates table if missing</li><li><code>filter_unseen()</code> — batch URL check</li><li><code>mark_seen()</code> — INSERT OR IGNORE</li></ul>" }
+    ]
+  },
+
+  backfill: {
+    title: "backfill_rag.py",
+    file: "news_buddy/backfill_rag.py",
+    sections: [
+      { heading: "Problem it solves", body: "Articles ingested before the RAG layer existed were never embedded. This one-shot CLI script walks every row in <code>state.db</code> and calls <code>embed_article()</code> for each, enabling semantic search over historical coverage." },
+      { heading: "Rate limiting", body: "Google's free tier allows ~100 embed requests/minute. The script sleeps <strong>0.7s between calls (~85/min)</strong> and retries on <code>RESOURCE_EXHAUSTED</code> with 30s × attempt backoff (up to 5 retries)." },
+      { heading: "Idempotent", body: "Already-indexed URLs are skipped by <code>embed_article()</code>'s guard, so re-running is safe." },
+      { heading: "Usage", code:
+`python news_buddy/backfill_rag.py
+# or with custom db:
+python news_buddy/backfill_rag.py \\
+    --db-path /custom/state.db`
+      }
+    ]
+  },
+
+  env: {
+    title: "GOOGLE_API_KEY",
+    file: ".env · news_buddy/rag.py — _api_key()",
+    sections: [
+      { heading: "Required for", body: "All embedding calls (both <code>embed_article</code> and <code>semantic_search</code>). Loaded from <code>.env</code> via <code>python-dotenv</code>." },
+      { heading: "Error handling", body: "If the key is missing or empty, <code>_api_key()</code> raises <code>RuntimeError: GOOGLE_API_KEY is not set</code> immediately — no silent failure." },
+      { heading: "RAG toggle", body: "Set <code>NEWS_BUDDY_RAG_ENABLED=false</code> to disable embedding entirely (useful for offline/dry-run scenarios without breaking the pipeline)." }
+    ]
+  },
+
+  summarizer: {
+    title: "Gemini Summarizer Sub-Model",
+    file: "news_buddy/agent.py · news_buddy/llm.py",
+    sections: [
+      { heading: "What it does", body: "Calls the Gemini flash model with the article title + body. Returns structured JSON: <code>{ summary: str, tags: [str], importance: 1–5 }</code>" },
+      { heading: "Middleware", body: "<code>SummarizationMiddleware</code> trims the article body if the message exceeds a 800-token budget before each LLM call." },
+      { heading: "Retry logic", body: "<code>tenacity</code> with exponential backoff (2s–30s, 3 attempts) handles transient 429/503 errors." },
+      { heading: "Parallel", body: "Up to 5 articles summarised concurrently via <code>ThreadPoolExecutor(max_workers=5)</code>." }
+    ]
+  },
+
+  rubric: {
+    title: "Rubric Middleware",
+    file: "news_buddy/rubric.py",
+    sections: [
+      { heading: "What it does", body: "Scores each summary for quality after the LLM call. Checks minimum summary length and flags vague summaries for a retry with a stricter prompt." },
+      { heading: "Retry", body: "If the first summary fails the rubric and <code>retry_on_failure=true</code>, the pipeline calls the LLM again with an appended <em>'Name specific companies, people, numbers…'</em> instruction." },
+      { heading: "Config", body: "<code>rubric.enabled</code>, <code>rubric.min_summary_length</code> (default 60 chars), <code>rubric.importance_penalty</code>, <code>rubric.retry_on_failure</code>" }
+    ]
+  },
+
+  format: {
+    title: "Format Digest Node",
+    file: "news_buddy/agent.py — format_digest_node()",
+    sections: [
+      { heading: "What it does", body: "Sorts enriched articles by importance score (descending). Top <code>max_top_stories</code> become the 'Top Stories' section. Remaining articles are grouped by their first tag into themed sections." },
+      { heading: "Output", body: "A complete Markdown string ready for atomic file write." }
+    ]
+  },
+
+  mdout: {
+    title: "Markdown Digest Output",
+    file: "news_buddy/agent.py — write_digest_node()",
+    sections: [
+      { heading: "Path", body: "<code>~/news/YYYY-MM-DD.md</code> (configurable via <code>output_dir</code>)" },
+      { heading: "Atomic write", body: "Written to a <code>.tmp</code> file first, then renamed — ensures no partially-written digest is ever visible." }
+    ]
+  },
+
+  htmlout: {
+    title: "HTML Digest Writer",
+    file: "news_buddy/html_writer.py — write_digest_node()",
+    sections: [
+      { heading: "What it does", body: "Generates a fully styled dark-mode HTML page from the enriched article list. Includes prev/next date navigation by scanning existing <code>.html</code> files in the output directory." },
+      { heading: "Path", body: "<code>~/news/YYYY-MM-DD.html</code>" }
+    ]
+  },
+
+  archive: {
+    title: "Archive Index",
+    file: "news_buddy/archive_writer.py",
+    sections: [
+      { heading: "What it does", body: "Regenerated on every pipeline run. Creates <code>~/news/index.html</code> linking all historical digest HTML files — a browsable archive of all past news days." }
+    ]
+  },
+
+  notify: {
+    title: "Notifications",
+    file: "news_buddy/buttondown_notify.py · telegram_notify.py · slack_notify.py",
+    sections: [
+      { heading: "Channels", body: "<ul><li><strong>Buttondown</strong> — daily email digest via API</li><li><strong>Telegram</strong> — bot message with article count + link</li><li><strong>Slack</strong> — webhook post</li></ul>" },
+      { heading: "Trigger", body: "Called by the <code>__main__.py</code> entry point after a successful pipeline run, or by the daily Claude scheduled routine." }
+    ]
+  }
+};
+
+function showDetail(key) {
+  const d = details[key];
+  if (!d) return;
+
+  // Deactivate all nodes
+  document.querySelectorAll('.node').forEach(n => n.classList.remove('active'));
+  // Activate clicked
+  const nodeId = 'n-' + key;
+  const nodeEl = document.getElementById(nodeId);
+  if (nodeEl) nodeEl.classList.add('active');
+
+  // Build content
+  let html = `<div class="detail-title">${d.title}</div>`;
+  html += `<div class="detail-file">${d.file}</div>`;
+
+  for (const sec of d.sections) {
+    html += `<div class="detail-section">`;
+    html += `<h4>${sec.heading}</h4>`;
+    if (sec.code) {
+      html += `<div class="code-block">${esc(sec.code)}</div>`;
+    } else {
+      html += `<p>${sec.body}</p>`;
+    }
+    html += `</div>`;
+  }
+
+  document.getElementById('detail-content').innerHTML = html;
+  document.getElementById('detail-panel').classList.add('open');
+}
+
+function closeDetail() {
+  document.getElementById('detail-panel').classList.remove('open');
+  document.querySelectorAll('.node').forEach(n => n.classList.remove('active'));
+}
+
+function esc(str) {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+// Close on escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeDetail();
+});
+</script>
+</body>
+</html>
