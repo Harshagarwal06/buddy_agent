@@ -93,9 +93,9 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
   <div class="day-left">
     <span class="day-date">2026-07-05</span>
     <span class="today-badge">Today</span>
-    <span class="day-tags"><span class="tag-pill" style="--lbg:#e8f0fe;--lfg:#1a73e8;--dbg:#1e3a5f;--dfg:#7ab3f5">ai</span><span class="tag-pill" style="--lbg:#fce8e6;--lfg:#c5221f;--dbg:#3d0a09;--dfg:#f28b82">business</span><span class="tag-pill" style="--lbg:#f8f0fb;--lfg:#6a1b9a;--dbg:#2a0a3d;--dfg:#ce93d8">culture</span><span class="tag-pill" style="--lbg:#f1f3f4;--lfg:#5f6368;--dbg:#2d2d2d;--dfg:#9aa0a6">energy</span></span>
+    <span class="day-tags"><span class="tag-pill" style="--lbg:#e8f0fe;--lfg:#1a73e8;--dbg:#1e3a5f;--dfg:#7ab3f5">ai</span><span class="tag-pill" style="--lbg:#fce8e6;--lfg:#c5221f;--dbg:#3d0a09;--dfg:#f28b82">business</span><span class="tag-pill" style="--lbg:#feefc3;--lfg:#b06000;--dbg:#3d2800;--dfg:#f6c84b">politics</span><span class="tag-pill" style="--lbg:#fce8b2;--lfg:#b06000;--dbg:#3d2800;--dfg:#f6c84b">science</span></span>
   </div>
-  <span class="day-count">5 articles &rsaquo;</span>
+  <span class="day-count">4 articles &rsaquo;</span>
 </a>
 <a href="2026-07-04.html" class="day-row">
   <div class="day-left">
@@ -178,6 +178,37 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
   <span class="day-count">5 articles &rsaquo;</span>
 </a></div>
 
+  <style>
+  .signup-box {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; box-shadow: var(--shadow);
+    padding: 20px 18px; margin-top: 24px; text-align: center;
+  }
+  .signup-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+  .signup-sub { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 12px; }
+  .signup-form { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .signup-form input[type=email] {
+    flex: 1 1 200px; max-width: 300px; padding: 8px 12px;
+    border: 1px solid var(--border); border-radius: 8px;
+    background: var(--bg); color: var(--text); font-size: 0.85rem;
+  }
+  .signup-form button {
+    background: var(--accent); color: #fff; border: none; border-radius: 8px;
+    padding: 8px 18px; font-weight: 600; font-size: 0.85rem; cursor: pointer;
+  }
+  .signup-form button:hover { opacity: .9; }
+  </style>
+  <div class="signup-box">
+    <div class="signup-title">&#128231; Get this digest by email</div>
+    <div class="signup-sub">One email every morning at 6am IST. Unsubscribe anytime.</div>
+    <form class="signup-form"
+          action="https://buttondown.com/api/emails/embed-subscribe/harshcollege06"
+          method="post" target="_blank">
+      <input type="email" name="email" aria-label="Email address"
+             placeholder="you@example.com" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
   <div class="site-footer">
     News Buddy &nbsp;·&nbsp;
     <a href="https://github.com/Harshagarwal06/buddy_agent" target="_blank">source</a>
