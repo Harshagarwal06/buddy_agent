@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date
@@ -17,7 +18,6 @@ from tenacity import retry, stop_after_attempt, wait_exponential
 from news_buddy import extract as _extract
 from news_buddy import feeds as _feeds
 from news_buddy import state as _state
-from news_buddy import rag as _rag
 from news_buddy.llm import get_sub_model
 from news_buddy.rubric import RubricMiddleware
 
@@ -49,6 +49,11 @@ class DigestState(TypedDict):
 def _log(state: DigestState, msg: str) -> None:
     if state.get("verbose"):
         print(msg, file=sys.stderr)
+
+
+def _rag_enabled() -> bool:
+    value = os.getenv("NEWS_BUDDY_RAG_ENABLED", "true").strip().lower()
+    return value not in {"0", "false", "no", "off"}
 
 
 @retry(
@@ -209,23 +214,102 @@ def fetch_feeds_node(state: DigestState) -> dict:
     return {"raw_items": raw_items}
 
 
+def _is_ai_item(item: dict, keywords: list[str]) -> bool:
+    text = (item.get("title", "") + " " + item.get("rss_summary", "")).lower()
+    return any(kw in text for kw in keywords)
+
+
+def _filter_ai_items(items: list[dict], config: dict) -> list[dict]:
+    keywords = config.get("ai_keywords", [])
+    if not keywords:
+        return items
+    kw_lower = [k.lower() for k in keywords]
+    return [it for it in items if _is_ai_item(it, kw_lower)]
+
+
 def filter_ai_node(state: DigestState) -> dict:
     """Keep only articles that mention AI-related keywords in title or summary."""
-    keywords = state["config"].get("ai_keywords", [])
-    if not keywords:
-        return {"raw_items": state["raw_items"]}  # no filter configured
-
-    kw_lower = [k.lower() for k in keywords]
-
-    def is_ai(item: dict) -> bool:
-        text = (item.get("title", "") + " " + item.get("rss_summary", "")).lower()
-        return any(kw in text for kw in kw_lower)
-
     before = len(state["raw_items"])
-    filtered = [it for it in state["raw_items"] if is_ai(it)]
+    filtered = _filter_ai_items(state["raw_items"], state["config"])
     _log(state, f"AI filter: {before} → {len(filtered)} articles "
-                f"(kept articles matching {len(kw_lower)} keywords)")
+                f"(kept articles matching {len(state['config'].get('ai_keywords', []))} keywords)")
     return {"raw_items": filtered}
+
+
+def _filter_unseen(state: DigestState, items: list[dict]) -> list[dict]:
+    if state["force"] or state["dry_run"]:
+        return items
+    return _state.filter_unseen(_DB, items)
+
+
+def _fetch_backfill_candidates(state: DigestState, lookback: int, max_items: int) -> list[dict]:
+    config = state["config"]
+    feeds = config["feeds"]
+    raw_items: list[dict] = []
+
+    def _fetch(feed: dict) -> list[dict]:
+        _log(state, f"Backfill fetching {feed['name']} ({lookback}h) …")
+        try:
+            return _feeds.fetch_feed_items(
+                url=feed["url"],
+                source_name=feed["name"],
+                lookback_hours=lookback,
+                max_items=max_items,
+            )
+        except Exception as e:
+            print(f"[warn] backfill {feed['name']} failed: {e}", file=sys.stderr)
+            return []
+
+    with ThreadPoolExecutor(max_workers=len(feeds)) as ex:
+        futures = [ex.submit(_fetch, feed) for feed in feeds]
+        for future in as_completed(futures):
+            raw_items.extend(future.result())
+
+    filtered = _filter_ai_items(raw_items, config)
+    unseen = _filter_unseen(state, filtered)
+    _log(state, f"Backfill {lookback}h: {len(raw_items)} fetched → "
+                f"{len(filtered)} AI → {len(unseen)} unseen")
+    return unseen
+
+
+def _top_up_min_articles(state: DigestState, unseen: list[dict]) -> list[dict]:
+    config = state["config"]
+    minimum = config.get("min_articles", 0) or 0
+    cap = config.get("max_articles")
+    target = min(minimum, cap) if cap is not None else minimum
+    if target <= 0 or len(unseen) >= target or state["dry_run"]:
+        return unseen
+
+    base_lookback = config.get("lookback_hours", 24)
+    max_lookback = config.get("max_backfill_lookback_hours", 168)
+    backfill_max_items = config.get(
+        "backfill_max_items_per_feed",
+        max(config.get("max_items_per_feed", 10), 25),
+    )
+    seen_urls = {it["url"] for it in unseen}
+    lookback = base_lookback
+
+    while len(unseen) < target and lookback < max_lookback:
+        lookback = min(lookback * 2, max_lookback)
+        candidates = _fetch_backfill_candidates(state, lookback, backfill_max_items)
+        added = 0
+        for item in candidates:
+            url = item["url"]
+            if url in seen_urls:
+                continue
+            unseen.append(item)
+            seen_urls.add(url)
+            added += 1
+            if len(unseen) >= target:
+                break
+        _log(state, f"Backfill added {added}; {len(unseen)}/{target} target articles")
+        if added == 0 and lookback == max_lookback:
+            break
+
+    if len(unseen) < target:
+        _log(state, f"Only {len(unseen)} unseen articles available after backfill "
+                    f"(target {target})")
+    return unseen
 
 
 def deduplicate_node(state: DigestState) -> dict:
@@ -238,6 +322,8 @@ def deduplicate_node(state: DigestState) -> dict:
     else:
         unseen = _state.filter_unseen(_DB, raw)
         _log(state, f"{len(unseen)} new items after dedup (of {len(raw)} fetched)")
+
+    unseen = _top_up_min_articles(state, unseen)
 
     # Hard cap to protect API quota: never summarize more than max_articles per run.
     cap = state["config"].get("max_articles")
@@ -305,15 +391,18 @@ def summarize_articles_node(state: DigestState) -> dict:
 
             if not state["force"]:
                 _state.mark_seen(_DB, item)
-                try:
-                    _rag.embed_article(
-                        url=item["url"],
-                        title=item["title"],
-                        body=body,
-                        source=item["source"],
-                    )
-                except Exception as e:
-                    print(f"[warn] embed failed for {item['url']}: {e}", file=sys.stderr)
+                if _rag_enabled():
+                    try:
+                        from news_buddy import rag as _rag
+
+                        _rag.embed_article(
+                            url=item["url"],
+                            title=item["title"],
+                            body=body,
+                            source=item["source"],
+                        )
+                    except Exception as e:
+                        print(f"[warn] embed failed for {item['url']}: {e}", file=sys.stderr)
             return enriched_item, tokens, rubric_failed
         except Exception as e:
             print(f"[warn] summarize failed for {item['url']}: {e}", file=sys.stderr)

@@ -27,9 +27,6 @@ jobs:
           pip install --upgrade pip
           pip install .
 
-      - name: Install chromadb
-        run: pip install "chromadb==1.5.9"
-
       # Persist the dedup database between daily runs so the same article
       # is not summarised twice across overlapping 24h windows.
       - name: Restore dedup state
@@ -39,17 +36,11 @@ jobs:
           key: news-buddy-state-${{ github.run_id }}
           restore-keys: news-buddy-state-
 
-      # Persist the RAG vector store so embeddings survive between runs.
-      - name: Restore RAG vector store
-        uses: actions/cache@v4
-        with:
-          path: chroma_db
-          key: news-buddy-chroma-${{ github.run_id }}
-          restore-keys: news-buddy-chroma-
-
       - name: Run the daily curation job
         env:
+          NEWS_BUDDY_RAG_ENABLED: "false"
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
