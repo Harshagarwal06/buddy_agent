@@ -33,6 +33,7 @@ class DigestState(TypedDict):
     date_str: str
     dry_run: bool
     force: bool
+    test_run: bool
     verbose: bool
     raw_items: list[dict]       # all fetched articles
     unseen_items: list[dict]    # after dedup
@@ -237,7 +238,7 @@ def filter_ai_node(state: DigestState) -> dict:
 
 
 def _filter_unseen(state: DigestState, items: list[dict]) -> list[dict]:
-    if state["force"] or state["dry_run"]:
+    if state["force"] or state["test_run"] or state["dry_run"]:
         return items
     return _state.filter_unseen(_DB, items)
 
@@ -316,7 +317,7 @@ def deduplicate_node(state: DigestState) -> dict:
     """Filter out already-seen articles."""
     raw = state["raw_items"]
 
-    if state["force"] or state["dry_run"]:
+    if state["force"] or state["test_run"] or state["dry_run"]:
         _log(state, f"Dedup skipped — {len(raw)} items pass through")
         unseen = raw
     else:
@@ -389,7 +390,7 @@ def summarize_articles_node(state: DigestState) -> dict:
                         except Exception as e2:
                             print(f"[warn] rubric retry failed for {item['url']}: {e2}", file=sys.stderr)
 
-            if not state["force"]:
+            if not state["force"] and not state["test_run"]:
                 _state.mark_seen(_DB, item)
                 if _rag_enabled():
                     try:
@@ -556,6 +557,7 @@ def run_pipeline(
     date_str: str | None = None,
     dry_run: bool = False,
     force: bool = False,
+    test_run: bool = False,
     verbose: bool = False,
 ) -> dict:
     """
@@ -578,6 +580,7 @@ def run_pipeline(
                 "date_str": resolved_date,
                 "dry_run": dry_run,
                 "force": force,
+                "test_run": test_run,
                 "verbose": verbose,
                 "raw_items": [],
                 "unseen_items": [],

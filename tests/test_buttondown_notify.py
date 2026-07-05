@@ -31,7 +31,10 @@ def test_send_digest_success(monkeypatch):
 
     assert ok is True
     assert captured["url"] == "https://api.buttondown.com/v1/emails"
-    assert captured["headers"] == {"Authorization": "Token secret-key"}
+    assert captured["headers"] == {
+        "Authorization": "Token secret-key",
+        "X-Buttondown-Live-Dangerously": "true",
+    }
     assert captured["json"]["subject"] == "🗞️ News Buddy — 2026-07-04 (7 stories)"
     assert captured["json"]["body"] == "## Top Stories\n\n- something happened"
     assert captured["json"]["status"] == "about_to_send"

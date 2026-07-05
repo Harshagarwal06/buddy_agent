@@ -5,7 +5,13 @@ on:
   schedule:
     # 06:00 IST == 00:30 UTC (IST is UTC+5:30). GitHub cron uses UTC.
     - cron: "30 0 * * *"
-  workflow_dispatch: {}   # trigger a manual test run from the Actions tab
+  workflow_dispatch:
+    inputs:
+      test_run:
+        description: "Fetch and summarize without sending notifications, marking articles seen, or deploying"
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   digest:
@@ -38,6 +44,7 @@ jobs:
 
       - name: Run the daily curation job
         env:
+          TEST_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.test_run }}
           NEWS_BUDDY_RAG_ENABLED: "false"
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
@@ -45,9 +52,15 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
-        run: python -m news_buddy run
+        run: |
+          args=()
+          if [ "$TEST_RUN" = "true" ]; then
+            args+=(--test-run)
+          fi
+          python -m news_buddy run "${args[@]}"
 
       - name: Deploy digest to GitHub Pages
+        if: ${{ github.event_name != 'workflow_dispatch' || !inputs.test_run }}
         run: |
           DATE=$(date -u +%F)
           NEWS_DIR="$HOME/news"
