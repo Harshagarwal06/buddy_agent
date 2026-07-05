@@ -190,59 +190,16 @@ a.nav-btn:hover { border-color: var(--accent); color: var(--accent); }
       <div>
         <div class="header-label">Daily News Digest</div>
         <div class="header-date">2026-07-05</div>
-        <div class="header-count">4 articles</div>
+        <div class="header-count">0 articles</div>
       </div>
       <button class="dark-toggle" onclick="toggleDark()" id="dark-btn">🌙 Dark</button>
     </div>
-    <div class="stats-bar"><span class='stat-pill'>MIT Tech Review AI <b>2</b></span><span class='stat-pill'>The Verge AI <b>1</b></span><span class='stat-pill'>Ars Technica AI <b>1</b></span></div>
+    
   </div>
-
-  <div class="filter-bar"><button class="filter-btn" data-tag="ai">ai</button><button class="filter-btn" data-tag="business">business</button><button class="filter-btn" data-tag="politics">politics</button><button class="filter-btn" data-tag="science">science</button><button class="filter-btn" data-tag="security">security</button><button class="filter-btn" data-tag="technology">technology</button></div>
 
   
-  <h2 class="section-heading">Top Stories</h2>
-  
-<div class="article-card card-large has-tag-ai has-tag-science has-tag-technology" data-tags="ai,science,technology">
-  <div class="card-header">
-    <a href="https://www.technologyreview.com/2026/06/30/1139987/claude-science-is-anthropics-newest-flagship-product/" target="_blank" rel="noopener" class="card-title">Claude Science is Anthropic’s newest flagship product</a>
-    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
-  </div>
-  <div class="card-meta">MIT Tech Review AI &nbsp;·&nbsp; 2026-06-30</div>
-  <p class='card-summary'>Anthropic has launched Claude Science, a new flagship AI product designed to support scientific research, particularly in computational biology and drug development. It functions similarly to Claude Code by autonomously executing tasks based on high-level instructions and is now available to paid subscribers. The product marks a significant step in Anthropic's focus on AI applications in science, building on earlier tools for life sciences.</p>
-  <div class="card-tags"><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span><span class="tag-badge" data-tag="science" style="--tag-bg:#fce8b2;--tag-fg:#b06000;--tag-bg-dark:#3d2800;--tag-fg-dark:#f6c84b">science</span><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span></div>
-</div>
 
-<div class="article-card card-large has-tag-technology has-tag-science" data-tags="technology,science">
-  <div class="card-header">
-    <a href="https://www.technologyreview.com/2026/07/02/1140027/the-download-ai-groupthink-llms/" target="_blank" rel="noopener" class="card-title">The Download: a startup has a solution for AI’s groupthink problem</a>
-    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
-  </div>
-  <div class="card-meta">MIT Tech Review AI &nbsp;·&nbsp; 2026-07-02</div>
-  <p class='card-summary'>A startup called Springboards has developed an AI model named Flint that aims to overcome the 'groupthink' issue in large language models by generating more diverse and creative responses to open-ended questions. Meanwhile, scientists have achieved a breakthrough by building a functional cell from scratch using lab-made DNA, capable of feeding, growing, and reproducing.</p>
-  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="science" style="--tag-bg:#fce8b2;--tag-fg:#b06000;--tag-bg-dark:#3d2800;--tag-fg-dark:#f6c84b">science</span></div>
-</div>
-
-<div class="article-card card-large has-tag-business has-tag-technology has-tag-politics" data-tags="business,technology,politics">
-  <div class="card-header">
-    <a href="https://www.theverge.com/column/959270/elon-musk-open-ai-bill-savitt-twitter" target="_blank" rel="noopener" class="card-title">Meet the lawyer who beat Elon Musk — twice</a>
-    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
-  </div>
-  <div class="card-meta">The Verge AI &nbsp;·&nbsp; 2026-06-30</div>
-  <p class='card-summary'>Bill Savitt, a seasoned lawyer, outperformed Elon Musk during a legal cross-examination in a case involving Musk's lawsuit against OpenAI and Sam Altman. Savitt's calm, methodical questioning highlighted Musk's inconsistencies and memory lapses, undermining Musk's credibility as a witness. The case reflects broader legal dynamics in high-profile tech disputes.</p>
-  <div class="card-tags"><span class="tag-badge" data-tag="business" style="--tag-bg:#fce8e6;--tag-fg:#c5221f;--tag-bg-dark:#3d0a09;--tag-fg-dark:#f28b82">business</span><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="politics" style="--tag-bg:#feefc3;--tag-fg:#b06000;--tag-bg-dark:#3d2800;--tag-fg-dark:#f6c84b">politics</span></div>
-</div>
-
-<div class="article-card card-large has-tag-security has-tag-technology" data-tags="security,technology">
-  <div class="card-header">
-    <a href="https://arstechnica.com/security/2026/06/ai-browsers-can-be-lulled-into-a-dream-world-where-guardrails-no-longer-apply/" target="_blank" rel="noopener" class="card-title">New attack provides one more reason why AI browsers are a bad idea</a>
-    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
-  </div>
-  <div class="card-meta">Ars Technica AI &nbsp;·&nbsp; 2026-06-30</div>
-  <p class='card-summary'>A new security exploit shows how AI browsers can be tricked into ignoring safety guardrails by being presented with misleading puzzles that manipulate their behavior. Attackers could then perform sensitive actions like stealing credentials or extracting code from private repositories. The vulnerability highlights a fundamental flaw in current AI browser security models.</p>
-  <div class="card-tags"><span class="tag-badge" data-tag="security" style="--tag-bg:#fce8e6;--tag-fg:#c62828;--tag-bg-dark:#3d0a09;--tag-fg-dark:#ef9a9a">security</span><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span></div>
-</div>
-  
-  
+  <p class="empty-msg">No new articles today.</p>
 
   <div class="day-nav">
     <span class="nav-btn nav-disabled">&#8592; Earlier</span>
