@@ -129,6 +129,12 @@ body {
 .card-title:hover { color: var(--accent); }
 .card-stars { font-size: 0.85rem; color: var(--star-color); white-space: nowrap; letter-spacing: 1px; flex-shrink: 0; }
 .card-meta { font-size: 0.75rem; color: var(--text-faint); margin-bottom: 8px; }
+.icymi-badge {
+  display: inline-block; margin-left: 7px; padding: 1px 6px;
+  border: 1px solid var(--border); border-radius: 999px;
+  color: var(--text-muted); font-size: 0.65rem; font-weight: 700;
+  letter-spacing: .04em;
+}
 .card-summary { font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
 .card-tags { display: flex; flex-wrap: wrap; gap: 4px; }
 
@@ -190,28 +196,101 @@ a.nav-btn:hover { border-color: var(--accent); color: var(--accent); }
       <div>
         <div class="header-label">Daily News Digest</div>
         <div class="header-date">2026-07-06</div>
-        <div class="header-count">1 article</div>
+        <div class="header-count">8 articles</div>
       </div>
       <button class="dark-toggle" onclick="toggleDark()" id="dark-btn">🌙 Dark</button>
     </div>
-    <div class="stats-bar"><span class='stat-pill'>The Verge AI <b>1</b></span></div>
+    <div class="stats-bar"><span class='stat-pill'>TechCrunch AI <b>3</b></span><span class='stat-pill'>The Verge AI <b>3</b></span><span class='stat-pill'>Apple ML Research <b>2</b></span></div>
   </div>
 
-  <div class="filter-bar"><button class="filter-btn" data-tag="ai">ai</button><button class="filter-btn" data-tag="culture">culture</button><button class="filter-btn" data-tag="technology">technology</button></div>
+  <div class="filter-bar"><button class="filter-btn" data-tag="ai">ai</button><button class="filter-btn" data-tag="business">business</button><button class="filter-btn" data-tag="education">education</button><button class="filter-btn" data-tag="privacy">privacy</button><button class="filter-btn" data-tag="science">science</button><button class="filter-btn" data-tag="technology">technology</button><button class="filter-btn" data-tag="world">world</button></div>
 
   
   <h2 class="section-heading">Top Stories</h2>
   
-<div class="article-card card-large has-tag-technology has-tag-culture has-tag-ai" data-tags="technology,culture,ai">
+<div class="article-card card-large has-tag-technology has-tag-ai has-tag-business" data-tags="technology,ai,business">
   <div class="card-header">
-    <a href="https://www.theverge.com/ai-artificial-intelligence/961468/google-ai-commercial-founding-fathers-declaration-of-independence" target="_blank" rel="noopener" class="card-title">Infuriating Google commercial imagines the founding fathers embracing AI</a>
-    <span class="card-stars" title="Importance 3/5">★★★☆☆</span>
+    <a href="https://techcrunch.com/2026/07/06/station-f-ramps-up-as-a-launchpad-for-europes-hottest-ai-startups/" target="_blank" rel="noopener" class="card-title">Station F ramps up as a launchpad for Europe’s hottest AI startups</a>
+    <span class="card-stars" title="Importance 5/5">★★★★★</span>
+  </div>
+  <div class="card-meta">TechCrunch AI &nbsp;·&nbsp; 2026-07-06</div>
+  <p class='card-summary'>Station F, a major Paris-based startup hub, is launching a new AI-focused accelerator program to support early-stage AI startups in transitioning to revenue generation. The hub has been actively investing in its Future 40 selection of promising companies since 2022 and has become a key player in Europe's AI innovation ecosystem, attracting high-profile figures and government attention.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span><span class="tag-badge" data-tag="business" style="--tag-bg:#fce8e6;--tag-fg:#c5221f;--tag-bg-dark:#3d0a09;--tag-fg-dark:#f28b82">business</span></div>
+</div>
+
+<div class="article-card card-large has-tag-technology has-tag-education has-tag-ai" data-tags="technology,education,ai">
+  <div class="card-header">
+    <a href="https://www.theverge.com/ai-artificial-intelligence/961505/wealthy-ai-schools-alpha-forge-prep" target="_blank" rel="noopener" class="card-title">Some of the nation’s rich are letting AI teach their kids</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
   </div>
   <div class="card-meta">The Verge AI &nbsp;·&nbsp; 2026-07-05</div>
-  <p class='card-summary'>A satirical Google commercial portrays the founding fathers using AI tools like Gemini and Google Workspace to draft the Declaration of Independence, featuring absurd scenarios such as AI transcribing notes and designing a turkey-based seal. The ad has drawn widespread criticism for its cringey and historically insensitive portrayal of American history.</p>
-  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="culture" style="--tag-bg:#f8f0fb;--tag-fg:#6a1b9a;--tag-bg-dark:#2a0a3d;--tag-fg-dark:#ce93d8">culture</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span></div>
+  <p class='card-summary'>Wealthy families in the U.S., particularly in Silicon Valley, are investing tens of thousands of dollars to enroll their children in AI-driven educational programs like Forge Prep and Alpha School, where kids serve as beta testers for unproven AI tutors and interactive workshops. Critics question the effectiveness and pedagogical value of such approaches, especially given AI's current limitations in critical thinking and real-world navigation. </p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="education" style="--tag-bg:#f1f3f4;--tag-fg:#5f6368;--tag-bg-dark:#2d2d2d;--tag-fg-dark:#9aa0a6">education</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span></div>
 </div>
-  
+
+<div class="article-card card-large has-tag-technology has-tag-ai has-tag-business" data-tags="technology,ai,business">
+  <div class="card-header">
+    <a href="https://techcrunch.com/2026/07/05/amazon-will-stop-accepting-new-customers-for-mechanical-turk/" target="_blank" rel="noopener" class="card-title">Amazon will stop accepting new customers for Mechanical Turk</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">TechCrunch AI &nbsp;·&nbsp; 2026-07-05</div>
+  <p class='card-summary'>Amazon will cease accepting new customers for its Mechanical Turk crowdsourcing service on July 30, 2026, marking the end of a platform that once enabled simple human tasks for AI training and data annotation. While existing users can continue using the service, Amazon has halted new feature development and no longer plans to expand the platform. The service, launched in 2005, played a role in ethical debates and early AI development, including data annotation for machine learning models.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span><span class="tag-badge" data-tag="business" style="--tag-bg:#fce8e6;--tag-fg:#c5221f;--tag-bg-dark:#3d0a09;--tag-fg-dark:#f28b82">business</span></div>
+</div>
+
+<div class="article-card card-large has-tag-technology has-tag-ai has-tag-science" data-tags="technology,ai,science">
+  <div class="card-header">
+    <a href="https://machinelearning.apple.com/research/scaling-properties-continuous-diffusion" target="_blank" rel="noopener" class="card-title">Scaling Properties of Continuous Diffusion Spoken Language Models</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">Apple ML Research &nbsp;·&nbsp; 2026-07-06</div>
+  <p class='card-summary'>A study by Apple researchers explores continuous diffusion spoken language models (CD SLMs) as a more efficient alternative to discrete autoregressive models, showing they follow scaling laws in validation loss and phoneme Jensen-Shannon divergence. The models achieve high-quality, multi-speaker, multilingual speech with favorable token-to-parameter ratios, though long-form coherence remains a challenge.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span><span class="tag-badge" data-tag="science" style="--tag-bg:#fce8b2;--tag-fg:#b06000;--tag-bg-dark:#3d2800;--tag-fg-dark:#f6c84b">science</span></div>
+</div>
+
+<div class="article-card card-large has-tag-technology has-tag-ai has-tag-science" data-tags="technology,ai,science">
+  <div class="card-header">
+    <a href="https://machinelearning.apple.com/research/asr-error-correction" target="_blank" rel="noopener" class="card-title">Revisiting ASR Error Correction with Specialized Models</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">Apple ML Research &nbsp;·&nbsp; 2026-07-06</div>
+  <p class='card-summary'>A study proposes a compact seq2seq model for ASR error correction, trained on real and synthetic audio errors generated via cascaded TTS and ASR. The model uses correction-first decoding and achieves lower word error rates than large language models, especially in low-error scenarios, while maintaining efficiency and generalization across different ASR architectures and domains.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span><span class="tag-badge" data-tag="science" style="--tag-bg:#fce8b2;--tag-fg:#b06000;--tag-bg-dark:#3d2800;--tag-fg-dark:#f6c84b">science</span></div>
+</div>
+  <h2 class="section-heading">Business</h2>
+
+<div class="article-card card-normal has-tag-business has-tag-technology has-tag-ai" data-tags="business,technology,ai">
+  <div class="card-header">
+    <a href="https://techcrunch.com/2026/07/06/microsoft-lays-off-nearly-5000-employees-across-xbox-commercial-sales/" target="_blank" rel="noopener" class="card-title">Microsoft lays off nearly 5,000 employees across Xbox, commercial sales</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">TechCrunch AI &nbsp;·&nbsp; 2026-07-06</div>
+  <p class='card-summary'>Microsoft has laid off approximately 4,800 employees, or 2.1% of its global workforce, primarily affecting Xbox and commercial sales teams. The company cited rapid technological changes and shifting customer needs as reasons for the restructuring, emphasizing that while AI is transforming work processes, the roles being eliminated are not being replaced by AI. Employees are encouraged to adapt and develop new skills in response to evolving work demands.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="business" style="--tag-bg:#fce8e6;--tag-fg:#c5221f;--tag-bg-dark:#3d0a09;--tag-fg-dark:#f28b82">business</span><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span></div>
+</div>
+<h2 class="section-heading">Technology</h2>
+
+<div class="article-card card-normal has-tag-technology has-tag-privacy has-tag-ai" data-tags="technology,privacy,ai">
+  <div class="card-header">
+    <a href="https://www.theverge.com/column/961707/smart-glasses-ai-wearables-meta-surveillance-privacy" target="_blank" rel="noopener" class="card-title">I spy</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">The Verge AI &nbsp;·&nbsp; 2026-07-06</div>
+  <p class='card-summary'>The article uses Netflix's 'A Man on the Inside' to highlight privacy concerns surrounding smart glasses like Ray-Ban Meta, noting how the show depicts a character using the devices to spy on residents without consent, despite the presence of a privacy light that goes unnoticed. It raises broader cultural and ethical questions about AI wearables and surveillance, even if the portrayal is framed as a fictional plot device.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="privacy" style="--tag-bg:#f1f3f4;--tag-fg:#5f6368;--tag-bg-dark:#2d2d2d;--tag-fg-dark:#9aa0a6">privacy</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span></div>
+</div>
+<h2 class="section-heading">World</h2>
+
+<div class="article-card card-normal has-tag-world" data-tags="world">
+  <div class="card-header">
+    <a href="https://www.theverge.com/news/961528/microsoft-layoffs-july-2026-sales-xbox" target="_blank" rel="noopener" class="card-title">Microsoft is laying off 4,800 employees</a>
+    <span class="card-stars" title="Importance 2/5">★★☆☆☆</span>
+  </div>
+  <div class="card-meta">The Verge AI &nbsp;·&nbsp; 2026-07-06</div>
+  <p class='card-summary'>A year after cutting around 9,100 employees, Microsoft is making further layoffs today as it begins its new financial year. The software maker is laying off around 4,800 employees today, approximately 2.1 percent of its workforce. Most of the employees affected by today's cuts are in Microsoft's commercial sales business or the company's Xbox division. […]</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="world" style="--tag-bg:#f3e8fd;--tag-fg:#7b1fa2;--tag-bg-dark:#2d0b40;--tag-fg-dark:#ce93d8">world</span></div>
+</div>
+
   
 
   <div class="day-nav">
