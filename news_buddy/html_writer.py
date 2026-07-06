@@ -42,8 +42,10 @@ def _article_card(item: dict, large: bool = False) -> str:
     summary = item.get("summary", "")
     tags    = item.get("tags") or []
     imp     = item.get("importance", 3)
+    icymi   = bool(item.get("is_icymi"))
 
     badges  = "".join(_tag_badge(t) for t in tags)
+    icymi_badge = '<span class="icymi-badge">ICYMI</span>' if icymi else ""
     stars   = _stars(imp)
     tag_classes = " ".join(f"has-tag-{t.lower()}" for t in tags) or "has-tag-other"
     size_class = "card-large" if large else "card-normal"
@@ -54,7 +56,7 @@ def _article_card(item: dict, large: bool = False) -> str:
     <a href="{url}" target="_blank" rel="noopener" class="card-title">{title}</a>
     <span class="card-stars" title="Importance {imp}/5">{stars}</span>
   </div>
-  <div class="card-meta">{source}{' &nbsp;·&nbsp; ' + pub if pub else ''}</div>
+  <div class="card-meta">{source}{' &nbsp;·&nbsp; ' + pub if pub else ''}{icymi_badge}</div>
   {"<p class='card-summary'>" + summary + "</p>" if summary else ""}
   <div class="card-tags">{badges}</div>
 </div>"""
@@ -248,6 +250,12 @@ body {{
 .card-title:hover {{ color: var(--accent); }}
 .card-stars {{ font-size: 0.85rem; color: var(--star-color); white-space: nowrap; letter-spacing: 1px; flex-shrink: 0; }}
 .card-meta {{ font-size: 0.75rem; color: var(--text-faint); margin-bottom: 8px; }}
+.icymi-badge {{
+  display: inline-block; margin-left: 7px; padding: 1px 6px;
+  border: 1px solid var(--border); border-radius: 999px;
+  color: var(--text-muted); font-size: 0.65rem; font-weight: 700;
+  letter-spacing: .04em;
+}}
 .card-summary {{ font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }}
 .card-tags {{ display: flex; flex-wrap: wrap; gap: 4px; }}
 

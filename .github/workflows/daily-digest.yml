@@ -3,20 +3,20 @@ name: Daily News Digest
 # Runs in GitHub's cloud — your laptop does NOT need to be on.
 on:
   schedule:
-    # 06:00 IST == 00:30 UTC (IST is UTC+5:30). GitHub cron uses UTC.
-    - cron: "30 0 * * *"
+    # Start at 07:40 IST == 02:10 UTC. The CLI waits to send at 08:00 IST.
+    - cron: "10 2 * * *"
   workflow_dispatch:
     inputs:
       test_run:
         description: "Fetch and summarize without sending notifications, marking articles seen, or deploying"
         required: false
         type: boolean
-        default: false
+        default: true
 
 jobs:
   digest:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 45
     permissions:
       contents: write   # needed to push to gh-pages
     steps:
@@ -57,7 +57,7 @@ jobs:
           if [ "$TEST_RUN" = "true" ]; then
             args+=(--test-run)
           fi
-          python -m news_buddy run "${args[@]}"
+          python -m news_buddy run --notify-at-utc 02:30 "${args[@]}"
 
       - name: Deploy digest to GitHub Pages
         if: ${{ github.event_name != 'workflow_dispatch' || !inputs.test_run }}

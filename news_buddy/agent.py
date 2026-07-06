@@ -225,7 +225,11 @@ def _filter_ai_items(items: list[dict], config: dict) -> list[dict]:
     if not keywords:
         return items
     kw_lower = [k.lower() for k in keywords]
-    return [it for it in items if _is_ai_item(it, kw_lower)]
+    trusted_sources = set(config.get("trusted_ai_sources", []))
+    return [
+        it for it in items
+        if it.get("source") in trusted_sources or _is_ai_item(it, kw_lower)
+    ]
 
 
 def filter_ai_node(state: DigestState) -> dict:
@@ -243,7 +247,19 @@ def _filter_unseen(state: DigestState, items: list[dict]) -> list[dict]:
     return _state.filter_unseen(_DB, items)
 
 
-def _fetch_backfill_candidates(state: DigestState, lookback: int, max_items: int) -> list[dict]:
+def _dedupe_by_url(items: list[dict]) -> list[dict]:
+    deduped: list[dict] = []
+    seen: set[str] = set()
+    for item in items:
+        url = item.get("url")
+        if not url or url in seen:
+            continue
+        deduped.append(item)
+        seen.add(url)
+    return deduped
+
+
+def _fetch_ai_candidates(state: DigestState, lookback: int, max_items: int) -> list[dict]:
     config = state["config"]
     feeds = config["feeds"]
     raw_items: list[dict] = []
@@ -266,11 +282,47 @@ def _fetch_backfill_candidates(state: DigestState, lookback: int, max_items: int
         for future in as_completed(futures):
             raw_items.extend(future.result())
 
-    filtered = _filter_ai_items(raw_items, config)
-    unseen = _filter_unseen(state, filtered)
+    filtered = _dedupe_by_url(_filter_ai_items(raw_items, config))
     _log(state, f"Backfill {lookback}h: {len(raw_items)} fetched → "
-                f"{len(filtered)} AI → {len(unseen)} unseen")
+                f"{len(filtered)} AI")
+    return filtered
+
+
+def _fetch_backfill_candidates(state: DigestState, lookback: int, max_items: int) -> list[dict]:
+    filtered = _fetch_ai_candidates(state, lookback, max_items)
+    unseen = _filter_unseen(state, filtered)
+    _log(state, f"Backfill {lookback}h: {len(unseen)} unseen after dedup")
     return unseen
+
+
+def _top_up_icymi(state: DigestState, items: list[dict], target: int) -> list[dict]:
+    if not state["config"].get("icymi_backfill", False):
+        return items
+    if state["force"] or state["test_run"] or state["dry_run"]:
+        return items
+    if len(items) >= target:
+        return items
+
+    config = state["config"]
+    max_lookback = config.get("max_backfill_lookback_hours", 168)
+    backfill_max_items = config.get(
+        "backfill_max_items_per_feed",
+        max(config.get("max_items_per_feed", 10), 25),
+    )
+    candidates = _fetch_ai_candidates(state, max_lookback, backfill_max_items)
+    used_urls = {it["url"] for it in items}
+    added = 0
+    for item in candidates:
+        url = item["url"]
+        if url in used_urls or not _state.is_seen(_DB, url):
+            continue
+        items.append({**item, "is_icymi": True})
+        used_urls.add(url)
+        added += 1
+        if len(items) >= target:
+            break
+    _log(state, f"ICYMI backfill added {added}; {len(items)}/{target} target articles")
+    return items
 
 
 def _top_up_min_articles(state: DigestState, unseen: list[dict]) -> list[dict]:
@@ -310,7 +362,7 @@ def _top_up_min_articles(state: DigestState, unseen: list[dict]) -> list[dict]:
     if len(unseen) < target:
         _log(state, f"Only {len(unseen)} unseen articles available after backfill "
                     f"(target {target})")
-    return unseen
+    return _top_up_icymi(state, unseen, target)
 
 
 def deduplicate_node(state: DigestState) -> dict:
@@ -441,7 +493,8 @@ def format_digest_node(state: DigestState) -> dict:
     lines.append("## Top Stories\n")
     for it in top:
         lines.append(f"### [{it['title']}]({it['url']})")
-        lines.append(f"*{it['source']} · {it['published_at'][:10]}*\n")
+        status = " · ICYMI" if it.get("is_icymi") else ""
+        lines.append(f"*{it['source']} · {it['published_at'][:10]}{status}*\n")
         lines.append(f"{it['summary']}\n")
 
     if rest:
@@ -453,7 +506,8 @@ def format_digest_node(state: DigestState) -> dict:
             lines.append(f"\n## {tag}\n")
             for it in items:
                 lines.append(f"### [{it['title']}]({it['url']})")
-                lines.append(f"*{it['source']} · {it['published_at'][:10]}*\n")
+                status = " · ICYMI" if it.get("is_icymi") else ""
+                lines.append(f"*{it['source']} · {it['published_at'][:10]}{status}*\n")
                 lines.append(f"{it['summary']}\n")
 
     return {"digest": "\n".join(lines)}

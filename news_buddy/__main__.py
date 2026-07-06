@@ -6,6 +6,7 @@ import argparse
 import os
 import sys
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 
 import yaml
@@ -46,6 +47,9 @@ def _run(args: argparse.Namespace) -> None:
 
     # ── Telegram notification ────────────────────────────────────────────────
     has_articles = result["item_count"] > 0
+    if notifications_enabled and not result["error"] and has_articles:
+        _wait_until_notify_at(args.notify_at_utc)
+
     tg_sent: bool | None = None
     if use_tg:
         from news_buddy.telegram_notify import send_digest, send_error_alert
@@ -105,6 +109,36 @@ def _run(args: argparse.Namespace) -> None:
             print(f"… ({len(lines) - 20} more lines)")
 
 
+def _seconds_until_utc_time(value: str | None, now: datetime | None = None) -> int:
+    if not value:
+        return 0
+    try:
+        hour_s, minute_s = value.split(":", 1)
+        hour = int(hour_s)
+        minute = int(minute_s)
+    except ValueError as exc:
+        raise ValueError("--notify-at-utc must use HH:MM format") from exc
+    if not (0 <= hour <= 23 and 0 <= minute <= 59):
+        raise ValueError("--notify-at-utc must be a valid UTC time in HH:MM format")
+
+    current = now or datetime.now(timezone.utc)
+    if current.tzinfo is None:
+        current = current.replace(tzinfo=timezone.utc)
+    current = current.astimezone(timezone.utc)
+    target = current.replace(hour=hour, minute=minute, second=0, microsecond=0)
+    if current >= target:
+        return 0
+    return int((target - current).total_seconds())
+
+
+def _wait_until_notify_at(value: str | None) -> None:
+    wait_secs = _seconds_until_utc_time(value)
+    if wait_secs <= 0:
+        return
+    print(f"Waiting {wait_secs}s to send notifications at {value} UTC", file=sys.stderr)
+    time.sleep(wait_secs)
+
+
 def _notification_skip_reason(args: argparse.Namespace, result: dict) -> str | None:
     if args.test_run:
         return "test run"
@@ -147,6 +181,11 @@ def main() -> None:
         "--test-run",
         action="store_true",
         help="Run live fetch/summarization without marking articles seen or sending notifications",
+    )
+    run_p.add_argument(
+        "--notify-at-utc",
+        default=None,
+        help="For successful digests, wait until this UTC HH:MM before sending notifications",
     )
     run_p.add_argument("--verbose", action="store_true", help="Log progress to stderr")
 

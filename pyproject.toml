@@ -17,6 +17,7 @@ dependencies = [
     "huggingface-hub",
     "trafilatura",
     "httpx",
+    "lxml",
     "pyyaml",
     "python-dotenv",
     "tenacity",

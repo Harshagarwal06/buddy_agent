@@ -1,6 +1,8 @@
 # News Buddy — edit feeds and LLM settings to taste.
 
 feeds:
+  - name: OpenAI News
+    url: https://openai.com/news/rss.xml
   - name: MIT Tech Review AI
     url: https://www.technologyreview.com/feed/
   - name: The Verge AI
@@ -11,6 +13,47 @@ feeds:
     url: https://techcrunch.com/category/artificial-intelligence/feed/
   - name: Ars Technica AI
     url: https://feeds.arstechnica.com/arstechnica/technology-lab
+  - name: Google AI Blog
+    url: https://blog.google/innovation-and-ai/technology/ai/rss/
+  - name: NVIDIA Deep Learning Blog
+    url: https://blogs.nvidia.com/blog/category/deep-learning/feed/
+  - name: Hugging Face Blog
+    url: https://huggingface.co/blog/feed.xml
+  - name: Apple ML Research
+    url: https://machinelearning.apple.com/rss.xml
+  - name: Berkeley AI Research
+    url: https://bair.berkeley.edu/blog/feed.xml
+  - name: Hacker News AI
+    url: https://hnrss.org/newest?q=AI
+  - name: MarkTechPost
+    url: https://www.marktechpost.com/feed/
+  - name: Google News AI
+    url: "https://news.google.com/rss/search?q=artificial+intelligence+when:1d&hl=en-US&gl=US&ceid=US:en"
+  - name: Google News OpenAI
+    url: "https://news.google.com/rss/search?q=OpenAI+OR+ChatGPT+when:1d&hl=en-US&gl=US&ceid=US:en"
+  - name: Google News Anthropic
+    url: "https://news.google.com/rss/search?q=Anthropic+OR+Claude+when:1d&hl=en-US&gl=US&ceid=US:en"
+  - name: Google News Gemini
+    url: "https://news.google.com/rss/search?q=Gemini+AI+OR+Google+DeepMind+when:1d&hl=en-US&gl=US&ceid=US:en"
+
+# Feeds whose source/category is already AI-focused. Items from these feeds do
+# not need to repeat an AI keyword in the title or RSS summary.
+trusted_ai_sources:
+  - OpenAI News
+  - The Verge AI
+  - VentureBeat AI
+  - TechCrunch AI
+  - Google AI Blog
+  - NVIDIA Deep Learning Blog
+  - Hugging Face Blog
+  - Apple ML Research
+  - Berkeley AI Research
+  - Hacker News AI
+  - MarkTechPost
+  - Google News AI
+  - Google News OpenAI
+  - Google News Anthropic
+  - Google News Gemini
 
 # Only articles whose title or summary contain these keywords are kept.
 # Case-insensitive. Add or remove words to tune what gets through.
@@ -36,10 +79,11 @@ ai_keywords:
 output_dir: ~/news
 lookback_hours: 24
 max_items_per_feed: 10
-max_articles: 5          # hard cap on articles summarized per run (protects API quota)
-min_articles: 5          # if fewer survive, widen the lookback until this target is met
+max_articles: 8          # hard cap on articles summarized per run (protects API quota)
+min_articles: 8          # if fewer survive, widen the lookback until this target is met
 max_backfill_lookback_hours: 168   # stop widening after 7 days
 backfill_max_items_per_feed: 25    # inspect more RSS entries when topping up
+icymi_backfill: true     # if still short, repeat recent seen feed items and label them ICYMI
 max_top_stories: 5
 summary_style: "concise, neutral, 2-3 sentences"
 
