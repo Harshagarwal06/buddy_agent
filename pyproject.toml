@@ -1,10 +1,9 @@
 [project]
 name = "news-buddy"
 version = "0.1.0"
-description = "Daily news curation agent built on deepagents with local Ollama models"
+description = "Daily AI news digest pipeline with LangGraph, RSS feeds, LLM summaries, and notifications"
 requires-python = ">=3.11"
 dependencies = [
-    "deepagents>=0.6",
     "langchain",
     "langchain-ollama",
     "langchain-google-genai",
