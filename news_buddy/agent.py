@@ -408,7 +408,6 @@ def summarize_articles_node(state: DigestState) -> dict:
 
     sub_llm = get_sub_model(state["config"])
     enriched: list[dict] = []
-    errors: list[str] = []
 
     rubric_cfg = state["config"].get("rubric", {})
     rubric_enabled = rubric_cfg.get("enabled", True)

@@ -28,10 +28,13 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install the project
-        run: |
-          pip install --upgrade pip
-          pip install .
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Install locked dependencies
+        run: uv sync --frozen --no-dev
 
       # Persist the dedup database between daily runs so the same article
       # is not summarised twice across overlapping 24h windows.
@@ -57,7 +60,7 @@ jobs:
           if [ "$TEST_RUN" = "true" ]; then
             args+=(--test-run)
           fi
-          python -m news_buddy run --notify-at-utc 02:30 "${args[@]}"
+          uv run python -m news_buddy run --notify-at-utc 02:30 "${args[@]}"
 
       - name: Deploy digest to GitHub Pages
         if: ${{ github.event_name != 'workflow_dispatch' || !inputs.test_run }}
@@ -83,7 +86,7 @@ jobs:
           fi
 
           cp "${NEWS_DIR}/${DATE}.html" "${DEPLOY_DIR}/${DATE}.html"
-          python -m news_buddy.archive_writer "$DEPLOY_DIR"
+          uv run python -m news_buddy.archive_writer "$DEPLOY_DIR"
 
           cd "$DEPLOY_DIR"
           git config user.name  "github-actions[bot]"

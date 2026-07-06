@@ -1,6 +1,7 @@
 # News Buddy
 
 [![Daily News Digest](https://github.com/Harshagarwal06/buddy_agent/actions/workflows/daily-digest.yml/badge.svg)](https://github.com/Harshagarwal06/buddy_agent/actions/workflows/daily-digest.yml)
+[![CI](https://github.com/Harshagarwal06/buddy_agent/actions/workflows/ci.yml/badge.svg)](https://github.com/Harshagarwal06/buddy_agent/actions/workflows/ci.yml)
 
 News Buddy is a daily AI news digest that fetches RSS feeds, filters for AI-relevant stories, deduplicates against prior runs, summarizes the best articles with an LLM, publishes a web archive, and can send the result by email, Telegram, or Slack.
 
@@ -58,6 +59,7 @@ See [DIAGRAM.md](DIAGRAM.md) for the node-level flow and [docs/rag-architecture.
 - `news_buddy/html_writer.py` and `news_buddy/archive_writer.py` - generated digest pages and archive index.
 - `news_buddy/rag.py` - ChromaDB-backed semantic search over saved articles.
 - `news_buddy/buttondown_notify.py`, `telegram_notify.py`, `slack_notify.py` - notification adapters.
+- `.agents/skills/topicsearch/` - local agent skill for combined keyword and semantic archive search.
 - `.github/workflows/daily-digest.yml` - scheduled cloud run and GitHub Pages deploy.
 - `tests/` - focused coverage for notifications, archive signup behavior, and CLI notification suppression.
 
@@ -111,11 +113,14 @@ By default, output is written to `~/news/`. The CLI prints article count, estima
 
 The scheduled workflow in `.github/workflows/daily-digest.yml` runs daily in GitHub Actions. It:
 
-1. Installs the project.
-2. Restores `state.db` from Actions cache for URL deduplication.
-3. Runs `python -m news_buddy run --notify-at-utc 02:30`.
-4. Copies the generated HTML digest to the `gh-pages` branch.
-5. Rebuilds the archive index for GitHub Pages.
+1. Sets up Python and uv.
+2. Installs from `uv.lock` with `uv sync --frozen --no-dev`.
+3. Restores `state.db` from Actions cache for URL deduplication.
+4. Runs `uv run python -m news_buddy run --notify-at-utc 02:30`.
+5. Copies the generated HTML digest to the `gh-pages` branch.
+6. Rebuilds the archive index for GitHub Pages.
+
+A separate CI workflow runs `ruff check .` and `pytest` on pushes and pull requests.
 
 Manual `workflow_dispatch` defaults to `test_run: true`, so a verification run does not mark stories seen, deploy pages, or notify subscribers.
 
@@ -147,7 +152,6 @@ The daily workflow currently sets `NEWS_BUDDY_RAG_ENABLED=false`, so Chroma is b
 
 - Dedup is URL-based, so the same story from several outlets can still appear as separate entries.
 - RAG is not persisted in CI yet.
-- The GitHub Actions install step uses `pip install .` instead of installing from `uv.lock`.
 - Tests cover notification and archive behavior, but feed parsing, HTML generation, dedup, and rubric scoring need more coverage.
 
-These are intentionally visible because they make the next engineering steps clear: story-level clustering, live RAG persistence, lockfile-based CI installs, and broader tests.
+These are intentionally visible because they make the next engineering steps clear: story-level clustering, live RAG persistence, state recovery, and broader tests.

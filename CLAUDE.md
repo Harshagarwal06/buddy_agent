@@ -53,7 +53,8 @@ Important behavior:
 - Manual workflow dispatch defaults to `test_run: true`.
 - `NEWS_BUDDY_RAG_ENABLED` is currently set to `false` in CI, so RAG does not grow during the scheduled run.
 - `state.db` is restored with `actions/cache`, which is convenient but not a permanent source of truth.
-- The workflow installs with `pip install .`; lockfile-based installs are a future hardening step.
+- The workflow installs from `uv.lock` with `uv sync --frozen --no-dev`.
+- A separate CI workflow runs `ruff` and `pytest`.
 
 ## Notification Channels
 
@@ -72,8 +73,7 @@ High-impact next work:
 
 1. Story-level clustering so duplicate coverage from multiple sources collapses into one story with multiple links.
 2. Persist RAG in CI and expose archive Q&A/search from the web archive.
-3. Replace `pip install .` in CI with lockfile-respecting installs.
-4. Add tests for feed parsing, dedup/backfill, rubric scoring, and HTML generation.
-5. Rebuild `state.db` from the published archive if Actions cache is missing.
+3. Add tests for feed parsing, dedup/backfill, rubric scoring, and HTML generation.
+4. Rebuild `state.db` from the published archive if Actions cache is missing.
 
 When debugging digest or notification behavior, prefer evidence from the real workflow logs, `state.db`, generated `~/news` files, and notification adapter responses.

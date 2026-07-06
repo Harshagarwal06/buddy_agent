@@ -102,7 +102,7 @@ def _run(args: argparse.Namespace) -> None:
         slack_status = _status(slack_sent, bool(slack_url), skip_reason)
         bd_status = _status(bd_sent, bool(bd_key), skip_reason)
         print(f"   Telegram: {tg_status}  |  Slack: {slack_status}  |  Email: {bd_status}")
-        print(f"\n--- Preview (first 20 lines) ---")
+        print("\n--- Preview (first 20 lines) ---")
         lines = result["digest"].splitlines()
         print("\n".join(lines[:20]))
         if len(lines) > 20:

@@ -60,9 +60,9 @@ flowchart TD
     CRON["GitHub Actions schedule: 02:10 UTC daily"]
     CHECKOUT["Checkout repo"]
     PY["Set up Python 3.11"]
-    INSTALL["pip install ."]
+    INSTALL["uv sync --frozen --no-dev"]
     CACHE["Restore state.db from actions/cache"]
-    RUN["python -m news_buddy run --notify-at-utc 02:30"]
+    RUN["uv run python -m news_buddy run --notify-at-utc 02:30"]
     TEST{"workflow_dispatch test_run?"}
     DEPLOY["Copy HTML to gh-pages and rebuild archive index"]
     SKIP["Skip deploy for safe manual test run"]
@@ -122,3 +122,18 @@ END
 - `--force`: skip deduplication.
 - `--notify-at-utc HH:MM`: delay successful non-empty notifications until that UTC time.
 - `--verbose`: print graph progress to stderr.
+
+## CI Workflow
+
+```mermaid
+flowchart TD
+    PUSH["push or pull_request"]
+    CHECKOUT["Checkout repo"]
+    PY["Set up Python 3.11"]
+    UV["Set up uv"]
+    SYNC["uv sync --frozen --dev"]
+    RUFF["uv run ruff check ."]
+    PYTEST["uv run pytest -q"]
+
+    PUSH --> CHECKOUT --> PY --> UV --> SYNC --> RUFF --> PYTEST
+```

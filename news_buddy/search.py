@@ -73,7 +73,7 @@ def search(
     conn = _open_db(db_path)
 
     words = keyword.strip().split()
-    conditions = [f"title LIKE ?" for _ in words]
+    conditions = ["title LIKE ?" for _ in words]
     params: list = [f"%{w}%" for w in words]
 
     if source:

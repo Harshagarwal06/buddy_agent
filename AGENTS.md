@@ -44,7 +44,6 @@ The graph flow is:
 - Dedup is URL-based, not story-cluster based.
 - CI disables RAG with `NEWS_BUDDY_RAG_ENABLED=false`.
 - `state.db` is cached in Actions and may be lost if the cache is evicted.
-- CI installs with `pip install .` despite the repo having `uv.lock`.
 - Test coverage is still narrow around notification and archive paths.
 
 ## Preferred Next Steps
@@ -55,4 +54,3 @@ For portfolio/demo quality, prioritize:
 2. Add story-level clustering using existing embeddings or title/summary similarity.
 3. Persist RAG across CI runs and expose archive search/Q&A.
 4. Add focused tests for feed parsing, dedup/backfill, rubric scoring, and HTML output.
-5. Harden CI to install from the lockfile.

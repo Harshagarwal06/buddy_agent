@@ -22,6 +22,12 @@ dependencies = [
     "tenacity",
 ]
 
+[dependency-groups]
+dev = [
+    "pytest",
+    "ruff",
+]
+
 [project.scripts]
 news-buddy = "news_buddy.__main__:main"
 

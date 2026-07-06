@@ -6,7 +6,6 @@ with date, article count, and top tags extracted from each file's metadata.
 """
 from __future__ import annotations
 
-import json
 import os
 import re
 from pathlib import Path
