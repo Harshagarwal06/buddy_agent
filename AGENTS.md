@@ -36,6 +36,7 @@ The graph flow is:
 - Use `python -m news_buddy run --test-run --verbose` for live verification that must not mutate `state.db`, write RAG entries, deploy, or notify subscribers.
 - Use `python -m news_buddy run --dry-run --verbose` when no network or file side effects are desired.
 - Do not run a normal live digest just to test notifications unless the user explicitly asks for production side effects.
+- The scheduled workflow has backup cron entries. Scheduled backups must keep the `gh-pages` preflight guard so late retries do not send duplicate notifications after today's digest is already published.
 - Empty digests should stay quiet: no Telegram, Slack, or Buttondown sends.
 - If diagnosing Buttondown, verify GitHub Actions logs and the final notification status, not only local code.
 

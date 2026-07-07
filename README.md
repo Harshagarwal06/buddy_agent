@@ -114,11 +114,14 @@ By default, output is written to `~/news/`. The CLI prints article count, estima
 The scheduled workflow in `.github/workflows/daily-digest.yml` runs daily in GitHub Actions. It:
 
 1. Sets up Python and uv.
-2. Installs from `uv.lock` with `uv sync --frozen --no-dev`.
-3. Restores `state.db` from Actions cache for URL deduplication.
-4. Runs `uv run python -m news_buddy run --notify-at-utc 02:30`.
-5. Copies the generated HTML digest to the `gh-pages` branch.
-6. Rebuilds the archive index for GitHub Pages.
+2. Checks `gh-pages` for today's digest and skips backup runs when it is already published.
+3. Installs from `uv.lock` with `uv sync --frozen --no-dev`.
+4. Restores `state.db` from Actions cache for URL deduplication.
+5. Runs `uv run python -m news_buddy run --notify-at-utc 02:30`.
+6. Copies the generated HTML digest to the `gh-pages` branch.
+7. Rebuilds the archive index for GitHub Pages.
+
+The workflow has one primary morning schedule and two backup schedules. A concurrency group prevents overlapping digest jobs, and the `gh-pages` preflight keeps delayed backup schedules from sending duplicate notifications after the day's digest is already published.
 
 A separate CI workflow runs `ruff check .` and `pytest` on pushes and pull requests.
 

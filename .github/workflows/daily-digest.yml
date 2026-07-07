@@ -3,8 +3,11 @@ name: Daily News Digest
 # Runs in GitHub's cloud — your laptop does NOT need to be on.
 on:
   schedule:
-    # Start at 07:40 IST == 02:10 UTC. The CLI waits to send at 08:00 IST.
+    # Primary: start at 07:40 IST == 02:10 UTC. The CLI waits to send at 08:00 IST.
+    # Backups: GitHub schedule can be delayed or dropped, so retry later in the morning.
     - cron: "10 2 * * *"
+    - cron: "10 3 * * *"
+    - cron: "10 4 * * *"
   workflow_dispatch:
     inputs:
       test_run:
@@ -12,6 +15,10 @@ on:
         required: false
         type: boolean
         default: true
+
+concurrency:
+  group: daily-news-digest-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   digest:
@@ -23,22 +30,50 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Check whether today's digest is already published
+        id: published
+        run: |
+          DATE=$(date -u +%F)
+          ALREADY_PUBLISHED=false
+
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            DEPLOY_DIR="$(mktemp -d)"
+            if git ls-remote --exit-code --heads origin gh-pages > /dev/null 2>&1; then
+              git clone --depth=1 --branch gh-pages \
+                "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" \
+                "$DEPLOY_DIR"
+              if [ -f "${DEPLOY_DIR}/${DATE}.html" ]; then
+                ALREADY_PUBLISHED=true
+                echo "Digest ${DATE}.html already exists on gh-pages; skipping this backup schedule."
+              fi
+            fi
+          else
+            echo "Manual run requested; not applying the scheduled-run publish guard."
+          fi
+
+          echo "date=${DATE}" >> "$GITHUB_OUTPUT"
+          echo "already_published=${ALREADY_PUBLISHED}" >> "$GITHUB_OUTPUT"
+
       - name: Set up Python
+        if: steps.published.outputs.already_published != 'true'
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Set up uv
+        if: steps.published.outputs.already_published != 'true'
         uses: astral-sh/setup-uv@v5
         with:
           enable-cache: true
 
       - name: Install locked dependencies
+        if: steps.published.outputs.already_published != 'true'
         run: uv sync --frozen --no-dev
 
       # Persist the dedup database between daily runs so the same article
       # is not summarised twice across overlapping 24h windows.
       - name: Restore dedup state
+        if: steps.published.outputs.already_published != 'true'
         uses: actions/cache@v4
         with:
           path: state.db
@@ -46,6 +81,7 @@ jobs:
           restore-keys: news-buddy-state-
 
       - name: Run the daily curation job
+        if: steps.published.outputs.already_published != 'true'
         env:
           TEST_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.test_run }}
           NEWS_BUDDY_RAG_ENABLED: "false"
@@ -63,9 +99,9 @@ jobs:
           uv run python -m news_buddy run --notify-at-utc 02:30 "${args[@]}"
 
       - name: Deploy digest to GitHub Pages
-        if: ${{ github.event_name != 'workflow_dispatch' || !inputs.test_run }}
+        if: ${{ steps.published.outputs.already_published != 'true' && (github.event_name != 'workflow_dispatch' || !inputs.test_run) }}
         run: |
-          DATE=$(date -u +%F)
+          DATE="${{ steps.published.outputs.date }}"
           NEWS_DIR="$HOME/news"
 
           if [ ! -f "${NEWS_DIR}/${DATE}.html" ]; then

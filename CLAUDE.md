@@ -50,6 +50,9 @@ The current pipeline only calls `get_sub_model(config)` for article summaries. `
 Important behavior:
 
 - Scheduled runs send notifications only when the digest has at least one article.
+- The workflow has one primary morning cron plus two backup crons because GitHub scheduled runs can be delayed or dropped.
+- Scheduled backup runs check `gh-pages` for today's HTML digest before installing dependencies; if today's digest already exists, the backup exits before notifications.
+- A workflow concurrency group prevents overlapping digest jobs on the same branch.
 - Manual workflow dispatch defaults to `test_run: true`.
 - `NEWS_BUDDY_RAG_ENABLED` is currently set to `false` in CI, so RAG does not grow during the scheduled run.
 - `state.db` is restored with `actions/cache`, which is convenient but not a permanent source of truth.

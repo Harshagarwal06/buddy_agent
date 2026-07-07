@@ -57,18 +57,21 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    CRON["GitHub Actions schedule: 02:10 UTC daily"]
+    CRON["GitHub Actions schedules: 02:10, 03:10, 04:10 UTC"]
     CHECKOUT["Checkout repo"]
+    GUARD{"Today's HTML already on gh-pages?"}
     PY["Set up Python 3.11"]
     INSTALL["uv sync --frozen --no-dev"]
     CACHE["Restore state.db from actions/cache"]
     RUN["uv run python -m news_buddy run --notify-at-utc 02:30"]
     TEST{"workflow_dispatch test_run?"}
     DEPLOY["Copy HTML to gh-pages and rebuild archive index"]
-    SKIP["Skip deploy for safe manual test run"]
+    SKIP["Skip remaining side effects"]
     PAGES["GitHub Pages archive"]
 
-    CRON --> CHECKOUT --> PY --> INSTALL --> CACHE --> RUN --> TEST
+    CRON --> CHECKOUT --> GUARD
+    GUARD -- "yes, scheduled backup" --> SKIP
+    GUARD -- "no" --> PY --> INSTALL --> CACHE --> RUN --> TEST
     TEST -- "false or scheduled" --> DEPLOY --> PAGES
     TEST -- "true" --> SKIP
 ```
