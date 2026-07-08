@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>News Buddy — 2026-07-08</title>
+<style>
+:root {
+  --bg: #f8f9fa;
+  --surface: #ffffff;
+  --border: #e0e0e0;
+  --text: #1a1a1a;
+  --text-muted: #666;
+  --text-faint: #999;
+  --accent: #1a73e8;
+  --accent-hover: #1557b0;
+  --header-bg: linear-gradient(135deg, #1a73e8, #0d47a1);
+  --shadow: 0 1px 4px rgba(0,0,0,.07);
+  --star-color: #f9a825;
+  --tag-bg: var(--tag-bg-light, #e8f0fe);
+  --tag-fg: var(--tag-fg-light, #1a73e8);
+}
+[data-theme="dark"] {
+  --bg: #111318;
+  --surface: #1e2128;
+  --border: #2e3240;
+  --text: #e8eaed;
+  --text-muted: #9aa0a6;
+  --text-faint: #5f6368;
+  --accent: #7ab3f5;
+  --accent-hover: #aecbfa;
+  --header-bg: linear-gradient(135deg, #1e3a5f, #0d2647);
+  --shadow: 0 1px 4px rgba(0,0,0,.3);
+  --star-color: #f6c84b;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  transition: background .2s, color .2s;
+}
+.wrap { max-width: 780px; margin: 0 auto; padding: 20px 16px 60px; }
+
+/* Header */
+.site-header {
+  background: var(--header-bg);
+  color: #fff;
+  border-radius: 14px;
+  padding: 22px 24px 18px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.header-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.header-label { font-size: 0.72rem; opacity: .75; letter-spacing: .07em; text-transform: uppercase; margin-bottom: 4px; }
+.header-date { font-size: 1.55rem; font-weight: 800; margin-bottom: 4px; }
+.header-count { font-size: 0.82rem; opacity: .8; }
+.dark-toggle {
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.3);
+  color: #fff;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background .15s;
+}
+.dark-toggle:hover { background: rgba(255,255,255,.28); }
+
+/* Source stats */
+.stats-bar {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-top: 12px; padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,.2);
+}
+.stat-pill {
+  font-size: 0.72rem; color: rgba(255,255,255,.8);
+  background: rgba(255,255,255,.12);
+  border-radius: 10px; padding: 2px 8px;
+}
+.stat-pill b { color: #fff; }
+
+/* Tag filter bar */
+.filter-bar {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-bottom: 18px;
+}
+.filter-btn {
+  background: var(--surface); border: 1.5px solid var(--border);
+  color: var(--text-muted); border-radius: 20px;
+  padding: 4px 12px; font-size: 0.75rem; font-weight: 600;
+  cursor: pointer; transition: all .15s;
+}
+.filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+.filter-btn.active {
+  background: var(--accent); border-color: var(--accent);
+  color: #fff;
+}
+
+/* Section headings */
+.section-heading {
+  font-size: 0.78rem; font-weight: 700; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: .08em;
+  border-bottom: 2px solid var(--border); padding-bottom: 6px;
+  margin: 28px 0 14px;
+}
+
+/* Cards */
+.article-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 18px; margin-bottom: 12px;
+  box-shadow: var(--shadow); transition: opacity .2s, transform .15s;
+}
+.article-card.card-large { padding: 20px 22px; }
+.article-card.hidden { display: none; }
+.card-header {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; gap: 10px; margin-bottom: 5px;
+}
+.card-title {
+  font-size: 0.96rem; font-weight: 700; color: var(--text);
+  text-decoration: none; line-height: 1.4; flex: 1;
+  transition: color .12s;
+}
+.card-large .card-title { font-size: 1.04rem; }
+.card-title:hover { color: var(--accent); }
+.card-stars { font-size: 0.85rem; color: var(--star-color); white-space: nowrap; letter-spacing: 1px; flex-shrink: 0; }
+.card-meta { font-size: 0.75rem; color: var(--text-faint); margin-bottom: 8px; }
+.icymi-badge {
+  display: inline-block; margin-left: 7px; padding: 1px 6px;
+  border: 1px solid var(--border); border-radius: 999px;
+  color: var(--text-muted); font-size: 0.65rem; font-weight: 700;
+  letter-spacing: .04em;
+}
+.card-summary { font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
+.card-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+
+/* Tag badges */
+.tag-badge {
+  background: var(--tag-bg); color: var(--tag-fg);
+  padding: 2px 9px; border-radius: 12px;
+  font-size: 0.7rem; font-weight: 600;
+}
+[data-theme="dark"] .tag-badge {
+  background: var(--tag-bg-dark, #1e3a5f);
+  color: var(--tag-fg-dark, #7ab3f5);
+}
+
+/* Navigation */
+.day-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin: 32px 0 20px; gap: 10px;
+}
+.nav-btn {
+  background: var(--surface); border: 1.5px solid var(--border);
+  color: var(--text-muted); border-radius: 8px;
+  padding: 8px 16px; font-size: 0.82rem; font-weight: 600;
+  text-decoration: none; transition: all .15s;
+}
+a.nav-btn:hover { border-color: var(--accent); color: var(--accent); }
+.nav-disabled { opacity: .4; cursor: default; }
+.nav-archive {
+  font-size: 0.78rem; color: var(--text-faint); text-align: center;
+}
+.nav-archive a { color: var(--accent); text-decoration: none; }
+.nav-archive a:hover { text-decoration: underline; }
+
+/* Empty state */
+.empty-msg { color: var(--text-faint); text-align: center; padding: 48px 0; }
+
+/* Footer */
+.site-footer {
+  text-align: center; font-size: 0.72rem; color: var(--text-faint);
+  margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border);
+}
+.site-footer a { color: var(--text-faint); }
+.site-footer a:hover { color: var(--accent); }
+
+@media (max-width: 600px) {
+  .wrap { padding: 12px 10px 40px; }
+  .site-header { border-radius: 10px; padding: 16px 16px 14px; }
+  .header-date { font-size: 1.3rem; }
+  .article-card { padding: 14px 14px; }
+  .article-card.card-large { padding: 16px 14px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="site-header">
+    <div class="header-top">
+      <div>
+        <div class="header-label">Daily News Digest</div>
+        <div class="header-date">2026-07-08</div>
+        <div class="header-count">8 articles</div>
+      </div>
+      <button class="dark-toggle" onclick="toggleDark()" id="dark-btn">🌙 Dark</button>
+    </div>
+    <div class="stats-bar"><span class='stat-pill'>TechCrunch AI <b>7</b></span><span class='stat-pill'>MIT Tech Review AI <b>1</b></span></div>
+  </div>
+
+  <div class="filter-bar"><button class="filter-btn" data-tag="ai">ai</button><button class="filter-btn" data-tag="business">business</button><button class="filter-btn" data-tag="privacy">privacy</button><button class="filter-btn" data-tag="security">security</button><button class="filter-btn" data-tag="technology">technology</button><button class="filter-btn" data-tag="world">world</button></div>
+
+  
+  <h2 class="section-heading">Top Stories</h2>
+  
+<div class="article-card card-large has-tag-technology has-tag-security has-tag-world" data-tags="technology,security,world">
+  <div class="card-header">
+    <a href="https://techcrunch.com/2026/07/07/the-first-american-autonomous-ground-vehicles-are-fighting-in-ukraine/" target="_blank" rel="noopener" class="card-title">The first American autonomous ground vehicles are fighting in Ukraine</a>
+    <span class="card-stars" title="Importance 5/5">★★★★★</span>
+  </div>
+  <div class="card-meta">TechCrunch AI &nbsp;·&nbsp; 2026-07-07</div>
+  <p class='card-summary'>Forterra, a U.S. company, has deployed over 100 autonomous ground vehicles in Ukraine, marking the largest known use of such technology in combat by a U.S. defense tech firm. These vehicles are being used to address the vulnerability of ground troops to aerial drones and other surveillance threats. Ukraine is also developing its own uncrewed ground vehicles for logistical and medical support roles.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="security" style="--tag-bg:#fce8e6;--tag-fg:#c62828;--tag-bg-dark:#3d0a09;--tag-fg-dark:#ef9a9a">security</span><span class="tag-badge" data-tag="world" style="--tag-bg:#f3e8fd;--tag-fg:#7b1fa2;--tag-bg-dark:#2d0b40;--tag-fg-dark:#ce93d8">world</span></div>
+</div>
+
+<div class="article-card card-large has-tag-technology has-tag-ai has-tag-business" data-tags="technology,ai,business">
+  <div class="card-header">
+    <a href="https://techcrunch.com/2026/07/07/microsoft-joins-ai-cost-cutting-trend-by-relying-more-on-its-own-models/" target="_blank" rel="noopener" class="card-title">Microsoft joins AI cost-cutting trend by relying more on its own models</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">TechCrunch AI &nbsp;·&nbsp; 2026-07-07</div>
+  <p class='card-summary'>Microsoft is reducing its reliance on third-party AI models from OpenAI and Anthropic by increasingly using its own in-house MAI models, particularly in Office 365 applications like Excel and Word. This shift is part of a wider industry trend as companies respond to the rising costs of AI services and seek more cost-effective solutions.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span><span class="tag-badge" data-tag="business" style="--tag-bg:#fce8e6;--tag-fg:#c5221f;--tag-bg-dark:#3d0a09;--tag-fg-dark:#f28b82">business</span></div>
+</div>
+
+<div class="article-card card-large has-tag-technology has-tag-ai has-tag-business" data-tags="technology,ai,business">
+  <div class="card-header">
+    <a href="https://techcrunch.com/2026/07/07/why-the-rise-of-open-source-ai-isnt-hurting-anthropic-yet/" target="_blank" rel="noopener" class="card-title">Why the rise of open source AI isn’t hurting Anthropic … yet</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">TechCrunch AI &nbsp;·&nbsp; 2026-07-07</div>
+  <p class='card-summary'>Anthropic remains a dominant player in enterprise AI spending, despite the rise of open source models like DeepSeek and Z.ai. According to Decagon CEO Jesse Zhang, open source and frontier AI models are not competitors but complementary stages in AI adoption, with mature use cases transitioning to lighter, cheaper models while frontier models continue to drive innovation and initial use case validation. Vercel's data shows increased token volume for open source models, but Anthropic still leads in overall AI spending.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span><span class="tag-badge" data-tag="business" style="--tag-bg:#fce8e6;--tag-fg:#c5221f;--tag-bg-dark:#3d0a09;--tag-fg-dark:#f28b82">business</span></div>
+</div>
+
+<div class="article-card card-large has-tag-technology has-tag-ai has-tag-privacy" data-tags="technology,ai,privacy">
+  <div class="card-header">
+    <a href="https://techcrunch.com/2026/07/07/meta-rolls-out-muse-a-new-ai-image-generator/" target="_blank" rel="noopener" class="card-title">Meta just launched a new AI generator, Muse Image, and users are already pushing back over use of their photos</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">TechCrunch AI &nbsp;·&nbsp; 2026-07-07</div>
+  <p class='card-summary'>Meta has launched Muse Image, a free AI image generator available through its AI app, Instagram Stories, and WhatsApp. The tool allows users to create images using presets and, controversially, to generate new images based on other public Instagram users' photos without their explicit consent, sparking privacy concerns among users and critics. Meta maintains that users have control over the feature through available settings, though it does not notify individuals when their content is used in AI-generated images.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span><span class="tag-badge" data-tag="privacy" style="--tag-bg:#f1f3f4;--tag-fg:#5f6368;--tag-bg-dark:#2d2d2d;--tag-fg-dark:#9aa0a6">privacy</span></div>
+</div>
+
+<div class="article-card card-large has-tag-technology has-tag-ai has-tag-security" data-tags="technology,ai,security">
+  <div class="card-header">
+    <a href="https://techcrunch.com/2026/07/07/discord-admits-ai-moderation-bug-wrongfully-banned-users-over-harmless-images/" target="_blank" rel="noopener" class="card-title">Discord admits AI moderation bug wrongfully banned users over harmless images</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">TechCrunch AI &nbsp;·&nbsp; 2026-07-07</div>
+  <p class='card-summary'>Discord admitted that a bug in its AI moderation system incorrectly banned over 8,000 users for harmless content such as spreadsheets and chessboards. The company confirmed the issue, which affected users since May, and has since restored all accounts while implementing improved safeguards to prevent future false positives.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span><span class="tag-badge" data-tag="security" style="--tag-bg:#fce8e6;--tag-fg:#c62828;--tag-bg-dark:#3d0a09;--tag-fg-dark:#ef9a9a">security</span></div>
+</div>
+  <h2 class="section-heading">Technology</h2>
+
+<div class="article-card card-normal has-tag-technology has-tag-ai has-tag-business" data-tags="technology,ai,business">
+  <div class="card-header">
+    <a href="https://techcrunch.com/2026/07/07/the-coding-agent-wars-are-spilling-into-the-rest-of-the-office-claude-cowork/" target="_blank" rel="noopener" class="card-title">Claude Cowork expands to mobile and web</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">TechCrunch AI &nbsp;·&nbsp; 2026-07-07</div>
+  <p class='card-summary'>Anthropic has expanded its Claude Cowork tool to mobile and web platforms, allowing users to manage tasks across devices and receive updates on their phones. The move reflects a broader trend in AI firms aiming to integrate their tools into everyday work environments beyond chatbots. This expansion positions Claude Cowork as a versatile administrative assistant rather than just a coding tool.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span><span class="tag-badge" data-tag="business" style="--tag-bg:#fce8e6;--tag-fg:#c5221f;--tag-bg-dark:#3d0a09;--tag-fg-dark:#f28b82">business</span></div>
+</div>
+
+<div class="article-card card-normal has-tag-technology has-tag-ai has-tag-business" data-tags="technology,ai,business">
+  <div class="card-header">
+    <a href="https://www.technologyreview.com/2026/07/07/1140197/the-download-your-openai-stake-treasury-ai-warning/" target="_blank" rel="noopener" class="card-title">The Download: your stake in OpenAI, and the Treasury’s AI warning</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">MIT Tech Review AI &nbsp;·&nbsp; 2026-07-07</div>
+  <p class='card-summary'>Sam Altman has proposed giving the U.S. government a 5% stake in OpenAI, which would amount to about $320 per household, as a way to address concerns over AI companies profiting from human labor. The proposal is being discussed amid growing skepticism about the AI market's valuation, with a leaked Treasury report comparing it to the dot-com bubble. Details remain unclear, and the plan is seen more as a political narrative than a concrete policy solution.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span><span class="tag-badge" data-tag="business" style="--tag-bg:#fce8e6;--tag-fg:#c5221f;--tag-bg-dark:#3d0a09;--tag-fg-dark:#f28b82">business</span></div>
+</div>
+
+<div class="article-card card-normal has-tag-technology has-tag-security has-tag-ai" data-tags="technology,security,ai">
+  <div class="card-header">
+    <a href="https://techcrunch.com/2026/07/07/savis-app-aims-to-protect-consumers-from-realistic-ai-scams-like-kidnappers-demanding-ransom/" target="_blank" rel="noopener" class="card-title">Savi’s app aims to protect consumers from realistic AI scams like kidnappers demanding ransom</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">TechCrunch AI &nbsp;·&nbsp; 2026-07-07</div>
+  <p class='card-summary'>Savi Security, founded by tech industry veterans Patrick and Ryan Coughlin, has launched an app designed to protect consumers from realistic AI-generated scams, such as fake kidnapper calls. The company raised $7 million in seed funding and is targeting users through iPhone and Android platforms, inspired by a real incident where the founder's mother received a convincing AI-generated ransom call involving his sister's voice. The app aims to detect and warn users against such sophisticated frauds.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="security" style="--tag-bg:#fce8e6;--tag-fg:#c62828;--tag-bg-dark:#3d0a09;--tag-fg-dark:#ef9a9a">security</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span></div>
+</div>
+
+  
+
+  <div class="day-nav">
+    <span class="nav-btn nav-disabled">&#8592; Earlier</span>
+    <div class="nav-archive"><a href="index.html">&#128197; Archive</a></div>
+    <span class="nav-btn nav-disabled">Later &#8594;</span>
+  </div>
+
+  <div class="site-footer">
+    News Buddy &nbsp;·&nbsp; 2026-07-08 &nbsp;·&nbsp;
+    <a href="https://github.com/Harshagarwal06/buddy_agent" target="_blank">source</a>
+  </div>
+
+</div>
+<script>
+// ── Dark mode ─────────────────────────────────────────────────────────────────
+function applyTheme(dark) {
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  document.getElementById('dark-btn').textContent = dark ? '☀ Light' : '🌙 Dark';
+}
+function toggleDark() {
+  const now = document.documentElement.getAttribute('data-theme') === 'dark';
+  localStorage.setItem('nb-theme', now ? 'light' : 'dark');
+  applyTheme(!now);
+}
+(function() {
+  const saved = localStorage.getItem('nb-theme');
+  const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(saved ? saved === 'dark' : sysDark);
+})();
+
+// ── Tag filter ────────────────────────────────────────────────────────────────
+var activeTag = null;
+document.querySelectorAll('.filter-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var tag = this.getAttribute('data-tag');
+    if (activeTag === tag) {
+      activeTag = null;
+      document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+      document.querySelectorAll('.article-card').forEach(function(c) { c.classList.remove('hidden'); });
+    } else {
+      activeTag = tag;
+      document.querySelectorAll('.filter-btn').forEach(function(b) {
+        b.classList.toggle('active', b.getAttribute('data-tag') === tag);
+      });
+      document.querySelectorAll('.article-card').forEach(function(c) {
+        var tags = (c.getAttribute('data-tags') || '').split(',');
+        c.classList.toggle('hidden', tags.indexOf(tag) === -1);
+      });
+    }
+  });
+});
+</script>
+</body>
+</html>
