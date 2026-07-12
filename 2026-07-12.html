@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>News Buddy — 2026-07-12</title>
+<style>
+:root {
+  --bg: #f8f9fa;
+  --surface: #ffffff;
+  --border: #e0e0e0;
+  --text: #1a1a1a;
+  --text-muted: #666;
+  --text-faint: #999;
+  --accent: #1a73e8;
+  --accent-hover: #1557b0;
+  --header-bg: linear-gradient(135deg, #1a73e8, #0d47a1);
+  --shadow: 0 1px 4px rgba(0,0,0,.07);
+  --star-color: #f9a825;
+  --tag-bg: var(--tag-bg-light, #e8f0fe);
+  --tag-fg: var(--tag-fg-light, #1a73e8);
+}
+[data-theme="dark"] {
+  --bg: #111318;
+  --surface: #1e2128;
+  --border: #2e3240;
+  --text: #e8eaed;
+  --text-muted: #9aa0a6;
+  --text-faint: #5f6368;
+  --accent: #7ab3f5;
+  --accent-hover: #aecbfa;
+  --header-bg: linear-gradient(135deg, #1e3a5f, #0d2647);
+  --shadow: 0 1px 4px rgba(0,0,0,.3);
+  --star-color: #f6c84b;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  transition: background .2s, color .2s;
+}
+.wrap { max-width: 780px; margin: 0 auto; padding: 20px 16px 60px; }
+
+/* Header */
+.site-header {
+  background: var(--header-bg);
+  color: #fff;
+  border-radius: 14px;
+  padding: 22px 24px 18px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.header-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.header-label { font-size: 0.72rem; opacity: .75; letter-spacing: .07em; text-transform: uppercase; margin-bottom: 4px; }
+.header-date { font-size: 1.55rem; font-weight: 800; margin-bottom: 4px; }
+.header-count { font-size: 0.82rem; opacity: .8; }
+.dark-toggle {
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.3);
+  color: #fff;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background .15s;
+}
+.dark-toggle:hover { background: rgba(255,255,255,.28); }
+
+/* Source stats */
+.stats-bar {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-top: 12px; padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,.2);
+}
+.stat-pill {
+  font-size: 0.72rem; color: rgba(255,255,255,.8);
+  background: rgba(255,255,255,.12);
+  border-radius: 10px; padding: 2px 8px;
+}
+.stat-pill b { color: #fff; }
+
+/* Tag filter bar */
+.filter-bar {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-bottom: 18px;
+}
+.filter-btn {
+  background: var(--surface); border: 1.5px solid var(--border);
+  color: var(--text-muted); border-radius: 20px;
+  padding: 4px 12px; font-size: 0.75rem; font-weight: 600;
+  cursor: pointer; transition: all .15s;
+}
+.filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+.filter-btn.active {
+  background: var(--accent); border-color: var(--accent);
+  color: #fff;
+}
+
+/* Section headings */
+.section-heading {
+  font-size: 0.78rem; font-weight: 700; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: .08em;
+  border-bottom: 2px solid var(--border); padding-bottom: 6px;
+  margin: 28px 0 14px;
+}
+
+/* Cards */
+.article-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 18px; margin-bottom: 12px;
+  box-shadow: var(--shadow); transition: opacity .2s, transform .15s;
+}
+.article-card.card-large { padding: 20px 22px; }
+.article-card.hidden { display: none; }
+.card-header {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; gap: 10px; margin-bottom: 5px;
+}
+.card-title {
+  font-size: 0.96rem; font-weight: 700; color: var(--text);
+  text-decoration: none; line-height: 1.4; flex: 1;
+  transition: color .12s;
+}
+.card-large .card-title { font-size: 1.04rem; }
+.card-title:hover { color: var(--accent); }
+.card-stars { font-size: 0.85rem; color: var(--star-color); white-space: nowrap; letter-spacing: 1px; flex-shrink: 0; }
+.card-meta { font-size: 0.75rem; color: var(--text-faint); margin-bottom: 8px; }
+.icymi-badge {
+  display: inline-block; margin-left: 7px; padding: 1px 6px;
+  border: 1px solid var(--border); border-radius: 999px;
+  color: var(--text-muted); font-size: 0.65rem; font-weight: 700;
+  letter-spacing: .04em;
+}
+.card-summary { font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
+.card-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+
+/* Tag badges */
+.tag-badge {
+  background: var(--tag-bg); color: var(--tag-fg);
+  padding: 2px 9px; border-radius: 12px;
+  font-size: 0.7rem; font-weight: 600;
+}
+[data-theme="dark"] .tag-badge {
+  background: var(--tag-bg-dark, #1e3a5f);
+  color: var(--tag-fg-dark, #7ab3f5);
+}
+
+/* Navigation */
+.day-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin: 32px 0 20px; gap: 10px;
+}
+.nav-btn {
+  background: var(--surface); border: 1.5px solid var(--border);
+  color: var(--text-muted); border-radius: 8px;
+  padding: 8px 16px; font-size: 0.82rem; font-weight: 600;
+  text-decoration: none; transition: all .15s;
+}
+a.nav-btn:hover { border-color: var(--accent); color: var(--accent); }
+.nav-disabled { opacity: .4; cursor: default; }
+.nav-archive {
+  font-size: 0.78rem; color: var(--text-faint); text-align: center;
+}
+.nav-archive a { color: var(--accent); text-decoration: none; }
+.nav-archive a:hover { text-decoration: underline; }
+
+/* Empty state */
+.empty-msg { color: var(--text-faint); text-align: center; padding: 48px 0; }
+
+/* Footer */
+.site-footer {
+  text-align: center; font-size: 0.72rem; color: var(--text-faint);
+  margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border);
+}
+.site-footer a { color: var(--text-faint); }
+.site-footer a:hover { color: var(--accent); }
+
+@media (max-width: 600px) {
+  .wrap { padding: 12px 10px 40px; }
+  .site-header { border-radius: 10px; padding: 16px 16px 14px; }
+  .header-date { font-size: 1.3rem; }
+  .article-card { padding: 14px 14px; }
+  .article-card.card-large { padding: 16px 14px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="site-header">
+    <div class="header-top">
+      <div>
+        <div class="header-label">Daily News Digest</div>
+        <div class="header-date">2026-07-12</div>
+        <div class="header-count">8 articles</div>
+      </div>
+      <button class="dark-toggle" onclick="toggleDark()" id="dark-btn">🌙 Dark</button>
+    </div>
+    <div class="stats-bar"><span class='stat-pill'>Google News Gemini <b>7</b></span><span class='stat-pill'>TechCrunch AI <b>1</b></span></div>
+  </div>
+
+  <div class="filter-bar"><button class="filter-btn" data-tag="ai">ai</button><button class="filter-btn" data-tag="business">business</button><button class="filter-btn" data-tag="science">science</button><button class="filter-btn" data-tag="security">security</button><button class="filter-btn" data-tag="technology">technology</button></div>
+
+  
+  <h2 class="section-heading">Top Stories</h2>
+  
+<div class="article-card card-large has-tag-technology has-tag-ai" data-tags="technology,ai">
+  <div class="card-header">
+    <a href="https://news.google.com/rss/articles/CBMif0FVX3lxTFBqbEU3cDYtY3FIZE9KblpkcFc4R19MVXpmcWJIOVhyVy1ZR3c2RWJ6NHFBZDRpSHFaSXdLenJKLXFyRmNvdDhHYlZ3V0d6aHh2U25xZ2JGSUVWRGhkakdEdFhHVGZ5aVZPbGxUX1poMHR3Z2hrdGg0azQ2SnVCZ00?oc=5" target="_blank" rel="noopener" class="card-title">Raking in $18.8 billion in financing, AI talent flocks to the 'new gamble' of embodied intelligence - PANews</a>
+    <span class="card-stars" title="Importance 5/5">★★★★★</span>
+  </div>
+  <div class="card-meta">Google News Gemini &nbsp;·&nbsp; 2026-07-11</div>
+  <p class='card-summary'>AI companies are attracting significant investment, with $18.8 billion raised, as experts shift focus to embodied intelligence—a field combining AI with physical interaction. The growing interest signals a major trend in AI development beyond software-based systems.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span></div>
+</div>
+
+<div class="article-card card-large has-tag-ai has-tag-science" data-tags="ai,science">
+  <div class="card-header">
+    <a href="https://news.google.com/rss/articles/CBMidkFVX3lxTFBGeXBEQlI5cjhYdWxzUmZxRlduWnA3U1lJckgtbVJDbVVsV0dORlpXc205MC14UEJkbmtlQjdlNUlweFhnYUI5ZVlndG5tUEVFdmZuZkNWb1RNSEJkV281alRjOUdQVTgzaWNWOGdzbk4yLXZnSFE?oc=5" target="_blank" rel="noopener" class="card-title">DeepMind Founder's Ultimate Test: Give AI a 1901 World — Can It Invent Relativity? - finance.biggo.com</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">Google News Gemini &nbsp;·&nbsp; 2026-07-11</div>
+  <p class='card-summary'>A hypothetical experiment proposes giving an AI a historical world in 1901 to test whether it can independently derive the theory of relativity. The initiative, led by DeepMind's founder, explores AI's capacity to generate scientific breakthroughs through creative problem-solving in a constrained historical context.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span><span class="tag-badge" data-tag="science" style="--tag-bg:#fce8b2;--tag-fg:#b06000;--tag-bg-dark:#3d2800;--tag-fg-dark:#f6c84b">science</span></div>
+</div>
+
+<div class="article-card card-large has-tag-technology has-tag-ai has-tag-science" data-tags="technology,ai,science">
+  <div class="card-header">
+    <a href="https://news.google.com/rss/articles/CBMi0AFBVV95cUxPaXFkR1R5Wm1rNzllV0pOQ0EyWmYyMmc4N2xjenNzMFFjcW05NnlhcVhUWGJpM3RvV1pQYWh4R0VhTDBpOE9saHcwU3lnVExuNDlXdndPbm9yd0NydnNxM1VzYThYVW55ekROZi0zRW40bWdwb0Z0alhiMFRSMHVBMUpOb0ZLbnVFc0JuY0QwT3RRcTdnNkF0TE1XSUJOa0lQRmhIN2pObGUyMmZNYTN5OEZaNmRfd3hqVFdpNUNUQndZLVU0bjlEVnphb2o4ZkF3?oc=5" target="_blank" rel="noopener" class="card-title">Book Review: The Infinity Machine: Demis Hassabis, DeepMind, and the Quest for Superintelligence by Sebastian Mallaby - Unite.AI</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">Google News Gemini &nbsp;·&nbsp; 2026-07-12</div>
+  <p class='card-summary'>The review discusses Sebastian Mallaby's book on Demis Hassabis and DeepMind's pursuit of superintelligence, highlighting the intersection of artificial intelligence and human ambition. It explores the technical and ethical challenges in developing advanced AI systems. The book offers insights into the motivations and strategies behind DeepMind's research.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span><span class="tag-badge" data-tag="science" style="--tag-bg:#fce8b2;--tag-fg:#b06000;--tag-bg-dark:#3d2800;--tag-fg-dark:#f6c84b">science</span></div>
+</div>
+
+<div class="article-card card-large has-tag-technology has-tag-ai has-tag-business" data-tags="technology,ai,business">
+  <div class="card-header">
+    <a href="https://techcrunch.com/2026/07/11/openai-bets-on-families-as-chatgpt-goes-deeper-into-households/" target="_blank" rel="noopener" class="card-title">OpenAI bets on families as ChatGPT goes deeper into households</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">TechCrunch AI &nbsp;·&nbsp; 2026-07-11</div>
+  <p class='card-summary'>OpenAI is expanding its focus to include family and caregiver needs by hiring a dedicated product manager for household-focused experiences. The move reflects a broader shift in ChatGPT's user base, with increasing adoption among adults aged 35 and older and parents in particular. Analysts see this as a strategic step toward embedding AI more deeply into daily family life, similar to how major tech companies have integrated platforms into homes.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span><span class="tag-badge" data-tag="business" style="--tag-bg:#fce8e6;--tag-fg:#c5221f;--tag-bg-dark:#3d0a09;--tag-fg-dark:#f28b82">business</span></div>
+</div>
+
+<div class="article-card card-large has-tag-technology has-tag-ai has-tag-security" data-tags="technology,ai,security">
+  <div class="card-header">
+    <a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxQTTN6VzVIY0NldnZ2dW1WLVZCM2FaeUJVbW9IRXIwNVBkcGJZWTNZYjRfLXhFdTcyaVVNb04zclNHMnROVE1FYy1CWVBVM2xBd09XaVBlRERLd1g4RWRxak1hZDRYODRWOFlHMHpiM1RxcERrbVRza3Bya2JZTXpsVWdKdjlZVlM2NFE?oc=5" target="_blank" rel="noopener" class="card-title">Photos: Hundreds protest at Open AI, Anthropic offices in San Francisco - Mission Local</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">Google News Gemini &nbsp;·&nbsp; 2026-07-12</div>
+  <p class='card-summary'>Hundreds of protesters gathered at OpenAI and Anthropic offices in San Francisco, as captured in photos by Mission Local. The demonstration appears to be focused on concerns related to artificial intelligence development and ethics. </p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span><span class="tag-badge" data-tag="security" style="--tag-bg:#fce8e6;--tag-fg:#c62828;--tag-bg-dark:#3d0a09;--tag-fg-dark:#ef9a9a">security</span></div>
+</div>
+  <h2 class="section-heading">Technology</h2>
+
+<div class="article-card card-normal has-tag-technology has-tag-ai" data-tags="technology,ai">
+  <div class="card-header">
+    <a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxNUnVCQm51MGVRdWdLU1BkVmp6bFZ5T1g2RHJCVi0xXzB1LVRFYTRjZkNrSDZoczVEVDAzMl9NVkRTMzZrb0w2aW82SUctY0hhemJndzQ2b0NWVFMxOFlJUGpQaXJUbzdNRXBtcHlYM1BLRVdaRFJKS0ZoM29KRlVkSE00RzdlVnVsNnE1TGNSMFFNcUNyOURFYnRNNjBuTEtOWjFBNmw4cE16TTdMNmpjaVlJYWxNdw?oc=5" target="_blank" rel="noopener" class="card-title">Dell announces new capabilities to VxRail, APEX and Validated Design for AI - TechRepublic</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">Google News Gemini &nbsp;·&nbsp; 2026-07-11</div>
+  <p class='card-summary'>Dell has introduced enhanced AI capabilities for its VxRail, APEX, and Validated Design platforms, aiming to support AI workloads with improved infrastructure solutions. The updates focus on optimizing performance and scalability for artificial intelligence applications in enterprise environments.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span></div>
+</div>
+
+<div class="article-card card-normal has-tag-technology has-tag-ai" data-tags="technology,ai">
+  <div class="card-header">
+    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE1PUEVtOVhTbktJUlpISUtfMVgwVi1lZEg3NWhIZElfeUpfR0lSSlNwZWJTLWZIczZCZlFJT2Z6YWhJYnZjRG9aRzQwdHkzQ2oxYl9QQ3RGSjhjcUxmTUU0bUNmaUs4NXZjNlgwOQ?oc=5" target="_blank" rel="noopener" class="card-title">OpenAI Kills Atlas And Takes Its AI Browser Fight Straight To Chrome - Yellow.com</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">Google News Gemini &nbsp;·&nbsp; 2026-07-11</div>
+  <p class='card-summary'>OpenAI has discontinued its Atlas AI model and is now directly challenging browser AI competitors by integrating its technology into Chrome.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span></div>
+</div>
+
+<div class="article-card card-normal has-tag-technology has-tag-ai" data-tags="technology,ai">
+  <div class="card-header">
+    <a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxPaDZfNUpSS3RIVllzU3lWaFptTC1TbXNIZnU2TUVVU1VKWnRYaTBBVnhCSElURGJMby1WemNtblViTWdvR2EzLXFOM0pNWTNWTXhZM19IMW1UOHpCSGFzSWtoNmpYMUJ1aHBqbTZGSDdTNGRVVi1tTjgxNG1SSzI2NDRYR2Y3UQ?oc=5" target="_blank" rel="noopener" class="card-title">OpenAI’s ChatGPT-Codex Desktop SuperApp Is Winning the Interface War Atlas Conceded - FourWeekMBA</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">Google News Gemini &nbsp;·&nbsp; 2026-07-11</div>
+  <p class='card-summary'>OpenAI's ChatGPT-Codex desktop application is gaining traction in the competitive interface landscape, with industry analysts suggesting it is outperforming other platforms. The app combines AI-powered coding and chat functionalities, positioning itself as a comprehensive tool for developers and users alike.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span></div>
+</div>
+
+  
+
+  <div class="day-nav">
+    <span class="nav-btn nav-disabled">&#8592; Earlier</span>
+    <div class="nav-archive"><a href="index.html">&#128197; Archive</a></div>
+    <span class="nav-btn nav-disabled">Later &#8594;</span>
+  </div>
+
+  <div class="site-footer">
+    News Buddy &nbsp;·&nbsp; 2026-07-12 &nbsp;·&nbsp;
+    <a href="https://github.com/Harshagarwal06/buddy_agent" target="_blank">source</a>
+  </div>
+
+</div>
+<script>
+// ── Dark mode ─────────────────────────────────────────────────────────────────
+function applyTheme(dark) {
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  document.getElementById('dark-btn').textContent = dark ? '☀ Light' : '🌙 Dark';
+}
+function toggleDark() {
+  const now = document.documentElement.getAttribute('data-theme') === 'dark';
+  localStorage.setItem('nb-theme', now ? 'light' : 'dark');
+  applyTheme(!now);
+}
+(function() {
+  const saved = localStorage.getItem('nb-theme');
+  const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(saved ? saved === 'dark' : sysDark);
+})();
+
+// ── Tag filter ────────────────────────────────────────────────────────────────
+var activeTag = null;
+document.querySelectorAll('.filter-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var tag = this.getAttribute('data-tag');
+    if (activeTag === tag) {
+      activeTag = null;
+      document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+      document.querySelectorAll('.article-card').forEach(function(c) { c.classList.remove('hidden'); });
+    } else {
+      activeTag = tag;
+      document.querySelectorAll('.filter-btn').forEach(function(b) {
+        b.classList.toggle('active', b.getAttribute('data-tag') === tag);
+      });
+      document.querySelectorAll('.article-card').forEach(function(c) {
+        var tags = (c.getAttribute('data-tags') || '').split(',');
+        c.classList.toggle('hidden', tags.indexOf(tag) === -1);
+      });
+    }
+  });
+});
+</script>
+</body>
+</html>
