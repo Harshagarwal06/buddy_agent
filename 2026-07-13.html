@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>News Buddy — 2026-07-13</title>
+<style>
+:root {
+  --bg: #f8f9fa;
+  --surface: #ffffff;
+  --border: #e0e0e0;
+  --text: #1a1a1a;
+  --text-muted: #666;
+  --text-faint: #999;
+  --accent: #1a73e8;
+  --accent-hover: #1557b0;
+  --header-bg: linear-gradient(135deg, #1a73e8, #0d47a1);
+  --shadow: 0 1px 4px rgba(0,0,0,.07);
+  --star-color: #f9a825;
+  --tag-bg: var(--tag-bg-light, #e8f0fe);
+  --tag-fg: var(--tag-fg-light, #1a73e8);
+}
+[data-theme="dark"] {
+  --bg: #111318;
+  --surface: #1e2128;
+  --border: #2e3240;
+  --text: #e8eaed;
+  --text-muted: #9aa0a6;
+  --text-faint: #5f6368;
+  --accent: #7ab3f5;
+  --accent-hover: #aecbfa;
+  --header-bg: linear-gradient(135deg, #1e3a5f, #0d2647);
+  --shadow: 0 1px 4px rgba(0,0,0,.3);
+  --star-color: #f6c84b;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  transition: background .2s, color .2s;
+}
+.wrap { max-width: 780px; margin: 0 auto; padding: 20px 16px 60px; }
+
+/* Header */
+.site-header {
+  background: var(--header-bg);
+  color: #fff;
+  border-radius: 14px;
+  padding: 22px 24px 18px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.header-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.header-label { font-size: 0.72rem; opacity: .75; letter-spacing: .07em; text-transform: uppercase; margin-bottom: 4px; }
+.header-date { font-size: 1.55rem; font-weight: 800; margin-bottom: 4px; }
+.header-count { font-size: 0.82rem; opacity: .8; }
+.dark-toggle {
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.3);
+  color: #fff;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background .15s;
+}
+.dark-toggle:hover { background: rgba(255,255,255,.28); }
+
+/* Source stats */
+.stats-bar {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-top: 12px; padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,.2);
+}
+.stat-pill {
+  font-size: 0.72rem; color: rgba(255,255,255,.8);
+  background: rgba(255,255,255,.12);
+  border-radius: 10px; padding: 2px 8px;
+}
+.stat-pill b { color: #fff; }
+
+/* Tag filter bar */
+.filter-bar {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-bottom: 18px;
+}
+.filter-btn {
+  background: var(--surface); border: 1.5px solid var(--border);
+  color: var(--text-muted); border-radius: 20px;
+  padding: 4px 12px; font-size: 0.75rem; font-weight: 600;
+  cursor: pointer; transition: all .15s;
+}
+.filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+.filter-btn.active {
+  background: var(--accent); border-color: var(--accent);
+  color: #fff;
+}
+
+/* Section headings */
+.section-heading {
+  font-size: 0.78rem; font-weight: 700; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: .08em;
+  border-bottom: 2px solid var(--border); padding-bottom: 6px;
+  margin: 28px 0 14px;
+}
+
+/* Cards */
+.article-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 18px; margin-bottom: 12px;
+  box-shadow: var(--shadow); transition: opacity .2s, transform .15s;
+}
+.article-card.card-large { padding: 20px 22px; }
+.article-card.hidden { display: none; }
+.card-header {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; gap: 10px; margin-bottom: 5px;
+}
+.card-title {
+  font-size: 0.96rem; font-weight: 700; color: var(--text);
+  text-decoration: none; line-height: 1.4; flex: 1;
+  transition: color .12s;
+}
+.card-large .card-title { font-size: 1.04rem; }
+.card-title:hover { color: var(--accent); }
+.card-stars { font-size: 0.85rem; color: var(--star-color); white-space: nowrap; letter-spacing: 1px; flex-shrink: 0; }
+.card-meta { font-size: 0.75rem; color: var(--text-faint); margin-bottom: 8px; }
+.icymi-badge {
+  display: inline-block; margin-left: 7px; padding: 1px 6px;
+  border: 1px solid var(--border); border-radius: 999px;
+  color: var(--text-muted); font-size: 0.65rem; font-weight: 700;
+  letter-spacing: .04em;
+}
+.card-summary { font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
+.card-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+
+/* Tag badges */
+.tag-badge {
+  background: var(--tag-bg); color: var(--tag-fg);
+  padding: 2px 9px; border-radius: 12px;
+  font-size: 0.7rem; font-weight: 600;
+}
+[data-theme="dark"] .tag-badge {
+  background: var(--tag-bg-dark, #1e3a5f);
+  color: var(--tag-fg-dark, #7ab3f5);
+}
+
+/* Navigation */
+.day-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin: 32px 0 20px; gap: 10px;
+}
+.nav-btn {
+  background: var(--surface); border: 1.5px solid var(--border);
+  color: var(--text-muted); border-radius: 8px;
+  padding: 8px 16px; font-size: 0.82rem; font-weight: 600;
+  text-decoration: none; transition: all .15s;
+}
+a.nav-btn:hover { border-color: var(--accent); color: var(--accent); }
+.nav-disabled { opacity: .4; cursor: default; }
+.nav-archive {
+  font-size: 0.78rem; color: var(--text-faint); text-align: center;
+}
+.nav-archive a { color: var(--accent); text-decoration: none; }
+.nav-archive a:hover { text-decoration: underline; }
+
+/* Empty state */
+.empty-msg { color: var(--text-faint); text-align: center; padding: 48px 0; }
+
+/* Footer */
+.site-footer {
+  text-align: center; font-size: 0.72rem; color: var(--text-faint);
+  margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border);
+}
+.site-footer a { color: var(--text-faint); }
+.site-footer a:hover { color: var(--accent); }
+
+@media (max-width: 600px) {
+  .wrap { padding: 12px 10px 40px; }
+  .site-header { border-radius: 10px; padding: 16px 16px 14px; }
+  .header-date { font-size: 1.3rem; }
+  .article-card { padding: 14px 14px; }
+  .article-card.card-large { padding: 16px 14px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="site-header">
+    <div class="header-top">
+      <div>
+        <div class="header-label">Daily News Digest</div>
+        <div class="header-date">2026-07-13</div>
+        <div class="header-count">8 articles</div>
+      </div>
+      <button class="dark-toggle" onclick="toggleDark()" id="dark-btn">🌙 Dark</button>
+    </div>
+    <div class="stats-bar"><span class='stat-pill'>Hacker News AI <b>5</b></span><span class='stat-pill'>The Verge AI <b>3</b></span></div>
+  </div>
+
+  <div class="filter-bar"><button class="filter-btn" data-tag="ai">ai</button><button class="filter-btn" data-tag="business">business</button><button class="filter-btn" data-tag="culture">culture</button><button class="filter-btn" data-tag="education">education</button><button class="filter-btn" data-tag="environment">environment</button><button class="filter-btn" data-tag="science">science</button><button class="filter-btn" data-tag="security">security</button><button class="filter-btn" data-tag="technology">technology</button><button class="filter-btn" data-tag="world">world</button></div>
+
+  
+  <h2 class="section-heading">Top Stories</h2>
+  
+<div class="article-card card-large has-tag-technology has-tag-culture has-tag-ai" data-tags="technology,culture,ai">
+  <div class="card-header">
+    <a href="https://www.theverge.com/ai-artificial-intelligence/964539/lorde-says-ray-ban-meta-ai-glasses-are-not-sexy" target="_blank" rel="noopener" class="card-title">Lorde says Ray-Ban Meta AI glasses are ‘not sexy’</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">The Verge AI &nbsp;·&nbsp; 2026-07-12</div>
+  <p class='card-summary'>Musician Lorde criticized Ray-Ban Meta AI glasses during a performance at the Real Cool Festival in Madrid, calling them 'not sexy' and expressing skepticism about the technology's authenticity. The backlash comes amid growing scrutiny of Meta's smart glasses, which are reportedly still in development despite public criticism. Blackpink's Jennie, a brand ambassador for the glasses, was also present at the event.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="culture" style="--tag-bg:#f8f0fb;--tag-fg:#6a1b9a;--tag-bg-dark:#2a0a3d;--tag-fg-dark:#ce93d8">culture</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span></div>
+</div>
+
+<div class="article-card card-large has-tag-technology has-tag-ai has-tag-business" data-tags="technology,ai,business">
+  <div class="card-header">
+    <a href="https://www.theverge.com/tech/964519/apple-silicon-self-driving-car-ai-m7-ultra" target="_blank" rel="noopener" class="card-title">Apple’s failed self-driving car program left a legacy of powerful AI chips</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">The Verge AI &nbsp;·&nbsp; 2026-07-12</div>
+  <p class='card-summary'>Apple's self-driving car program, though ultimately abandoned, spurred the development of advanced on-device AI processing through its Neural Engine, which later became a core feature in Apple's M-series chips. This hardware innovation has strengthened Apple's privacy stance and positioned its AI chips as a key part of its future strategy, despite slower progress in AI software. The company is now advancing the M7 Ultra with significant RAM capacity, signaling continued investment in AI hardware.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span><span class="tag-badge" data-tag="business" style="--tag-bg:#fce8e6;--tag-fg:#c5221f;--tag-bg-dark:#3d0a09;--tag-fg-dark:#f28b82">business</span></div>
+</div>
+
+<div class="article-card card-large has-tag-technology has-tag-environment has-tag-security" data-tags="technology,environment,security">
+  <div class="card-header">
+    <a href="https://www.theverge.com/column/963346/ai-data-centers-fight" target="_blank" rel="noopener" class="card-title">The fight against AI data centers is just beginning</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">The Verge AI &nbsp;·&nbsp; 2026-07-12</div>
+  <p class='card-summary'>Community opposition to AI data centers is growing, with recent pushback in the U.S. and internationally influencing companies to reconsider their expansion plans. This resistance traces back to early protests, such as those against Apple's 2015 data center in Ireland, which faced concerns over noise, light pollution, and environmental impact despite promises of renewable energy and community benefits.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="environment" style="--tag-bg:#f1f3f4;--tag-fg:#5f6368;--tag-bg-dark:#2d2d2d;--tag-fg-dark:#9aa0a6">environment</span><span class="tag-badge" data-tag="security" style="--tag-bg:#fce8e6;--tag-fg:#c62828;--tag-bg-dark:#3d0a09;--tag-fg-dark:#ef9a9a">security</span></div>
+</div>
+
+<div class="article-card card-large has-tag-technology has-tag-ai has-tag-science" data-tags="technology,ai,science">
+  <div class="card-header">
+    <a href="https://www.techradar.com/pro/quality-decays-exponentially-following-ai-arrival-research-shows-experts-and-contributors-leaving-online-communities-amidst-silent-knowledge-reset" target="_blank" rel="noopener" class="card-title">'Quality decays exponentially following AI arrival': Experts leaving in droves</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">Hacker News AI &nbsp;·&nbsp; 2026-07-13</div>
+  <p class='card-summary'>Research suggests that the rise of generative AI has led to a significant exodus of expert contributors from online communities like Stack Overflow, as they perceive their expertise to be undervalued and replaced by AI-generated solutions. The decline in activity, including a 76% drop in monthly questions since 2022, indicates a broader trend that could affect education, workplaces, and scientific collaboration. Experts are leaving due to a perceived 'silent knowledge reset' where their efforts are no longer rewarded with recognition or impact.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span><span class="tag-badge" data-tag="science" style="--tag-bg:#fce8b2;--tag-fg:#b06000;--tag-bg-dark:#3d2800;--tag-fg-dark:#f6c84b">science</span></div>
+</div>
+
+<div class="article-card card-large has-tag-technology has-tag-education has-tag-ai" data-tags="technology,education,ai">
+  <div class="card-header">
+    <a href="https://htmx.org/essays/universities-and-ai/" target="_blank" rel="noopener" class="card-title">The University in the AI Era</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">Hacker News AI &nbsp;·&nbsp; 2026-07-13</div>
+  <p class='card-summary'>The article discusses the evolving role of universities, particularly computer science programs, in the age of artificial intelligence. It acknowledges that while college degrees are not strictly necessary for success in tech, most software engineers still hold degrees, suggesting that universities remain relevant for developing technical skills and broader competencies.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="education" style="--tag-bg:#f1f3f4;--tag-fg:#5f6368;--tag-bg-dark:#2d2d2d;--tag-fg-dark:#9aa0a6">education</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span></div>
+</div>
+  <h2 class="section-heading">Technology</h2>
+
+<div class="article-card card-normal has-tag-technology has-tag-culture has-tag-ai" data-tags="technology,culture,ai">
+  <div class="card-header">
+    <a href="https://www.theguardian.com/music/2026/jul/13/josh-fawaz-like-a-prayer-song-is-it-ai-radio" target="_blank" rel="noopener" class="card-title">Is the top song on Australian radio AI-generated?</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">Hacker News AI &nbsp;·&nbsp; 2026-07-13</div>
+  <p class='card-summary'>Josh Fawaz, an Australian producer, has gained viral fame with a cover of Madonna's 'Like a Prayer' that reached No. 1 on Australia's radio charts, but music experts are questioning whether the song was generated using AI. While Fawaz credits his uncle as the producer, critics point to technical aspects such as vocal compression as indicators of AI involvement, raising concerns about the value of human creativity in music. Fawaz has responded by stating he uses AI as a tool but emphasizes his focus on artistic expression.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="culture" style="--tag-bg:#f8f0fb;--tag-fg:#6a1b9a;--tag-bg-dark:#2a0a3d;--tag-fg-dark:#ce93d8">culture</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span></div>
+</div>
+
+<div class="article-card card-normal has-tag-technology has-tag-education" data-tags="technology,education">
+  <div class="card-header">
+    <a href="https://globalcareers-3qwcpfkw.manus.space/" target="_blank" rel="noopener" class="card-title">Global Careers Hub – Free AI Tools, Scholarships and Career Resources</a>
+    <span class="card-stars" title="Importance 3/5">★★★☆☆</span>
+  </div>
+  <div class="card-meta">Hacker News AI &nbsp;·&nbsp; 2026-07-13</div>
+  <p class='card-summary'>The Global Careers Hub offers free AI tools, scholarships, and career resources to support individuals in their professional development. The platform aims to increase access to educational and career opportunities globally.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="education" style="--tag-bg:#f1f3f4;--tag-fg:#5f6368;--tag-bg-dark:#2d2d2d;--tag-fg-dark:#9aa0a6">education</span></div>
+</div>
+<h2 class="section-heading">World</h2>
+
+<div class="article-card card-normal has-tag-world" data-tags="world">
+  <div class="card-header">
+    <a href="https://news.ycombinator.com/item?id=48887895" target="_blank" rel="noopener" class="card-title">Ask HN: As a customer, how do you feel about AI-First Customer Support?</a>
+    <span class="card-stars" title="Importance 2/5">★★☆☆☆</span>
+  </div>
+  <div class="card-meta">Hacker News AI &nbsp;·&nbsp; 2026-07-13</div>
+  <p class='card-summary'>I've seen mixed sentiments out there. What has been your experience from the customer-side? Comments URL: https://news.ycombinator.com/item?id=48887895 Points: 2 # Comments: 2</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="world" style="--tag-bg:#f3e8fd;--tag-fg:#7b1fa2;--tag-bg-dark:#2d0b40;--tag-fg-dark:#ce93d8">world</span></div>
+</div>
+
+  
+
+  <div class="day-nav">
+    <span class="nav-btn nav-disabled">&#8592; Earlier</span>
+    <div class="nav-archive"><a href="index.html">&#128197; Archive</a></div>
+    <span class="nav-btn nav-disabled">Later &#8594;</span>
+  </div>
+
+  <div class="site-footer">
+    News Buddy &nbsp;·&nbsp; 2026-07-13 &nbsp;·&nbsp;
+    <a href="https://github.com/Harshagarwal06/buddy_agent" target="_blank">source</a>
+  </div>
+
+</div>
+<script>
+// ── Dark mode ─────────────────────────────────────────────────────────────────
+function applyTheme(dark) {
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  document.getElementById('dark-btn').textContent = dark ? '☀ Light' : '🌙 Dark';
+}
+function toggleDark() {
+  const now = document.documentElement.getAttribute('data-theme') === 'dark';
+  localStorage.setItem('nb-theme', now ? 'light' : 'dark');
+  applyTheme(!now);
+}
+(function() {
+  const saved = localStorage.getItem('nb-theme');
+  const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(saved ? saved === 'dark' : sysDark);
+})();
+
+// ── Tag filter ────────────────────────────────────────────────────────────────
+var activeTag = null;
+document.querySelectorAll('.filter-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var tag = this.getAttribute('data-tag');
+    if (activeTag === tag) {
+      activeTag = null;
+      document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+      document.querySelectorAll('.article-card').forEach(function(c) { c.classList.remove('hidden'); });
+    } else {
+      activeTag = tag;
+      document.querySelectorAll('.filter-btn').forEach(function(b) {
+        b.classList.toggle('active', b.getAttribute('data-tag') === tag);
+      });
+      document.querySelectorAll('.article-card').forEach(function(c) {
+        var tags = (c.getAttribute('data-tags') || '').split(',');
+        c.classList.toggle('hidden', tags.indexOf(tag) === -1);
+      });
+    }
+  });
+});
+</script>
+</body>
+</html>
