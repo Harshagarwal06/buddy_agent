@@ -532,6 +532,7 @@ def write_html_node(state: DigestState) -> dict:
 
     from news_buddy.html_writer import write_html
     from news_buddy.archive_writer import write_archive
+    from news_buddy.index_writer import write_index, write_manifest
     import re as _re
 
     output_dir = Path(state["config"].get("output_dir", "~/news")).expanduser()
@@ -552,6 +553,14 @@ def write_html_node(state: DigestState) -> dict:
     path = write_html(output_dir, date_str, state.get("enriched_items", []),
                       prev_date=prev_date, next_date=next_date)
     _log(state, f"HTML digest written → {path}")
+
+    # Public search index: skip the per-day file on empty-digest days (nothing
+    # to search), but always refresh the manifest against whatever's on disk.
+    enriched_items = state.get("enriched_items", [])
+    if enriched_items:
+        write_index(output_dir, date_str, enriched_items)
+    write_manifest(output_dir)
+    _log(state, "Search index/manifest updated")
 
     # Regenerate the archive index to include today
     archive_path = write_archive(output_dir)
