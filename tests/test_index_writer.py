@@ -9,7 +9,7 @@ def test_write_index_creates_json_with_expected_fields(tmp_path):
             "title": "Model launches",
             "url": "https://example.test/a",
             "source": "Test Feed",
-            "published_at": "2026-07-17",
+            "published_at": "2026-07-17T09:00:00+00:00",
             "summary": "A new model launched today.",
             "tags": ["ai", "product"],
             "importance": 4,
@@ -20,7 +20,14 @@ def test_write_index_creates_json_with_expected_fields(tmp_path):
 
     assert path == tmp_path / "2026-07-17.json"
     data = json.loads(path.read_text(encoding="utf-8"))
-    assert data == items
+    # Verify that published_at is truncated to YYYY-MM-DD
+    assert data[0]["title"] == "Model launches"
+    assert data[0]["url"] == "https://example.test/a"
+    assert data[0]["source"] == "Test Feed"
+    assert data[0]["published_at"] == "2026-07-17"
+    assert data[0]["summary"] == "A new model launched today."
+    assert data[0]["tags"] == ["ai", "product"]
+    assert data[0]["importance"] == 4
 
 
 def test_write_index_defaults_missing_fields(tmp_path):

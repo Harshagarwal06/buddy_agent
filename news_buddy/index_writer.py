@@ -14,7 +14,7 @@ def _to_record(item: dict) -> dict:
         "title": item.get("title", ""),
         "url": item.get("url", ""),
         "source": item.get("source", ""),
-        "published_at": item.get("published_at", ""),
+        "published_at": (item.get("published_at") or "")[:10],
         "summary": item.get("summary", ""),
         "tags": item.get("tags") or [],
         "importance": item.get("importance", 3),

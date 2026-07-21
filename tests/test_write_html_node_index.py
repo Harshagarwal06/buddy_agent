@@ -34,6 +34,8 @@ def test_write_html_node_also_writes_search_index(tmp_path):
     records = json.loads(index_path.read_text(encoding="utf-8"))
     assert records[0]["title"] == "Model launches"
     assert records[0]["importance"] == 5
+    # Verify that published_at is truncated to YYYY-MM-DD (date only, no time)
+    assert records[0]["published_at"] == "2026-07-17"
 
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     assert manifest == {"dates": ["2026-07-17"]}
