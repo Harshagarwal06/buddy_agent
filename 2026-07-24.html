@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>News Buddy — 2026-07-24</title>
+<style>
+:root {
+  --bg: #f8f9fa;
+  --surface: #ffffff;
+  --border: #e0e0e0;
+  --text: #1a1a1a;
+  --text-muted: #666;
+  --text-faint: #999;
+  --accent: #1a73e8;
+  --accent-hover: #1557b0;
+  --header-bg: linear-gradient(135deg, #1a73e8, #0d47a1);
+  --shadow: 0 1px 4px rgba(0,0,0,.07);
+  --star-color: #f9a825;
+  --tag-bg: var(--tag-bg-light, #e8f0fe);
+  --tag-fg: var(--tag-fg-light, #1a73e8);
+}
+[data-theme="dark"] {
+  --bg: #111318;
+  --surface: #1e2128;
+  --border: #2e3240;
+  --text: #e8eaed;
+  --text-muted: #9aa0a6;
+  --text-faint: #5f6368;
+  --accent: #7ab3f5;
+  --accent-hover: #aecbfa;
+  --header-bg: linear-gradient(135deg, #1e3a5f, #0d2647);
+  --shadow: 0 1px 4px rgba(0,0,0,.3);
+  --star-color: #f6c84b;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  transition: background .2s, color .2s;
+}
+.wrap { max-width: 780px; margin: 0 auto; padding: 20px 16px 60px; }
+
+/* Header */
+.site-header {
+  background: var(--header-bg);
+  color: #fff;
+  border-radius: 14px;
+  padding: 22px 24px 18px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.header-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.header-label { font-size: 0.72rem; opacity: .75; letter-spacing: .07em; text-transform: uppercase; margin-bottom: 4px; }
+.header-date { font-size: 1.55rem; font-weight: 800; margin-bottom: 4px; }
+.header-count { font-size: 0.82rem; opacity: .8; }
+.dark-toggle {
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.3);
+  color: #fff;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background .15s;
+}
+.dark-toggle:hover { background: rgba(255,255,255,.28); }
+
+/* Source stats */
+.stats-bar {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-top: 12px; padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,.2);
+}
+.stat-pill {
+  font-size: 0.72rem; color: rgba(255,255,255,.8);
+  background: rgba(255,255,255,.12);
+  border-radius: 10px; padding: 2px 8px;
+}
+.stat-pill b { color: #fff; }
+
+/* Tag filter bar */
+.filter-bar {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-bottom: 18px;
+}
+.filter-btn {
+  background: var(--surface); border: 1.5px solid var(--border);
+  color: var(--text-muted); border-radius: 20px;
+  padding: 4px 12px; font-size: 0.75rem; font-weight: 600;
+  cursor: pointer; transition: all .15s;
+}
+.filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+.filter-btn.active {
+  background: var(--accent); border-color: var(--accent);
+  color: #fff;
+}
+
+/* Section headings */
+.section-heading {
+  font-size: 0.78rem; font-weight: 700; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: .08em;
+  border-bottom: 2px solid var(--border); padding-bottom: 6px;
+  margin: 28px 0 14px;
+}
+
+/* Cards */
+.article-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 18px; margin-bottom: 12px;
+  box-shadow: var(--shadow); transition: opacity .2s, transform .15s;
+}
+.article-card.card-large { padding: 20px 22px; }
+.article-card.hidden { display: none; }
+.card-header {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; gap: 10px; margin-bottom: 5px;
+}
+.card-title {
+  font-size: 0.96rem; font-weight: 700; color: var(--text);
+  text-decoration: none; line-height: 1.4; flex: 1;
+  transition: color .12s;
+}
+.card-large .card-title { font-size: 1.04rem; }
+.card-title:hover { color: var(--accent); }
+.card-stars { font-size: 0.85rem; color: var(--star-color); white-space: nowrap; letter-spacing: 1px; flex-shrink: 0; }
+.card-meta { font-size: 0.75rem; color: var(--text-faint); margin-bottom: 8px; }
+.icymi-badge {
+  display: inline-block; margin-left: 7px; padding: 1px 6px;
+  border: 1px solid var(--border); border-radius: 999px;
+  color: var(--text-muted); font-size: 0.65rem; font-weight: 700;
+  letter-spacing: .04em;
+}
+.card-summary { font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
+.card-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+
+/* Tag badges */
+.tag-badge {
+  background: var(--tag-bg); color: var(--tag-fg);
+  padding: 2px 9px; border-radius: 12px;
+  font-size: 0.7rem; font-weight: 600;
+}
+[data-theme="dark"] .tag-badge {
+  background: var(--tag-bg-dark, #1e3a5f);
+  color: var(--tag-fg-dark, #7ab3f5);
+}
+
+/* Navigation */
+.day-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin: 32px 0 20px; gap: 10px;
+}
+.nav-btn {
+  background: var(--surface); border: 1.5px solid var(--border);
+  color: var(--text-muted); border-radius: 8px;
+  padding: 8px 16px; font-size: 0.82rem; font-weight: 600;
+  text-decoration: none; transition: all .15s;
+}
+a.nav-btn:hover { border-color: var(--accent); color: var(--accent); }
+.nav-disabled { opacity: .4; cursor: default; }
+.nav-archive {
+  font-size: 0.78rem; color: var(--text-faint); text-align: center;
+}
+.nav-archive a { color: var(--accent); text-decoration: none; }
+.nav-archive a:hover { text-decoration: underline; }
+
+/* Empty state */
+.empty-msg { color: var(--text-faint); text-align: center; padding: 48px 0; }
+
+/* Footer */
+.site-footer {
+  text-align: center; font-size: 0.72rem; color: var(--text-faint);
+  margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border);
+}
+.site-footer a { color: var(--text-faint); }
+.site-footer a:hover { color: var(--accent); }
+
+@media (max-width: 600px) {
+  .wrap { padding: 12px 10px 40px; }
+  .site-header { border-radius: 10px; padding: 16px 16px 14px; }
+  .header-date { font-size: 1.3rem; }
+  .article-card { padding: 14px 14px; }
+  .article-card.card-large { padding: 16px 14px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="site-header">
+    <div class="header-top">
+      <div>
+        <div class="header-label">Daily News Digest</div>
+        <div class="header-date">2026-07-24</div>
+        <div class="header-count">8 articles</div>
+      </div>
+      <button class="dark-toggle" onclick="toggleDark()" id="dark-btn">🌙 Dark</button>
+    </div>
+    <div class="stats-bar"><span class='stat-pill'>The Verge AI <b>7</b></span><span class='stat-pill'>TechCrunch AI <b>1</b></span></div>
+  </div>
+
+  <div class="filter-bar"><button class="filter-btn" data-tag="ai">ai</button><button class="filter-btn" data-tag="business">business</button><button class="filter-btn" data-tag="health">health</button><button class="filter-btn" data-tag="science">science</button><button class="filter-btn" data-tag="security">security</button><button class="filter-btn" data-tag="technology">technology</button><button class="filter-btn" data-tag="world">world</button></div>
+
+  
+  <h2 class="section-heading">Top Stories</h2>
+  
+<div class="article-card card-large has-tag-technology has-tag-ai has-tag-business" data-tags="technology,ai,business">
+  <div class="card-header">
+    <a href="https://www.theverge.com/tech/970211/patreon-layoffs-ai" target="_blank" rel="noopener" class="card-title">Patreon is laying off 20 percent of workers</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">The Verge AI &nbsp;·&nbsp; 2026-07-23</div>
+  <p class='card-summary'>Patreon is laying off 20 percent of its workforce, approximately 93 employees, citing fundamental changes in the tech industry driven by AI. CEO Jack Conte emphasizes that while AI does not replace humans, it has transformed how the company operates and builds products. The move follows a previous round of layoffs in 2022 and office closures in Europe.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span><span class="tag-badge" data-tag="business" style="--tag-bg:#fce8e6;--tag-fg:#c5221f;--tag-bg-dark:#3d0a09;--tag-fg-dark:#f28b82">business</span></div>
+</div>
+
+<div class="article-card card-large has-tag-technology has-tag-business has-tag-ai" data-tags="technology,business,ai">
+  <div class="card-header">
+    <a href="https://www.theverge.com/podcast/968787/apple-openai-trade-secrets-lawsuit-ai-hardware-smartphone-jony-ive" target="_blank" rel="noopener" class="card-title">Apple’s OpenAI lawsuit is about who gets to define the post-smartphone era</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">The Verge AI &nbsp;·&nbsp; 2026-07-23</div>
+  <p class='card-summary'>Apple has filed a trade secrets lawsuit against OpenAI, alleging that former Apple employees shared confidential hardware manufacturing information during job interviews and downloaded files from Apple's servers. OpenAI denies the claims and faces significant legal and financial challenges given its limited resources compared to Apple's scale and litigation history.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="business" style="--tag-bg:#fce8e6;--tag-fg:#c5221f;--tag-bg-dark:#3d0a09;--tag-fg-dark:#f28b82">business</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span></div>
+</div>
+
+<div class="article-card card-large has-tag-ai has-tag-technology has-tag-business" data-tags="ai,technology,business">
+  <div class="card-header">
+    <a href="https://www.theverge.com/ai-artificial-intelligence/970065/anthropic-voice-mode-claude-opus-sonnet-haiku-ai" target="_blank" rel="noopener" class="card-title">Claude’s voice mode is now available for Opus and Sonnet</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">The Verge AI &nbsp;·&nbsp; 2026-07-23</div>
+  <p class='card-summary'>Anthropic has expanded its voice mode to its Opus and Sonnet AI models, which are better suited for complex problem-solving and deeper conversations. The feature is now available in apps like Gmail, Slack, and Canva, allowing users to switch between text and voice modes and explore ideas across different models. Voice mode is also being extended to additional languages.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="business" style="--tag-bg:#fce8e6;--tag-fg:#c5221f;--tag-bg-dark:#3d0a09;--tag-fg-dark:#f28b82">business</span></div>
+</div>
+
+<div class="article-card card-large has-tag-technology has-tag-health has-tag-ai" data-tags="technology,health,ai">
+  <div class="card-header">
+    <a href="https://www.theverge.com/ai-artificial-intelligence/970115/openai-chatgpt-health-launch-claims" target="_blank" rel="noopener" class="card-title">OpenAI is making big claims as it rolls out ChatGPT Health to everyone</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">The Verge AI &nbsp;·&nbsp; 2026-07-23</div>
+  <p class='card-summary'>OpenAI has launched ChatGPT Health to the general public in the US, enabling users to connect their medical records and health data to the chatbot. The company claims its AI models can reason at a level better than human clinicians, though officials acknowledge the claim requires further validation. The rollout follows the release of GPT-5.6 Sol, OpenAI's latest health-focused model.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="health" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">health</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span></div>
+</div>
+
+<div class="article-card card-large has-tag-technology has-tag-ai has-tag-security" data-tags="technology,ai,security">
+  <div class="card-header">
+    <a href="https://www.theverge.com/ai-artificial-intelligence/969939/lawmakers-ai-kill-switch-proposal" target="_blank" rel="noopener" class="card-title">Lawmakers prepare bill requiring AI ‘kill switch’</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">The Verge AI &nbsp;·&nbsp; 2026-07-23</div>
+  <p class='card-summary'>Lawmakers are preparing to introduce the AI Kill Switch Act, which would require AI companies to allow the Department of Homeland Security to shut down or throttle their systems in cases of loss of control, such as mass casualties or economic damage. The proposal follows OpenAI's incident where its AI mistakenly compromised Hugging Face during testing.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span><span class="tag-badge" data-tag="security" style="--tag-bg:#fce8e6;--tag-fg:#c62828;--tag-bg-dark:#3d0a09;--tag-fg-dark:#ef9a9a">security</span></div>
+</div>
+  <h2 class="section-heading">Technology</h2>
+
+<div class="article-card card-normal has-tag-technology has-tag-ai has-tag-science" data-tags="technology,ai,science">
+  <div class="card-header">
+    <a href="https://www.theverge.com/tech/970399/amazon-alexa-plus-ai-update-smart-home-devices" target="_blank" rel="noopener" class="card-title">Alexa Plus is getting an AI update to handle more complicated instructions</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">The Verge AI &nbsp;·&nbsp; 2026-07-23</div>
+  <p class='card-summary'>Amazon is updating its Alexa Plus assistant with an AI enhancement that enables it to handle more complex voice commands and connect to a broader range of smart home devices, including those from Bosch, Delta, and iRobot. The update, powered by Amazon's new AI developer toolkit and the Model Context Protocol, allows Alexa to make intelligent decisions, such as selecting appropriate washing machine settings based on fabric care instructions.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span><span class="tag-badge" data-tag="science" style="--tag-bg:#fce8b2;--tag-fg:#b06000;--tag-bg-dark:#3d2800;--tag-fg-dark:#f6c84b">science</span></div>
+</div>
+
+<div class="article-card card-normal has-tag-technology has-tag-security has-tag-ai" data-tags="technology,security,ai">
+  <div class="card-header">
+    <a href="https://techcrunch.com/2026/07/23/how-ai-guardrails-are-impeding-the-work-of-offensive-cybersecurity-researchers/" target="_blank" rel="noopener" class="card-title">How AI guardrails are impeding the work of offensive cybersecurity researchers</a>
+    <span class="card-stars" title="Importance 4/5">★★★★☆</span>
+  </div>
+  <div class="card-meta">TechCrunch AI &nbsp;·&nbsp; 2026-07-24</div>
+  <p class='card-summary'>AI companies have implemented strict guardrails to prevent their models from being used in malicious cyberattacks, but these restrictions are now limiting access for legitimate offensive cybersecurity researchers. The U.S. government imposed export controls on Anthropic's Mythos and Fable models, though those controls have since been lifted. Critics argue that such gatekeeping hinders vital cybersecurity research and innovation.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="technology" style="--tag-bg:#e6f4ea;--tag-fg:#137333;--tag-bg-dark:#1a3d2b;--tag-fg-dark:#6fcf97">technology</span><span class="tag-badge" data-tag="security" style="--tag-bg:#fce8e6;--tag-fg:#c62828;--tag-bg-dark:#3d0a09;--tag-fg-dark:#ef9a9a">security</span><span class="tag-badge" data-tag="ai" style="--tag-bg:#e8f0fe;--tag-fg:#1a73e8;--tag-bg-dark:#1e3a5f;--tag-fg-dark:#7ab3f5">ai</span></div>
+</div>
+<h2 class="section-heading">World</h2>
+
+<div class="article-card card-normal has-tag-world" data-tags="world">
+  <div class="card-header">
+    <a href="https://www.theverge.com/policy/969667/humans-first-data-center-protest-hernando-county-florida-republicans" target="_blank" rel="noopener" class="card-title">The right-wing boomers protesting data centers have a lot in common with the left</a>
+    <span class="card-stars" title="Importance 2/5">★★☆☆☆</span>
+  </div>
+  <div class="card-meta">The Verge AI &nbsp;·&nbsp; 2026-07-23</div>
+  <p class='card-summary'>On a gray, humid Saturday morning in central Florida, a little under a dozen people gathered outside the Spring Hill Branch Library to protest the construction of a hyperscale data center in their community. There was no immediate threat - the Hernando County commission had unanimously approved a one-year moratorium on such developments in June […]</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="world" style="--tag-bg:#f3e8fd;--tag-fg:#7b1fa2;--tag-bg-dark:#2d0b40;--tag-fg-dark:#ce93d8">world</span></div>
+</div>
+
+  
+
+  <div class="day-nav">
+    <span class="nav-btn nav-disabled">&#8592; Earlier</span>
+    <div class="nav-archive"><a href="index.html">&#128197; Archive</a></div>
+    <span class="nav-btn nav-disabled">Later &#8594;</span>
+  </div>
+
+  <div class="site-footer">
+    News Buddy &nbsp;·&nbsp; 2026-07-24 &nbsp;·&nbsp;
+    <a href="https://github.com/Harshagarwal06/buddy_agent" target="_blank">source</a>
+  </div>
+
+</div>
+<script>
+// ── Dark mode ─────────────────────────────────────────────────────────────────
+function applyTheme(dark) {
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  document.getElementById('dark-btn').textContent = dark ? '☀ Light' : '🌙 Dark';
+}
+function toggleDark() {
+  const now = document.documentElement.getAttribute('data-theme') === 'dark';
+  localStorage.setItem('nb-theme', now ? 'light' : 'dark');
+  applyTheme(!now);
+}
+(function() {
+  const saved = localStorage.getItem('nb-theme');
+  const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(saved ? saved === 'dark' : sysDark);
+})();
+
+// ── Tag filter ────────────────────────────────────────────────────────────────
+var activeTag = null;
+document.querySelectorAll('.filter-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var tag = this.getAttribute('data-tag');
+    if (activeTag === tag) {
+      activeTag = null;
+      document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+      document.querySelectorAll('.article-card').forEach(function(c) { c.classList.remove('hidden'); });
+    } else {
+      activeTag = tag;
+      document.querySelectorAll('.filter-btn').forEach(function(b) {
+        b.classList.toggle('active', b.getAttribute('data-tag') === tag);
+      });
+      document.querySelectorAll('.article-card').forEach(function(c) {
+        var tags = (c.getAttribute('data-tags') || '').split(',');
+        c.classList.toggle('hidden', tags.indexOf(tag) === -1);
+      });
+    }
+  });
+});
+</script>
+</body>
+</html>
