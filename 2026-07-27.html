@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>News Buddy — 2026-07-27</title>
+<style>
+:root {
+  --bg: #f8f9fa;
+  --surface: #ffffff;
+  --border: #e0e0e0;
+  --text: #1a1a1a;
+  --text-muted: #666;
+  --text-faint: #999;
+  --accent: #1a73e8;
+  --accent-hover: #1557b0;
+  --header-bg: linear-gradient(135deg, #1a73e8, #0d47a1);
+  --shadow: 0 1px 4px rgba(0,0,0,.07);
+  --star-color: #f9a825;
+  --tag-bg: var(--tag-bg-light, #e8f0fe);
+  --tag-fg: var(--tag-fg-light, #1a73e8);
+}
+[data-theme="dark"] {
+  --bg: #111318;
+  --surface: #1e2128;
+  --border: #2e3240;
+  --text: #e8eaed;
+  --text-muted: #9aa0a6;
+  --text-faint: #5f6368;
+  --accent: #7ab3f5;
+  --accent-hover: #aecbfa;
+  --header-bg: linear-gradient(135deg, #1e3a5f, #0d2647);
+  --shadow: 0 1px 4px rgba(0,0,0,.3);
+  --star-color: #f6c84b;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  transition: background .2s, color .2s;
+}
+.wrap { max-width: 780px; margin: 0 auto; padding: 20px 16px 60px; }
+
+/* Header */
+.site-header {
+  background: var(--header-bg);
+  color: #fff;
+  border-radius: 14px;
+  padding: 22px 24px 18px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.header-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.header-label { font-size: 0.72rem; opacity: .75; letter-spacing: .07em; text-transform: uppercase; margin-bottom: 4px; }
+.header-date { font-size: 1.55rem; font-weight: 800; margin-bottom: 4px; }
+.header-count { font-size: 0.82rem; opacity: .8; }
+.dark-toggle {
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.3);
+  color: #fff;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background .15s;
+}
+.dark-toggle:hover { background: rgba(255,255,255,.28); }
+
+/* Source stats */
+.stats-bar {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-top: 12px; padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,.2);
+}
+.stat-pill {
+  font-size: 0.72rem; color: rgba(255,255,255,.8);
+  background: rgba(255,255,255,.12);
+  border-radius: 10px; padding: 2px 8px;
+}
+.stat-pill b { color: #fff; }
+
+/* Tag filter bar */
+.filter-bar {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-bottom: 18px;
+}
+.filter-btn {
+  background: var(--surface); border: 1.5px solid var(--border);
+  color: var(--text-muted); border-radius: 20px;
+  padding: 4px 12px; font-size: 0.75rem; font-weight: 600;
+  cursor: pointer; transition: all .15s;
+}
+.filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+.filter-btn.active {
+  background: var(--accent); border-color: var(--accent);
+  color: #fff;
+}
+
+/* Section headings */
+.section-heading {
+  font-size: 0.78rem; font-weight: 700; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: .08em;
+  border-bottom: 2px solid var(--border); padding-bottom: 6px;
+  margin: 28px 0 14px;
+}
+
+/* Cards */
+.article-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 18px; margin-bottom: 12px;
+  box-shadow: var(--shadow); transition: opacity .2s, transform .15s;
+}
+.article-card.card-large { padding: 20px 22px; }
+.article-card.hidden { display: none; }
+.card-header {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; gap: 10px; margin-bottom: 5px;
+}
+.card-title {
+  font-size: 0.96rem; font-weight: 700; color: var(--text);
+  text-decoration: none; line-height: 1.4; flex: 1;
+  transition: color .12s;
+}
+.card-large .card-title { font-size: 1.04rem; }
+.card-title:hover { color: var(--accent); }
+.card-stars { font-size: 0.85rem; color: var(--star-color); white-space: nowrap; letter-spacing: 1px; flex-shrink: 0; }
+.card-meta { font-size: 0.75rem; color: var(--text-faint); margin-bottom: 8px; }
+.icymi-badge {
+  display: inline-block; margin-left: 7px; padding: 1px 6px;
+  border: 1px solid var(--border); border-radius: 999px;
+  color: var(--text-muted); font-size: 0.65rem; font-weight: 700;
+  letter-spacing: .04em;
+}
+.card-summary { font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
+.card-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+
+/* Tag badges */
+.tag-badge {
+  background: var(--tag-bg); color: var(--tag-fg);
+  padding: 2px 9px; border-radius: 12px;
+  font-size: 0.7rem; font-weight: 600;
+}
+[data-theme="dark"] .tag-badge {
+  background: var(--tag-bg-dark, #1e3a5f);
+  color: var(--tag-fg-dark, #7ab3f5);
+}
+
+/* Navigation */
+.day-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin: 32px 0 20px; gap: 10px;
+}
+.nav-btn {
+  background: var(--surface); border: 1.5px solid var(--border);
+  color: var(--text-muted); border-radius: 8px;
+  padding: 8px 16px; font-size: 0.82rem; font-weight: 600;
+  text-decoration: none; transition: all .15s;
+}
+a.nav-btn:hover { border-color: var(--accent); color: var(--accent); }
+.nav-disabled { opacity: .4; cursor: default; }
+.nav-archive {
+  font-size: 0.78rem; color: var(--text-faint); text-align: center;
+}
+.nav-archive a { color: var(--accent); text-decoration: none; }
+.nav-archive a:hover { text-decoration: underline; }
+
+/* Empty state */
+.empty-msg { color: var(--text-faint); text-align: center; padding: 48px 0; }
+
+/* Footer */
+.site-footer {
+  text-align: center; font-size: 0.72rem; color: var(--text-faint);
+  margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border);
+}
+.site-footer a { color: var(--text-faint); }
+.site-footer a:hover { color: var(--accent); }
+
+@media (max-width: 600px) {
+  .wrap { padding: 12px 10px 40px; }
+  .site-header { border-radius: 10px; padding: 16px 16px 14px; }
+  .header-date { font-size: 1.3rem; }
+  .article-card { padding: 14px 14px; }
+  .article-card.card-large { padding: 16px 14px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="site-header">
+    <div class="header-top">
+      <div>
+        <div class="header-label">Daily News Digest</div>
+        <div class="header-date">2026-07-27</div>
+        <div class="header-count">8 articles</div>
+      </div>
+      <button class="dark-toggle" onclick="toggleDark()" id="dark-btn">🌙 Dark</button>
+    </div>
+    <div class="stats-bar"><span class='stat-pill'>TechCrunch AI <b>3</b></span><span class='stat-pill'>Google News Gemini <b>2</b></span><span class='stat-pill'>Hacker News AI <b>2</b></span><span class='stat-pill'>Berkeley AI Research <b>1</b></span></div>
+  </div>
+
+  <div class="filter-bar"><button class="filter-btn" data-tag="world">world</button></div>
+
+  
+  <h2 class="section-heading">Top Stories</h2>
+  
+<div class="article-card card-large has-tag-world" data-tags="world">
+  <div class="card-header">
+    <a href="https://techcrunch.com/2026/07/26/hugging-face-ceo-calls-for-radical-transparency-after-unprecedented-openai-hack/" target="_blank" rel="noopener" class="card-title">Hugging Face CEO calls for ‘radical transparency’ after ‘unprecedented’ OpenAI hack</a>
+    <span class="card-stars" title="Importance 2/5">★★☆☆☆</span>
+  </div>
+  <div class="card-meta">TechCrunch AI &nbsp;·&nbsp; 2026-07-26</div>
+  <p class='card-summary'>"The first autonomous agent cyberattack is an unprecedented event. It deserves an unprecedented response!"</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="world" style="--tag-bg:#f3e8fd;--tag-fg:#7b1fa2;--tag-bg-dark:#2d0b40;--tag-fg-dark:#ce93d8">world</span></div>
+</div>
+
+<div class="article-card card-large has-tag-world" data-tags="world">
+  <div class="card-header">
+    <a href="https://news.google.com/rss/articles/CBMib0FVX3lxTE1NT29sdGFFNHVaVVhnN1NaOHJvZXR4d2xDekJzZFk1NG5jVWlkVE0wZmhrTndHVmlCTVByVlQ2TnZEaWZPUktVU3ByOVRvcVVPNnE5N0hSbllWSGVEc05YRUVxaGdadWF0bVUxSjNvaw?oc=5" target="_blank" rel="noopener" class="card-title">Why Is Apple's AI So Different From Samsung's, And Who Is Winning? - Yellow.com</a>
+    <span class="card-stars" title="Importance 2/5">★★☆☆☆</span>
+  </div>
+  <div class="card-meta">Google News Gemini &nbsp;·&nbsp; 2026-07-26</div>
+  <p class='card-summary'>Why Is Apple's AI So Different From Samsung's, And Who Is Winning? Yellow.com</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="world" style="--tag-bg:#f3e8fd;--tag-fg:#7b1fa2;--tag-bg-dark:#2d0b40;--tag-fg-dark:#ce93d8">world</span></div>
+</div>
+
+<div class="article-card card-large has-tag-world" data-tags="world">
+  <div class="card-header">
+    <a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxOcXNhaXlNdHdKb05JWlh6S2l1U0ppdzZINkhDQzQzUWlZTTJFR252aW9wYm1heUJoTmpid08zY3ByQUFURTJ6YVV6ZExGWkxtaUNzdVBmVThTYWlQUGpZLUphMHpidHRUZVpjaXJwTTFiMGRmUWo0SExUTlBBX05DSkFETF9WSE9ERmZ0NE5TS1ZDU0J1MVlOeFJ5a1ZIX1ZNaW5EbUVXc9IBpwFBVV95cUxOcXNhaXlNdHdKb05JWlh6S2l1U0ppdzZINkhDQzQzUWlZTTJFR252aW9wYm1heUJoTmpid08zY3ByQUFURTJ6YVV6ZExGWkxtaUNzdVBmVThTYWlQUGpZLUphMHpidHRUZVpjaXJwTTFiMGRmUWo0SExUTlBBX05DSkFETF9WSE9ERmZ0NE5TS1ZDU0J1MVlOeFJ5a1ZIX1ZNaW5EbUVXcw?oc=5" target="_blank" rel="noopener" class="card-title">What data AI chatbots collect from you, and what you can actually do about it - Neowin</a>
+    <span class="card-stars" title="Importance 2/5">★★☆☆☆</span>
+  </div>
+  <div class="card-meta">Google News Gemini &nbsp;·&nbsp; 2026-07-26</div>
+  <p class='card-summary'>What data AI chatbots collect from you, and what you can actually do about it Neowin</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="world" style="--tag-bg:#f3e8fd;--tag-fg:#7b1fa2;--tag-bg-dark:#2d0b40;--tag-fg-dark:#ce93d8">world</span></div>
+</div>
+
+<div class="article-card card-large has-tag-world" data-tags="world">
+  <div class="card-header">
+    <a href="https://techcrunch.com/2026/07/26/making-sense-of-the-panic-over-chinese-ai/" target="_blank" rel="noopener" class="card-title">Making sense of the panic over Chinese AI</a>
+    <span class="card-stars" title="Importance 2/5">★★☆☆☆</span>
+  </div>
+  <div class="card-meta">TechCrunch AI &nbsp;·&nbsp; 2026-07-26</div>
+  <p class='card-summary'>On the latest episode of Equity, we discussed why Moonshot AI's Kimi seemed to panic Silicon Valley and Wall Street.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="world" style="--tag-bg:#f3e8fd;--tag-fg:#7b1fa2;--tag-bg-dark:#2d0b40;--tag-fg-dark:#ce93d8">world</span></div>
+</div>
+
+<div class="article-card card-large has-tag-world" data-tags="world">
+  <div class="card-header">
+    <a href="http://bair.berkeley.edu/blog/2026/07/26/abbel/" target="_blank" rel="noopener" class="card-title">Teaching LLMs to Update Beliefs for Efficient Long-Horizon Interaction</a>
+    <span class="card-stars" title="Importance 2/5">★★☆☆☆</span>
+  </div>
+  <div class="card-meta">Berkeley AI Research &nbsp;·&nbsp; 2026-07-26</div>
+  <p class='card-summary'>--> --> Overview of ABBEL compared to traditional recursive summarization. Beliefs replace the full interaction history as the agent’s working context, and belief grading improves performance by supervising the contents of each belief state.. As task horizons grow, LLM contexts can’t scale forever. Self-summarization enables concise, interpretable contexts, but at a significant performance cost, especially for human assistance domains where high quality data is scarce, e.g., collaborative code generation. We address this with ABBEL: a framework that isolates and supervises the information content of summaries in the form of natural-language belief states. Motivation: the cost of recursive summarization For language models to effectively assist with increasingly complex tasks such as software development, they must be able to interact with us over hundreds or even thousands of steps. For such long tasks, it is impractical to keep the history of the entire interaction in context. The heuristic approach used so far has been summary generation, sometimes called context compaction. For example, Cursor’s latest model composer 2.5 uses compaction during training for improved performance (Cassano et al., 2026). Alongside composer, Grandcode (DeepReinforce et al., 2026), the first system to consistently beat all human competitors in online coding competitions, despite using one of the newest efficient attention models (Qwen 3.5-397B),1 still found it necessary to employ context summarization. But compaction has a problem. Despite seemingly low performance gaps in benchmarks, model servers like Cursor continue to recommend that users avoid compaction with their coding assistants in the middle of a task (Heule et al., 2026). To understand why, see below the performance over RL fine-tuning of a Context summary model compared to full context models in Combination Lock, a Wordle-like game that allows up to 16 guesses.2 Though both model types improve over the course of training, the summary model never closes the gap. --> Fig. 1: Average attempts to guess the target word on Combination Lock over RL fine-tuning (lower is better). Context-summary policies improve with training but do not close the gap to full-context policies. Making models self-summarize while completing a task increases the complexity of the learning problem. While this could typically be addressed by training with more data, the performance degradation observed in real world interactive settings likely arises from the difficulty we have in creating and using human simulators effectively to generate high quality training environments (Lin et al., 2025, Tomlin et al., 2025). Thus, the better you can learn to summarize on the limited and messy multiturn interaction trajectories you can collect, the better off your model will be for downstream users. ABBEL: acting through belief bottlenecks --> Fig. 2: Autoencoder-inspired belief grading. The model encodes prior belief, action and observation (bt, at, ot) into posterior belief bt+1 and is rewarded for how well select information from the history can be reconstructed from that belief. To address poor learning efficiency, we isolate the summary generation task. Drawing inspiration from recursive Bayesian estimation, we formulate summaries as belief states, which we periodically prompt the model to update based on new information.3 Click to pause --> ‹ Prev Pause Next › 1 / 16 Fig. 3: ABBEL rollout. Belief updates from the latest observation alternate with action selection conditioned only on the current posterior belief. Belief grading We then extract and supervise the contents of the belief states (Fig. 2, Belief Grading). Belief grading can be thought of as adding an auxiliary RL task, using heuristics designed to capture what makes a good belief as the reward. An example heuristic for coding could be shorter is better, but closer to being able to reconstruct the git diff is also better, so balancing these would yield a good belief. In domains where good heuristics are hard to define, we propose a general autoencoding-inspired grading function, which treats the current language model πθ as both encoder and decoder of information from the history, and the belief states as the codes. We grade each belief bt+1 by how well it can be used by the current model πθ to reconstruct the most recent observation ot: --> Eq. 1: Reconstruction grading objective. Here bt+1 is the updated belief, ot the latest observation, at the action just taken, bt the prior belief, pI the task prompt, and πθ the current model. Higher grades reward beliefs that retain information needed to decode the latest observation. What do we gain by grading beliefs? Collaborative coding on CollabBench We demonstrate the utility of belief grading in our motivating domain of human-driven assistive coding, with the CollabBench environment from Sweet-RL (Zhou et al., 2025). --> Fig. 4: CollabBench collaborative coding environment. The agent asks clarifying questions, then submits a function scored against hidden unit tests. We see that with the general reconstruction-based belief grading function we reduce the performance gap from full context models by about 50%, and train in 50% fewer steps compared to training models to summarize without belief grading (no BG). After training, ABBEL still uses significantly less memory than the full context setting, as measured by the peak context token length (Peak Tokens). Model Test Pass Rate ↑ Success Rate ↑ Peak Tokens × 10² ↓ Training Steps ↓ Full Context 0.52±0.02 0.39±0.02 14.08±0.55 100 ABBEL (no BG) 0.46±0.02 0.31±0.02 4.20±0.37 100 ABBEL-rec-BG 0.48±0.01 0.36±0.01 6.01±0.33 50 Fig. 5: CollabBench results. With reconstruction belief grading, ABBEL-rec-BG recovers about half the gap to full context while using fewer peak tokens, and trains in 50 steps instead of 100. Combination Lock Additionally, in CombinationLock, we demonstrate that ABBEL with a belief grader which leverages domain knowledge (by computing useful statistics over the history and checking that they can be reconstructed from the belief state), enables even higher learning efficiency than full context (FULL CTX) models. --> Fig. 6: Average attempts to guess the target word on Combination Lock (lower is better). With domain-knowledge belief grading, ABBEL approaches or exceeds FULL CTX in this setting; without belief grading, learning is slower. Multi-objective question answering In a third environment, multi-objective question answering (from MEM1 Zhang et al., 2025, a recent work which performed end-to-end optimization in a modified version of typical recursive summarization), we demonstrate the utility of isolating belief states from reasoning, by showing that a Peak Belief length Penalty (more details in paper) significantly reduces memory usage with minimal performance degradation, unlike is commonly observed when penalizing reasoning lengths (Arora et al., 2025). --> Fig. 7: Exact-match score and peak memory versus number of objectives in multi-objective QA. ABBEL with a peak belief penalty (PBP) maintains comparable performance while using less memory than MEM1 and ABBEL without PBP in this evaluation. Related work Alternative solutions to managing long contexts involve different tradeoffs, and are worth considering depending on the requirements of a deployed system. Context compression methods generate dense representations which, while computationally efficient, sacrifice human-understandability (Kontonis et al., 2026, Eyuboglu et al., 2025, Gupta et al., 2025, Chevalier et al., 2023, Deng et al., 2025, Deng et al., 2025, Bulatov et al., 2022). Hand-designed summarization prompts (Wang et al., 2025, Örwall et al., 2025, Starace et al., 2025) and pruning strategies (Jiang et al., 2024) specific to target environments require expert human knowledge and don’t allow an agent to learn what to remember as part of its decision-making strategy. Methods that process long contexts into an external memory store (Packer et al., 2023, Xu et al., 2025) for the agents or subagents to query (Zhang et al., 2025) are complementary, as they may benefit from better next context creation through summarization training. We would like to point out some exciting works in the space of general recursive summarization focused on math (Wu et al., 2026), reasoning with belief generation (Zhou et al., 2025), competitive coding with a distilled summarization module using similar autoencoding objectives to our general belief grader (DeepReinforce et al., 2026), and adding continuous features to summaries (Kontonis et al., 2026). What’s next for better memory? Many more possibilities are enabled through using explicit belief states as information bottlenecks for multi-step interaction. You could reward actions based on their effect on the belief state to guide exploration, transmit the explicit belief states for better communication between agents, or even improve user controllability by directly modifying the memories on which the agents’ decisions are based. Some forms of information, e.g., what a person looks like, are not represented well by text alone. A continuously learning system will also have to capture such information. Additionally, if we want a system to learn to communicate in a brand new language or to play a brand new game better than any person in the world, the skills accumulated over the lifetime of conversations or games must be stored in a very compressed form, essentially taking on the role of the weights of the model itself. More powerful systems will likely utilize a combination of multiple forms of memory, where the contents of the context may correspond to working memory while other approaches are used for short and long-term memory. How to instantiate these other forms of memory, for instance via test-time training, adapter memories, continuous context memories, or some combination thereof, presents an exciting challenge. Acknowledgements Acknowledgements: We would like to thank Alane Suhr and Kartik Goyal for advising this research as well as Ethan Mendes, David He, Jitesh Jain, and Nicholas Tomlin for comments on early drafts of this post. We would like to thank the MEM1 authors for their email correspondence and for sharing private reviewer feedback which we found particularly insightful. Citation If abbel was inspiring for your future work, please cite us with this! And here is some advice for doing similar research! @misc{lidayan2026abbellearningnaturallanguagebelief, title={ABBEL: Learning Natural-Language Belief States for Memory-Efficient Interaction}, author={Aly Lidayan and Jakob Bjorner and Satvik Golechha and Kartik Goyal and Alane Suhr}, year={2026}, eprint={2512.20111}, archivePrefix={arXiv}, primaryClass={cs.CL}, url={https://arxiv.org/abs/2512.20111}, } With newer models the number of tokens till 50% compute spend is on attention gets much larger than 25K. Interleaving linear attention alternatives with full attention as is done with gpt-oss and DeepSeekv4, results in massive flops reductions for the attention computation. For example with DeepSeekv4-Pro (1.6T A49B) it requires nearly 450 thousand tokens to reach the 50% tradeoff point. Grandcode uses Qwen-3.5-397B-A17B a model which hits 50% FLOPs for attention at ~150 thousand tokens. ↩ This setting is technically solvable with much more computationally effective tools, but serves as a flexible test bed to study properties of recursive summarization. Bertsimas et al., 2022, showed that an exact solution for the wordle game instantiated with the original vocabulary of the javascript game can be found with dynamic programming, but evidently the general formulation of wordle as a guessing game on K letters with L attempts and some dictionary of valid words and correct words D is NP hard to determine the minimal number of moves required. ↩ In practice there is an O(N/K) overhead cost for summary. N is the total number of actions. K is the number of actions till summarization is triggered. This is necessarily true for any summary approach. For ease of illustration this gif uses K = 1. In our experiments, to put more emphasis on summarization weaknesses we also use K=1. In practice overhead is small as K can be chosen to be near the efficient hardware limit. ↩</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="world" style="--tag-bg:#f3e8fd;--tag-fg:#7b1fa2;--tag-bg-dark:#2d0b40;--tag-fg-dark:#ce93d8">world</span></div>
+</div>
+  <h2 class="section-heading">World</h2>
+
+<div class="article-card card-normal has-tag-world" data-tags="world">
+  <div class="card-header">
+    <a href="https://blogs.cisco.com/ai/introducing-antares-the-most-efficient-open-weight-ai-models-for-vulnerability-localization" target="_blank" rel="noopener" class="card-title">Antares: Highly Efficient Open Weight AI Models for Vulnerability Localization</a>
+    <span class="card-stars" title="Importance 2/5">★★☆☆☆</span>
+  </div>
+  <div class="card-meta">Hacker News AI &nbsp;·&nbsp; 2026-07-27</div>
+  <p class='card-summary'>Article URL: https://blogs.cisco.com/ai/introducing-antares-the-most-efficient-open-weight-ai-models-for-vulnerability-localization Comments URL: https://news.ycombinator.com/item?id=49065410 Points: 1 # Comments: 0</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="world" style="--tag-bg:#f3e8fd;--tag-fg:#7b1fa2;--tag-bg-dark:#2d0b40;--tag-fg-dark:#ce93d8">world</span></div>
+</div>
+
+<div class="article-card card-normal has-tag-world" data-tags="world">
+  <div class="card-header">
+    <a href="https://techcrunch.com/2026/07/26/are-brain-waves-the-next-unlock-for-physical-ai/" target="_blank" rel="noopener" class="card-title">Are brain waves the next unlock for physical AI?</a>
+    <span class="card-stars" title="Importance 2/5">★★☆☆☆</span>
+  </div>
+  <div class="card-meta">TechCrunch AI &nbsp;·&nbsp; 2026-07-27</div>
+  <p class='card-summary'>Forget YouTube videos—frontier physical AI models need multiple camera angles, dense annotation, and soon, brain wave readings.</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="world" style="--tag-bg:#f3e8fd;--tag-fg:#7b1fa2;--tag-bg-dark:#2d0b40;--tag-fg-dark:#ce93d8">world</span></div>
+</div>
+
+<div class="article-card card-normal has-tag-world" data-tags="world">
+  <div class="card-header">
+    <a href="https://rainslice.ai" target="_blank" rel="noopener" class="card-title">Show HN: Rainslice – AI Employees for Home Services Businesses</a>
+    <span class="card-stars" title="Importance 2/5">★★☆☆☆</span>
+  </div>
+  <div class="card-meta">Hacker News AI &nbsp;·&nbsp; 2026-07-27</div>
+  <p class='card-summary'>Hey friends,Introducing Rainslice - a suite of AI employees that run and grow your home services business.I'd like to introduce you to your first AI employee, Pamela.Pamela has a realistic voice and picks up the phone during after-hours (24/7) to book service jobs, and she also does follow-ups to bring in even more jobs.In the last 30 days, a small residential cleaning business in Los Angeles has booked an extra $22,000 in revenue using Pamela.For those of you that own a home service business, no matter how small, i would love to chat with you.Also, what AI employees would you like next? Comments URL: https://news.ycombinator.com/item?id=49065447 Points: 1 # Comments: 0</p>
+  <div class="card-tags"><span class="tag-badge" data-tag="world" style="--tag-bg:#f3e8fd;--tag-fg:#7b1fa2;--tag-bg-dark:#2d0b40;--tag-fg-dark:#ce93d8">world</span></div>
+</div>
+
+  
+
+  <div class="day-nav">
+    <span class="nav-btn nav-disabled">&#8592; Earlier</span>
+    <div class="nav-archive"><a href="index.html">&#128197; Archive</a></div>
+    <span class="nav-btn nav-disabled">Later &#8594;</span>
+  </div>
+
+  <div class="site-footer">
+    News Buddy &nbsp;·&nbsp; 2026-07-27 &nbsp;·&nbsp;
+    <a href="https://github.com/Harshagarwal06/buddy_agent" target="_blank">source</a>
+  </div>
+
+</div>
+<script>
+// ── Dark mode ─────────────────────────────────────────────────────────────────
+function applyTheme(dark) {
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  document.getElementById('dark-btn').textContent = dark ? '☀ Light' : '🌙 Dark';
+}
+function toggleDark() {
+  const now = document.documentElement.getAttribute('data-theme') === 'dark';
+  localStorage.setItem('nb-theme', now ? 'light' : 'dark');
+  applyTheme(!now);
+}
+(function() {
+  const saved = localStorage.getItem('nb-theme');
+  const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(saved ? saved === 'dark' : sysDark);
+})();
+
+// ── Tag filter ────────────────────────────────────────────────────────────────
+var activeTag = null;
+document.querySelectorAll('.filter-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var tag = this.getAttribute('data-tag');
+    if (activeTag === tag) {
+      activeTag = null;
+      document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+      document.querySelectorAll('.article-card').forEach(function(c) { c.classList.remove('hidden'); });
+    } else {
+      activeTag = tag;
+      document.querySelectorAll('.filter-btn').forEach(function(b) {
+        b.classList.toggle('active', b.getAttribute('data-tag') === tag);
+      });
+      document.querySelectorAll('.article-card').forEach(function(c) {
+        var tags = (c.getAttribute('data-tags') || '').split(',');
+        c.classList.toggle('hidden', tags.indexOf(tag) === -1);
+      });
+    }
+  });
+});
+</script>
+</body>
+</html>
