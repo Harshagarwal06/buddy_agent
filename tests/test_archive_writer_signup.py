@@ -22,6 +22,9 @@ def test_signup_form_rendered_when_username_set(tmp_path, monkeypatch):
     assert "https://buttondown.com/api/emails/embed-subscribe/newsbuddy" in html
     assert 'name="email"' in html
     assert "signup-box" in html
+    assert '<label class="signup-label" for="signup-email">Email address</label>' in html
+    assert 'aria-describedby="signup-help"' in html
+    assert "No spam. Unsubscribe from any email." in html
 
 
 def test_signup_form_omitted_when_username_unset(tmp_path, monkeypatch):
@@ -43,6 +46,11 @@ def test_archive_uses_shared_editorial_system(tmp_path, monkeypatch):
     html = index.read_text(encoding="utf-8")
 
     assert '<link rel="stylesheet" href="tokens.css">' in html
+    assert '<link rel="icon" href="favicon.svg" type="image/svg+xml">' in html
     assert '<h1 class="mast-name">News Buddy</h1>' in html
     assert "<h2>Issue archive</h2>" in html
+    assert '<time class="day-date" datetime="2026-07-04">Jul 4, 2026</time>' in html
+    assert 'href="#main-content">Skip to archive</a>' in html
+    assert 'aria-label="Use dark theme" aria-pressed="false"' in html
+    assert 'id="clear-search"' in html
     assert (tmp_path / "tokens.css").exists()

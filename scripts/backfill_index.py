@@ -25,13 +25,12 @@ import httpx
 from news_buddy.index_writer import write_index, write_manifest
 
 _DAY_LINK = re.compile(r'href="(\d{4}-\d{2}-\d{2})\.html"')
-_ARTICLE = re.compile(
-    r'<article class="article-card[^"]*" data-tags="([^"]*)">(.*?)</article>',
-    re.S,
-)
+_ARTICLE = re.compile(r'<article class="article-card[^"]*"[^>]*data-tags="([^"]*)"[^>]*>(.*?)</article>', re.S)
 _TITLE = re.compile(r'<a href="([^"]+)"[^>]*class="card-title">([^<]*)</a>')
 _META_SOURCE = re.compile(r'<div class="card-meta">([^<]*)')
-_META_DATE = re.compile(r'<span class="dot">·</span>\s*(\d{4}-\d{2}-\d{2})')
+_META_DATE = re.compile(
+    r'(?:datetime="|<span class="dot">·</span>\s*)(\d{4}-\d{2}-\d{2})'
+)
 _SUMMARY = re.compile(r"<p class='card-summary'>(.*?)</p>", re.S)
 _IMPORTANCE = re.compile(r'aria-label="Importance (\d) of 5"')
 
@@ -60,10 +59,8 @@ def parse_digest_html(html: str) -> list[dict]:
         summary = summary_m.group(1).strip() if summary_m else ""
 
         importance_m = _IMPORTANCE.search(block)
-        # _article_card's aria-label carries the raw (unclamped) importance
-        # value -- only the star glyphs are clamped via _stars(). Clamp here
-        # too so backfilled records match the 1-5 range the rest of the
-        # pipeline assumes.
+        # _article_card's aria-label carries the raw importance value.
+        # Clamp it so backfilled records match the pipeline's 1-5 range.
         importance = max(1, min(5, int(importance_m.group(1)))) if importance_m else 3
 
         records.append({

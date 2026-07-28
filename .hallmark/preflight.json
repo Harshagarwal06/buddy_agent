@@ -1,10 +1,10 @@
 {
   "scanned_at": "2026-07-28",
   "framework": "Python-generated static HTML",
-  "font_stack": "Newsreader with system sans UI",
-  "palette": "Inline light/dark hex custom properties",
+  "font_stack": "Newsreader display/body with IBM Plex Sans UI",
+  "palette": "Shared OKLCH light/dark design tokens",
   "motion": "Vanilla JavaScript; no motion library",
-  "spacing": "Ad hoc pixel and rem values",
+  "spacing": "Shared named spacing scale",
   "deployment": "GitHub Pages via gh-pages",
   "preserved": [
     "dated routes",

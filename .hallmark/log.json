@@ -9,6 +9,14 @@
     "nav": "N6 Newspaper masthead",
     "footer": "Ft4 Dense typographic",
     "enrichment": "Tier C generated editorial figures",
-    "brief": "News Buddy dated digest and archive redesign inspired by The Daily Diff"
+    "brief": "News Buddy dated digest and archive redesign inspired by The Daily Diff",
+    "audit_repaired_at": "2026-07-28",
+    "audit_fixes": [
+      "removed duplicate article destinations and floating content overlap",
+      "made filters, theme controls, skip navigation, and search states accessible",
+      "repaired mobile masthead and signup layouts",
+      "reduced excessive first-screen whitespace and long-title scale",
+      "added human-readable dates, useful empty states, reduced-motion behavior, and favicon"
+    ]
   }
 ]

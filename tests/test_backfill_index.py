@@ -45,7 +45,7 @@ def test_parse_digest_html_handles_missing_summary_and_clamps_importance():
         "published_at": "2026-07-16T09:00:00Z",
         "summary": "",
         "tags": [],
-        "importance": 0,  # _article_card clamps this to 1 via _stars()
+        "importance": 0,  # _article_card clamps the importance label to 1
     }
     html = f"<html><body>{_article_card(item)}</body></html>"
 
@@ -80,6 +80,10 @@ def test_article_card_renders_responsive_image_markup():
     assert 'alt="A blue model emerging from a geometric circuit."' in html
     assert 'loading="eager"' in html
     assert 'fetchpriority="high"' in html
+    assert html.count('href="https://example.test/visual"') == 1
+    assert 'target="_blank"' not in html
+    assert '<figure class="card-image">' in html
+    assert '<time datetime="2026-07-17">Jul 17, 2026</time>' in html
 
 
 def test_digest_uses_shared_editorial_tokens_and_masthead(tmp_path):
@@ -98,8 +102,57 @@ def test_digest_uses_shared_editorial_tokens_and_masthead(tmp_path):
     tokens = (tmp_path / "tokens.css").read_text(encoding="utf-8")
 
     assert '<link rel="stylesheet" href="tokens.css">' in html
+    assert '<link rel="icon" href="favicon.svg" type="image/svg+xml">' in html
     assert '<h1 class="mast-name">News Buddy</h1>' in html
     assert "The briefing" in html
+    assert 'href="#main-content">Skip to stories</a>' in html
+    assert 'aria-label="Use dark theme" aria-pressed="false"' in html
+    assert "Jul 28, 2026" in html
+    assert 'class="filter-bar"' not in html
     assert "★★★★" not in html
     assert "--color-paper: oklch(" in tokens
     assert "macrostructure: Long Document" in tokens
+    assert (tmp_path / "favicon.svg").exists()
+
+
+def test_single_desk_uses_plain_more_stories_heading(tmp_path):
+    items = [
+        {
+            "title": f"AI story {index}",
+            "url": f"https://example.test/{index}",
+            "source": "Test Feed",
+            "published_at": "2026-07-28",
+            "summary": "A concise summary.",
+            "tags": ["world"],
+            "importance": 3,
+        }
+        for index in range(6)
+    ]
+
+    page = write_html(tmp_path, "2026-07-28", items)
+    html = page.read_text(encoding="utf-8")
+
+    assert "<h2>More stories</h2>" in html
+    assert "<h2>World</h2>" not in html
+    assert 'class="filter-bar"' not in html
+
+
+def test_multiple_desks_expose_filter_state(tmp_path):
+    items = [
+        {
+            "title": f"Story {tag}",
+            "url": f"https://example.test/{tag}",
+            "source": "Test Feed",
+            "published_at": "2026-07-28",
+            "summary": "A concise summary.",
+            "tags": [tag],
+            "importance": 3,
+        }
+        for tag in ("research", "policy")
+    ]
+
+    page = write_html(tmp_path, "2026-07-28", items)
+    html = page.read_text(encoding="utf-8")
+
+    assert 'class="filter-btn active" type="button" data-tag="__all__" aria-pressed="true"' in html
+    assert 'id="filter-status" class="sr-only" aria-live="polite"' in html
