@@ -1,5 +1,5 @@
 /* Hallmark · macrostructure: Long Document · tone: editorial · theme: studied-DNA (source: https://tdd.cat/2026-07-20/) · paper: oklch(94.5% 0.018 85) · accent: oklch(42% 0.13 25) · Newsreader + IBM Plex Sans · nav: N6 · footer: Ft4 · contrast: pass (40–41) · slop: pass (42–45) · honest: pass (46) · chrome: pass (47) · tokens: pass (48) · responsive: pass (49) · icons: pass (30) · mobile: pass (34, 49, 50–57) */
-/* Hallmark · pre-emit critique: P5 H4 E5 S5 R5 V5 */
+/* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V5 */
 :root {
   color-scheme: light;
 
@@ -16,6 +16,7 @@
   --color-accent-hover: oklch(34% 0.13 25);
   --color-accent-ink: oklch(97% 0.013 85);
   --color-focus: oklch(40% 0.16 25);
+  --color-error: oklch(42% 0.16 25);
   --color-selection: oklch(84% 0.075 70);
 
   --font-display: "Newsreader", "Iowan Old Style", "Palatino Linotype", serif;
@@ -82,5 +83,6 @@
   --color-accent-hover: oklch(76% 0.095 30);
   --color-accent-ink: oklch(15% 0.014 65);
   --color-focus: oklch(78% 0.11 30);
+  --color-error: oklch(72% 0.12 25);
   --color-selection: oklch(35% 0.07 28);
 }

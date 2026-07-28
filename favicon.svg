@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>News Buddy</title>
+  <rect width="64" height="64" rx="6" fill="#f2ead7"/>
+  <path d="M11 11h42v42H11z" fill="none" stroke="#241f1a" stroke-width="3"/>
+  <path d="M20 45V19h5l14 18V19h5v26h-5L25 27v18z" fill="#8d2f25"/>
+</svg>
