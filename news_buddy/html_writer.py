@@ -72,10 +72,11 @@ def _article_card(item: dict, large: bool = False, hero: bool = False) -> str:
         if image_url
         else ""
     )
+    image_block = f"  {image_html}\n" if image_html else ""
 
     return f"""
 <article class="article-card {size_class} {image_class}" data-tags="{safe_tags}">
-  {image_html}
+{image_block}
   <div class="card-body">
     <div class="card-meta">{escape(source)}{' <span class="dot">·</span> ' + escape(pub) if pub else ''}{icymi_badge}</div>
     <div class="card-header">
