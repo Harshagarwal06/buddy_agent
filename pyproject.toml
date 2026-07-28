@@ -17,6 +17,7 @@ dependencies = [
     "trafilatura",
     "httpx",
     "lxml",
+    "pillow",
     "pyyaml",
     "python-dotenv",
     "tenacity",

@@ -92,11 +92,14 @@ def _run(args: argparse.Namespace) -> None:
         if args.test_run:
             print("   Test run: dedup state, RAG cache, and notifications were not updated")
         rubric_fails = result.get("rubric_failures", 0)
+        images_ready = result.get("images_ready", 0)
+        image_fails = result.get("image_failures", 0)
         print(f"   Articles: {result['item_count']}  |  "
               f"Tokens: {tokens:,}  |  "
               f"Est. cost: ${est_cost_usd:.4f}  |  "
               f"Duration: {duration_secs:.1f}s  |  "
               f"Rubric failures: {rubric_fails}")
+        print(f"   Images: {images_ready} ready  |  Generation failures: {image_fails}")
         skip_reason = _notification_skip_reason(args, result)
         tg_status = _status(tg_sent, bool(tg_token and tg_chat), skip_reason)
         slack_status = _status(slack_sent, bool(slack_url), skip_reason)

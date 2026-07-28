@@ -28,6 +28,8 @@ def test_write_index_creates_json_with_expected_fields(tmp_path):
     assert data[0]["summary"] == "A new model launched today."
     assert data[0]["tags"] == ["ai", "product"]
     assert data[0]["importance"] == 4
+    assert data[0]["image_url"] == ""
+    assert data[0]["image_alt"] == ""
 
 
 def test_write_index_defaults_missing_fields(tmp_path):
@@ -43,6 +45,8 @@ def test_write_index_defaults_missing_fields(tmp_path):
             "summary": "",
             "tags": [],
             "importance": 3,
+            "image_url": "",
+            "image_alt": "",
         }
     ]
 

@@ -76,7 +76,9 @@ jobs:
         if: steps.published.outputs.already_published != 'true'
         uses: actions/cache@v4
         with:
-          path: state.db
+          path: |
+            state.db
+            ~/news/images
           key: news-buddy-state-${{ github.run_id }}
           restore-keys: news-buddy-state-
 
@@ -124,6 +126,10 @@ jobs:
           cp "${NEWS_DIR}/${DATE}.html" "${DEPLOY_DIR}/${DATE}.html"
           if [ -f "${NEWS_DIR}/${DATE}.json" ]; then
             cp "${NEWS_DIR}/${DATE}.json" "${DEPLOY_DIR}/${DATE}.json"
+          fi
+          if [ -d "${NEWS_DIR}/images" ]; then
+            mkdir -p "${DEPLOY_DIR}/images"
+            cp -R "${NEWS_DIR}/images/." "${DEPLOY_DIR}/images/"
           fi
           uv run python -c "from pathlib import Path; from news_buddy.index_writer import write_manifest; write_manifest(Path('${DEPLOY_DIR}'))"
           uv run python -m news_buddy.archive_writer "$DEPLOY_DIR"

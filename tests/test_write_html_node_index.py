@@ -23,6 +23,8 @@ def test_write_html_node_also_writes_search_index(tmp_path):
             "summary": "A new model launched today.",
             "tags": ["ai"],
             "importance": 5,
+            "image_url": "images/model.webp",
+            "image_alt": "A model emerging from a blue circuit.",
         }
     ])
 
@@ -34,6 +36,8 @@ def test_write_html_node_also_writes_search_index(tmp_path):
     records = json.loads(index_path.read_text(encoding="utf-8"))
     assert records[0]["title"] == "Model launches"
     assert records[0]["importance"] == 5
+    assert records[0]["image_url"] == "images/model.webp"
+    assert records[0]["image_alt"] == "A model emerging from a blue circuit."
     # Verify that published_at is truncated to YYYY-MM-DD (date only, no time)
     assert records[0]["published_at"] == "2026-07-17"
 

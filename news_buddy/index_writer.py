@@ -18,6 +18,8 @@ def _to_record(item: dict) -> dict:
         "summary": item.get("summary", ""),
         "tags": item.get("tags") or [],
         "importance": item.get("importance", 3),
+        "image_url": item.get("image_url", ""),
+        "image_alt": item.get("image_alt", ""),
     }
 
 

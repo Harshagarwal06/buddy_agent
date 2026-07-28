@@ -3,7 +3,7 @@
 [![Daily News Digest](https://github.com/Harshagarwal06/buddy_agent/actions/workflows/daily-digest.yml/badge.svg)](https://github.com/Harshagarwal06/buddy_agent/actions/workflows/daily-digest.yml)
 [![CI](https://github.com/Harshagarwal06/buddy_agent/actions/workflows/ci.yml/badge.svg)](https://github.com/Harshagarwal06/buddy_agent/actions/workflows/ci.yml)
 
-News Buddy is a daily AI news digest that fetches RSS feeds, filters for AI-relevant stories, deduplicates against prior runs, summarizes the best articles with an LLM, publishes a web archive, and can send the result by email, Telegram, or Slack.
+News Buddy is a daily AI news digest that fetches RSS feeds, filters for AI-relevant stories, deduplicates against prior runs, summarizes the best articles with an LLM, generates a visual explainer for each story, publishes a web archive, and can send the result by email, Telegram, or Slack.
 
 Live archive: https://harshagarwal06.github.io/buddy_agent/
 
@@ -17,6 +17,7 @@ The project started as a fully agentic `deepagents` experiment. After testing th
 - Backfills the lookback window when too few fresh stories survive filtering.
 - Summarizes articles through a provider-swappable LLM layer.
 - Scores summaries with a small rubric and retries weak summaries once.
+- Generates cached 4:3 editorial illustrations with deterministic SVG fallbacks.
 - Writes Markdown and HTML digests to `~/news/YYYY-MM-DD.md` and `.html`.
 - Regenerates an archive index for GitHub Pages.
 - Sends non-empty digests through Telegram, Slack, and Buttondown when configured.
@@ -37,10 +38,11 @@ flowchart TD
     H --> I["Summarize with configured sub_model"]
     I --> J["Rubric score and retry"]
     J --> K["Mark seen and optionally embed in Chroma"]
-    K --> L["Format Markdown digest"]
-    G -- "no" --> M["Write empty digest"]
-    L --> N["Write Markdown and HTML"]
-    M --> N
+    K --> L["Generate and cache article illustrations"]
+    L --> M["Format Markdown digest"]
+    G -- "no" --> X["Write empty digest"]
+    M --> N["Write Markdown and HTML"]
+    X --> N
     N --> O["Update archive index"]
     O --> P["Notify Telegram, Slack, Buttondown"]
     O --> Q["Deploy HTML archive to gh-pages"]
@@ -55,6 +57,7 @@ See [DIAGRAM.md](DIAGRAM.md) for the node-level flow and [docs/rag-architecture.
 - `news_buddy/llm.py` - the only place that constructs LLM clients.
 - `news_buddy/feeds.py` - RSS fetching and item normalization.
 - `news_buddy/extract.py` - article body extraction with RSS-summary fallback.
+- `news_buddy/image_generator.py` - Hugging Face image generation, WebP caching, and SVG fallback assets.
 - `news_buddy/state.py` - SQLite dedup state.
 - `news_buddy/html_writer.py` and `news_buddy/archive_writer.py` - generated digest pages and archive index.
 - `news_buddy/rag.py` - ChromaDB-backed semantic search over saved articles.
@@ -87,6 +90,11 @@ cp .env.example .env
 
 Edit `.env` with provider and notification secrets. Edit `config.yaml` to tune feeds, keyword filtering, article limits, and model provider.
 
+The `images` block in `config.yaml` controls the image model, output dimensions,
+compression, concurrency, and shared house style. Image generation uses
+`HF_TOKEN`. Normal `--test-run` executions skip image generation unless
+`images.generate_in_test_run` is explicitly set to `true`.
+
 ## Running Locally
 
 Dry run with no network or file side effects:
@@ -116,9 +124,9 @@ The scheduled workflow in `.github/workflows/daily-digest.yml` runs daily in Git
 1. Sets up Python and uv.
 2. Checks `gh-pages` for today's digest and skips backup runs when it is already published.
 3. Installs from `uv.lock` with `uv sync --frozen --no-dev`.
-4. Restores `state.db` from Actions cache for URL deduplication.
+4. Restores `state.db` and generated images from Actions cache.
 5. Runs `uv run python -m news_buddy run --notify-at-utc 02:30`.
-6. Copies the generated HTML digest to the `gh-pages` branch.
+6. Copies the generated HTML, JSON search record, and image assets to the `gh-pages` branch.
 7. Rebuilds the archive index for GitHub Pages.
 
 The workflow has one primary morning schedule and two backup schedules. A concurrency group prevents overlapping digest jobs, and the `gh-pages` preflight keeps delayed backup schedules from sending duplicate notifications after the day's digest is already published.
@@ -129,7 +137,8 @@ Manual `workflow_dispatch` defaults to `test_run: true`, so a verification run d
 
 Required GitHub secrets depend on enabled features:
 
-- `HF_TOKEN` or `GOOGLE_API_KEY` for summarization.
+- `HF_TOKEN` for Hugging Face summarization and article images.
+- `GOOGLE_API_KEY` when Google is selected for summarization.
 - `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` for Telegram.
 - `SLACK_WEBHOOK_URL` for Slack.
 - `BUTTONDOWN_API_KEY` for sending email.
@@ -155,6 +164,6 @@ The daily workflow currently sets `NEWS_BUDDY_RAG_ENABLED=false`, so Chroma is b
 
 - Dedup is URL-based, so the same story from several outlets can still appear as separate entries.
 - RAG is not persisted in CI yet.
-- Tests cover notification and archive behavior, but feed parsing, HTML generation, dedup, and rubric scoring need more coverage.
+- Image generation, caching, rendering, notifications, and archive paths have focused tests; feed parsing, dedup, and rubric scoring still need broader coverage.
 
 These are intentionally visible because they make the next engineering steps clear: story-level clustering, live RAG persistence, state recovery, and broader tests.

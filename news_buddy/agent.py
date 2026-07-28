@@ -43,6 +43,8 @@ class DigestState(TypedDict):
     html_path: str              # written HTML file path
     total_tokens: int           # cumulative LLM tokens used this run
     rubric_failures: int        # articles whose summary failed the rubric
+    images_ready: int           # articles with a generated or fallback image
+    image_failures: int         # remote image generations that failed
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -163,6 +165,8 @@ def _summarize_one(sub_llm, item: dict, strict: bool = False) -> tuple[dict, int
         "summary": data.get("summary", item["title"]),
         "tags": data.get("tags", []),
         "importance": data.get("importance", 3),
+        "image_prompt": data.get("image_prompt", ""),
+        "image_alt": data.get("image_alt", ""),
     }
     return enriched, tokens, body
 
@@ -477,6 +481,35 @@ def summarize_articles_node(state: DigestState) -> dict:
     return {"enriched_items": enriched, "total_tokens": total_tokens, "rubric_failures": rubric_failures}
 
 
+def generate_article_images_node(state: DigestState) -> dict:
+    """Generate cached article illustrations without blocking publication."""
+    image_config = state["config"].get("images", {})
+    if not image_config.get("enabled", False):
+        _log(state, "Article images disabled")
+        return {"images_ready": 0, "image_failures": 0}
+    if state["dry_run"]:
+        _log(state, "[dry-run] generate_article_images — skipping")
+        return {"images_ready": 0, "image_failures": 0}
+    if state["test_run"] and not image_config.get("generate_in_test_run", False):
+        _log(state, "[test-run] generate_article_images — skipping")
+        return {"images_ready": 0, "image_failures": 0}
+
+    from news_buddy.image_generator import generate_article_images
+
+    output_dir = Path(state["config"].get("output_dir", "~/news")).expanduser()
+    enriched, ready, failures = generate_article_images(
+        state.get("enriched_items", []),
+        output_dir,
+        image_config,
+    )
+    _log(state, f"Article images ready: {ready} — generation failures: {failures}")
+    return {
+        "enriched_items": enriched,
+        "images_ready": ready,
+        "image_failures": failures,
+    }
+
+
 def format_digest_node(state: DigestState) -> dict:
     """Rank articles and build the Markdown digest string."""
     enriched = state["enriched_items"]
@@ -593,6 +626,7 @@ def build_graph(checkpointing: bool = True):
     graph.add_node("filter_ai",          filter_ai_node)
     graph.add_node("deduplicate",        deduplicate_node)
     graph.add_node("summarize_articles", summarize_articles_node)
+    graph.add_node("generate_article_images", generate_article_images_node)
     graph.add_node("format_digest",      format_digest_node)
     graph.add_node("write_digest",       write_digest_node)
     graph.add_node("write_empty",        write_empty_node)
@@ -602,7 +636,8 @@ def build_graph(checkpointing: bool = True):
     graph.add_edge("fetch_feeds",        "filter_ai")
     graph.add_edge("filter_ai",          "deduplicate")
     graph.add_conditional_edges("deduplicate", should_summarize)
-    graph.add_edge("summarize_articles", "format_digest")
+    graph.add_edge("summarize_articles", "generate_article_images")
+    graph.add_edge("generate_article_images", "format_digest")
     graph.add_edge("format_digest",      "write_digest")
     graph.add_edge("write_digest",       "write_html")
     graph.add_edge("write_empty",        "write_html")
@@ -652,6 +687,8 @@ def run_pipeline(
                 "html_path": "",
                 "total_tokens": 0,
                 "rubric_failures": 0,
+                "images_ready": 0,
+                "image_failures": 0,
             },
             config={"configurable": {"thread_id": "news-buddy"}},
         )
@@ -662,6 +699,8 @@ def run_pipeline(
             "item_count":      len(result.get("enriched_items", [])),
             "total_tokens":    result.get("total_tokens", 0),
             "rubric_failures": result.get("rubric_failures", 0),
+            "images_ready":    result.get("images_ready", 0),
+            "image_failures":  result.get("image_failures", 0),
             "error":           None,
         }
     except Exception as exc:

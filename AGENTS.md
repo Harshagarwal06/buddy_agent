@@ -1,6 +1,6 @@
 # News Buddy - Agent Instructions
 
-This repository is a working daily AI news digest. It originally explored `deepagents`, but the current implementation is a deterministic LangGraph pipeline with LLM calls only for article summarization. Do not describe it as an active `deepagents` curator unless the code is changed back.
+This repository is a working daily AI news digest. It originally explored `deepagents`, but the current implementation is a deterministic LangGraph pipeline with model calls for article summarization and editorial image generation. Do not describe it as an active `deepagents` curator unless the code is changed back.
 
 ## Ground Truth
 
@@ -9,6 +9,7 @@ Start from these files for repo-specific answers:
 - `news_buddy/agent.py` - graph nodes and pipeline behavior.
 - `news_buddy/__main__.py` - CLI flags, notifications, and run output.
 - `news_buddy/llm.py` - provider selection and model construction.
+- `news_buddy/image_generator.py` - article illustration generation, caching, and fallback behavior.
 - `config.yaml` - feeds, filters, limits, and active LLM provider.
 - `.github/workflows/daily-digest.yml` - scheduled run, test-run behavior, and deploy path.
 - `news_buddy/buttondown_notify.py`, `telegram_notify.py`, `slack_notify.py` - notification behavior.
@@ -23,17 +24,19 @@ The graph flow is:
 3. Deduplicate against `state.db`.
 4. Widen lookback and optionally add ICYMI items if too few stories remain.
 5. Extract article bodies.
-6. Summarize with `get_sub_model(config)`.
+6. Summarize with `get_sub_model(config)` and create an article image brief.
 7. Apply the summary rubric and retry weak summaries once.
 8. Mark URLs seen and optionally embed in Chroma.
-9. Write Markdown, HTML, and archive files.
-10. Let the CLI send notifications for non-empty successful digests.
+9. Generate cached article illustrations, with SVG fallbacks on provider failure.
+10. Write Markdown, HTML, search-index, and archive files.
+11. Let the CLI send notifications for non-empty successful digests.
 
 `main_model` is currently unused by the graph. `sub_model` is the summarizer.
 
 ## Safety Rules
 
 - Use `python -m news_buddy run --test-run --verbose` for live verification that must not mutate `state.db`, write RAG entries, deploy, or notify subscribers.
+- Normal test runs also skip article image generation unless `images.generate_in_test_run` is explicitly enabled.
 - Use `python -m news_buddy run --dry-run --verbose` when no network or file side effects are desired.
 - Do not run a normal live digest just to test notifications unless the user explicitly asks for production side effects.
 - The scheduled workflow has backup cron entries. Scheduled backups must keep the `gh-pages` preflight guard so late retries do not send duplicate notifications after today's digest is already published.

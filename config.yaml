@@ -93,6 +93,23 @@ rubric:
   importance_penalty: 2      # subtracted from importance when rubric fails
   retry_on_failure: true     # retry once with a stricter prompt on failure
 
+images:
+  enabled: true
+  provider: auto
+  model: Qwen/Qwen-Image
+  width: 960
+  height: 720
+  quality: 82
+  max_workers: 2
+  timeout: 180
+  style_version: v1
+  generate_in_test_run: false
+  style: >-
+    Editorial technology illustration with one clear visual metaphor.
+    Warm paper background, cobalt blue and coral accents, clean geometric
+    composition, subtle texture, landscape 4:3. No words, letters, numbers,
+    logos, watermarks, screenshots, or photorealistic people.
+
 llm:
   provider: huggingface      # "huggingface", "google" (Gemini API), or "ollama" (local)
   main_model: Qwen/Qwen3-4B-Instruct-2507  # unused by the LangGraph pipeline (summaries only)

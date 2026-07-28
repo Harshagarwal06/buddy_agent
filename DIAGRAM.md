@@ -19,6 +19,7 @@ flowchart TD
     EXTRACT["extract_body(url), fallback to RSS summary"]
     SUMMARIZE["get_sub_model(config): summarize article JSON"]
     RUBRIC["RubricMiddleware: score, penalize, retry weak summaries"]
+    IMAGES["generate_article_images_node: cached WebP or SVG fallback"]
     PERSIST["mark_seen(state.db) and optional Chroma embed"]
     FORMAT["format_digest_node: rank by importance and group by tag"]
     WRITE_MD["write_digest_node: atomic Markdown write"]
@@ -27,7 +28,7 @@ flowchart TD
     END(["END: structured result to CLI"])
 
     START --> STATE --> FETCH --> FILTER --> DEDUP --> TOPUP --> ROUTE
-    ROUTE -- "yes" --> EXTRACT --> SUMMARIZE --> RUBRIC --> PERSIST --> FORMAT --> WRITE_MD --> WRITE_HTML --> END
+    ROUTE -- "yes" --> EXTRACT --> SUMMARIZE --> RUBRIC --> PERSIST --> IMAGES --> FORMAT --> WRITE_MD --> WRITE_HTML --> END
     ROUTE -- "no" --> WRITE_EMPTY --> WRITE_HTML --> END
 ```
 
@@ -62,10 +63,10 @@ flowchart TD
     GUARD{"Today's HTML already on gh-pages?"}
     PY["Set up Python 3.11"]
     INSTALL["uv sync --frozen --no-dev"]
-    CACHE["Restore state.db from actions/cache"]
+    CACHE["Restore state.db and image cache from actions/cache"]
     RUN["uv run python -m news_buddy run --notify-at-utc 02:30"]
     TEST{"workflow_dispatch test_run?"}
-    DEPLOY["Copy HTML to gh-pages and rebuild archive index"]
+    DEPLOY["Copy HTML, JSON, and images to gh-pages and rebuild archive index"]
     SKIP["Skip remaining side effects"]
     PAGES["GitHub Pages archive"]
 
@@ -99,10 +100,16 @@ deduplicate_node
 
 summarize_articles_node
   enriched_items=[
-    {source, title, url, published_at, rss_summary, summary, tags, importance, rubric?},
+    {source, title, url, published_at, rss_summary, summary, tags, importance,
+     image_prompt, image_alt, rubric?},
     ...
   ]
   total_tokens and rubric_failures are recorded
+
+generate_article_images_node
+  enriched_items gain image_url
+  images_ready and image_failures are recorded
+  dry runs and normal test runs skip generation
 
 format_digest_node
   digest="# News Digest - YYYY-MM-DD ..."
@@ -115,7 +122,8 @@ write_html_node
   archive index regenerated
 
 END
-  {digest, output_path, html_path, item_count, total_tokens, rubric_failures, error}
+  {digest, output_path, html_path, item_count, total_tokens, rubric_failures,
+   images_ready, image_failures, error}
 ```
 
 ## Important Flags

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from html import escape
 from pathlib import Path
 
 _TAG_COLOURS = {
@@ -22,12 +23,14 @@ _WPM = 220  # words per minute, for read-time estimate
 
 
 def _tag_badge(tag: str) -> str:
-    colours = _TAG_COLOURS.get(tag.lower(), _TAG_COLOURS["other"])
+    tag_value = str(tag)
+    tag_key = tag_value.lower()
+    colours = _TAG_COLOURS.get(tag_key, _TAG_COLOURS["other"])
     bg, fg = colours[0], colours[1]
     return (
-        f'<span class="tag-badge" data-tag="{tag.lower()}" '
+        f'<span class="tag-badge" data-tag="{escape(tag_key, quote=True)}" '
         f'style="--tag-bg:{bg};--tag-fg:{fg};--tag-bg-dark:{colours[2]};--tag-fg-dark:{colours[3]}">'
-        f'{tag}</span>'
+        f'{escape(tag_value)}</span>'
     )
 
 
@@ -42,30 +45,49 @@ def _read_minutes(items: list[dict]) -> int:
 
 
 def _article_card(item: dict, large: bool = False, hero: bool = False) -> str:
-    title   = item.get("title", "Untitled")
-    url     = item.get("url", "#")
-    source  = item.get("source", "")
-    pub     = (item.get("published_at") or "")[:10]
-    summary = item.get("summary", "")
+    title   = str(item.get("title", "Untitled"))
+    url     = str(item.get("url", "#"))
+    source  = str(item.get("source", ""))
+    pub     = str(item.get("published_at") or "")[:10]
+    summary = str(item.get("summary", ""))
     tags    = item.get("tags") or []
     imp     = item.get("importance", 3)
     icymi   = bool(item.get("is_icymi"))
+    image_url = str(item.get("image_url") or "").strip()
+    image_alt = str(item.get("image_alt") or f"Editorial illustration for {title}")
 
     badges  = "".join(_tag_badge(t) for t in tags)
     icymi_badge = '<span class="icymi-badge">ICYMI</span>' if icymi else ""
     stars   = _stars(imp)
-    tag_classes = " ".join(f"has-tag-{t.lower()}" for t in tags) or "has-tag-other"
     size_class = "card-hero" if hero else ("card-large" if large else "card-normal")
+    image_class = "has-image" if image_url else "no-image"
+    safe_url = escape(url, quote=True)
+    safe_title = escape(title)
+    safe_tags = escape(",".join(str(t).lower() for t in tags), quote=True)
+    loading = "eager" if hero else "lazy"
+    priority = ' fetchpriority="high"' if hero else ""
+    image_html = (
+        f'<a href="{safe_url}" target="_blank" rel="noopener" class="card-image" '
+        f'aria-label="Read {escape(title, quote=True)}">'
+        f'<img src="{escape(image_url, quote=True)}" alt="{escape(image_alt, quote=True)}" '
+        f'width="960" height="720" loading="{loading}" decoding="async"{priority}>'
+        f"</a>"
+        if image_url
+        else ""
+    )
 
     return f"""
-<article class="article-card {size_class} {tag_classes}" data-tags="{','.join(t.lower() for t in tags)}">
-  <div class="card-header">
-    <a href="{url}" target="_blank" rel="noopener" class="card-title">{title}</a>
-    <span class="card-stars" title="Importance {imp}/5" aria-label="Importance {imp} of 5">{stars}</span>
+<article class="article-card {size_class} {image_class}" data-tags="{safe_tags}">
+  {image_html}
+  <div class="card-body">
+    <div class="card-header">
+      <a href="{safe_url}" target="_blank" rel="noopener" class="card-title">{safe_title}</a>
+      <span class="card-stars" title="Importance {imp}/5" aria-label="Importance {imp} of 5">{stars}</span>
+    </div>
+    <div class="card-meta">{escape(source)}{' <span class="dot">·</span> ' + escape(pub) if pub else ''}{icymi_badge}</div>
+    {"<p class='card-summary'>" + escape(summary) + "</p>" if summary else ""}
+    <div class="card-tags">{badges}</div>
   </div>
-  <div class="card-meta">{source}{' <span class="dot">·</span> ' + pub if pub else ''}{icymi_badge}</div>
-  {"<p class='card-summary'>" + summary + "</p>" if summary else ""}
-  <div class="card-tags">{badges}</div>
 </article>"""
 
 
@@ -74,7 +96,7 @@ def _source_stats(items: list[dict]) -> str:
     for it in items:
         s = it.get("source", "Unknown")
         counts[s] = counts.get(s, 0) + 1
-    parts = [f"<span class='stat-pill'>{s} <b>{n}</b></span>"
+    parts = [f"<span class='stat-pill'>{escape(str(s))} <b>{n}</b></span>"
              for s, n in sorted(counts.items(), key=lambda x: -x[1])]
     return "".join(parts)
 
@@ -103,13 +125,24 @@ def write_html(
     # top slice renders as prominent large cards.
     top_html = ""
     if top:
-        top_html += _article_card(top[0], hero=True)
-        top_html += "\n".join(_article_card(it, large=True) for it in top[1:])
+        cards = _article_card(top[0], hero=True)
+        cards += "\n".join(_article_card(it, large=True) for it in top[1:])
+        top_html = (
+            '<section class="story-section">'
+            '<h2 class="section-heading">Top Stories</h2>'
+            f'<div class="story-grid">{cards}</div>'
+            "</section>"
+        )
 
     more_html = ""
     for tag, tag_items in sorted(by_tag.items()):
         cards = "\n".join(_article_card(it) for it in tag_items)
-        more_html += f'<h2 class="section-heading">{tag.title()}</h2>\n{cards}\n'
+        more_html += (
+            '<section class="story-section">'
+            f'<h2 class="section-heading">{escape(tag.title())}</h2>'
+            f'<div class="story-grid">{cards}</div>'
+            "</section>"
+        )
 
     count = len(enriched_items)
     read_min = _read_minutes(items)
@@ -187,7 +220,7 @@ body {{
   text-rendering: optimizeLegibility;
   transition: background .25s, color .25s;
 }}
-.wrap {{ max-width: 720px; margin: 0 auto; padding: 0 20px 80px; }}
+.wrap {{ max-width: 1120px; margin: 0 auto; padding: 0 24px 80px; }}
 
 /* Reading progress bar */
 .progress-track {{
@@ -263,17 +296,41 @@ body {{
   padding-bottom: 8px; margin: 34px 0 16px;
   border-bottom: 1px solid var(--border);
 }}
+.story-section.hidden {{ display: none; }}
+.story-grid {{
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px; align-items: start;
+}}
 
 /* Cards */
 .article-card {{
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: 14px; padding: 18px 20px; margin-bottom: 12px;
+  border-radius: 14px; overflow: hidden; min-width: 0;
   box-shadow: var(--shadow); transition: opacity .2s, transform .18s, box-shadow .18s, border-color .18s;
 }}
 .article-card:hover {{ box-shadow: var(--shadow-hover); transform: translateY(-1px); }}
-.article-card.card-hero {{ padding: 26px 26px 24px; border-color: var(--border-strong); }}
-.article-card.card-large {{ padding: 20px 22px; }}
+.article-card.card-hero {{ grid-column: 1 / -1; border-color: var(--border-strong); }}
+.article-card.card-hero.has-image {{
+  display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(320px, .88fr);
+  align-items: stretch;
+}}
 .article-card.hidden {{ display: none; }}
+.card-body {{ padding: 18px 20px 20px; }}
+.card-large .card-body {{ padding: 20px 22px 22px; }}
+.card-hero .card-body {{ padding: 28px 28px 26px; align-self: center; }}
+.card-image {{
+  display: block; aspect-ratio: 4 / 3; overflow: hidden;
+  background: var(--surface-2); border-bottom: 1px solid var(--border);
+}}
+.card-image img {{
+  display: block; width: 100%; height: 100%; object-fit: cover;
+  transition: transform .35s ease;
+}}
+.article-card:hover .card-image img {{ transform: scale(1.012); }}
+.card-hero.has-image .card-image {{
+  height: 100%; min-height: 360px; aspect-ratio: auto;
+  border-bottom: 0; border-right: 1px solid var(--border);
+}}
 .card-header {{ display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 6px; }}
 .card-title {{
   font-family: var(--serif); font-size: 1.12rem; font-weight: 600; color: var(--text);
@@ -342,11 +399,18 @@ a.nav-btn:hover {{ border-color: var(--accent); color: var(--accent); }}
 .to-top:hover {{ color: var(--accent); border-color: var(--accent); }}
 .to-top svg {{ width: 18px; height: 18px; }}
 
-@media (max-width: 600px) {{
+@media (max-width: 760px) {{
   .wrap {{ padding: 0 14px 56px; }}
   .masthead {{ padding: 24px 0 18px; }}
-  .article-card {{ padding: 16px; }}
-  .article-card.card-hero {{ padding: 20px 18px; }}
+  .story-grid {{ grid-template-columns: 1fr; gap: 14px; }}
+  .article-card.card-hero {{ grid-column: auto; }}
+  .article-card.card-hero.has-image {{ display: block; }}
+  .card-hero.has-image .card-image {{
+    min-height: 0; aspect-ratio: 4 / 3;
+    border-right: 0; border-bottom: 1px solid var(--border);
+  }}
+  .card-body, .card-large .card-body {{ padding: 16px; }}
+  .card-hero .card-body {{ padding: 20px 18px; }}
 }}
 @media (prefers-reduced-motion: reduce) {{
   html {{ scroll-behavior: auto; }}
@@ -375,7 +439,6 @@ a.nav-btn:hover {{ border-color: var(--accent); color: var(--accent); }}
   {'<div class="filter-bar">' + filter_all + tag_filter_html + '</div>' if tag_filter_html else ''}
 
   {f'''
-  <h2 class="section-heading">Top Stories</h2>
   {top_html}
   {more_html}
   ''' if enriched_items else empty_msg}
@@ -426,14 +489,9 @@ document.querySelectorAll('.filter-btn').forEach(function(btn) {{
       var tags = (c.getAttribute('data-tags') || '').split(',');
       c.classList.toggle('hidden', tag !== '__all__' && tags.indexOf(tag) === -1);
     }});
-    document.querySelectorAll('.section-heading').forEach(function(h) {{
-      if (tag === '__all__') {{ h.classList.remove('hidden'); return; }}
-      var vis = false, n = h.nextElementSibling;
-      while (n && !n.classList.contains('section-heading')) {{
-        if (n.classList.contains('article-card') && !n.classList.contains('hidden')) vis = true;
-        n = n.nextElementSibling;
-      }}
-      h.classList.toggle('hidden', !vis);
+    document.querySelectorAll('.story-section').forEach(function(section) {{
+      var visibleCard = section.querySelector('.article-card:not(.hidden)');
+      section.classList.toggle('hidden', !visibleCard);
     }});
   }});
 }});

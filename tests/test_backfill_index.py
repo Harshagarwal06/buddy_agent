@@ -58,3 +58,25 @@ def test_parse_digest_html_handles_missing_summary_and_clamps_importance():
 
 def test_parse_digest_html_returns_empty_list_for_page_with_no_articles():
     assert parse_digest_html("<html><body>No new articles today.</body></html>") == []
+
+
+def test_article_card_renders_responsive_image_markup():
+    item = {
+        "title": "Visual model launch",
+        "url": "https://example.test/visual",
+        "source": "Test Feed",
+        "published_at": "2026-07-17T09:00:00Z",
+        "summary": "A visual model launched.",
+        "tags": ["ai"],
+        "importance": 5,
+        "image_url": "images/visual.webp",
+        "image_alt": "A blue model emerging from a geometric circuit.",
+    }
+
+    html = _article_card(item, hero=True)
+
+    assert 'class="article-card card-hero has-image"' in html
+    assert 'src="images/visual.webp"' in html
+    assert 'alt="A blue model emerging from a geometric circuit."' in html
+    assert 'loading="eager"' in html
+    assert 'fetchpriority="high"' in html
