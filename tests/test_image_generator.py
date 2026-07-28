@@ -80,6 +80,8 @@ def test_generated_image_is_cached(tmp_path, monkeypatch):
     assert first_failures == second_failures == 0
     assert first[0]["image_url"] == second[0]["image_url"]
     assert first[0]["image_url"].endswith(".webp")
+    assert first[0]["image_width"] == second[0]["image_width"] == 640
+    assert first[0]["image_height"] == second[0]["image_height"] == 480
     assert '"LOCAL MODEL"' not in calls[0][0]
     assert "split into two or three paths" in calls[0][0]
     assert "warm cream paper" in calls[0][0].lower()

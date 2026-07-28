@@ -64,6 +64,8 @@ def _article_card(item: dict, large: bool = False, hero: bool = False) -> str:
     icymi = bool(item.get("is_icymi"))
     image_url = str(item.get("image_url") or "").strip()
     image_alt = str(item.get("image_alt") or f"Editorial illustration for {title}")
+    image_width = max(1, int(item.get("image_width") or 960))
+    image_height = max(1, int(item.get("image_height") or 720))
 
     badges = '<span class="tag-separator" aria-hidden="true">/</span>'.join(
         _tag_badge(t) for t in tags
@@ -79,7 +81,8 @@ def _article_card(item: dict, large: bool = False, hero: bool = False) -> str:
     image_html = (
         '<figure class="card-image">'
         f'<img src="{escape(image_url, quote=True)}" alt="{escape(image_alt, quote=True)}" '
-        f'width="960" height="720" loading="{loading}" decoding="async"{priority}>'
+        f'width="{image_width}" height="{image_height}" loading="{loading}" '
+        f'decoding="async"{priority}>'
         "</figure>"
         if image_url
         else ""

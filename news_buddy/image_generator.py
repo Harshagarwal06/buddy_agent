@@ -525,11 +525,18 @@ def _placeholder_svg(item: dict, target: Path, settings: ImageSettings) -> None:
     tmp.replace(target)
 
 
-def _with_image_metadata(item: dict, image_url: str, image_alt: str | None = None) -> dict:
+def _with_image_metadata(
+    item: dict,
+    image_url: str,
+    settings: ImageSettings,
+    image_alt: str | None = None,
+) -> dict:
     return {
         **item,
         "image_url": image_url,
         "image_alt": image_alt or _image_alt(item),
+        "image_width": settings.width,
+        "image_height": settings.height,
     }
 
 
@@ -569,7 +576,7 @@ def generate_article_images(
         relative_webp = webp_target.relative_to(output_dir).as_posix()
         if webp_target.exists():
             image_alt = _safe_image_alt(item) if used_safe_prompt else None
-            return _with_image_metadata(item, relative_webp, image_alt), False
+            return _with_image_metadata(item, relative_webp, settings, image_alt), False
         if planned_prompt:
             safe_stem = _cache_stem(item, safe_prompt, settings)
             safe_webp_target = image_dir / f"{safe_stem}.webp"
@@ -578,6 +585,7 @@ def generate_article_images(
                 return _with_image_metadata(
                     item,
                     relative_safe,
+                    settings,
                     _safe_image_alt(item),
                 ), False
 
@@ -609,6 +617,7 @@ def generate_article_images(
                             return _with_image_metadata(
                                 item,
                                 relative_webp,
+                                settings,
                                 _safe_image_alt(item),
                             ), False
                         request_prompt = (
@@ -628,7 +637,7 @@ def generate_article_images(
                 raise RuntimeError("image provider returned no image")
             _save_webp(image, webp_target, settings, _image_labels(item))
             image_alt = _safe_image_alt(item) if used_safe_prompt else None
-            return _with_image_metadata(item, relative_webp, image_alt), False
+            return _with_image_metadata(item, relative_webp, settings, image_alt), False
         except Exception as exc:
             print(
                 f"[warn] image generation failed for {item.get('url', 'article')}: {exc}",
@@ -640,7 +649,12 @@ def generate_article_images(
                     _placeholder_svg(item, svg_target, settings)
                 relative_svg = svg_target.relative_to(output_dir).as_posix()
                 image_alt = _safe_image_alt(item) if used_safe_prompt else None
-                return _with_image_metadata(item, relative_svg, image_alt), True
+                return _with_image_metadata(
+                    item,
+                    relative_svg,
+                    settings,
+                    image_alt,
+                ), True
             except Exception as placeholder_exc:
                 print(
                     f"[warn] image placeholder failed for "

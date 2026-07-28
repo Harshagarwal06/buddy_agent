@@ -71,6 +71,8 @@ def test_article_card_renders_responsive_image_markup():
         "importance": 5,
         "image_url": "images/visual.webp",
         "image_alt": "A blue model emerging from a geometric circuit.",
+        "image_width": 1184,
+        "image_height": 880,
     }
 
     html = _article_card(item, hero=True)
@@ -78,6 +80,7 @@ def test_article_card_renders_responsive_image_markup():
     assert 'class="article-card card-hero has-image"' in html
     assert 'src="images/visual.webp"' in html
     assert 'alt="A blue model emerging from a geometric circuit."' in html
+    assert 'width="1184" height="880"' in html
     assert 'loading="eager"' in html
     assert 'fetchpriority="high"' in html
     assert html.count('href="https://example.test/visual"') == 1
