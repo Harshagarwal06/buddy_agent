@@ -91,8 +91,9 @@ cp .env.example .env
 Edit `.env` with provider and notification secrets. Edit `config.yaml` to tune feeds, keyword filtering, article limits, and model provider.
 
 The `images` block in `config.yaml` controls the image model, output dimensions,
-compression, concurrency, and shared house style. Image generation uses
-`HF_TOKEN`. Normal `--test-run` executions skip image generation unless
+compression, concurrency, retries, and shared photographic style. The default
+NVIDIA FLUX.2-klein-4B integration uses `NVIDIA_API_KEY`. Normal `--test-run`
+executions skip image generation unless
 `images.generate_in_test_run` is explicitly set to `true`.
 
 ## Running Locally
@@ -137,7 +138,8 @@ Manual `workflow_dispatch` defaults to `test_run: true`, so a verification run d
 
 Required GitHub secrets depend on enabled features:
 
-- `HF_TOKEN` for Hugging Face summarization and article images.
+- `HF_TOKEN` for Hugging Face summarization.
+- `NVIDIA_API_KEY` for FLUX.2 article images.
 - `GOOGLE_API_KEY` when Google is selected for summarization.
 - `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` for Telegram.
 - `SLACK_WEBHOOK_URL` for Slack.

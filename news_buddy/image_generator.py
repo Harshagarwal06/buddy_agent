@@ -1,12 +1,15 @@
-"""Generate and cache editorial illustrations for enriched news articles."""
+"""Generate and cache editorial photographs for enriched news articles."""
 
 from __future__ import annotations
 
+import base64
 import hashlib
 import io
+import itertools
 import os
 import sys
 import textwrap
+import time
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from pathlib import Path
@@ -14,16 +17,26 @@ from xml.sax.saxutils import escape as xml_escape
 
 
 DEFAULT_STYLE = (
-    "Editorial technology illustration with one clear visual metaphor. "
-    "Warm paper background, cobalt blue and coral accents, clean geometric "
-    "composition, subtle texture, landscape 4:3. No words, letters, numbers, "
-    "logos, watermarks, screenshots, or photorealistic people."
+    "Photorealistic conceptual editorial news photograph with one clear "
+    "subject and a concrete visual metaphor. Natural light, realistic "
+    "materials, restrained color, strong documentary composition, landscape "
+    "orientation. Do not depict an invented event as documentary evidence. "
+    "No words, letters, numbers, logos, watermarks, or screenshots."
 )
 
 DEFAULT_NEGATIVE_PROMPT = (
     "text, typography, letters, numbers, logo, watermark, screenshot, "
-    "photorealistic face, clutter, low contrast, blurry"
+    "illustration, cartoon, painting, CGI, identifiable real person, clutter, "
+    "low contrast, blurry"
 )
+
+DEFAULT_NVIDIA_API_URL = (
+    "https://ai.api.nvidia.com/v1/genai/black-forest-labs/flux.2-klein-4b"
+)
+
+
+class ImageContentFilteredError(RuntimeError):
+    """Raised when the provider rejects a prompt but returns HTTP success."""
 
 
 @dataclass(frozen=True)
@@ -36,6 +49,10 @@ class ImageSettings:
     quality: int
     max_workers: int
     timeout: float
+    retries: int
+    retry_delay: float
+    steps: int
+    api_url: str
     style: str
     style_version: str
     negative_prompt: str
@@ -51,6 +68,11 @@ class ImageSettings:
             quality=max(1, min(100, int(config.get("quality", 82)))),
             max_workers=max(1, min(4, int(config.get("max_workers", 2)))),
             timeout=max(10.0, float(config.get("timeout", 180))),
+            retries=max(0, min(5, int(config.get("retries", 2)))),
+            retry_delay=max(0.0, min(30.0, float(config.get("retry_delay", 2)))),
+            steps=max(1, min(50, int(config.get("steps", 4)))),
+            api_url=str(config.get("api_url", DEFAULT_NVIDIA_API_URL)).strip()
+            or DEFAULT_NVIDIA_API_URL,
             style=str(config.get("style", DEFAULT_STYLE)).strip() or DEFAULT_STYLE,
             style_version=str(config.get("style_version", "v1")),
             negative_prompt=(
@@ -60,7 +82,64 @@ class ImageSettings:
         )
 
 
+class _NvidiaImageClient:
+    """Small adapter for NVIDIA's hosted Visual GenAI endpoint."""
+
+    def __init__(self, settings: ImageSettings, token: str):
+        self.settings = settings
+        self.token = token
+        self._request_numbers = itertools.count()
+
+    def text_to_image(
+        self,
+        prompt: str,
+        *,
+        model: str,
+        width: int,
+        height: int,
+        negative_prompt: str,
+    ) -> bytes:
+        del model, negative_prompt  # The hosted endpoint is model-specific.
+        import httpx
+
+        request_number = next(self._request_numbers)
+        seed_material = f"{prompt}\nrequest:{request_number}"
+        seed = int(hashlib.sha256(seed_material.encode("utf-8")).hexdigest()[:8], 16)
+        seed %= 2_147_483_647
+        response = httpx.post(
+            self.settings.api_url,
+            headers={
+                "Authorization": f"Bearer {self.token}",
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+            },
+            json={
+                "prompt": prompt,
+                "width": width,
+                "height": height,
+                "seed": seed,
+                "steps": self.settings.steps,
+            },
+            timeout=self.settings.timeout,
+        )
+        response.raise_for_status()
+        payload = response.json()
+        try:
+            artifact = payload["artifacts"][0]
+        except (KeyError, IndexError, TypeError) as exc:
+            raise RuntimeError("NVIDIA returned no image artifact") from exc
+        if artifact.get("finishReason") == "CONTENT_FILTERED":
+            raise ImageContentFilteredError("NVIDIA content-filtered the image prompt")
+        encoded = artifact.get("base64", "")
+        if not encoded:
+            raise RuntimeError("NVIDIA returned an empty image artifact")
+        return base64.b64decode(encoded)
+
+
 def _make_client(settings: ImageSettings, token: str):
+    if settings.provider.lower() == "nvidia":
+        return _NvidiaImageClient(settings, token)
+
     from huggingface_hub import InferenceClient
 
     return InferenceClient(
@@ -74,16 +153,65 @@ def _visual_prompt(item: dict) -> str:
     prompt = str(item.get("image_prompt") or "").strip()
     if prompt:
         return prompt
-    title = str(item.get("title") or "AI news story").strip()
-    summary = str(item.get("summary") or "").strip()
-    return f"Create a conceptual illustration for: {title}. {summary}".strip()
+    return _safe_photo_prompt(item)
 
 
 def _image_alt(item: dict) -> str:
     alt = str(item.get("image_alt") or "").strip()
     if alt:
         return alt
-    return f"Editorial illustration for {item.get('title') or 'this news story'}"
+    return f"AI-generated editorial image for {item.get('title') or 'this news story'}"
+
+
+def _safe_photo_concept(item: dict) -> str:
+    """Choose a name-free subject that still reflects the article's broad theme."""
+    text = " ".join(
+        [
+            str(item.get("title") or ""),
+            str(item.get("summary") or ""),
+            " ".join(str(tag) for tag in (item.get("tags") or [])),
+        ]
+    ).lower()
+    concepts = [
+        (
+            ("security", "cyber", "breach", "privacy", "hack"),
+            "a locked server rack beside glowing fiber-optic cables in a secure data center",
+        ),
+        (
+            ("price", "pricing", "market", "business", "acquisition", "enterprise"),
+            "two modern office buildings connected by a clean architectural bridge",
+        ),
+        (
+            ("search", "discovery", "answer"),
+            "a magnifying lens resting above an orderly network of illuminated data nodes",
+        ),
+        (
+            ("chat", "message", "social", "assistant"),
+            "two unbranded smartphones connected by a subtle beam of light on a studio table",
+        ),
+        (
+            ("alignment", "control", "open-weight", "policy", "governance"),
+            "a balanced scale between an open glass server cabinet and a sealed metal vault",
+        ),
+    ]
+    return next(
+        (description for terms, description in concepts if any(term in text for term in terms)),
+        "a compact AI server module connected to a larger cloud data center",
+    )
+
+
+def _safe_photo_prompt(item: dict) -> str:
+    """Build a name-free photo brief for missing or content-filtered prompts."""
+    concept = _safe_photo_concept(item)
+    return (
+        f"Create a photorealistic conceptual editorial photograph of {concept}. "
+        "Use an unbranded, non-documentary studio scene with no people, flags, "
+        "symbols, text, or logos."
+    )
+
+
+def _safe_image_alt(item: dict) -> str:
+    return f"AI-generated editorial photograph of {_safe_photo_concept(item)}."
 
 
 def _cache_stem(item: dict, prompt: str, settings: ImageSettings) -> str:
@@ -113,6 +241,19 @@ def _save_webp(image, target: Path, settings: ImageSettings) -> None:
     tmp = target.with_suffix(".webp.tmp")
     image.save(tmp, format="WEBP", quality=settings.quality, method=6)
     tmp.replace(target)
+
+
+def _validate_image(image) -> None:
+    """Reject empty or malformed provider payloads while retries are available."""
+    from PIL import Image
+
+    if isinstance(image, Image.Image):
+        return
+    try:
+        with Image.open(io.BytesIO(image)) as candidate:
+            candidate.verify()
+    except Exception as exc:
+        raise RuntimeError("image provider returned invalid image bytes") from exc
 
 
 def _placeholder_svg(item: dict, target: Path, settings: ImageSettings) -> None:
@@ -145,11 +286,11 @@ def _placeholder_svg(item: dict, target: Path, settings: ImageSettings) -> None:
     tmp.replace(target)
 
 
-def _with_image_metadata(item: dict, image_url: str) -> dict:
+def _with_image_metadata(item: dict, image_url: str, image_alt: str | None = None) -> dict:
     return {
         **item,
         "image_url": image_url,
-        "image_alt": _image_alt(item),
+        "image_alt": image_alt or _image_alt(item),
     }
 
 
@@ -170,35 +311,85 @@ def generate_article_images(
 
     image_dir = output_dir / "images"
     image_dir.mkdir(parents=True, exist_ok=True)
-    token = os.getenv("HF_TOKEN", "").strip()
+    token_env = "NVIDIA_API_KEY" if settings.provider.lower() == "nvidia" else "HF_TOKEN"
+    token = os.getenv(token_env, "").strip()
     client = _make_client(settings, token) if token else None
     if client is None:
         print(
-            "[warn] images are enabled but HF_TOKEN is not set; using placeholders",
+            f"[warn] images are enabled but {token_env} is not set; using placeholders",
             file=sys.stderr,
         )
 
     def _process(item: dict) -> tuple[dict, bool]:
-        prompt = _visual_prompt(item)
+        planned_prompt = str(item.get("image_prompt") or "").strip()
+        used_safe_prompt = not planned_prompt
+        safe_prompt = _safe_photo_prompt(item)
+        prompt = planned_prompt or safe_prompt
         stem = _cache_stem(item, prompt, settings)
         webp_target = image_dir / f"{stem}.webp"
         relative_webp = webp_target.relative_to(output_dir).as_posix()
         if webp_target.exists():
-            return _with_image_metadata(item, relative_webp), False
+            image_alt = _safe_image_alt(item) if used_safe_prompt else None
+            return _with_image_metadata(item, relative_webp, image_alt), False
+        if planned_prompt:
+            safe_stem = _cache_stem(item, safe_prompt, settings)
+            safe_webp_target = image_dir / f"{safe_stem}.webp"
+            if safe_webp_target.exists():
+                relative_safe = safe_webp_target.relative_to(output_dir).as_posix()
+                return _with_image_metadata(
+                    item,
+                    relative_safe,
+                    _safe_image_alt(item),
+                ), False
 
         try:
             if client is None:
-                raise RuntimeError("HF_TOKEN is not configured")
+                raise RuntimeError(f"{token_env} is not configured")
             full_prompt = f"{prompt}\n\nVisual direction: {settings.style}"
-            image = client.text_to_image(
-                full_prompt[:1800],
-                model=settings.model,
-                width=settings.width,
-                height=settings.height,
-                negative_prompt=settings.negative_prompt,
-            )
+            request_prompt = full_prompt[:1800]
+            image = None
+            for attempt in range(settings.retries + 1):
+                try:
+                    image = client.text_to_image(
+                        request_prompt,
+                        model=settings.model,
+                        width=settings.width,
+                        height=settings.height,
+                        negative_prompt=settings.negative_prompt,
+                    )
+                    _validate_image(image)
+                    break
+                except Exception as request_exc:
+                    if attempt >= settings.retries:
+                        raise
+                    if isinstance(request_exc, ImageContentFilteredError):
+                        used_safe_prompt = True
+                        stem = _cache_stem(item, safe_prompt, settings)
+                        webp_target = image_dir / f"{stem}.webp"
+                        relative_webp = webp_target.relative_to(output_dir).as_posix()
+                        if webp_target.exists():
+                            return _with_image_metadata(
+                                item,
+                                relative_webp,
+                                _safe_image_alt(item),
+                            ), False
+                        request_prompt = (
+                            f"{safe_prompt}\n\n"
+                            f"Visual direction: {settings.style}"
+                        )[:1800]
+                        reason = "content-filtered prompt; retrying with neutral brief"
+                    else:
+                        reason = "image request failed; retrying"
+                    print(
+                        f"[warn] {reason} ({attempt + 1}/{settings.retries})",
+                        file=sys.stderr,
+                    )
+                    time.sleep(settings.retry_delay)
+            if image is None:
+                raise RuntimeError("image provider returned no image")
             _save_webp(image, webp_target, settings)
-            return _with_image_metadata(item, relative_webp), False
+            image_alt = _safe_image_alt(item) if used_safe_prompt else None
+            return _with_image_metadata(item, relative_webp, image_alt), False
         except Exception as exc:
             print(
                 f"[warn] image generation failed for {item.get('url', 'article')}: {exc}",

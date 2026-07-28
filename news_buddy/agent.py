@@ -482,7 +482,7 @@ def summarize_articles_node(state: DigestState) -> dict:
 
 
 def generate_article_images_node(state: DigestState) -> dict:
-    """Generate cached article illustrations without blocking publication."""
+    """Generate cached article photographs before publication."""
     image_config = state["config"].get("images", {})
     if not image_config.get("enabled", False):
         _log(state, "Article images disabled")
@@ -503,6 +503,11 @@ def generate_article_images_node(state: DigestState) -> dict:
         image_config,
     )
     _log(state, f"Article images ready: {ready} — generation failures: {failures}")
+    if failures and image_config.get("require_all", False):
+        raise RuntimeError(
+            f"{failures} article image generation request(s) failed; "
+            "publication requires a real image for every article"
+        )
     return {
         "enriched_items": enriched,
         "images_ready": ready,

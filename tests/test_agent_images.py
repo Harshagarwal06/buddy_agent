@@ -48,3 +48,23 @@ def test_generate_images_node_updates_enriched_items(tmp_path, monkeypatch):
     assert result["enriched_items"] == generated
     assert result["images_ready"] == 1
     assert result["image_failures"] == 0
+
+
+def test_generate_images_node_can_require_every_remote_image(tmp_path, monkeypatch):
+    monkeypatch.setattr(
+        "news_buddy.image_generator.generate_article_images",
+        lambda *_args, **_kwargs: (
+            [{"title": "Story", "image_url": "images/fallback.svg"}],
+            1,
+            1,
+        ),
+    )
+    state = _state(tmp_path)
+    state["config"]["images"]["require_all"] = True
+
+    try:
+        agent.generate_article_images_node(state)
+    except RuntimeError as exc:
+        assert "publication requires a real image for every article" in str(exc)
+    else:
+        raise AssertionError("require_all should reject fallback images")
