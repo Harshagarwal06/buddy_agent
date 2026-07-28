@@ -1,0 +1,17 @@
+{
+  "scanned_at": "2026-07-28",
+  "framework": "Python-generated static HTML",
+  "font_stack": "Newsreader with system sans UI",
+  "palette": "Inline light/dark hex custom properties",
+  "motion": "Vanilla JavaScript; no motion library",
+  "spacing": "Ad hoc pixel and rem values",
+  "deployment": "GitHub Pages via gh-pages",
+  "preserved": [
+    "dated routes",
+    "archive navigation",
+    "topic filters",
+    "light and dark themes",
+    "article images",
+    "source links"
+  ]
+}

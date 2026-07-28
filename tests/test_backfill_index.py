@@ -1,4 +1,4 @@
-from news_buddy.html_writer import _article_card
+from news_buddy.html_writer import _article_card, write_html
 from scripts.backfill_index import parse_archive_dates, parse_digest_html
 
 
@@ -80,3 +80,26 @@ def test_article_card_renders_responsive_image_markup():
     assert 'alt="A blue model emerging from a geometric circuit."' in html
     assert 'loading="eager"' in html
     assert 'fetchpriority="high"' in html
+
+
+def test_digest_uses_shared_editorial_tokens_and_masthead(tmp_path):
+    item = {
+        "title": "A carefully edited AI story",
+        "url": "https://example.test/editorial",
+        "source": "Test Feed",
+        "published_at": "2026-07-28T09:00:00Z",
+        "summary": "A concise summary written for a daily briefing.",
+        "tags": ["ai"],
+        "importance": 4,
+    }
+
+    page = write_html(tmp_path, "2026-07-28", [item])
+    html = page.read_text(encoding="utf-8")
+    tokens = (tmp_path / "tokens.css").read_text(encoding="utf-8")
+
+    assert '<link rel="stylesheet" href="tokens.css">' in html
+    assert '<h1 class="mast-name">News Buddy</h1>' in html
+    assert "The briefing" in html
+    assert "★★★★" not in html
+    assert "--color-paper: oklch(" in tokens
+    assert "macrostructure: Long Document" in tokens

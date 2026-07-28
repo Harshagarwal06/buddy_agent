@@ -33,3 +33,16 @@ def test_signup_form_omitted_when_username_unset(tmp_path, monkeypatch):
 
     assert "embed-subscribe" not in html
     assert "signup-box" not in html
+
+
+def test_archive_uses_shared_editorial_system(tmp_path, monkeypatch):
+    monkeypatch.delenv("BUTTONDOWN_USERNAME", raising=False)
+    _make_digest(tmp_path)
+
+    index = write_archive(tmp_path)
+    html = index.read_text(encoding="utf-8")
+
+    assert '<link rel="stylesheet" href="tokens.css">' in html
+    assert '<h1 class="mast-name">News Buddy</h1>' in html
+    assert "<h2>Issue archive</h2>" in html
+    assert (tmp_path / "tokens.css").exists()

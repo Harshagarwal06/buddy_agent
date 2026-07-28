@@ -1,278 +1,318 @@
-"""Generate an archive index.html listing all past digest pages.
+"""Generate the editorial archive index for all dated digest pages."""
 
-Called by the GitHub Actions workflow after writing today's dated HTML file.
-Scans the output directory for YYYY-MM-DD.html files and builds a landing page
-with date, article count, and top tags extracted from each file's metadata.
-"""
 from __future__ import annotations
 
 import os
 import re
-from pathlib import Path
+import shutil
 from datetime import date as _date
+from html import escape
+from pathlib import Path
+
+_TOKENS_PATH = Path(__file__).resolve().parents[1] / "tokens.css"
+
+
+def _copy_tokens(output_dir: Path) -> None:
+    shutil.copyfile(_TOKENS_PATH, output_dir / "tokens.css")
 
 
 def _extract_meta(html_path: Path) -> dict:
     """Pull count and tags out of a rendered digest HTML (best-effort)."""
     try:
         text = html_path.read_text(encoding="utf-8")
-        count_m = re.search(r"(\d+) article", text)
-        count = int(count_m.group(1)) if count_m else 0
-        tag_m = re.findall(r'data-tag="([^"]+)"', text)
-        tags = sorted(set(t for t in tag_m if t != "__all__"))[:4]
+        count_match = re.search(r"(\d+) article", text)
+        count = int(count_match.group(1)) if count_match else 0
+        tags = sorted(
+            set(tag for tag in re.findall(r'data-tag="([^"]+)"', text) if tag != "__all__")
+        )[:4]
         return {"count": count, "tags": tags}
     except Exception:
         return {"count": 0, "tags": []}
 
 
-_TAG_COLOURS = {
-    "ai": ("#e8f0fe", "#1a56c4", "#1e3a5f", "#8bb8f5"),
-    "technology": ("#e6f4ea", "#0f6b32", "#173a28", "#79cf9a"),
-    "science": ("#fbecc7", "#8a5200", "#3a2900", "#f0c65a"),
-    "business": ("#fce8e6", "#b31c1a", "#3d0a09", "#f28b82"),
-    "world": ("#f2e8fc", "#6f1b9a", "#2d0b40", "#d09cdb"),
-    "politics": ("#fdefc5", "#8a5200", "#3a2900", "#f0c65a"),
-    "health": ("#e6f4ea", "#0f6b32", "#173a28", "#79cf9a"),
-    "climate": ("#e6f5ea", "#256b2b", "#173a1c", "#84c988"),
-    "security": ("#fce8e6", "#b31c1a", "#3d0a09", "#ef9a9a"),
-    "culture": ("#f6effb", "#5f1a92", "#2a0a3d", "#d09cdb"),
-    "other": ("#eeeeee", "#55565b", "#2a2a2a", "#a0a0a6"),
-}
-
-
-def _tag_pill(tag: str) -> str:
-    c = _TAG_COLOURS.get(tag.lower(), _TAG_COLOURS["other"])
-    return (
-        f'<span class="tag-pill" style="--lbg:{c[0]};--lfg:{c[1]};--dbg:{c[2]};--dfg:{c[3]}">'
-        f'{tag}</span>'
-    )
+def _tag_label(tag: str) -> str:
+    return f'<span class="tag-label">{escape(tag)}</span>'
 
 
 def _day_row(date_str: str, meta: dict, is_today: bool) -> str:
-    tags_html = "".join(_tag_pill(t) for t in meta["tags"])
-    count = meta["count"]
-    today_badge = '<span class="today-badge">Today</span>' if is_today else ""
-    search_key = f'{date_str} {" ".join(meta["tags"])}'.lower()
+    tags_html = '<span class="tag-separator" aria-hidden="true">/</span>'.join(
+        _tag_label(tag) for tag in meta["tags"]
+    )
+    count = int(meta["count"])
+    today_label = '<span class="today-label">Latest issue</span>' if is_today else ""
+    search_key = escape(f'{date_str} {" ".join(meta["tags"])}'.lower(), quote=True)
     return f"""
 <a href="{date_str}.html" class="day-row" data-search="{search_key}">
-  <div class="day-left">
-    <span class="day-date">{date_str}</span>
-    {today_badge}
-    <span class="day-tags">{tags_html}</span>
-  </div>
-  <span class="day-count">{count} article{"s" if count != 1 else ""} &rsaquo;</span>
+  <span class="day-date">{date_str}</span>
+  <span class="day-details">{today_label}<span class="day-tags">{tags_html}</span></span>
+  <span class="day-count">{count} article{"s" if count != 1 else ""} <span aria-hidden="true">→</span></span>
 </a>"""
 
 
 def _signup_form() -> str:
-    """Buttondown signup embed; empty string when BUTTONDOWN_USERNAME is unset.
-
-    The form's CSS is emitted here (not in the page's main style block) so the
-    page carries zero signup artifacts when the feature is unconfigured.
-    """
     username = os.getenv("BUTTONDOWN_USERNAME", "").strip()
     if not username:
         return ""
     return f"""
   <style>
   .signup-box {{
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 14px; box-shadow: var(--shadow);
-    padding: 24px 20px; margin-top: 26px; text-align: center;
+    display: grid; gap: var(--space-lg); margin-block: var(--space-3xl) 0;
+    padding-block: var(--space-xl); border-block: var(--rule-heavy) solid var(--color-ink);
   }}
-  .signup-title {{ font-family: var(--serif); font-weight: 600; font-size: 1.15rem; margin-bottom: 4px; }}
-  .signup-sub {{ font-size: 0.8rem; color: var(--text-muted); margin-bottom: 14px; }}
-  .signup-form {{ display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }}
-  .signup-form input[type=email] {{
-    flex: 1 1 200px; max-width: 300px; padding: 9px 13px;
-    border: 1px solid var(--border-strong); border-radius: 999px;
-    background: var(--bg); color: var(--text); font-size: 0.88rem;
+  .signup-box h2 {{
+    margin: 0; font-family: var(--font-display); font-size: var(--text-xl);
+    font-style: normal; font-weight: 600; line-height: 1;
   }}
-  .signup-form input[type=email]:focus {{ outline: none; border-color: var(--accent); }}
+  .signup-box p {{ margin: var(--space-xs) 0 0; color: var(--color-muted); }}
+  .signup-form {{ display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; }}
+  .signup-form input {{
+    min-height: 3rem; padding-inline: var(--space-sm); border: 0;
+    border-block-end: var(--rule-hair) solid var(--color-rule-strong);
+    border-radius: 0; background: transparent; color: var(--color-ink); font-family: var(--font-ui);
+  }}
+  .signup-form input:hover {{ border-color: var(--color-rule-strong); }}
   .signup-form button {{
-    background: var(--accent); color: #fff; border: none; border-radius: 999px;
-    padding: 9px 20px; font-weight: 600; font-size: 0.88rem; cursor: pointer; transition: opacity .15s;
+    min-height: 3rem; padding-inline: var(--space-lg); border: var(--rule-hair) solid var(--color-ink);
+    border-radius: 0; background: var(--color-ink); color: var(--color-paper);
+    cursor: pointer; font-family: var(--font-ui); font-size: var(--text-xs); font-weight: 600;
+    letter-spacing: .04em; text-transform: uppercase; white-space: nowrap;
   }}
-  .signup-form button:hover {{ opacity: .9; }}
+  .signup-form button:hover {{ background: var(--color-accent); border-color: var(--color-accent); color: var(--color-accent-ink); }}
+  .signup-form button:active {{ background: var(--color-accent-hover); border-color: var(--color-accent-hover); color: var(--color-accent-ink); }}
+  .signup-form button:disabled, .signup-form input:disabled {{ opacity: .55; cursor: not-allowed; }}
+  @media (min-width: 60rem) {{
+    .signup-box {{ grid-template-columns: minmax(0, 1fr) minmax(22rem, .85fr); align-items: end; }}
+  }}
+  @media (max-width: 39.999rem) {{
+    .signup-form {{ grid-template-columns: minmax(0, 1fr); gap: var(--space-sm); }}
+    .signup-form button {{ width: 100%; }}
+  }}
   </style>
-  <div class="signup-box">
-    <div class="signup-title">Get this digest by email</div>
-    <div class="signup-sub">One email every morning at 6am IST. Unsubscribe anytime.</div>
+  <section class="signup-box" aria-labelledby="signup-title">
+    <div>
+      <h2 id="signup-title">The briefing, by email.</h2>
+      <p>One concise issue each morning. Leave whenever you like.</p>
+    </div>
     <form class="signup-form"
-          action="https://buttondown.com/api/emails/embed-subscribe/{username}"
+          action="https://buttondown.com/api/emails/embed-subscribe/{escape(username, quote=True)}"
           method="post" target="_blank">
-      <input type="email" name="email" aria-label="Email address"
-             placeholder="you@example.com" required>
+      <label class="sr-only" for="signup-email">Email address</label>
+      <input id="signup-email" type="email" name="email"
+             placeholder="you@example.com" autocomplete="email" required>
       <button type="submit">Subscribe</button>
     </form>
-  </div>"""
+  </section>"""
 
 
 def write_archive(output_dir: Path) -> Path:
-    """Scan output_dir for YYYY-MM-DD.html files and write index.html."""
+    """Scan output_dir for dated HTML pages and write index.html."""
+    output_dir.mkdir(parents=True, exist_ok=True)
+    _copy_tokens(output_dir)
     pattern = re.compile(r"^\d{4}-\d{2}-\d{2}\.html$")
     dated_files = sorted(
-        [p for p in output_dir.glob("*.html") if pattern.match(p.name)],
+        [path for path in output_dir.glob("*.html") if pattern.match(path.name)],
         reverse=True,
     )
 
     today_str = _date.today().isoformat()
     rows_html = ""
     total_articles = 0
-    for p in dated_files:
-        date_str = p.stem
-        meta = _extract_meta(p)
+    for path in dated_files:
+        meta = _extract_meta(path)
         total_articles += meta["count"]
-        rows_html += _day_row(date_str, meta, date_str == today_str)
+        rows_html += _day_row(path.stem, meta, path.stem == today_str)
 
     total_days = len(dated_files)
-    empty_msg = '<p class="empty-msg">No digests yet — run the pipeline to generate your first one.</p>'
-
     search_html = (
         '<div class="search-box">'
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>'
-        '<input type="search" id="archive-search" placeholder="Filter by date or topic…" aria-label="Filter digests">'
-        '</div>'
-        if dated_files else ""
+        '<label for="archive-search">Find an issue</label>'
+        '<input type="search" id="archive-search" placeholder="Date or topic" autocomplete="off">'
+        '<span class="search-count" id="search-count" aria-live="polite"></span>'
+        "</div>"
+        if dated_files
+        else ""
     )
-    stats_line = (
-        f'<div class="header-sub">{total_days} digest{"s" if total_days != 1 else ""} '
-        f'<span class="dot">·</span> {total_articles} articles archived</div>'
-    )
+    empty_msg = '<p class="empty-msg">No issues yet. Run the pipeline to publish the first briefing.</p>'
 
     html = f"""<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="The complete News Buddy AI news archive.">
 <title>News Buddy — Archive</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
 <style>
-:root {{
-  --bg: #faf9f7; --surface: #fff; --surface-2: #f4f2ee;
-  --border: #e8e5df; --border-strong: #d9d5cc;
-  --text: #1a1a1a; --text-muted: #5f6067; --text-faint: #97969c;
-  --accent: #1a56c4; --accent-hover: #123f96;
-  --shadow: 0 1px 2px rgba(20,20,20,.04), 0 4px 14px rgba(20,20,20,.04);
-  --row-hover: #f4f2ee;
-  --serif: "Newsreader", Georgia, "Times New Roman", serif;
-  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-}}
-[data-theme="dark"] {{
-  --bg: #0f1114; --surface: #16181d; --surface-2: #1c1f26;
-  --border: #262a31; --border-strong: #333944;
-  --text: #ececef; --text-muted: #9a9aa2; --text-faint: #67676f;
-  --accent: #8bb8f5; --accent-hover: #aecbfa;
-  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 4px 14px rgba(0,0,0,.35);
-  --row-hover: #1c1f26;
-}}
-*, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
+/* Hallmark · macrostructure: Long Document · tone: editorial · theme: studied-DNA */
+*, *::before, *::after {{ box-sizing: border-box; }}
+html, body {{ overflow-x: clip; }}
 body {{
-  font-family: var(--sans); background: var(--bg); color: var(--text);
-  line-height: 1.6; -webkit-font-smoothing: antialiased;
-  transition: background .25s, color .25s;
+  margin: 0; background: var(--color-paper); color: var(--color-ink);
+  font-family: var(--font-body); font-size: var(--text-body); line-height: 1.7;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
 }}
-.wrap {{ max-width: 680px; margin: 0 auto; padding: 0 20px 80px; }}
-
-.masthead {{ padding: 34px 0 22px; border-bottom: 1px solid var(--border-strong); margin-bottom: 24px; }}
-.mast-top {{ display: flex; justify-content: space-between; align-items: center; }}
-.header-title {{ font-family: var(--serif); font-size: clamp(1.9rem, 6vw, 2.5rem); font-weight: 600; letter-spacing: -0.01em; display: inline-flex; align-items: center; gap: 10px; }}
-.header-title .glyph {{ color: var(--accent); font-size: 0.7em; }}
-.header-sub {{ font-size: 0.82rem; color: var(--text-muted); margin-top: 10px; }}
-.header-sub .dot {{ color: var(--text-faint); margin: 0 3px; }}
+::selection {{ background: var(--color-selection); color: var(--color-ink); }}
+a {{ color: inherit; }}
+button, input {{ font: inherit; }}
+:focus-visible {{ outline: var(--rule-heavy) solid var(--color-focus); outline-offset: var(--space-2xs); }}
+button:disabled, [aria-disabled="true"] {{ color: var(--color-faint); cursor: not-allowed; opacity: .55; }}
+.sr-only {{ position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }}
+.site-shell {{ width: min(100%, var(--page-width)); margin-inline: auto; padding-inline: var(--page-gutter); }}
+.masthead {{ padding-block: var(--space-lg) var(--space-xl); text-align: center; }}
+.issue-line {{
+  display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center; gap: var(--space-md); min-height: 2.75rem;
+  border-block: var(--rule-hair) solid var(--color-rule);
+  color: var(--color-muted); font-family: var(--font-ui); font-size: var(--text-xs);
+  letter-spacing: .06em; text-transform: uppercase;
+}}
+.issue-line > :first-child {{ justify-self: start; }}
+.issue-line > :last-child {{ justify-self: end; }}
+.archive-kicker {{ font-variant-numeric: tabular-nums; white-space: nowrap; }}
 .theme-toggle {{
-  background: var(--surface); border: 1px solid var(--border-strong);
-  color: var(--text-muted); border-radius: 999px;
-  width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center;
-  cursor: pointer; transition: border-color .15s, color .15s; flex-shrink: 0;
+  min-width: 2.75rem; min-height: 2.75rem; padding-inline: var(--space-sm);
+  border: 0; border-inline: var(--rule-hair) solid var(--color-rule);
+  border-radius: 0; background: transparent; color: var(--color-ink);
+  cursor: pointer; font-family: var(--font-ui); font-size: var(--text-xs); font-weight: 600;
+  letter-spacing: .04em; text-transform: uppercase; white-space: nowrap;
 }}
-.theme-toggle:hover {{ border-color: var(--accent); color: var(--accent); }}
-.theme-toggle svg {{ width: 17px; height: 17px; }}
-.theme-toggle .icon-moon {{ display: block; }}
-.theme-toggle .icon-sun {{ display: none; }}
-[data-theme="dark"] .theme-toggle .icon-moon {{ display: none; }}
-[data-theme="dark"] .theme-toggle .icon-sun {{ display: block; }}
-
-/* Search */
+.theme-toggle:hover {{ color: var(--color-accent); }}
+.theme-toggle:active {{ color: var(--color-accent-hover); }}
+.theme-dark-label {{ display: inline; }}
+.theme-light-label {{ display: none; }}
+[data-theme="dark"] .theme-dark-label {{ display: none; }}
+[data-theme="dark"] .theme-light-label {{ display: inline; }}
+.mast-name {{
+  margin: var(--space-lg) 0 var(--space-xs); font-family: var(--font-display);
+  font-size: var(--text-display); font-style: normal; font-weight: 700;
+  letter-spacing: -.055em; line-height: .78; overflow-wrap: anywhere; min-width: 0;
+}}
+.mast-deck {{ max-width: 46ch; margin: var(--space-lg) auto var(--space-md); color: var(--color-ink-soft); font-size: var(--text-md); line-height: 1.45; }}
+.mast-rule {{ height: var(--space-xs); margin: 0; border: 0; border-block: var(--rule-hair) solid var(--color-rule-strong); }}
+.archive-heading {{
+  display: grid; gap: var(--space-sm); margin-block: var(--space-2xl) var(--space-lg);
+  padding-block-end: var(--space-sm); border-block-end: var(--rule-heavy) solid var(--color-ink);
+}}
+.archive-heading h2 {{
+  margin: 0; font-family: var(--font-display); font-size: var(--text-xl);
+  font-style: normal; font-weight: 600; line-height: 1; overflow-wrap: anywhere; min-width: 0;
+}}
+.archive-heading p {{ margin: 0; color: var(--color-muted); font-family: var(--font-ui); font-size: var(--text-xs); }}
 .search-box {{
-  display: flex; align-items: center; gap: 9px;
-  background: var(--surface); border: 1px solid var(--border-strong);
-  border-radius: 999px; padding: 9px 15px; margin-bottom: 18px;
-  transition: border-color .15s;
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center; gap: var(--space-md); margin-block-end: var(--space-xl);
+  border-block: var(--rule-hair) solid var(--color-rule); min-height: 3.25rem;
 }}
-.search-box:focus-within {{ border-color: var(--accent); }}
-.search-box svg {{ width: 16px; height: 16px; color: var(--text-faint); flex-shrink: 0; }}
+.search-box label, .search-count {{
+  font-family: var(--font-ui); font-size: var(--text-xs); font-weight: 600;
+  letter-spacing: .04em; text-transform: uppercase; white-space: nowrap;
+}}
 .search-box input {{
-  border: none; outline: none; background: transparent; width: 100%;
-  color: var(--text); font-size: 0.9rem; font-family: var(--sans);
+  width: 100%; min-height: 3.25rem; border: 0; background: transparent; color: var(--color-ink);
+  font-family: var(--font-ui); font-size: var(--text-sm);
 }}
-.search-box input::placeholder {{ color: var(--text-faint); }}
-
-.day-list {{
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: 14px; overflow: hidden; box-shadow: var(--shadow);
-}}
+.search-box input:focus {{ outline: 0; }}
+.search-box input:focus-visible {{ outline: var(--rule-heavy) solid var(--color-focus); outline-offset: calc(var(--space-2xs) * -1); }}
+.search-box input:disabled {{ opacity: .55; cursor: not-allowed; }}
+.search-box:focus-within {{ border-color: var(--color-focus); }}
+.search-box:hover {{ border-color: var(--color-rule-strong); }}
+.search-box input::placeholder, .search-count {{ color: var(--color-faint); }}
+.day-list {{ border-block-start: var(--rule-hair) solid var(--color-rule); }}
 .day-row {{
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 15px 18px; border-bottom: 1px solid var(--border);
-  text-decoration: none; color: var(--text); transition: background .12s;
+  display: grid; grid-template-columns: minmax(8.5rem, .7fr) minmax(0, 1.35fr) auto;
+  align-items: center; gap: var(--space-lg); min-height: 6rem;
+  padding-block: var(--space-lg); border-block-end: var(--rule-hair) solid var(--color-rule);
+  color: var(--color-ink); text-decoration: none;
 }}
-.day-row:last-child {{ border-bottom: none; }}
-.day-row:hover {{ background: var(--row-hover); }}
+.day-row:hover .day-date, .day-row:hover .day-count {{ color: var(--color-accent); }}
+.day-row:active .day-date, .day-row:active .day-count {{ color: var(--color-accent-hover); }}
 .day-row.hidden {{ display: none; }}
-.day-left {{ display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }}
-.day-date {{ font-family: var(--serif); font-weight: 600; font-size: 1.02rem; }}
-.today-badge {{
-  background: var(--accent); color: #fff;
-  font-size: 0.62rem; font-weight: 700; padding: 2px 8px;
-  border-radius: 999px; letter-spacing: .05em; text-transform: uppercase;
+.day-date {{
+  font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
 }}
-.day-tags {{ display: flex; flex-wrap: wrap; gap: 4px; }}
-.tag-pill {{
-  background: var(--lbg); color: var(--lfg);
-  padding: 2px 9px; border-radius: 999px; font-size: 0.66rem; font-weight: 600; text-transform: capitalize;
+.day-details {{ display: flex; flex-direction: column; gap: var(--space-xs); min-width: 0; }}
+.today-label {{
+  color: var(--color-accent); font-family: var(--font-ui); font-size: var(--text-2xs);
+  font-weight: 600; letter-spacing: .07em; text-transform: uppercase; white-space: nowrap;
 }}
-[data-theme="dark"] .tag-pill {{ background: var(--dbg); color: var(--dfg); }}
-.day-count {{ font-size: 0.78rem; color: var(--text-faint); white-space: nowrap; }}
-.empty-msg, .no-results {{ color: var(--text-faint); text-align: center; padding: 48px 0; font-family: var(--serif); font-size: 1.05rem; }}
+.day-tags {{
+  display: flex; flex-wrap: wrap; gap: var(--space-xs);
+  color: var(--color-muted); font-family: var(--font-ui); font-size: var(--text-xs);
+  letter-spacing: .04em; text-transform: uppercase;
+}}
+.tag-separator {{ color: var(--color-rule-strong); }}
+.day-count {{
+  color: var(--color-muted); font-family: var(--font-ui); font-size: var(--text-xs);
+  font-weight: 600; white-space: nowrap;
+}}
+.empty-msg, .no-results {{ padding-block: var(--space-3xl); color: var(--color-muted); font-size: var(--text-lg); text-align: center; }}
 .no-results {{ display: none; }}
 .site-footer {{
-  text-align: center; font-size: 0.72rem; color: var(--text-faint);
-  margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border);
+  margin-block-start: var(--space-2xl); padding-block: var(--space-xl) var(--space-2xl);
+  border-block-start: var(--rule-heavy) solid var(--color-ink);
+  color: var(--color-muted); font-family: var(--font-ui); font-size: var(--text-xs); line-height: 1.65;
 }}
-.site-footer a {{ color: var(--text-muted); text-decoration: none; }}
-.site-footer a:hover {{ color: var(--accent); }}
-@media (max-width: 600px) {{
-  .wrap {{ padding: 0 14px 56px; }}
-  .masthead {{ padding: 24px 0 18px; }}
-  .day-row {{ padding: 13px 14px; }}
+.footer-name {{ color: var(--color-ink); font-family: var(--font-display); font-size: var(--text-xl); font-weight: 600; }}
+.site-footer p {{ max-width: 78ch; margin: var(--space-xs) 0 0; }}
+.site-footer a {{ text-decoration-color: var(--color-rule-strong); text-underline-offset: var(--space-3xs); }}
+.site-footer a:hover {{ color: var(--color-accent); }}
+.site-footer a:active {{ color: var(--color-accent-hover); }}
+@media (min-width: 60rem) {{
+  .masthead {{ padding-block: var(--space-xl) var(--space-2xl); }}
+  .archive-heading {{ grid-template-columns: minmax(0, 1fr) auto; align-items: end; }}
+  .archive-heading p {{ text-align: end; }}
 }}
-@media (prefers-reduced-motion: reduce) {{ *, *::before, *::after {{ transition: none !important; }} }}
+@media (max-width: 39.999rem) {{
+  .issue-line {{ grid-template-columns: minmax(0, 1fr) auto; }}
+  .archive-kicker {{ grid-column: 1 / -1; justify-self: center; padding-block: var(--space-xs); }}
+  .issue-line > :last-child {{ grid-column: 2; }}
+  .mast-name {{ line-height: .86; }}
+  .search-box {{ grid-template-columns: auto minmax(0, 1fr); }}
+  .search-count {{ display: none; }}
+  .day-row {{ grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-xs) var(--space-md); }}
+  .day-details {{ grid-column: 1 / -1; grid-row: 2; }}
+  .day-count {{ grid-column: 2; grid-row: 1; }}
+}}
+@media (pointer: coarse) {{
+  .theme-toggle, .day-row {{ min-height: 3rem; }}
+}}
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="site-shell">
   <header class="masthead">
-    <div class="mast-top">
-      <div class="header-title"><span class="glyph">&#9632;</span> News Buddy</div>
-      <button class="theme-toggle" onclick="toggleDark()" id="theme-btn" aria-label="Toggle dark mode" title="Toggle theme">
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    <div class="issue-line">
+      <span>Daily AI briefing</span>
+      <span class="archive-kicker">{total_days} issue{"s" if total_days != 1 else ""} · {total_articles} articles</span>
+      <button class="theme-toggle" type="button" onclick="toggleDark()" id="theme-btn" aria-label="Toggle color theme">
+        <span class="theme-dark-label">Night</span><span class="theme-light-label">Day</span>
       </button>
     </div>
-    {stats_line}
+    <h1 class="mast-name">News Buddy</h1>
+    <p class="mast-deck">A daily briefing on artificial intelligence—selected for signal, written for clarity.</p>
+    <hr class="mast-rule" aria-hidden="true">
   </header>
 
-  {search_html}
-  {'<div class="day-list" id="day-list">' + rows_html + '</div><p class="no-results" id="no-results">No digests match that filter.</p>' if dated_files else empty_msg}
-{_signup_form()}
+  <main>
+    <div class="archive-heading">
+      <h2>Issue archive</h2>
+      <p>Browse every published briefing, newest first.</p>
+    </div>
+    {search_html}
+    {'<div class="day-list" id="day-list">' + rows_html + '</div><p class="no-results" id="no-results">No issues match that filter.</p>' if dated_files else empty_msg}
+    {_signup_form()}
+  </main>
+
   <footer class="site-footer">
-    News Buddy &nbsp;·&nbsp;
-    <a href="https://github.com/Harshagarwal06/buddy_agent" target="_blank" rel="noopener">source</a>
+    <div class="footer-name">News Buddy</div>
+    <p>An independent, automated reading list built from public feeds. Every summary links back to its original publisher. <a href="https://github.com/Harshagarwal06/buddy_agent" target="_blank" rel="noopener">View the source on GitHub ↗</a></p>
   </footer>
 </div>
+
 <script>
 function applyTheme(dark) {{
   document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
@@ -288,19 +328,20 @@ function toggleDark() {{
   applyTheme(saved ? saved === 'dark' : sysDark);
 }})();
 
-// -- Archive search --
 var search = document.getElementById('archive-search');
 if (search) {{
   search.addEventListener('input', function() {{
-    var q = this.value.trim().toLowerCase();
+    var query = this.value.trim().toLowerCase();
     var shown = 0;
     document.querySelectorAll('.day-row').forEach(function(row) {{
-      var match = !q || (row.getAttribute('data-search') || '').indexOf(q) !== -1;
+      var match = !query || (row.getAttribute('data-search') || '').indexOf(query) !== -1;
       row.classList.toggle('hidden', !match);
       if (match) shown++;
     }});
-    var nr = document.getElementById('no-results');
-    if (nr) nr.style.display = shown === 0 ? 'block' : 'none';
+    var noResults = document.getElementById('no-results');
+    var count = document.getElementById('search-count');
+    if (noResults) noResults.style.display = shown === 0 ? 'block' : 'none';
+    if (count) count.textContent = query ? shown + ' found' : '';
   }});
 }}
 </script>
@@ -316,6 +357,7 @@ if (search) {{
 
 if __name__ == "__main__":
     import sys as _sys
+
     if len(_sys.argv) != 2:
         print("usage: python -m news_buddy.archive_writer <output-dir>", file=_sys.stderr)
         _sys.exit(1)
