@@ -1,0 +1,106 @@
+[
+  {
+    "title": "PSA: Your Claude shared chats and Artifacts may have ended up on Google",
+    "url": "https://techcrunch.com/2026/07/27/psa-your-claude-shared-chats-and-artifacts-may-have-ended-up-on-google/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-07-27",
+    "summary": "The issue appears to have originated from Claude’s “share chat” feature, which allows users to create links that enable anyone with the assigned URL view a conversation or project.",
+    "tags": [
+      "world"
+    ],
+    "importance": 2,
+    "image_url": "images/nvidia-flux2-claude-privacy-infographic-test.webp",
+    "image_alt": "Editorial diagram showing a shared Claude chat moving from a private screen into public search results."
+  },
+  {
+    "title": "OpenAI’s Hugging Face breach has reignited the debate over alignment and control",
+    "url": "https://techcrunch.com/2026/07/27/openais-hugging-face-breach-has-reignited-the-debate-over-alignment-and-control/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-07-27",
+    "summary": "OpenAI's Hugging Face breach has reignited debate over AI alignment and control, exposing competing views on whether increasingly capable AI should be better aligned, better contained, or both.",
+    "tags": [
+      "world"
+    ],
+    "importance": 2,
+    "image_url": "",
+    "image_alt": ""
+  },
+  {
+    "title": "Anthropic’s Dario Amodei responds: doesn’t oppose open-weight models, but fears Chinese AI",
+    "url": "https://techcrunch.com/2026/07/27/anthropics-dario-amodei-responds-doesnt-oppose-open-weight-models-but-fears-chinese-ai/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-07-28",
+    "summary": "Anthropic founder and CEO Dario Amodei made his views clear about open-weight models and China's growing AI capabilities.",
+    "tags": [
+      "world"
+    ],
+    "importance": 2,
+    "image_url": "",
+    "image_alt": ""
+  },
+  {
+    "title": "Threads users can now chat with Meta AI in their DMs",
+    "url": "https://techcrunch.com/2026/07/27/threads-users-can-now-chat-with-meta-ai-in-their-dms/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-07-27",
+    "summary": "Meta on Monday said it is rolling out its Meta AI chatbot within Threads' DMs, giving users a way to chat with the AI assistant.",
+    "tags": [
+      "world"
+    ],
+    "importance": 2,
+    "image_url": "",
+    "image_alt": ""
+  },
+  {
+    "title": "Cursor makes its biggest India push yet ahead of SpaceX acquisition with localized pricing",
+    "url": "https://techcrunch.com/2026/07/27/cursor-makes-its-biggest-india-push-yet-ahead-of-spacex-acquisition-with-localized-pricing/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-07-28",
+    "summary": "Cursor says India is now its third-largest market globally and plans to expand local hiring and enterprise sales.",
+    "tags": [
+      "world"
+    ],
+    "importance": 2,
+    "image_url": "",
+    "image_alt": ""
+  },
+  {
+    "title": "Google’s AI search is rapidly becoming the default, new data shows",
+    "url": "https://techcrunch.com/2026/07/27/googles-ai-search-is-rapidly-becoming-the-default-new-data-shows/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-07-27",
+    "summary": "Google’s AI Overviews now appear in 43% of searches, underscoring how quickly AI-generated answers are becoming the default way people discover information online.",
+    "tags": [
+      "world"
+    ],
+    "importance": 2,
+    "image_url": "",
+    "image_alt": ""
+  },
+  {
+    "title": "Satya Nadella says companies that trust one AI for everything may not survive",
+    "url": "https://techcrunch.com/2026/07/27/satya-nadella-says-companies-that-trust-one-ai-for-everything-may-not-survive/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-07-27",
+    "summary": "Companies without their own models — or without a layer of AI infrastructure known as AI gateways to separate their prompts from the model itself — will be in trouble, Nadella says.",
+    "tags": [
+      "world"
+    ],
+    "importance": 2,
+    "image_url": "",
+    "image_alt": ""
+  },
+  {
+    "title": "Microsoft launches its first cybersecurity model, plus a new agentic cybersecurity system",
+    "url": "https://techcrunch.com/2026/07/27/microsoft-launches-its-first-cyber-model-and-a-new-agentic-cybersecurity-system/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-07-27",
+    "summary": "Microsoft bolstered its AI cybersecurity offerings this week with the launch of its first AI security model and a new security platform.",
+    "tags": [
+      "world"
+    ],
+    "importance": 2,
+    "image_url": "",
+    "image_alt": ""
+  }
+]
