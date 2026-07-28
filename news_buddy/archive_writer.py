@@ -443,6 +443,7 @@ if (signupEmail) {{
 
     target = output_dir / "index.html"
     tmp = target.with_suffix(".html.tmp")
+    html = "\n".join(line.rstrip() for line in html.splitlines()) + "\n"
     tmp.write_text(html, encoding="utf-8")
     tmp.replace(target)
     return target
