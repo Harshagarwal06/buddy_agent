@@ -1,4 +1,4 @@
-"""Generate and cache editorial photographs for enriched news articles."""
+"""Generate and cache editorial explainer diagrams for enriched news articles."""
 
 from __future__ import annotations
 
@@ -7,6 +7,7 @@ import hashlib
 import io
 import itertools
 import os
+import re
 import sys
 import textwrap
 import time
@@ -17,22 +18,24 @@ from xml.sax.saxutils import escape as xml_escape
 
 
 DEFAULT_STYLE = (
-    "Photorealistic conceptual editorial news photograph with one clear "
-    "subject and a concrete visual metaphor. Natural light, realistic "
-    "materials, restrained color, strong documentary composition, landscape "
-    "orientation. Do not depict an invented event as documentary evidence. "
-    "No words, letters, numbers, logos, watermarks, or screenshots."
+    "Warm cream paper; flat hand-drawn editorial diagram; thick charcoal "
+    "outlines; obvious arrows; generous empty space; one muted brick-red or "
+    "ochre accent. Front-facing 4:3 with three clear object groups. Every "
+    "surface is blank and unmarked. No UI panels, documents, screens, forms, "
+    "signage, written text, letters, numbers, captions, photos, people, logos, "
+    "gradients, scenery, watermarks, or screenshots."
 )
 
 DEFAULT_NEGATIVE_PROMPT = (
-    "text, typography, letters, numbers, logo, watermark, screenshot, "
-    "illustration, cartoon, painting, CGI, identifiable real person, clutter, "
-    "low contrast, blurry"
+    "photograph, photorealism, identifiable person, face, logo, watermark, "
+    "screenshot, 3D render, glossy CGI, gradient, busy background, clutter, "
+    "paragraph text, misspelled text, extra labels, low contrast, blurry"
 )
 
 DEFAULT_NVIDIA_API_URL = (
     "https://ai.api.nvidia.com/v1/genai/black-forest-labs/flux.2-klein-4b"
 )
+MAX_IMAGE_PROMPT_CHARS = 800
 
 
 class ImageContentFilteredError(RuntimeError):
@@ -149,11 +152,97 @@ def _make_client(settings: ImageSettings, token: str):
     )
 
 
+_LAYOUT_DIRECTIONS = {
+    "pipeline": "Arrange the three stages left to right with bold directional arrows.",
+    "branching": "Start from one object, split into two or three paths, then converge on the outcome.",
+    "comparison": "Use a clean two-column contrast divided by a single vertical rule.",
+    "before_after": "Show a clear before state on the left and changed state on the right.",
+    "bottleneck": "Show several inputs narrowing through one constrained gate into one output.",
+    "layers": "Stack three protective or processing layers from outside to inside.",
+}
+
+_LABEL_CLEANER = re.compile(r"[^A-Za-z0-9 +/&-]+")
+
+
+def _image_labels(item: dict) -> list[str]:
+    """Return three short labels for the deterministic publisher-rendered legend."""
+    supplied = item.get("image_labels") or []
+    if isinstance(supplied, str):
+        supplied = [part.strip() for part in supplied.split(",")]
+    labels = []
+    for value in supplied:
+        cleaned = _LABEL_CLEANER.sub("", str(value)).strip()
+        cleaned = " ".join(cleaned.split()[:3])[:14].strip(" -")
+        if cleaned and cleaned.lower() not in {label.lower() for label in labels}:
+            labels.append(cleaned.upper())
+        if len(labels) == 3:
+            return labels
+    return _fallback_labels(item)
+
+
+def _fallback_labels(item: dict) -> list[str]:
+    text = _article_context(item).lower()
+    label_sets = [
+        (("shared chat", "artifacts may", "ended up on"), ["PRIVATE CHAT", "PUBLIC LINK", "INDEXED"]),
+        (("alignment and control", "breach has reignited"), ["ALIGNMENT", "CONTROL", "RISK"]),
+        (("open-weight", "open weight"), ["OPEN WEIGHTS", "CONTROL", "RISK"]),
+        (("chat with", "in their dms", "chatbot within"), ["MESSAGE", "ASSISTANT", "REPLY"]),
+        (("localized pricing", "local hiring"), ["GLOBAL PRICE", "LOCAL PRICE", "ADOPTION"]),
+        (("search is rapidly", "ai overviews"), ["QUERY", "AI ANSWER", "LINKS"]),
+        (("ai gateway", "trust one ai"), ["PROMPT", "GATEWAY", "MODELS"]),
+        (("cybersecurity model", "cyber model"), ["THREATS", "MODEL", "ACTIONS"]),
+        (("backup", "database", "registry", "wipe"), ["PRIMARY", "BACKUP", "HALT"]),
+        (("swarm", "planner", "worker"), ["PLANNER", "WORKERS", "RESULT"]),
+        (("reasoning", "effort", "thinking"), ["TASK", "EFFORT", "RESULT"]),
+        (("memory safe", "pointer", "compiler"), ["POINTER", "CHECK", "MEMORY"]),
+        (("hallucination", "fabricat", "source"), ["MODEL", "SOURCE", "FALSE"]),
+        (("retrieval", "search", "rag"), ["QUERY", "SEARCH", "ANSWER"]),
+        (("security", "cyber", "breach", "shell"), ["INPUT", "GATE", "SYSTEM"]),
+        (("cloud", "vendor", "sovereign"), ["LOCK-IN", "MIGRATE", "CONTROL"]),
+        (("robot", "training", "policy"), ["DATA", "MODEL", "POLICY"]),
+    ]
+    return next(
+        (labels for terms, labels in label_sets if any(term in text for term in terms)),
+        ["INPUT", "SYSTEM", "RESULT"],
+    )
+
+
+def _article_context(item: dict) -> str:
+    title = str(item.get("title") or "").strip()
+    summary = str(item.get("summary") or "").strip()
+    return " — ".join(part for part in (title, summary) if part)[:700]
+
+
+def _layout_direction(item: dict) -> str:
+    layout = str(item.get("image_layout") or "").strip().lower()
+    if layout in _LAYOUT_DIRECTIONS:
+        return _LAYOUT_DIRECTIONS[layout]
+    text = _article_context(item).lower()
+    inferred = (
+        "branching"
+        if any(term in text for term in ("swarm", "reasoning effort", "ai gateway"))
+        else "comparison"
+        if any(
+            term in text
+            for term in ("alignment and control", "open-weight", "open weight", "trust one ai")
+        )
+        else "before_after"
+        if any(term in text for term in ("wipes", "wiped", "localized pricing"))
+        else "pipeline"
+    )
+    return _LAYOUT_DIRECTIONS[inferred]
+
+
 def _visual_prompt(item: dict) -> str:
-    prompt = str(item.get("image_prompt") or "").strip()
-    if prompt:
-        return prompt
-    return _safe_photo_prompt(item)
+    """Build a self-contained diagram brief from the editorial plan."""
+    planned = str(item.get("image_prompt") or "").strip()[:280]
+    if not planned:
+        return _safe_infographic_prompt(item)
+    return (
+        f"Create one explanatory editorial infographic. Diagram concept: {planned} "
+        f"{_layout_direction(item)} Keep all three object groups completely "
+        "unlabeled; the publisher will add the legend."
+    )
 
 
 def _image_alt(item: dict) -> str:
@@ -163,55 +252,113 @@ def _image_alt(item: dict) -> str:
     return f"AI-generated editorial image for {item.get('title') or 'this news story'}"
 
 
-def _safe_photo_concept(item: dict) -> str:
-    """Choose a name-free subject that still reflects the article's broad theme."""
-    text = " ".join(
-        [
-            str(item.get("title") or ""),
-            str(item.get("summary") or ""),
-            " ".join(str(tag) for tag in (item.get("tags") or [])),
-        ]
-    ).lower()
+def _safe_infographic_concept(item: dict) -> str:
+    """Choose an article-shaped mechanism without named people or brands."""
+    text = _article_context(item).lower()
     concepts = [
         (
-            ("security", "cyber", "breach", "privacy", "hack"),
-            "a locked server rack beside glowing fiber-optic cables in a secure data center",
+            ("shared chat", "artifacts may", "ended up on"),
+            "a sealed speech bubble passing through an open chain-link gate into a magnifying glass over public nodes",
         ),
         (
-            ("price", "pricing", "market", "business", "acquisition", "enterprise"),
-            "two modern office buildings connected by a clean architectural bridge",
+            ("alignment and control", "breach has reignited"),
+            "an open model box on one side and a containment shield on the other, connected by a risk gauge",
         ),
         (
-            ("search", "discovery", "answer"),
-            "a magnifying lens resting above an orderly network of illuminated data nodes",
+            ("open-weight", "open weight"),
+            "an open model-weight vault contrasted with a controlled sealed vault, both pointing toward a risk meter",
         ),
         (
-            ("chat", "message", "social", "assistant"),
-            "two unbranded smartphones connected by a subtle beam of light on a studio table",
+            ("chat with", "in their dms", "chatbot within"),
+            "a message bubble entering a small assistant node and returning as a reply bubble inside one conversation",
         ),
         (
-            ("alignment", "control", "open-weight", "policy", "governance"),
-            "a balanced scale between an open glass server cabinet and a sealed metal vault",
+            ("localized pricing", "local hiring"),
+            "a large global price tag becoming a smaller regional price tag before reaching a growing group of users",
+        ),
+        (
+            ("search is rapidly", "ai overviews"),
+            "a magnifying glass flowing into one large abstract synthesis orb while a stack of small link nodes becomes smaller",
+        ),
+        (
+            ("ai gateway", "trust one ai"),
+            "one plain input cube entering a router junction that fans out to three blank model cubes, beside a broken single path",
+        ),
+        (
+            ("cybersecurity model", "cyber model"),
+            "several threat symbols entering a security model that directs three shielded agent actions",
+        ),
+        (
+            ("backup", "database", "registry", "wipe"),
+            "a main database and its backup both crossed out, followed by a falling activity line",
+        ),
+        (
+            ("swarm", "planner", "worker"),
+            "one planner node branching to three worker nodes that converge on a completed task",
+        ),
+        (
+            ("reasoning", "effort", "thinking"),
+            "one task splitting into low, medium, and high effort paths that end in progressively stronger results",
+        ),
+        (
+            ("memory safe", "pointer", "compiler"),
+            "a pointer passing through a runtime safety gate before reaching a protected memory block",
+        ),
+        (
+            ("hallucination", "fabricat", "source"),
+            "a language model producing a document that passes under a magnifying glass and ends as a crossed-out claim",
+        ),
+        (
+            ("cloud", "vendor", "sovereign"),
+            "a tangled locked cloud feeding applications through a narrow migration arrow into a smaller controlled cloud",
+        ),
+        (
+            ("robot", "training", "policy"),
+            "two data sources flowing into one base model that points to a robotic arm policy",
+        ),
+        (
+            ("search", "retrieval", "answer", "rag"),
+            "a query moving through a magnifying-glass retrieval gate into one verified answer",
+        ),
+        (
+            ("security", "cyber", "breach", "privacy", "hack", "shell"),
+            "model output moving through a cracked unsafe pipe toward a protected computer system",
         ),
     ]
     return next(
         (description for terms, description in concepts if any(term in text for term in terms)),
-        "a compact AI server module connected to a larger cloud data center",
+        "three simple stages showing an input entering a system and producing a clear result",
     )
 
 
-def _safe_photo_prompt(item: dict) -> str:
-    """Build a name-free photo brief for missing or content-filtered prompts."""
-    concept = _safe_photo_concept(item)
+def _safe_infographic_prompt(item: dict) -> str:
+    """Build a name-free but article-specific brief for filtered prompts."""
+    concept = _safe_infographic_concept(item)
     return (
-        f"Create a photorealistic conceptual editorial photograph of {concept}. "
-        "Use an unbranded, non-documentary studio scene with no people, flags, "
-        "symbols, text, or logos."
+        f"Create one simple explanatory editorial infographic showing {concept}. "
+        f"{_layout_direction(item)} Keep all three object groups completely "
+        "unlabeled; the publisher will add the legend. Keep every object generic "
+        "and unbranded."
     )
 
 
 def _safe_image_alt(item: dict) -> str:
-    return f"AI-generated editorial photograph of {_safe_photo_concept(item)}."
+    return f"AI-generated explainer diagram showing {_safe_infographic_concept(item)}."
+
+
+def _request_prompt(prompt: str, settings: ImageSettings) -> str:
+    return (
+        f"{prompt}\n\nVisual direction: {settings.style}"
+    )[:MAX_IMAGE_PROMPT_CHARS]
+
+
+def _is_retryable_request_error(exc: Exception) -> bool:
+    response = getattr(exc, "response", None)
+    status_code = getattr(response, "status_code", 0)
+    return not (
+        400 <= status_code < 500
+        and status_code not in {408, 409, 425, 429}
+    )
 
 
 def _cache_stem(item: dict, prompt: str, settings: ImageSettings) -> str:
@@ -223,12 +370,103 @@ def _cache_stem(item: dict, prompt: str, settings: ImageSettings) -> str:
             settings.provider,
             settings.style_version,
             settings.style,
+            ",".join(_image_labels(item)),
         ]
     )
     return hashlib.sha256(cache_material.encode("utf-8")).hexdigest()[:20]
 
 
-def _save_webp(image, target: Path, settings: ImageSettings) -> None:
+def _add_label_band(image, labels: list[str]):
+    """Cover model-generated captions and render an exact three-step legend."""
+    from PIL import Image, ImageDraw, ImageFont
+
+    source = image.convert("RGB")
+    width, height = source.size
+    band_height = max(160, round(height * 0.28))
+    band_top = height - band_height
+    crop_top = max(64, round(height * 0.18))
+    crop_bottom = max(160, round(height * 0.28))
+    art = source.crop((0, crop_top, width, height - crop_bottom))
+    rendered = Image.new("RGB", (width, height), "#f3ecd8")
+    art_y = max(0, (band_top - art.height) // 2)
+    rendered.paste(art, (0, art_y))
+    draw = ImageDraw.Draw(rendered)
+    paper = "#f3ecd8"
+    ink = "#27251f"
+    accent = "#9a3a2a"
+    draw.rectangle((0, band_top, width, height), fill=paper)
+    draw.line((0, band_top, width, band_top), fill="#8a806c", width=max(2, width // 500))
+
+    font_size = max(24, round(height * 0.038))
+    number_size = max(20, round(height * 0.03))
+    try:
+        label_font = ImageFont.truetype("DejaVuSans-Bold.ttf", font_size)
+        number_font = ImageFont.truetype("DejaVuSans-Bold.ttf", number_size)
+    except OSError:
+        label_font = ImageFont.load_default(size=font_size)
+        number_font = ImageFont.load_default(size=number_size)
+
+    centers = [round(width / 6), round(width / 2), round(width * 5 / 6)]
+    circle_y = band_top + round(band_height * 0.29)
+    label_y = band_top + round(band_height * 0.56)
+    radius = max(17, round(height * 0.023))
+
+    for index, (center_x, label) in enumerate(zip(centers, labels), 1):
+        draw.ellipse(
+            (
+                center_x - radius,
+                circle_y - radius,
+                center_x + radius,
+                circle_y + radius,
+            ),
+            fill=accent,
+        )
+        number = str(index)
+        number_box = draw.textbbox((0, 0), number, font=number_font)
+        draw.text(
+            (
+                center_x - (number_box[2] - number_box[0]) / 2,
+                circle_y - (number_box[3] - number_box[1]) / 2 - number_box[1],
+            ),
+            number,
+            fill="#fffaf0",
+            font=number_font,
+        )
+        label_box = draw.textbbox((0, 0), label, font=label_font)
+        draw.text(
+            (
+                center_x - (label_box[2] - label_box[0]) / 2,
+                label_y,
+            ),
+            label,
+            fill=ink,
+            font=label_font,
+        )
+
+    arrow_y = circle_y
+    for left, right in zip(centers, centers[1:]):
+        start = left + radius + round(width * 0.025)
+        end = right - radius - round(width * 0.025)
+        line_width = max(3, width // 330)
+        draw.line((start, arrow_y, end, arrow_y), fill=accent, width=line_width)
+        arrow = max(9, round(width * 0.012))
+        draw.polygon(
+            [
+                (end, arrow_y),
+                (end - arrow, arrow_y - arrow // 2),
+                (end - arrow, arrow_y + arrow // 2),
+            ],
+            fill=accent,
+        )
+    return rendered
+
+
+def _save_webp(
+    image,
+    target: Path,
+    settings: ImageSettings,
+    labels: list[str],
+) -> None:
     from PIL import Image, ImageOps
 
     if not isinstance(image, Image.Image):
@@ -238,6 +476,7 @@ def _save_webp(image, target: Path, settings: ImageSettings) -> None:
         (settings.width, settings.height),
         method=Image.Resampling.LANCZOS,
     )
+    image = _add_label_band(image, labels)
     tmp = target.with_suffix(".webp.tmp")
     image.save(tmp, format="WEBP", quality=settings.quality, method=6)
     tmp.replace(target)
@@ -323,8 +562,8 @@ def generate_article_images(
     def _process(item: dict) -> tuple[dict, bool]:
         planned_prompt = str(item.get("image_prompt") or "").strip()
         used_safe_prompt = not planned_prompt
-        safe_prompt = _safe_photo_prompt(item)
-        prompt = planned_prompt or safe_prompt
+        safe_prompt = _safe_infographic_prompt(item)
+        prompt = _visual_prompt(item)
         stem = _cache_stem(item, prompt, settings)
         webp_target = image_dir / f"{stem}.webp"
         relative_webp = webp_target.relative_to(output_dir).as_posix()
@@ -345,8 +584,7 @@ def generate_article_images(
         try:
             if client is None:
                 raise RuntimeError(f"{token_env} is not configured")
-            full_prompt = f"{prompt}\n\nVisual direction: {settings.style}"
-            request_prompt = full_prompt[:1800]
+            request_prompt = _request_prompt(prompt, settings)
             image = None
             for attempt in range(settings.retries + 1):
                 try:
@@ -374,11 +612,12 @@ def generate_article_images(
                                 _safe_image_alt(item),
                             ), False
                         request_prompt = (
-                            f"{safe_prompt}\n\n"
-                            f"Visual direction: {settings.style}"
-                        )[:1800]
+                            _request_prompt(safe_prompt, settings)
+                        )
                         reason = "content-filtered prompt; retrying with neutral brief"
                     else:
+                        if not _is_retryable_request_error(request_exc):
+                            raise
                         reason = "image request failed; retrying"
                     print(
                         f"[warn] {reason} ({attempt + 1}/{settings.retries})",
@@ -387,7 +626,7 @@ def generate_article_images(
                     time.sleep(settings.retry_delay)
             if image is None:
                 raise RuntimeError("image provider returned no image")
-            _save_webp(image, webp_target, settings)
+            _save_webp(image, webp_target, settings, _image_labels(item))
             image_alt = _safe_image_alt(item) if used_safe_prompt else None
             return _with_image_metadata(item, relative_webp, image_alt), False
         except Exception as exc:
@@ -400,7 +639,8 @@ def generate_article_images(
                 if not svg_target.exists():
                     _placeholder_svg(item, svg_target, settings)
                 relative_svg = svg_target.relative_to(output_dir).as_posix()
-                return _with_image_metadata(item, relative_svg), True
+                image_alt = _safe_image_alt(item) if used_safe_prompt else None
+                return _with_image_metadata(item, relative_svg, image_alt), True
             except Exception as placeholder_exc:
                 print(
                     f"[warn] image placeholder failed for "

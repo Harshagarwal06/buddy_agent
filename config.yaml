@@ -106,14 +106,15 @@ images:
   retry_delay: 2
   steps: 4
   require_all: true
-  style_version: photo-v1
+  style_version: explainer-v7
   generate_in_test_run: false
   style: >-
-    Photorealistic conceptual editorial news photograph with one clear
-    subject and a concrete visual metaphor. Natural light, realistic
-    materials, restrained color, strong documentary composition, landscape
-    orientation. Do not depict an invented event as documentary evidence.
-    No words, letters, numbers, logos, watermarks, or screenshots.
+    Warm cream paper; flat hand-drawn editorial diagram; thick charcoal
+    outlines; obvious arrows; generous empty space; one muted brick-red or
+    ochre accent. Front-facing 4:3 with three clear object groups. Every
+    surface is blank and unmarked. No UI panels, documents, screens, forms,
+    signage, written text, letters, numbers, captions, photos, people, logos,
+    gradients, scenery, watermarks, or screenshots.
 
 llm:
   provider: huggingface      # "huggingface", "google" (Gemini API), or "ollama" (local)

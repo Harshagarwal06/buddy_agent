@@ -91,7 +91,7 @@ cp .env.example .env
 Edit `.env` with provider and notification secrets. Edit `config.yaml` to tune feeds, keyword filtering, article limits, and model provider.
 
 The `images` block in `config.yaml` controls the image model, output dimensions,
-compression, concurrency, retries, and shared photographic style. The default
+compression, concurrency, retries, and shared explainer-infographic style. The default
 NVIDIA FLUX.2-klein-4B integration uses `NVIDIA_API_KEY`. Normal `--test-run`
 executions skip image generation unless
 `images.generate_in_test_run` is explicitly set to `true`.

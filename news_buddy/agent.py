@@ -166,6 +166,8 @@ def _summarize_one(sub_llm, item: dict, strict: bool = False) -> tuple[dict, int
         "tags": data.get("tags", []),
         "importance": data.get("importance", 3),
         "image_prompt": data.get("image_prompt", ""),
+        "image_layout": data.get("image_layout", ""),
+        "image_labels": data.get("image_labels", []),
         "image_alt": data.get("image_alt", ""),
     }
     return enriched, tokens, body
@@ -482,7 +484,7 @@ def summarize_articles_node(state: DigestState) -> dict:
 
 
 def generate_article_images_node(state: DigestState) -> dict:
-    """Generate cached article photographs before publication."""
+    """Generate cached article explainer diagrams before publication."""
     image_config = state["config"].get("images", {})
     if not image_config.get("enabled", False):
         _log(state, "Article images disabled")

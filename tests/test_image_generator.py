@@ -13,8 +13,10 @@ def _item():
         "url": "https://example.test/hybrid",
         "summary": "A local model estimates confidence before handing work to a cloud model.",
         "tags": ["ai"],
-        "image_prompt": "A small blue robot deciding whether to pass a task to a large cloud.",
-        "image_alt": "A small robot choosing whether to hand a task to a cloud.",
+        "image_prompt": "A local model routes uncertain work to a larger cloud model.",
+        "image_layout": "branching",
+        "image_labels": ["local model", "confidence", "cloud model"],
+        "image_alt": "A local model routing uncertain work to a cloud model.",
     }
 
 
@@ -78,8 +80,20 @@ def test_generated_image_is_cached(tmp_path, monkeypatch):
     assert first_failures == second_failures == 0
     assert first[0]["image_url"] == second[0]["image_url"]
     assert first[0]["image_url"].endswith(".webp")
+    assert '"LOCAL MODEL"' not in calls[0][0]
+    assert "split into two or three paths" in calls[0][0]
+    assert "warm cream paper" in calls[0][0].lower()
+    assert "completely unlabeled" in calls[0][0]
+    assert len(calls[0][0]) <= image_generator.MAX_IMAGE_PROMPT_CHARS
     with Image.open(tmp_path / first[0]["image_url"]) as rendered:
         assert rendered.size == (640, 480)
+        pixel = rendered.getpixel((10, 470))
+        assert all(abs(actual - expected) <= 2 for actual, expected in zip(pixel, (243, 236, 216)))
+        header_pixel = rendered.getpixel((10, 10))
+        assert all(
+            abs(actual - expected) <= 2
+            for actual, expected in zip(header_pixel, (243, 236, 216))
+        )
 
 
 def test_nvidia_provider_decodes_hosted_image_response(tmp_path, monkeypatch):
@@ -136,7 +150,7 @@ def test_nvidia_provider_decodes_hosted_image_response(tmp_path, monkeypatch):
     assert failures == cached_failures == 0
     assert items[0]["image_url"].endswith(".webp")
     assert cached_items[0]["image_url"] == items[0]["image_url"]
-    assert items[0]["image_alt"].startswith("AI-generated editorial photograph")
+    assert items[0]["image_alt"].startswith("AI-generated explainer diagram")
     assert len(calls) == 2
     url, headers, payload, timeout = calls[-1]
     assert url == "https://example.test/nvidia-image"
@@ -145,8 +159,10 @@ def test_nvidia_provider_decodes_hosted_image_response(tmp_path, monkeypatch):
     assert payload["height"] == 480
     assert payload["steps"] == 4
     assert timeout == 180
-    assert "small blue robot" not in payload["prompt"].lower()
-    assert "no people" in payload["prompt"].lower()
+    assert "local model routes" not in payload["prompt"].lower()
+    assert "locked cloud" in payload["prompt"].lower()
+    assert '"LOCAL MODEL"' not in payload["prompt"]
+    assert "photos, people, logos" in payload["prompt"].lower()
 
 
 def test_image_request_retries_before_fallback(tmp_path, monkeypatch):
@@ -191,3 +207,40 @@ def test_disabled_images_leave_items_unchanged(tmp_path):
     assert items is original
     assert ready == 0
     assert failures == 0
+
+
+def test_safe_briefs_preserve_distinct_article_mechanisms():
+    database_item = {
+        "title": "Hacker wipes land registry and backups",
+        "summary": "Both the primary database and backup storage were erased.",
+    }
+    swarm_item = {
+        "title": "Agent swarm completes complex tasks",
+        "summary": "A planner delegates work to several worker agents.",
+    }
+
+    database_prompt = image_generator._safe_infographic_prompt(database_item)
+    swarm_prompt = image_generator._safe_infographic_prompt(swarm_item)
+
+    assert "main database and its backup both crossed out" in database_prompt
+    assert image_generator._image_labels(database_item) == ["PRIMARY", "BACKUP", "HALT"]
+    assert "planner node branching to three worker nodes" in swarm_prompt
+    assert image_generator._image_labels(swarm_item) == ["PLANNER", "WORKERS", "RESULT"]
+    assert database_prompt != swarm_prompt
+
+
+def test_image_labels_are_short_sanitized_and_limited_to_three():
+    item = {
+        "image_labels": [
+            "Local model!",
+            "confidence score is huge",
+            "Cloud/model",
+            "ignored",
+        ]
+    }
+
+    assert image_generator._image_labels(item) == [
+        "LOCAL MODEL",
+        "CONFIDENCE SCO",
+        "CLOUD/MODEL",
+    ]
