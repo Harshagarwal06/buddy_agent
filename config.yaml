@@ -106,27 +106,19 @@ images:
   retry_delay: 2
   steps: 4
   require_all: true
-  style_version: explainer-v7
+  require_article_brief: true
+  style_guide: prompts/image_style.md
+  style_version: explainer-v10
   generate_in_test_run: false
-  style: >-
-    Warm cream paper; flat hand-drawn editorial diagram; thick charcoal
-    outlines; obvious arrows; generous empty space; one muted brick-red or
-    ochre accent. Front-facing 4:3 with three clear object groups. Every
-    surface is blank and unmarked. No UI panels, documents, screens, forms,
-    signage, written text, letters, numbers, captions, photos, people, logos,
-    gradients, scenery, watermarks, or screenshots.
 
 llm:
-  provider: huggingface      # "huggingface", "google" (Gemini API), or "ollama" (local)
-  main_model: Qwen/Qwen3-4B-Instruct-2507  # unused by the LangGraph pipeline (summaries only)
-  sub_model: Qwen/Qwen3-4B-Instruct-2507   # summarizer — the only model this pipeline calls
+  provider: google           # "huggingface", "google" (Gemini API), or "ollama" (local)
+  main_model: gemini-2.5-flash  # unused by the LangGraph pipeline (summaries only)
+  sub_model: gemini-2.5-flash   # summarizer + article-specific image planner
   hf_provider: auto          # Hugging Face Inference Provider routing
   temperature: 0.2
   max_tokens: 512
-  requests_per_minute: 14    # client-side throttle for hosted LLM APIs
-  # For Gemini instead, set provider: google and use:
-  # main_model: gemini-2.5-flash
-  # sub_model: gemini-2.5-flash
+  requests_per_minute: 8     # client-side throttle for hosted LLM APIs
   # For local Ollama instead, set provider: ollama and use:
   # base_url: http://localhost:11434
   # main_model: llama3.1:8b

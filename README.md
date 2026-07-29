@@ -17,7 +17,7 @@ The project started as a fully agentic `deepagents` experiment. After testing th
 - Backfills the lookback window when too few fresh stories survive filtering.
 - Summarizes articles through a provider-swappable LLM layer.
 - Scores summaries with a small rubric and retries weak summaries once.
-- Generates cached 4:3 editorial illustrations with deterministic SVG fallbacks.
+- Generates cached 4:3 article-grounded explainers in one shared editorial system.
 - Writes Markdown and HTML digests to `~/news/YYYY-MM-DD.md` and `.html`.
 - Regenerates an archive index for GitHub Pages.
 - Sends non-empty digests through Telegram, Slack, and Buttondown when configured.
@@ -57,7 +57,8 @@ See [DIAGRAM.md](DIAGRAM.md) for the node-level flow and [docs/rag-architecture.
 - `news_buddy/llm.py` - the only place that constructs LLM clients.
 - `news_buddy/feeds.py` - RSS fetching and item normalization.
 - `news_buddy/extract.py` - article body extraction with RSS-summary fallback.
-- `news_buddy/image_generator.py` - Hugging Face image generation, WebP caching, and SVG fallback assets.
+- `news_buddy/image_generator.py` - NVIDIA/Hugging Face image generation, validation, WebP caching, and SVG fallback assets.
+- `prompts/image_style.md` - the single layout, style, grounding, and image-quality contract.
 - `news_buddy/state.py` - SQLite dedup state.
 - `news_buddy/html_writer.py` and `news_buddy/archive_writer.py` - generated digest pages and archive index.
 - `news_buddy/rag.py` - ChromaDB-backed semantic search over saved articles.
@@ -73,8 +74,8 @@ Requirements:
 - Python 3.11+
 - `uv` or `pip`
 - One LLM provider credential:
-  - `HF_TOKEN` for the default Hugging Face provider
-  - `GOOGLE_API_KEY` for Gemini and RAG embeddings
+  - `GOOGLE_API_KEY` for the default Gemini summarizer/planner and RAG embeddings
+  - `HF_TOKEN` when Hugging Face is selected instead
   - local Ollama plus pulled models if `llm.provider: ollama`
 
 Install:
@@ -91,9 +92,12 @@ cp .env.example .env
 Edit `.env` with provider and notification secrets. Edit `config.yaml` to tune feeds, keyword filtering, article limits, and model provider.
 
 The `images` block in `config.yaml` controls the image model, output dimensions,
-compression, concurrency, retries, and shared explainer-infographic style. The default
-NVIDIA FLUX.2-klein-4B integration uses `NVIDIA_API_KEY`. Normal `--test-run`
-executions skip image generation unless
+compression, concurrency, retries, and shared explainer system. Its
+`style_guide` points to `prompts/image_style.md`, which both the article planner
+and image renderer read. Production also sets `require_article_brief: true`, so
+an LLM outage or incomplete plan stops publication instead of producing generic
+placeholder diagrams. The default NVIDIA FLUX.2-klein-4B integration uses
+`NVIDIA_API_KEY`. Normal `--test-run` executions skip image generation unless
 `images.generate_in_test_run` is explicitly set to `true`.
 
 ## Running Locally
@@ -138,9 +142,9 @@ Manual `workflow_dispatch` defaults to `test_run: true`, so a verification run d
 
 Required GitHub secrets depend on enabled features:
 
-- `HF_TOKEN` for Hugging Face summarization.
+- `GOOGLE_API_KEY` for the default Gemini summarizer and image planner.
+- `HF_TOKEN` when Hugging Face summarization is selected.
 - `NVIDIA_API_KEY` for FLUX.2 article images.
-- `GOOGLE_API_KEY` when Google is selected for summarization.
 - `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` for Telegram.
 - `SLACK_WEBHOOK_URL` for Slack.
 - `BUTTONDOWN_API_KEY` for sending email.

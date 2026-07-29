@@ -24,6 +24,10 @@ from news_buddy.rubric import RubricMiddleware
 _ROOT = Path(__file__).parent.parent
 _PROMPTS = _ROOT / "prompts"
 _DB = _ROOT / "state.db"
+_IMAGE_PLANNER_MARKERS = (
+    "<!-- article-planner-directive:start -->",
+    "<!-- article-planner-directive:end -->",
+)
 
 
 # ── Typed state ───────────────────────────────────────────────────────────────
@@ -124,13 +128,27 @@ class SummarizationMiddleware:
             return msg
 
 
-_summarization_middleware = SummarizationMiddleware(token_budget=800)
+_summarization_middleware = SummarizationMiddleware(token_budget=1200)
+
+
+def _prompt_section(path: Path, markers: tuple[str, str]) -> str:
+    text = path.read_text(encoding="utf-8")
+    start_marker, end_marker = markers
+    start = text.find(start_marker)
+    end = text.find(end_marker, start + len(start_marker))
+    if start < 0 or end < 0:
+        raise ValueError(f"{path} is missing its directive markers")
+    return text[start + len(start_marker):end].strip()
 
 
 def _summarize_one(sub_llm, item: dict, strict: bool = False) -> tuple[dict, int, str]:
     """Summarize a single article. Returns (enriched item dict, tokens used, body)."""
     body = _extract.extract_body(item["url"]) or item.get("rss_summary", "")
     system = (_PROMPTS / "summarizer.md").read_text()
+    system += "\n\nEditorial image contract:\n" + _prompt_section(
+        _PROMPTS / "image_style.md",
+        _IMAGE_PLANNER_MARKERS,
+    )
     if strict:
         system += (
             "\n\nIMPORTANT: Your previous summary was too vague. "
@@ -160,6 +178,14 @@ def _summarize_one(sub_llm, item: dict, strict: bool = False) -> tuple[dict, int
         data = json.loads(text)
     except json.JSONDecodeError:
         data = {"summary": item["title"], "tags": ["world"], "importance": 2}
+    from news_buddy.image_generator import _article_brief_errors
+
+    brief_errors = _article_brief_errors(data)
+    if brief_errors:
+        raise ValueError(
+            "summarizer returned an incomplete article image brief: "
+            + ", ".join(brief_errors)
+        )
     enriched = {
         **item,
         "summary": data.get("summary", item["title"]),

@@ -36,10 +36,43 @@ DEFAULT_NVIDIA_API_URL = (
     "https://ai.api.nvidia.com/v1/genai/black-forest-labs/flux.2-klein-4b"
 )
 MAX_IMAGE_PROMPT_CHARS = 800
+_ROOT = Path(__file__).parent.parent
+DEFAULT_STYLE_GUIDE = _ROOT / "prompts" / "image_style.md"
+_STYLE_DIRECTIVE_MARKERS = (
+    "<!-- image-model-directive:start -->",
+    "<!-- image-model-directive:end -->",
+)
 
 
 class ImageContentFilteredError(RuntimeError):
     """Raised when the provider rejects a prompt but returns HTTP success."""
+
+
+def _read_marked_section(path: Path, markers: tuple[str, str]) -> str:
+    """Read one machine-consumable directive from a Markdown design contract."""
+    text = path.read_text(encoding="utf-8")
+    start_marker, end_marker = markers
+    start = text.find(start_marker)
+    end = text.find(end_marker, start + len(start_marker))
+    if start < 0 or end < 0:
+        raise ValueError(f"{path} is missing its directive markers")
+    return " ".join(text[start + len(start_marker):end].split())
+
+
+def _style_from_config(config: dict) -> str:
+    configured = str(config.get("style_guide", "")).strip()
+    guide_path = Path(configured).expanduser() if configured else DEFAULT_STYLE_GUIDE
+    if not guide_path.is_absolute():
+        guide_path = _ROOT / guide_path
+    try:
+        return _read_marked_section(guide_path, _STYLE_DIRECTIVE_MARKERS)
+    except (OSError, ValueError) as exc:
+        print(
+            f"[warn] could not load image style guide {guide_path}: {exc}; "
+            "using inline default",
+            file=sys.stderr,
+        )
+        return str(config.get("style", DEFAULT_STYLE)).strip() or DEFAULT_STYLE
 
 
 @dataclass(frozen=True)
@@ -59,6 +92,7 @@ class ImageSettings:
     style: str
     style_version: str
     negative_prompt: str
+    require_article_brief: bool
 
     @classmethod
     def from_config(cls, config: dict) -> "ImageSettings":
@@ -76,12 +110,13 @@ class ImageSettings:
             steps=max(1, min(50, int(config.get("steps", 4)))),
             api_url=str(config.get("api_url", DEFAULT_NVIDIA_API_URL)).strip()
             or DEFAULT_NVIDIA_API_URL,
-            style=str(config.get("style", DEFAULT_STYLE)).strip() or DEFAULT_STYLE,
+            style=_style_from_config(config),
             style_version=str(config.get("style_version", "v1")),
             negative_prompt=(
                 str(config.get("negative_prompt", DEFAULT_NEGATIVE_PROMPT)).strip()
                 or DEFAULT_NEGATIVE_PROMPT
             ),
+            require_article_brief=bool(config.get("require_article_brief", False)),
         )
 
 
@@ -172,7 +207,13 @@ def _image_labels(item: dict) -> list[str]:
     labels = []
     for value in supplied:
         cleaned = _LABEL_CLEANER.sub("", str(value)).strip()
-        cleaned = " ".join(cleaned.split()[:3])[:14].strip(" -")
+        fitted_words = []
+        for word in cleaned.split()[:3]:
+            candidate = " ".join([*fitted_words, word])
+            if len(candidate) > 18:
+                break
+            fitted_words.append(word)
+        cleaned = " ".join(fitted_words).strip(" -")
         if cleaned and cleaned.lower() not in {label.lower() for label in labels}:
             labels.append(cleaned.upper())
         if len(labels) == 3:
@@ -237,9 +278,13 @@ def _visual_prompt(item: dict) -> str:
     """Build a self-contained diagram brief from the editorial plan."""
     planned = str(item.get("image_prompt") or "").strip()[:280]
     if not planned:
-        return _safe_infographic_prompt(item)
+        planned = (
+            "Use only this article context to choose the three concrete objects: "
+            f"{_article_context(item)[:360]}"
+        )
     return (
-        f"Create one explanatory editorial infographic. Diagram concept: {planned} "
+        "Create one wordless editorial spot illustration, not an infographic "
+        f"or poster. Translate this mechanism into three unlabeled symbols: {planned} "
         f"{_layout_direction(item)} Keep all three object groups completely "
         "unlabeled; the publisher will add the legend."
     )
@@ -335,7 +380,8 @@ def _safe_infographic_prompt(item: dict) -> str:
     """Build a name-free but article-specific brief for filtered prompts."""
     concept = _safe_infographic_concept(item)
     return (
-        f"Create one simple explanatory editorial infographic showing {concept}. "
+        "Create one wordless editorial spot illustration, not an infographic "
+        f"or poster, showing {concept}. "
         f"{_layout_direction(item)} Keep all three object groups completely "
         "unlabeled; the publisher will add the legend. Keep every object generic "
         "and unbranded."
@@ -350,6 +396,34 @@ def _request_prompt(prompt: str, settings: ImageSettings) -> str:
     return (
         f"{prompt}\n\nVisual direction: {settings.style}"
     )[:MAX_IMAGE_PROMPT_CHARS]
+
+
+def _article_brief_errors(item: dict) -> list[str]:
+    """Return reasons an editorial image plan is unsafe to publish."""
+    errors = []
+    if not str(item.get("image_prompt") or "").strip():
+        errors.append("image_prompt")
+    if str(item.get("image_layout") or "").strip().lower() not in _LAYOUT_DIRECTIONS:
+        errors.append("image_layout")
+    labels = item.get("image_labels")
+    if not isinstance(labels, list) or len(labels) != 3 or any(
+        not str(label).strip() for label in labels
+    ):
+        errors.append("image_labels")
+    elif any(
+        len(str(label).strip()) > 18 or len(str(label).split()) > 3
+        for label in labels
+    ):
+        errors.append("short image_labels")
+    elif [str(label).strip().lower() for label in labels] == [
+        "input",
+        "system",
+        "result",
+    ]:
+        errors.append("article-specific image_labels")
+    if not str(item.get("image_alt") or "").strip():
+        errors.append("image_alt")
+    return errors
 
 
 def _is_retryable_request_error(exc: Exception) -> bool:
@@ -378,20 +452,28 @@ def _cache_stem(item: dict, prompt: str, settings: ImageSettings) -> str:
 
 def _add_label_band(image, labels: list[str]):
     """Cover model-generated captions and render an exact three-step legend."""
-    from PIL import Image, ImageDraw, ImageFont
+    from PIL import Image, ImageDraw, ImageFont, ImageOps
 
     source = image.convert("RGB")
     width, height = source.size
+    paper = "#f3ecd8"
     band_height = max(160, round(height * 0.28))
     band_top = height - band_height
     crop_top = max(64, round(height * 0.18))
-    crop_bottom = max(160, round(height * 0.28))
+    crop_bottom = max(180, round(height * 0.34))
     art = source.crop((0, crop_top, width, height - crop_bottom))
-    rendered = Image.new("RGB", (width, height), "#f3ecd8")
+    light_background = ImageOps.grayscale(art).point(
+        lambda value: 255 if value >= 245 else 0
+    )
+    art = Image.composite(
+        Image.new("RGB", art.size, paper),
+        art,
+        light_background,
+    )
+    rendered = Image.new("RGB", (width, height), paper)
     art_y = max(0, (band_top - art.height) // 2)
     rendered.paste(art, (0, art_y))
     draw = ImageDraw.Draw(rendered)
-    paper = "#f3ecd8"
     ink = "#27251f"
     accent = "#9a3a2a"
     draw.rectangle((0, band_top, width, height), fill=paper)
@@ -548,12 +630,27 @@ def generate_article_images(
     """
     Generate images for articles while preserving input order.
 
-    Returns ``(enriched_items, images_ready, generation_failures)``. A remote
-    failure produces a local SVG placeholder so publishing remains fail-open.
+    Returns ``(enriched_items, images_ready, generation_failures)``. Production
+    can require a complete article-grounded brief before any provider calls.
     """
     settings = ImageSettings.from_config(config)
     if not settings.enabled or not items:
         return items, 0, 0
+    if settings.require_article_brief:
+        invalid = [
+            (str(item.get("title") or "Untitled"), _article_brief_errors(item))
+            for item in items
+            if _article_brief_errors(item)
+        ]
+        if invalid:
+            details = "; ".join(
+                f"{title[:60]}: {', '.join(errors)}"
+                for title, errors in invalid[:5]
+            )
+            raise RuntimeError(
+                "article image briefs are incomplete; refusing generic images — "
+                f"{details}"
+            )
 
     image_dir = output_dir / "images"
     image_dir.mkdir(parents=True, exist_ok=True)
@@ -609,6 +706,8 @@ def generate_article_images(
                     if attempt >= settings.retries:
                         raise
                     if isinstance(request_exc, ImageContentFilteredError):
+                        if settings.require_article_brief:
+                            raise
                         used_safe_prompt = True
                         stem = _cache_stem(item, safe_prompt, settings)
                         webp_target = image_dir / f"{stem}.webp"

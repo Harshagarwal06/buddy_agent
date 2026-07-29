@@ -164,7 +164,7 @@ def test_nvidia_provider_decodes_hosted_image_response(tmp_path, monkeypatch):
     assert "local model routes" not in payload["prompt"].lower()
     assert "locked cloud" in payload["prompt"].lower()
     assert '"LOCAL MODEL"' not in payload["prompt"]
-    assert "photos, people, logos" in payload["prompt"].lower()
+    assert "people, logos, photos" in payload["prompt"].lower()
 
 
 def test_image_request_retries_before_fallback(tmp_path, monkeypatch):
@@ -197,6 +197,39 @@ def test_image_request_retries_before_fallback(tmp_path, monkeypatch):
     assert items[0]["image_url"].endswith(".webp")
 
 
+def test_required_brief_does_not_retry_with_generic_safe_prompt(tmp_path, monkeypatch):
+    calls = []
+
+    class FilteredClient:
+        def text_to_image(self, prompt, **kwargs):
+            calls.append((prompt, kwargs))
+            raise image_generator.ImageContentFilteredError("filtered")
+
+    monkeypatch.setenv("NVIDIA_API_KEY", "test-token")
+    monkeypatch.setattr(
+        image_generator,
+        "_make_client",
+        lambda _settings, _token: FilteredClient(),
+    )
+    config = {
+        **_config(),
+        "provider": "nvidia",
+        "require_article_brief": True,
+    }
+
+    items, ready, failures = image_generator.generate_article_images(
+        [_item()],
+        tmp_path,
+        config,
+    )
+
+    assert len(calls) == 1
+    assert ready == 1
+    assert failures == 1
+    assert items[0]["image_url"].endswith(".svg")
+    assert "local model routes" in calls[0][0].lower()
+
+
 def test_disabled_images_leave_items_unchanged(tmp_path):
     original = [_item()]
 
@@ -209,6 +242,85 @@ def test_disabled_images_leave_items_unchanged(tmp_path):
     assert items is original
     assert ready == 0
     assert failures == 0
+
+
+def test_style_is_loaded_from_markdown_contract(tmp_path):
+    guide = tmp_path / "image-style.md"
+    guide.write_text(
+        "Human guidance\n"
+        "<!-- image-model-directive:start -->\n"
+        "Cream paper and charcoal arrows.\n"
+        "<!-- image-model-directive:end -->\n",
+        encoding="utf-8",
+    )
+
+    settings = image_generator.ImageSettings.from_config(
+        {**_config(), "style_guide": str(guide)}
+    )
+
+    assert settings.style == "Cream paper and charcoal arrows."
+
+
+def test_required_article_brief_rejects_generic_fallback(tmp_path):
+    item = {
+        "title": "Grid constraints slow data center expansion",
+        "summary": "Power shortages are delaying new computing capacity.",
+    }
+
+    try:
+        image_generator.generate_article_images(
+            [item],
+            tmp_path,
+            {**_config(), "require_article_brief": True},
+        )
+    except RuntimeError as exc:
+        assert "refusing generic images" in str(exc)
+        assert "image_prompt" in str(exc)
+        assert "image_labels" in str(exc)
+    else:
+        raise AssertionError("missing article brief should stop image generation")
+
+
+def test_required_article_brief_rejects_generic_label_triad(tmp_path):
+    item = {
+        **_item(),
+        "image_labels": ["input", "system", "result"],
+    }
+
+    try:
+        image_generator.generate_article_images(
+            [item],
+            tmp_path,
+            {**_config(), "require_article_brief": True},
+        )
+    except RuntimeError as exc:
+        assert "article-specific image_labels" in str(exc)
+    else:
+        raise AssertionError("generic labels should not pass the article brief gate")
+
+
+def test_unplanned_visual_prompt_uses_article_context():
+    item = {
+        "title": "Grid constraints slow data center expansion",
+        "summary": "Power shortages are delaying new computing capacity.",
+    }
+
+    prompt = image_generator._visual_prompt(item)
+
+    assert "Grid constraints slow data center expansion" in prompt
+    assert "Power shortages" in prompt
+    assert "input entering a system" not in prompt
+
+
+def test_label_band_normalizes_white_background_to_cream():
+    source = Image.new("RGB", (640, 480), "#ffffff")
+
+    rendered = image_generator._add_label_band(
+        source,
+        ["GRID DEMAND", "POWER CUTS", "ON-SITE POWER"],
+    )
+
+    assert rendered.getpixel((10, 100)) == (243, 236, 216)
 
 
 def test_safe_briefs_preserve_distinct_article_mechanisms():
@@ -243,6 +355,6 @@ def test_image_labels_are_short_sanitized_and_limited_to_three():
 
     assert image_generator._image_labels(item) == [
         "LOCAL MODEL",
-        "CONFIDENCE SCO",
+        "CONFIDENCE SCORE",
         "CLOUD/MODEL",
     ]
