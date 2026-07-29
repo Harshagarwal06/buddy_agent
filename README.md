@@ -15,8 +15,8 @@ The project started as a fully agentic `deepagents` experiment. After testing th
 - Filters stories with source allowlists and AI keywords.
 - Deduplicates URLs with a local SQLite `state.db`.
 - Backfills the lookback window when too few fresh stories survive filtering.
-- Summarizes articles through a provider-swappable LLM layer.
-- Scores summaries with a small rubric and retries weak summaries once.
+- Writes self-contained reader briefings through a provider-swappable LLM layer.
+- Requires each briefing to explain what happened, useful context, and why it matters; thin summaries are retried once.
 - Generates cached 4:3 article-grounded explainers in one shared editorial system.
 - Writes Markdown and HTML digests to `~/news/YYYY-MM-DD.md` and `.html`.
 - Regenerates an archive index for GitHub Pages.

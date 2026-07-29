@@ -85,13 +85,14 @@ max_backfill_lookback_hours: 168   # stop widening after 7 days
 backfill_max_items_per_feed: 25    # inspect more RSS entries when topping up
 icymi_backfill: true     # if still short, repeat recent seen feed items and label them ICYMI
 max_top_stories: 5
-summary_style: "concise, neutral, 2-3 sentences"
+summary_style: "self-contained, neutral, 3 sentences with context and consequence"
 
 rubric:
   enabled: true
-  min_summary_length: 60     # minimum chars for a "complete" summary
+  min_summary_length: 200    # catches malformed or truncated model responses
+  min_summary_words: 65      # requires enough context to brief the reader
   importance_penalty: 2      # subtracted from importance when rubric fails
-  retry_on_failure: true     # retry once with a stricter prompt on failure
+  retry_on_failure: true     # retry once when the briefing is thin or vague
 
 images:
   enabled: true

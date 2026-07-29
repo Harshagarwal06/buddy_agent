@@ -128,7 +128,7 @@ class SummarizationMiddleware:
             return msg
 
 
-_summarization_middleware = SummarizationMiddleware(token_budget=1200)
+_summarization_middleware = SummarizationMiddleware(token_budget=1800)
 
 
 def _prompt_section(path: Path, markers: tuple[str, str]) -> str:
@@ -151,12 +151,15 @@ def _summarize_one(sub_llm, item: dict, strict: bool = False) -> tuple[dict, int
     )
     if strict:
         system += (
-            "\n\nIMPORTANT: Your previous summary was too vague. "
-            "Name specific companies, people, technologies, or numbers. "
-            "Minimum 80 characters. Avoid phrases like 'a new development' "
-            "or 'it was announced'."
+            "\n\nIMPORTANT: Your previous summary did not prepare the reader. "
+            "Rewrite it as 70-110 words in 3 sentences: identify the named "
+            "subject and development, add concrete explanatory context, then "
+            "state the supported practical consequence. Use specific companies, "
+            "technologies, evidence, or numbers from the source. Do not use an "
+            "unnamed pronoun or phrases such as 'a new development' or "
+            "'it was announced'."
         )
-    payload = json.dumps({"title": item["title"], "url": item["url"], "body": body[:1500]})
+    payload = json.dumps({"title": item["title"], "url": item["url"], "body": body[:2600]})
     resp = _invoke_with_retry(
         sub_llm,
         [SystemMessage(content=system), HumanMessage(content=payload)],
@@ -446,6 +449,7 @@ def summarize_articles_node(state: DigestState) -> dict:
     retry_on_failure = rubric_cfg.get("retry_on_failure", True)
     rubric = RubricMiddleware(
         min_length=rubric_cfg.get("min_summary_length", 60),
+        min_words=rubric_cfg.get("min_summary_words"),
         importance_penalty=rubric_cfg.get("importance_penalty", 2),
     )
 
