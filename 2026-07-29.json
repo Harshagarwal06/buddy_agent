@@ -9,8 +9,8 @@
       "world"
     ],
     "importance": 2,
-    "image_url": "images/789cc7b6da43572819df.webp",
-    "image_alt": "AI-generated explainer diagram showing three simple stages showing an input entering a system and producing a clear result."
+    "image_url": "images/12d541364462fb11728e.webp",
+    "image_alt": "A diagram showing the U.S. power grid supplying data centers. When grid supply is cut due to high demand, data centers must switch to backup generators for power."
   },
   {
     "title": "Cyera agrees to acquire Oasis Security for $1B to safeguard proliferating AI agents",
@@ -22,8 +22,8 @@
       "world"
     ],
     "importance": 2,
-    "image_url": "images/5b0357961abd1cccc306.webp",
-    "image_alt": "AI-generated explainer diagram showing model output moving through a cracked unsafe pipe toward a protected computer system."
+    "image_url": "images/4d59586f473b11fc4617.webp",
+    "image_alt": "A pipeline showing multiple AI agents flowing into an agent security system, which then integrates into a unified security platform."
   },
   {
     "title": "Bot-detection startup Spur nabs $200M from Insight",
@@ -35,8 +35,8 @@
       "world"
     ],
     "importance": 2,
-    "image_url": "images/62c26874e04e3183c7c1.webp",
-    "image_alt": "AI-generated explainer diagram showing three simple stages showing an input entering a system and producing a clear result."
+    "image_url": "images/f0a06388c285b4364420.webp",
+    "image_alt": "A branching diagram shows mixed internet traffic entering a security filter, which then separates it into legitimate user traffic and identified bot threats."
   },
   {
     "title": "MCP startup Runlayer accuses Rippling of stealing its product idea",
@@ -48,8 +48,8 @@
       "world"
     ],
     "importance": 2,
-    "image_url": "images/da66e8940f60ad4c96dc.webp",
-    "image_alt": "AI-generated explainer diagram showing three simple stages showing an input entering a system and producing a clear result."
+    "image_url": "images/a3a1ffec8234202f68e6.webp",
+    "image_alt": "A sequence showing a unique product design shared under agreement, followed by an identical design marked with an X, illustrating alleged intellectual property theft."
   },
   {
     "title": "Sam Altman is ready to decelerate",
@@ -61,8 +61,8 @@
       "world"
     ],
     "importance": 2,
-    "image_url": "images/b90e7d917dcb1ab24024.webp",
-    "image_alt": "AI-generated explainer diagram showing model output moving through a cracked unsafe pipe toward a protected computer system."
+    "image_url": "images/c53d8c4a49a6a9808d34.webp",
+    "image_alt": "A pipeline diagram showing how rapid AI development is redirected to paced development, due to a cracked digital barrier symbolizing an AI model escape."
   },
   {
     "title": "Recursive Superintelligence signs $410M compute deal with Amazon",
@@ -74,8 +74,8 @@
       "world"
     ],
     "importance": 2,
-    "image_url": "images/52f4f4b836349e8c2dbe.webp",
-    "image_alt": "AI-generated explainer diagram showing three simple stages showing an input entering a system and producing a clear result."
+    "image_url": "images/2713567370ba040fe862.webp",
+    "image_alt": "A pipeline shows compute funds flowing into cloud resources, enabling the expansion and self-improvement of AI development systems."
   },
   {
     "title": "Fish Audio raises $52M seed to build AI voice models for creators and enterprises",
@@ -87,8 +87,8 @@
       "world"
     ],
     "importance": 2,
-    "image_url": "images/4b91a34606f13d962c61.webp",
-    "image_alt": "AI-generated explainer diagram showing a language model producing a document that passes under a magnifying glass and ends as a crossed-out claim."
+    "image_url": "images/776b583fdc16f832a784.webp",
+    "image_alt": "Seed funding flows into an AI voice model serving creator and enterprise markets."
   },
   {
     "title": "The Download: OpenAI’s predictable hack, and an AI stock sell-off",
@@ -100,7 +100,7 @@
       "world"
     ],
     "importance": 2,
-    "image_url": "images/3dcd9f71a582c995e1b4.webp",
-    "image_alt": "AI-generated explainer diagram showing model output moving through a cracked unsafe pipe toward a protected computer system."
+    "image_url": "images/2f14b95aa98e65691e0e.webp",
+    "image_alt": "Explains how an AI model broke containment due to developer oversight, and separately, how AI-related stocks are experiencing a market sell-off."
   }
 ]
