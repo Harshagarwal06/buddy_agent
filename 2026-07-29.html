@@ -19,7 +19,8 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="tokens.css">
 <style>
-/* Hallmark · macrostructure: Long Document · tone: editorial · theme: studied-DNA */
+/* Hallmark · macrostructure: Long Document · variation: full-width split lead + 2-column briefing + 3-column desk · tone: editorial · theme: studied-DNA */
+/* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V4 */
 *, *::before, *::after { box-sizing: border-box; }
 html, body { overflow-x: clip; }
 html { scroll-behavior: smooth; scroll-padding-top: var(--space-lg); }
@@ -128,23 +129,26 @@ button:disabled, [aria-disabled="true"] { color: var(--color-faint); cursor: not
   margin: 0; color: var(--color-muted); font-family: var(--font-ui);
   font-size: var(--text-xs); line-height: 1.35; text-align: end;
 }
-.story-list { display: grid; }
+.story-list { display: grid; grid-template-columns: minmax(0, 1fr); }
 .article-card {
-  display: grid; grid-template-columns: minmax(0, 1fr);
-  min-width: 0; padding-block: var(--space-xl);
+  display: block; min-width: 0; padding-block: var(--space-xl);
   border-block-end: var(--rule-hair) solid var(--color-rule);
 }
-.article-card.has-image { gap: var(--space-lg); }
+.card-lead { min-width: 0; }
+.card-layout {
+  display: grid; grid-template-columns: minmax(0, 1fr);
+  min-width: 0; gap: var(--space-lg); margin-block-start: var(--space-md);
+}
 .card-image {
   display: block; min-width: 0; margin: 0; aspect-ratio: 4 / 3; overflow: hidden;
   align-self: start; border: var(--rule-hair) solid var(--color-rule-strong);
   border-radius: var(--radius-xs); background: var(--color-paper-muted);
 }
 .card-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.card-body { display: flex; min-width: 0; flex-direction: column; justify-content: center; }
+.card-body { display: flex; min-width: 0; flex-direction: column; justify-content: flex-start; }
 .card-meta {
   display: flex; flex-wrap: wrap; gap: var(--space-xs);
-  margin-block-end: var(--space-sm); color: var(--color-muted);
+  margin-block-end: var(--space-xs); color: var(--color-muted);
   font-family: var(--font-ui); font-size: var(--text-xs); letter-spacing: .035em; text-transform: uppercase;
 }
 .dot { color: var(--color-faint); }
@@ -152,7 +156,7 @@ button:disabled, [aria-disabled="true"] { color: var(--color-faint); cursor: not
 .card-header { display: flex; flex-direction: column; gap: var(--space-sm); min-width: 0; }
 .card-title {
   color: var(--color-ink); font-family: var(--font-display);
-  font-size: clamp(1.55rem, 3.2vw, 2.25rem); font-style: normal; font-weight: 600;
+  font-size: clamp(1.5rem, 2.4vw, 2rem); font-style: normal; font-weight: 600;
   letter-spacing: -.018em; line-height: 1.08; text-decoration-thickness: var(--rule-hair);
   text-decoration-color: transparent; text-underline-offset: var(--space-3xs);
   overflow-wrap: anywhere; min-width: 0;
@@ -164,7 +168,7 @@ button:disabled, [aria-disabled="true"] { color: var(--color-faint); cursor: not
   line-height: 1; text-transform: uppercase; white-space: nowrap;
 }
 .card-summary {
-  max-width: var(--prose-width); margin: var(--space-md) 0 0;
+  max-width: var(--prose-width); margin: 0;
   color: var(--color-ink-soft); font-size: var(--text-md); line-height: 1.65;
 }
 .card-tail {
@@ -213,17 +217,30 @@ button:disabled, [aria-disabled="true"] { color: var(--color-faint); cursor: not
 }
 .site-footer a:active { color: var(--color-accent-hover); }
 @media (min-width: 40rem) {
-  .article-card.has-image { grid-template-columns: minmax(16rem, .78fr) minmax(0, 1.22fr); }
-  .card-hero.has-image { grid-template-columns: minmax(20rem, 1.08fr) minmax(0, .92fr); }
-  .card-hero .card-title { font-size: clamp(2rem, 4.8vw, 3.65rem); }
-  .article-card[data-title-size="long"].card-hero .card-title { font-size: clamp(1.85rem, 4vw, 3rem); }
-  .card-large .card-title { font-size: clamp(1.7rem, 3.4vw, 2.55rem); }
+  .lead-section .story-list,
+  .story-section:not(.lead-section) .story-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-xl);
+  }
+  .card-hero { grid-column: 1 / -1; }
+  .card-hero.has-image .card-layout {
+    grid-template-columns: minmax(20rem, 1.08fr) minmax(0, .92fr);
+  }
+  .card-hero .card-title { font-size: clamp(2.15rem, 4vw, 3.25rem); }
+  .article-card[data-title-size="long"].card-hero .card-title {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+  }
+  .article-card:not(.card-hero) .card-title { font-size: clamp(1.5rem, 2.4vw, 2rem); }
 }
 @media (min-width: 60rem) {
   .masthead { padding-block: var(--space-lg) var(--space-xl); }
-  .article-card { padding-block: var(--space-2xl); }
-  .card-body { padding-inline: var(--space-lg); }
-  .card-hero .card-body { padding-inline-end: var(--space-xl); }
+  .article-card { padding-block: var(--space-xl); }
+  .card-hero { padding-block: var(--space-2xl); }
+  .card-hero .card-body { padding-inline: var(--space-lg) var(--space-xl); }
+  .story-section:not(.lead-section) .story-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: var(--space-lg);
+  }
 }
 @media (max-width: 39.999rem) {
   .issue-line { grid-template-columns: minmax(0, 1fr) auto; }
@@ -275,112 +292,136 @@ button:disabled, [aria-disabled="true"] { color: var(--color-faint); cursor: not
   <main id="main-content" tabindex="-1">
     <section class="story-section lead-section"><div class="section-heading"><h2>The briefing</h2><p>The stories shaping AI today, selected and condensed.</p></div><div class="story-list">
 <article class="article-card card-hero has-image" data-tags="world" data-title-size="long">
-  <figure class="card-image"><img src="images/12d541364462fb11728e.webp" alt="A diagram showing the U.S. power grid supplying data centers. When grid supply is cut due to high demand, data centers must switch to backup generators for power." width="1184" height="880" loading="eager" decoding="async" fetchpriority="high"></figure>
-
-  <div class="card-body">
+  <div class="card-lead">
     <div class="card-meta">TechCrunch AI <span class="dot">·</span> <time datetime="2026-07-28">Jul 28, 2026</time></div>
     <div class="card-header">
       <a href="https://techcrunch.com/2026/07/28/data-centers-may-face-temporary-power-cuts-to-prevent-blackouts-on-largest-us-grid/" class="card-title">Data centers may face temporary power cuts to prevent blackouts on largest US grid</a>
       <span class="card-stars card-stars-quiet" title="Importance 2/5" aria-label="Importance 2 of 5">Briefing</span>
     </div>
+  </div>
+  <div class="card-layout">
+    <figure class="card-image"><img src="images/12d541364462fb11728e.webp" alt="A diagram showing the U.S. power grid supplying data centers. When grid supply is cut due to high demand, data centers must switch to backup generators for power." width="1184" height="880" loading="eager" decoding="async" fetchpriority="high"></figure>
+    <div class="card-body">
     <p class='card-summary'>The decision arrives as the breakneck pace of data center construction has grid operators scrambling to generate power.</p>
     <div class="card-tail"><div class="card-tags"><span class="tag-badge" data-tag="world">world</span></div></div>
+    </div>
   </div>
 </article>
 <article class="article-card card-large has-image" data-tags="world" data-title-size="long">
-  <figure class="card-image"><img src="images/4d59586f473b11fc4617.webp" alt="A pipeline showing multiple AI agents flowing into an agent security system, which then integrates into a unified security platform." width="1184" height="880" loading="lazy" decoding="async"></figure>
-
-  <div class="card-body">
+  <div class="card-lead">
     <div class="card-meta">TechCrunch AI <span class="dot">·</span> <time datetime="2026-07-29">Jul 29, 2026</time></div>
     <div class="card-header">
       <a href="https://techcrunch.com/2026/07/28/cyera-agrees-to-acquire-oasis-security-for-1b-to-safeguard-proliferating-ai-agents/" class="card-title">Cyera agrees to acquire Oasis Security for $1B to safeguard proliferating AI agents</a>
       <span class="card-stars card-stars-quiet" title="Importance 2/5" aria-label="Importance 2 of 5">Briefing</span>
     </div>
+  </div>
+  <div class="card-layout">
+    <figure class="card-image"><img src="images/4d59586f473b11fc4617.webp" alt="A pipeline showing multiple AI agents flowing into an agent security system, which then integrates into a unified security platform." width="1184" height="880" loading="lazy" decoding="async"></figure>
+    <div class="card-body">
     <p class='card-summary'>The deal is Cyera&#x27;s third acquisition this year.</p>
     <div class="card-tail"><div class="card-tags"><span class="tag-badge" data-tag="world">world</span></div></div>
+    </div>
   </div>
 </article>
 
 <article class="article-card card-large has-image" data-tags="world" data-title-size="standard">
-  <figure class="card-image"><img src="images/f0a06388c285b4364420.webp" alt="A branching diagram shows mixed internet traffic entering a security filter, which then separates it into legitimate user traffic and identified bot threats." width="1184" height="880" loading="lazy" decoding="async"></figure>
-
-  <div class="card-body">
+  <div class="card-lead">
     <div class="card-meta">TechCrunch AI <span class="dot">·</span> <time datetime="2026-07-28">Jul 28, 2026</time></div>
     <div class="card-header">
       <a href="https://techcrunch.com/2026/07/28/bot-detection-startup-spur-nabs-200m-from-insight/" class="card-title">Bot-detection startup Spur nabs $200M from Insight</a>
       <span class="card-stars card-stars-quiet" title="Importance 2/5" aria-label="Importance 2 of 5">Briefing</span>
     </div>
+  </div>
+  <div class="card-layout">
+    <figure class="card-image"><img src="images/f0a06388c285b4364420.webp" alt="A branching diagram shows mixed internet traffic entering a security filter, which then separates it into legitimate user traffic and identified bot threats." width="1184" height="880" loading="lazy" decoding="async"></figure>
+    <div class="card-body">
     <p class='card-summary'>Spur Intelligence has raised a $200 million round from Insight Partners for its tech that can identify legit human traffic from bots.</p>
     <div class="card-tail"><div class="card-tags"><span class="tag-badge" data-tag="world">world</span></div></div>
+    </div>
   </div>
 </article>
 
 <article class="article-card card-large has-image" data-tags="world" data-title-size="standard">
-  <figure class="card-image"><img src="images/a3a1ffec8234202f68e6.webp" alt="A sequence showing a unique product design shared under agreement, followed by an identical design marked with an X, illustrating alleged intellectual property theft." width="1184" height="880" loading="lazy" decoding="async"></figure>
-
-  <div class="card-body">
+  <div class="card-lead">
     <div class="card-meta">TechCrunch AI <span class="dot">·</span> <time datetime="2026-07-28">Jul 28, 2026</time></div>
     <div class="card-header">
       <a href="https://techcrunch.com/2026/07/28/mcp-startup-runlayer-accuses-rippling-of-stealing-its-product-idea/" class="card-title">MCP startup Runlayer accuses Rippling of stealing its product idea</a>
       <span class="card-stars card-stars-quiet" title="Importance 2/5" aria-label="Importance 2 of 5">Briefing</span>
     </div>
+  </div>
+  <div class="card-layout">
+    <figure class="card-image"><img src="images/a3a1ffec8234202f68e6.webp" alt="A sequence showing a unique product design shared under agreement, followed by an identical design marked with an X, illustrating alleged intellectual property theft." width="1184" height="880" loading="lazy" decoding="async"></figure>
+    <div class="card-body">
     <p class='card-summary'>Runlayer is suing Rippling after Rippling evaluated the startup&#x27;s MCP gateway product and then opted to build one itself.</p>
     <div class="card-tail"><div class="card-tags"><span class="tag-badge" data-tag="world">world</span></div></div>
+    </div>
   </div>
 </article>
 
 <article class="article-card card-large has-image" data-tags="world" data-title-size="standard">
-  <figure class="card-image"><img src="images/c53d8c4a49a6a9808d34.webp" alt="A pipeline diagram showing how rapid AI development is redirected to paced development, due to a cracked digital barrier symbolizing an AI model escape." width="1184" height="880" loading="lazy" decoding="async"></figure>
-
-  <div class="card-body">
+  <div class="card-lead">
     <div class="card-meta">TechCrunch AI <span class="dot">·</span> <time datetime="2026-07-28">Jul 28, 2026</time></div>
     <div class="card-header">
       <a href="https://techcrunch.com/2026/07/28/sam-altman-is-ready-to-decelerate/" class="card-title">Sam Altman is ready to decelerate</a>
       <span class="card-stars card-stars-quiet" title="Importance 2/5" aria-label="Importance 2 of 5">Briefing</span>
     </div>
+  </div>
+  <div class="card-layout">
+    <figure class="card-image"><img src="images/c53d8c4a49a6a9808d34.webp" alt="A pipeline diagram showing how rapid AI development is redirected to paced development, due to a cracked digital barrier symbolizing an AI model escape." width="1184" height="880" loading="lazy" decoding="async"></figure>
+    <div class="card-body">
     <p class='card-summary'>His change of position comes after &quot;the first security incident that I have felt very viscerally.&quot;</p>
     <div class="card-tail"><div class="card-tags"><span class="tag-badge" data-tag="world">world</span></div></div>
+    </div>
   </div>
 </article></div></section><section class="story-section"><div class="section-heading"><h2>More stories</h2><p>3 additional stories.</p></div><div class="story-list">
 <article class="article-card card-normal has-image" data-tags="world" data-title-size="standard">
-  <figure class="card-image"><img src="images/2713567370ba040fe862.webp" alt="A pipeline shows compute funds flowing into cloud resources, enabling the expansion and self-improvement of AI development systems." width="1184" height="880" loading="lazy" decoding="async"></figure>
-
-  <div class="card-body">
+  <div class="card-lead">
     <div class="card-meta">TechCrunch AI <span class="dot">·</span> <time datetime="2026-07-28">Jul 28, 2026</time></div>
     <div class="card-header">
       <a href="https://techcrunch.com/2026/07/28/recursive-superintelligence-signs-400-compute-deal-with-amazon/" class="card-title">Recursive Superintelligence signs $410M compute deal with Amazon</a>
       <span class="card-stars card-stars-quiet" title="Importance 2/5" aria-label="Importance 2 of 5">Briefing</span>
     </div>
+  </div>
+  <div class="card-layout">
+    <figure class="card-image"><img src="images/2713567370ba040fe862.webp" alt="A pipeline shows compute funds flowing into cloud resources, enabling the expansion and self-improvement of AI development systems." width="1184" height="880" loading="lazy" decoding="async"></figure>
+    <div class="card-body">
     <p class='card-summary'>Recursive’s emphasis on self-improving AI systems means much of the budget that would traditionally go toward headcount and operations is put straight into compute, as the company seeks to automate its own product development process.</p>
     <div class="card-tail"><div class="card-tags"><span class="tag-badge" data-tag="world">world</span></div></div>
+    </div>
   </div>
 </article>
 
 <article class="article-card card-normal has-image" data-tags="world" data-title-size="long">
-  <figure class="card-image"><img src="images/776b583fdc16f832a784.webp" alt="Seed funding flows into an AI voice model serving creator and enterprise markets." width="1184" height="880" loading="lazy" decoding="async"></figure>
-
-  <div class="card-body">
+  <div class="card-lead">
     <div class="card-meta">TechCrunch AI <span class="dot">·</span> <time datetime="2026-07-28">Jul 28, 2026</time></div>
     <div class="card-header">
       <a href="https://techcrunch.com/2026/07/28/fish-audio-raises-50m-seed-to-build-ai-voice-models-for-creators-and-enterprises/" class="card-title">Fish Audio raises $52M seed to build AI voice models for creators and enterprises</a>
       <span class="card-stars card-stars-quiet" title="Importance 2/5" aria-label="Importance 2 of 5">Briefing</span>
     </div>
+  </div>
+  <div class="card-layout">
+    <figure class="card-image"><img src="images/776b583fdc16f832a784.webp" alt="Seed funding flows into an AI voice model serving creator and enterprise markets." width="1184" height="880" loading="lazy" decoding="async"></figure>
+    <div class="card-body">
     <p class='card-summary'>Since launching last year, the startup today has more than 8 million people using the open source or hosted version of its models, and now generates annual recurring revenue of $21 million.</p>
     <div class="card-tail"><div class="card-tags"><span class="tag-badge" data-tag="world">world</span></div></div>
+    </div>
   </div>
 </article>
 
 <article class="article-card card-normal has-image" data-tags="world" data-title-size="standard">
-  <figure class="card-image"><img src="images/2f14b95aa98e65691e0e.webp" alt="Explains how an AI model broke containment due to developer oversight, and separately, how AI-related stocks are experiencing a market sell-off." width="1184" height="880" loading="lazy" decoding="async"></figure>
-
-  <div class="card-body">
+  <div class="card-lead">
     <div class="card-meta">MIT Tech Review AI <span class="dot">·</span> <time datetime="2026-07-28">Jul 28, 2026</time></div>
     <div class="card-header">
       <a href="https://www.technologyreview.com/2026/07/28/1140868/the-download-openai-hack-ai-stock-sell-off/" class="card-title">The Download: OpenAI’s predictable hack, and an AI stock sell-off</a>
       <span class="card-stars card-stars-quiet" title="Importance 2/5" aria-label="Importance 2 of 5">Briefing</span>
     </div>
+  </div>
+  <div class="card-layout">
+    <figure class="card-image"><img src="images/2f14b95aa98e65691e0e.webp" alt="Explains how an AI model broke containment due to developer oversight, and separately, how AI-related stocks are experiencing a market sell-off." width="1184" height="880" loading="lazy" decoding="async"></figure>
+    <div class="card-body">
     <p class='card-summary'>This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. OpenAI called the Hugging Face attack unprecedented. But we’ve been here before. —Will Douglas Heaven, senior AI editor Reading OpenAI’s account last week of how some of its models broke their…</p>
     <div class="card-tail"><div class="card-tags"><span class="tag-badge" data-tag="world">world</span></div></div>
+    </div>
   </div>
 </article></div></section>
   </main>
