@@ -85,6 +85,8 @@ def test_article_card_renders_responsive_image_markup():
     assert 'fetchpriority="high"' in html
     assert html.count('href="https://example.test/visual"') == 1
     assert 'target="_blank"' not in html
+    assert '<div class="card-lead">' in html
+    assert '<div class="card-layout">' in html
     assert '<figure class="card-image">' in html
     assert '<time datetime="2026-07-17">Jul 17, 2026</time>' in html
 
@@ -115,6 +117,9 @@ def test_digest_uses_shared_editorial_tokens_and_masthead(tmp_path):
     assert "★★★★" not in html
     assert "--color-paper: oklch(" in tokens
     assert "macrostructure: Long Document" in tokens
+    assert "variation: full-width split lead + 2-column briefing + 3-column desk" in html
+    assert ".lead-section .story-list" in html
+    assert "grid-template-columns: repeat(3, minmax(0, 1fr))" in html
     assert (tmp_path / "favicon.svg").exists()
 
 

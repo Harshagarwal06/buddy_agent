@@ -87,7 +87,7 @@ def _article_card(item: dict, large: bool = False, hero: bool = False) -> str:
         if image_url
         else ""
     )
-    image_block = f"  {image_html}\n" if image_html else ""
+    image_block = f"    {image_html}\n" if image_html else ""
     importance_class = " card-stars-quiet" if imp < 3 else ""
     title_size = "long" if len(title) > 68 else "standard"
     tail_html = (
@@ -104,15 +104,18 @@ def _article_card(item: dict, large: bool = False, hero: bool = False) -> str:
 
     return f"""
 <article class="article-card {size_class} {image_class}" data-tags="{safe_tags}" data-title-size="{title_size}">
-{image_block}
-  <div class="card-body">
+  <div class="card-lead">
     <div class="card-meta">{escape(source)}{published_html}{icymi_badge}</div>
     <div class="card-header">
       <a href="{safe_url}" class="card-title">{safe_title}</a>
       <span class="card-stars{importance_class}" title="Importance {imp}/5" aria-label="Importance {imp} of 5">{_importance_label(imp)}</span>
     </div>
+  </div>
+  <div class="card-layout">
+{image_block}    <div class="card-body">
     {"<p class='card-summary'>" + escape(summary) + "</p>" if summary else ""}
 {tail_html.rstrip()}
+    </div>
   </div>
 </article>"""
 
@@ -240,7 +243,8 @@ def write_html(
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="tokens.css">
 <style>
-/* Hallmark · macrostructure: Long Document · tone: editorial · theme: studied-DNA */
+/* Hallmark · macrostructure: Long Document · variation: full-width split lead + 2-column briefing + 3-column desk · tone: editorial · theme: studied-DNA */
+/* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V4 */
 *, *::before, *::after {{ box-sizing: border-box; }}
 html, body {{ overflow-x: clip; }}
 html {{ scroll-behavior: smooth; scroll-padding-top: var(--space-lg); }}
@@ -349,23 +353,26 @@ button:disabled, [aria-disabled="true"] {{ color: var(--color-faint); cursor: no
   margin: 0; color: var(--color-muted); font-family: var(--font-ui);
   font-size: var(--text-xs); line-height: 1.35; text-align: end;
 }}
-.story-list {{ display: grid; }}
+.story-list {{ display: grid; grid-template-columns: minmax(0, 1fr); }}
 .article-card {{
-  display: grid; grid-template-columns: minmax(0, 1fr);
-  min-width: 0; padding-block: var(--space-xl);
+  display: block; min-width: 0; padding-block: var(--space-xl);
   border-block-end: var(--rule-hair) solid var(--color-rule);
 }}
-.article-card.has-image {{ gap: var(--space-lg); }}
+.card-lead {{ min-width: 0; }}
+.card-layout {{
+  display: grid; grid-template-columns: minmax(0, 1fr);
+  min-width: 0; gap: var(--space-lg); margin-block-start: var(--space-md);
+}}
 .card-image {{
   display: block; min-width: 0; margin: 0; aspect-ratio: 4 / 3; overflow: hidden;
   align-self: start; border: var(--rule-hair) solid var(--color-rule-strong);
   border-radius: var(--radius-xs); background: var(--color-paper-muted);
 }}
 .card-image img {{ display: block; width: 100%; height: 100%; object-fit: cover; }}
-.card-body {{ display: flex; min-width: 0; flex-direction: column; justify-content: center; }}
+.card-body {{ display: flex; min-width: 0; flex-direction: column; justify-content: flex-start; }}
 .card-meta {{
   display: flex; flex-wrap: wrap; gap: var(--space-xs);
-  margin-block-end: var(--space-sm); color: var(--color-muted);
+  margin-block-end: var(--space-xs); color: var(--color-muted);
   font-family: var(--font-ui); font-size: var(--text-xs); letter-spacing: .035em; text-transform: uppercase;
 }}
 .dot {{ color: var(--color-faint); }}
@@ -373,7 +380,7 @@ button:disabled, [aria-disabled="true"] {{ color: var(--color-faint); cursor: no
 .card-header {{ display: flex; flex-direction: column; gap: var(--space-sm); min-width: 0; }}
 .card-title {{
   color: var(--color-ink); font-family: var(--font-display);
-  font-size: clamp(1.55rem, 3.2vw, 2.25rem); font-style: normal; font-weight: 600;
+  font-size: clamp(1.5rem, 2.4vw, 2rem); font-style: normal; font-weight: 600;
   letter-spacing: -.018em; line-height: 1.08; text-decoration-thickness: var(--rule-hair);
   text-decoration-color: transparent; text-underline-offset: var(--space-3xs);
   overflow-wrap: anywhere; min-width: 0;
@@ -385,7 +392,7 @@ button:disabled, [aria-disabled="true"] {{ color: var(--color-faint); cursor: no
   line-height: 1; text-transform: uppercase; white-space: nowrap;
 }}
 .card-summary {{
-  max-width: var(--prose-width); margin: var(--space-md) 0 0;
+  max-width: var(--prose-width); margin: 0;
   color: var(--color-ink-soft); font-size: var(--text-md); line-height: 1.65;
 }}
 .card-tail {{
@@ -434,17 +441,30 @@ button:disabled, [aria-disabled="true"] {{ color: var(--color-faint); cursor: no
 }}
 .site-footer a:active {{ color: var(--color-accent-hover); }}
 @media (min-width: 40rem) {{
-  .article-card.has-image {{ grid-template-columns: minmax(16rem, .78fr) minmax(0, 1.22fr); }}
-  .card-hero.has-image {{ grid-template-columns: minmax(20rem, 1.08fr) minmax(0, .92fr); }}
-  .card-hero .card-title {{ font-size: clamp(2rem, 4.8vw, 3.65rem); }}
-  .article-card[data-title-size="long"].card-hero .card-title {{ font-size: clamp(1.85rem, 4vw, 3rem); }}
-  .card-large .card-title {{ font-size: clamp(1.7rem, 3.4vw, 2.55rem); }}
+  .lead-section .story-list,
+  .story-section:not(.lead-section) .story-list {{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-xl);
+  }}
+  .card-hero {{ grid-column: 1 / -1; }}
+  .card-hero.has-image .card-layout {{
+    grid-template-columns: minmax(20rem, 1.08fr) minmax(0, .92fr);
+  }}
+  .card-hero .card-title {{ font-size: clamp(2.15rem, 4vw, 3.25rem); }}
+  .article-card[data-title-size="long"].card-hero .card-title {{
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+  }}
+  .article-card:not(.card-hero) .card-title {{ font-size: clamp(1.5rem, 2.4vw, 2rem); }}
 }}
 @media (min-width: 60rem) {{
   .masthead {{ padding-block: var(--space-lg) var(--space-xl); }}
-  .article-card {{ padding-block: var(--space-2xl); }}
-  .card-body {{ padding-inline: var(--space-lg); }}
-  .card-hero .card-body {{ padding-inline-end: var(--space-xl); }}
+  .article-card {{ padding-block: var(--space-xl); }}
+  .card-hero {{ padding-block: var(--space-2xl); }}
+  .card-hero .card-body {{ padding-inline: var(--space-lg) var(--space-xl); }}
+  .story-section:not(.lead-section) .story-list {{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: var(--space-lg);
+  }}
 }}
 @media (max-width: 39.999rem) {{
   .issue-line {{ grid-template-columns: minmax(0, 1fr) auto; }}
