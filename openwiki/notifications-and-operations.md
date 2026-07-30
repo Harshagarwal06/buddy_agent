@@ -17,11 +17,16 @@ failures visible to the CLI and lets run modes suppress external messages.
 | --- | --- | --- | --- | --- |
 | Fetch feeds and call models | yes | yes | no | yes |
 | Cross-run URL filtering | yes | no | no | no |
-| Write `state.db` / Chroma | yes, when enabled | no | no | yes, when enabled |
+| Write `state.db` / Chroma | yes, when enabled | no | no | no |
 | Generate images | yes | off by default | no | yes |
 | Write Markdown/HTML/JSON/archive | yes | yes | no | yes |
 | Send Telegram/Slack/Buttondown | yes, by result rules | no | no | yes, by result rules |
 | Deploy in the scheduled workflow | yes | no | no application output | yes when invoked in a deployable workflow run |
+
+`--force` only bypasses cross-run filtering; [`agent.py`](../news_buddy/agent.py)
+gates `mark_seen()` and RAG embedding on `not force and not test_run`, so a
+forced run does not record the articles it publishes. Those URLs stay unseen and
+can be selected again by a later digest.
 
 Use `python -m news_buddy run --test-run --verbose` for live end-to-end
 verification without dedup/RAG/notification/deployment side effects. It still

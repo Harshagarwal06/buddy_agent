@@ -41,6 +41,12 @@ KNOWN_HALLUCINATIONS = {
     "newspaper3k",
 }
 
+# The repository abandoned its `deepagents` prototype for a deterministic
+# LangGraph pipeline. AGENTS.md and CLAUDE.md both forbid describing the running
+# system as an active curator, so the term must not reach a generated page.
+# INSTRUCTIONS.md is exempt: it names `deepagents` to state that prohibition.
+DEEPAGENTS_EXEMPT_PAGES = {"INSTRUCTIONS.md"}
+
 REQUIRED_FACTS = {
     "quickstart.md": (
         "Source code,",
@@ -71,6 +77,9 @@ REQUIRED_FACTS = {
         "Test and dry runs suppress all channels",
         "preflight publish check",
         "never invokes `python -m news_buddy`",
+        # A generated matrix once claimed --force writes seen/RAG state. It does
+        # not: agent.py gates both on `not force and not test_run`.
+        "forced run does not record the articles it publishes",
     ),
 }
 
@@ -125,6 +134,11 @@ def main() -> int:
         ),
     }
     for contract_path, required_fragments in repository_contracts.items():
+        if not contract_path.exists():
+            errors.append(
+                f"missing repository contract file: {contract_path.relative_to(ROOT)}"
+            )
+            continue
         contract_text = contract_path.read_text(encoding="utf-8")
         for fragment in required_fragments:
             if fragment not in contract_text:
@@ -141,6 +155,12 @@ def main() -> int:
 
         if relative in CONCEPT_PAGES and not _frontmatter_has_type(text):
             errors.append(f"openwiki/{relative} is missing typed frontmatter")
+
+        if relative not in DEEPAGENTS_EXEMPT_PAGES and "deepagents" in text.lower():
+            errors.append(
+                f"openwiki/{relative} mentions deepagents; the shipped pipeline "
+                "is deterministic LangGraph, not an active deepagents curator"
+            )
 
         for raw_target in LINK_PATTERN.findall(text):
             resolved = _resolve_link(page, raw_target)
