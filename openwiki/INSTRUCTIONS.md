@@ -55,6 +55,9 @@ deployment topology.
 - Link important claims to the repository files that prove them.
 - Do not infer behavior from filenames when the implementation can be read.
 - Do not claim that `main_model` participates in the active graph.
+- Do not claim that `--force` writes seen state or RAG entries. It bypasses
+  cross-run filtering only; `agent.py` gates `mark_seen()` and embedding on
+  `not force and not test_run`, so forced runs leave those URLs unseen.
 - Do not claim that CI persists or grows Chroma; scheduled CI disables RAG.
 - Do not imply that a test run deploys, notifies, marks URLs seen, writes RAG
   entries, or normally generates article images.
