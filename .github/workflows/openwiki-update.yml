@@ -40,16 +40,17 @@ jobs:
 
       - name: Update the Code Brain
         run: |
-          for attempt in 1 2 3; do
-            echo "OpenWiki attempt ${attempt}/3"
-            if timeout --signal=INT --kill-after=30s 5m \
+          # Two 10m attempts plus one cooldown is ~21m, inside timeout-minutes: 30.
+          for attempt in 1 2; do
+            echo "OpenWiki attempt ${attempt}/2"
+            if timeout --signal=INT --kill-after=30s 10m \
               openwiki code --update --print; then
               exit 0
             else
               task_exit_code=$?
             fi
 
-            if [ "$attempt" -eq 3 ]; then
+            if [ "$attempt" -eq 2 ]; then
               exit "$task_exit_code"
             fi
 
@@ -63,7 +64,12 @@ jobs:
           done
         env:
           OPENWIKI_PROVIDER: nvidia
-          OPENWIKI_MODEL_ID: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning
+          # Not a `-reasoning` model on purpose. The previous nano-omni reasoning
+          # model returned 4246 tokens against a 1200-token cap; that overhead
+          # compounds across OpenWiki's agentic turns until the attempt times
+          # out. This MoE (120B total, ~12B active) finished the same probe in
+          # 20.8s and respected the limit.
+          OPENWIKI_MODEL_ID: nvidia/nemotron-3-super-120b-a12b
           OPENWIKI_PROVIDER_RETRY_ATTEMPTS: "2"
           OPENWIKI_TELEMETRY_DISABLED: "1"
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
