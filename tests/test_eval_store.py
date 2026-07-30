@@ -68,3 +68,48 @@ def test_load_reports_missing_articles_file(tmp_path):
 
     with pytest.raises(FixtureError, match="--capture"):
         load_fixtures(tmp_path)
+
+
+def test_capture_writes_fixtures_without_network(tmp_path, monkeypatch):
+    from scripts import eval_sub_model
+
+    monkeypatch.setattr(
+        eval_sub_model, "_fetch_json",
+        lambda url: (
+            {"dates": ["2026-07-29"]} if url.endswith("index.json")
+            else [{
+                "title": "T", "url": "https://example.com/a",
+                "source": "Example", "published_at": "2026-07-29",
+            }]
+        ),
+    )
+    monkeypatch.setattr(eval_sub_model, "_extract_body", lambda url: "captured body")
+
+    count = eval_sub_model.capture("https://example.com/", limit=1, fixtures_dir=tmp_path)
+
+    assert count == 1
+    assert load_fixtures(tmp_path)[0]["body"] == "captured body"
+
+
+def test_capture_skips_articles_with_empty_bodies(tmp_path, monkeypatch):
+    from scripts import eval_sub_model
+
+    monkeypatch.setattr(
+        eval_sub_model, "_fetch_json",
+        lambda url: (
+            {"dates": ["2026-07-29"]} if url.endswith("index.json")
+            else [
+                {"title": "A", "url": "https://example.com/a", "source": "E", "published_at": "2026-07-29"},
+                {"title": "B", "url": "https://example.com/b", "source": "E", "published_at": "2026-07-29"},
+            ]
+        ),
+    )
+    monkeypatch.setattr(
+        eval_sub_model, "_extract_body",
+        lambda url: "" if url.endswith("/a") else "real body",
+    )
+
+    count = eval_sub_model.capture("https://example.com/", limit=5, fixtures_dir=tmp_path)
+
+    assert count == 1
+    assert load_fixtures(tmp_path)[0]["url"] == "https://example.com/b"
