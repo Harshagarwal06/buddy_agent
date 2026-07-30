@@ -1,5 +1,7 @@
 import json
 
+import pytest
+
 from news_buddy import agent as news_buddy_agent
 from scripts import eval_sub_model
 
@@ -108,21 +110,25 @@ def test_unrelated_exception_message_yields_no_brief_errors():
     assert eval_sub_model._parse_brief_errors("connection reset") == []
 
 
-def test_run_restores_extractor_patch_even_when_model_build_raises(monkeypatch, tmp_path):
+def test_run_restores_extractor_patch_when_evaluate_model_raises(monkeypatch, tmp_path):
     original_extract = news_buddy_agent._extract.extract_body
 
     monkeypatch.setenv("NVIDIA_API_KEY", "dummy-key")
     monkeypatch.setattr(eval_sub_model, "load_fixtures", lambda directory: [_article()])
 
-    def _boom(config):
-        raise RuntimeError("model build failed")
+    class _Boom(Exception):
+        pass
 
-    monkeypatch.setattr(eval_sub_model, "_build_model", _boom)
+    def _raiser(model, articles, config):
+        raise _Boom("evaluate_model exploded")
+
+    monkeypatch.setattr(eval_sub_model, "evaluate_model", _raiser)
 
     fixtures_dir = _write_fixtures_manifest(tmp_path)
     output = tmp_path / "report.md"
 
-    eval_sub_model.run(["m"], fixtures_dir, output, baseline="m")
+    with pytest.raises(_Boom):
+        eval_sub_model.run(["m"], fixtures_dir, output, baseline="m")
 
     assert news_buddy_agent._extract.extract_body is original_extract
 
