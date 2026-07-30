@@ -11,11 +11,22 @@ import hashlib
 import json
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import TypedDict
 
 ARTICLES_FILE = "articles.json"
 MANIFEST_FILE = "manifest.json"
 
 _FIELDS = ("url", "title", "source", "published_at", "body")
+
+
+class Article(TypedDict):
+    """Structured article data for fixture storage."""
+
+    url: str
+    title: str
+    source: str
+    published_at: str
+    body: str
 
 
 class FixtureError(RuntimeError):
@@ -26,7 +37,7 @@ def body_sha256(body: str) -> str:
     return hashlib.sha256(body.encode("utf-8")).hexdigest()
 
 
-def save_fixtures(directory: Path, articles: list[dict]) -> tuple[Path, Path]:
+def save_fixtures(directory: Path, articles: list[Article]) -> tuple[Path, Path]:
     directory.mkdir(parents=True, exist_ok=True)
     rows = [{field: article.get(field, "") for field in _FIELDS} for article in articles]
 
@@ -51,7 +62,7 @@ def save_fixtures(directory: Path, articles: list[dict]) -> tuple[Path, Path]:
     return articles_path, manifest_path
 
 
-def load_fixtures(directory: Path) -> list[dict]:
+def load_fixtures(directory: Path) -> list[Article]:
     articles_path = directory / ARTICLES_FILE
     manifest_path = directory / MANIFEST_FILE
 
