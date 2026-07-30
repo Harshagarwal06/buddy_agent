@@ -7,13 +7,27 @@ Scored with the pipeline's own `RubricMiddleware` and `_article_brief_errors`. B
 
 ## Results
 
-| Model | Brief valid | First-pass rubric | Strict recovery | JSON fail | p50 | p95 | Mean total tok | Words in range |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| meta/llama-3.1-8b-instruct _(baseline)_ | 96% | 42% | 23% | 0 | 2.1s | 3.3s | 1373 | 17% |
-| nvidia/nemotron-3-super-120b-a12b | 0% | 0% | n/a | 24 | 6.2s | 35.3s | 0 | 0% |
-| poolside/laguna-xs-2.1 | 88% | 88% | n/a | 0 | 2.6s | 4.3s | 1362 | 83% |
-| mistralai/mistral-medium-3.5-128b | 67% | 21% | 55% | 0 | 86.7s | 184.2s | 1000 | 4% |
-| google/gemma-4-31b-it | 67% | 38% | 86% | 0 | 25.1s | 108.1s | 1040 | 21% |
+| Model | N | Brief valid | First-pass rubric | Strict recovery | JSON fail | p50 | p95 | Mean tok (ok) | Words in range |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| meta/llama-3.1-8b-instruct _(baseline)_ | 24 | 96% | 42% | 23% | 0 | 2.1s | 3.3s | 1433 | 17% |
+| nvidia/nemotron-3-super-120b-a12b | 24 | 0% | 0% | n/a | 24 | 6.2s | 35.3s | 0 | 0% |
+| poolside/laguna-xs-2.1 | 24 | 88% | 88% | n/a | 0 | 2.6s | 4.3s | 1557 | 83% |
+| mistralai/mistral-medium-3.5-128b | 24 | 67% | 21% | 55% | 0 | 86.7s | 184.2s | 1500 | 4% |
+| google/gemma-4-31b-it | 24 | 67% | 38% | 86% | 0 | 25.1s | 108.1s | 1560 | 21% |
+
+_Mean tok (ok) corrected from the original run: the harness previously divided
+total tokens by every attempt (including failures, which record
+`total_tokens=0`), silently pulling the mean toward 0 for any model with
+failures. It now divides by successful calls only (`ok_count`). Reconstruction
+from the published rates and article counts (`ok = round(rate × 24)`,
+`corrected = original_mean × 24 / ok`):
+meta/llama-3.1-8b-instruct: ok = round(0.96×24) = 23, 1373×24/23 ≈ 1433.
+poolside/laguna-xs-2.1: ok = round(0.88×24) = 21, 1362×24/21 ≈ 1557.
+mistralai/mistral-medium-3.5-128b: ok = round(0.67×24) = 16, 1000×24/16 = 1500.
+google/gemma-4-31b-it: ok = round(0.67×24) = 16, 1040×24/16 = 1560.
+nvidia/nemotron-3-super-120b-a12b stays at 0 (0 successful calls; the
+reconstruction formula divides by zero and does not apply — see the caveat
+below)._
 
 ## Failure breakdown
 
@@ -36,10 +50,15 @@ Scored with the pipeline's own `RubricMiddleware` and `_article_brief_errors`. B
 **mistralai/mistral-medium-3.5-128b**
 - `short image_labels`: 2
 - JSON parse failures (inferred from all four image fields missing at once): 0
+- non-brief failures (timeouts, API errors): 6 (67% brief-valid ⇒ 16/24 ok ⇒
+  8 failures; 8 − 2 itemized `short image_labels` − 0 JSON parse = 6;
+  consistent with the timed-out sample under this model below)
 
 **google/gemma-4-31b-it**
 - `short image_labels`: 5
 - JSON parse failures (inferred from all four image fields missing at once): 0
+- non-brief failures (timeouts, API errors): 3 (8 total failures − 5 itemized
+  `short image_labels` − 0 JSON parse = 3)
 
 ## Sample outputs
 
@@ -146,8 +165,11 @@ every quality measure the harness records:
 | p50 latency | 2.1s | 2.6s |
 
 The baseline passes brief validity while missing the prompt's own word target on
-83% of articles, and needing a strict retry on 58% of them — retries that cost
-a second model call in production.
+83% of articles, and needing a strict retry on 57% of its successful calls
+(13 of the 23 that returned a valid brief: 42% first-pass rate over the full
+24-article corpus is 10 articles that passed on the first try; 23 ok − 10
+passed = 13 retried; 13/23 ≈ 57%, not the 58% originally reported here) —
+retries that cost a second model call in production.
 
 Laguna's only failures are three `short image_labels`: labels exceeding 18
 characters or 3 words. That is a constraint violation, not a capability gap, and
@@ -158,6 +180,14 @@ stays general.
 This is exactly the situation the pre-fixed criteria exist for. The disciplined
 answer is that laguna does not pass the gate today, so nothing changes now.
 
+Worth naming directly, though: the brief-validity gap the gate rejects laguna
+on — 96% vs 88%, i.e. 2 articles out of 24 — is itself inside the "differences
+under roughly 10 percentage points are not decisive at this sample size"
+caveat stated above. Applying the gate mechanically here was still the right
+call — that is the discipline the gate is for — but the reader should see that
+the disqualifying gap and the caveat about noise are, numerically, the same
+size.
+
 ### Recommended follow-up (not done here)
 
 Re-run laguna-xs-2.1 with the `image_labels` length constraint restated more
@@ -167,15 +197,19 @@ is a prompt experiment, and it needs its own before/after comparison.
 
 ### Two caveats about reading this table
 
-- **`nvidia/nemotron-3-super-120b-a12b` shows mean total tokens of 0. That is a
-  harness artifact, not a measurement.** `failure_result` records no token
-  count, so when all 24 articles fail the mean is necessarily 0. It says nothing
-  about the model's consumption.
-- Its 24 JSON failures cannot be attributed between malformed output and
-  truncation at the 512-token cap. The harness documents this ambiguity by
-  design: `_summarize_one` collapses both into one `ValueError`. Given the
-  budget must hold a 70–110 word summary *and* a full image brief, truncation is
-  a live hypothesis.
+- **The "Mean tok (ok)" column is a mean over successful calls, not the full
+  corpus, for every model in this table.** `failure_result` records no token
+  count, so any model with failures would have its mean pulled toward 0 if
+  failures were counted in the denominator; the harness now excludes them for
+  all five models, not just one. `nvidia/nemotron-3-super-120b-a12b` is simply
+  the extreme case — 0 successful calls, so its mean is exactly 0 by
+  construction. That says nothing about the model's actual token consumption
+  per call.
+- `nvidia/nemotron-3-super-120b-a12b`'s 24 JSON failures cannot be attributed
+  between malformed output and truncation at the 512-token cap. The harness
+  documents this ambiguity by design: `_summarize_one` collapses both into one
+  `ValueError`. Given the budget must hold a 70–110 word summary *and* a full
+  image brief, truncation is a live hypothesis.
 
 ### Measurement note
 
