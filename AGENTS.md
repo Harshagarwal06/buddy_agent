@@ -27,6 +27,9 @@ Start from these files for repo-specific answers:
   prove that a feature is currently implemented.
 - Update or regenerate the OpenWiki Code Brain after meaningful architecture,
   operations, provider, or deployment changes.
+- Human review is required before merging an automated OpenWiki PR. Correct
+  unsupported claims and tighten `openwiki/INSTRUCTIONS.md` when an error is
+  likely to recur.
 
 ## Runtime Model
 
@@ -77,12 +80,8 @@ For portfolio/demo quality, prioritize:
 
 ## OpenWiki
 
-This repository uses OpenWiki for recurring code documentation. Start with
-`openwiki/quickstart.md`, then follow its links to architecture, workflows,
-domain concepts, operations, integrations, testing guidance, and source maps.
+This repository uses OpenWiki for recurring code documentation. Start with `openwiki/quickstart.md`, then follow its links to architecture, workflows, domain concepts, operations, integrations, testing guidance, and source maps.
 
-The scheduled OpenWiki GitHub Actions workflow proposes wiki updates in a draft
-pull request. Review and correct generated claims against source before merge;
-when an error is likely to recur, also tighten `openwiki/INSTRUCTIONS.md`.
+The scheduled OpenWiki GitHub Actions workflow refreshes the repository wiki. Do not hand-edit generated OpenWiki pages unless explicitly asked; prefer updating source code/docs and letting OpenWiki regenerate.
 
 <!-- OPENWIKI:END -->
