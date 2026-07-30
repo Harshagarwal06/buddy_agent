@@ -15,6 +15,19 @@ Start from these files for repo-specific answers:
 - `news_buddy/buttondown_notify.py`, `telegram_notify.py`, `slack_notify.py` - notification behavior.
 - `news_buddy/rag.py` and `news_buddy/semantic_search_cli.py` - semantic search implementation.
 
+## Documentation Contract
+
+- Source code, configuration, tests, and workflows are authoritative.
+- `README.md` is the public introduction and setup guide.
+- `AGENTS.md` contains repository-wide operating and safety rules.
+- `CLAUDE.md` is a short tool-specific pointer back to these shared rules.
+- `openwiki/` is generated, reviewable deep documentation. Treat it as a
+  maintained knowledge cache, not as authority when it conflicts with code.
+- `docs/superpowers/` contains historical plans and specifications; it does not
+  prove that a feature is currently implemented.
+- Update or regenerate the OpenWiki Code Brain after meaningful architecture,
+  operations, provider, or deployment changes.
+
 ## Runtime Model
 
 The graph flow is:
@@ -48,7 +61,8 @@ The graph flow is:
 - Dedup is URL-based, not story-cluster based.
 - CI disables RAG with `NEWS_BUDDY_RAG_ENABLED=false`.
 - `state.db` is cached in Actions and may be lost if the cache is evicted.
-- Test coverage is still narrow around notification and archive paths.
+- Coverage is still narrow around feed parsing, story selection/dedup/backfill,
+  rubric edge cases, and some output/notification failure paths.
 
 ## Preferred Next Steps
 
@@ -58,3 +72,17 @@ For portfolio/demo quality, prioritize:
 2. Add story-level clustering using existing embeddings or title/summary similarity.
 3. Persist RAG across CI runs and expose archive search/Q&A.
 4. Add focused tests for feed parsing, dedup/backfill, rubric scoring, and HTML output.
+
+<!-- OPENWIKI:START -->
+
+## OpenWiki
+
+This repository uses OpenWiki for recurring code documentation. Start with
+`openwiki/quickstart.md`, then follow its links to architecture, workflows,
+domain concepts, operations, integrations, testing guidance, and source maps.
+
+The scheduled OpenWiki GitHub Actions workflow proposes wiki updates in a draft
+pull request. Review and correct generated claims against source before merge;
+when an error is likely to recur, also tighten `openwiki/INSTRUCTIONS.md`.
+
+<!-- OPENWIKI:END -->

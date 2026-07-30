@@ -7,7 +7,7 @@ News Buddy is a daily AI news digest that fetches RSS feeds, filters for AI-rele
 
 Live archive: https://harshagarwal06.github.io/buddy_agent/
 
-The project started as a fully agentic `deepagents` experiment. After testing the daily workflow, the orchestration was moved to a deterministic LangGraph pipeline: fetch, filter, dedup, summarize, write, notify. That kept the system cheaper and easier to debug while preserving LLM judgment where it matters: article summarization and importance scoring.
+The project started as a fully agentic `deepagents` experiment. After testing the daily workflow, the orchestration was moved to a deterministic LangGraph pipeline: fetch, filter, dedup, summarize, write, notify. That kept the system cheaper and easier to debug while preserving LLM judgment where it matters: article summarization, editorial importance, and article-specific image planning.
 
 ## What It Does
 
@@ -44,11 +44,44 @@ flowchart TD
     M --> N["Write Markdown and HTML"]
     X --> N
     N --> O["Update archive index"]
-    O --> P["Notify Telegram, Slack, Buttondown"]
-    O --> Q["Deploy HTML archive to gh-pages"]
+    O -. "CLI, after graph" .-> P["Notify Telegram, Slack, Buttondown"]
+    O -. "GitHub Actions, after CLI" .-> Q["Deploy publication to gh-pages"]
 ```
 
-See [DIAGRAM.md](DIAGRAM.md) for the node-level flow and [docs/rag-architecture.html](docs/rag-architecture.html) for the RAG/search view.
+See [DIAGRAM.md](DIAGRAM.md) for the node-level flow,
+[docs/rag-architecture.html](docs/rag-architecture.html) for the RAG/search
+view, and the [Code Brain](openwiki/index.md) for the source-linked maintainer
+documentation.
+
+## Code Brain
+
+The [`openwiki/`](openwiki/) directory is a reviewed OpenWiki knowledge layer
+covering runtime flow, providers, image generation, persistence, publishing,
+notifications, safe run modes, and known gaps. Start with
+[`openwiki/quickstart.md`](openwiki/quickstart.md).
+
+It is documentation only: News Buddy never imports or reads it at runtime.
+Source code, tests, `config.yaml`, and active workflows remain authoritative.
+[`openwiki/INSTRUCTIONS.md`](openwiki/INSTRUCTIONS.md) constrains generation so
+the wiki preserves important boundaries such as deterministic filtering versus
+LLM summarization and local Chroma versus public JSON/MCP search.
+
+OpenWiki 0.2.4 is pinned in
+[`.github/workflows/openwiki-update.yml`](.github/workflows/openwiki-update.yml).
+The workflow runs manually or weekly, uses the existing `NVIDIA_API_KEY`
+repository secret, validates the result, and opens a documentation-only draft
+pull request. It never runs the digest or deploys `gh-pages`.
+
+To regenerate and validate locally with `NVIDIA_API_KEY` already exported:
+
+```bash
+npm install --global openwiki@0.2.4 mermaid@11.16.0 jsdom@29.1.1
+OPENWIKI_PROVIDER=nvidia \
+OPENWIKI_MODEL_ID=nvidia/nemotron-3-super-120b-a12b \
+OPENWIKI_TELEMETRY_DISABLED=1 \
+openwiki code --update --print
+python scripts/validate_openwiki.py
+```
 
 ## Repository Tour
 
@@ -65,6 +98,9 @@ See [DIAGRAM.md](DIAGRAM.md) for the node-level flow and [docs/rag-architecture.
 - `news_buddy/buttondown_notify.py`, `telegram_notify.py`, `slack_notify.py` - notification adapters.
 - `.agents/skills/topicsearch/` - local agent skill for combined keyword and semantic archive search.
 - `.github/workflows/daily-digest.yml` - scheduled cloud run and GitHub Pages deploy.
+- `.github/workflows/openwiki-update.yml` - pinned manual/weekly Code Brain update that proposes a draft PR.
+- `openwiki/` - source-linked maintainer documentation generated with OpenWiki and reviewed against the code.
+- `scripts/validate_openwiki.py` - dependency-free Code Brain structure, link, and accuracy tripwire.
 - `tests/` - focused coverage for notifications, archive signup behavior, and CLI notification suppression.
 
 ## Setup
@@ -143,9 +179,9 @@ Manual `workflow_dispatch` defaults to `test_run: true`, so a verification run d
 
 Required GitHub secrets depend on enabled features:
 
-- `GOOGLE_API_KEY` for the default Gemini summarizer and image planner.
+- `NVIDIA_API_KEY` for the default NVIDIA summarizer/image planner, FLUX.2 article images, and the OpenWiki update workflow.
+- `GOOGLE_API_KEY` when Gemini summarization is selected and for local RAG embeddings.
 - `HF_TOKEN` when Hugging Face summarization is selected.
-- `NVIDIA_API_KEY` for FLUX.2 article images.
 - `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` for Telegram.
 - `SLACK_WEBHOOK_URL` for Slack.
 - `BUTTONDOWN_API_KEY` for sending email.
