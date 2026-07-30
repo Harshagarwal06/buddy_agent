@@ -1,0 +1,8 @@
+{
+  "updatedAt": "2026-07-30T10:33:36.814Z",
+  "command": "init",
+  "gitHead": "21ab8246c1b9f017f63789bf3d867af213b3d440",
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "status": "interrupted",
+  "language": "en"
+}

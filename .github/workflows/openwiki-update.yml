@@ -1,0 +1,64 @@
+name: OpenWiki Update
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Weekly on Monday at 00:17 IST, well after the daily digest backup window.
+    - cron: "47 18 * * 0"
+
+concurrency:
+  group: openwiki-update-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "22"
+
+      - name: Install pinned OpenWiki toolchain
+        run: npm install --global openwiki@0.2.4 mermaid@11.16.0 jsdom@29.1.1
+
+      - name: Update the Code Brain
+        run: openwiki code --update --print
+        env:
+          OPENWIKI_PROVIDER: nvidia
+          OPENWIKI_MODEL_ID: nvidia/nemotron-3-super-120b-a12b
+          OPENWIKI_PROVIDER_RETRY_ATTEMPTS: "2"
+          OPENWIKI_TELEMETRY_DISABLED: "1"
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+
+      - name: Validate generated documentation
+        run: python3 scripts/validate_openwiki.py
+
+      - name: Create reviewable documentation pull request
+        uses: peter-evans/create-pull-request@22a9089034f40e5a961c8808d113e2c98fb63676 # v7
+        with:
+          add-paths: |
+            openwiki
+            AGENTS.md
+            CLAUDE.md
+          branch: openwiki/update
+          delete-branch: true
+          draft: true
+          commit-message: "docs: update OpenWiki Code Brain"
+          title: "docs: update OpenWiki Code Brain"
+          body: |
+            Automated, documentation-only OpenWiki update.
+
+            Review the generated claims against source, config, tests, and
+            workflows before merging. This job does not run or deploy the
+            digest and does not send notifications.
