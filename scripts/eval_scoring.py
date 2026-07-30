@@ -39,10 +39,12 @@ class ModelAggregate:
     available: bool = True
     unavailable_reason: str = ""
     article_count: int = 0
+    ok_count: int = 0
     brief_valid_rate: float = 0.0
     first_pass_rate: float = 0.0
     strict_recovery_rate: float | None = None
     json_failure_count: int = 0
+    error_count: int = 0
     field_failures: dict[str, int] = field(default_factory=dict)
     p50_latency: float = 0.0
     p95_latency: float = 0.0
@@ -82,6 +84,11 @@ def failure_result(
 
 
 def _percentile(values: list[float], fraction: float) -> float:
+    """Nearest-rank percentile, not linearly interpolated.
+
+    This will disagree with numpy.percentile (which interpolates between
+    ranks) on inputs where the target rank isn't a whole number.
+    """
     if not values:
         return 0.0
     ordered = sorted(values)
@@ -111,17 +118,25 @@ def aggregate(
     if strict_results:
         strict_rate = sum(1 for r in strict_results if r.rubric_passed) / len(strict_results)
 
+    ok_count = sum(1 for r in results if r.ok)
+    error_count = sum(1 for r in results if not r.ok and not r.brief_errors)
+    mean_total_tokens = (
+        sum(r.total_tokens for r in results) / ok_count if ok_count else 0.0
+    )
+
     return ModelAggregate(
         model=model,
         article_count=count,
+        ok_count=ok_count,
         brief_valid_rate=sum(1 for r in results if r.ok) / count,
         first_pass_rate=sum(1 for r in results if r.ok and r.rubric_passed) / count,
         strict_recovery_rate=strict_rate,
         json_failure_count=sum(1 for r in results if r.json_failure),
+        error_count=error_count,
         field_failures=field_failures,
         p50_latency=_percentile(latencies, 0.50),
         p95_latency=_percentile(latencies, 0.95),
-        mean_total_tokens=sum(r.total_tokens for r in results) / count,
+        mean_total_tokens=mean_total_tokens,
         word_count_in_range_rate=in_range / count,
     )
 

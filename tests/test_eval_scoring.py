@@ -51,10 +51,13 @@ def test_aggregate_computes_rates():
     agg = aggregate("m", results, strict_results=[])
 
     assert agg.article_count == 3
+    assert agg.ok_count == 2
     assert round(agg.brief_valid_rate, 3) == round(2 / 3, 3)
     assert round(agg.first_pass_rate, 3) == round(1 / 3, 3)
     assert agg.field_failures == {"image_layout": 1}
     assert agg.json_failure_count == 0
+    # brief_errors=["image_layout"] is a rejected brief, not a transport error
+    assert agg.error_count == 0
 
 
 def test_aggregate_counts_inferred_json_failures():
@@ -69,6 +72,43 @@ def test_aggregate_counts_inferred_json_failures():
 def test_aggregate_reports_mean_total_tokens():
     agg = aggregate("m", [_ok(tokens=800), _ok(tokens=1000)], [])
     assert agg.mean_total_tokens == 900.0
+
+
+def test_mean_total_tokens_divides_by_ok_count_not_article_count():
+    # failure_result records total_tokens=0, so a naive count-based mean would
+    # dilute the average toward 0. The corrected mean should only reflect the
+    # two successful calls.
+    results = [
+        _ok(tokens=800),
+        _ok(tokens=1000),
+        failure_result(url="c", title="T", brief_errors=["image_layout"], error="e", latency_s=1.0),
+    ]
+    agg = aggregate("m", results, [])
+
+    naive_count_mean = sum(r.total_tokens for r in results) / agg.article_count
+    assert agg.mean_total_tokens == 900.0
+    assert agg.mean_total_tokens != naive_count_mean
+    assert agg.ok_count == 2
+
+
+def test_error_count_counts_only_failures_without_brief_errors():
+    results = [
+        _ok(),
+        failure_result(url="a", title="T", brief_errors=[], error="timeout", latency_s=1.0),
+        failure_result(url="b", title="T", brief_errors=["short image_labels"], error="bad brief", latency_s=1.0),
+    ]
+    agg = aggregate("m", results, [])
+    assert agg.error_count == 1
+
+
+def test_all_failure_aggregate_has_zero_ok_count_and_safe_mean():
+    results = [
+        failure_result(url="a", title="T", brief_errors=[], error="timeout", latency_s=1.0),
+        failure_result(url="b", title="T", brief_errors=["image_layout"], error="bad brief", latency_s=1.0),
+    ]
+    agg = aggregate("m", results, [])
+    assert agg.ok_count == 0
+    assert agg.mean_total_tokens == 0.0
 
 
 def test_strict_recovery_rate_is_share_of_retried_that_pass():
@@ -91,6 +131,8 @@ def test_percentiles_on_single_result_do_not_crash():
 def test_aggregate_of_no_results_is_all_zero_not_a_crash():
     agg = aggregate("m", [], [])
     assert agg.article_count == 0
+    assert agg.ok_count == 0
+    assert agg.error_count == 0
     assert agg.brief_valid_rate == 0.0
     assert agg.p50_latency == 0.0
 

@@ -13,22 +13,35 @@ def _rate_or_dash(value: float | None) -> str:
     return "n/a" if value is None else _pct(value)
 
 
+def _escape_cell(text: str) -> str:
+    """Escape characters that would break a markdown table row."""
+    return text.replace("|", "\\|").replace("\n", " ")
+
+
 def _summary_table(aggregates: list[ModelAggregate], baseline_model: str) -> list[str]:
     lines = [
-        "| Model | Brief valid | First-pass rubric | Strict recovery | JSON fail | p50 | p95 | Mean total tok | Words in range |",
-        "| --- | --- | --- | --- | --- | --- | --- | --- | --- |",
+        "| Model | N | Brief valid | First-pass rubric | Strict recovery | JSON fail | p50 | p95 | Mean tok (ok) | Words in range |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
     for agg in aggregates:
         label = agg.model + (" _(baseline)_" if agg.model == baseline_model else "")
         if not agg.available:
-            lines.append(f"| {label} | unavailable — {agg.unavailable_reason} | | | | | | | |")
-            continue
-        lines.append(
-            f"| {label} | {_pct(agg.brief_valid_rate)} | {_pct(agg.first_pass_rate)} "
-            f"| {_rate_or_dash(agg.strict_recovery_rate)} | {agg.json_failure_count} "
-            f"| {agg.p50_latency:.1f}s | {agg.p95_latency:.1f}s "
-            f"| {agg.mean_total_tokens:.0f} | {_pct(agg.word_count_in_range_rate)} |"
-        )
+            reason = _escape_cell(agg.unavailable_reason)
+            cells = [label, "", f"unavailable — {reason}", "", "", "", "", "", "", ""]
+        else:
+            cells = [
+                label,
+                str(agg.article_count),
+                _pct(agg.brief_valid_rate),
+                _pct(agg.first_pass_rate),
+                _rate_or_dash(agg.strict_recovery_rate),
+                str(agg.json_failure_count),
+                f"{agg.p50_latency:.1f}s",
+                f"{agg.p95_latency:.1f}s",
+                f"{agg.mean_total_tokens:.0f}",
+                _pct(agg.word_count_in_range_rate),
+            ]
+        lines.append("| " + " | ".join(cells) + " |")
     return lines
 
 
@@ -47,6 +60,10 @@ def _failure_section(aggregates: list[ModelAggregate]) -> list[str]:
             f"- JSON parse failures (inferred from all four image fields "
             f"missing at once): {agg.json_failure_count}"
         )
+        if agg.error_count:
+            lines.append(
+                f"- non-brief failures (timeouts, API errors): {agg.error_count}"
+            )
         if agg.json_failure_count:
             lines.append(
                 "  - a response truncated at the token cap is also invalid JSON, "
