@@ -74,7 +74,8 @@ Requirements:
 - Python 3.11+
 - `uv` or `pip`
 - One LLM provider credential:
-  - `GOOGLE_API_KEY` for the default Gemini summarizer/planner and RAG embeddings
+  - `NVIDIA_API_KEY` for the default NVIDIA NIM summarizer/planner
+  - `GOOGLE_API_KEY` when Gemini is selected and for RAG embeddings
   - `HF_TOKEN` when Hugging Face is selected instead
   - local Ollama plus pulled models if `llm.provider: ollama`
 

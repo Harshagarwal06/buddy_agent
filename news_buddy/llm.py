@@ -3,6 +3,7 @@
 Supported providers (set via config.llm.provider):
   - "google"  → Gemini via langchain-google-genai (free tier; lean usage)
   - "huggingface" → Hugging Face Inference Providers / endpoint
+  - "nvidia" → NVIDIA hosted NIM chat completions
   - "ollama"  → local models via langchain-ollama
 """
 
@@ -167,6 +168,70 @@ def _build_huggingface(llm: dict, model: str, json_mode: bool = False):
     return _HuggingFaceChatModel(llm, model, json_mode=json_mode)
 
 
+# ── NVIDIA NIM ────────────────────────────────────────────────────────────────
+class _NvidiaChatModel:
+    """Small LangChain-like adapter for NVIDIA's OpenAI-compatible NIM API."""
+
+    def __init__(self, llm: dict, model: str) -> None:
+        api_key = os.getenv("NVIDIA_API_KEY", "").strip()
+        if not api_key:
+            raise RuntimeError(
+                "NVIDIA_API_KEY is not set. Create a key at "
+                "https://build.nvidia.com/ and add it to .env."
+            )
+
+        base_url = llm.get("nvidia_base_url", "https://integrate.api.nvidia.com/v1")
+        self._url = f"{base_url.rstrip('/')}/chat/completions"
+        self._headers = {
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+        }
+        self._model = model
+        self._temperature = llm.get("temperature", 0.2)
+        self._top_p = llm.get("top_p", 0.7)
+        self._max_tokens = llm.get("max_tokens", 512)
+        self._timeout = llm.get("timeout", 60)
+        self._rate_limiter = None
+        rpm = llm.get("requests_per_minute")
+        if rpm:
+            from langchain_core.rate_limiters import InMemoryRateLimiter
+
+            self._rate_limiter = InMemoryRateLimiter(
+                requests_per_second=rpm / 60.0,
+                check_every_n_seconds=0.5,
+                max_bucket_size=1,
+            )
+
+    def invoke(self, messages) -> _ChatResponse:
+        if self._rate_limiter:
+            self._rate_limiter.acquire(blocking=True)
+
+        response = httpx.post(
+            self._url,
+            headers=self._headers,
+            json={
+                "model": self._model,
+                "messages": [_to_hf_message(message) for message in messages],
+                "temperature": self._temperature,
+                "top_p": self._top_p,
+                "max_tokens": self._max_tokens,
+                "stream": False,
+            },
+            timeout=self._timeout,
+        )
+        response.raise_for_status()
+        data = response.json()
+        content = data["choices"][0]["message"].get("content", "") or ""
+        return _ChatResponse(
+            content=content,
+            usage_metadata=_usage_metadata(data.get("usage")),
+        )
+
+
+def _build_nvidia(llm: dict, model: str):
+    return _NvidiaChatModel(llm, model)
+
+
 # ── Dispatch ──────────────────────────────────────────────────────────────────
 def _build(config: dict, model_key: str, json_mode: bool = False):
     llm = config["llm"]
@@ -176,10 +241,13 @@ def _build(config: dict, model_key: str, json_mode: bool = False):
         return _build_google(llm, model, json_mode=json_mode)
     if provider in {"huggingface", "hf"}:
         return _build_huggingface(llm, model, json_mode=json_mode)
+    if provider == "nvidia":
+        return _build_nvidia(llm, model)
     if provider == "ollama":
         return _build_ollama(llm, model)
     raise RuntimeError(
-        f"Unknown llm.provider '{provider}' (use 'google', 'huggingface', or 'ollama')."
+        f"Unknown llm.provider '{provider}' "
+        "(use 'google', 'huggingface', 'nvidia', or 'ollama')."
     )
 
 
