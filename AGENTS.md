@@ -77,12 +77,8 @@ For portfolio/demo quality, prioritize:
 
 ## OpenWiki
 
-This repository uses OpenWiki for recurring code documentation. Start with
-`openwiki/quickstart.md`, then follow its links to architecture, workflows,
-domain concepts, operations, integrations, testing guidance, and source maps.
+This repository uses OpenWiki for recurring code documentation. Start with `openwiki/quickstart.md`, then follow its links to architecture, workflows, domain concepts, operations, integrations, testing guidance, and source maps.
 
-The scheduled OpenWiki GitHub Actions workflow proposes wiki updates in a draft
-pull request. Review and correct generated claims against source before merge;
-when an error is likely to recur, also tighten `openwiki/INSTRUCTIONS.md`.
+The scheduled OpenWiki GitHub Actions workflow refreshes the repository wiki. Do not hand-edit generated OpenWiki pages unless explicitly asked; prefer updating source code/docs and letting OpenWiki regenerate.
 
 <!-- OPENWIKI:END -->
