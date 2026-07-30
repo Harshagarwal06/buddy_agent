@@ -77,11 +77,41 @@ REQUIRED_FACTS = {
         "Test and dry runs suppress all channels",
         "preflight publish check",
         "never invokes `python -m news_buddy`",
-        # A generated matrix once claimed --force writes seen/RAG state. It does
-        # not: agent.py gates both on `not force and not test_run`.
-        "forced run does not record the articles it publishes",
     ),
 }
+
+
+def _force_persistence_errors(text: str) -> list[str]:
+    """Check the run-mode matrix claim about what `--force` persists.
+
+    A generated matrix once claimed `--force` writes seen state and RAG
+    entries. It writes neither: agent.py gates both on
+    `not force and not test_run`. Assert the table cell structurally rather
+    than pinning prose, because regeneration rewords surrounding text freely.
+    """
+    header: list[str] | None = None
+    for line in text.splitlines():
+        stripped = line.strip()
+        if not stripped.startswith("|"):
+            continue
+        cells = [cell.strip() for cell in stripped.strip("|").split("|")]
+        if header is None:
+            if any("--force" in cell for cell in cells):
+                header = cells
+            continue
+        if cells and "state.db" in cells[0]:
+            index = next(i for i, cell in enumerate(header) if "--force" in cell)
+            if index >= len(cells):
+                return ["run-mode matrix row for state.db has no `--force` cell"]
+            if "yes" in cells[index].lower():
+                return [
+                    "run-mode matrix claims `--force` writes state.db/Chroma; "
+                    "agent.py gates both on `not force and not test_run`"
+                ]
+            return []
+    if header is None:
+        return ["run-mode matrix with a `--force` column is missing"]
+    return ["run-mode matrix has no row describing state.db writes"]
 
 
 def _frontmatter_has_type(text: str) -> bool:
@@ -173,6 +203,10 @@ def main() -> int:
         for fact in REQUIRED_FACTS.get(relative, ()):
             if fact not in text:
                 errors.append(f"openwiki/{relative} is missing required fact: {fact!r}")
+
+        if relative == "notifications-and-operations.md":
+            for problem in _force_persistence_errors(text):
+                errors.append(f"openwiki/{relative}: {problem}")
 
     corpus = "\n".join(all_text)
     for phrase in sorted(KNOWN_HALLUCINATIONS):
