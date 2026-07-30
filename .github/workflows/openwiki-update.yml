@@ -17,12 +17,18 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    # The retry budget below is 3 x 5m plus two 60s cooldowns (~17m); leave room
+    # for checkout, Node setup, and the global npm install on top of it.
+    timeout-minutes: 30
     steps:
       - name: Check out repository
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
           fetch-depth: 0
+          # Keep the write-capable GITHUB_TOKEN out of .git/config: the OpenWiki
+          # CLI and its transitive npm dependencies run against this checkout.
+          # create-pull-request supplies its own token.
+          persist-credentials: false
 
       - name: Set up Node.js
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
@@ -47,6 +53,11 @@ jobs:
               exit "$task_exit_code"
             fi
 
+            # A timed-out attempt can be interrupted mid-write. Discard partial
+            # output so the next attempt starts from a clean tree.
+            git checkout -- openwiki
+            git clean -fd openwiki
+
             echo "OpenWiki failed; cooling down for 60 seconds before retry."
             sleep 60
           done
@@ -63,10 +74,11 @@ jobs:
       - name: Create reviewable documentation pull request
         uses: peter-evans/create-pull-request@22a9089034f40e5a961c8808d113e2c98fb63676 # v7
         with:
+          # Generated documentation only. AGENTS.md and CLAUDE.md are agent
+          # instruction files and are deliberately excluded so an automated run
+          # cannot rewrite the rules that future agents follow.
           add-paths: |
             openwiki
-            AGENTS.md
-            CLAUDE.md
           branch: openwiki/update
           delete-branch: true
           draft: true
