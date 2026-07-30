@@ -17,7 +17,7 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 20
     steps:
       - name: Check out repository
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
@@ -33,10 +33,10 @@ jobs:
         run: npm install --global openwiki@0.2.4 mermaid@11.16.0 jsdom@29.1.1
 
       - name: Update the Code Brain
-        run: openwiki code --update --print
+        run: timeout --signal=INT --kill-after=30s 10m openwiki code --update --print
         env:
           OPENWIKI_PROVIDER: nvidia
-          OPENWIKI_MODEL_ID: nvidia/nemotron-3-super-120b-a12b
+          OPENWIKI_MODEL_ID: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning
           OPENWIKI_PROVIDER_RETRY_ATTEMPTS: "2"
           OPENWIKI_TELEMETRY_DISABLED: "1"
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}

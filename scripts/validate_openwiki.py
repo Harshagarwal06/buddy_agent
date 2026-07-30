@@ -42,6 +42,11 @@ KNOWN_HALLUCINATIONS = {
 }
 
 REQUIRED_FACTS = {
+    "quickstart.md": (
+        "Source code,",
+        "remain authoritative",
+        "production pipeline never reads",
+    ),
     "architecture/langgraph-pipeline.md": (
         "ThreadPoolExecutor",
         "A test run still",
@@ -106,6 +111,27 @@ def main() -> int:
     index = WIKI / "index.md"
     if index.exists() and 'okf_version: "0.1"' not in index.read_text(encoding="utf-8"):
         errors.append("openwiki/index.md is missing okf_version 0.1")
+
+    repository_contracts = {
+        ROOT / "AGENTS.md": (
+            "## Documentation Contract",
+            "Source code, configuration, tests, and workflows are authoritative",
+            "maintained knowledge cache",
+        ),
+        ROOT / "CLAUDE.md": (
+            "Follow `AGENTS.md`",
+            "source code, configuration, tests, and workflows remain",
+            "authoritative if documentation and implementation disagree",
+        ),
+    }
+    for contract_path, required_fragments in repository_contracts.items():
+        contract_text = contract_path.read_text(encoding="utf-8")
+        for fragment in required_fragments:
+            if fragment not in contract_text:
+                errors.append(
+                    f"{contract_path.relative_to(ROOT)} is missing documentation "
+                    f"contract fragment: {fragment!r}"
+                )
 
     all_text: list[str] = []
     for relative in sorted(found):
