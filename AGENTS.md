@@ -27,6 +27,9 @@ Start from these files for repo-specific answers:
   prove that a feature is currently implemented.
 - Update or regenerate the OpenWiki Code Brain after meaningful architecture,
   operations, provider, or deployment changes.
+- Human review is required before merging an automated OpenWiki PR. Correct
+  unsupported claims and tighten `openwiki/INSTRUCTIONS.md` when an error is
+  likely to recur.
 
 ## Runtime Model
 
