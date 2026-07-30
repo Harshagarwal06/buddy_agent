@@ -33,7 +33,23 @@ jobs:
         run: npm install --global openwiki@0.2.4 mermaid@11.16.0 jsdom@29.1.1
 
       - name: Update the Code Brain
-        run: timeout --signal=INT --kill-after=30s 10m openwiki code --update --print
+        run: |
+          for attempt in 1 2 3; do
+            echo "OpenWiki attempt ${attempt}/3"
+            if timeout --signal=INT --kill-after=30s 5m \
+              openwiki code --update --print; then
+              exit 0
+            else
+              task_exit_code=$?
+            fi
+
+            if [ "$attempt" -eq 3 ]; then
+              exit "$task_exit_code"
+            fi
+
+            echo "OpenWiki failed; cooling down for 60 seconds before retry."
+            sleep 60
+          done
         env:
           OPENWIKI_PROVIDER: nvidia
           OPENWIKI_MODEL_ID: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning
