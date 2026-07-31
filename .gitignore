@@ -26,3 +26,6 @@ news/
 
 # Local Claude Code session data
 .claude/
+
+# Evaluation fixtures: third-party article bodies, regenerable via --capture
+scripts/eval_fixtures/articles.json

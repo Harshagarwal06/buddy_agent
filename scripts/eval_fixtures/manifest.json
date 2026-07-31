@@ -1,0 +1,173 @@
+{
+  "captured_at": "2026-07-30T16:35:17+00:00",
+  "articles": [
+    {
+      "url": "https://www.theverge.com/tech/972294/meta-q2-2026-earnings-mark-zuckerberg-personal-ai-agents",
+      "title": "Mark Zuckerberg is planning a big push into personal AI agents",
+      "source": "The Verge AI",
+      "published_at": "2026-07-29",
+      "body_sha256": "b06e5f2bd29c8400fc25dc6c51051657b53906809cbe3678e89e521c937ebdf2"
+    },
+    {
+      "url": "https://techcrunch.com/2026/07/29/microsoft-is-openly-competing-with-openai-anthropic-more-than-ever/",
+      "title": "Microsoft is openly competing with OpenAI, Anthropic more than ever",
+      "source": "TechCrunch AI",
+      "published_at": "2026-07-30",
+      "body_sha256": "a230d91d22e849c9e4e3861aba6b455f1fe009f84bff6698cbd2965b78efd73d"
+    },
+    {
+      "url": "https://www.theverge.com/ai-artificial-intelligence/972709/openai-hardware-greg-brockman-interview",
+      "title": "OpenAI president says it&#8217;s &#8216;building a family of devices&#8217; for its AI chatbots",
+      "source": "The Verge AI",
+      "published_at": "2026-07-29",
+      "body_sha256": "e26b07a4e9285ea0f9e17a5b5ba1b63dda28fa3b46a5cbb119cef3a9cd3f667b"
+    },
+    {
+      "url": "https://www.theverge.com/policy/972850/xai-grok-minnesota-nudification-lawsuit",
+      "title": "xAI’s last-minute scramble to stop Minnesota’s anti-nudification app law",
+      "source": "The Verge AI",
+      "published_at": "2026-07-29",
+      "body_sha256": "13b4e99824d384f64def8654212b29bcd1c8f57508779766ebcebac788abb32b"
+    },
+    {
+      "url": "https://www.theverge.com/ai-artificial-intelligence/972441/openai-rogue-ai-agent-hacked-more-than-hugging-face",
+      "title": "OpenAI’s rogue AI agent didn’t stop at hacking Hugging Face",
+      "source": "The Verge AI",
+      "published_at": "2026-07-29",
+      "body_sha256": "504c351cbacda6f176ea1c8ae54f080883fddf80f007f90189c15f76031d2c1e"
+    },
+    {
+      "url": "https://www.theverge.com/ai-artificial-intelligence/972380/open-ai-hugging-face-hack-ai-safety-warning",
+      "title": "We’re running out of reasons to ignore AI safety",
+      "source": "The Verge AI",
+      "published_at": "2026-07-29",
+      "body_sha256": "c6dec8d68f7a7767cb68c36c15962cee9c144b852b95bf8c0cab24e99aa601b6"
+    },
+    {
+      "url": "https://www.theverge.com/tech/972927/microsoft-copilot-super-app-confirmed",
+      "title": "Microsoft confirms Copilot ‘super app’ coming this year",
+      "source": "The Verge AI",
+      "published_at": "2026-07-29",
+      "body_sha256": "c1529267a7c795ee6d7fde28836c2c1eb61801b031448726c70893ca00225498"
+    },
+    {
+      "url": "https://www.theverge.com/ai-artificial-intelligence/971059/ai-artists-lawsuit-google-meta-anthropic",
+      "title": "Artists are lawyering up against AI slop, and some are even winning",
+      "source": "The Verge AI",
+      "published_at": "2026-07-29",
+      "body_sha256": "5a28d23f80992692260aeb3d98c1b2addccfd71e557ed72fbfa3f61bce398c15"
+    },
+    {
+      "url": "https://techcrunch.com/2026/07/28/data-centers-may-face-temporary-power-cuts-to-prevent-blackouts-on-largest-us-grid/",
+      "title": "Data centers may face temporary power cuts to prevent blackouts on largest US grid",
+      "source": "TechCrunch AI",
+      "published_at": "2026-07-28",
+      "body_sha256": "7b19df3f5f2a7cebb35e9f2d4226b5c217f6b75a3b210e0a7c43a435e2d355d9"
+    },
+    {
+      "url": "https://techcrunch.com/2026/07/28/cyera-agrees-to-acquire-oasis-security-for-1b-to-safeguard-proliferating-ai-agents/",
+      "title": "Cyera agrees to acquire Oasis Security for $1B to safeguard proliferating AI agents",
+      "source": "TechCrunch AI",
+      "published_at": "2026-07-29",
+      "body_sha256": "6b630a30703547d253821a400e0d56b47c1f39a92712df8654e3e03e27d21fac"
+    },
+    {
+      "url": "https://techcrunch.com/2026/07/28/bot-detection-startup-spur-nabs-200m-from-insight/",
+      "title": "Bot-detection startup Spur nabs $200M from Insight",
+      "source": "TechCrunch AI",
+      "published_at": "2026-07-28",
+      "body_sha256": "6187139db8682f364322f4c2ff6ab83e496be1fb75539fea1b0422d42f226dc1"
+    },
+    {
+      "url": "https://techcrunch.com/2026/07/28/mcp-startup-runlayer-accuses-rippling-of-stealing-its-product-idea/",
+      "title": "MCP startup Runlayer accuses Rippling of stealing its product idea",
+      "source": "TechCrunch AI",
+      "published_at": "2026-07-28",
+      "body_sha256": "72466aeb92092a972ce5e4e990864d7a01c4fba44633b2742ab26b8ec820eb46"
+    },
+    {
+      "url": "https://techcrunch.com/2026/07/28/sam-altman-is-ready-to-decelerate/",
+      "title": "Sam Altman is ready to decelerate",
+      "source": "TechCrunch AI",
+      "published_at": "2026-07-28",
+      "body_sha256": "62934578dc87b2845c61482ff88df47f6a6d6a3e194af752800a48534426d2e0"
+    },
+    {
+      "url": "https://techcrunch.com/2026/07/28/recursive-superintelligence-signs-400-compute-deal-with-amazon/",
+      "title": "Recursive Superintelligence signs $410M compute deal with Amazon",
+      "source": "TechCrunch AI",
+      "published_at": "2026-07-28",
+      "body_sha256": "bd2d447da7829b49916c8e19cf515d162c4dae762cb2390a784eecbb2790ae4e"
+    },
+    {
+      "url": "https://techcrunch.com/2026/07/28/fish-audio-raises-50m-seed-to-build-ai-voice-models-for-creators-and-enterprises/",
+      "title": "Fish Audio raises $52M seed to build AI voice models for creators and enterprises",
+      "source": "TechCrunch AI",
+      "published_at": "2026-07-28",
+      "body_sha256": "d8dd3f3fcd075f11ae5b680b00f89a212a3be9e4f937e43efb0efb2832fd217f"
+    },
+    {
+      "url": "https://www.technologyreview.com/2026/07/28/1140868/the-download-openai-hack-ai-stock-sell-off/",
+      "title": "The Download: OpenAI’s predictable hack, and an AI stock sell-off",
+      "source": "MIT Tech Review AI",
+      "published_at": "2026-07-28",
+      "body_sha256": "b4cc0e499347dc7ed0b62aeff36411009bb5683e6a33f01b435941d3f149d641"
+    },
+    {
+      "url": "https://techcrunch.com/2026/07/27/psa-your-claude-shared-chats-and-artifacts-may-have-ended-up-on-google/",
+      "title": "PSA: Your Claude shared chats and Artifacts may have ended up on Google",
+      "source": "TechCrunch AI",
+      "published_at": "2026-07-27",
+      "body_sha256": "25a9b99be0feff6cd498fda2aa17b7bd7013c4846fae89b77af953427a2da6cb"
+    },
+    {
+      "url": "https://techcrunch.com/2026/07/27/openais-hugging-face-breach-has-reignited-the-debate-over-alignment-and-control/",
+      "title": "OpenAI’s Hugging Face breach has reignited the debate over alignment and control",
+      "source": "TechCrunch AI",
+      "published_at": "2026-07-27",
+      "body_sha256": "623cd9c3637cdbdd44967adae260526c98c03d09ecc339a3022bc27d4d9cb6b4"
+    },
+    {
+      "url": "https://techcrunch.com/2026/07/27/anthropics-dario-amodei-responds-doesnt-oppose-open-weight-models-but-fears-chinese-ai/",
+      "title": "Anthropic’s Dario Amodei responds: doesn’t oppose open-weight models, but fears Chinese AI",
+      "source": "TechCrunch AI",
+      "published_at": "2026-07-28",
+      "body_sha256": "8a74b6c6603f9fdd6d99331272c43954027ea23a69a9641648a02a0657cdb72e"
+    },
+    {
+      "url": "https://techcrunch.com/2026/07/27/threads-users-can-now-chat-with-meta-ai-in-their-dms/",
+      "title": "Threads users can now chat with Meta AI in their DMs",
+      "source": "TechCrunch AI",
+      "published_at": "2026-07-27",
+      "body_sha256": "197219884d5cf25867587477a00340cca05bb23da81c7ae8d89e58f51f42baa5"
+    },
+    {
+      "url": "https://techcrunch.com/2026/07/27/cursor-makes-its-biggest-india-push-yet-ahead-of-spacex-acquisition-with-localized-pricing/",
+      "title": "Cursor makes its biggest India push yet ahead of SpaceX acquisition with localized pricing",
+      "source": "TechCrunch AI",
+      "published_at": "2026-07-28",
+      "body_sha256": "e773b731f6ffae47d0a06176304aef8ac9714907dcd68d896ceafe81c7099485"
+    },
+    {
+      "url": "https://techcrunch.com/2026/07/27/googles-ai-search-is-rapidly-becoming-the-default-new-data-shows/",
+      "title": "Google’s AI search is rapidly becoming the default, new data shows",
+      "source": "TechCrunch AI",
+      "published_at": "2026-07-27",
+      "body_sha256": "688187ffe61ce547ce49621b1c30590dfada06b23a2822c1f9033c58576d4c76"
+    },
+    {
+      "url": "https://techcrunch.com/2026/07/27/satya-nadella-says-companies-that-trust-one-ai-for-everything-may-not-survive/",
+      "title": "Satya Nadella says companies that trust one AI for everything may not survive",
+      "source": "TechCrunch AI",
+      "published_at": "2026-07-27",
+      "body_sha256": "117f96aa957137b66c6733845c67a4fd94eddfc4618a6961fc589478cc80ab17"
+    },
+    {
+      "url": "https://techcrunch.com/2026/07/27/microsoft-launches-its-first-cyber-model-and-a-new-agentic-cybersecurity-system/",
+      "title": "Microsoft launches its first cybersecurity model, plus a new agentic cybersecurity system",
+      "source": "TechCrunch AI",
+      "published_at": "2026-07-27",
+      "body_sha256": "4a8181f1135d88c6a304c8c01633f8ea53e14f40bba27bbd881ca465018884e1"
+    }
+  ]
+}
