@@ -59,6 +59,28 @@ def test_embed_article_writes_okf_file_before_embedding(monkeypatch):
     ]
 
 
+def test_embed_article_with_empty_summary_falls_back_to_title_only(monkeypatch):
+    fake_collection = _FakeCollection()
+    write_calls = []
+
+    monkeypatch.setattr(rag, "_get_collection", lambda: fake_collection)
+    monkeypatch.setattr(rag, "_get_doc_embedder", lambda: _FakeEmbedder())
+    monkeypatch.setattr(
+        rag.knowledge_base, "write_article", lambda **kwargs: write_calls.append(kwargs)
+    )
+
+    rag.embed_article(
+        url="https://example.test/b",
+        title="Historical article",
+        summary="",
+        tags=[],
+        source="Test Feed",
+        published_at="2020-01-01T00:00:00+00:00",
+    )
+
+    assert fake_collection.added[0]["documents"] == ["Historical article"]
+
+
 def test_embed_article_skips_already_indexed_url(monkeypatch):
     fake_collection = _FakeCollection()
     fake_collection._ids.add("https://example.test/dup")

@@ -83,7 +83,7 @@ def embed_article(
         source=source,
         published_at=published_at,
     )
-    text = f"{title}\n\n{summary}"
+    text = f"{title}\n\n{summary}" if summary.strip() else title
     vector = _get_doc_embedder().embed_query(text)
     collection.add(
         ids=[url],
