@@ -5,9 +5,9 @@ One-time backfill of the RAG vector store from state.db.
 Articles are normally embedded into chroma_db at the moment they are first
 seen (see agent.py). Any article that was marked "seen" before RAG existed
 never got embedded, so semantic search can't find it. This script walks every
-row in state.db.seen and embeds it (title-only — the seen table stores no body,
-and embed_article falls back to title text). Already-indexed URLs are skipped
-by embed_article, so the script is safe to re-run.
+row in state.db.seen and embeds it (title-only — the seen table stores no summary, and
+embed_article falls back to title-only text when summary is empty).
+Already-indexed URLs are skipped by embed_article, so the script is safe to re-run.
 
 Usage:
     python news_buddy/backfill_rag.py
@@ -53,7 +53,7 @@ def main() -> None:
 
     conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
-    rows = conn.execute("SELECT url, source, title FROM seen").fetchall()
+    rows = conn.execute("SELECT url, source, title, first_seen_at FROM seen").fetchall()
     conn.close()
 
     before = _get_collection().count()
@@ -67,7 +67,14 @@ def main() -> None:
         for attempt in range(1, _MAX_RETRIES + 1):
             try:
                 time.sleep(_MIN_INTERVAL)
-                embed_article(url=r["url"], title=r["title"], body="", source=r["source"])
+                embed_article(
+                    url=r["url"],
+                    title=r["title"],
+                    summary="",
+                    tags=[],
+                    source=r["source"],
+                    published_at=r["first_seen_at"] or "",
+                )
                 embedded += 1
                 if embedded % 20 == 0:
                     print(f"  ...{embedded} embedded ({i}/{len(rows)})")

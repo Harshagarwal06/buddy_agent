@@ -486,8 +486,10 @@ def summarize_articles_node(state: DigestState) -> dict:
                         _rag.embed_article(
                             url=item["url"],
                             title=item["title"],
-                            body=body,
+                            summary=enriched_item["summary"],
+                            tags=enriched_item["tags"],
                             source=item["source"],
+                            published_at=item["published_at"],
                         )
                     except Exception as e:
                         print(f"[warn] embed failed for {item['url']}: {e}", file=sys.stderr)
