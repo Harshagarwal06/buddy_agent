@@ -1,7 +1,9 @@
 """ChromaDB-backed vector store for semantic search over past articles.
 
 Uses Google models/gemini-embedding-2 (same GOOGLE_API_KEY as the LLM).
-The chroma_db/ directory is created alongside state.db on first use.
+The chroma_db/ directory is created alongside state.db on first use. Each
+embedded article is first written as an OKF file by knowledge_base.py,
+which becomes the text that gets embedded.
 """
 from __future__ import annotations
 
@@ -10,6 +12,8 @@ from pathlib import Path
 
 import chromadb
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
+
+from news_buddy import knowledge_base
 
 _CHROMA_PATH = Path(__file__).parent.parent / "chroma_db"
 _COLLECTION_NAME = "articles"
@@ -59,17 +63,32 @@ def _get_collection() -> chromadb.Collection:
     return _collection
 
 
-def embed_article(url: str, title: str, body: str, source: str) -> None:
-    """Embed and store an article. No-ops silently if already indexed."""
+def embed_article(
+    url: str,
+    title: str,
+    summary: str,
+    tags: list[str],
+    source: str,
+    published_at: str,
+) -> None:
+    """Write the article's OKF file, then embed and store it. No-ops silently if already indexed."""
     collection = _get_collection()
     if collection.get(ids=[url])["ids"]:
         return
-    text = f"{title}\n\n{body}" if body.strip() else title
+    knowledge_base.write_article(
+        url=url,
+        title=title,
+        summary=summary,
+        tags=tags,
+        source=source,
+        published_at=published_at,
+    )
+    text = f"{title}\n\n{summary}"
     vector = _get_doc_embedder().embed_query(text)
     collection.add(
         ids=[url],
         embeddings=[vector],
-        documents=[text[:2000]],
+        documents=[text],
         metadatas=[{"url": url, "title": title, "source": source}],
     )
 
