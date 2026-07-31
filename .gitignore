@@ -15,6 +15,7 @@ venv/
 .env
 state.db
 chroma_db/
+knowledge_base/
 
 # Generated digests (outputs, not source)
 news/
