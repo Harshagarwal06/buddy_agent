@@ -16,13 +16,16 @@ The project started as a fully agentic `deepagents` experiment. After testing th
 - Deduplicates URLs with a local SQLite `state.db`.
 - Backfills the lookback window when too few fresh stories survive filtering.
 - Writes self-contained reader briefings through a provider-swappable LLM layer.
-- Requires each briefing to explain what happened, useful context, and why it matters; thin summaries are retried once.
+- Requires each briefing to explain what happened, useful context, and why it matters, scored by a pure-heuristic rubric (`news_buddy/rubric.py`); thin summaries are retried once.
 - Generates cached 4:3 article-grounded explainers in one shared editorial system.
 - Writes Markdown and HTML digests to `~/news/YYYY-MM-DD.md` and `.html`.
 - Regenerates an archive index for GitHub Pages.
 - Sends non-empty digests through Telegram, Slack, and Buttondown when configured.
 - Supports safe manual verification with `--test-run`, which fetches and summarizes without mutating dedup state, writing RAG entries, deploying, or notifying subscribers.
-- Includes Chroma-backed semantic search for local archive exploration.
+- Writes each embedded article once as an OKF (Open Knowledge Format) Markdown file (`news_buddy/knowledge_base.py`), then embeds that text into a local Chroma vector store for semantic search.
+- Exposes a separate read-only MCP server (`news_buddy_mcp/`) that lets an LLM search and fetch past digests over the public JSON archive.
+- Ships an offline evaluation harness (`scripts/eval_sub_model.py`) that scores candidate summarizer models against frozen article fixtures with the same rubric, so model swaps are decided on evidence.
+- Supports optional OpenTelemetry tracing to a local Arize Phoenix UI for full LLM-call visibility during development.
 
 ## Architecture
 
@@ -37,7 +40,7 @@ flowchart TD
     G -- "yes" --> H["Extract article text"]
     H --> I["Summarize with configured sub_model"]
     I --> J["Rubric score and retry"]
-    J --> K["Mark seen and optionally embed in Chroma"]
+    J --> K["Mark seen and optionally write OKF file + embed in Chroma"]
     K --> L["Generate and cache article illustrations"]
     L --> M["Format Markdown digest"]
     G -- "no" --> X["Write empty digest"]
@@ -93,15 +96,21 @@ python scripts/validate_openwiki.py
 - `news_buddy/image_generator.py` - NVIDIA/Hugging Face image generation, validation, WebP caching, and SVG fallback assets.
 - `prompts/image_style.md` - the single layout, style, grounding, and image-quality contract.
 - `news_buddy/state.py` - SQLite dedup state.
+- `news_buddy/rubric.py` - pure-heuristic summary quality scoring and the strict-retry decision.
 - `news_buddy/html_writer.py` and `news_buddy/archive_writer.py` - generated digest pages and archive index.
-- `news_buddy/rag.py` - ChromaDB-backed semantic search over saved articles.
+- `news_buddy/knowledge_base.py` - writes each accepted article as an OKF-formatted Markdown file, the source of truth for embedding.
+- `news_buddy/rag.py` - ChromaDB-backed semantic search over saved articles; embeds the OKF file text.
+- `news_buddy/backfill_rag.py` - one-time backfill of the vector store from articles seen before RAG existed.
+- `news_buddy/observability.py` - opt-in OpenTelemetry tracing via Arize Phoenix.
 - `news_buddy/buttondown_notify.py`, `telegram_notify.py`, `slack_notify.py` - notification adapters.
+- `news_buddy_mcp/` - separate FastMCP server exposing read-only search/digest tools over the public JSON archive, with its own tests, lint, and Dockerfile.
+- `scripts/eval_sub_model.py` and `scripts/eval_report.py`/`eval_scoring.py`/`eval_store.py` - offline harness for comparing candidate summarizer models against frozen fixtures.
 - `.agents/skills/topicsearch/` - local agent skill for combined keyword and semantic archive search.
 - `.github/workflows/daily-digest.yml` - scheduled cloud run and GitHub Pages deploy.
 - `.github/workflows/openwiki-update.yml` - pinned manual/weekly Code Brain update that proposes a draft PR.
 - `openwiki/` - source-linked maintainer documentation generated with OpenWiki and reviewed against the code.
 - `scripts/validate_openwiki.py` - dependency-free Code Brain structure, link, and accuracy tripwire.
-- `tests/` - focused coverage for notifications, archive signup behavior, and CLI notification suppression.
+- `tests/` - 106 tests covering notifications, archive signup behavior, CLI notification suppression, rubric scoring, RAG, and the evaluation harness.
 
 ## Setup
 
@@ -136,6 +145,11 @@ an LLM outage or incomplete plan stops publication instead of producing generic
 placeholder diagrams. The default NVIDIA FLUX.2-klein-4B integration uses
 `NVIDIA_API_KEY`. Normal `--test-run` executions skip image generation unless
 `images.generate_in_test_run` is explicitly set to `true`.
+
+Tracing is opt-in and off by default. Set `OTEL_TRACING=true` before a run to
+send every LLM call to a local [Arize Phoenix](https://phoenix.arize.com/) UI
+(`PHOENIX_COLLECTOR_ENDPOINT`, default `http://localhost:6006`); see
+`news_buddy/observability.py`.
 
 ## Running Locally
 
@@ -173,7 +187,7 @@ The scheduled workflow in `.github/workflows/daily-digest.yml` runs daily in Git
 
 The workflow has one primary morning schedule and two backup schedules. A concurrency group prevents overlapping digest jobs, and the `gh-pages` preflight keeps delayed backup schedules from sending duplicate notifications after the day's digest is already published.
 
-A separate CI workflow runs `ruff check .` and `pytest` on pushes and pull requests.
+A separate CI workflow (`.github/workflows/ci.yml`) runs on pushes and pull requests with two jobs: `ruff check .` + `pytest` (106 tests) for the main package, and the same for `news_buddy_mcp/` (15 tests) in its own working directory.
 
 Manual `workflow_dispatch` defaults to `test_run: true`, so a verification run does not mark stories seen, deploy pages, or notify subscribers.
 
@@ -203,10 +217,45 @@ python news_buddy/semantic_search_cli.py "AI chip capacity" --limit 10
 
 The daily workflow currently sets `NEWS_BUDDY_RAG_ENABLED=false`, so Chroma is best treated as a local/search experiment unless the workflow persistence is enabled.
 
+## Public MCP Server
+
+`news_buddy_mcp/` is a separate FastMCP server that reads the public
+`index.json`/`YYYY-MM-DD.json` archive published to `gh-pages` and exposes it
+as three read-only MCP tools: `search_articles`, `get_digest`, and
+`list_digests`. It never touches `state.db` or Chroma, has its own
+`pyproject.toml`/`uv.lock`, test suite, and Dockerfile, and is built and
+tested by a dedicated job in CI.
+
+```bash
+cd news_buddy_mcp
+uv sync
+NEWS_BUDDY_ARCHIVE_URL=https://harshagarwal06.github.io/buddy_agent uv run python -m news_buddy_mcp.server
+```
+
+## Model Evaluation
+
+`scripts/eval_sub_model.py` captures a frozen set of real articles as
+fixtures, then replays them through candidate `sub_model` values and scores
+each with the pipeline's own `RubricMiddleware` and image-brief validation —
+so a model swap is judged by brief validity, rubric pass rate, latency, and
+token cost, not vibes. It is opt-in (never run by CI, since it makes real
+model calls):
+
+```bash
+python -m scripts.eval_sub_model --capture   # freeze fixtures once
+python -m scripts.eval_sub_model --run        # score candidates against them
+```
+
+[`docs/evals/2026-07-30-sub-model-baseline.md`](docs/evals/2026-07-30-sub-model-baseline.md)
+is a worked example: four candidates were compared against the production
+default (`meta/llama-3.1-8b-instruct`), and the incumbent was kept because
+every candidate fell short on brief validity, the pass/fail gate fixed before
+the run.
+
 ## Current Gaps
 
 - Dedup is URL-based, so the same story from several outlets can still appear as separate entries.
-- RAG is not persisted in CI yet.
-- Image generation, caching, rendering, notifications, and archive paths have focused tests; feed parsing, dedup, and rubric scoring still need broader coverage.
+- RAG is not persisted in CI yet (`NEWS_BUDDY_RAG_ENABLED=false` in the daily workflow).
+- Image generation, caching, rendering, notifications, rubric scoring, RAG/knowledge-base writing, and the evaluation harness have focused tests; raw feed parsing (`news_buddy/feeds.py`) and the SQLite dedup mechanics (`news_buddy/state.py`) still need direct coverage.
 
 These are intentionally visible because they make the next engineering steps clear: story-level clustering, live RAG persistence, state recovery, and broader tests.
