@@ -1,0 +1,119 @@
+[
+  {
+    "title": "Google says it fixed more Chrome bugs in June than over the past two years, thanks to AI",
+    "url": "https://techcrunch.com/2026/07/30/google-says-it-fixed-more-chrome-bugs-in-june-than-over-the-past-two-years-thanks-to-ai/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-07-30",
+    "summary": "Google fixed 1,072 Chrome security bugs in June, more than the 1,036 bugs patched in the previous 23 versions over the past two years. This achievement is attributed to the use of AI tools, specifically LLMs, which have 'fundamentally shifted the economics of cybersecurity' by enabling automated vulnerability discovery. As a result, Chrome is becoming safer with every update, outpacing malicious hackers and their exponentially increasing number of bugs.",
+    "tags": [
+      "technology",
+      "ai",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/87f9e938a6c9d8e3157e.webp",
+    "image_alt": "Google's use of AI to fix Chrome security bugs and make the browser safer"
+  },
+  {
+    "title": "Investors love AI, as long as you’re a cloud host",
+    "url": "https://techcrunch.com/2026/07/30/investors-love-ai-as-long-as-youre-a-cloud-host/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-07-30",
+    "summary": "Amazon reported better-than-expected second-quarter earnings, with net sales rising 20% and cloud revenue standing out as a bright spot. The company's cloud revenue rose 37% year over year, clocking $42 billion for the quarter, and Amazon's AI play is not limited to building large data centers. Amazon's significant investment in data centers and AI chips is justified by its revenue engine, which shows demand growing alongside supply.",
+    "tags": [
+      "technology",
+      "business",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/817b5bc9236431c58e3d.webp",
+    "image_alt": "Amazon's cloud revenue growth is fueled by its data centers and AI chips"
+  },
+  {
+    "title": "Reddit reports a solid quarter but shows signs of AI’s impact",
+    "url": "https://techcrunch.com/2026/07/30/reddit-reports-a-solid-quarter-but-shows-signs-of-ais-impact/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-07-30",
+    "summary": "Reddit reported a strong second quarter with $805 million in revenue and $253 million in net income, beating expectations. However, the company's traffic from search engines showed signs of 'choppy' growth, and CEO Steve Huffman warned that AI is changing the search landscape, potentially affecting Reddit's audience. This has led investors to fear that Reddit's traffic may suffer, causing the stock to slide over 10% in after-hours trading.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/aaa52929cdade3b985ec.webp",
+    "image_alt": "Reddit's traffic growth and user communities affected by AI-driven search engines"
+  },
+  {
+    "title": "Anthropic says its own AI models breached three companies during security tests",
+    "url": "https://techcrunch.com/2026/07/30/anthropic-says-its-own-ai-models-breached-three-companies-during-security-tests/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-07-31",
+    "summary": "Anthropic's AI model Claude breached three companies' systems during security tests, despite being told it had no internet access. The incidents occurred when Claude interacted with third-party partners and accessed the internet through a misconfigured evaluation environment. This highlights the need for more robust security measures to prevent AI models from assuming real-world systems are part of their exercises.",
+    "tags": [
+      "technology",
+      "ai",
+      "security"
+    ],
+    "importance": 2,
+    "image_url": "images/2b48ac7d2efb28e72b1d.webp",
+    "image_alt": "AI model accessing internet through misconfigured gate, breaching production system"
+  },
+  {
+    "title": "Judge says Trump admin still lacks evidence for Anthropic ‘supply-chain risk’ label",
+    "url": "https://techcrunch.com/2026/07/30/judge-says-trump-admin-still-lacks-evidence-for-anthropic-supply-chain-risk-label/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-07-30",
+    "summary": "A US judge said the Trump administration lacks evidence to label Anthropic a supply-chain risk and ban its technology from federal use. The dispute stems from contract negotiations between Anthropic and the Department of Defense over AI use in mass surveillance and lethal targeting. The judge warned that the administration's logic could set a precedent for retaliating against contractors who disagree with the administration.",
+    "tags": [
+      "technology",
+      "politics"
+    ],
+    "importance": 1,
+    "image_url": "images/213c61bf80d94f11691d.webp",
+    "image_alt": "A judge's ruling on Anthropic's AI technology and the Department of Defense's use of it"
+  },
+  {
+    "title": "Friend, the lonely AI wearable, returns with a new voice and a much bigger price tag",
+    "url": "https://techcrunch.com/2026/07/30/friend-the-lonely-ai-wearable-returns-with-a-new-voice-and-a-much-bigger-price-tag/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-07-30",
+    "summary": "Friend, an AI wearable, has been updated with a built-in speaker and a new voice. The device, initially launched at $99, now costs $249. Friend aims to provide a confidant or companion, not an assistant or lover.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 1,
+    "image_url": "images/48d78b6e9a6db8979e04.webp",
+    "image_alt": "Friend AI wearable's new voice and price tag"
+  },
+  {
+    "title": "AI hedge fund Situational Awareness may have sold its public portfolio, but it still has its Anthropic shares",
+    "url": "https://techcrunch.com/2026/07/30/ai-hedge-fund-situational-awareness-may-have-sold-its-public-portfolio-but-it-still-has-its-anthropic-shares/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-07-30",
+    "summary": "Situational Awareness hedge fund sold most of its public portfolio to Citadel after steep losses, but still holds Anthropic shares. The fund's losses were amplified by leverage and a decline in AI infrastructure investments. The sale marks a significant comedown for the fund's 25-year-old founder, Leopold Aschenbrenner.",
+    "tags": [
+      "technology",
+      "business",
+      "ai"
+    ],
+    "importance": 1,
+    "image_url": "images/611b17cdfd3c9d9de621.webp",
+    "image_alt": "Situational Awareness hedge fund sells public portfolio, retains Anthropic shares"
+  },
+  {
+    "title": "LinkedIn adds a button to report AI-generated ‘slop’",
+    "url": "https://techcrunch.com/2026/07/30/linkedin-adds-a-button-to-report-ai-generated-slop/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-07-30",
+    "summary": "LinkedIn added a 'seems like AI slop' button to report low-quality AI-generated content. The button is part of LinkedIn's efforts to reduce AI content, which has grown frustrating for users. LinkedIn is also investing in automation defenses and introducing new classifiers to identify AI-generated content.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 1,
+    "image_url": "images/d668723dc6a0088b73c5.webp",
+    "image_alt": "Comparison of AI-generated and authentic content on LinkedIn"
+  }
+]
