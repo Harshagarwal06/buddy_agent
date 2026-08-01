@@ -406,15 +406,12 @@ def _article_brief_errors(item: dict) -> list[str]:
     if str(item.get("image_layout") or "").strip().lower() not in _LAYOUT_DIRECTIONS:
         errors.append("image_layout")
     labels = item.get("image_labels")
+    # Over-long labels are not fatal: _image_labels() deterministically trims
+    # each one to three words / 18 chars for the rendered legend.
     if not isinstance(labels, list) or len(labels) != 3 or any(
         not str(label).strip() for label in labels
     ):
         errors.append("image_labels")
-    elif any(
-        len(str(label).strip()) > 18 or len(str(label).split()) > 3
-        for label in labels
-    ):
-        errors.append("short image_labels")
     elif [str(label).strip().lower() for label in labels] == [
         "input",
         "system",
