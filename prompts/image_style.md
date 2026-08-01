@@ -64,7 +64,7 @@ Reject the brief if any answer is “no”:
 - Does the image still use the fixed News Buddy frame and visual language?
 
 <!-- article-planner-directive:start -->
-Plan the image from the article's subject, action/change, and consequence. Describe three visible symbols and their relationship without using the words diagram, infographic, poster, caption, or label. Every object, arrow, and label must map to a stated article fact and explain its central mechanism—not merely its topic. Use exactly three concrete object groups and one approved layout. Labels must be article-specific; never default to INPUT, SYSTEM, RESULT. If the source lacks enough detail, do not invent one.
+Plan the image from the article's subject, action/change, and consequence. Describe three visible symbols and their relationship without using the words diagram, infographic, poster, caption, or label. Every object, arrow, and label must map to a stated article fact and explain its central mechanism—not merely its topic. Use exactly three concrete object groups and one approved layout. Labels must be article-specific; never default to INPUT, SYSTEM, RESULT. Each label must be at most three words and 18 characters, so it fits the rendered legend. If the source lacks enough detail, do not invent one.
 <!-- article-planner-directive:end -->
 
 <!-- image-model-directive:start -->

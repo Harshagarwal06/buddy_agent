@@ -281,6 +281,25 @@ def test_required_article_brief_rejects_generic_fallback(tmp_path):
         raise AssertionError("missing article brief should stop image generation")
 
 
+def test_article_brief_accepts_long_labels_because_renderer_truncates():
+    """Over-long labels are normalised by _image_labels, so they are not fatal."""
+    item = {
+        **_item(),
+        "image_labels": [
+            "local confidence estimator",
+            "cloud escalation path",
+            "final answer returned",
+        ],
+    }
+
+    assert image_generator._article_brief_errors(item) == []
+    assert image_generator._image_labels(item) == [
+        "LOCAL CONFIDENCE",
+        "CLOUD ESCALATION",
+        "FINAL ANSWER",
+    ]
+
+
 def test_required_article_brief_rejects_generic_label_triad(tmp_path):
     item = {
         **_item(),
