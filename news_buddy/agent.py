@@ -141,6 +141,29 @@ def _prompt_section(path: Path, markers: tuple[str, str]) -> str:
     return text[start + len(start_marker):end].strip()
 
 
+class IncompleteImageBrief(ValueError):
+    """The summarizer's editorial image plan cannot be published as-is.
+
+    Carries the parsed item so callers can keep the summary and drop only the
+    image plan. The message wording is a contract: ``scripts/eval_sub_model``
+    parses it to score brief validity, so do not reword it.
+    """
+
+    def __init__(self, errors: list[str], item: dict, tokens: int = 0) -> None:
+        super().__init__(
+            "summarizer returned an incomplete article image brief: "
+            + ", ".join(errors)
+        )
+        self.errors = errors
+        self.item = item
+        self.tokens = tokens
+
+
+def _without_image_brief(item: dict) -> dict:
+    """Drop every image field so no half-brief reaches the renderer."""
+    return {key: value for key, value in item.items() if not key.startswith("image_")}
+
+
 def _summarize_one(sub_llm, item: dict, strict: bool = False) -> tuple[dict, int, str]:
     """Summarize a single article. Returns (enriched item dict, tokens used, body)."""
     body = _extract.extract_body(item["url"]) or item.get("rss_summary", "")
@@ -183,12 +206,6 @@ def _summarize_one(sub_llm, item: dict, strict: bool = False) -> tuple[dict, int
         data = {"summary": item["title"], "tags": ["world"], "importance": 2}
     from news_buddy.image_generator import _article_brief_errors
 
-    brief_errors = _article_brief_errors(data)
-    if brief_errors:
-        raise ValueError(
-            "summarizer returned an incomplete article image brief: "
-            + ", ".join(brief_errors)
-        )
     enriched = {
         **item,
         "summary": data.get("summary", item["title"]),
@@ -199,6 +216,9 @@ def _summarize_one(sub_llm, item: dict, strict: bool = False) -> tuple[dict, int
         "image_labels": data.get("image_labels", []),
         "image_alt": data.get("image_alt", ""),
     }
+    brief_errors = _article_brief_errors(data)
+    if brief_errors:
+        raise IncompleteImageBrief(brief_errors, enriched, tokens)
     return enriched, tokens, body
 
 
@@ -457,7 +477,18 @@ def summarize_articles_node(state: DigestState) -> dict:
         _log(state, f"Summarizing: {item['title'][:70]}")
         rubric_failed = False
         try:
-            enriched_item, tokens, body = _summarize_one(sub_llm, item)
+            try:
+                enriched_item, tokens, body = _summarize_one(sub_llm, item)
+            except IncompleteImageBrief as brief_exc:
+                # The image plan is unusable but the summary is not. Publish the
+                # article without an image rather than losing it entirely.
+                print(
+                    f"[warn] unusable image brief for {item['url']}: {brief_exc}; "
+                    "publishing this article without an image",
+                    file=sys.stderr,
+                )
+                enriched_item = _without_image_brief(brief_exc.item)
+                tokens = brief_exc.tokens
 
             if rubric_enabled:
                 enriched_item = rubric.score(enriched_item)

@@ -644,9 +644,18 @@ def generate_article_images(
                 f"{title[:60]}: {', '.join(errors)}"
                 for title, errors in invalid[:5]
             )
-            raise RuntimeError(
-                "article image briefs are incomplete; refusing generic images — "
-                f"{details}"
+            # Every brief failing means the prompt or the model regressed, which
+            # is worth stopping for. A few bad briefs only cost those articles
+            # their image — the rest of the digest still publishes.
+            if len(invalid) == len(items):
+                raise RuntimeError(
+                    "article image briefs are incomplete; refusing generic images — "
+                    f"{details}"
+                )
+            print(
+                f"[warn] publishing {len(invalid)} of {len(items)} article(s) "
+                f"without an image; incomplete briefs — {details}",
+                file=sys.stderr,
             )
 
     image_dir = output_dir / "images"
@@ -661,6 +670,10 @@ def generate_article_images(
         )
 
     def _process(item: dict) -> tuple[dict, bool]:
+        if settings.require_article_brief and _article_brief_errors(item):
+            # Skipped, not failed: `require_all` counts genuine generation
+            # failures, and a deliberate skip must not trip it.
+            return item, False
         planned_prompt = str(item.get("image_prompt") or "").strip()
         used_safe_prompt = not planned_prompt
         safe_prompt = _safe_infographic_prompt(item)
