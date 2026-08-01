@@ -300,6 +300,53 @@ def test_article_brief_accepts_long_labels_because_renderer_truncates():
     ]
 
 
+def test_one_bad_brief_does_not_stop_the_other_articles(tmp_path, monkeypatch):
+    """A single unusable brief is skipped; the rest of the digest still publishes."""
+    monkeypatch.delenv("HF_TOKEN", raising=False)
+    monkeypatch.delenv("NVIDIA_API_KEY", raising=False)
+    good_a = {**_item(), "url": "https://example.test/a"}
+    good_b = {**_item(), "url": "https://example.test/b"}
+    bad = {"title": "No brief at all", "url": "https://example.test/bad"}
+
+    items, ready, failures = image_generator.generate_article_images(
+        [good_a, bad, good_b],
+        tmp_path,
+        {**_config(), "require_article_brief": True},
+    )
+
+    assert [item["url"] for item in items] == [
+        "https://example.test/a",
+        "https://example.test/bad",
+        "https://example.test/b",
+    ]
+    assert items[0].get("image_url")
+    assert items[2].get("image_url")
+    # The skipped article carries no image at all rather than a generic one.
+    assert not items[1].get("image_url")
+    assert ready == 2
+    # Skipped is not failed: require_all must not fire for a deliberate skip.
+    assert failures == 2
+
+
+def test_every_brief_invalid_still_raises(tmp_path):
+    """A total brief failure is a real regression and must stay loud."""
+    items = [
+        {"title": "One", "url": "https://example.test/1"},
+        {"title": "Two", "url": "https://example.test/2"},
+    ]
+
+    try:
+        image_generator.generate_article_images(
+            items,
+            tmp_path,
+            {**_config(), "require_article_brief": True},
+        )
+    except RuntimeError as exc:
+        assert "refusing generic images" in str(exc)
+    else:
+        raise AssertionError("a fully invalid batch should stop the run")
+
+
 def test_required_article_brief_rejects_generic_label_triad(tmp_path):
     item = {
         **_item(),
