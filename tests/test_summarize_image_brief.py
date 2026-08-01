@@ -84,6 +84,85 @@ def test_incomplete_brief_message_matches_the_eval_contract(monkeypatch):
         raise AssertionError("an unusable brief should still be signalled")
 
 
+def _patch_model_sequence(monkeypatch, payloads: list[dict]):
+    """Return each payload in turn; record how many model calls were made."""
+    calls = []
+
+    def _fake(*_args, **_kwargs):
+        payload = payloads[min(len(calls), len(payloads) - 1)]
+        calls.append(payload)
+        return _response(payload)
+
+    monkeypatch.setattr(agent._extract, "extract_body", lambda url: "article body")
+    monkeypatch.setattr(agent, "_invoke_with_retry", _fake)
+    return calls
+
+
+def _node_state(**image_config):
+    return {
+        "config": {
+            "llm": {"sub_model": "m"},
+            "rubric": {"enabled": False},
+            "images": image_config,
+        },
+        "unseen_items": [_item()],
+        "dry_run": False,
+        "force": False,
+        "test_run": False,
+        "verbose": False,
+    }
+
+
+def _patch_side_effects(monkeypatch):
+    monkeypatch.setattr(agent, "get_sub_model", lambda _config: object())
+    monkeypatch.setattr(agent._state, "mark_seen", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(agent, "_rag_enabled", lambda: False)
+
+
+def test_summarize_node_repairs_a_bad_brief_and_keeps_the_image(monkeypatch):
+    bad = _payload(image_layout="spiral")
+    good_plan = _payload(image_layout="comparison")
+    calls = _patch_model_sequence(monkeypatch, [bad, good_plan])
+    _patch_side_effects(monkeypatch)
+
+    result = agent.summarize_articles_node(_node_state(brief_retry=True))
+
+    [article] = result["enriched_items"]
+    assert len(calls) == 2, "the repair call should have fired"
+    assert article["image_layout"] == "comparison"
+    assert article["summary"] == _GOOD_SUMMARY
+    # Both calls are billed to the run.
+    assert result["total_tokens"] == 2040
+
+
+def test_summarize_node_skips_the_repair_when_disabled(monkeypatch):
+    calls = _patch_model_sequence(monkeypatch, [_payload(image_layout="spiral")])
+    _patch_side_effects(monkeypatch)
+
+    result = agent.summarize_articles_node(_node_state(brief_retry=False))
+
+    [article] = result["enriched_items"]
+    assert len(calls) == 1, "no repair call should be made when brief_retry is off"
+    assert article["summary"] == _GOOD_SUMMARY
+    assert not any(key.startswith("image_") for key in article)
+
+
+def test_summarize_node_publishes_imageless_when_the_repair_errors(monkeypatch):
+    _patch_model_sequence(monkeypatch, [_payload(image_layout="spiral")])
+    _patch_side_effects(monkeypatch)
+
+    def _boom(_llm, _enriched, _errors):
+        raise RuntimeError("provider is down")
+
+    monkeypatch.setattr(agent, "_repair_image_brief", _boom)
+
+    result = agent.summarize_articles_node(_node_state(brief_retry=True))
+
+    [article] = result["enriched_items"]
+    assert article["summary"] == _GOOD_SUMMARY
+    assert not any(key.startswith("image_") for key in article)
+
+
 def test_summarize_node_keeps_the_summary_and_drops_only_the_image(monkeypatch):
     _patch_model(monkeypatch, _payload(image_labels=["input", "system", "result"]))
     monkeypatch.setattr(agent, "get_sub_model", lambda _config: object())

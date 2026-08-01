@@ -100,3 +100,9 @@ articles, three imageless ones, and a digest that ships.
 Retrying the image brief with a stricter prompt. It would recover most transient
 misses, but it costs an extra model call per failure and adds a retry path to
 maintain. Worth revisiting if imageless articles become common in practice.
+
+**Update (same day):** subsequently built, with a correction to the reasoning
+above — a *stricter* prompt would not have helped, because the constraints were
+already in `prompts/summarizer.md` and the model broke them anyway. The retry
+that shipped repairs the plan by naming the specific rejected values instead.
+See `2026-08-01-image-brief-repair-design.md`.
