@@ -111,6 +111,7 @@ images:
   style_guide: prompts/image_style.md
   style_version: explainer-v10
   generate_in_test_run: false
+  brief_retry: true          # repair an unusable image plan once before giving up
 
 llm:
   provider: nvidia           # "nvidia", "huggingface", "google", or "ollama"

@@ -29,6 +29,13 @@ _IMAGE_PLANNER_MARKERS = (
     "<!-- article-planner-directive:end -->",
 )
 
+_IMAGE_FIELD_MARKERS = (
+    "<!-- image-fields:start -->",
+    "<!-- image-fields:end -->",
+)
+
+_IMAGE_BRIEF_KEYS = ("image_prompt", "image_layout", "image_labels", "image_alt")
+
 
 # ── Typed state ───────────────────────────────────────────────────────────────
 
@@ -159,6 +166,27 @@ class IncompleteImageBrief(ValueError):
         self.tokens = tokens
 
 
+def _response_tokens(resp) -> int:
+    """Total tokens for one model call (Gemini reports these; others may not)."""
+    usage = getattr(resp, "usage_metadata", None) or {}
+    return (usage.get("input_tokens", 0) or 0) + (usage.get("output_tokens", 0) or 0)
+
+
+def _parse_json_object(content: str) -> dict | None:
+    """Parse a model JSON response, tolerating markdown fences. None if invalid."""
+    text = str(content).strip()
+    if text.startswith("```"):
+        text = "\n".join(
+            line for line in text.splitlines()
+            if not line.strip().startswith("```")
+        ).strip()
+    try:
+        data = json.loads(text)
+    except json.JSONDecodeError:
+        return None
+    return data if isinstance(data, dict) else None
+
+
 def _without_image_brief(item: dict) -> dict:
     """Drop every image field so no half-brief reaches the renderer."""
     return {key: value for key, value in item.items() if not key.startswith("image_")}
@@ -188,21 +216,9 @@ def _summarize_one(sub_llm, item: dict, strict: bool = False) -> tuple[dict, int
         [SystemMessage(content=system), HumanMessage(content=payload)],
         middleware=_summarization_middleware,
     )
-    text = resp.content.strip()
-
-    # Extract token usage from response metadata (Gemini returns this)
-    usage = getattr(resp, "usage_metadata", None) or {}
-    tokens = (usage.get("input_tokens", 0) or 0) + (usage.get("output_tokens", 0) or 0)
-
-    # strip markdown code fences if model wraps JSON
-    if text.startswith("```"):
-        text = "\n".join(
-            line for line in text.splitlines()
-            if not line.strip().startswith("```")
-        ).strip()
-    try:
-        data = json.loads(text)
-    except json.JSONDecodeError:
+    tokens = _response_tokens(resp)
+    data = _parse_json_object(resp.content)
+    if data is None:
         data = {"summary": item["title"], "tags": ["world"], "importance": 2}
     from news_buddy.image_generator import _article_brief_errors
 
@@ -220,6 +236,46 @@ def _summarize_one(sub_llm, item: dict, strict: bool = False) -> tuple[dict, int
     if brief_errors:
         raise IncompleteImageBrief(brief_errors, enriched, tokens)
     return enriched, tokens, body
+
+
+def _repair_image_brief(sub_llm, enriched: dict, errors: list[str]) -> tuple[dict, int]:
+    """Ask the model to fix only the image plan, keeping the accepted summary.
+
+    Returns ``(repaired_item, tokens)``. Raises ``IncompleteImageBrief`` again if
+    the second attempt is still unpublishable, so the caller falls back to
+    publishing the article without an image.
+    """
+    from news_buddy.image_generator import _article_brief_errors, describe_brief_errors
+
+    system = (_PROMPTS / "image_repair.md").read_text()
+    system += "\n\nField definitions:\n" + _prompt_section(
+        _PROMPTS / "summarizer.md",
+        _IMAGE_FIELD_MARKERS,
+    )
+    system += "\n\nEditorial image contract:\n" + _prompt_section(
+        _PROMPTS / "image_style.md",
+        _IMAGE_PLANNER_MARKERS,
+    )
+    payload = json.dumps(
+        {
+            "title": enriched["title"],
+            "summary": enriched.get("summary", ""),
+            "rejected": {key: enriched.get(key) for key in _IMAGE_BRIEF_KEYS},
+            "problems": describe_brief_errors(errors),
+        }
+    )
+    resp = _invoke_with_retry(
+        sub_llm,
+        [SystemMessage(content=system), HumanMessage(content=payload)],
+    )
+    tokens = _response_tokens(resp)
+    data = _parse_json_object(resp.content) or {}
+    repaired = {**enriched, **{key: data[key] for key in _IMAGE_BRIEF_KEYS if key in data}}
+
+    remaining = _article_brief_errors(repaired)
+    if remaining:
+        raise IncompleteImageBrief(remaining, repaired, tokens)
+    return repaired, tokens
 
 
 def _write_digest(output_dir: Path, date_str: str, markdown: str) -> Path:
@@ -472,6 +528,7 @@ def summarize_articles_node(state: DigestState) -> dict:
         min_words=rubric_cfg.get("min_summary_words"),
         importance_penalty=rubric_cfg.get("importance_penalty", 2),
     )
+    brief_retry = state["config"].get("images", {}).get("brief_retry", True)
 
     def _process(item: dict) -> tuple[dict, int, bool]:
         _log(state, f"Summarizing: {item['title'][:70]}")
@@ -480,15 +537,38 @@ def summarize_articles_node(state: DigestState) -> dict:
             try:
                 enriched_item, tokens, body = _summarize_one(sub_llm, item)
             except IncompleteImageBrief as brief_exc:
-                # The image plan is unusable but the summary is not. Publish the
-                # article without an image rather than losing it entirely.
-                print(
-                    f"[warn] unusable image brief for {item['url']}: {brief_exc}; "
-                    "publishing this article without an image",
-                    file=sys.stderr,
-                )
-                enriched_item = _without_image_brief(brief_exc.item)
-                tokens = brief_exc.tokens
+                # The image plan is unusable but the summary is not. Try once to
+                # repair just the plan; failing that, publish the article
+                # without an image rather than losing it entirely.
+                enriched_item, tokens = None, brief_exc.tokens
+                if brief_retry:
+                    _log(state, "  [brief] Repairing the image plan …")
+                    try:
+                        enriched_item, repair_tokens = _repair_image_brief(
+                            sub_llm, brief_exc.item, brief_exc.errors
+                        )
+                        tokens += repair_tokens
+                        _log(state, "  [brief] Repair PASSED")
+                    except IncompleteImageBrief as repair_exc:
+                        tokens += repair_exc.tokens
+                        print(
+                            f"[warn] image brief repair still invalid for "
+                            f"{item['url']}: {repair_exc}",
+                            file=sys.stderr,
+                        )
+                    except Exception as repair_exc:
+                        print(
+                            f"[warn] image brief repair failed for "
+                            f"{item['url']}: {repair_exc}",
+                            file=sys.stderr,
+                        )
+                if enriched_item is None:
+                    print(
+                        f"[warn] unusable image brief for {item['url']}: "
+                        f"{brief_exc}; publishing this article without an image",
+                        file=sys.stderr,
+                    )
+                    enriched_item = _without_image_brief(brief_exc.item)
 
             if rubric_enabled:
                 enriched_item = rubric.score(enriched_item)

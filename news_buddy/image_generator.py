@@ -398,6 +398,31 @@ def _request_prompt(prompt: str, settings: ImageSettings) -> str:
     )[:MAX_IMAGE_PROMPT_CHARS]
 
 
+# Plain-English rendering of each code _article_brief_errors can emit. The
+# repair prompt sends these to the model, which already has the rules and broke
+# them anyway — naming the specific objection is what makes a retry worth doing.
+_BRIEF_ERROR_HELP = {
+    "image_prompt": "image_prompt was empty.",
+    "image_layout": (
+        'image_layout must be exactly one of "pipeline", "branching", '
+        '"comparison", "before_after", "bottleneck", or "layers".'
+    ),
+    "image_labels": (
+        "image_labels must be a list of exactly three short, non-empty strings."
+    ),
+    "article-specific image_labels": (
+        "image_labels used the generic INPUT / SYSTEM / RESULT triad. Use "
+        "concrete nouns taken from this specific story instead."
+    ),
+    "image_alt": "image_alt was empty.",
+}
+
+
+def describe_brief_errors(errors: list[str]) -> list[str]:
+    """Explain validator error codes for the image-plan repair prompt."""
+    return [_BRIEF_ERROR_HELP.get(code, code) for code in errors]
+
+
 def _article_brief_errors(item: dict) -> list[str]:
     """Return reasons an editorial image plan is unsafe to publish."""
     errors = []
