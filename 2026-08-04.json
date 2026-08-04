@@ -1,0 +1,119 @@
+[
+  {
+    "title": "Apple finally fixed Siri. So why does it feel anticlimactic?",
+    "url": "https://techcrunch.com/2026/08/03/apple-finally-fixed-siri-so-why-does-it-feel-anticlimactic/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-03",
+    "summary": "Apple's Siri AI assistant has finally been fixed and now understands personal context, taps into broad world knowledge, and surfaces relevant information. This AI assistant can have natural conversations, understand personal context, and help find specific items like photos, emails, and calendar appointments. Despite being functional, the arrival of Siri feels anticlimactic due to the rapid advancements in AI technology, making it seem less groundbreaking than it once would have been.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/eb351cf55bf34504b02d.webp",
+    "image_alt": "Siri's capabilities and how it helps users"
+  },
+  {
+    "title": "After killer quarter, Palantir CEO Alex Karp calls AI industry ‘Marxist’",
+    "url": "https://techcrunch.com/2026/08/03/after-killer-quarter-palantir-ceo-alex-karp-calls-ai-industry-marxist/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-03",
+    "summary": "Palantir CEO Alex Karp criticized the AI industry, calling it 'Marxist' due to its untrustworthy nature and tendency to capture the means of production. This criticism comes despite Palantir's record-breaking quarter, where the company reported $1.9 billion in revenue and $1.1 billion in profit, largely driven by the skyrocketing use of AI. Karp argues that companies like Palantir, which serve model-agnostic AI and analysis software, allow organizations to control their data and AI 'exhaust', unlike AI labs that prioritize their own interests.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/e5a2524f352ffb498578.webp",
+    "image_alt": "A diagram explaining the untrustworthy nature of AI labs and the importance of controlling the means of production"
+  },
+  {
+    "title": "Congress’ favorite AI tool? ChatGPT",
+    "url": "https://techcrunch.com/2026/08/03/congresss-favorite-ai-tool-chatgpt/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-03",
+    "summary": "Congress has chosen ChatGPT as its preferred AI tool, with OpenAI receiving 90% of all spending on AI tools by House offices, committees, and institutional accounts. This translates to around $100,580 across 798 transactions, with Democratic offices accounting for $54,165 in AI purchases, three times the $15,782 spent by Republican offices. Congressional staffers are using ChatGPT to write memos, summarize legislation, and respond to constituents, among other tasks.",
+    "tags": [
+      "technology",
+      "ai",
+      "politics"
+    ],
+    "importance": 3,
+    "image_url": "images/8d09a5284067a49459f2.webp",
+    "image_alt": "Congress's AI spending on ChatGPT and other tools"
+  },
+  {
+    "title": "Europe’s AI labeling and transparency rules are now in effect",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/974571/eu-ai-act-transparency-labels-rules-deepfakes",
+    "source": "The Verge AI",
+    "published_at": "2026-08-03",
+    "summary": "Europe's AI labeling and transparency rules are now in effect, requiring companies to disclose AI interactions and AI-generated content. The rules differ between providers and deployers, with providers needing to explicitly notify users when they're dealing with AI and include machine-readable marks on synthetic content. Companies that fail to comply risk facing fines of up to €15 million or 3 percent of their global annual turnover.",
+    "tags": [
+      "ai",
+      "technology",
+      "world"
+    ],
+    "importance": 3,
+    "image_url": "images/7a7cd5722e75619e946c.webp",
+    "image_alt": "The diagram explains the European Union's AI labeling and transparency rules, including explicit notification, machine-readable marks, and consequences of non-compliance."
+  },
+  {
+    "title": "AWS is helping vibe-coding startup Superblocks, and the implications are big",
+    "url": "https://techcrunch.com/2026/08/03/aws-is-helping-vibe-coding-startup-superblocks-and-the-implications-are-big/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-03",
+    "summary": "AWS is partnering with vibe-coding startup Superblocks to embed its tool within private AWS clouds. This allows enterprises to offer vibe coding to business users without sending data externally, using Amazon Aurora databases and integrating with Amazon Bedrock. The partnership brings data security and management under IT's control, with AWS also helping to sell Superblocks to enterprises.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 2,
+    "image_url": "images/9c16c26593428f5eeea3.webp",
+    "image_alt": "AWS and Superblocks partnership for secure vibe coding"
+  },
+  {
+    "title": "Design Arena creators raise $7.9 million to bring taste to AI models",
+    "url": "https://techcrunch.com/2026/08/03/designarena-creators-raise-7-9-million-to-bring-taste-to-ai-models/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-03",
+    "summary": "Design Arena creators raised $7.9 million to improve AI models by providing human feedback. The platform allows users to rank AI-generated outputs, giving critical input to what users want. This human-led evaluation data is valuable for frontier labs, generating $60 million in ARR.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 1,
+    "image_url": "images/fe9bdb3b1e7d4df936dc.webp",
+    "image_alt": "How AI models receive human feedback to improve generated media"
+  },
+  {
+    "title": "Influencers draw backlash for attending OpenAI’s first luxury trip",
+    "url": "https://techcrunch.com/2026/08/03/influencers-draw-backlash-for-attending-openais-first-luxury-trip/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-03",
+    "summary": "Influencers drew backlash for attending OpenAI's first luxury trip, called 'Summer Club,' in upstate New York. The event aimed to educate creators on using OpenAI's ChatGPT Work for tasks like drafting documents and presentations. The backlash highlights tensions over AI use and its environmental impact.",
+    "tags": [
+      "technology",
+      "ai",
+      "world"
+    ],
+    "importance": 1,
+    "image_url": "images/6b49e8f29524a511e56f.webp",
+    "image_alt": "Comparison of luxury influencer trip and AI data center environmental impact"
+  },
+  {
+    "title": "A Marc Benioff-backed startup thinks AI can solve the AI deployment problem",
+    "url": "https://techcrunch.com/2026/08/03/a-marc-benioff-backed-startup-thinks-ai-can-solve-the-ai-deployment-problem/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-03",
+    "summary": "A Marc Benioff-backed startup, June, aims to solve the AI deployment problem by using AI to understand and optimize business processes. June's platform scans a company's existing systems to identify bottlenecks and build optimized processes, automatically notifying teams. This approach can help companies implement AI more efficiently, reducing the need for specialized engineers.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 1,
+    "image_url": "images/1a76a323d97fec86ad0e.webp",
+    "image_alt": "June's platform optimizes business processes for companies"
+  }
+]
