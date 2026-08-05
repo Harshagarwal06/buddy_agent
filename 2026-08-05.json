@@ -1,0 +1,119 @@
+[
+  {
+    "title": "Show HN: A file-based protocol for two AI agents to talk until they agree",
+    "url": "https://agent-talk.reindent.com/",
+    "source": "Hacker News AI",
+    "published_at": "2026-08-05",
+    "summary": "A file-based protocol allows two AI agents to agree on a task by editing the same markdown document until they reach consensus. The protocol works with various agents, including Claude Code, Codex, and Grok, and is based on four rules: one writer at a time, one atomic write per turn, no chat log, and explicit consensus. This approach converges into a final answer, with the agreement written into the document.",
+    "tags": [
+      "ai",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/cf291c61f9eb3bb879ed.webp",
+    "image_alt": "Two agents editing a shared document until they agree on a task"
+  },
+  {
+    "title": "An AI Approach to Verified Production Cryptographic Libraries",
+    "url": "https://arxiv.org/abs/2608.00965",
+    "source": "Hacker News AI",
+    "published_at": "2026-08-05",
+    "summary": "Researchers developed CryptoProver, an AI-based system that verifies production cryptographic libraries without changing executable code. CryptoProver synthesized internal specifications and proofs from high-level API contracts for the curve25519-dalek and chacha20 implementations, which underpin deployed systems like Signal and Shadowsocks. This verification process took 11.4 hours and $466.99 in recorded API cost, with the potential to improve the security of widely used cryptographic systems.",
+    "tags": [
+      "technology",
+      "ai",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/410483ef172787c34352.webp",
+    "image_alt": "AI-verified cryptographic library pipeline"
+  },
+  {
+    "title": "Forward-deployed engineers are the AI industry's latest talent obsession",
+    "url": "https://techcrunch.com/2026/07/30/forward-deployed-engineers-are-the-ai-industrys-latest-talent-obsession/",
+    "source": "Hacker News AI",
+    "published_at": "2026-08-05",
+    "summary": "Forward-deployed engineers are the AI industry's latest talent obsession, with demand projected to surge by 2,100% by the end of the year. Only about 2,000 engineers in the U.S. possess the necessary combination of sector know-how, gravitas, and hands-on applied AI experience, which is expected to outstrip supply. This talent shortage will likely lead to enterprises hiring FDEs in the middle of summer, with the largest consulting and services firms reporting a need to increase their FDE headcount by 10 times.",
+    "tags": [
+      "technology",
+      "ai",
+      "talent"
+    ],
+    "importance": 4,
+    "image_url": "images/3139a8cea36824c32586.webp",
+    "image_alt": "The shortage of forward-deployed engineers in the AI industry and its impact on enterprise workflows"
+  },
+  {
+    "title": "Hollywood is entering its AI era",
+    "url": "https://www.economist.com/business/2026/08/04/hollywood-is-entering-its-ai-era",
+    "source": "Hacker News AI",
+    "published_at": "2026-08-05",
+    "summary": "Hollywood is entering its AI era with major film studios investing heavily in artificial intelligence technology to streamline production processes and enhance content creation. This shift is driven by the adoption of AI-powered tools such as script analysis software and automated editing systems, which have been shown to reduce production time by up to 30%. As a result, the film industry can expect to see increased efficiency and improved quality of content, leading to enhanced viewer experiences.",
+    "tags": [
+      "technology",
+      "business",
+      "culture"
+    ],
+    "importance": 3,
+    "image_url": "images/fa4ae04c781a83267dc5.webp",
+    "image_alt": "The impact of AI on the film industry, from script analysis to viewer experiences"
+  },
+  {
+    "title": "ChatGPT accounts for 80% of identifiable House AI spending",
+    "url": "https://www.cnbc.com/2026/08/03/openai-chatgpt-anthropic-congress-house-ai-spending.html",
+    "source": "Hacker News AI",
+    "published_at": "2026-08-05",
+    "summary": "ChatGPT accounts for 80% of identifiable House AI spending, with $100,580 spent on 798 transactions, mostly for summarizing legislation, drafting memos, and responding to constituents. This is part of a larger trend where lawmakers and federal agencies are deciding how AI should be purchased, used, and regulated. Congressional staff are using AI to save dozens of hours of staff time and manage the flood of information arriving on Capitol Hill.",
+    "tags": [
+      "technology",
+      "ai",
+      "politics"
+    ],
+    "importance": 3,
+    "image_url": "images/4b50161732c41a35478b.webp",
+    "image_alt": "Congressional staff use AI to manage information and save time"
+  },
+  {
+    "title": "Show HN: Rever-browser – AI-agent browser for reverse-engineering",
+    "url": "https://github.com/greekr4/rever-browser",
+    "source": "Hacker News AI",
+    "published_at": "2026-08-05",
+    "summary": "Rever-browser is an AI-agent browser for reverse-engineering, pairing a real Chromium tab with an ACP-based coding agent. The agent captures network requests, analyzes JavaScript bundles, and drives the tab through an in-process MCP tool server. This enables users to go from understanding site requests to reproducing its API without leaving the app.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 2,
+    "image_url": "images/de56356e5eafbadd8681.webp",
+    "image_alt": "AI-agent browser for reverse-engineering"
+  },
+  {
+    "title": "SpaceX's AI Splurge Puts a Damper on Debut Earnings After IPO",
+    "url": "https://news.bloomberglaw.com/capital-markets/spacex-exceeds-revenue-estimates-in-first-earnings-since-ipo-1",
+    "source": "Hacker News AI",
+    "published_at": "2026-08-05",
+    "summary": "SpaceX's AI spending surge led to a 7% drop in shares after the company reported $18.4 billion in capital spending in the second quarter. This significant increase in AI development investment is expected to improve dramatically, according to Elon Musk. The AI spending surge may impact SpaceX's debut earnings after its IPO.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 1,
+    "image_url": "images/61d62cf8f72d5a6ce220.webp",
+    "image_alt": "SpaceX's AI spending surge and its impact on debut earnings"
+  },
+  {
+    "title": "Nono: Sandbox any AI agent in seconds – zero setup, zero latency",
+    "url": "https://github.com/nolabs-ai/nono",
+    "source": "Hacker News AI",
+    "published_at": "2026-08-05",
+    "summary": "Nono is a sandbox that allows users to run AI agents in seconds with zero setup and zero latency. It supports macOS, Linux, and Windows (WSL2) and enforces a least-privilege sandbox. Users can search for agents in the registry, run them with specific profiles, and even create their own custom profiles.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 1,
+    "image_url": "images/73aa15f41886d5ba02e1.webp",
+    "image_alt": "A user runs an AI agent in a sandbox with zero latency and zero setup."
+  }
+]
