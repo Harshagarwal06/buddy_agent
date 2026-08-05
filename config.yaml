@@ -106,7 +106,9 @@ images:
   retries: 2
   retry_delay: 2
   steps: 4
-  require_all: true
+  # An illustration provider rejection should not suppress a complete digest.
+  # The generator retries, then uses an article-specific SVG fallback instead.
+  require_all: false
   require_article_brief: true
   style_guide: prompts/image_style.md
   style_version: explainer-v10
