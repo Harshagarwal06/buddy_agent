@@ -1,0 +1,118 @@
+[
+  {
+    "title": "Naïve raises $28.5M to automate the grunt work of setting up and running a company",
+    "url": "https://techcrunch.com/2026/08/06/naive-raises-28-5m-to-automate-the-grunt-work-of-setting-up-and-running-a-company/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-06",
+    "summary": "Naive raises $28.5M to automate company setup and running, offering infrastructure for AI agents to provision payments, email, cloud infrastructure, and company incorporation. The startup packages this process behind a single API, allowing developers to supply a prompt to tools like Cursor or Codex to connect and provision infrastructure. This automation has resonated with users, with Naive scaling annual run-rate revenue by 10x over six months.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/098ccf14da527ac54928.webp",
+    "image_alt": "Diagram explaining how Naive's AI infrastructure automates company setup and running"
+  },
+  {
+    "title": "ChatGPT brings unlimited text chats to free users",
+    "url": "https://techcrunch.com/2026/08/06/openai-brings-unlimited-chatgpt-text-chats-to-free-users/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-06",
+    "summary": "ChatGPT is removing limits on text-based chats for all users, replacing GPT-5.5 with the new GPT-5.6 Luna model, which reduces factual errors by 62% compared to the previous model. The update also introduces a 'Think' button for complex questions and a thinking slider for Plus and Pro users to adjust the model's thought process. This change brings unlimited text chats to free users and provides more compact and robust answers for Plus and Pro users.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/d512a075f0237d161faa.webp",
+    "image_alt": "ChatGPT's updated model and features for improved text-based conversations"
+  },
+  {
+    "title": "Exclusive: Mirendil inks $100M+ Google Cloud deal to scale self-improving AI",
+    "url": "https://techcrunch.com/2026/08/06/exclusive-mirendil-inks-100m-google-cloud-deal-to-scale-self-improving-ai/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-06",
+    "summary": "Mirendil signed a multiyear partnership with Google Cloud worth over $100 million to source compute capacity for its self-improving AI research. The deal gives Mirendil access to Google's TPUs, Nvidia GPUs, and managed training clusters to work on its AI, which aims to automate scientific and AI research. This technology could help scientists make progress in fields like medicine, biology, and materials science by allowing AI to learn and improve over time.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/6943f6b83d8d13a9f6f1.svg",
+    "image_alt": "Mirendil's self-improving AI on Google Cloud's infrastructure"
+  },
+  {
+    "title": "OpenAI says Apple’s own security practices undermine its trade secrets case",
+    "url": "https://techcrunch.com/2026/08/06/openai-says-apples-own-security-practices-undermine-its-trade-secrets-case/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-06",
+    "summary": "OpenAI argues Apple's own security practices undermine its trade secrets case, citing Apple's use of personal iCloud accounts for work and failure to properly revoke access after employees left. OpenAI also points to Apple's lack of specificity in identifying the allegedly stolen trade secrets, referring to them as generic categories of the product-development process. OpenAI claims Apple is using the lawsuit to slow down its competitor from innovating in AI-powered hardware.",
+    "tags": [
+      "technology",
+      "business",
+      "law"
+    ],
+    "importance": 3,
+    "image_url": "images/2a813427a9c2227b8bb7.webp",
+    "image_alt": "Apple's security practices and OpenAI's new AI-powered hardware"
+  },
+  {
+    "title": "Ex-Spotify employees raise $10M to bring the AI behind its recommendations to e-commerce",
+    "url": "https://techcrunch.com/2026/08/06/ex-spotify-employees-raise-10m-to-bring-the-ai-behind-its-recommendations-to-e-commerce/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-06",
+    "summary": "Ex-Spotify employees Sidd Motwani, Ian Anderson, and Shivaditya Sinha raised $10M to bring the AI behind Spotify's recommendations to e-commerce. Their startup, Malachyte, uses a real-time, intent-aware system called Vector AI to predict shoppers' next actions and fine-tune continuously based on their behavior. This approach aims to provide personalized experiences for first-time visitors and existing shoppers alike, leveraging contextual signals such as hover, click, and search refinement.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/2bae7db013dbe97b0a53.webp",
+    "image_alt": "How Malachyte's Vector AI system provides real-time, intent-aware shopping experiences"
+  },
+  {
+    "title": "Gen Z dating apps like Ditto ditch swiping in favor of AI matchmaking",
+    "url": "https://techcrunch.com/2026/08/06/gen-z-dating-apps-like-ditto-ditch-swiping-in-favor-of-ai-matchmaking/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-06",
+    "summary": "Gen Z dating app Ditto replaces swiping with AI matchmaking, allowing users to sign up by texting a code and answer questions about their personality, interests, and dating preferences. The Ditto algorithm matches people based on deeper characteristics, such as individualism and adventurousness, rather than similar hobbies and interests. By removing the need for endless swiping and small talk, Ditto aims to facilitate genuine connections and reduce friction for users.",
+    "tags": [
+      "technology",
+      "ai",
+      "culture"
+    ],
+    "importance": 3,
+    "image_url": "images/2c838c2249382f24a379.webp",
+    "image_alt": "How Ditto's AI matchmaking process works, from sign up to meeting a match"
+  },
+  {
+    "title": "Amid legal battles, Suno says it will start watermarking songs",
+    "url": "https://techcrunch.com/2026/08/06/amid-legal-battles-suno-says-it-will-start-watermarking-songs/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-06",
+    "summary": "Suno, a service for creating AI-generated songs, will start watermarking tracks made on its platform to prevent misuse on other streaming platforms. The company will use audio watermarking and fingerprinting, and has signed an agreement with Musixmatch to use its Sentinel system for copyright detection. This move aims to promote original creation and prevent copycat songs, while also addressing legal battles with music labels and artist bodies.",
+    "tags": [
+      "technology",
+      "ai",
+      "music"
+    ],
+    "importance": 3,
+    "image_url": "images/207fb98d8edc0e756d69.webp",
+    "image_alt": "Suno's tools for preventing song misuse and promoting original creation."
+  },
+  {
+    "title": "OpenAI’s new AI smart speaker will reportedly sell for between $300 and $400",
+    "url": "https://techcrunch.com/2026/08/06/openais-new-ai-smart-speaker-will-reportedly-sell-for-between-300-and-400/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-06",
+    "summary": "OpenAI's new AI smart speaker is reportedly priced between $300 and $400. The device, described as donut-shaped, will be made of high-quality metal and have a premium look. Its release in 2027 may face challenges due to the competitive smart speaker market and OpenAI's ongoing lawsuit with Apple.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 1,
+    "image_url": "images/3444afa4875c7e1da398.webp",
+    "image_alt": "A diagram explaining the OpenAI smart speaker's features and functionality"
+  }
+]
