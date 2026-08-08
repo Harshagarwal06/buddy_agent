@@ -1,0 +1,119 @@
+[
+  {
+    "title": "OpenAI says it slowed Astra model development over security concerns",
+    "url": "https://techcrunch.com/2026/08/07/openai-says-it-slowed-astra-model-development-over-security-concerns/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-07",
+    "summary": "OpenAI suspended work on its Astra model due to security concerns after an internal review found it had significant advancements in agentic coding and cybersecurity. The model reached its 'critical cybersecurity threshold,' meaning it could independently identify and carry out cyberattacks against well-protected systems. OpenAI is taking action, including enacting stricter security controls and pausing internal activities, and is working with government agencies and AI safety organizations to test the model's capabilities.",
+    "tags": [
+      "technology",
+      "ai",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/bc6db3f395a65bd9a516.webp",
+    "image_alt": "Astra model's security concerns and blocked cyberattack capability"
+  },
+  {
+    "title": "New Mexico court orders Meta to pay additional $567M in child safety case",
+    "url": "https://techcrunch.com/2026/08/07/new-mexico-court-orders-meta-to-pay-additional-567m-in-child-safety-case/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-07",
+    "summary": "A New Mexico court ordered Meta to pay an additional $567 million in a child safety case, bringing the total fines to $942 million. The court also required Meta to make changes to its platforms, including removing Like counts for children under 18, pausing push notifications between 10 p.m. and 7 a.m., and limiting usage to 90 hours a month. These changes aim to mitigate the harm caused by Meta's platforms, which the court found contributed to a mental health crisis among youth in New Mexico.",
+    "tags": [
+      "technology",
+      "world",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/68637d86c7e908d31691.webp",
+    "image_alt": "Meta's platform changes to protect New Mexico youth from social media harms"
+  },
+  {
+    "title": "Jill Lepore on the ‘Artificial State’ and why Silicon Valley’s leaders are bad sci-fi readers",
+    "url": "https://techcrunch.com/podcast/jill-lepore-on-the-artificial-state-and-why-silicon-valleys-leaders-are-bad-sci-fi-readers/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-07",
+    "summary": "Historian Jill Lepore argues that tech companies are gradually taking on the functions of democratic government, often mistaking technological advancement for political progress. Lepore points to examples such as Twitter's distorted picture of the electorate and Facebook displacing local news. She believes that today's AI leaders are selling an old fantasy in new packaging, promising a future where AI makes government more efficient and unnecessary.",
+    "tags": [
+      "technology",
+      "ai",
+      "science"
+    ],
+    "importance": 3,
+    "image_url": "images/77ea9455e2ef01d47b4a.webp",
+    "image_alt": "Tech companies taking on government functions and distorting public perception"
+  },
+  {
+    "title": "After Rippling blew millions on AI in months, it built an employee ROI tool",
+    "url": "https://techcrunch.com/2026/08/07/after-rippling-blew-millions-on-ai-in-months-it-built-an-employee-roi-tool/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-07",
+    "summary": "Rippling, an HR software provider, spent millions on AI in months but then built an employee ROI tool to track and contain its AI spending. The tool maps how much individual employees, teams, and roles are spending and if they are genuinely more productive. This tool was born after Rippling discovered employees were wildly burning cash, with some engineers spending up to $50,000 a month.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/6d73677189f578bb0605.webp",
+    "image_alt": "A visual explanation of how Rippling's AI Spend Console tracks and contains AI spending"
+  },
+  {
+    "title": "Fenix Flexin isn’t even denying using AI to make ‘Rubberz’ anymore",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/976801/fenix-flexin-rubberz-ai-song-treblo",
+    "source": "The Verge AI",
+    "published_at": "2026-08-07",
+    "summary": "Fenix Flexin admitted using AI to make his song 'Rubberz'. The AI tool, Treblo, was used in the recording process, and Fenix claims he never denied using AI. This development matters as it highlights the growing use of AI in music production and the need for transparency.",
+    "tags": [
+      "technology",
+      "ai",
+      "music"
+    ],
+    "importance": 1,
+    "image_url": "images/872e8c7c6ba7d0b45384.webp",
+    "image_alt": "The use of AI in music production, specifically the role of Treblo in the recording process of 'Rubberz'."
+  },
+  {
+    "title": "Cloudflare launches Kitesurf, a browser built for AI agents",
+    "url": "https://techcrunch.com/2026/08/07/cloudflare-launches-kitesurf-a-browser-built-for-ai-agents/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-07",
+    "summary": "Cloudflare launches Kitesurf, a cloud-hosted browser designed for AI agents. Unlike traditional browsers, Kitesurf prioritizes context windows, performance, and scalability, and is more efficient in CPU and memory consumption than Chromium. This enables AI agents to use the web more efficiently while using less computing power, reducing costs.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 1,
+    "image_url": "images/cc421b81ac1fc749d794.svg",
+    "image_alt": "Cloud-hosted browser for AI agents, efficient in CPU and memory consumption, and capable of rendering web pages correctly"
+  },
+  {
+    "title": "Airbnb says AI is helping it ship features faster as it tests a new search function",
+    "url": "https://techcrunch.com/2026/08/07/airbnb-says-ai-is-helping-it-ship-features-faster-as-it-tests-a-new-search-function/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-07",
+    "summary": "Airbnb uses AI to create features 60% faster, reducing time from conceptualization to launch. AI helps with search, sign-up, checkout, and payments, and is also used in customer support. This allows Airbnb to increase feature shipments by nearly 80% and reduce support costs by 16%.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 1,
+    "image_url": "images/8bdfda876db2a7eaddbe.webp",
+    "image_alt": "Airbnb's AI-powered feature generation process"
+  },
+  {
+    "title": "Watching Roku’s AI channel is like eating from a trough",
+    "url": "https://www.theverge.com/entertainment/976939/roku-fairground-ai-fast-channel",
+    "source": "The Verge AI",
+    "published_at": "2026-08-07",
+    "summary": "Roku added a 24/7 AI-generated content channel, Fairground AI Creator TV, to its streaming library. The channel features a curated selection of short-form videos, mostly produced with text-to-video models, with no consistent theme or genre. Watching the channel is like eating from a trough, with a never-ending stream of slop.",
+    "tags": [
+      "technology",
+      "ai",
+      "entertainment"
+    ],
+    "importance": 1,
+    "image_url": "images/9547ee18dfb98d456825.webp",
+    "image_alt": "A never-ending stream of AI-generated content, produced by text-to-video models, and consumed by viewers."
+  }
+]
