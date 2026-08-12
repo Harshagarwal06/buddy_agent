@@ -1,0 +1,119 @@
+[
+  {
+    "title": "The Download: the next big thing in LLMs and how AI academic research is shifting",
+    "url": "https://www.technologyreview.com/2026/08/11/1141610/the-download-next-big-thing-llms-ai-academic-research-shifting/",
+    "source": "MIT Tech Review AI",
+    "published_at": "2026-08-11",
+    "summary": "The next big thing in large language models (LLMs) is emerging as researchers seek to overcome the limitations of transformers, a family of neural networks that have become a bottleneck in LLMs. New ideas for solving the transformer problem include innovations that could make LLMs faster, more efficient, and smarter. Meanwhile, Nvidia has secured $500 billion from Wall Street for AI infrastructure, marking a significant investment in the field.",
+    "tags": [
+      "technology",
+      "ai",
+      "science"
+    ],
+    "importance": 4,
+    "image_url": "images/c6163ce46b4df04475dd.webp",
+    "image_alt": "A visual representation of the limitations of transformers in large language models and the potential solutions and significant investment in AI infrastructure."
+  },
+  {
+    "title": "‘Zoomsday’ hack uncovered using fewer than 20 AI prompts",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/977909/zoom-vulnerability-ai-attack",
+    "source": "The Verge AI",
+    "published_at": "2026-08-11",
+    "summary": "Zoom patched a major security vulnerability that allowed hackers to take over anyone's device during a meeting using the annotation feature. Researchers at A Security uncovered the flaw using fewer than 20 AI prompts on publicly available models, requiring no action from victims and showing no visual cue. This exploit could have allowed hackers to steal data, turn on cameras or microphones, or install malware, but Zoom issued a fix across Windows, macOS, Linux, Android, and iOS.",
+    "tags": [
+      "technology",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/734385765fa9629702fb.svg",
+    "image_alt": "A hacker's malicious code flows into a meeting participant's device through Zoom's annotation feature, while a security researcher uses AI to detect and expose the vulnerability."
+  },
+  {
+    "title": "AMIE, our research medical AI system, demonstrates real-time clinical video consultation capabilities in a first-of-its-kind study.",
+    "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/amie-video-consultations/",
+    "source": "Google AI Blog",
+    "published_at": "2026-08-11",
+    "summary": "Google's research medical AI system AMIE demonstrates real-time clinical video consultation capabilities in a first-of-its-kind study. AMIE interprets visual and auditory cues, guides virtual physical exams, and reasons diagnostically in real time, built on Gemini and Project Astra using a multi-agent architecture. This development matters as it offers an exciting glimpse into the future of health AI, with potential to improve patient care and doctor-patient interactions.",
+    "tags": [
+      "ai",
+      "health",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/3147c58aa7e9113f8c3f.webp",
+    "image_alt": "AMIE's real-time clinical video consultation capabilities compared to traditional doctor-patient interactions"
+  },
+  {
+    "title": "Made by Google 2026: all the Pixel news and announcements",
+    "url": "https://www.theverge.com/tech/977561/made-by-google-2026-pixel-11-news",
+    "source": "The Verge AI",
+    "published_at": "2026-08-11",
+    "summary": "Google is set to reveal new Pixel devices on August 12th, including the Pixel 11 lineup in various colors, a next-gen Pixel Fold, and a Pixel Watch 5 in four finishes. The devices may be available for preorder on Google's website before the event. The Made by Google livestream will feature celebrity guests and may lack surprises, with the Google Store's preorder countdown ending eight hours before the event.",
+    "tags": [
+      "technology",
+      "world"
+    ],
+    "importance": 3,
+    "image_url": "images/7410ba78a22328e21286.webp",
+    "image_alt": "Google's new Pixel devices and their features"
+  },
+  {
+    "title": "Apple could help you prove your iPhone photos aren’t deepfakes",
+    "url": "https://www.theverge.com/tech/977921/apple-reference-image-iphone-metadata",
+    "source": "The Verge AI",
+    "published_at": "2026-08-11",
+    "summary": "Apple is developing an iOS feature called 'Apple Reference Image' that embeds provenance metadata into iPhone photographs at the point of capture, enabling users to prove where the photo originated and that it isn't AI fakery. The feature, which can be enabled via Settings, requires users to tap a Reference badge on the photograph, sending the raw image and its embedded data to Apple's Private Cloud Compute servers for verification. This process allows users to authenticate photographs on their iPhone, iPad, or Mac, and may help prevent images connected to compromised sensors from being authenticated.",
+    "tags": [
+      "technology",
+      "ai",
+      "science"
+    ],
+    "importance": 3,
+    "image_url": "images/23611b72592142ba1147.svg",
+    "image_alt": "How Apple's Reference Image feature verifies and authenticates iPhone photographs"
+  },
+  {
+    "title": "Another OpenAI executive takes off",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/978048/brad-lightcap-openai-executive-departure",
+    "source": "The Verge AI",
+    "published_at": "2026-08-11",
+    "summary": "OpenAI executive Brad Lightcap announced his departure after an eight-year stint at the AI lab, citing a desire to help advance the company's mission from a different vantage point. Lightcap's role has changed significantly over the past year and a half, with various leadership positions and responsibilities. His departure is the latest in a series of high-profile exits from OpenAI's executive team, which has been undergoing significant reorganizing and C-suite changes.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/79a05c75958531adb51b.webp",
+    "image_alt": "OpenAI executive departure and new role, impacting company mission"
+  },
+  {
+    "title": "Saber denies replacing Rideshare Stimulator&#8217;s writers with ChatGPT",
+    "url": "https://www.theverge.com/games/978558/rideshare-stimulator-writer-ai-saber-interactive",
+    "source": "The Verge AI",
+    "published_at": "2026-08-12",
+    "summary": "Saber Interactive denies replacing Rideshare Stimulator's writers with ChatGPT, despite a former lead writer's claim. CEO Matthew Karch says the game's story was written entirely by real people except for one experimental mode. However, the writer, Stella Sacco, disputes this, stating that she was replaced by ChatGPT midway through development.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 1,
+    "image_url": "images/73d0a27ce5eac7f8afb8.webp",
+    "image_alt": "The use of ChatGPT in game development and its impact on human writers."
+  },
+  {
+    "title": "ChatGPT and Gemini both just passed 1 billion users",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/978113/chatgpt-gemini-1-billion-users",
+    "source": "The Verge AI",
+    "published_at": "2026-08-11",
+    "summary": "Google's Gemini and OpenAI's ChatGPT both reached 1 billion users, with Gemini being Google's fastest-growing product. ChatGPT had 900 million weekly active users in February, reaching 1 billion five months later, indicating a slowdown in growth. The AI race has tightened significantly this year, with multiple companies competing for dominance.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 1,
+    "image_url": "images/0f648e7f56b7fb2d8fb2.webp",
+    "image_alt": "The growth of ChatGPT and Gemini, and the increasing competition between the two AI platforms."
+  }
+]
