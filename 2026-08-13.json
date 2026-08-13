@@ -1,0 +1,118 @@
+[
+  {
+    "title": "OpenAI-backed Thrive Holdings raises $2B to bring AI to the enterprise",
+    "url": "https://techcrunch.com/2026/08/12/openai-backed-thrive-holdings-raises-2b-to-bring-ai-to-the-enterprise/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-12",
+    "summary": "Thrive Holdings, backed by OpenAI, raised $2 billion at a $12 billion valuation to implement AI in traditional businesses. The firm, akin to a private equity firm for AI, has focused on accounting and information technology, with AI solutions like TaxAI processing tax returns at 98% accuracy. The new funding will help Thrive expand into physical assets and regulatory services, addressing local, technical, and regulatory complexity in infrastructure projects.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/0359dd75dfadf5fe841f.webp",
+    "image_alt": "AI implementation in traditional businesses and expansion into physical assets"
+  },
+  {
+    "title": "AI coding startup Cognition reportedly already in talks to raise at $40B valuation",
+    "url": "https://techcrunch.com/2026/08/12/ai-coding-startup-cognition-reportedly-already-in-talks-to-raise-at-40b-valuation/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-12",
+    "summary": "Cognition, an AI coding startup, is reportedly in talks to raise a new funding round with a $40 billion valuation, up from $26 billion in May. This valuation is based on achieving a $1 billion annualized revenue run rate, with enterprises growing their usage of Cognition's AI coding agent Devin by 50% month-over-month. Cognition's customers include Mercedes-Benz, NASA, and Goldman Sachs, and the agent is used for tasks that many programmers dislike, such as updating old software.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/1aabc30219ec2b905889.svg",
+    "image_alt": "Cognition's AI coding agent Devin automates long-tail grunt-work, freeing programmers to focus on high-value tasks"
+  },
+  {
+    "title": "Amazon will train on Twitch streamers’ content by default, unless they opt out",
+    "url": "https://techcrunch.com/2026/08/12/amazon-will-train-on-twitch-streamers-content-by-default-unless-they-opt-out/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-12",
+    "summary": "Amazon will train on Twitch streamers' content by default, unless they opt out, using thousands of hours of audio and video recordings to help train generative AI models. This move has sparked backlash from the Twitch community, who worry that creators might be surrendering their content without knowing it. The practical consequence is that streamers must manually opt out to prevent their content from being used for AI training, highlighting concerns about consent and data ownership.",
+    "tags": [
+      "technology",
+      "ai",
+      "world"
+    ],
+    "importance": 3,
+    "image_url": "images/71f2a92db4e08eb425e7.webp",
+    "image_alt": "Twitch streamers' content is used to train Amazon's AI models, with an opt-out option to prevent this"
+  },
+  {
+    "title": "As AI safety concerns mount, three pioneers make the case for staying open",
+    "url": "https://techcrunch.com/2026/08/12/as-ai-safety-concerns-mount-three-pioneers-make-the-case-for-staying-open/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-12",
+    "summary": "AI safety concerns are mounting, with some labs treating open-source models as scary due to lack of control. Three respected AI researchers, including Nobel Prize winner Geoffrey Hinton, made a case for keeping AI open at the Ai4 conference, citing concerns about a few companies controlling access to technology and limiting innovation. They advocate for multiple providers and open models to promote competition and make AI accessible to everyone.",
+    "tags": [
+      "ai",
+      "technology",
+      "science"
+    ],
+    "importance": 3,
+    "image_url": "images/3c19816ace23f2892aef.webp",
+    "image_alt": "Diagram explaining the importance of open-source models in AI research"
+  },
+  {
+    "title": "Lovable confirms new $13.3B valuation, raises another $400M",
+    "url": "https://techcrunch.com/2026/08/12/lovable-confirms-new-13-3b-valuation-raises-another-400m/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-12",
+    "summary": "Lovable has confirmed a new $13.3 billion valuation and raised another $400 million in a Series C round led by Menlo Ventures and the Scaleup Europe Fund. This funding comes after Lovable hit $500 million in annualized run rate revenue in June, with 60 million projects attracting 900 million monthly visitors. The startup's growth has increased its back-end needs, with the company now offering its own in-house trained AI model and a multiyear deal with Google Cloud.",
+    "tags": [
+      "technology",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/cec4178c45c94ce150a8.webp",
+    "image_alt": "A startup's growth and funding increase its back-end needs and sophistication."
+  },
+  {
+    "title": "Some Claude users are mad that Anthropic’s new watermarks will catch them using it at their jobs, classes",
+    "url": "https://techcrunch.com/2026/08/12/some-claude-users-are-mad-that-anthropics-new-watermarks-will-catch-them-cheating-at-their-jobs-classes/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-12",
+    "summary": "Anthropic's new watermark policy for Claude AI outputs marks them as AI-generated to comply with the EU AI Act's Transparency Code. The watermarks are inserted into the chatbot's editorial text and can be detected by tech companies, potentially catching users who misuse the AI at work or school. This development affects users who rely on AI tools for tasks such as summarizing long documents or reorganizing paragraphs, and may lead to increased accountability for AI usage.",
+    "tags": [
+      "ai",
+      "technology",
+      "world"
+    ],
+    "importance": 3,
+    "image_url": "images/41c2152f273c1494d34e.webp",
+    "image_alt": "The consequences of using AI tools without proper attribution"
+  },
+  {
+    "title": "Mesh, Automattic’s CRM for everyone, comes to Android",
+    "url": "https://techcrunch.com/2026/08/12/mesh-automattics-crm-for-everyone-comes-to-android/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-12",
+    "summary": "Mesh, a personal CRM, is now available on Android devices, allowing users to visualize and manage their personal and professional networks. The app is customized to work with key Android features, such as split-screen and pop-up views, and supports keyboard shortcuts and real-time sync across devices. As Mesh integrates with Automattic's all-in-one messaging app, Beeper, it may add AI features to help users manage their relationships, such as voice-based navigation and business-card-scanning.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/9d3282d00792309eefe4.webp",
+    "image_alt": "A diagram explaining how Mesh's AI features help manage personal relationships"
+  },
+  {
+    "title": "Why Stream ring-maker Sandbar says the future of AI wearables is voice",
+    "url": "https://techcrunch.com/video/why-stream-ring-maker-sandbar-says-the-future-of-ai-wearables-is-voice/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-12",
+    "summary": "Stream ring-maker Sandbar predicts voice AI wearables' future success due to human control. The company's Stream ring has raised $36 million, including a $23 million Series A. Voice hardware devices struggled to break through before Stream's focus on user control.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 1,
+    "image_url": "images/6d0770b80d616202cb03.webp",
+    "image_alt": "The evolution of voice-controlled AI wearables from struggle to success"
+  }
+]
