@@ -147,7 +147,9 @@ def main() -> None:
     if args.db_path:
         db_path = Path(args.db_path).expanduser().resolve()
     else:
-        db_path = Path(__file__).parent.parent / "state.db"
+        from news_buddy.paths import runtime_root
+
+        db_path = runtime_root() / "state.db"
 
     result = search(
         db_path=db_path,

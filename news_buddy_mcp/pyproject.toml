@@ -11,7 +11,7 @@ dependencies = [
 [dependency-groups]
 dev = [
     "pytest",
-    "ruff",
+    "ruff==0.15.22",
 ]
 
 [build-system]

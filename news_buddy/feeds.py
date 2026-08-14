@@ -10,7 +10,7 @@ from datetime import datetime, timedelta, timezone
 import feedparser
 import httpx
 
-USER_AGENT = "news-buddy/0.1 (+https://github.com/manishbabel/buddy_agent)"
+USER_AGENT = "news-buddy/0.1 (+https://github.com/Harshagarwal06/buddy_agent)"
 
 
 def fetch_feed_items(

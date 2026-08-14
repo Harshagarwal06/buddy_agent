@@ -32,6 +32,21 @@ jobs:
       - name: Test
         run: uv run pytest -q
 
+      - name: Audit runtime dependencies
+        run: |
+          uv export --frozen --no-dev --no-emit-project \
+            --format requirements-txt --output-file /tmp/news-buddy-runtime.txt >/dev/null
+          uvx --from pip-audit pip-audit -r /tmp/news-buddy-runtime.txt
+
+      - name: Build and smoke-test installed wheel
+        run: |
+          uv build
+          SMOKE_DIR="$(mktemp -d)"
+          uv venv --python 3.11 "$SMOKE_DIR/venv"
+          uv pip install --python "$SMOKE_DIR/venv/bin/python" dist/*.whl
+          cd "$SMOKE_DIR"
+          "$SMOKE_DIR/venv/bin/news-buddy" run --dry-run --verbose
+
   mcp-server:
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -60,3 +75,12 @@ jobs:
 
       - name: Test
         run: uv run pytest -q
+
+      - name: Audit runtime dependencies
+        run: |
+          uv export --frozen --no-dev --no-emit-project \
+            --format requirements-txt --output-file /tmp/news-buddy-mcp-runtime.txt >/dev/null
+          uvx --from pip-audit pip-audit -r /tmp/news-buddy-mcp-runtime.txt
+
+      - name: Build Docker image
+        run: docker build .

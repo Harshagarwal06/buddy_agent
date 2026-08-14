@@ -31,7 +31,12 @@ def _verify_ollama(base_url: str, model: str) -> None:
 
 
 def _build_ollama(llm: dict, model: str):
-    from langchain_ollama import ChatOllama
+    try:
+        from langchain_ollama import ChatOllama
+    except ModuleNotFoundError as exc:
+        raise RuntimeError(
+            "Ollama support is not installed. Run: pip install 'news-buddy[ollama]'"
+        ) from exc
 
     base_url = llm["base_url"]
     _verify_ollama(base_url, model)
@@ -56,7 +61,12 @@ def _google_rate_limiter(llm: dict):
 
 
 def _build_google(llm: dict, model: str, json_mode: bool = False):
-    from langchain_google_genai import ChatGoogleGenerativeAI
+    try:
+        from langchain_google_genai import ChatGoogleGenerativeAI
+    except ModuleNotFoundError as exc:
+        raise RuntimeError(
+            "Google support is not installed. Run: pip install 'news-buddy[google]'"
+        ) from exc
 
     api_key = os.getenv("GOOGLE_API_KEY", "").strip()
     if not api_key:
@@ -87,7 +97,13 @@ class _HuggingFaceChatModel:
     """Small LangChain-like adapter for huggingface_hub chat completions."""
 
     def __init__(self, llm: dict, model: str, json_mode: bool = False) -> None:
-        from huggingface_hub import InferenceClient
+        try:
+            from huggingface_hub import InferenceClient
+        except ModuleNotFoundError as exc:
+            raise RuntimeError(
+                "Hugging Face support is not installed. "
+                "Run: pip install 'news-buddy[huggingface]'"
+            ) from exc
 
         token = (
             os.getenv("HF_TOKEN", "").strip()

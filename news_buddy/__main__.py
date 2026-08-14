@@ -7,10 +7,11 @@ import os
 import sys
 import time
 from datetime import datetime, timezone
-from pathlib import Path
 
 import yaml
 from dotenv import load_dotenv
+
+from news_buddy.paths import default_config_path, runtime_root
 
 
 def _load_config(path: str) -> dict:
@@ -163,7 +164,7 @@ def _status(sent: bool | None, configured: bool, skip_reason: str | None = None)
 
 
 def main() -> None:
-    load_dotenv()
+    load_dotenv(runtime_root() / ".env")
 
     # Set up OTel/Phoenix tracing BEFORE the pipeline's LangChain models are built.
     from news_buddy.observability import setup_tracing
@@ -175,7 +176,7 @@ def main() -> None:
     run_p = sub.add_parser("run", help="Run the daily curation job")
     run_p.add_argument(
         "--config",
-        default=str(Path(__file__).parent.parent / "config.yaml"),
+        default=str(default_config_path()),
     )
     run_p.add_argument("--date", default=None, help="Override today's date (YYYY-MM-DD)")
     run_p.add_argument("--dry-run", action="store_true", help="No network or file calls")

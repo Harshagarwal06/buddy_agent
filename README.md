@@ -80,7 +80,7 @@ To regenerate and validate locally with `NVIDIA_API_KEY` already exported:
 ```bash
 npm install --global openwiki@0.2.4 mermaid@11.16.0 jsdom@29.1.1
 OPENWIKI_PROVIDER=nvidia \
-OPENWIKI_MODEL_ID=nvidia/nemotron-3-nano-omni-30b-a3b-reasoning \
+OPENWIKI_MODEL_ID=nvidia/nemotron-3-super-120b-a12b \
 OPENWIKI_TELEMETRY_DISABLED=1 \
 openwiki code --update --print
 python scripts/validate_openwiki.py
@@ -111,7 +111,7 @@ python scripts/validate_openwiki.py
 - `.github/workflows/openwiki-update.yml` - pinned manual/weekly Code Brain update that proposes a draft PR.
 - `openwiki/` - source-linked maintainer documentation generated with OpenWiki and reviewed against the code.
 - `scripts/validate_openwiki.py` - dependency-free Code Brain structure, link, and accuracy tripwire.
-- `tests/` - 120 tests covering notifications, archive signup behavior, CLI notification suppression, rubric scoring, RAG, and the evaluation harness.
+- `tests/` - 124 tests covering notifications, package resource paths, archive signup behavior, CLI notification suppression, rubric scoring, RAG, and the evaluation harness.
 
 ## Setup
 
@@ -138,6 +138,23 @@ cp .env.example .env
 
 Edit `.env` with provider and notification secrets. Edit `config.yaml` to tune feeds, keyword filtering, article limits, and model provider.
 
+The default install contains everything needed for the configured NVIDIA
+pipeline. Install only the extras you use for other providers or local tools:
+
+```bash
+pip install '.[google]'          # Gemini provider
+pip install '.[huggingface]'     # Hugging Face provider
+pip install '.[ollama]'          # local Ollama provider
+pip install '.[rag]'             # local Chroma semantic search + Gemini embeddings
+pip install '.[observability]'   # OpenTelemetry client for a Phoenix collector
+```
+
+Packaged defaults include `config.yaml`, prompts, and web assets, so the
+`news-buddy` command also works when installed outside a source checkout. By
+default, writable state is kept in the repository root for a checkout and the
+current directory for an installed package. Set `NEWS_BUDDY_HOME` to choose an
+explicit writable data directory.
+
 The `images` block in `config.yaml` controls the image model, output dimensions,
 compression, concurrency, retries, and shared explainer system. Its
 `style_guide` points to `prompts/image_style.md`, which both the article planner
@@ -147,8 +164,9 @@ placeholder diagrams. The default NVIDIA FLUX.2-klein-4B integration uses
 `NVIDIA_API_KEY`. Normal `--test-run` executions skip image generation unless
 `images.generate_in_test_run` is explicitly set to `true`.
 
-Tracing is opt-in and off by default. Set `OTEL_TRACING=true` before a run to
-send every LLM call to a local [Arize Phoenix](https://phoenix.arize.com/) UI
+Tracing is opt-in and off by default. Install the `observability` extra, run an
+[Arize Phoenix](https://phoenix.arize.com/) collector separately, and set
+`OTEL_TRACING=true` before a run to trace every LLM call
 (`PHOENIX_COLLECTOR_ENDPOINT`, default `http://localhost:6006`); see
 `news_buddy/observability.py`.
 
@@ -188,7 +206,7 @@ The scheduled workflow in `.github/workflows/daily-digest.yml` runs daily in Git
 
 The workflow has one primary morning schedule and two backup schedules. A concurrency group prevents overlapping digest jobs, and the `gh-pages` preflight keeps delayed backup schedules from sending duplicate notifications after the day's digest is already published.
 
-A separate CI workflow (`.github/workflows/ci.yml`) runs on pushes and pull requests with two jobs: `ruff check .` + `pytest` (120 tests) for the main package, and the same for `news_buddy_mcp/` (15 tests) in its own working directory.
+A separate CI workflow (`.github/workflows/ci.yml`) runs on pushes and pull requests with two jobs: lint, 124 tests, a runtime dependency audit, and an installed-wheel smoke test for the main package; plus lint, 15 tests, a runtime dependency audit, and a Docker build for `news_buddy_mcp/`.
 
 Manual `workflow_dispatch` defaults to `test_run: true`, so a verification run does not mark stories seen, deploy pages, or notify subscribers.
 
@@ -217,6 +235,11 @@ python news_buddy/semantic_search_cli.py "AI chip capacity" --limit 10
 ```
 
 The daily workflow currently sets `NEWS_BUDDY_RAG_ENABLED=false`, so Chroma is best treated as a local/search experiment unless the workflow persistence is enabled.
+
+The RAG extra uses Chroma's in-process `PersistentClient`. Do not expose a
+Chroma HTTP server from this environment: ChromaDB 1.5.9 has an
+[unfixed pre-authentication server vulnerability](https://osv.dev/vulnerability/PYSEC-2026-311)
+in an API path that News Buddy does not use.
 
 ## Public MCP Server
 

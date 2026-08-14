@@ -19,11 +19,11 @@ from news_buddy import extract as _extract
 from news_buddy import feeds as _feeds
 from news_buddy import state as _state
 from news_buddy.llm import get_sub_model
+from news_buddy.paths import resource_path, runtime_root
 from news_buddy.rubric import RubricMiddleware
 
-_ROOT = Path(__file__).parent.parent
-_PROMPTS = _ROOT / "prompts"
-_DB = _ROOT / "state.db"
+_PROMPTS = resource_path("prompts")
+_DB = runtime_root() / "state.db"
 _IMAGE_PLANNER_MARKERS = (
     "<!-- article-planner-directive:start -->",
     "<!-- article-planner-directive:end -->",
