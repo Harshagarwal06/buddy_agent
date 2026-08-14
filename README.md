@@ -88,6 +88,7 @@ python scripts/validate_openwiki.py
 
 ## Repository Tour
 
+- `PROJECT_OVERVIEW.md` - the complete source-derived reference: technology inventory, subsystem deep dives, full configuration and environment reference, run-mode semantics, and project statistics.
 - `news_buddy/agent.py` - the LangGraph pipeline and node logic.
 - `news_buddy/__main__.py` - CLI, notification routing, and run summary output.
 - `news_buddy/llm.py` - the only place that constructs LLM clients.
