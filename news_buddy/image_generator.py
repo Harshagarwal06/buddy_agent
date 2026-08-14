@@ -16,6 +16,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from xml.sax.saxutils import escape as xml_escape
 
+from news_buddy.paths import resource_path
+
 
 DEFAULT_STYLE = (
     "Warm cream paper; flat hand-drawn editorial diagram; thick charcoal "
@@ -36,8 +38,7 @@ DEFAULT_NVIDIA_API_URL = (
     "https://ai.api.nvidia.com/v1/genai/black-forest-labs/flux.2-klein-4b"
 )
 MAX_IMAGE_PROMPT_CHARS = 800
-_ROOT = Path(__file__).parent.parent
-DEFAULT_STYLE_GUIDE = _ROOT / "prompts" / "image_style.md"
+DEFAULT_STYLE_GUIDE = resource_path("prompts/image_style.md")
 _STYLE_DIRECTIVE_MARKERS = (
     "<!-- image-model-directive:start -->",
     "<!-- image-model-directive:end -->",
@@ -61,9 +62,7 @@ def _read_marked_section(path: Path, markers: tuple[str, str]) -> str:
 
 def _style_from_config(config: dict) -> str:
     configured = str(config.get("style_guide", "")).strip()
-    guide_path = Path(configured).expanduser() if configured else DEFAULT_STYLE_GUIDE
-    if not guide_path.is_absolute():
-        guide_path = _ROOT / guide_path
+    guide_path = resource_path(Path(configured).expanduser()) if configured else DEFAULT_STYLE_GUIDE
     try:
         return _read_marked_section(guide_path, _STYLE_DIRECTIVE_MARKERS)
     except (OSError, ValueError) as exc:

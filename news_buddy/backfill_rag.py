@@ -23,12 +23,14 @@ import sys
 import time
 from pathlib import Path
 
+from news_buddy.paths import runtime_root
+
 # Google free-tier allows ~100 embed requests/minute. Pace below that and
 # retry on RESOURCE_EXHAUSTED so the full archive backfills in one pass.
 _MIN_INTERVAL = 0.7  # seconds between embed calls (~85/min)
 _MAX_RETRIES = 5
 
-_ROOT = Path(__file__).parent.parent
+_ROOT = runtime_root()
 
 
 def main() -> None:

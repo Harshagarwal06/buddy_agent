@@ -86,7 +86,7 @@ generated documentation page.
 
 | Technology | Where used | Purpose |
 |---|---|---|
-| **LangGraph** (`langgraph>=1.0`) | `news_buddy/agent.py` | `StateGraph` with a `TypedDict` state, 9 nodes, one conditional edge, compiled with a checkpointer |
+| **LangGraph** (`langgraph>=1.2.11`) | `news_buddy/agent.py` | `StateGraph` with a `TypedDict` state, 9 nodes, one conditional edge, compiled with a checkpointer |
 | **LangGraph `MemorySaver`** | `agent.py:build_graph` | In-process checkpointer; thread id `"news-buddy"` |
 | **LangChain Core** | `agent.py`, `llm.py` | `SystemMessage` / `HumanMessage` message types, `InMemoryRateLimiter` |
 | **LangChain** (`langchain`) | dependency | Base runtime for the LangChain integrations |
@@ -99,6 +99,10 @@ generated documentation page.
 | **Google Gemini** | `google` | `langchain-google-genai` → `ChatGoogleGenerativeAI` | Supports true JSON mode via `response_mime_type` |
 | **Hugging Face** | `huggingface` / `hf` | `_HuggingFaceChatModel` — adapter over `huggingface_hub.InferenceClient` | Routes through HF Inference Providers (`hf_provider: auto`) |
 | **Ollama** | `ollama` | `langchain-ollama` → `ChatOllama` | Local models; pre-flight verified against `/api/tags` |
+
+The NVIDIA pipeline is the minimal default install. Google, Hugging Face,
+Ollama, RAG, and observability integrations are opt-in package extras so unused
+provider stacks and local tooling are not installed in production.
 
 **Production summarizer model:** `meta/llama-3.1-8b-instruct` (NVIDIA NIM)
 
@@ -160,7 +164,7 @@ generated documentation page.
 | Technology | Purpose |
 |---|---|
 | **OpenTelemetry** | Trace protocol |
-| **Arize Phoenix** (`arize-phoenix`, `arize-phoenix-otel`) | Local trace UI, default `http://localhost:6006` |
+| **Arize Phoenix OTel client** (`arize-phoenix-otel`) | Sends traces to a separately run Phoenix collector, default `http://localhost:6006` |
 | **OpenInference LangChain instrumentor** | Auto-instruments every LangChain LLM call |
 
 ### MCP
@@ -176,7 +180,7 @@ generated documentation page.
 |---|---|
 | **uv** (`uv.lock`) | Dependency resolution and locked installs, both locally and in CI |
 | **hatchling** | Build backend for both packages |
-| **pytest** | 120 tests in the main package, 15 in the MCP package |
+| **pytest** | 124 tests in the main package, 15 in the MCP package |
 | **ruff** | Linting for both packages |
 | **GitHub Actions** | Three workflows: daily digest, CI, OpenWiki update |
 | **GitHub Pages** (`gh-pages` branch) | Public archive hosting |
@@ -193,8 +197,9 @@ generated documentation page.
 
 ```
 buddy_agent/
-├── news_buddy/                    # Main package (21 modules, ~3,000 LOC)
+├── news_buddy/                    # Main package (22 modules, ~3,000 LOC)
 │   ├── __main__.py                # CLI entry point, notification routing (205 lines)
+│   ├── paths.py                   # Checkout/package resources + writable runtime roots
 │   ├── agent.py                   # LangGraph pipeline — the core (864 lines)
 │   ├── llm.py                     # Provider factory + 2 hand-written adapters (260)
 │   ├── feeds.py                   # RSS/Atom fetch and normalization (65)
@@ -214,6 +219,9 @@ buddy_agent/
 │   ├── slack_notify.py            # Slack delivery (110)
 │   ├── buttondown_notify.py       # Email delivery (46)
 │   └── observability.py           # Opt-in OTel/Phoenix tracing (29)
+│
+│   # Hatch bundles config.yaml, prompts/, tokens.css, and favicon.svg under
+│   # news_buddy/resources/ in built wheels.
 │
 ├── news_buddy_mcp/                # Separate MCP server package
 │   ├── src/news_buddy_mcp/
@@ -241,7 +249,7 @@ buddy_agent/
 │   ├── backfill_index.py          # Rebuild JSON index from published HTML (105)
 │   └── validate_openwiki.py       # Dependency-free doc validator (227)
 │
-├── tests/                         # 120 tests, 18 files
+├── tests/                         # 124 tests, 19 files
 ├── openwiki/                      # Generated "Code Brain" documentation (12 pages)
 ├── docs/
 │   ├── buttondown-setup.md
@@ -1214,8 +1222,8 @@ Manual dispatch defaults `test_run: true`.
 
 Runs on pushes to `main` and all pull requests. **Two independent jobs:**
 
-1. `test` — `ruff check .` + `pytest -q` for the main package (120 tests).
-2. `mcp-server` — the same, with `working-directory: news_buddy_mcp` (15 tests).
+1. `test` — lint + 124 tests, audit runtime dependencies, then build and smoke-test the wheel from an unrelated directory.
+2. `mcp-server` — lint + 15 tests, audit runtime dependencies, then build the MCP Docker image.
 
 Both on Python 3.11 with uv caching, 15-minute timeouts.
 
@@ -1402,6 +1410,7 @@ guidance for switching to local Ollama is retained inline.
 | Variable | Required when |
 |---|---|
 | `NVIDIA_API_KEY` | `llm.provider: nvidia` or `images.provider: nvidia`; also the OpenWiki workflow |
+| `NEWS_BUDDY_HOME` | Optional writable root for `state.db`, `chroma_db/`, and `knowledge_base/` |
 | `GOOGLE_API_KEY` | `llm.provider: google`; **always required for RAG embeddings** |
 | `HF_TOKEN` / `HUGGINGFACEHUB_API_TOKEN` | `llm.provider: huggingface` |
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | Telegram delivery (both needed) |
@@ -1469,7 +1478,7 @@ labels it as such.
 
 ## 24. Test suite
 
-**120 tests** in the main package across 18 files; **15 tests** in the MCP
+**124 tests** in the main package across 19 files; **15 tests** in the MCP
 package across 2 files.
 
 | File | Tests what |
@@ -1481,6 +1490,7 @@ package across 2 files.
 | `test_image_generator.py` | Largest test file (426 lines) — settings clamping, caching, retries, content-filter path, label rendering, SVG fallback |
 | `test_rubric.py` | All four rubric dimensions and edge cases |
 | `test_llm.py` | Provider dispatch and adapters |
+| `test_paths.py` | Checkout/installed-package resource and writable-data paths |
 | `test_rag.py` | Embedding and semantic search |
 | `test_knowledge_base.py` | OKF file writing |
 | `test_index_writer.py` | JSON records and manifest |
@@ -1528,12 +1538,12 @@ and HTML output.
 |---|---|
 | Total commits | 97 |
 | Merged pull requests | 12 |
-| Python modules (main package) | 21 |
+| Python modules (main package) | 22 |
 | Python modules (MCP package) | 3 |
 | Total Python LOC (source + scripts + tests) | ~7,955 |
 | Largest module | `agent.py` (864 lines) |
 | Second largest | `image_generator.py` (806 lines) |
-| Tests (main / MCP) | 120 / 15 |
+| Tests (main / MCP) | 124 / 15 |
 | GitHub Actions workflows | 3 |
 | RSS feeds | 17 |
 | AI keywords | 17 |

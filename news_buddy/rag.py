@@ -8,14 +8,19 @@ which becomes the text that gets embedded.
 from __future__ import annotations
 
 import os
-from pathlib import Path
 
-import chromadb
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
+try:
+    import chromadb
+    from langchain_google_genai import GoogleGenerativeAIEmbeddings
+except ModuleNotFoundError as exc:
+    raise RuntimeError(
+        "RAG support is not installed. Run: pip install 'news-buddy[rag]'"
+    ) from exc
 
 from news_buddy import knowledge_base
+from news_buddy.paths import runtime_root
 
-_CHROMA_PATH = Path(__file__).parent.parent / "chroma_db"
+_CHROMA_PATH = runtime_root() / "chroma_db"
 _COLLECTION_NAME = "articles"
 
 _collection: chromadb.Collection | None = None

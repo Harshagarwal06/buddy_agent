@@ -7,9 +7,11 @@ from datetime import date as _date
 from html import escape
 from pathlib import Path
 
+from news_buddy.paths import resource_path
+
 _WPM = 220
-_TOKENS_PATH = Path(__file__).resolve().parents[1] / "tokens.css"
-_FAVICON_PATH = Path(__file__).resolve().parents[1] / "favicon.svg"
+_TOKENS_PATH = resource_path("tokens.css")
+_FAVICON_PATH = resource_path("favicon.svg")
 
 
 def _copy_tokens(output_dir: Path) -> None:

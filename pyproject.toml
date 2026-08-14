@@ -2,20 +2,14 @@
 name = "news-buddy"
 version = "0.1.0"
 description = "Daily AI news digest pipeline with LangGraph, RSS feeds, LLM summaries, and notifications"
+readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "langchain",
-    "langchain-ollama",
-    "langchain-google-genai",
-    "langgraph>=1.0",
-    "arize-phoenix",
-    "arize-phoenix-otel",
-    "openinference-instrumentation-langchain",
-    "chromadb",
+    "langchain>=1.3.9",
+    "langgraph>=1.2.11",
     "feedparser",
-    "huggingface-hub",
     "trafilatura",
-    "httpx",
+    "httpx>=0.28.1",
     "lxml",
     "pillow",
     "pyyaml",
@@ -23,10 +17,30 @@ dependencies = [
     "tenacity",
 ]
 
+[project.optional-dependencies]
+google = ["langchain-google-genai"]
+huggingface = ["huggingface-hub"]
+ollama = ["langchain-ollama"]
+rag = ["chromadb", "langchain-google-genai"]
+observability = [
+    "arize-phoenix-otel",
+    "openinference-instrumentation-langchain",
+]
+[project.urls]
+Homepage = "https://harshagarwal06.github.io/buddy_agent/"
+Repository = "https://github.com/Harshagarwal06/buddy_agent"
+Issues = "https://github.com/Harshagarwal06/buddy_agent/issues"
+
 [dependency-groups]
 dev = [
     "pytest",
-    "ruff",
+    "ruff==0.15.22",
+    "langchain-google-genai",
+    "huggingface-hub",
+    "langchain-ollama",
+    "chromadb",
+    "arize-phoenix-otel",
+    "openinference-instrumentation-langchain",
 ]
 
 [project.scripts]
@@ -38,6 +52,12 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["news_buddy"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"config.yaml" = "news_buddy/resources/config.yaml"
+"prompts" = "news_buddy/resources/prompts"
+"tokens.css" = "news_buddy/resources/tokens.css"
+"favicon.svg" = "news_buddy/resources/favicon.svg"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

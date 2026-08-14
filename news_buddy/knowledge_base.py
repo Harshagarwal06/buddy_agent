@@ -11,7 +11,9 @@ from pathlib import Path
 
 import yaml
 
-_KB_PATH = Path(__file__).parent.parent / "knowledge_base" / "articles"
+from news_buddy.paths import runtime_root
+
+_KB_PATH = runtime_root() / "knowledge_base" / "articles"
 
 
 def _description(summary: str) -> str:

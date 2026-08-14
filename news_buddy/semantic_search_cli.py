@@ -14,9 +14,11 @@ from __future__ import annotations
 import argparse
 import json
 import sys
-from pathlib import Path
 
-_ROOT = Path(__file__).parent.parent
+from news_buddy.paths import runtime_root
+
+
+_ROOT = runtime_root()
 
 
 def main() -> None:
