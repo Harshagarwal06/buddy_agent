@@ -110,7 +110,7 @@ python scripts/validate_openwiki.py
 - `.github/workflows/openwiki-update.yml` - pinned manual/weekly Code Brain update that proposes a draft PR.
 - `openwiki/` - source-linked maintainer documentation generated with OpenWiki and reviewed against the code.
 - `scripts/validate_openwiki.py` - dependency-free Code Brain structure, link, and accuracy tripwire.
-- `tests/` - 106 tests covering notifications, archive signup behavior, CLI notification suppression, rubric scoring, RAG, and the evaluation harness.
+- `tests/` - 120 tests covering notifications, archive signup behavior, CLI notification suppression, rubric scoring, RAG, and the evaluation harness.
 
 ## Setup
 
@@ -187,7 +187,7 @@ The scheduled workflow in `.github/workflows/daily-digest.yml` runs daily in Git
 
 The workflow has one primary morning schedule and two backup schedules. A concurrency group prevents overlapping digest jobs, and the `gh-pages` preflight keeps delayed backup schedules from sending duplicate notifications after the day's digest is already published.
 
-A separate CI workflow (`.github/workflows/ci.yml`) runs on pushes and pull requests with two jobs: `ruff check .` + `pytest` (106 tests) for the main package, and the same for `news_buddy_mcp/` (15 tests) in its own working directory.
+A separate CI workflow (`.github/workflows/ci.yml`) runs on pushes and pull requests with two jobs: `ruff check .` + `pytest` (120 tests) for the main package, and the same for `news_buddy_mcp/` (15 tests) in its own working directory.
 
 Manual `workflow_dispatch` defaults to `test_run: true`, so a verification run does not mark stories seen, deploy pages, or notify subscribers.
 
