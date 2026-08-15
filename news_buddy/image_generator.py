@@ -126,6 +126,15 @@ class _NvidiaImageClient:
         self.settings = settings
         self.token = token
         self._request_numbers = itertools.count()
+        if settings.negative_prompt != DEFAULT_NEGATIVE_PROMPT:
+            # Silently dropping a value someone deliberately configured is the
+            # exact failure this adapter used to have. Say so instead.
+            print(
+                "[warn] images.negative_prompt is configured but FLUX.2 accepts "
+                "no negative prompt; it will be ignored. Express the constraint "
+                "positively in the image style guide instead.",
+                file=sys.stderr,
+            )
 
     def text_to_image(
         self,
@@ -136,7 +145,16 @@ class _NvidiaImageClient:
         height: int,
         negative_prompt: str,
     ) -> bytes:
-        del model, negative_prompt  # The hosted endpoint is model-specific.
+        # The api_url already pins the model, so `model` is redundant here.
+        del model
+        # FLUX.2 is guidance-distilled and accepts no negative prompt; the
+        # hosted endpoint takes only prompt, width, height, seed, and steps.
+        # This is a property of the model, not an oversight — suppressing text,
+        # people, and logos rests entirely on the positive style directive in
+        # prompts/image_style.md and on the _add_label_band crop. The Hugging
+        # Face client does use negative_prompt, which is why it stays in the
+        # shared signature.
+        del negative_prompt
         import httpx
 
         request_number = next(self._request_numbers)

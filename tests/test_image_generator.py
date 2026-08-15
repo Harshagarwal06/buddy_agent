@@ -167,6 +167,63 @@ def test_nvidia_provider_decodes_hosted_image_response(tmp_path, monkeypatch):
     assert "people, logos, photos" in payload["prompt"].lower()
 
 
+def test_nvidia_request_body_omits_negative_prompt(tmp_path, monkeypatch):
+    """FLUX.2 is guidance-distilled and takes no negative prompt.
+
+    Locks the documented request contract: only prompt, width, height, seed,
+    and steps. If a future change starts sending negative_prompt, that should
+    be a deliberate decision backed by the endpoint actually accepting it.
+    """
+    source = io.BytesIO()
+    Image.new("RGB", (320, 240), "#8d2f25").save(source, format="PNG")
+    encoded = base64.b64encode(source.getvalue()).decode()
+    bodies = []
+
+    class FakeResponse:
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return {"artifacts": [{"base64": encoded, "finishReason": None}]}
+
+    def fake_post(url, *, headers, json, timeout):
+        bodies.append(json)
+        return FakeResponse()
+
+    monkeypatch.setenv("NVIDIA_API_KEY", "test-nvidia-token")
+    monkeypatch.setattr(httpx, "post", fake_post)
+    config = {**_config(), "provider": "nvidia", "api_url": "https://example.test/img"}
+
+    image_generator.generate_article_images([_item()], tmp_path, config)
+
+    assert bodies, "expected one image request"
+    assert set(bodies[0]) == {"prompt", "width", "height", "seed", "steps"}
+    assert "negative_prompt" not in bodies[0]
+
+
+def test_custom_negative_prompt_warns_on_nvidia(capsys):
+    """A deliberately configured value must not be dropped in silence."""
+    settings = image_generator.ImageSettings.from_config(
+        {**_config(), "provider": "nvidia", "negative_prompt": "no purple cats"}
+    )
+
+    image_generator._NvidiaImageClient(settings, "token")
+
+    warning = capsys.readouterr().err
+    assert "negative_prompt is configured" in warning
+    assert "will be ignored" in warning
+
+
+def test_default_negative_prompt_does_not_warn_on_nvidia(capsys):
+    settings = image_generator.ImageSettings.from_config(
+        {**_config(), "provider": "nvidia"}
+    )
+
+    image_generator._NvidiaImageClient(settings, "token")
+
+    assert "negative_prompt" not in capsys.readouterr().err
+
+
 def test_image_request_retries_before_fallback(tmp_path, monkeypatch):
     calls = []
 
