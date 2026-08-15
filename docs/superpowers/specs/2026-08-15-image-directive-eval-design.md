@@ -162,17 +162,28 @@ commit alongside `manifest.json`.
 
 ### Deterministic (Pillow + numpy, no network)
 
-- **`background_is_cream`** — median colour of a border ring, distance to the
-  cream token `#f3ecd8` under a fixed threshold. Observed failures were plain
-  white, so this catches a real violation with no judgement.
-- **`high_chroma_share`** — fraction of pixels above a saturation threshold. The
-  contract wants near-monochrome linework plus one muted accent.
+**One check:** `background_is_cream` — median colour of an 8px border ring,
+Euclidean RGB distance to the cream token `#f3ecd8` (243, 236, 216), violation
+above a threshold of **30**.
 
-Both thresholds are **calibrated against known cases, not guessed**: the hero
-images from `2026-08-10` and `2026-08-11` (visually clean, correct palette) must
-pass, and those from `2026-08-12`, `2026-08-13`, and `2026-08-15` (white or
-colour-heavy) must fail. These five become fixtures in the scoring unit tests, so
-the thresholds are pinned by regression test rather than by taste.
+Measured on raw generations, this separates cleanly:
+
+| Background | Distance to cream |
+|---|---|
+| White (violation) | 36.0 – 43.5 |
+| Cream (compliant) | 6.4 – 23.0 |
+
+**Fixtures must be raw generations, not published WebPs.** Measurement showed all
+five recent published heroes score an identical distance of 1.0, because
+`_add_label_band` composites every image onto cream paper before saving. A
+published image can never fail this check. This is the same reason the harness
+scores raw provider bytes throughout.
+
+**`high_chroma_share` was specified and then dropped.** Measured across the same
+raw images it does not discriminate: the two most palette-compliant images scored
+highest (0.0498, 0.0504) while a white-background violation scored lowest
+(0.0071). It measures how much ink is on the page, not whether the palette obeys
+the contract. Recorded here so it is not re-proposed later.
 
 ### Judged (vision model, strict JSON)
 
@@ -183,9 +194,11 @@ the thresholds are pinned by regression test rather than by taste.
 Three fields, each answerable from the image alone. `object_group_count` tests
 the "exactly three groups" rule.
 
-**The judge model ID must be verified against the provider before being pinned.**
-The first implementation task confirms an available vision model and makes it a
-CLI flag with that verified default. No model ID is assumed in this spec.
+**Judge model: `gemini-3.5-flash`, verified against the account before
+pinning.** Probed on two known images: it correctly returned `has_text: true`
+for a text-heavy generation and correctly flagged the publisher's own composited
+legend as text on a published WebP — which independently confirms that raw bytes,
+not published images, are the right scoring input. Exposed as `--judge-model`.
 
 ### Calibration
 
@@ -212,7 +225,7 @@ class ImageResult:
     error: str
     content_filtered: bool
     background_is_cream: bool
-    high_chroma_share: float
+    background_distance: float
     has_text: bool | None           # None = judge failed
     has_person: bool | None
     object_group_count: int | None
@@ -291,8 +304,9 @@ deliberately not estimated here.
 
 - Aggregation over synthetic `ImageResult` lists, including the `judged` vs
   `generated` denominator and per-stratum splits.
-- Palette checks against solid-colour PIL images generated in-test — a cream
-  square passes, a white square fails.
+- Palette checks against both solid-colour PIL images generated in-test (a
+  cream square passes, a white square fails) and committed raw-generation
+  fixtures spanning the measured 6.4–43.5 distance range.
 - Judge-failure and generation-failure paths asserted to be excluded from rates
   rather than counted as clean.
 - Contract-first assembly asserted to preserve the full directive at the
