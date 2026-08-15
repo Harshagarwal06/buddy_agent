@@ -15,7 +15,14 @@ import json
 import sys
 from pathlib import Path
 
-from scripts.eval_image_scoring import STRATA, VARIANTS, ImageResult
+from scripts.eval_image_scoring import (
+    STRATA,
+    VARIANTS,
+    ImageResult,
+    aggregate,
+    judge_agreement,
+    label_key,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURES_DIR = ROOT / "scripts" / "eval_fixtures"
@@ -206,3 +213,128 @@ def run_variants(judge, client_factory, limit: int | None = None) -> list[ImageR
         encoding="utf-8",
     )
     return results
+
+
+def write_label_template(results, sample_size: int = 20) -> Path:
+    """Emit an empty labels file for hand calibration. Deterministic sample."""
+    ARTIFACTS_DIR.mkdir(parents=True, exist_ok=True)
+    judged = [r for r in results if r.ok]
+    sample = sorted(judged, key=lambda r: label_key(r.variant, r.article_url))
+    sample = sample[:sample_size]
+    template = {
+        label_key(r.variant, r.article_url): {"has_text": None, "has_person": None}
+        for r in sample
+    }
+    path = ARTIFACTS_DIR / "labels.json"
+    path.write_text(json.dumps(template, indent=2), encoding="utf-8")
+    return path
+
+
+def load_labels() -> dict[str, dict]:
+    """Read hand labels, ignoring entries still left as null."""
+    path = ARTIFACTS_DIR / "labels.json"
+    if not path.exists():
+        return {}
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    return {
+        key: value
+        for key, value in raw.items()
+        if isinstance(value.get("has_text"), bool)
+        and isinstance(value.get("has_person"), bool)
+    }
+
+
+def load_results() -> list:
+    path = ARTIFACTS_DIR / "results.json"
+    if not path.exists():
+        raise RuntimeError(
+            f"{path} is missing. Run: python -m scripts.eval_image --run"
+        )
+    return [ImageResult(**row) for row in json.loads(path.read_text(encoding="utf-8"))]
+
+
+def build_report(output: Path) -> Path:
+    from datetime import datetime, timezone
+
+    from scripts.eval_image_report import render_report
+
+    results = load_results()
+    aggregates = [
+        aggregate(variant, [r for r in results if r.variant == variant])
+        for variant in VARIANTS
+    ]
+    agreement = judge_agreement(results, load_labels())
+    captured_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(
+        render_report(aggregates, agreement, captured_at), encoding="utf-8"
+    )
+    return output
+
+
+def main(argv: list[str] | None = None) -> int:
+    import argparse
+    import os
+
+    from dotenv import load_dotenv
+
+    load_dotenv(ROOT / ".env")
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--brief", action="store_true",
+                        help="Generate and cache one brief per article")
+    parser.add_argument("--run", action="store_true",
+                        help="Render every variant and judge the raw images")
+    parser.add_argument("--label", action="store_true",
+                        help="Emit a labels template for judge calibration")
+    parser.add_argument("--report", action="store_true",
+                        help="Aggregate results and write the markdown report")
+    parser.add_argument("--limit", type=int, default=None)
+    parser.add_argument("--judge-model", default=None)
+    parser.add_argument(
+        "--output", type=Path,
+        default=ROOT / "docs" / "evals" / "2026-08-15-image-directive.md",
+    )
+    args = parser.parse_args(argv)
+
+    if args.brief or args.run:
+        if not os.getenv("NVIDIA_API_KEY", "").strip():
+            raise SystemExit(
+                "NVIDIA_API_KEY is not set. Create a key at "
+                "https://build.nvidia.com/ and add it to .env."
+            )
+    if args.run and not os.getenv("GOOGLE_API_KEY", "").strip():
+        raise SystemExit("GOOGLE_API_KEY is not set; the image judge requires it.")
+
+    if args.brief:
+        print(f"Cached {cache_briefs(args.limit)} briefs to {BRIEFS_FILE}")
+        return 0
+
+    if args.run:
+        from news_buddy.image_generator import _NvidiaImageClient
+        from scripts.eval_image_judge import DEFAULT_JUDGE_MODEL, ImageJudge
+
+        token = os.getenv("NVIDIA_API_KEY", "").strip()
+        judge = ImageJudge(model=args.judge_model or DEFAULT_JUDGE_MODEL)
+        results = run_variants(
+            judge, lambda settings: _NvidiaImageClient(settings, token), args.limit
+        )
+        print(f"Rendered and judged {len(results)} images into {ARTIFACTS_DIR}")
+        return 0
+
+    if args.label:
+        path = write_label_template(load_results())
+        print(f"Label template written to {path}. Fill in each true/false, "
+              f"then run --report.")
+        return 0
+
+    if args.report:
+        print(f"Report written to {build_report(args.output)}")
+        return 0
+
+    parser.print_help()
+    return 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

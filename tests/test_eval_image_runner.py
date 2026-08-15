@@ -1,5 +1,6 @@
 import io
 import json
+import json as _json
 
 import pytest
 from PIL import Image
@@ -8,6 +9,7 @@ from news_buddy.image_generator import MAX_IMAGE_PROMPT_CHARS
 from scripts import eval_image
 from scripts.eval_image import assemble_prompt, load_topics
 from scripts.eval_image_judge import JudgeVerdict
+from scripts.eval_image_scoring import ImageResult
 
 
 def test_load_topics_maps_url_to_stratum(tmp_path):
@@ -96,3 +98,35 @@ def test_run_variants_produces_one_result_per_variant(monkeypatch, tmp_path):
     assert {r.variant for r in results} == set(eval_image.VARIANTS)
     assert all(r.ok for r in results)
     assert all(r.background_is_cream for r in results)
+
+
+def _res(url, variant="negated-truncated"):
+    return ImageResult(article_url=url, stratum="mechanism", variant=variant,
+                       ok=True, has_text=False, has_person=False,
+                       object_group_count=3, background_is_cream=True)
+
+
+def test_label_template_has_one_entry_per_sampled_image(monkeypatch, tmp_path):
+    monkeypatch.setattr(eval_image, "ARTIFACTS_DIR", tmp_path)
+    results = [_res(f"u{i}") for i in range(30)]
+    path = eval_image.write_label_template(results, sample_size=5)
+    data = _json.loads(path.read_text())
+    assert len(data) == 5
+    assert all(set(v) == {"has_text", "has_person"} for v in data.values())
+    assert all(v["has_text"] is None for v in data.values())
+
+
+def test_label_template_never_samples_more_than_available(monkeypatch, tmp_path):
+    monkeypatch.setattr(eval_image, "ARTIFACTS_DIR", tmp_path)
+    path = eval_image.write_label_template([_res("u1")], sample_size=20)
+    assert len(_json.loads(path.read_text())) == 1
+
+
+def test_load_labels_ignores_unfilled_entries(monkeypatch, tmp_path):
+    monkeypatch.setattr(eval_image, "ARTIFACTS_DIR", tmp_path)
+    (tmp_path / "labels.json").write_text(_json.dumps({
+        "negated-truncated::u1": {"has_text": True, "has_person": False},
+        "negated-truncated::u2": {"has_text": None, "has_person": None},
+    }))
+    labels = eval_image.load_labels()
+    assert set(labels) == {"negated-truncated::u1"}

@@ -276,6 +276,27 @@ default (`meta/llama-3.1-8b-instruct`), and the incumbent was kept because
 every candidate fell short on brief validity, the pass/fail gate fixed before
 the run.
 
+## Image Directive Evaluation
+
+`scripts/eval_image.py` measures whether changing the image style directive
+reduces contract violations. It renders a 2×2 of `{negated, positive}` phrasing
+× `{truncated, contract-preserved}` assembly over a 16-article corpus stratified
+into mechanism and person topics, then scores the **raw** provider output with a
+deterministic background check plus a calibrated vision judge.
+
+Like the model eval it is opt-in and never run by CI, since it makes real image
+and vision API calls:
+
+```bash
+python -m scripts.eval_image --brief    # once: cache one brief per article
+python -m scripts.eval_image --run      # 64 renders, judged
+python -m scripts.eval_image --label    # fill in the template by hand
+python -m scripts.eval_image --report   # aggregate -> docs/evals/
+```
+
+The judge's agreement with your hand labels is printed in the report header;
+below 90% the report marks its own conclusions provisional.
+
 ## Current Gaps
 
 - Dedup is URL-based, so the same story from several outlets can still appear as separate entries.
