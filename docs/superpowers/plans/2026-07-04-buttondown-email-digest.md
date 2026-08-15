@@ -10,7 +10,7 @@
 
 **Spec:** `docs/superpowers/specs/2026-07-04-buttondown-email-digest-design.md`
 
-**Working directory:** `/Users/harshagarwal/Desktop/bootcamp/buddy_agent`
+**Working directory:** the repository root
 
 **Test command used throughout:** `uv run --with pytest pytest tests/ -v`
 
