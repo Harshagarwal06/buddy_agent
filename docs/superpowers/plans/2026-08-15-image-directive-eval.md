@@ -832,8 +832,12 @@ def test_report_shows_both_judged_and_generated_counts():
     agg = _agg("negated-truncated")
     agg.generated = 16
     agg.judged = 14
-    report = render_report(agg and [agg], Agreement(labelled=20, text_accuracy=1.0,
-        person_accuracy=1.0, trustworthy=True), "2026-08-15T00:00:00+00:00")
+    report = render_report(
+        [agg],
+        Agreement(labelled=20, text_accuracy=1.0, person_accuracy=1.0,
+                  trustworthy=True),
+        "2026-08-15T00:00:00+00:00",
+    )
     assert "14/16" in report
 
 
