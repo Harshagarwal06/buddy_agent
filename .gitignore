@@ -29,3 +29,7 @@ news/
 
 # Evaluation fixtures: third-party article bodies, regenerable via --capture
 scripts/eval_fixtures/articles.json
+
+# Image evaluation: regenerable artifacts and cached briefs
+scripts/eval_artifacts/
+scripts/eval_fixtures/briefs.json
