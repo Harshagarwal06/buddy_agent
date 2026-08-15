@@ -46,6 +46,7 @@ Issues = "https://github.com/Harshagarwal06/buddy_agent/issues"
 dev = [
     "pytest",
     "ruff==0.15.22",
+    "google-genai",
     "langchain-google-genai",
     "huggingface-hub",
     "langchain-ollama",
