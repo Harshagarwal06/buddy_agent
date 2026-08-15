@@ -3,6 +3,17 @@ name = "news-buddy"
 version = "0.1.0"
 description = "Daily AI news digest pipeline with LangGraph, RSS feeds, LLM summaries, and notifications"
 readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Harsh Agarwal" }]
+keywords = ["ai", "news", "digest", "langgraph", "rss", "llm"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Text Processing :: Markup :: Markdown",
+]
 requires-python = ">=3.11"
 dependencies = [
     "langchain>=1.3.9",
