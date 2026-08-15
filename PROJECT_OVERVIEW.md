@@ -100,11 +100,54 @@ generated documentation page.
 | **Hugging Face** | `huggingface` / `hf` | `_HuggingFaceChatModel` — adapter over `huggingface_hub.InferenceClient` | Routes through HF Inference Providers (`hf_provider: auto`) |
 | **Ollama** | `ollama` | `langchain-ollama` → `ChatOllama` | Local models; pre-flight verified against `/api/tags` |
 
-The NVIDIA pipeline is the minimal default install. Google, Hugging Face,
-Ollama, RAG, and observability integrations are opt-in package extras so unused
-provider stacks and local tooling are not installed in production.
-
 **Production summarizer model:** `meta/llama-3.1-8b-instruct` (NVIDIA NIM)
+
+### Optional dependency extras
+
+The NVIDIA pipeline is the minimal default install: a bare `pip install .`
+brings only LangChain/LangGraph, feedparser, trafilatura, httpx, lxml, pillow,
+pyyaml, python-dotenv, and tenacity. Because `config.yaml` ships with
+`provider: nvidia` and the NVIDIA adapters are hand-written over `httpx`, the
+production path needs no extra at all.
+
+Everything else is opt-in, so an unused provider stack is never installed in
+production:
+
+| Extra | Installs | Needed for |
+|---|---|---|
+| `google` | `langchain-google-genai` | `llm.provider: google` |
+| `huggingface` | `huggingface-hub` | `llm.provider: huggingface`, and the HF image provider |
+| `ollama` | `langchain-ollama` | `llm.provider: ollama` |
+| `rag` | `chromadb`, `langchain-google-genai` | `rag.py`, `semantic_search_cli.py`, `backfill_rag.py`, and the knowledge base |
+| `observability` | `arize-phoenix-otel`, `openinference-instrumentation-langchain` | `OTEL_TRACING=true` |
+
+```bash
+pip install '.[google]'
+pip install '.[huggingface]'
+pip install '.[ollama]'
+pip install '.[rag]'
+pip install '.[observability]'
+```
+
+Two consequences worth knowing:
+
+- The **full `arize-phoenix` UI package is no longer a dependency at all.** Only
+  the OTel client remains, in the `observability` extra — the Phoenix collector
+  is expected to be run separately. This is the single largest contributor to
+  the reduced lockfile.
+- The `rag` extra carries a **documented security caveat**. ChromaDB 1.5.9 has
+  an unfixed pre-authentication server vulnerability
+  ([PYSEC-2026-311](https://osv.dev/vulnerability/PYSEC-2026-311)) in an API
+  path News Buddy does not use. Because the project only ever uses the
+  in-process `PersistentClient`, the mitigation recorded in `SECURITY.md` is
+  "do not expose a Chroma HTTP server from this environment" rather than a
+  version bump.
+
+The `dev` dependency group installs every extra, so the test suite exercises all
+providers regardless of which extras a deployment selects.
+
+**Version floors:** `langchain>=1.3.9`, `langgraph>=1.2.11`, `httpx>=0.28.1`,
+with `ruff` pinned exactly to `0.15.22` in both packages.
 
 ### Image generation
 
@@ -278,6 +321,68 @@ buddy_agent/
 ├── CLAUDE.md                      # Pointer to AGENTS.md
 └── DIAGRAM.md                     # Node-level Mermaid flow diagrams
 ```
+
+---
+
+### Packaging and path resolution
+
+**File:** `news_buddy/paths.py`
+
+The project must work in two very different layouts: a **source checkout**,
+where `config.yaml` and `prompts/` sit next to the package, and an **installed
+wheel**, where they do not. Before this module existed, roughly ten modules
+computed their own `Path(__file__).parent.parent`, which silently resolves to
+`site-packages/` once installed. `paths.py` is the single place that decides.
+
+Three functions, three distinct jobs:
+
+| Function | Answers |
+|---|---|
+| `runtime_root()` | Where do I *write*? (`state.db`, `chroma_db/`, `knowledge_base/`, `.env`) |
+| `resource_path(rel)` | Where do I *read* a shipped asset? (prompts, tokens.css, favicon.svg) |
+| `default_config_path()` | Which `config.yaml` applies? |
+
+**`runtime_root()`** resolves in priority order:
+
+1. `NEWS_BUDDY_HOME` if set — an explicit, expanded, resolved path.
+2. The source root, if `config.yaml` sits beside the package (checkout).
+3. The current working directory (installed wheel).
+
+**`resource_path()`** resolves in priority order:
+
+1. The path itself, if already absolute.
+2. The source root — so a checkout always overrides bundled copies, which is
+   what keeps local prompt edits effective.
+3. The runtime root.
+4. `news_buddy/resources/` — the bundled fallback.
+
+**Wheel bundling.** Hatch force-includes four assets into the wheel:
+
+```toml
+[tool.hatch.build.targets.wheel.force-include]
+"config.yaml" = "news_buddy/resources/config.yaml"
+"prompts"     = "news_buddy/resources/prompts"
+"tokens.css"  = "news_buddy/resources/tokens.css"
+"favicon.svg" = "news_buddy/resources/favicon.svg"
+```
+
+So an installed `news-buddy` has a working default configuration, the full
+prompt set, and the design tokens needed to render a digest page — with no
+checkout present.
+
+**Modules converted:** `agent.py` (`_PROMPTS`, `_DB`), `__main__.py` (the
+`--config` default and `.env` loading), `html_writer.py` and `archive_writer.py`
+(`tokens.css`, `favicon.svg`), `image_generator.py` (the style guide, including
+relative `style_guide` config values), `knowledge_base.py` (`_KB_PATH`),
+`rag.py` (`_CHROMA_PATH`), `search.py`, `semantic_search_cli.py`, and
+`backfill_rag.py`.
+
+**Verified in CI, not just unit-tested.** Beyond the four tests in
+`tests/test_paths.py`, the `test` job builds the wheel, installs it into a fresh
+virtualenv, and runs `news-buddy run --dry-run --verbose` **from a temporary
+directory**. That is the check that actually catches a resource path resolving
+into `site-packages/`, because it runs with no checkout anywhere near the
+working directory.
 
 ---
 
@@ -502,6 +607,29 @@ Public API:
 - `get_sub_model(config)` — the summarizer. Always built with `json_mode=True`.
 - `get_main_model(config)` — **currently unused by the graph.** Kept as a seam;
   `AGENTS.md` documents this explicitly so nobody assumes it is live.
+
+### Missing-extra guards
+
+Because three of the four providers now live behind optional extras, each
+import site is wrapped so a missing package produces an actionable message
+instead of a bare `ModuleNotFoundError`:
+
+```python
+try:
+    from langchain_ollama import ChatOllama
+except ModuleNotFoundError as exc:
+    raise RuntimeError(
+        "Ollama support is not installed. Run: pip install 'news-buddy[ollama]'"
+    ) from exc
+```
+
+The same pattern guards `langchain_google_genai` in `_build_google` and
+`huggingface_hub` in `_HuggingFaceChatModel.__init__`. Each preserves the
+original exception via `from exc`. NVIDIA needs no guard — its adapter is
+hand-written over `httpx`, which is a core dependency.
+
+The imports remain **inside** the builder functions, so selecting one provider
+never imports another provider's stack.
 
 ### Provider details
 
@@ -812,7 +940,7 @@ a missing database self-heals. Timestamps are UTC ISO 8601.
 
 Before an article is embedded, it is written once as a Markdown file following
 **Google Cloud's Open Knowledge Format (OKF), `okf_version 0.1`**, at
-`knowledge_base/articles/{sha256(url)[:16]}.md`:
+`runtime_root() / "knowledge_base" / "articles" / f"{sha256(url)[:16]}.md"`:
 
 ```markdown
 ---
@@ -838,7 +966,12 @@ This was introduced across commits `732555f` → `bb35b53` (design spec at
 
 ### Chroma vector store — `news_buddy/rag.py`
 
-- `chromadb.PersistentClient` at `chroma_db/`, collection `articles`,
+- The whole module is guarded by a single module-level `try`/`except
+  ModuleNotFoundError` that raises
+  `"RAG support is not installed. Run: pip install 'news-buddy[rag]'"`. Unlike
+  the provider guards this sits at import time, because Chroma and the embedder
+  are used throughout the module rather than in one builder.
+- `chromadb.PersistentClient` at `runtime_root() / "chroma_db"`, collection `articles`,
   `{"hnsw:space": "cosine"}`.
 - **Two separate embedders**, both `models/gemini-embedding-2`: one with
   `task_type="retrieval_document"` for indexing, one with
@@ -1358,6 +1491,28 @@ are embedded directly in `tokens.css`, `html_writer.py`, and
 
 ## 22. Configuration reference
 
+### Install profile
+
+A default `pip install .` covers the configured NVIDIA pipeline and nothing
+else. Provider stacks, RAG, and tracing are opt-in extras — see
+[Optional dependency extras](#optional-dependency-extras) for the table and the
+install commands.
+
+### Where state is written
+
+Resolved by `runtime_root()` in `news_buddy/paths.py`:
+
+| Situation | Writable root |
+|---|---|
+| `NEWS_BUDDY_HOME` is set | That path, expanded and resolved |
+| Source checkout (`config.yaml` beside the package) | The repository root |
+| Installed wheel | The current working directory |
+
+This governs `state.db`, `chroma_db/`, `knowledge_base/`, and which `.env` is
+loaded. Setting `NEWS_BUDDY_HOME` is the supported way to keep runtime data
+somewhere stable when running an installed package, since the default otherwise
+follows whatever directory the command was invoked from.
+
 ### `config.yaml`
 
 **Feeds and filtering**
@@ -1540,7 +1695,7 @@ and HTML output.
 | Merged pull requests | 12 |
 | Python modules (main package) | 22 |
 | Python modules (MCP package) | 3 |
-| Total Python LOC (source + scripts + tests) | ~7,955 |
+| Total Python LOC (source + scripts + tests) | ~7,744 |
 | Largest module | `agent.py` (864 lines) |
 | Second largest | `image_generator.py` (806 lines) |
 | Tests (main / MCP) | 124 / 15 |
