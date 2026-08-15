@@ -53,6 +53,7 @@ dev = [
     "chromadb",
     "arize-phoenix-otel",
     "openinference-instrumentation-langchain",
+    "numpy",
 ]
 
 [project.scripts]

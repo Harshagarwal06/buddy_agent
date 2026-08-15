@@ -11,7 +11,7 @@ from PIL import Image
 CREAM_RGB = (243, 236, 216)
 
 # Measured separation on raw generations: white backgrounds land at 36.0-43.5,
-# cream backgrounds at 6.4-23.0. 30 splits them with margin on both sides.
+# cream backgrounds at 9.4-23.0. 30 splits them with margin on both sides.
 BACKGROUND_THRESHOLD = 30.0
 
 _RING_PX = 8
