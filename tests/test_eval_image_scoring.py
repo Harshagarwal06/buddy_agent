@@ -4,12 +4,14 @@ from pathlib import Path
 from PIL import Image
 
 from scripts.eval_image_scoring import (
+    AGREEMENT_THRESHOLD,
     BACKGROUND_THRESHOLD,
     ImageResult,
     aggregate,
     background_distance,
     background_is_cream,
     is_clean,
+    judge_agreement,
 )
 
 FIXTURES = Path(__file__).parent / "fixtures" / "images"
@@ -117,3 +119,39 @@ def test_empty_results_do_not_divide_by_zero():
     assert agg.generated == 0
     assert agg.judged == 0
     assert agg.clean_rate == 0.0
+
+
+def test_perfect_agreement_is_trustworthy():
+    results = [_result(article_url="u1"), _result(article_url="u2", has_text=True)]
+    labels = {
+        "positive-preserved::u1": {"has_text": False, "has_person": False},
+        "positive-preserved::u2": {"has_text": True, "has_person": False},
+    }
+    agreement = judge_agreement(results, labels)
+    assert agreement.labelled == 2
+    assert agreement.text_accuracy == 1.0
+    assert agreement.trustworthy is True
+
+
+def test_disagreement_below_threshold_is_not_trustworthy():
+    results = [_result(article_url=f"u{i}", has_text=(i == 0)) for i in range(4)]
+    labels = {
+        f"positive-preserved::u{i}": {"has_text": False, "has_person": False}
+        for i in range(4)
+    }
+    agreement = judge_agreement(results, labels)
+    assert agreement.text_accuracy == 0.75
+    assert agreement.trustworthy is False
+    assert AGREEMENT_THRESHOLD == 0.90
+
+
+def test_unlabelled_results_are_ignored():
+    results = [_result(article_url="u1"), _result(article_url="unlabelled")]
+    labels = {"positive-preserved::u1": {"has_text": False, "has_person": False}}
+    assert judge_agreement(results, labels).labelled == 1
+
+
+def test_no_labels_is_not_trustworthy():
+    agreement = judge_agreement([_result()], {})
+    assert agreement.labelled == 0
+    assert agreement.trustworthy is False

@@ -126,3 +126,46 @@ def aggregate(variant: str, results: list[ImageResult]) -> VariantAggregate:
         if any(r.stratum == stratum for r in results)
     }
     return combined
+
+
+AGREEMENT_THRESHOLD = 0.90
+
+
+@dataclass
+class Agreement:
+    labelled: int = 0
+    text_accuracy: float = 0.0
+    person_accuracy: float = 0.0
+    trustworthy: bool = False
+
+
+def label_key(variant: str, article_url: str) -> str:
+    return f"{variant}::{article_url}"
+
+
+def judge_agreement(
+    results: list[ImageResult], labels: dict[str, dict]
+) -> Agreement:
+    """Compare judge verdicts against hand labels. No labels means not trustworthy."""
+    text_hits = person_hits = labelled = 0
+    for result in results:
+        truth = labels.get(label_key(result.variant, result.article_url))
+        if truth is None or result.has_text is None or result.has_person is None:
+            continue
+        labelled += 1
+        text_hits += int(result.has_text == truth["has_text"])
+        person_hits += int(result.has_person == truth["has_person"])
+
+    if labelled == 0:
+        return Agreement()
+    text_accuracy = text_hits / labelled
+    person_accuracy = person_hits / labelled
+    return Agreement(
+        labelled=labelled,
+        text_accuracy=text_accuracy,
+        person_accuracy=person_accuracy,
+        trustworthy=(
+            text_accuracy >= AGREEMENT_THRESHOLD
+            and person_accuracy >= AGREEMENT_THRESHOLD
+        ),
+    )
