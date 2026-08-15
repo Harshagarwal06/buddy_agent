@@ -216,11 +216,30 @@ def run_variants(judge, client_factory, limit: int | None = None) -> list[ImageR
 
 
 def write_label_template(results, sample_size: int = 20) -> Path:
-    """Emit an empty labels file for hand calibration. Deterministic sample."""
+    """Emit an empty labels file for hand calibration.
+
+    Samples round-robin across variants so every arm of the experiment is
+    represented. Sorting by label_key alone would order by the variant name
+    prefix and hand back a sample drawn from only the first variant or two,
+    leaving the rest of the experiment's judge accuracy unmeasured.
+    """
     ARTIFACTS_DIR.mkdir(parents=True, exist_ok=True)
     judged = [r for r in results if r.ok]
-    sample = sorted(judged, key=lambda r: label_key(r.variant, r.article_url))
-    sample = sample[:sample_size]
+
+    groups: dict[str, list] = {}
+    for result in sorted(judged, key=lambda r: label_key(r.variant, r.article_url)):
+        groups.setdefault(result.variant, []).append(result)
+
+    sample = []
+    depth = 0
+    while len(sample) < sample_size and any(len(g) > depth for g in groups.values()):
+        for variant in sorted(groups):
+            if len(sample) >= sample_size:
+                break
+            if len(groups[variant]) > depth:
+                sample.append(groups[variant][depth])
+        depth += 1
+
     template = {
         label_key(r.variant, r.article_url): {"has_text": None, "has_person": None}
         for r in sample

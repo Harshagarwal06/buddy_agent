@@ -130,3 +130,43 @@ def test_load_labels_ignores_unfilled_entries(monkeypatch, tmp_path):
     }))
     labels = eval_image.load_labels()
     assert set(labels) == {"negated-truncated::u1"}
+
+
+def test_load_labels_ignores_half_filled_entries(monkeypatch, tmp_path):
+    monkeypatch.setattr(eval_image, "ARTIFACTS_DIR", tmp_path)
+    (tmp_path / "labels.json").write_text(_json.dumps({
+        "negated-truncated::u1": {"has_text": True, "has_person": None},
+        "negated-truncated::u2": {"has_text": False, "has_person": False},
+    }))
+    labels = eval_image.load_labels()
+    assert set(labels) == {"negated-truncated::u2"}
+
+
+def test_label_template_covers_every_variant(monkeypatch, tmp_path):
+    """Sorting by label_key alone would sample only the first variant or two."""
+    monkeypatch.setattr(eval_image, "ARTIFACTS_DIR", tmp_path)
+    results = [
+        _res(f"u{i}", variant=variant)
+        for variant in eval_image.VARIANTS
+        for i in range(16)
+    ]
+    path = eval_image.write_label_template(results, sample_size=20)
+    keys = _json.loads(path.read_text())
+    sampled_variants = {key.split("::")[0] for key in keys}
+    assert sampled_variants == set(eval_image.VARIANTS)
+
+
+def test_label_template_is_deterministic_regardless_of_input_order(monkeypatch, tmp_path):
+    import random
+
+    monkeypatch.setattr(eval_image, "ARTIFACTS_DIR", tmp_path)
+    results = [
+        _res(f"u{i}", variant=variant)
+        for variant in eval_image.VARIANTS
+        for i in range(8)
+    ]
+    first = eval_image.write_label_template(results, sample_size=12).read_text()
+    shuffled = list(results)
+    random.Random(0).shuffle(shuffled)
+    second = eval_image.write_label_template(shuffled, sample_size=12).read_text()
+    assert first == second
