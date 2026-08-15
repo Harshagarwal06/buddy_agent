@@ -1,0 +1,116 @@
+[
+  {
+    "title": "An Infamous Math Problem Closer to Being Solved by Encouraging AI",
+    "url": "https://www.wsj.com/tech/ai/ai-math-riemann-hypothesis-anthropic-openai-22f98a87",
+    "source": "Hacker News AI",
+    "published_at": "2026-08-15",
+    "summary": "The Riemann hypothesis, a famous math problem, is closer to being solved by using artificial intelligence. Researchers at OpenAI are making progress by encouraging AI to explore the vast mathematical space, leveraging the Anthropic method, which involves training AI on vast amounts of data to identify patterns. This breakthrough could have significant implications for cryptography and number theory, potentially leading to new discoveries and a deeper understanding of the underlying mathematics.",
+    "tags": [
+      "ai",
+      "science"
+    ],
+    "importance": 4,
+    "image_url": "images/cd06076bc8d0431d874e.webp",
+    "image_alt": "AI's role in solving the Riemann hypothesis through pattern recognition in vast mathematical space"
+  },
+  {
+    "title": "Apple trained its own AI model for China with help from Alibaba",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/980160/apple-intelligence-china-custom-ai-model-alibaba",
+    "source": "The Verge AI",
+    "published_at": "2026-08-14",
+    "summary": "Apple trained a custom AI model for China with Alibaba's help, marking a departure from its previous strategy and giving the company more control over its products in the competitive Chinese smartphone market. The model was developed in partnership with Alibaba and trained with the company's support, using data that is not publicly available. This move allows Apple to offer a proprietary AI model in China, clearing a major regulatory hurdle and giving the company a leg up in navigating Beijing's difficult regulatory landscape.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/0b964477f8a5b7279eb0.webp",
+    "image_alt": "Apple's partnership with Alibaba to develop a custom AI model for China, clearing a major regulatory hurdle and giving the company a leg up in navigating Beijing's difficult regulatory landscape."
+  },
+  {
+    "title": "OpenAI and Anthropic in price war as Chinese AI rivals gain ground",
+    "url": "https://arstechnica.com/ai/2026/08/openai-and-anthropic-in-price-war-as-chinese-ai-rivals-gain-ground/",
+    "source": "Ars Technica AI",
+    "published_at": "2026-08-14",
+    "summary": "OpenAI and Anthropic are releasing cheaper AI models in a price war with Chinese rivals. US labs are slashing prices by up to 80% to retain customers, who are switching to cut-price alternatives from Chinese developers like Moonshot and DeepSeek. This shift marks a change for US AI groups, which have traditionally competed on performance, and comes as investors seek evidence of returns on the industry's vast spending on AI.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/fce92423e94d83625c8e.webp",
+    "image_alt": "A comparison of the price drop and market shift between US and Chinese AI models"
+  },
+  {
+    "title": "AI Driven Testing",
+    "url": "https://app.deltix.ai",
+    "source": "Hacker News AI",
+    "published_at": "2026-08-15",
+    "summary": "AI Driven Testing offers a free service that lets users describe tasks in plain English, which are then run on a simulator to see if a real user could complete them. The service uses an AI agent that acts like a real user, taking screenshots and recording the run, and can be used to test iOS and Android apps, as well as React Native and Flutter apps. This allows developers to see which versions of their app are more user-friendly and make data-driven design decisions.",
+    "tags": [
+      "ai",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/4d8b2ce8837c2edfc1c7.webp",
+    "image_alt": "AI agent testing user tasks on a simulator with screenshots and run records"
+  },
+  {
+    "title": "You can now turn off Google Gemini&#8217;s visible watermarks",
+    "url": "https://www.theverge.com/tech/980416/google-gemini-ai-watermarks-removal",
+    "source": "The Verge AI",
+    "published_at": "2026-08-14",
+    "summary": "Google Gemini's visible watermarks can now be turned off. The watermarks, which appear as a sparkle in the bottom-right corner, are optional but still embedded in AI-generated content. This change may make it harder to quickly identify AI-generated content, but users can still verify it through Gemini or Search.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 1,
+    "image_url": "images/205e57ba3a97819a2657.webp",
+    "image_alt": "Google Gemini's visible watermarks can be turned off, but AI-generated content still has invisible watermarks and can be verified through Gemini or Search."
+  },
+  {
+    "title": "Mark Zuckerberg has an Instagzam",
+    "url": "https://www.theverge.com/podcast/980367/instagram-logo-new-zuckerberg-ai-vergecast",
+    "source": "The Verge AI",
+    "published_at": "2026-08-14",
+    "summary": "Instagram replaced its iconic wordmark with a new logo, which no longer resembles the original spelling. The change is part of a broader trend of frequent redesigns. The new logo's purpose and benefits are unclear, leaving many questioning the decision.",
+    "tags": [
+      "technology",
+      "culture"
+    ],
+    "importance": 1,
+    "image_url": "images/0ac9f6af60efa81f0a36.webp",
+    "image_alt": "Instagram's old logo and new logo, with a question about the change"
+  },
+  {
+    "title": "Thank you to the people building these AI tools",
+    "url": "https://news.ycombinator.com/item?id=49306820",
+    "source": "Hacker News AI",
+    "published_at": "2026-08-15",
+    "summary": "AI tools have positively impacted user's work and family well-being. The user appreciates having a high-level thinking partner in their pocket, building things to their specifications for $500-600 per month. This enables the user to work on their mission of teaching kids how to stay safe online.",
+    "tags": [
+      "ai",
+      "technology"
+    ],
+    "importance": 1,
+    "image_url": "images/ba10d679081b8666d750.webp",
+    "image_alt": "How AI tools enable users to build safe online environments"
+  },
+  {
+    "title": "Yester World Asking for Help from Google De-Monitization and AI [video]",
+    "url": "https://www.youtube.com/watch?v=z9QiBMdvgRE",
+    "source": "Hacker News AI",
+    "published_at": "2026-08-15",
+    "summary": "YouTube is asking for help from Google to de-monitization and AI. Only the headline-level development is known. The practical consequence is unclear without more information.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 1,
+    "image_url": "images/133cb5b71c8c0b479752.webp",
+    "image_alt": "YouTube asking for help from Google with de-monitization and AI"
+  }
+]
