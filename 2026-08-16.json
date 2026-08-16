@@ -1,0 +1,117 @@
+[
+  {
+    "title": "Woman claims her stepfather used Grok to transform childhood photo into explicit imagery",
+    "url": "https://techcrunch.com/2026/08/15/woman-claims-her-stepfather-used-grok-to-transform-childhood-photo-into-explicit-imagery/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-15",
+    "summary": "Jane Doe 4 claims her stepfather used Grok to transform a childhood photo into over 7,000 explicit images when she was 11 years old. The photo was allegedly manipulated using Elon Musk's xAI chatbot Grok, which has been linked to the creation of millions of sexualized images. This incident highlights the risks of unregulated access to AI tools, which can be exploited to create child sexual abuse material.",
+    "tags": [
+      "technology",
+      "ai",
+      "world",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/8c22c841feb5d7afa6cc.webp",
+    "image_alt": "A childhood photo is transformed into explicit images through a chatbot, highlighting the risks of unregulated AI access."
+  },
+  {
+    "title": "SpaceX officially closes its Cursor acquisition",
+    "url": "https://techcrunch.com/2026/08/15/spacex-officially-closes-its-cursor-acquisition/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-15",
+    "summary": "SpaceX officially closes its acquisition of AI coding startup Cursor. The acquisition gives SpaceX access to Cursor's technology and expertise, as well as access to the largest fleet of GPUs in the world, which SpaceX has been renting out to customers including Anthropic and Google. By becoming part of SpaceX, Cursor will contribute to the development of computing capacity needed to scale intelligence far beyond what exists today.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/96a37decf273e56a4848.svg",
+    "image_alt": "SpaceX acquires Cursor, scaling intelligence with the world's largest fleet of GPUs"
+  },
+  {
+    "title": "Fine-Tuning Tool-Calling LLMs: A Complete Guide Using XYZ-Aquila-SFT and Qwen3",
+    "url": "https://www.marktechpost.com/2026/08/15/fine-tuning-tool-calling-llms-a-complete-guide-using-xyz-aquila-sft-and-qwen3/",
+    "source": "MarkTechPost",
+    "published_at": "2026-08-15",
+    "summary": "Fine-tuning tool-calling LLMs involves implementing a supervised fine-tuning pipeline for the XYZ-Aquila-SFT dataset, using Hugging Face Transformers, PyTorch, and PEFT. The process includes streaming and inspecting the dataset, parsing multi-turn tool-use trajectories, and converting tool schemas between message-embedded and structured formats. This enables the evaluation of tool-call prediction before and after training, and the export of transformed dataset and corpus statistics for further experimentation.",
+    "tags": [
+      "ai",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/2f906b59991d26782b76.svg",
+    "image_alt": "A fine-tuning pipeline for tool-calling LLMs"
+  },
+  {
+    "title": "Have a laugh at AI’s expense by roleplaying as a chatbot",
+    "url": "https://www.theverge.com/entertainment/980502/roleplay-as-an-ai-chatbot",
+    "source": "The Verge AI",
+    "published_at": "2026-08-15",
+    "summary": "A website called Your AI Slop Bores Me allows users to roleplay as a chatbot by submitting requests and responding within a time limit. The site uses a token system, where users earn credits by answering requests and can use them to make new requests. This game-like experience allows users to poke fun at AI's limitations and creativity.",
+    "tags": [
+      "ai",
+      "culture"
+    ],
+    "importance": 1,
+    "image_url": "images/7170a6d4a7cbbc5e7e87.webp",
+    "image_alt": "A user submitting a request, a chatbot responding, and earning credits in a game-like experience"
+  },
+  {
+    "title": "Anthropic shares more details about how Claude’s new watermarks will work",
+    "url": "https://techcrunch.com/2026/08/15/anthropic-shares-more-details-about-how-claudes-new-watermarks-will-work/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-15",
+    "summary": "Anthropic's chatbot Claude will be watermarked to comply with the EU AI Act's Transparency Code. The watermarking uses the SynthID-Text approach, making it undetectable to readers but detectable with a key. This does not impact Claude's output quality, but editing or rewriting the text may remove the watermark.",
+    "tags": [
+      "ai",
+      "technology"
+    ],
+    "importance": 1,
+    "image_url": "images/ca4f9de05cfa50a50408.webp",
+    "image_alt": "How Claude's watermarks work and their implications"
+  },
+  {
+    "title": "Snap Chart AI",
+    "url": "https://www.snap-chart.ai/",
+    "source": "Hacker News AI",
+    "published_at": "2026-08-16",
+    "summary": "Snap Chart AI is a platform that provides AI-powered charting capabilities. Only the headline-level development is known, as the article body is empty. The practical consequence of this development is unclear.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 1,
+    "image_url": "images/0fc13c36ffbc1018ad1e.webp",
+    "image_alt": "AI-powered charting capabilities explained"
+  },
+  {
+    "title": "TrueStar – AI moderated expert interviews and multi-agent deep research",
+    "url": "https://truestar.tech",
+    "source": "Hacker News AI",
+    "published_at": "2026-08-16",
+    "summary": "TruStar developed AI-moderated expert interviews and multi-agent deep research. This technology uses natural language processing and machine learning algorithms to analyze and synthesize complex information. The practical consequence is improved research efficiency and more accurate expert insights.",
+    "tags": [
+      "ai",
+      "technology",
+      "science"
+    ],
+    "importance": 1,
+    "image_url": "images/c96473941c501a25d50d.webp",
+    "image_alt": "AI moderated expert interviews and multi-agent deep research process"
+  },
+  {
+    "title": "Has the hallucination problem in AI been solved?",
+    "url": "https://news.ycombinator.com/item?id=49316330",
+    "source": "Hacker News AI",
+    "published_at": "2026-08-16",
+    "summary": "AI hallucination problem remains unsolved, with users downvoting claims of its existence without providing evidence. The issue is often misunderstood, with some believing it's more nuanced than previously thought. The lack of concrete sources and evidence on the topic makes it difficult to determine the current state of AI hallucination.",
+    "tags": [
+      "ai",
+      "technology"
+    ],
+    "importance": 1,
+    "image_url": "images/deb4c9eb87e3f2549815.webp",
+    "image_alt": "Comparison of AI model's uncertainty and the lack of evidence on the hallucination problem."
+  }
+]
