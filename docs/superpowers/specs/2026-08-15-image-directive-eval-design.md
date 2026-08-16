@@ -158,6 +158,28 @@ drawing easier articles. Every rate is reported per stratum as well as overall.
 `topics.json` contains only URLs and tags — no article bodies — so it is safe to
 commit alongside `manifest.json`.
 
+### The corpus lives in its own directory
+
+`scripts/eval_image_fixtures/`, **not** the sub_model harness's
+`scripts/eval_fixtures/`. Two reasons:
+
+1. `--capture` overwrites both `articles.json` and the committed
+   `manifest.json` of whatever directory it targets. `scripts/eval_fixtures/`
+   holds the frozen record behind a published sub_model baseline report;
+   recapturing there would destroy that provenance.
+2. The two evaluations need corpora selected on different criteria. The
+   sub_model corpus was captured for summarizer quality and happens to contain
+   only 5 articles with a named individual as the headline's subject — not
+   enough to fill a balanced `person` stratum. A first attempt at 8/8 from that
+   pool had to pad with three corporate/deal stories, which the reviewers
+   correctly judged too weak to support the comparison.
+
+The image corpus is 60 articles captured 2026-08-16, from which 16 are tagged.
+Selection rule applied: `person` requires a **human being at the story's
+centre**, not merely quoted within it. Corporate funding, acquisition, and
+product-launch stories are excluded from both strata, since they were the
+source of the earlier ambiguity.
+
 ## Scoring
 
 ### Deterministic (Pillow + numpy, no network)

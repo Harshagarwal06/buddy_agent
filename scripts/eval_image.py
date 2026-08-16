@@ -25,7 +25,14 @@ from scripts.eval_image_scoring import (
 )
 
 ROOT = Path(__file__).resolve().parents[1]
-FIXTURES_DIR = ROOT / "scripts" / "eval_fixtures"
+
+# Deliberately separate from scripts/eval_fixtures/, which holds the sub_model
+# baseline's corpus. That manifest is the frozen record behind a published
+# report, and `--capture` overwrites whatever directory it is given. The image
+# eval also needs a corpus selected on different criteria: enough articles with
+# a named individual as the headline's subject to fill a balanced person
+# stratum, which the 24-article sub_model corpus could not supply.
+FIXTURES_DIR = ROOT / "scripts" / "eval_image_fixtures"
 ARTIFACTS_DIR = ROOT / "scripts" / "eval_artifacts"
 TOPICS_FILE = FIXTURES_DIR / "topics.json"
 BRIEFS_FILE = FIXTURES_DIR / "briefs.json"

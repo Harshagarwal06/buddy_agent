@@ -33,3 +33,8 @@ scripts/eval_fixtures/articles.json
 # Image evaluation: regenerable artifacts and cached briefs
 scripts/eval_artifacts/
 scripts/eval_fixtures/briefs.json
+
+# Image eval corpus: third-party article bodies and regenerable briefs.
+# Only manifest.json and topics.json are committed.
+scripts/eval_image_fixtures/articles.json
+scripts/eval_image_fixtures/briefs.json

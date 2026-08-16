@@ -1,0 +1,425 @@
+{
+  "captured_at": "2026-08-16T06:52:56+00:00",
+  "articles": [
+    {
+      "url": "https://techcrunch.com/2026/08/15/woman-claims-her-stepfather-used-grok-to-transform-childhood-photo-into-explicit-imagery/",
+      "title": "Woman claims her stepfather used Grok to transform childhood photo into explicit imagery",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-15",
+      "body_sha256": "caa26b773df3da7d4bdd33b90afcb3c1486394bbe57da742b6bb15b99d46073b"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/15/spacex-officially-closes-its-cursor-acquisition/",
+      "title": "SpaceX officially closes its Cursor acquisition",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-15",
+      "body_sha256": "2e4e59a0cff50cc38b9ffe1cd27771ef0e253840a859643fb31146e2959e8f4d"
+    },
+    {
+      "url": "https://www.marktechpost.com/2026/08/15/fine-tuning-tool-calling-llms-a-complete-guide-using-xyz-aquila-sft-and-qwen3/",
+      "title": "Fine-Tuning Tool-Calling LLMs: A Complete Guide Using XYZ-Aquila-SFT and Qwen3",
+      "source": "MarkTechPost",
+      "published_at": "2026-08-15",
+      "body_sha256": "12f2b6c10c5131ed96751d1615e15b31f73cde9f17e4926f9caf609a6c430d9c"
+    },
+    {
+      "url": "https://www.theverge.com/entertainment/980502/roleplay-as-an-ai-chatbot",
+      "title": "Have a laugh at AI’s expense by roleplaying as a chatbot",
+      "source": "The Verge AI",
+      "published_at": "2026-08-15",
+      "body_sha256": "d4604e2f3eed3868ad02790b3d0a9cf1774b9805c0be710c06f97b5f86baf472"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/15/anthropic-shares-more-details-about-how-claudes-new-watermarks-will-work/",
+      "title": "Anthropic shares more details about how Claude’s new watermarks will work",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-15",
+      "body_sha256": "ad4bd143c32d87d1a0771c840a023961cac6bdc5add86131e13a67fec915dac5"
+    },
+    {
+      "url": "https://news.ycombinator.com/item?id=49316330",
+      "title": "Has the hallucination problem in AI been solved?",
+      "source": "Hacker News AI",
+      "published_at": "2026-08-16",
+      "body_sha256": "f82380eec39f610a9b72e3ab5f2858afde45f9fe7fc8f2680e5cb40298e12b7f"
+    },
+    {
+      "url": "https://www.theverge.com/ai-artificial-intelligence/980160/apple-intelligence-china-custom-ai-model-alibaba",
+      "title": "Apple trained its own AI model for China with help from Alibaba",
+      "source": "The Verge AI",
+      "published_at": "2026-08-14",
+      "body_sha256": "8453c34394ec8f7f2775df19a90cb2196c634b3dc828134b65d7cd6679539931"
+    },
+    {
+      "url": "https://app.deltix.ai",
+      "title": "AI Driven Testing",
+      "source": "Hacker News AI",
+      "published_at": "2026-08-15",
+      "body_sha256": "b4747edf45eb3c1cf76582db170913bae7533f6d7a4d3a5f632723f54af89fc4"
+    },
+    {
+      "url": "https://www.theverge.com/tech/980416/google-gemini-ai-watermarks-removal",
+      "title": "You can now turn off Google Gemini&#8217;s visible watermarks",
+      "source": "The Verge AI",
+      "published_at": "2026-08-14",
+      "body_sha256": "1e58161a1f2c616562592930a4c7d12b6ad6d7e98f7b99989da080ae46d74809"
+    },
+    {
+      "url": "https://www.theverge.com/podcast/980367/instagram-logo-new-zuckerberg-ai-vergecast",
+      "title": "Mark Zuckerberg has an Instagzam",
+      "source": "The Verge AI",
+      "published_at": "2026-08-14",
+      "body_sha256": "e7bbd8cfad2996cfec6e73b7a79fae00599d12c0a24bba32beec0aeec951869f"
+    },
+    {
+      "url": "https://news.ycombinator.com/item?id=49306820",
+      "title": "Thank you to the people building these AI tools",
+      "source": "Hacker News AI",
+      "published_at": "2026-08-15",
+      "body_sha256": "1e72ef4078408ae89a86a2cfa2f8284b1767d3651f5844ad9d7e99e81a9d70d3"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=z9QiBMdvgRE",
+      "title": "Yester World Asking for Help from Google De-Monitization and AI [video]",
+      "source": "Hacker News AI",
+      "published_at": "2026-08-15",
+      "body_sha256": "b4da81e139e3db1ac9691caa9584f05109fb8632fdac97d8913dd28f0cbefc73"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/13/databricks-wanted-to-raise-1b-investors-wanted-15b-it-settled-on-5b-at-a-190b-valuation/",
+      "title": "Databricks wanted to raise $1B, investors wanted $15B. It settled on $5B at a $190B valuation.",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-13",
+      "body_sha256": "535340735bdbf355d13e21aebc3e7502c9e1831219aa886af67ea928fe23acb1"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/13/writer-introduces-new-ai-model-and-upgraded-harness-to-contain-token-costs/",
+      "title": "Writer introduces new AI model and upgraded harness to contain token costs",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-13",
+      "body_sha256": "cffc038c71630bc0a82d999e2d2d5fe5e7e49a0e899af1a01edb4c5c7a9c8ed4"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/13/anthropic-set-ai-agents-loose-on-the-same-task-they-started-a-turf-war/",
+      "title": "Anthropic set AI agents loose on the same task. They started a turf war.",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-13",
+      "body_sha256": "8dccf43ca0f796997fb41166ec9159c98a90b4444e121385c0ce33ca1f6126ee"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/13/ibm-partners-with-openai-to-bolster-enterprise-ai-push/",
+      "title": "IBM partners with OpenAI to bolster enterprise AI push",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-13",
+      "body_sha256": "c608d36bb303c346220d21ab8f48c4a4017963e8ad8ab4a8655d8fcc736928ed"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/13/nvidias-new-500b-plan-is-risky-but-brilliant-especially-for-aging-gpus/",
+      "title": "Nvidia’s new $500B plan is risky but brilliant, especially for aging GPUs",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-13",
+      "body_sha256": "0a4a3e3288a8aeec166e0ac4847030123ce7e4466dac9427c83ef31c0efdda3d"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/13/microsoft-kills-off-unsuccessful-ai-features-while-merging-its-separate-copilot-apps/",
+      "title": "Microsoft kills off unsuccessful AI features while merging its separate Copilot apps",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-13",
+      "body_sha256": "6b5f17bdbe75b88225be44b79bfb7c9e608af0adfc87af399d18d53eef6e882e"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/13/openai-hires-new-cro-as-executive-shake-up-continues/",
+      "title": "OpenAI hires new CRO as executive shake-up continues",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-13",
+      "body_sha256": "3934f41fadc2ebd9cfb0da14e756788ef59cde9e24e7cb4a4caf10b694c9c07c"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/13/openai-introduces-ultrafast-a-new-mode-that-makes-gpt-5-6-sol-work-at-14x-the-speed/",
+      "title": "OpenAI introduces ‘Ultrafast,’ a new mode that makes GPT-5.6 Sol work at 14x the speed",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-13",
+      "body_sha256": "ece1b7c97e7664b9319f8b34fe8157bf53f793442868967de18f785724ed380e"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/12/openai-backed-thrive-holdings-raises-2b-to-bring-ai-to-the-enterprise/",
+      "title": "OpenAI-backed Thrive Holdings raises $2B to bring AI to the enterprise",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-12",
+      "body_sha256": "9e18d360d03962d22db198e4a7404b231c3ae0b1e1389edacf68f39d7cd63339"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/12/ai-coding-startup-cognition-reportedly-already-in-talks-to-raise-at-40b-valuation/",
+      "title": "AI coding startup Cognition reportedly already in talks to raise at $40B valuation",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-12",
+      "body_sha256": "4e5d5a0c3a1dd792cc66051a280e78fe4ccb39b1eaa41b410ed2ac0a2b48cb56"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/12/amazon-will-train-on-twitch-streamers-content-by-default-unless-they-opt-out/",
+      "title": "Amazon will train on Twitch streamers’ content by default, unless they opt out",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-12",
+      "body_sha256": "299538c2c1982ae4b569b42073894076f2561001c3611b812fccbbd1bd53d59d"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/12/as-ai-safety-concerns-mount-three-pioneers-make-the-case-for-staying-open/",
+      "title": "As AI safety concerns mount, three pioneers make the case for staying open",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-12",
+      "body_sha256": "c2a59f1ea4633b305f4d0f746c5f12cc781b461d0a9e124f2624edad651ea310"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/12/lovable-confirms-new-13-3b-valuation-raises-another-400m/",
+      "title": "Lovable confirms new $13.3B valuation, raises another $400M",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-12",
+      "body_sha256": "9c0645dcfba0a97e17f3bb8b6621cf14b044ba8fc8b5dca381fc5735249c826a"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/12/some-claude-users-are-mad-that-anthropics-new-watermarks-will-catch-them-cheating-at-their-jobs-classes/",
+      "title": "Some Claude users are mad that Anthropic’s new watermarks will catch them using it at their jobs, classes",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-12",
+      "body_sha256": "d09c6700b9666912c685e9d403fcaca96e4904b958e7470b4e61475bbe483ad3"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/12/mesh-automattics-crm-for-everyone-comes-to-android/",
+      "title": "Mesh, Automattic’s CRM for everyone, comes to Android",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-12",
+      "body_sha256": "ec1b4503754dc25c27b9c02763cac0fb9de19fa2c4ba42bb99b3a0f810bf2dc4"
+    },
+    {
+      "url": "https://techcrunch.com/video/why-stream-ring-maker-sandbar-says-the-future-of-ai-wearables-is-voice/",
+      "title": "Why Stream ring-maker Sandbar says the future of AI wearables is voice",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-12",
+      "body_sha256": "f3ddd8c10c57dc4d57781c9e94358874bf325ef3e03bbf01ca52cb336cee99c8"
+    },
+    {
+      "url": "https://www.technologyreview.com/2026/08/11/1141610/the-download-next-big-thing-llms-ai-academic-research-shifting/",
+      "title": "The Download: the next big thing in LLMs and how AI academic research is shifting",
+      "source": "MIT Tech Review AI",
+      "published_at": "2026-08-11",
+      "body_sha256": "76e68a2d9a8b0f5ba1901fc46c3bc058c7f45cf755140e1f75a87ab07d4ca6f8"
+    },
+    {
+      "url": "https://www.theverge.com/ai-artificial-intelligence/977909/zoom-vulnerability-ai-attack",
+      "title": "‘Zoomsday’ hack uncovered using fewer than 20 AI prompts",
+      "source": "The Verge AI",
+      "published_at": "2026-08-11",
+      "body_sha256": "16b1a986e5fb1bf59a2bdb28f7d26543b3e612366cd0fd5617c7e11c1f6aa566"
+    },
+    {
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/amie-video-consultations/",
+      "title": "AMIE, our research medical AI system, demonstrates real-time clinical video consultation capabilities in a first-of-its-kind study.",
+      "source": "Google AI Blog",
+      "published_at": "2026-08-11",
+      "body_sha256": "6c0186ee1ae0ca0b4f609c25626f2ba146451987290e66277b7df3fee4c307d7"
+    },
+    {
+      "url": "https://www.theverge.com/tech/977561/made-by-google-2026-pixel-11-news",
+      "title": "Made by Google 2026: all the Pixel news and announcements",
+      "source": "The Verge AI",
+      "published_at": "2026-08-11",
+      "body_sha256": "2a702cf94597647193a4ac03bdad4c46094158e809ac7270536866b1449047e5"
+    },
+    {
+      "url": "https://www.theverge.com/tech/977921/apple-reference-image-iphone-metadata",
+      "title": "Apple could help you prove your iPhone photos aren’t deepfakes",
+      "source": "The Verge AI",
+      "published_at": "2026-08-11",
+      "body_sha256": "723a4bb989ab5291b87298d35f9fce9dea4692ab177a391550c71900b685e14e"
+    },
+    {
+      "url": "https://www.theverge.com/ai-artificial-intelligence/978048/brad-lightcap-openai-executive-departure",
+      "title": "Another OpenAI executive takes off",
+      "source": "The Verge AI",
+      "published_at": "2026-08-11",
+      "body_sha256": "44745c3861991f2dcdc81df83b40a189006cf8db4e3886c42908d5ff5cca5d5b"
+    },
+    {
+      "url": "https://www.theverge.com/games/978558/rideshare-stimulator-writer-ai-saber-interactive",
+      "title": "Saber denies replacing Rideshare Stimulator&#8217;s writers with ChatGPT",
+      "source": "The Verge AI",
+      "published_at": "2026-08-12",
+      "body_sha256": "dfcf9f288d42273b267aef80b7559d7679e08b8a0bfaccf7e1291c666c593f60"
+    },
+    {
+      "url": "https://www.theverge.com/ai-artificial-intelligence/978113/chatgpt-gemini-1-billion-users",
+      "title": "ChatGPT and Gemini both just passed 1 billion users",
+      "source": "The Verge AI",
+      "published_at": "2026-08-11",
+      "body_sha256": "a7cc2b84ded9ec509dfbb7e393537c78911b9c12dcd6cbcf31442b6d3dc717a7"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/10/metas-new-glimmer-ai-model-offers-a-hint-at-zuckerbergs-personal-intelligence-vision/",
+      "title": "Meta’s new Glimmer AI model offers a hint at Zuckerberg’s personal intelligence vision",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-10",
+      "body_sha256": "273aebf9f676238bd87b73643b1512fd3d3c1ed462265f0e635f41e0270930d2"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/10/mark-zuckerbergs-ai-manifesto-is-exactly-why-people-dont-like-ai/",
+      "title": "Mark Zuckerberg’s AI manifesto is exactly why people don’t like AI",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-10",
+      "body_sha256": "3aba66e16b8c19a98b1a0828734f8634006409c5cb1433959bfe97876f395fb3"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/10/discovered-materials-is-playing-ai-whack-a-mole-to-hunt-cooler-chips/",
+      "title": "Discovered Materials is playing AI whack-a-mole to hunt cooler chips",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-10",
+      "body_sha256": "b7af11bd886179ab0330ec42d40f7fe35a01c326857524dc31e5367601572411"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/10/as-ai-led-attacks-multiply-openai-launches-a-new-cyber-model/",
+      "title": "As AI-led attacks multiply, OpenAI launches a new cyber model",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-10",
+      "body_sha256": "32ef830aed66bf2a2351532fd23a73b94ed3cbc381dbb39885b5dcc825a263c3"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/10/openai-reportedly-completed-a-7-billion-employee-tender-offer/",
+      "title": "OpenAI reportedly completed a $7 billion employee tender offer",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-11",
+      "body_sha256": "f9ef8516cf2aa7838cf1b7dc19853a3b0bc2a538779f1e262795a186ace243c2"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/10/tech-industry-is-buzzing-after-a-claude-agent-hacked-into-a-gym/",
+      "title": "Tech industry is buzzing after a Claude agent hacked into a gym",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-10",
+      "body_sha256": "e080c0f50790ffc47535331ed50b9ed04957e02dbedc5ebf6bbb9f39881a31ee"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/09/historian-jill-lepore-says-the-tech-industry-is-led-by-bad-readers-who-are-undermining-democracy/",
+      "title": "Historian Jill Lepore says Silicon Valley misreads science fiction and undermines democracy",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-09",
+      "body_sha256": "89d6f376f272f2bec747b863a6a2b99f01250422c96b66f9ee4cfd737e04aa70"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/09/the-ai-safety-test-is-becoming-a-safety-risk/",
+      "title": "The AI safety test is becoming a safety risk",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-09",
+      "body_sha256": "4f0a534609fc4702fdd8f8614152b5962d7994cfe48924b0af612da00161f390"
+    },
+    {
+      "url": "https://www.theverge.com/column/976690/ai-writing-detectors-suspicion",
+      "title": "AI detectors are creating a new era of distrust",
+      "source": "The Verge AI",
+      "published_at": "2026-08-09",
+      "body_sha256": "73434be419e961774320a69399e1619b92be6209ae17492a57e8ac6c00eadacf"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/09/embattled-hedge-fund-situational-awareness-invests-400m-in-chip-startup-source-foundry/",
+      "title": "Embattled hedge fund Situational Awareness invests $400M in chip startup Source Foundry",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-09",
+      "body_sha256": "8c42ea5f1fb0e856c43503a08281dae66d80c079819fbeed7e4f476ce1972a5f"
+    },
+    {
+      "url": "https://www.smh.com.au/national/nsw/take-home-assessments-to-be-banned-in-radical-hsc-overhaul-20260806-p60m44.html",
+      "title": "Take-home assessments to be banned in school AI overhaul",
+      "source": "Hacker News AI",
+      "published_at": "2026-08-10",
+      "body_sha256": "eed058d1286f78afe27b039deafae9b981661ae1cea70acecc8e63723d2bed9a"
+    },
+    {
+      "url": "https://www.economist.com/asia/2026/08/06/the-philippines-big-offshoring-industry-is-growing-despite-ai",
+      "title": "The Philippines' big offshoring industry is growing despite AI",
+      "source": "Hacker News AI",
+      "published_at": "2026-08-10",
+      "body_sha256": "62338ccc80247b02a2752bfd20b9a986fe91635cd750ef36c1bd77686281ec28"
+    },
+    {
+      "url": "https://apnews.com/article/vintage-computers-silicon-valley-technology-apple-history-43d28a08d77cc477cdcd6951315d2f2d",
+      "title": "As AI grips world, the thrill of collecting vintage computers is growing",
+      "source": "Hacker News AI",
+      "published_at": "2026-08-10",
+      "body_sha256": "f11f66b2d19005779cf92b9ccec41a0e962988cdb5541fefc0d2a62fd283cf0a"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/09/anthropic-is-turning-claude-codes-auto-mode-on-by-default/",
+      "title": "Anthropic is turning Claude Code’s auto mode on by default",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-09",
+      "body_sha256": "30b363534e887957f7cdfba3c37b6c3430ed98c653d320abfc29ea88523c7676"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/08/planned-amazon-data-center-could-become-the-biggest-climate-polluter-in-the-u-s/",
+      "title": "Planned Amazon data center could become the biggest climate polluter in the U.S.",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-08",
+      "body_sha256": "a698efff7405b2604db67e765f7b40e5ac467317280fdc12769c85f87acfc899"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/08/openai-acquires-presentation-startup-nextslide/",
+      "title": "OpenAI acquires presentation startup NextSlide",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-08",
+      "body_sha256": "93747bc1bba5599b4c4a7b40ce61010acd28508fec139a6f6edd26fc7bb57002"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/07/openai-says-it-slowed-astra-model-development-over-security-concerns/",
+      "title": "OpenAI says it slowed Astra model development over security concerns",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-07",
+      "body_sha256": "b8d0637d966140f5590474fcb3278962a3f11e9949c37265c0759c254541884f"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/07/new-mexico-court-orders-meta-to-pay-additional-567m-in-child-safety-case/",
+      "title": "New Mexico court orders Meta to pay additional $567M in child safety case",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-07",
+      "body_sha256": "bfdc698a3d74d3bfd68766b5484fe7398e923847aee91bee978a4a668d3b1665"
+    },
+    {
+      "url": "https://techcrunch.com/podcast/jill-lepore-on-the-artificial-state-and-why-silicon-valleys-leaders-are-bad-sci-fi-readers/",
+      "title": "Jill Lepore on the ‘Artificial State’ and why Silicon Valley’s leaders are bad sci-fi readers",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-07",
+      "body_sha256": "2e761ff6a12fe54c6683788811d16b08b4f5bba4996012c56b87b9f351248b08"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/07/after-rippling-blew-millions-on-ai-in-months-it-built-an-employee-roi-tool/",
+      "title": "After Rippling blew millions on AI in months, it built an employee ROI tool",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-07",
+      "body_sha256": "4a7d6dfda4ce319c583a05109a6a626948fba4217252f433515d79dc7e8b079e"
+    },
+    {
+      "url": "https://www.theverge.com/ai-artificial-intelligence/976801/fenix-flexin-rubberz-ai-song-treblo",
+      "title": "Fenix Flexin isn’t even denying using AI to make ‘Rubberz’ anymore",
+      "source": "The Verge AI",
+      "published_at": "2026-08-07",
+      "body_sha256": "4ec8d5203375c6813792a9e5d53c8580bf4faaceb0f79eb75faf943f7195181c"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/07/cloudflare-launches-kitesurf-a-browser-built-for-ai-agents/",
+      "title": "Cloudflare launches Kitesurf, a browser built for AI agents",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-07",
+      "body_sha256": "1232dc78eed958e595d27764cbf5f450e0013679c1592a3443bb689d8714aeec"
+    },
+    {
+      "url": "https://techcrunch.com/2026/08/07/airbnb-says-ai-is-helping-it-ship-features-faster-as-it-tests-a-new-search-function/",
+      "title": "Airbnb says AI is helping it ship features faster as it tests a new search function",
+      "source": "TechCrunch AI",
+      "published_at": "2026-08-07",
+      "body_sha256": "895433595f7414b7f9b66d042ecb44e28862e8a10017d43a88bc8c3740d5b423"
+    },
+    {
+      "url": "https://www.theverge.com/entertainment/976939/roku-fairground-ai-fast-channel",
+      "title": "Watching Roku’s AI channel is like eating from a trough",
+      "source": "The Verge AI",
+      "published_at": "2026-08-07",
+      "body_sha256": "fb662af0fcacf6fa96213c3df832d6ab5e3d26b734dbb4f5a00af4fc2768f7f1"
+    }
+  ]
+}
