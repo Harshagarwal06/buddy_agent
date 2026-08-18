@@ -1,0 +1,119 @@
+[
+  {
+    "title": "Anthropic’s annualized revenue surges to $65B",
+    "url": "https://techcrunch.com/2026/08/17/anthropics-annualized-revenue-surges-to-65b/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-17",
+    "summary": "Anthropic's annualized revenue surged to $65 billion by the end of July, up from $47 billion in May and $9 billion last year. This growth is attributed to the company's model-making capabilities, with investors expecting a continued growth rate of $100 billion to $120 billion by the end of 2026. Anthropic's rapid expansion has captivated investors, with the company expected to file for a public IPO ahead of rival OpenAI, seeking a valuation of over $2 trillion.",
+    "tags": [
+      "technology",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/48c5cc17045a43b8893f.webp",
+    "image_alt": "Anthropic's revenue growth and projected valuation"
+  },
+  {
+    "title": "AI automation startup Relay shuts down, staff joins Google’s Chrome team",
+    "url": "https://techcrunch.com/2026/08/17/ai-automation-startup-relay-shuts-down-staff-joins-googles-chrome-team/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-17",
+    "summary": "Relay, an AI-powered workflow automation tool, is shutting down and its staff, including founder Jacob Bank, are joining Google's Chrome team. Bank previously spent six years at Google and will now lead the product and developer relations teams for Chrome. The integration of AI into Chrome will allow users to work with AI to automate tasks, as seen in the optional in-browser assistant Gemini, which has reached 1 billion users.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/a8af3745f8d6723bdfb3.svg",
+    "image_alt": "Google Chrome's AI integration and workflow automation"
+  },
+  {
+    "title": "Amazon, which started off selling books, is destroying rare texts to train AI",
+    "url": "https://techcrunch.com/2026/08/17/amazon-once-an-online-bookseller-is-destroying-rare-books-to-train-ai-models/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-17",
+    "summary": "Amazon is purchasing rare books, cutting off their spines, and scanning them for AI training. This process is necessary because companies like Amazon require vast amounts of text to train their large language models (LLMs), which have already consumed internet data. The rare books, particularly those published before 2022, are valuable training data because they are unlikely to have been written by an LLM, preventing model collapse.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/2375b43c415c298dd030.webp",
+    "image_alt": "Amazon's process of scanning rare books for AI training and the risk of model collapse"
+  },
+  {
+    "title": "Wispr raises $280M at $2B valuation as it looks beyond dictation",
+    "url": "https://techcrunch.com/2026/08/17/wispr-raises-280m-at-2b-valuation-as-it-looks-beyond-dictation/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-17",
+    "summary": "Wispr, a startup known for its AI dictation tool, raised $280 million in Series B funding at a $2 billion valuation. The funds will allow Wispr to increase its footprint as it ventures into new areas, such as meetings, with its newly released note-taker tool. This expansion comes at a time of increased competition in the dictation space, but Wispr's new model, Canto, aims to improve speech understanding by reducing error rates from 30% to less than 10%.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/f8df92fbc8b46582f6a2.webp",
+    "image_alt": "Wispr's new model Canto improves speech understanding and expands into meeting notetaking"
+  },
+  {
+    "title": "Groq raises $350M to fuel its pivot from AI chips to neocloud",
+    "url": "https://techcrunch.com/2026/08/17/groq-raises-350m-to-fuel-its-pivot-from-ai-chips-to-neocloud/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-17",
+    "summary": "Groq has raised $350 million to pivot from AI chipmaker to neocloud company, valuing the company at $3.5 billion. The new capital will support usage of medium and larger sized clusters of Nvidia accelerated computing for training and inference, with Groq aiming to scale from 54 megawatts to over 200 megawatts in 2027. This pivot positions Groq directly inside Nvidia's AI infrastructure ecosystem, with the company focused on building the world's leading AI inference cloud.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/92b5b2c190269cb6c8cf.svg",
+    "image_alt": "Groq's pivot from AI chipmaker to neocloud company, scaling Nvidia GPU clusters for AI inference"
+  },
+  {
+    "title": "Nvidia investing $1.5B in SoftBank data center developer behind OpenAI project",
+    "url": "https://techcrunch.com/2026/08/17/nvidia-investing-1-5b-in-softbank-data-center-developer-behind-openai-project/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-17",
+    "summary": "Nvidia invests $1.5 billion in SB Energy, a data center developer linked to SoftBank and OpenAI. This investment secures Nvidia's position as the sole supplier of compute infrastructure at OpenAI's Ports-Pike data center, which could scale from 4.25 to 8 gigawatts in size. The development matters as it highlights the growing demand for compute infrastructure in the AI sector and the increasing costs of building natural gas power plants.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/3a1ac9f1448807dc30aa.svg",
+    "image_alt": "Nvidia's investment in SB Energy and its impact on natural gas prices"
+  },
+  {
+    "title": "Whisker’s AI-powered litter robot thinks my cats swapped bodies",
+    "url": "https://www.theverge.com/tech/978323/whisker-litter-robot-5-pro-review",
+    "source": "The Verge AI",
+    "published_at": "2026-08-17",
+    "summary": "The Litter-Robot 5 Pro is a $899 AI-powered litter robot that failed to accurately monitor and track cat litter box usage. The device uses sensors and motors to filter and sift waste into a sealed bin, and a fully featured app allows remote control of the device's functions. However, the AI features do not work, and the device's limitations, such as a smaller bin and fewer supported cat sizes, make it not worth the premium price.",
+    "tags": [
+      "technology",
+      "ai",
+      "science"
+    ],
+    "importance": 2,
+    "image_url": "images/e372683cb336b01c48ab.webp",
+    "image_alt": "A cat owner uses a litter robot to monitor and maintain a clean litter box"
+  },
+  {
+    "title": "Anthropic explains how Claude&#8217;s invisible text watermarks will work",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/980869/anthropic-claude-watermarks-synthid-text-system",
+    "source": "The Verge AI",
+    "published_at": "2026-08-17",
+    "summary": "Anthropic is applying invisible watermarks to Claude-generated text to comply with Europe's AI transparency rules. The watermarks use low-stakes choices, such as word probabilities, to leave a detectable pattern in the text. This feature won't affect the quality or content of Claude's outputs and is required by the European Union's AI Act.",
+    "tags": [
+      "ai",
+      "technology",
+      "world"
+    ],
+    "importance": 1,
+    "image_url": "images/456c931cb08fc5d5db46.webp",
+    "image_alt": "How Claude's invisible text watermarks work and are detectable"
+  }
+]
