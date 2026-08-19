@@ -1,0 +1,118 @@
+[
+  {
+    "title": "Etched’s valuation doubles to $21B in a month",
+    "url": "https://techcrunch.com/2026/08/18/etcheds-valuation-doubles-to-21b-in-a-month/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-18",
+    "summary": "Etched's valuation doubles to $21 billion in a month after raising $700 million, led by Jane Street, following the quant fund's successful testing and purchase of the startup's AI hardware. Etched's AI tech delivers full systems called 'frontier inference clusters' that speed up inference, a computing process, by designing two new components from scratch. This enables Etched's systems to process more tokens faster and at lower costs, supporting demanding workloads.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/9972f855af9af58436f4.webp",
+    "image_alt": "Etched's AI hardware pipeline, showing the prefill phase, decode phase, and cluster-scale memory"
+  },
+  {
+    "title": "OpenAI institutes new safeguards after Hugging Face breach",
+    "url": "https://techcrunch.com/2026/08/18/openai-institutes-new-safeguards-after-hugging-face-breach/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-18",
+    "summary": "OpenAI institutes new safeguards after Hugging Face breach, including more detailed monitoring of models during development and greater emphasis on alignment and security. The new measures are not a direct response to the Hugging Face incident but were also provoked in part by the cybersecurity capabilities of the forthcoming Astra model. OpenAI's VP of research emphasized that the strictness of the controls would increase as models became more capable, with the largest models facing the greatest scrutiny.",
+    "tags": [
+      "technology",
+      "ai",
+      "security"
+    ],
+    "importance": 3,
+    "image_url": "images/3f357a5d421e562610fa.webp",
+    "image_alt": "OpenAI's new safeguards to prevent model breaches and unauthorized access"
+  },
+  {
+    "title": "OpenAI launches a safer ChatGPT for teens — years after teens started using it",
+    "url": "https://techcrunch.com/2026/08/18/openai-launches-a-safer-chatgpt-for-teens-years-after-teens-started-using-it/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-18",
+    "summary": "OpenAI launches ChatGPT for Teens, a safer version of its popular AI chatbot, years after teens started using the original version. The new product includes additional safety measures, such as a Study Mode feature that encourages teens to engage their curiosity and work through problems, and tools to prevent cheating in schools. These measures are designed to reduce exposure to harmful or developmentally inappropriate content and are based on OpenAI's Under-18 Principles informed by developmental science and expert guidance.",
+    "tags": [
+      "ai",
+      "technology",
+      "world"
+    ],
+    "importance": 3,
+    "image_url": "images/9a2c6b86e273d0603bfe.webp",
+    "image_alt": "How ChatGPT for Teens uses safety measures to guide student learning and parental involvement"
+  },
+  {
+    "title": "Perplexity’s free AI offer left it with millions more users in India",
+    "url": "https://techcrunch.com/2026/08/18/perplexitys-free-ai-offer-left-it-with-millions-more-users-in-india/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-18",
+    "summary": "Perplexity offered a free AI service to 360 million Airtel customers in India, resulting in 56 million downloads and 22 million monthly active users. The offer, which lasted seven months, saw a 625% increase in app downloads in July 2025 and more downloads in a single month than the entire first half of the year. The experiment's success in attracting users in India, a vast and growing market, may help Perplexity translate scale into revenue.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/de35636c3c3ef2eb353d.webp",
+    "image_alt": "Perplexity's AI giveaway in India and its impact on app downloads and user base"
+  },
+  {
+    "title": "Robin Williams’ Instagram account brought back to fight ‘AI abuse’",
+    "url": "https://www.theverge.com/entertainment/981644/robin-williams-instagram-account-ai",
+    "source": "The Verge AI",
+    "published_at": "2026-08-18",
+    "summary": "Robin Williams' children have taken over his Instagram account to combat 'AI abuse' by sharing authentic memories and photos. They aim to create a 'trusted place' where fans can find genuine clips and photos of the late actor, countering the spread of AI-generated content that misrepresents him. This move is a response to the rampant misuse of AI likeness, which has been used to create disturbing deepfakes and scams on social media platforms.",
+    "tags": [
+      "technology",
+      "ai",
+      "world"
+    ],
+    "importance": 3,
+    "image_url": "images/66ad5e5554309c85a53d.webp",
+    "image_alt": "A visual explanation of how Robin Williams' Instagram account is being used to combat AI abuse and share authentic memories."
+  },
+  {
+    "title": "Cursor capitalizes on GitHub frustration, launches rival hosting platform",
+    "url": "https://techcrunch.com/2026/08/18/cursor-capitalizes-on-github-frustration-launches-rival-hosting-platform/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-18",
+    "summary": "Cursor launches Origin, a code-hosting platform to compete with GitHub, which has struggled with outages and performance degradation. Origin allows developers to work alongside GitHub and pass code between the two platforms. The launch coincides with ongoing frustration over GitHub's services, which have suffered 257 outages in the past year.",
+    "tags": [
+      "technology",
+      "business"
+    ],
+    "importance": 1,
+    "image_url": "images/cce6f7454af23ad9c28a.webp",
+    "image_alt": "A pipeline showing code flowing from GitHub to Origin, with a warning symbol over GitHub"
+  },
+  {
+    "title": "Warp’s new system is an out-of-the-box software factory for AI development",
+    "url": "https://techcrunch.com/2026/08/18/warps-new-system-is-an-out-of-the-box-software-factory-for-ai-development/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-18",
+    "summary": "Warp introduced Warp Factories, a system making AI software factories easy to build and operate. Warp Factories provides a simple environment for deploying agents and a roadmap for using them, targeting smaller companies without resources. The system automates difficult decisions, integrates with various tools, and tracks performance metrics.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 1,
+    "image_url": "images/80fc3539b43edfa4167d.svg",
+    "image_alt": "A simplified view of Warp Factories' agent loop and deployment process"
+  },
+  {
+    "title": "Why Apple’s camera-equipped AirPods may not be the ‘pervert pods’ consumers fear",
+    "url": "https://techcrunch.com/2026/08/18/why-apples-camera-equipped-airpods-may-not-be-the-pervert-pods-consumers-fear/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-18",
+    "summary": "Apple's camera-equipped AirPods may not be as invasive as feared. The cameras are designed to provide low-resolution visual information to Siri, allowing users to engage with the AI assistant. This feature is intended to enhance the user experience, not enable surveillance.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 1,
+    "image_url": "images/803304009f2289366ad4.svg",
+    "image_alt": "How Apple's camera-equipped AirPods enhance user experience with Siri"
+  }
+]
