@@ -1,0 +1,120 @@
+[
+  {
+    "title": "Google packs Search and Gemini with new AI study tools",
+    "url": "https://techcrunch.com/2026/08/19/google-launches-new-study-tools-for-students-across-search-and-gemini/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-19",
+    "summary": "Google has launched new study tools across Search and Gemini, including AI-generated interactive visuals, 3D simulations, and customized practice quizzes. These tools allow students to create interactive experiences tailored to their questions, such as plotting citrus fruits on the pH scale. The new features aim to make Gemini the AI assistant that students turn to when learning and studying, competing with other companies offering learning and practice tools.",
+    "tags": [
+      "technology",
+      "ai",
+      "education"
+    ],
+    "importance": 3,
+    "image_url": "images/82aead34503dcd153f44.webp",
+    "image_alt": "How Google's new study tools help students understand complex topics through interactive visuals and 3D simulations"
+  },
+  {
+    "title": "Cognition CEO denies report that SpaceX tried to acquire the startup",
+    "url": "https://techcrunch.com/2026/08/19/cognition-ceo-denies-report-that-spacex-tried-to-acquire-the-startup/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-19",
+    "summary": "Cognition CEO Scott Wu denied a report that SpaceX attempted to acquire the startup. The report claimed that SpaceX, which has been trying to catch up to OpenAI, Anthropic, and Google in the AI race, sought to acquire Cognition as it works to deepen its push into AI coding. If true, the acquisition would have given SpaceX another way to compete for enterprise customers, but Wu stated that Cognition 'is not for sale'.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/48f5edd82b8fe7f0a91b.svg",
+    "image_alt": "SpaceX's AI ambitions and Cognition's independence"
+  },
+  {
+    "title": "Stripe didn’t really buy OpenRouter because of the ‘singularity’",
+    "url": "https://techcrunch.com/2026/08/19/stripe-didnt-really-buy-openrouter-because-of-the-singularity/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-19",
+    "summary": "Stripe acquired OpenRouter for $7.5 billion, a significant increase from OpenRouter's $1.3 billion valuation in May. The acquisition is likely driven by Stripe's growing reliance on AI, with 88% of the Forbes AI 50 using its products, including OpenAI and Anthropic. By integrating OpenRouter, Stripe can better manage model usage and roll out future model-agnostic agentic offerings, potentially benefiting its large developer platform.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/762d467e933843953597.svg",
+    "image_alt": "Stripe acquires OpenRouter to improve AI services"
+  },
+  {
+    "title": "Researchers say OpenAI revoked their access to limited cyber program",
+    "url": "https://techcrunch.com/2026/08/19/researchers-complain-that-openai-revoked-their-access-to-limited-cyber-program/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-19",
+    "summary": "Researchers claim OpenAI suddenly revoked their access to a limited-access program that removes some restrictions on using its AI tools for cybersecurity research. The program, called Trusted Access for Cyber (TAC), is designed to give vetted researchers access to OpenAI's most advanced AI models with fewer cybersecurity guardrails. The exact reason for the revocations is unclear, but OpenAI has confirmed that the issue was caused by an error.",
+    "tags": [
+      "technology",
+      "ai",
+      "security"
+    ],
+    "importance": 3,
+    "image_url": "images/d975c553006aaf8a20ec.webp",
+    "image_alt": "A diagram explaining why researchers lost access to OpenAI's limited cyber program and how to regain it"
+  },
+  {
+    "title": "Meet the startup helping Wall Street put a price on AI compute",
+    "url": "https://techcrunch.com/video/meet-the-startup-helping-wall-street-put-a-price-on-ai-compute/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-19",
+    "summary": "Silicon Data closed a $30 million Series A to create a reference price for GPU rental and an index for a Wall Street futures contract. The startup plans to launch compute futures trading on the CME, pending regulatory approval, to help firms hedge their exposure when the price changes. This development matters because it will provide a straightforward way to put a price on compute, addressing a significant cost for AI product builders.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/aae8672dd56f68bbc260.webp",
+    "image_alt": "A diagram explaining the relationship between GPU rental, futures contracts, and AI compute costs."
+  },
+  {
+    "title": "AI was supposed to win people over by now — it hasn’t",
+    "url": "https://techcrunch.com/2026/08/19/ai-was-supposed-to-win-people-over-by-now-it-hasnt/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-19",
+    "summary": "AI's reputation in the real world is worsening despite technological progress. Americans' unease about AI is growing, with 52% saying they're more concerned than excited about its increased use. This discontent is affecting tech companies' balance sheets, leading them to offer job guarantees and other local perks to build AI data centers.",
+    "tags": [
+      "technology",
+      "ai",
+      "world"
+    ],
+    "importance": 1,
+    "image_url": "images/9e7f40487c5879df379c.webp",
+    "image_alt": "The negative impact of AI on people's lives and its growing concern among Americans, and the rejected job offers due to AI data centers"
+  },
+  {
+    "title": "OpenAI seeks to one-up Anthropic with new customer privacy protections",
+    "url": "https://techcrunch.com/2026/08/19/openai-seeks-to-one-up-anthropic-with-new-customer-privacy-protections/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-19",
+    "summary": "OpenAI announced Private Safety Processing, a new automated system to monitor AI model misuse without retaining customer data. This system complements OpenAI's existing Zero Data Retention policy, which already monitors for abuse on a per-session basis. By analyzing multiple conversations, Private Safety Processing can detect malicious use of AI that spans multiple sessions, enhancing overall safety and customer privacy.",
+    "tags": [
+      "technology",
+      "ai",
+      "security"
+    ],
+    "importance": 1,
+    "image_url": "images/6719a1da7980ed4e87dd.webp",
+    "image_alt": "A system for monitoring AI model misuse without retaining customer data, using a shield and magnifying glass to protect sensitive information and analyze conversations."
+  },
+  {
+    "title": "TerraPower’s nuclear reactor has a secret weapon for powering AI data centers",
+    "url": "https://techcrunch.com/2026/08/19/terrapowers-nuclear-reactor-has-a-secret-weapon-for-powering-ai-data-centers/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-19",
+    "summary": "TerraPower's nuclear reactor is designed to power AI data centers with always-available energy. The reactor uses energy storage from renewable power sources like wind and solar to run at full capacity, unlike traditional reactors. This allows it to generate electricity at maximum power, making it ideal for data centers with fluctuating loads.",
+    "tags": [
+      "technology",
+      "ai",
+      "science"
+    ],
+    "importance": 1,
+    "image_url": "images/9f46735852077c88ce79.webp",
+    "image_alt": "A nuclear reactor using energy storage from renewable power to power a data center with fluctuating loads."
+  }
+]
