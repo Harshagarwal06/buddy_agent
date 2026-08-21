@@ -1,0 +1,120 @@
+[
+  {
+    "title": "AI data startup Micro1 reaches $500M gross run rate amid AI training boom",
+    "url": "https://techcrunch.com/2026/08/20/ai-data-startup-micro1-reaches-500m-gross-run-rate-amid-ai-training-boom/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-21",
+    "summary": "Micro1, an AI data startup, reached a $500M gross run rate in eight months, driven by the massive demand for unique AI training data from top labs and corporations. Micro1 retains 60-70% of its gross revenue, putting its net annual run rate between $150M and $200M, and is increasingly generating synthetic data without human involvement. This growth bodes well for Micro1, which expects its margins to expand over time and is not selling its data to Chinese model makers.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/1aca720640a537bcf553.webp",
+    "image_alt": "The process of generating synthetic data and the growth of Micro1's revenue"
+  },
+  {
+    "title": "OK, can we actually cool data centers with our pee?",
+    "url": "https://techcrunch.com/2026/08/20/ok-can-we-actually-cool-data-centers-with-our-pee/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-20",
+    "summary": "Liquid Death's marketing campaign with Jason Kelce humorously suggests using urine to cool data centers, but experts reveal that recycled water, including treated wastewater and sewage, is already being used to offset potable water demand. This alternative water source can contain human urine, which is cleaned and made useful. However, using urine directly in cooling towers would require constant cleaning due to its mineral deposits and contaminants.",
+    "tags": [
+      "technology",
+      "ai",
+      "science",
+      "world"
+    ],
+    "importance": 3,
+    "image_url": "images/0c53ac9df4c86cbcf4d6.webp",
+    "image_alt": "Comparison of using potable water versus treated wastewater to cool data centers"
+  },
+  {
+    "title": "ChatGPT can now send texts for you with new Apple Messages plug-in",
+    "url": "https://techcrunch.com/2026/08/20/chatgpt-can-now-send-texts-for-you-with-new-apple-messages-plugin/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-20",
+    "summary": "Apple has released a new Messages plug-in for ChatGPT, allowing users to connect their Messages inbox with the chatbot. This enables users to sort, analyze, or edit their messages directly from ChatGPT, and also works with Codex and ChatGPT Work for professional use. The plug-in raises privacy questions, but OpenAI assures that it runs locally on a user's machine and doesn't create an index of all messages.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/408305428a76e88b3144.webp",
+    "image_alt": "How ChatGPT sends messages through Apple Messages"
+  },
+  {
+    "title": "OpenAI is gaining on Anthropic with business users, new data indicates",
+    "url": "https://techcrunch.com/2026/08/20/openai-is-gaining-on-anthropic-with-business-users-new-data-indicates/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-20",
+    "summary": "OpenAI is gaining on Anthropic with business users, according to new data from Ramp, a corporate credit card and expense management company. As of July, Anthropic had nearly 44% market share to OpenAI's nearly 40% among Ramp's paying business users, but OpenAI is currently growing faster in Q3. This trend suggests that Anthropic may not have won permanently, and businesses are willing to switch between the two companies' models.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/22c01d89e64b779bc221.webp",
+    "image_alt": "OpenAI and Anthropic's business user market share and growth rate comparison"
+  },
+  {
+    "title": "Linkdaze’s smart calendar is built to run a household, not just track a schedule",
+    "url": "https://techcrunch.com/2026/08/20/linkdazes-smart-calendar-is-built-to-run-a-household-not-just-track-a-schedule/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-20",
+    "summary": "Linkdaze's smart calendar is a touchscreen tablet designed to organize a household's schedules, appointments, and tasks. It can synchronize calendars from popular services, use color coding to identify individual family members, and even double as a digital photo frame. The device's AI meal planner feature, 'Snap-to-Sync,' allows users to take a photo of a recipe and automatically generate a digital meal plan and shopping list.",
+    "tags": [
+      "technology",
+      "ai",
+      "world"
+    ],
+    "importance": 3,
+    "image_url": "images/5cc85022b36abc2a277d.webp",
+    "image_alt": "A smart calendar tablet organizing household schedules and generating a meal plan from a recipe photo"
+  },
+  {
+    "title": "Grok keeps sending gibberish responses to users",
+    "url": "https://techcrunch.com/2026/08/20/grok-keeps-sending-gibberish-responses-to-users/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-20",
+    "summary": "Grok, a chatbot from xAI, has been sending gibberish responses to many users due to a rare temporary generation glitch. The issue appears to be limited to direct queries on Grok.com, with some users reporting that refreshing the session or regenerating the chat clears the problem. The glitch has caused confusion among Grok users, with many taking to the chatbot's Reddit community to complain.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 2,
+    "image_url": "images/f6e48f13c7083cfabd01.webp",
+    "image_alt": "A chatbot experiencing a temporary generation glitch and how to resolve it"
+  },
+  {
+    "title": "Google gives publishers a new way to fight AI-driven traffic losses",
+    "url": "https://techcrunch.com/2026/08/20/google-gives-publishers-a-new-way-to-fight-ai-driven-traffic-losses/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-20",
+    "summary": "Google introduces a 'Preferred Sources' button for publishers to fight AI-driven traffic losses. The button allows readers to highlight trusted sources on Google Search, Discover, and Google News. This can drive more traffic to publishers' websites, as people are twice as likely to click through to a preferred source.",
+    "tags": [
+      "technology",
+      "ai",
+      "world"
+    ],
+    "importance": 1,
+    "image_url": "images/4a01a9345278bd326d23.webp",
+    "image_alt": "How Google's Preferred Sources button drives traffic to trusted websites"
+  },
+  {
+    "title": "Runlayer, Rippling drop lawsuits — but the brouhaha is still a cautionary tale for founders",
+    "url": "https://techcrunch.com/2026/08/20/runlayer-rippling-drop-lawsuits-but-the-brouhaha-is-still-a-cautionary-tale-for-founders/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-20",
+    "summary": "Runlayer and Rippling dropped their lawsuits against each other without a settlement. The dispute centered around Rippling's MCP gateway, which competes with Runlayer's offering. This public fight serves as a cautionary tale for founders, highlighting the rapidly changing AI landscape where competitors can emerge from anywhere, even among prospective customers.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 1,
+    "image_url": "images/4a376684263a9bae6ce2.webp",
+    "image_alt": "The emergence of a competitor in the AI landscape and the role of gateways in handling data requests."
+  }
+]
