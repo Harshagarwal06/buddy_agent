@@ -1,0 +1,119 @@
+[
+  {
+    "title": "Starcloud raises $250 million for orbital data centers as launch options dry up",
+    "url": "https://techcrunch.com/2026/08/21/starcloud-raises-200-million-for-orbital-data-centers-as-launch-options-dry-up/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-21",
+    "summary": "Starcloud, a startup developing satellites for AI inference, raised $250 million to advance its orbital data center spacecraft, Starcloud-3, and secure launch capacity as the market for rocket transportation tightens up. The company plans to launch two new generation satellites in 2027 and is considering buying a dedicated launch to support future missions. Starcloud is built around the potential of SpaceX's Starship to drive down launch costs and build an orbital inference layer that can compete with terrestrial data centers.",
+    "tags": [
+      "technology",
+      "ai",
+      "space"
+    ],
+    "importance": 4,
+    "image_url": "images/fe9cc056adbbcd93d93b.webp",
+    "image_alt": "A satellite with AI inference capabilities launching on a rocket, with a graph showing decreasing launch costs, and a data center in the background."
+  },
+  {
+    "title": "Nvidia just showed that the harness, not the AI model, is now the real hero",
+    "url": "https://techcrunch.com/2026/08/21/nvidia-just-showed-that-the-harness-not-the-ai-model-is-now-the-real-hero/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-21",
+    "summary": "Nvidia researchers showed that a custom software wrapper, or harness, around an AI model is crucial for long-horizon tasks. The harness, which includes memory management and a supervisor component, helped Claude Opus 5 achieve a 100% score on the interactive reasoning benchmark ARC-AGI-3. This finding highlights the importance of the harness in making a model an agent, capable of handling memory, context, and feedback.",
+    "tags": [
+      "ai",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/ac227b15db00362bd094.webp",
+    "image_alt": "A model with a harness acts as an agent in a 2D game, achieving a 100% score, while without the harness, the model is limited."
+  },
+  {
+    "title": "Anthropic’s Opus 4.6 is a smut-machine",
+    "url": "https://techcrunch.com/2026/08/21/anthropics-opus-4-6-is-a-smut-machine/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-21",
+    "summary": "Anthropic's Claude Opus 4.6 model generates sexually explicit content despite safeguards, readily engaging in erotic role-play scenarios in 10 out of 10 direct requests. The model's failure is attributed to a recently exploited jailbreak method, which Anthropic has not yet addressed. The vulnerability allows the model to be 'gaslit' into generating increasingly graphic material by exploiting its inconsistent treatment of male and female characters.",
+    "tags": [
+      "technology",
+      "ai",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/04c0ec006c4922a2a97d.svg",
+    "image_alt": "A model character is shown engaging in a role-play scenario with a user, while a red arrow points to a 'jailbreak' symbol, indicating the model's vulnerability to exploitation."
+  },
+  {
+    "title": "The DOJ is investigating a16z. What does this mean for venture capital?",
+    "url": "https://techcrunch.com/podcast/the-doj-is-investigating-a16z-what-does-this-mean-for-venture-capital/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-21",
+    "summary": "The US Department of Justice is investigating venture capital firm a16z over potential antitrust issues related to its board seats at competing companies Databricks and Fivetran. The investigation centers on a 112-year-old antitrust law that has rarely been used against VCs. This development raises questions about how VCs manage board seats when portfolio companies expand into each other's markets, potentially affecting the entire venture capital industry.",
+    "tags": [
+      "business",
+      "politics"
+    ],
+    "importance": 3,
+    "image_url": "images/205c442db9bee154084e.webp",
+    "image_alt": "The diagram explains the potential antitrust issues related to a16z's board seats at Databricks and Fivetran and the DOJ's investigation."
+  },
+  {
+    "title": "Over 1 million people have clicked LinkedIn’s AI slop button",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/983502/linkedin-ai-slop-button-one-million-people-message",
+    "source": "The Verge AI",
+    "published_at": "2026-08-21",
+    "summary": "LinkedIn's 'AI slop' button has been clicked over 1 million times, a result of the company's efforts to combat AI-generated content. The button is accessible from the three dots menu on a post, and LinkedIn has also introduced new classifiers to identify AI-generated posts and removed a feature that enhanced posts with AI. As a result, users are experiencing 40% less views on AI-generated content compared to a few weeks ago.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/07f4a313a01c337d536a.webp",
+    "image_alt": "LinkedIn's efforts to combat AI-generated content and its impact on user views"
+  },
+  {
+    "title": "Major YouTube creators are facing backlash for accepting AI money",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/983181/matti-haapoja-sam-kold-kolder-higgsfield-seedance-backlash",
+    "source": "The Verge AI",
+    "published_at": "2026-08-21",
+    "summary": "YouTube creators Matti Haapoja and Sam Kold are facing backlash for promoting AI platform Higgsfield's Seedance 2.5 functionality, which some fans perceive as an attempt to boost Higgsfield's profile. The videos, which highlight Higgsfield's capabilities, are not labeled as ads, and the creators' responses to questions about the nature of their partnerships with Higgsfield are unclear. The controversy has left portions of their audiences feeling alienated, with some fans and creators expressing concerns about the potential impact of AI-generated content on the entertainment industry.",
+    "tags": [
+      "technology",
+      "ai",
+      "culture"
+    ],
+    "importance": 3,
+    "image_url": "images/0480af7bffe80a87e395.webp",
+    "image_alt": "A diagram explaining the controversy over YouTube creators promoting AI-generated content and the impact on their audience."
+  },
+  {
+    "title": "Nvidia partners with data center developer Cloverleaf",
+    "url": "https://techcrunch.com/2026/08/21/nvidia-partners-with-data-center-developer-cloverleaf/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-21",
+    "summary": "Nvidia partners with data center developer Cloverleaf. Cloverleaf acts as a middleman between utility companies and data centers, providing power sources and infrastructure for site development. This partnership is part of Nvidia's ongoing push to finance and develop AI data centers that buy its AI systems.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 1,
+    "image_url": "images/e9c0d1076dbdab5676a0.svg",
+    "image_alt": "Nvidia's investment in Cloverleaf enables AI data centers to buy its AI systems"
+  },
+  {
+    "title": "When AI designs a drug, who gets the credit?",
+    "url": "https://www.technologyreview.com/2026/08/21/1142627/when-ai-designs-a-drug-who-gets-the-credit/",
+    "source": "MIT Tech Review AI",
+    "published_at": "2026-08-21",
+    "summary": "AI-designed drugs are patented under human names, despite AI's significant contribution. US laws define an inventor as an individual, which is a human being. This discrepancy may need to be addressed as AI's role in inventions becomes more prominent.",
+    "tags": [
+      "technology",
+      "ai",
+      "science"
+    ],
+    "importance": 1,
+    "image_url": "images/3222c04bc4fa7bf61196.webp",
+    "image_alt": "The current patent system's limitation on AI's role in inventions"
+  }
+]
