@@ -1,0 +1,118 @@
+[
+  {
+    "title": "Robotics startup Generalist reaches $3B valuation, sources say",
+    "url": "https://techcrunch.com/2026/08/25/robotics-startup-generalist-reaches-3b-valuation-sources-say/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-26",
+    "summary": "Robotics startup Generalist reached a $3 billion valuation after raising $200 million in additional capital led by 8VC. This brings the total funding for the Series B round to $600 million, an extension of the $400 million round announced in June at a $2 billion valuation. Generalist's AI foundation model enables robots to master new tasks from short video demonstrations, with the startup working with customers to tailor the model for specific use cases.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/a1668926df85598c29a7.webp",
+    "image_alt": "How Generalist's AI model enables robots to learn from short video demonstrations"
+  },
+  {
+    "title": "Stability AI, maker of image generator Stable Diffusion, raises $76 million in fresh funding",
+    "url": "https://techcrunch.com/2026/08/25/stability-ai-maker-of-image-generator-stable-diffusion-raises-76-million-in-fresh-funding/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-25",
+    "summary": "Stability AI, the maker of image generator Stable Diffusion, has raised $76 million in Series B funding. The funding comes from prominent entertainment industry organizations, including Universal Music Group, Sony Music Group, and Electronic Arts, as well as investment firms AMD Ventures and Pacific Alliance Ventures. This funding will allow Stability AI to continue building its creative production product suite and expand its professional services arm, further integrating generative AI into entertainment companies' creative workflows.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/756efcfcd39340c39205.webp",
+    "image_alt": "Diagram explaining the flow of funding and development of Stable Diffusion image generator model"
+  },
+  {
+    "title": "OpenAI loses a top data center exec, as stream of high-profile departures continues",
+    "url": "https://techcrunch.com/2026/08/25/openai-loses-a-top-data-center-exec-as-stream-of-high-profile-departures-continues/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-26",
+    "summary": "OpenAI lost Chris Malone, its former head of data centers, who oversaw the company's $500 million data center strategy, the Stargate Project, a key partner in the Trump administration's data center initiative. Malone's tenure was relatively short, joining OpenAI in March last year after nearly five years at Meta and over a decade at Google. His departure adds to a string of over a dozen executive departures this year, including the company's chief revenue officer and one of its longest-serving executives.",
+    "tags": [
+      "technology",
+      "business",
+      "politics"
+    ],
+    "importance": 3,
+    "image_url": "images/7a27e9a4be5bf66c043a.webp",
+    "image_alt": "OpenAI's data center strategy and executive departures"
+  },
+  {
+    "title": "OpenAI’s Jalapeño chip is built for fast inference at scale, benchmarks show",
+    "url": "https://techcrunch.com/2026/08/25/openais-jalapeno-chip-is-built-for-fast-inference-at-scale-benchmarks-show/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-25",
+    "summary": "OpenAI's Jalapeño chip is built for fast inference at scale, outperforming current state-of-the-art processors in benchmark tests. Jalapeño registers more tokens per user and more throughput per kilowatt than Nvidia's Blackwell system, serving more AI work per unit of power while returning responses quickly. This efficiency will allow OpenAI to serve a large number of customers with low latency, but the competition may advance significantly by the time Jalapeño reaches full deployment in 2027.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/637ba1440f73ad48bcb9.webp",
+    "image_alt": "A chip's components working together to minimize delays and maximize throughput"
+  },
+  {
+    "title": "‘The world seems to be ready’: An interview with OpenAI head of product Thibault Sottiaux",
+    "url": "https://techcrunch.com/2026/08/25/the-world-seems-to-be-ready-an-interview-with-openai-head-of-product-thibault-sottiaux/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-25",
+    "summary": "OpenAI's ChatGPT Work platform aims to make AI-powered coding agents accessible to a broad population, including white-collar workers. This is achieved by packaging the technology in a safe and delightful way, available on mobile and web, and offering it as part of the Plus plan for $20 a month. By generating significant value and utility for users, OpenAI seeks to establish a strong application relationship and increase user willingness to pay for the technology.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/5e56dc02e432f8e5730c.webp",
+    "image_alt": "ChatGPT Work platform and its benefits for users"
+  },
+  {
+    "title": "Accel-backed Keenable is indexing the web for AI agents",
+    "url": "https://techcrunch.com/2026/08/25/accel-backed-keenable-is-indexing-the-web-for-ai-agents/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-25",
+    "summary": "Keenable is building a web search index of over 100 billion documents for AI agents. This index allows AI chatbots to ground their responses with source documents, creating a new flywheel. Keenable's product is different from enterprise search solutions, as it innovates on how to narrow the search space based on the query, reducing the cost of serving and scanning the whole internet.",
+    "tags": [
+      "ai",
+      "technology"
+    ],
+    "importance": 2,
+    "image_url": "images/df54fb43d20f78a33887.webp",
+    "image_alt": "How Keenable's web search index supports AI agents with grounded responses and reduced costs"
+  },
+  {
+    "title": "Gamma acquires Accel-backed design startup Lica",
+    "url": "https://techcrunch.com/2026/08/25/gamma-acquires-accel-backed-design-startup-lica/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-25",
+    "summary": "Gamma acquired Accel-backed design startup Lica to build out its own design research lab. Lica's co-founders will lead the effort, focusing on building AI models around communication methods, including video and design. Gamma will continue to focus on helping people build presentations, but now wants to explore different formats of communication with the new research division.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 1,
+    "image_url": "images/cff852987a63414ee421.webp",
+    "image_alt": "A visual explanation of how Gamma's acquisition of Lica will lead to new formats of communication and AI-generated visuals."
+  },
+  {
+    "title": "Claude Cowork finally remembers what you told the app in chat",
+    "url": "https://techcrunch.com/2026/08/25/claude-cowork-finally-remembers-what-you-told-the-app-in-chat/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-08-25",
+    "summary": "Claude Cowork's memory system has been updated to retain information learned in one area, eliminating the need to rebrief the AI on known topics. The update allows users to seamlessly move between research and action, with Claude retaining information on topics and adding new memories as conversations progress. This change improves the user experience, making Claude feel like one continuous assistant.",
+    "tags": [
+      "ai",
+      "technology"
+    ],
+    "importance": 1,
+    "image_url": "images/e6c5479d6c4238d4c620.webp",
+    "image_alt": "Claude Cowork's updated memory system and its benefits"
+  }
+]
