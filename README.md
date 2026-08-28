@@ -120,8 +120,8 @@ Requirements:
 - Python 3.11+
 - `uv` or `pip`
 - One LLM provider credential:
-  - `NVIDIA_API_KEY` for the default NVIDIA NIM summarizer/planner
-  - `GOOGLE_API_KEY` when Gemini is selected and for RAG embeddings
+  - `GOOGLE_API_KEY` for the default Gemini summarizer/planner and RAG embeddings
+  - `NVIDIA_API_KEY` for NVIDIA image generation (or when NVIDIA is selected for summarization)
   - `HF_TOKEN` when Hugging Face is selected instead
   - local Ollama plus pulled models if `llm.provider: ollama`
 
@@ -138,8 +138,8 @@ cp .env.example .env
 
 Edit `.env` with provider and notification secrets. Edit `config.yaml` to tune feeds, keyword filtering, article limits, and model provider.
 
-The default install contains everything needed for the configured NVIDIA
-pipeline. Install only the extras you use for other providers or local tools:
+The scheduled pipeline uses Gemini for summarization and NVIDIA for article
+images. Install only the extras you use for other providers or local tools:
 
 ```bash
 pip install '.[google]'          # Gemini provider
@@ -212,8 +212,8 @@ Manual `workflow_dispatch` defaults to `test_run: true`, so a verification run d
 
 Required GitHub secrets depend on enabled features:
 
-- `NVIDIA_API_KEY` for the default NVIDIA summarizer/image planner, FLUX.2 article images, and the OpenWiki update workflow.
-- `GOOGLE_API_KEY` when Gemini summarization is selected and for local RAG embeddings.
+- `NVIDIA_API_KEY` for FLUX.2 article images, NVIDIA summarization when selected, and the OpenWiki update workflow.
+- `GOOGLE_API_KEY` for the default Gemini summarization and local RAG embeddings.
 - `HF_TOKEN` when Hugging Face summarization is selected.
 - `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` for Telegram.
 - `SLACK_WEBHOOK_URL` for Slack.
