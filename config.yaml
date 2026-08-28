@@ -116,9 +116,9 @@ images:
   brief_retry: true          # repair an unusable image plan once before giving up
 
 llm:
-  provider: nvidia           # "nvidia", "huggingface", "google", or "ollama"
-  main_model: meta/llama-3.1-8b-instruct  # unused by the LangGraph pipeline
-  sub_model: meta/llama-3.1-8b-instruct   # summarizer + article-specific image planner
+  provider: google           # "google", "nvidia", "huggingface", or "ollama"
+  main_model: gemini-2.5-flash  # unused by the LangGraph pipeline
+  sub_model: gemini-2.5-flash   # summarizer + article-specific image planner
   hf_provider: auto          # Hugging Face Inference Provider routing
   temperature: 0.2
   max_tokens: 512
