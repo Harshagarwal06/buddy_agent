@@ -20,8 +20,9 @@ contract. Supported layouts are `pipeline`, `branching`, `comparison`,
 
 The model-facing visual direction is read from the marked section of
 [`prompts/image_style.md`](../prompts/image_style.md). The generator combines
-that style with the article brief and a negative prompt. The image model is
-asked to leave the visual itself wordless; News Buddy adds a deterministic
+that style with the article brief. For the NVIDIA provider, the negative prompt
+is not sent (the model expects only a positive description); for other providers
+that support it, the negative prompt is used. News Buddy adds a deterministic
 publisher-rendered label band afterward.
 
 ## Providers and output
@@ -64,9 +65,9 @@ production issue:
   enabled.
 - When `images.enabled` is false, articles continue without generated images.
 
-The current configuration enables both required-brief and require-all behavior,
-so normal publication fails closed instead of silently shipping generic or
-missing visuals.
+The current configuration enables required-article-brief but not require-all
+behavior, so normal publication fails only on missing article briefs, not on
+image failures.
 
 ## Related pages
 
