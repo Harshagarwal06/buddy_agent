@@ -31,9 +31,12 @@ timeouts, retry limits, worker count, and failure policy from the `images`
 section of [`config.yaml`](../config.yaml).
 
 - The `nvidia` provider uses NVIDIA's hosted Visual GenAI endpoint and
-  `NVIDIA_API_KEY`.
+  `NVIDIA_API_KEY`. Note that the NVIDIA model (FLUX.2) does not accept a
+  negative prompt; if one is configured in `images.negative_prompt`, it will
+  be ignored and a warning will be issued.
 - Other configured provider names use
-  `huggingface_hub.InferenceClient` and a Hugging Face token.
+  `huggingface_hub.InferenceClient` and a Hugging Face token, and do use the
+  configured negative prompt.
 - Successful provider bytes are decoded, validated with Pillow, fitted to the
   configured canvas, given the label band, and saved as WebP.
 - The returned article record receives `image_url`, `image_alt`, dimensions,

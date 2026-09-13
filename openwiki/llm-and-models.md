@@ -19,11 +19,17 @@ All model construction is centralized in
   `/v1/chat/completions` endpoint, authenticated by `NVIDIA_API_KEY`.
 - `google`: `ChatGoogleGenerativeAI`, authenticated by `GOOGLE_API_KEY`, with a
   shared in-memory rate limiter and JSON MIME mode for the sub-model.
+  Requires the `google` extra (`pip install 'news-buddy[google]'`);
+  raises a clear `RuntimeError` if missing.
 - `huggingface` / `hf`: a local adapter around
   `huggingface_hub.InferenceClient`, authenticated by `HF_TOKEN` or
   `HUGGINGFACEHUB_API_TOKEN`.
+  Requires the `huggingface` extra (`pip install 'news-buddy[huggingface]'`);
+  raises a clear `RuntimeError` if missing.
 - `ollama`: `ChatOllama` after verifying that the configured local server
   exposes the requested model.
+  Requires the `ollama` extra (`pip install 'news-buddy[ollama]'`);
+  raises a clear `RuntimeError` if missing.
 
 There is no `LLMManager`, `generate_text()`, or model-generated embedding method
 in this module. Article embeddings are a separate Google-specific concern in
