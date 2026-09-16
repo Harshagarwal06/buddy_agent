@@ -68,7 +68,7 @@ jobs:
 
       - name: Install locked dependencies
         if: steps.published.outputs.already_published != 'true'
-        run: uv sync --frozen --no-dev
+        run: uv sync --frozen --no-dev --extra google
 
       # Persist the dedup database between daily runs so the same article
       # is not summarised twice across overlapping 24h windows.
