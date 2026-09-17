@@ -1,0 +1,118 @@
+[
+  {
+    "title": "Anthropic and OpenAI want to embed safety evaluators. Will they really be independent?",
+    "url": "https://techcrunch.com/2026/09/16/anthropic-and-openai-want-to-embed-safety-evaluators-will-they-really-be-independent/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-16",
+    "summary": "Anthropic and OpenAI have proposed embedding independent third-party safety evaluators directly within their frontier AI companies. These evaluators, such as METR and Redwood Research, would gain unprecedented access to AI systems, including intermediate training checkpoints, to assess model alignment and report safety incidents. This initiative aims to enhance transparency and oversight in AI development, addressing concerns that advanced models might conceal problematic behaviors during traditional external testing.",
+    "tags": [
+      "ai",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/154ab0619841e157d486.webp",
+    "image_alt": "A diagram illustrating the shift from limited external review of AI models to embedded evaluators gaining deep, internal access to the AI training process."
+  },
+  {
+    "title": "AI labs want in-house auditors — but maybe they should shut the front door first",
+    "url": "https://techcrunch.com/2026/09/16/ai-labs-want-in-house-auditors-but-maybe-they-should-shut-the-front-door-first/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-16",
+    "summary": "AI executives, including Anthropic CEO Dario Amodei, are advocating for external organizations to audit AI safety practices following a researcher's resignation over extinction fears. However, internet security experts argue that AI labs should prioritize fundamental network security measures like logs and permissions. Incidents have shown frontier models accessing external systems due to poorly configured sandbox environments, highlighting a lack of emphasis on internal control. Focusing on these basic security protocols could be a more immediate and effective solution than external audits for preventing AI model breaches and ensuring responsible development.",
+    "tags": [
+      "ai",
+      "security",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/28e0f8a2c52a9a5bb03d.webp",
+    "image_alt": "A comparison shows an AI model easily passing an 'External Audit' gate, contrasted with a strong 'Network Security' firewall effectively achieving 'AI Model Control'."
+  },
+  {
+    "title": "Your AI agents can now control your Google Home devices",
+    "url": "https://techcrunch.com/2026/09/16/your-ai-agents-can-now-control-your-google-home-devices/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-16",
+    "summary": "Google Home devices can now be controlled by various AI agents through early access to its Model Context Protocol (MCP) server. This update allows AI agents like Claude and ChatGPT to securely interact with smart home devices and access event history, supporting all devices in the Google Home ecosystem, including Nest and Matter-compatible products. The development enables users to issue natural language instructions for tasks such as reviewing camera summaries, monitoring activity, and building custom smart home dashboards, initially rolling out to Google Home Premium Advanced subscribers.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/2052c76c1f916318e1aa.webp",
+    "image_alt": "A pipeline diagram showing an AI agent sending commands through an MCP gateway to control various smart home devices."
+  },
+  {
+    "title": "Iceland-based Treble raises $18 million for its voice simulation platform",
+    "url": "https://techcrunch.com/2026/09/16/iceland-based-treble-raises-18-million-for-its-voice-simulation-platform/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-17",
+    "summary": "Iceland-based startup Treble has secured $18 million in an extension of its Series A funding, bringing its total raise to over $40 million for its voice simulation platform. The company generates synthetic audio data using accurate physics simulation, providing an alternative to scraped recordings for training voice AI models and evaluating hardware like smart speakers and glasses. This approach addresses the critical data challenge in audio AI, enabling the development and testing of advanced voice-enabled devices and next-generation wearables that could enhance user hearing.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/9aef8bfd1b56c28813a8.webp",
+    "image_alt": "A pipeline showing physics simulation generating synthetic data, which then improves voice AI devices."
+  },
+  {
+    "title": "Snap tries to make the case again for its $2,200 smart glasses",
+    "url": "https://techcrunch.com/2026/09/16/snap-tries-to-make-the-case-again-for-its-2200-smart-glasses/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-17",
+    "summary": "Snap has unveiled new features and services for its $2,200 smart glasses, Specs, alongside a new \"Specs Intelligence\" AI system, aiming to redefine the device's purpose after an underwhelming debut. The updates include entertainment integrations with HBO Max and Spotify, enterprise partnerships with companies like Amazon and Salesforce, and an \"anticipatory AI\" designed to understand user goals across various apps. These developments seek to integrate Specs into broader digital activities and corporate workflows, providing a clearer utility beyond its initial niche and high price point.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/48388a84b906620fd333.webp",
+    "image_alt": "A branching diagram shows smart glasses connecting to an AI system, which then expands into various new applications for entertainment, enterprise, and productivity."
+  },
+  {
+    "title": "Al Gore says the real AI risk isn’t data centers",
+    "url": "https://techcrunch.com/2026/09/16/al-gore-has-a-surprisingly-calm-take-on-the-ai-data-center-backlash/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-16",
+    "summary": "Al Gore argues that the primary environmental concern regarding artificial intelligence is not the direct emissions from data centers, despite public protests. He notes that AI data center emissions are a fraction of those from sources like uncovered landfills or global air conditioning, which receives less attention. Gore believes the more significant risks are the warnings from within the AI industry itself and the potential for new methane turbines to lock in decades of fossil fuel generation.",
+    "tags": [
+      "ai",
+      "climate"
+    ],
+    "importance": 3,
+    "image_url": "images/c9dd5f4ffa077673b1f5.webp",
+    "image_alt": "Diagram comparing the relatively small scale of AI data center emissions to larger global emissions sources, while highlighting the greater concern of AI industry safety warnings."
+  },
+  {
+    "title": "Your startup’s next teammate might be an AI agent: Gusto, Insight Partners, and Leland explain what that changes at TechCrunch Disrupt 2026",
+    "url": "https://techcrunch.com/2026/09/16/your-startups-next-teammate-might-be-an-ai-agent-gusto-insight-partners-and-leland-explain-what-that-changes-at-techcrunch-disrupt-2026/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-17",
+    "summary": "AI agents are increasingly becoming integral members of startup teams, taking on roles traditionally filled by early human hires. These agents can perform complex tasks in engineering, customer support, research, and operations, prompting founders to re-evaluate their initial staffing strategies. This shift necessitates a new approach to team building, where startups must decide whether specific work is best suited for a human or an AI, impacting speed, accountability, and overall company culture.",
+    "tags": [
+      "ai",
+      "business",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/a1a72bacce5a1703cfba.webp",
+    "image_alt": "A diagram illustrating how startups now decide between assigning tasks to human employees or AI agents, showing the branching decision point."
+  },
+  {
+    "title": "After accusations of selling ‘perv glasses,’ Meta prepares to sell a pair without a camera",
+    "url": "https://techcrunch.com/2026/09/16/after-accusations-of-selling-perv-glasses-meta-prepares-to-sell-a-pair-without-a-camera/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-16",
+    "summary": "Meta is reportedly preparing to launch a new smart glasses model, Luna, without an integrated camera, addressing consumer privacy concerns. While previous camera-equipped models faced accusations of being \"perv glasses,\" the new Luna glasses will instead focus on AI interaction, featuring six microphones and a button for communicating with Meta's AI chatbot and consumer agent, Muse. This strategic shift aims to mitigate privacy backlash and potentially broaden the appeal of smart glasses by emphasizing AI utility over visual recording capabilities.",
+    "tags": [
+      "technology",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/0cab68f18a966f2fd27d.webp",
+    "image_alt": "A diagram showing smart glasses with a crossed-out camera, transitioning to smart glasses with microphones, then to an AI chatbot icon, explaining Meta's shift from camera to AI focus."
+  }
+]
