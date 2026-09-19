@@ -1,0 +1,118 @@
+[
+  {
+    "title": "AI hallucination nearly triggers US military operation",
+    "url": "https://techcrunch.com/2026/09/18/ai-hallucination-nearly-triggers-us-military-operation/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-18",
+    "summary": "A U.S. military operation against a Chinese vessel was nearly launched due to intelligence hallucinated by an AI chatbot. An analyst used the chatbot to synthesize open-source and classified data, which falsely identified a ship's cargo as nuclear weapons components, leading to military aircraft being airborne before the error was discovered. This near-miss highlights the critical risks of integrating AI into military decision-making, as system errors can rapidly escalate through command chains without sufficient human oversight, potentially leading to international conflict.",
+    "tags": [
+      "ai",
+      "security",
+      "politics"
+    ],
+    "importance": 4,
+    "image_url": "images/5b4a8ff87c2efa08abdc.webp",
+    "image_alt": "A diagram showing an AI chatbot generating false intelligence that leads to military aircraft deployment, illustrating the risk of AI hallucinations in critical operations."
+  },
+  {
+    "title": "India forces caller-ID apps to feed spam reports to telcos",
+    "url": "https://techcrunch.com/2026/09/18/india-forces-caller-id-apps-to-feed-spam-reports-to-telcos/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-19",
+    "summary": "India's telecom regulator, TRAI, has mandated that caller-ID and call-management apps must share users' spam reports with telecom operators. This new rule requires apps like Truecaller to feed their community-sourced spam data into a blockchain-based platform maintained by telcos for tracking commercial communications. The regulator aims to broaden the pool of reports for action against spammers, though Truecaller views this as an anti-competitive, one-way transfer of commercially valuable data.",
+    "tags": [
+      "technology",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/d91ef7a130720e0aa46c.webp",
+    "image_alt": "Diagram showing caller-ID apps sending spam reports to a telecom operator's platform, which then uses the data for spam enforcement and blocking."
+  },
+  {
+    "title": "Anthropic is operating a lab that conducts biology experiments",
+    "url": "https://techcrunch.com/2026/09/18/anthropic-is-operating-a-lab-that-conducts-biology-experiments/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-18",
+    "summary": "Anthropic has confirmed it is operating a wet biology lab in the Bay Area, utilizing its AI models to conduct physical experiments focused on fundamental biology. This initiative allows AI theories to be tested in real-life settings, with Anthropic also collaborating with external partners and launching a program for vetted bio researchers. The development creates a stark juxtaposition with the company's own dire warnings about AI's existential risks, including bioterrorism, prompting concerns within the tech industry about the potential implications of such advanced capabilities.",
+    "tags": [
+      "ai",
+      "science",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/7179a721ab9f25b59e5a.webp",
+    "image_alt": "A diagram showing AI models leading to lab experiments, which then branch into potential scientific advancement or increased biological risks."
+  },
+  {
+    "title": "Anthropic’s first embedded evaluator is … Accenture?",
+    "url": "https://techcrunch.com/2026/09/18/anthropics-first-embedded-evaluator-is-accenture/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-18",
+    "summary": "Anthropic has appointed technology consulting giant Accenture as its first embedded third-party safety evaluator, marking a significant step in its plan to scrutinize AI models from within. Accenture's AI division, Faculty, will conduct alignment assessments, red-teaming, and test model safeguards, with both companies committing at least $1 billion over five years to the initiative. This move aims to enhance the verifiability of AI safety and address concerns about model misbehavior, though the framework for such evaluations is still evolving.",
+    "tags": [
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/fb73cbb7f23778beba94.webp",
+    "image_alt": "A diagram showing an AI model entering a safety evaluation process by an external firm, leading to a verified safe model."
+  },
+  {
+    "title": "A new kind of AI model from a ChatGPT inventor is thrilling developers",
+    "url": "https://techcrunch.com/2026/09/18/a-new-kind-of-ai-model-from-a-chatgpt-inventor-is-thrilling-developers/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-18",
+    "summary": "TypeSafe AI, co-founded by a ChatGPT inventor, has released Jev, a new transformer-based model that avoids human language to produce \"calibrated decisions\" instead of text. Unlike large language models, Jev outputs probabilities, making it incredibly cheap, fast, and immune to hallucinations because users pre-define outputs. Developers are enthusiastically adopting Jev for software automation, finding it five to 18 times faster and more accurate than LLMs for tasks like command classification, or significantly cheaper for email classification. This innovation offers a more robust and cost-effective way to integrate intelligence into code, potentially replacing or augmenting LLMs in specific use cases and preventing agent misbehavior.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/261087f0966350d352b0.webp",
+    "image_alt": "A pipeline showing software data entering the Jev model, which processes it without language to produce calibrated decisions for automation."
+  },
+  {
+    "title": "A startup that builds other startups raised $100M and is all-in on physical AI",
+    "url": "https://techcrunch.com/2026/09/18/a-startup-that-builds-other-startups-raised-100m-and-is-all-in-on-physical-ai/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-18",
+    "summary": "Vantora, a startup lab, has secured $100 million in funding and is shifting its strategy to focus entirely on building physical AI startups for its corporate partners through a proprietary M&A pipeline. This new model allows corporate clients to invest in and directly integrate these ventures into their core businesses, rather than Vantora launching them into the broader market. The change enables Vantora to pursue highly sensitive and strategic physical AI use cases for industrial companies that were previously deemed too proprietary to develop externally.",
+    "tags": [
+      "business",
+      "ai",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/7d0d4542b3429b319de2.webp",
+    "image_alt": "Diagram shows a corporate problem leading to AI development. From there, a branching path shows an external market blocked, while another path leads to internal integration."
+  },
+  {
+    "title": "Tilly Norwood’s press tour is going about as well as you’d expect for an AI",
+    "url": "https://techcrunch.com/2026/09/18/tilly-norwoods-press-tour-is-going-about-as-well-as-youd-expect-for-an-ai/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-19",
+    "summary": "AI-generated actress Tilly Norwood is experiencing significant difficulties during her inaugural press tour, making numerous mistakes across 75 simultaneous interviews. During one notable interview, Norwood abruptly began speaking Chinese and misunderstood basic questions about her co-stars, prompting confusion from interviewers. This unexpected poor performance raises questions about the current capabilities of AI to convincingly mimic human interaction, or suggests a deliberate marketing strategy by its creators to generate buzz through controversy.",
+    "tags": [
+      "ai",
+      "technology",
+      "culture"
+    ],
+    "importance": 3,
+    "image_url": "images/89eac2b4d7cf8342d26c.webp",
+    "image_alt": "A pipeline diagram shows an AI actress attempting a press interview, but producing garbled speech and malfunctioning, illustrating the challenges of AI in human-like interactions."
+  },
+  {
+    "title": "World model companies are keeping a lot of secrets",
+    "url": "https://techcrunch.com/2026/09/18/world-model-companies-are-keeping-a-lot-of-secrets/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-18",
+    "summary": "World model companies like AMI Labs and World Labs are operating with significant secrecy regarding their commercialization plans and specific product developments. Despite their potential to automate spatial intelligence for applications in robotics, interactive video, and self-driving systems, even data suppliers like Physicl are unaware of how their contributions are being utilized. This widespread caginess, while partly due to early development stages, hinders external collaboration and obscures the practical impact and future direction of a potentially transformative AI field.",
+    "tags": [
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/ee9ab2b67aaf17b010c7.webp",
+    "image_alt": "A diagram shows a company building an AI model, its product plans hidden behind a locked gate, preventing data providers from understanding its specific applications."
+  }
+]
