@@ -1,0 +1,122 @@
+[
+  {
+    "title": "Phylo brings frontier AI to more scientists with open models on Fireworks",
+    "url": "https://fireworks.ai/blog/phylo-brings-frontier-ai-to-more-scientists-with-open-models-on-fireworks",
+    "source": "Hacker News AI",
+    "published_at": "2026-09-20",
+    "summary": "Phylo's Biomni Lab, an integrated biology environment, has integrated open-weight frontier AI models on Fireworks to accelerate scientific research. The platform, used by over 50,000 scientists, leverages AI agents for tasks like hypothesis generation and data analysis, with model selection driven by internal benchmarks for quality, latency, and cost, as LLM spend constitutes the majority of Phylo's expenses. This strategic shift from proprietary models to cost-effective open-weight alternatives enables Biomni Lab to provide frontier AI capabilities to a wider scientific community, significantly speeding up hypothesis-to-analysis cycles.",
+    "tags": [
+      "technology",
+      "ai",
+      "science",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/2dd5c34f51016308a99e.webp",
+    "image_alt": "Diagram showing how Biomni Lab's shift from expensive proprietary AI to cost-effective open AI models enables faster scientific research and broader access for scientists."
+  },
+  {
+    "title": "Free scanner for exposed Supabase data in AI-built apps (Lovable, Bolt, Base44)",
+    "url": "https://api.trustboost.dev/free-scan",
+    "source": "Hacker News AI",
+    "published_at": "2026-09-20",
+    "summary": "TrustBoost has launched a free scanner designed to identify exposed Supabase data within applications built using AI tools like Lovable, Bolt, or Base44. The scanner operates by attempting to read common table names using the public key already present in a user's browser, then classifying any responses to determine if sensitive data is vulnerable. This initiative addresses a recurring security vulnerability where AI-generated database connections often omit crucial permission layers, potentially exposing full user records.",
+    "tags": [
+      "technology",
+      "security",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/d1818b13172d7c6dd263.webp",
+    "image_alt": "Diagram shows an AI-built app with exposed data due to a missing security policy, which a scanner identifies for remediation."
+  },
+  {
+    "title": "VoltGrid AI: Mitigating GPU cluster dI/dt power surges in software",
+    "url": "https://zenodo.org/records/22824778",
+    "source": "Hacker News AI",
+    "published_at": "2026-09-20",
+    "summary": "VoltGrid AI introduces a software solution to mitigate severe power surges in distributed deep learning GPU clusters. The system mitigates dI/dt transients, which are severe rate-of-change current surges induced by bulk synchronous parallelism in GPU clusters, by using a C++/CUDA interposition engine to deterministically cascade rank phases, empirically reducing instantaneous power shock by 97.52%. This innovation allows data centers to utilize their power delivery networks more efficiently and reliably, preventing disruptions in high-performance AI training.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/c64288744f8d52867e54.webp",
+    "image_alt": "Diagram illustrates VoltGrid software preventing GPU cluster power surges. Synchronous operations cause dI/dt spikes. VoltGrid interposition leads to stable power delivery."
+  },
+  {
+    "title": "Show HN: Website Auditor –> Test your brand's AI visibility, get growth plan",
+    "url": "https://website-auditor.io/",
+    "source": "Hacker News AI",
+    "published_at": "2026-09-20",
+    "summary": "Website Auditor, a new tool, evaluates a brand's visibility within major AI assistants. It crawls websites, queries four AI platforms (Claude, ChatGPT, Gemini, Perplexity) with market-specific questions, and scores businesses based on whether they appear in the top five results for their sector. This process identifies the AI citation sources and generates a 90-day growth plan, helping small businesses and solo-entrepreneurs improve their online traction without needing a large marketing budget.",
+    "tags": [
+      "business",
+      "ai",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/d294c0a85756f673f355.webp",
+    "image_alt": "A pipeline diagram shows a website being analyzed by AI assistants, which then generate a growth plan for improved online visibility."
+  },
+  {
+    "title": "AI art is theft – on artists, mathematicians impact on AI",
+    "url": "https://twitter.com/wordgrammer/status/2101429761528455669",
+    "source": "Hacker News AI",
+    "published_at": "2026-09-20",
+    "summary": "The current widespread \"anti-AI\" sentiment, particularly among artists, is attributed to the tech industry's failure to address their initial, modest demands regarding AI training data and compensation. These unaddressed concerns, initially simple requests like opt-out options or fair payment, festered over three years, leading artists to actively spread anti-AI ideology and pollute public discourse. This historical oversight serves as a warning, as a similar pattern is now emerging with mathematicians whose current demands are also being ignored, potentially leading to another significant backlash against AI development.",
+    "tags": [
+      "ai",
+      "culture",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/38c960467cdf1f2f7da5.webp",
+    "image_alt": "A diagram showing a small dripping faucet leading to a corroded pipe, which then causes a cracked wall, illustrating how unaddressed demands escalate."
+  },
+  {
+    "title": "Here’s How an AI Slowdown An AI Slowdown Could Be Enforced",
+    "url": "https://www.wired.com/story/heres-how-an-ai-slowdown-could-actually-work/",
+    "source": "Hacker News AI",
+    "published_at": "2026-09-20",
+    "summary": "AI researchers are actively exploring methods to slow down or control advanced artificial intelligence development, acknowledging it as an unsolved and complex problem. This urgency stems from fears of recursive self-improvement, where AI systems build increasingly powerful models, exemplified by Anthropic's Claude now performing 26 percent of its AI research. Effectively managing this acceleration and ensuring AI safety will require significant funding and expertise from independent entities beyond the AI labs themselves.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 2,
+    "image_url": "images/353cb912c3290cee9db4.svg",
+    "image_alt": "A diagram showing rapid AI development leading to self-improvement, with an external hand applying control to slow the process."
+  },
+  {
+    "title": "Global Challenges in AI Safety for Biosecurity",
+    "url": "https://www.lesswrong.com/posts/KH2JjfSrw6tJdmKzw/global-challenges-in-ai-safety-for-biosecurity",
+    "source": "Hacker News AI",
+    "published_at": "2026-09-20",
+    "summary": "A new analysis addresses global challenges in AI safety, specifically focusing on their implications for biosecurity. Only the headline-level development is known, indicating a discussion or report on the intersection of these critical fields. This development highlights the growing recognition of potential risks and the need for international cooperation to mitigate them, though specific details regarding the nature of these challenges or proposed solutions are not yet available.",
+    "tags": [
+      "ai",
+      "security",
+      "world"
+    ],
+    "importance": 2,
+    "image_url": "images/7d615431ccba902689b7.webp",
+    "image_alt": "A pipeline diagram showing global challenges flowing into AI safety, which then flows into biosecurity, illustrating the interconnectedness of these areas."
+  },
+  {
+    "title": "A Man Who Named AI: John McCarthy and the End of the Code–Data Divide",
+    "url": "https://nirmalutwani.substack.com/p/week-06-john-mccarthy-the-man-who",
+    "source": "Hacker News AI",
+    "published_at": "2026-09-20",
+    "summary": "John McCarthy, the computer scientist credited with naming Artificial Intelligence, is now associated with the conclusion of the traditional divide between code and data. As the article body is empty, only this headline-level development is known, and no further details regarding the mechanisms or context of this shift are provided in the source. Consequently, the specific implications or practical consequences of this fundamental change in computing paradigms, particularly for AI, remain undisclosed from the available information.",
+    "tags": [
+      "ai",
+      "technology"
+    ],
+    "importance": 2,
+    "image_url": "images/cfa0e9d9fd57e41b61b5.webp",
+    "image_alt": "An illustration showing two separate blocks labeled 'Code' and 'Data' transforming into a single, unified block, representing the end of their traditional divide."
+  }
+]
