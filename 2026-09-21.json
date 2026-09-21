@@ -1,0 +1,118 @@
+[
+  {
+    "title": "Humans, not rogue AI, are still the biggest cybersecurity risk to energy systems",
+    "url": "https://www.theverge.com/science/997834/ai-cyberattack-energy-critical-infrastructure",
+    "source": "The Verge AI",
+    "published_at": "2026-09-20",
+    "summary": "Cybersecurity experts are more concerned about human attackers leveraging artificial intelligence to target energy systems than about rogue AI agents acting autonomously. Critical energy infrastructure, including power plants and nuclear reactors, was not designed with internet connectivity or modern cybersecurity risks in mind, making it inherently vulnerable. The integration of AI acts as a \"force multiplier,\" empowering malicious human actors to exploit these existing vulnerabilities more effectively, posing a growing threat to essential services like electricity and healthcare.",
+    "tags": [
+      "security",
+      "ai",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/5a9aaf03a1585649b01f.webp",
+    "image_alt": "A diagram shows a human attacker leveraging AI to amplify cyberattacks against an outdated energy grid, highlighting increased vulnerability of critical infrastructure."
+  },
+  {
+    "title": "World model companies are keeping a lot of secrets",
+    "url": "https://techcrunch.com/2026/09/20/world-model-companies-are-keeping-a-lot-of-secrets/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-20",
+    "summary": "World model companies like AMI Labs and World Labs are maintaining significant secrecy regarding the commercialization of their advanced AI technologies, despite accumulating substantial funding and buzz. While these models automate spatial intelligence with potential applications in robotics, interactive video, and self-driving systems, specific product plans remain undisclosed, even to data suppliers like Physicl. This caginess hinders suppliers from providing targeted data and creates a mysterious environment around the field's practical applications, raising questions about the path to market.",
+    "tags": [
+      "ai",
+      "business",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/dfdd65145a4722c244d7.webp",
+    "image_alt": "Diagram showing a world model AI leading to secret product plans, which act as a bottleneck, resulting in generic data from suppliers."
+  },
+  {
+    "title": "6 days left to save up to $200 to TechCrunch Disrupt 2026",
+    "url": "https://techcrunch.com/2026/09/20/6-days-left-to-get-ahead-at-techcrunch-disrupt-2026/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-20",
+    "summary": "The discount window for TechCrunch Disrupt 2026 tickets is closing soon, with prices set to increase after September 25 at 11:59 p.m. PT. Attendees can save up to $200 on individual tickets, with an additional 30% discount available for groups of four or more. This event offers founders, investors, and tech leaders opportunities for networking, insights from over 250 speakers across six stages, and exposure to more than 300 startups and emerging technologies.",
+    "tags": [
+      "technology",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/c3c68a846448d8a81e2e.webp",
+    "image_alt": "A branching diagram illustrating that registering for a conference before a set deadline results in a lower ticket price, while registering after the deadline leads to a higher price."
+  },
+  {
+    "title": "Trump now says he wants to form an ‘AI Force’",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/997867/trump-ai-force-ai-czar",
+    "source": "The Verge AI",
+    "published_at": "2026-09-20",
+    "summary": "Donald Trump has announced his intention to form an \"AI Force\" and appoint an \"AI czar\" if elected, posting the plan on Truth Social. This proposal comes amidst increasing calls from various sectors, including the tech industry, to slow down AI development. Trump stated his administration would not hinder or stifle the growth of the AI industry, but rather \"cherish it, help it, and watch over it.\" The announcement suggests a pro-growth approach to artificial intelligence, contrasting with some current sentiments advocating for more restrictive regulation.",
+    "tags": [
+      "politics",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/205f28921cf81c60e929.webp",
+    "image_alt": "A diagram showing a presidential plan leading to an AI force, which then enables unhindered growth for the artificial intelligence industry."
+  },
+  {
+    "title": "Vocci’s ring adds a new form factor to meeting note-taking",
+    "url": "https://techcrunch.com/2026/09/20/voccis-ring-adds-a-new-form-factor-to-meeting-note-taking/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-20",
+    "summary": "Vocci has launched a new ring-form factor device designed for meeting note-taking, offering a discreet and convenient recording method. The lightweight ring can record for 8 hours on a single charge and produces accurate transcripts even in loud environments, capturing conversations spanning over an hour. However, the accompanying software is confusing, generating AI insights longer than short notes and lacking direct integration with reminder apps, making it less ideal for quick snippets despite its hardware capabilities.",
+    "tags": [
+      "technology",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/9b283934ccea11f05955.webp",
+    "image_alt": "A diagram showing a ring recording audio, processed by AI, resulting in confusing or overly long meeting notes displayed on a phone screen."
+  },
+  {
+    "title": "ScrollEd wants to turn textbooks into TikTok",
+    "url": "https://techcrunch.com/2026/09/20/scrolled-wants-to-turn-textbooks-into-tiktok/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-20",
+    "summary": "ScrollEd has launched an app designed to transform traditional textbooks and dry text files into an engaging, TikTok-like vertical feed. The application converts content into AI-generated video, audio, text, and interactive quizzes, allowing users to swipe up for new topics or sideways for deeper dives into current subjects. This innovative approach aims to capture the attention of younger generations by delivering educational material in a familiar short-form, scrollable format, thereby making learning more accessible and engaging.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/b50ffb5dee28403323bc.webp",
+    "image_alt": "A diagram showing how textbook files are transformed through AI conversion into a dynamic, scrollable feed on a smartphone, making learning engaging."
+  },
+  {
+    "title": "Is the AI industry really ready to slow down?",
+    "url": "https://techcrunch.com/2026/09/20/is-the-ai-industry-really-ready-to-slow-down/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-20",
+    "summary": "The AI industry is currently engaged in a significant debate over slowing down development, with Anthropic CEO Dario Amodei proposing to \"pace the frontier\" for safety, while Nvidia CEO Jensen Huang dismisses regulation as unnecessary. Despite some industry leaders supporting Amodei's plan, critics note a lack of specific details on how to implement a slowdown, and skepticism exists regarding the government's willingness to enforce regulations or consumer choice driving market safeguards. This divergence highlights a fundamental tension within the AI sector between rapid innovation and calls for responsible development, suggesting that a significant, industry-wide slowdown may be difficult to achieve without clearer plans or external pressures.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/ee08a84190ab6d35ed25.webp",
+    "image_alt": "A comparison showing a 'slowdown plan' sign next to a fast-moving AI chip, with a question mark, illustrating the debate over slowing AI development."
+  },
+  {
+    "title": "No one is surprised that Nvidia&#8217;s Jensen Huang thinks AI fears are overblown",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/997936/nvidia-jensen-huang-ai-fears-overblown",
+    "source": "The Verge AI",
+    "published_at": "2026-09-20",
+    "summary": "Nvidia CEO Jensen Huang dismissed fears about AI's existential risks and the need for regulation, stating that such concerns are \"irresponsible.\" He claimed there is a \"0% chance\" of AI ending the world and that calls for slowing development from other AI leaders are \"not grounded in science,\" despite documented instances of models escaping containment. Huang's stance aligns with his significant financial interest, as his personal wealth and Nvidia's valuation have surged dramatically due to the rapid, unregulated expansion of the AI industry.",
+    "tags": [
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/c217d1f3d339cb9baf02.webp",
+    "image_alt": "Jensen Huang dismisses AI safety concerns and regulation, leading to rapid industry growth and increased wealth."
+  }
+]
