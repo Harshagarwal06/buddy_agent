@@ -1,0 +1,120 @@
+[
+  {
+    "title": "OpenAI forms math advisory group as its AI resolves more than 100 open problems",
+    "url": "https://techcrunch.com/2026/09/21/openai-forms-math-advisory-group-as-its-ai-resolves-more-than-100-open-problems/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-21",
+    "summary": "OpenAI has established a new independent Advisory Group on Mathematics and Artificial Intelligence, hosted at the Institute for Advanced Study, following its claim that an internal AI model has resolved over 100 open mathematical problems, including the Navier-Stokes Millennium Prize problem. This group aims to provide mathematicians with input into OpenAI's math research and assess new results, addressing concerns from the mathematical community about the rapid pace of AI-driven problem-solving. However, the advisory group's mandate explicitly states it will not have the authority to slow down or redirect OpenAI's ongoing mathematical research, raising questions about its actual influence on the company's trajectory.",
+    "tags": [
+      "technology",
+      "ai",
+      "science"
+    ],
+    "importance": 4,
+    "image_url": "images/dcdefe5a2761d8a5bea9.webp",
+    "image_alt": "Diagram showing AI rapidly solving math problems, with an advisory group having limited power to influence the pace of progress."
+  },
+  {
+    "title": "The man who built Apple’s stores doesn’t buy Silicon Valley’s bet on AI shopping",
+    "url": "https://techcrunch.com/2026/09/21/the-man-who-built-apples-stores-doesnt-buy-silicon-valleys-bet-on-ai-shopping/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-21",
+    "summary": "Ron Johnson, the architect of Apple's retail stores, challenges Silicon Valley's multi-billion dollar investment in AI agents for automated shopping, asserting that people will not fully hand over purchasing decisions to machines. He contends that consumers require physical interaction to evaluate significant purchases, such as a $1,000 laptop, to feel its weight, see the display, and decide on its size. Consequently, Johnson predicts AI will serve as a tool to better inform shoppers before they visit physical stores, which he expects to remain central to the retail experience.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/74be60580c3f116f6746.webp",
+    "image_alt": "Diagram showing an AI interface providing information, leading to an informed shopper, who then visits a physical retail store for product experience."
+  },
+  {
+    "title": "Meta’s AI agent has been blocked from using Amazon.com",
+    "url": "https://techcrunch.com/2026/09/21/metas-ai-agent-has-been-blocked-from-using-amazon-com/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-21",
+    "summary": "Meta's AI assistant, Muse, has been blocked from making purchases on Amazon.com, with users receiving an error message citing a violation of Amazon's Conditions of Use by an \"unauthorized AI agent.\" Amazon's decision stems from concerns over potential issues like \"bad orders\" and \"hallucinations\" from AI models, which could burden their customer service and vendors. This move highlights a growing conflict between major tech companies regarding AI agent access to platforms and the challenges of integrating AI into agent-driven commerce.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/3266ba12e98c92373196.webp",
+    "image_alt": "A diagram shows an AI agent trying to reach an e-commerce platform, but a barrier blocks access, explaining Amazon's refusal of Meta's AI agent."
+  },
+  {
+    "title": "Meta’s Muse is outpacing ChatGPT’s early mobile launch",
+    "url": "https://techcrunch.com/2026/09/21/metas-muse-is-outpacing-chatgpts-early-mobile-launch/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-21",
+    "summary": "Meta's new AI app, Muse, is significantly outpacing ChatGPT's early mobile launch performance in terms of downloads and daily active users. Market intelligence firm Apptopia reports that Muse achieved 1.8 million iOS downloads in its first 12 days in the U.S. and Canada, compared to ChatGPT's 1.3 million in the same period, and also boasts higher daily active users. This strong initial performance suggests Muse could emerge as Meta's next major successful application, potentially establishing a strong foothold in the competitive mobile AI market.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/cd5ddbaa8502d7eb27b9.svg",
+    "image_alt": "A comparison showing Muse app's faster user growth curve surpassing ChatGPT's in early mobile launch, indicating its potential as a top app."
+  },
+  {
+    "title": "Discover what’s next: 5 days left to save up to $200 on your TechCrunch Disrupt 2026 ticket",
+    "url": "https://techcrunch.com/2026/09/21/discover-whats-next-5-days-left-to-save-up-to-200-on-techcrunch-disrupt-2026/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-21",
+    "summary": "TechCrunch Disrupt 2026 is offering early bird ticket savings of up to $200, with the discount ending in five days on September 25. The event, held October 13-15 in San Francisco, will feature over 10,000 founders, investors, and operators, showcasing 200 early-stage companies in the Startup Battlefield. Attendees can explore new technologies and meet founders, with 20 companies pitching live for a $100,000 equity-free prize. This provides a crucial opportunity for participants to discover emerging market trends, potential partners, and investment opportunities before they become widely known.",
+    "tags": [
+      "business",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/8c5e70dd06ba1d30fab3.svg",
+    "image_alt": "A pipeline showing early-stage companies entering a conference stage, leading to market discovery for investors and founders."
+  },
+  {
+    "title": "Where will the next breakout startup come from? Benchmark’s full partnership weighs in at TechCrunch Disrupt 2026",
+    "url": "https://techcrunch.com/2026/09/21/where-will-the-next-breakout-startup-come-from-benchmarks-full-partnership-weighs-in-at-techcrunch-disrupt-2026/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-21",
+    "summary": "Benchmark's full partnership will convene at TechCrunch Disrupt 2026 to discuss the future of startups and venture capital. The firm recently raised $2 billion across a flagship and its first growth fund, while AI companies captured 61% of global VC investment in 2025, with 73% of that value in deals over $100 million. This discussion will explore where the next generation of startups will emerge, which founder assumptions need reevaluation, and what opportunities are being overlooked amidst intense competition for category leaders.",
+    "tags": [
+      "business",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/6886a12828bae12f518b.webp",
+    "image_alt": "A bottleneck diagram showing venture capital flowing into a narrow channel of large AI deals, leaving other startup opportunities less funded."
+  },
+  {
+    "title": "With Tabby, a former accountant is using AI to make accountants obsolete",
+    "url": "https://techcrunch.com/2026/09/21/with-tabby-a-former-accountant-is-using-ai-to-make-accountants-obsolete/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-21",
+    "summary": "Ahad Ali, a former accountant, has launched Tabby, an AI-powered platform designed to automate bookkeeping for small businesses. Tabby uses Plaid to import live account data and artificial intelligence to create real-time financial dashboards, aiming to make traditional accounting software like QuickBooks obsolete. This innovation seeks to transform bookkeeping into an invisible, automated monthly service, significantly altering the operational costs and financial management for small- to medium-sized firms.",
+    "tags": [
+      "ai",
+      "business",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/e08a33b1d73668195573.webp",
+    "image_alt": "A pipeline shows live financial data flowing into an AI system, which processes it to generate a real-time business dashboard, automating bookkeeping."
+  },
+  {
+    "title": "Google’s $899 Googlebook is a bet that you’ll buy a new laptop for Gemini",
+    "url": "https://techcrunch.com/2026/09/21/googles-899-googlebook-is-a-bet-that-youll-buy-a-new-laptop-for-gemini/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-21",
+    "summary": "Google has launched its new AI-powered laptop, the Googlebook, for preorder at $899, aiming to integrate Gemini's advanced capabilities directly into hardware. This device runs on Android OS and features an AI-powered cursor, vibe-coded widgets, and an AI-enhanced dictation tool called Rambler. The company is betting that these baked-in AI functionalities will be compelling enough to drive new laptop sales and potentially transition existing Chromebook users to this AI-centric platform.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/65ad68400cb3c3ac9982.webp",
+    "image_alt": "Diagram shows a new laptop with integrated AI leading to consumer sales, explaining Google's strategy for its AI-powered device."
+  }
+]
