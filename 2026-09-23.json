@@ -1,0 +1,120 @@
+[
+  {
+    "title": "Qualcomm launches two new smartphone chips with emphasis on AI",
+    "url": "https://techcrunch.com/2026/09/22/qualcomm-launches-two-new-smartphone-chips-with-emphasis-on-ai/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-22",
+    "summary": "Qualcomm has introduced two new flagship smartphone processors, Snapdragon 8 Elite Gen 6 and Snapdragon 8 Elite Extreme Gen 6, designed to enhance on-device artificial intelligence capabilities. These chips feature new sensing hubs capable of running small AI models locally, with the Extreme version supporting a 30-billion-parameter mixture-of-experts model, surpassing Apple's recent 20-billion-parameter offering. This development enables improved personalization for AI agents, local personal scribes, better task automation suggestions, and advanced camera functions like pixel-level control and 8K 60fps video recording.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/1f588666a7c778724e42.webp",
+    "image_alt": "A pipeline diagram showing new Snapdragon chips enabling on-device AI models, which then power enhanced smartphone features like personalization and advanced camera."
+  },
+  {
+    "title": "Snorkel AI triples valuation to $3.5B as demand for AI training data booms",
+    "url": "https://techcrunch.com/2026/09/22/snorkel-ai-triples-valuation-to-3-5b-as-demand-for-ai-training-data-booms/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-22",
+    "summary": "Snorkel AI has tripled its valuation to $3.5 billion after securing $350 million in Series E funding, reflecting significant investor confidence. The company provides AI labs and corporations with completed training datasets and simulated environments, utilizing a hybrid approach of synthetic data generation via software and input from subject matter experts. This substantial growth is driven by the insatiable demand for high-end AI training data, highlighting a rapidly expanding market for specialized AI data services.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/bd6089c02b1d87b8b51a.svg",
+    "image_alt": "Diagram shows AI software and domain experts combining to produce training data, illustrating Snorkel AI's hybrid approach."
+  },
+  {
+    "title": "OpenAI launches GPT-6 Sol and Luna, boasting lower cost and fewer mistakes",
+    "url": "https://techcrunch.com/2026/09/22/openai-launches-gpt-6-sol-and-luna/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-22",
+    "summary": "OpenAI has launched updated GPT-6 Sol and Luna models, expanding its latest generation of artificial intelligence. These new versions offer a 50% price reduction compared to the 5.6 series and significantly fewer factual errors, with Sol making half as many mistakes as its predecessor. This development makes advanced AI capabilities more efficient and accessible for complex tasks like coding and high-volume clerical work, intensifying competition in the rapidly evolving AI market.",
+    "tags": [
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/fe67b877609a358ea5e3.webp",
+    "image_alt": "A comparison diagram showing previous AI models as large and expensive with errors, contrasted with new GPT-6 models as smaller, cheaper, and accurate, balanced on a scale."
+  },
+  {
+    "title": "AstroForge is putting AI in command of its next spacecraft",
+    "url": "https://techcrunch.com/2026/09/22/astroforge-is-putting-ai-in-command-of-its-next-spacecraft/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-22",
+    "summary": "AstroForge is developing an AI-powered autonomous control system for its next spacecraft, aiming to reduce reliance on extensive ground teams. This in-house transformer-based model, named \"Solo,\" is designed to enable the spacecraft to self-diagnose and solve problems onboard, addressing communication challenges faced in previous deep-space missions. By shifting control from Earth to the spacecraft itself, AstroForge seeks to make deep-space exploration more cost-effective and accessible for startups, potentially revolutionizing mission operations.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/acdc0a030fdf0a1d4583.webp",
+    "image_alt": "A diagram showing how AstroForge's AI system shifts spacecraft control from large ground teams to onboard autonomous problem-solving, enabling self-repair."
+  },
+  {
+    "title": "Meta admits Muse’s likeness to OpenClaw isn’t a coincidence",
+    "url": "https://techcrunch.com/2026/09/22/meta-admits-muses-likeness-to-openclaw-isnt-a-coincidence/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-22",
+    "summary": "Meta's Muse AI product is confirmed to be heavily inspired by the open-source OpenClaw AI, following user speculation about their likeness. Nat Friedman, Meta's head of product, stated Muse was \"built from scratch\" but \"heavily inspired,\" acknowledging that specific file names and content, including the SOUL.md configuration, were nearly identical because OpenClaw \"got those things exactly right.\" This revelation underscores Meta's strategy of adopting successful product features for its own scalable consumer offerings, echoing its past replication of Snapchat's stories format.",
+    "tags": [
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/49449e8c3e857bced34c.webp",
+    "image_alt": "A pipeline diagram showing an open-source AI model inspiring an internal build process, resulting in a new scaled consumer product."
+  },
+  {
+    "title": "‘We’re already fighting yesterday’s battle’: Greece’s prime minister gets candid about AI",
+    "url": "https://techcrunch.com/2026/09/22/were-already-fighting-yesterdays-battle-greeces-prime-minister-gets-candid-about-ai/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-23",
+    "summary": "Greek Prime Minister Kyriakos Mitsotakis visited San Francisco to promote Greece as a tech investment destination, candidly admitting global leaders lack answers on AI's future while showcasing his nation's progress. Greece is leveraging €36 billion from the EU's post-COVID recovery fund to invest in digital infrastructure, including a new supercomputer for AI research, and has implemented policy changes like tax incentives for returning professionals. These efforts aim to attract tech companies and talent, signaling Greece's economic resurgence and its ambition to become a hub for AI and digital innovation.",
+    "tags": [
+      "business",
+      "technology",
+      "politics"
+    ],
+    "importance": 3,
+    "image_url": "images/45273a5ab35fdb85165d.webp",
+    "image_alt": "A pipeline diagram showing EU funds flowing into a supercomputer, which then enables a tech hub to grow, illustrating Greece's investment strategy."
+  },
+  {
+    "title": "TechCrunch Founder Summit’s agenda revealed: Unlock fundraising, hiring, and AI insights in Boston on November 4",
+    "url": "https://techcrunch.com/2026/09/22/techcrunch-founder-summits-agenda-revealed-unlock-fundraising-hiring-and-ai-insights-in-boston-on-november-4/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-22",
+    "summary": "TechCrunch has unveiled the agenda for its Founder Summit, a one-day crash course on startup building scheduled for November 4 in Boston. The event will feature sessions led by industry experts like Brian Devaney and Brian Halligan, covering critical topics such as navigating fundraising, evolving as a CEO, and building AI-native companies. This summit aims to provide founders with direct access to experienced investors and entrepreneurs, offering practical insights to streamline startup challenges and accelerate growth.",
+    "tags": [
+      "business",
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/71da98523782be338a81.webp",
+    "image_alt": "A diagram illustrating how expert sessions provide a key to unlock startup hurdles, leading to multiple growth avenues."
+  },
+  {
+    "title": "Anthropic releases Opus 5.5 with lower prices and Fable-level performance",
+    "url": "https://techcrunch.com/2026/09/22/anthropic-releases-opus-5-5-with-lower-prices-and-fable-level-performance/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-22",
+    "summary": "Anthropic has released Opus 5.5, its newest and most capable AI model, which sets a new state-of-the-art in coding and knowledge work while significantly lowering prices. The model outpaces the larger Fable model in benchmarks and informal tasks, with output tokens now costing $20 per million, down from $25, and also runs faster. This release reflects Anthropic's strategy to deliberately pace AI capabilities advancement to match progress in risk prevention, ensuring safety keeps up with increasing power.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/eaf3b9a2102b991e1b48.webp",
+    "image_alt": "Diagram showing Anthropic's Opus 5.5 AI model, developed with deliberate pacing, achieving high performance and lower costs."
+  }
+]
