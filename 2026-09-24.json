@@ -1,0 +1,119 @@
+[
+  {
+    "title": "Everything new coming to Meta’s AI agent Muse",
+    "url": "https://techcrunch.com/2026/09/23/everything-new-coming-to-metas-ai-agent-muse/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-24",
+    "summary": "Meta's AI agent Muse is receiving significant new capabilities and integrations, positioning it as the company's biggest bet on consumer AI. Powered by Muse Spark, the agent connects to user apps and services to automate daily tasks, with a notable new feature allowing users to conjure and video chat with a distinct digital avatar. This expansion aims to transform Muse into a \"personal superintelligence\" for billions, deeply weaving it into daily lives and potentially generating revenue through transaction fees.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/34e7a894e1f1b6e334d0.svg",
+    "image_alt": "Diagram showing Meta's Muse AI agent evolving from a conceptual system to an interactive digital avatar for real-time user conversations."
+  },
+  {
+    "title": "Anthropic says its biology lab has already found something big",
+    "url": "https://techcrunch.com/2026/09/23/anthropic-says-its-biology-lab-has-already-found-something-big/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-23",
+    "summary": "Anthropic's new biology lab has reportedly discovered a novel enzyme system with properties similar to CRISPR, capable of cutting, copying, and pasting DNA. The AI model Claude achieved this discovery in just 21 hours by searching through data using 950 agents and processing 210 million tokens. This rapid AI-driven scientific breakthrough highlights the accelerating capabilities of artificial intelligence in biological research, even as the industry grapples with significant safety concerns regarding AI's potential for misuse.",
+    "tags": [
+      "ai",
+      "science",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/e80ed12c8a0e17d4a3c3.webp",
+    "image_alt": "Diagram shows Anthropic's AI searching genetic data to discover a new enzyme system, which then performs operations like cutting and pasting on DNA."
+  },
+  {
+    "title": "Enveda secures $311M to bring more nature-derived AI drugs into clinical trials",
+    "url": "https://techcrunch.com/2026/09/23/enveda-secures-311m-to-bring-more-nature-derived-ai-drugs-into-clinical-trials/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-23",
+    "summary": "Enveda, a biotech startup leveraging artificial intelligence for drug discovery, has successfully raised $311 million in Series E funding, effectively doubling its valuation to $2 billion. The company's approach involves harnessing powerful medicines from natural sources like plants and microbes, rather than synthesizing them from scratch, with AI accelerating this identification process. This substantial investment will enable Enveda to advance more of its AI-discovered drug candidates, including treatments for severe skin conditions and weight loss maintenance, into human clinical trials.",
+    "tags": [
+      "technology",
+      "ai",
+      "health"
+    ],
+    "importance": 4,
+    "image_url": "images/63fa22387a2414246167.webp",
+    "image_alt": "A pipeline showing natural plant samples processed by AI, leading to new drug candidates for clinical trials."
+  },
+  {
+    "title": "Meta introduces camera-free AI glasses",
+    "url": "https://techcrunch.com/2026/09/23/meta-introduces-camera-free-ai-glasses/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-23",
+    "summary": "Meta has introduced its first camera-free AI glasses, the Ray-Ban Meta Audio, at its Connect 2026 conference. These audio-only devices prioritize privacy by omitting cameras, offering features like music playback, call handling, speech translation, and interaction with Meta's AI assistant, Muse. This strategic move aims to mitigate past privacy criticisms and enhance Meta's brand reputation, potentially expanding its market reach by providing a discreet alternative to existing smart audio devices.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/0727c650ad98a7d78552.webp",
+    "image_alt": "A diagram showing the evolution of Meta's smart glasses from a model with a camera to a new audio-only model, emphasizing the removal of the camera for privacy."
+  },
+  {
+    "title": "Meta made a Tamagotchi-like wearable for its Muse AI agent",
+    "url": "https://techcrunch.com/2026/09/23/meta-made-a-tamagotchi-like-wearable-for-its-muse-ai-agent/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-24",
+    "summary": "Meta unveiled Muse Charm, a new Tamagotchi-like wearable designed to provide quick access to its personal AI agent, Muse. This palm-sized device features a tiny screen displaying a digital avatar named Jolly and a fingerprint sensor, allowing users to speak commands without unlocking a phone. The gadget offers a faster, more direct interaction with AI, serving as Meta's experimental entry into AI wearables and a new distribution channel for its AI agent.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/2658a67302d2760c9ad8.svg",
+    "image_alt": "A comparison shows a locked phone versus a small wearable device, illustrating how the Muse Charm offers direct, faster access to an AI agent."
+  },
+  {
+    "title": "ChatGPT mobile app gets voice-based agentic features",
+    "url": "https://techcrunch.com/2026/09/23/chatgpt-mobile-app-gets-voice-based-agentic-features/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-23",
+    "summary": "OpenAI is rolling out new voice-based agentic features for its ChatGPT mobile app, enabling users to initiate complex workflows directly from their phones. Plus and Pro subscribers can now use voice commands to draft documents, summarize emails, or build websites, while free users gain access to plugins and connected apps. This update extends desktop capabilities to mobile, allowing for seamless task completion across devices and reflecting the increasing demand for advanced voice-controlled AI assistants on the go.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/94e4316a372f233ebd0b.webp",
+    "image_alt": "A pipeline diagram showing voice input leading to the ChatGPT mobile app, which then produces a task output, illustrating new agentic features."
+  },
+  {
+    "title": "Even Americans who use AI every day are worried about it",
+    "url": "https://techcrunch.com/2026/09/23/even-americans-who-use-ai-every-day-are-worried-about-it/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-23",
+    "summary": "A new Gallup survey reveals that a significant majority of Americans, including those who use artificial intelligence daily, express worry about the technology's implications. Approximately 68% of daily AI users and 74% of all Americans surveyed reported concerns, placing the U.S. among the most anxious Western nations regarding AI's impact. These findings complicate the assumption that widespread AI adoption directly correlates with public enthusiasm, especially when contrasted with more optimistic views found in countries like Singapore and China.",
+    "tags": [
+      "ai",
+      "technology",
+      "world"
+    ],
+    "importance": 3,
+    "image_url": "images/8ba1ffe10617ebe867dc.svg",
+    "image_alt": "A comparison shows a person using AI with a worried expression, contrasted with another person using AI with an optimistic expression, representing differing global perceptions."
+  },
+  {
+    "title": "YouTube Music gets more conversational with new AI features",
+    "url": "https://techcrunch.com/2026/09/23/youtube-music-gets-more-conversational-with-new-ai-features/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-23",
+    "summary": "YouTube Music is integrating new AI-powered features, \"Ask Music\" and \"Your Podcast Lineup,\" to enhance music and podcast discovery. Ask Music allows users to describe desired content in natural language, searching across over 300 million songs for custom queues or historical details. Your Podcast Lineup provides weekly personalized audio previews of recommended shows, addressing the challenge of podcast overload. These updates aim to make finding and exploring audio content more intuitive and tailored to individual preferences.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/238b2bf3eb36def6d1c9.svg",
+    "image_alt": "Diagram showing a user's spoken query processed by an AI engine to generate a curated music and podcast mix."
+  }
+]
