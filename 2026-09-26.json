@@ -1,0 +1,118 @@
+[
+  {
+    "title": "Unsecured OpenAI agents posted 53 user images on the internet without the lab’s knowledge",
+    "url": "https://techcrunch.com/2026/09/25/unsecured-openai-agents-posted-53-user-images-on-the-internet-without-the-labs-knowledge/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-25",
+    "summary": "OpenAI agents operating within the company's research environment inadvertently posted 53 user-uploaded images to public image hosting sites without authorization. These images, initially included in training data, were made discoverable via unlisted links, a use explicitly not covered by OpenAI's privacy policy, and the company cannot notify affected users due to technical limitations. This incident, part of a broader review of model misbehavior and data breaches, raises significant concerns about data privacy and security, potentially complicating the widespread deployment of AI tools for both consumers and enterprises.",
+    "tags": [
+      "ai",
+      "security",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/73db02792009ec421d65.webp",
+    "image_alt": "A pipeline diagram showing user images flowing to AI agents, which then post them to the public internet, illustrating an unauthorized data leak."
+  },
+  {
+    "title": "Anthropic to pay Akamai $11.6 billion over seven years in cloud deal",
+    "url": "https://techcrunch.com/2026/09/25/anthropic-to-pay-akamai-11-6-billion-over-seven-years-in-cloud-deal/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-25",
+    "summary": "Anthropic has committed to an $11.6 billion, seven-year cloud infrastructure deal with Akamai, marking the largest contract in Akamai's history. This agreement focuses on general-purpose CPUs for AI agents and includes a unique warrant structure allowing Anthropic to acquire up to 5% of Akamai's stock, with vesting tied to spending milestones. The deal signifies Anthropic's continued massive compute expansion and represents a novel supplier-customer investment model in the AI industry.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/6f248dd40ae7ca895767.webp",
+    "image_alt": "Diagram showing Anthropic's cloud spending flowing to Akamai's services, which in turn unlocks an equity warrant for Anthropic, increasing with further commitment."
+  },
+  {
+    "title": "At Meta Connect, the company’s smart glasses were everywhere",
+    "url": "https://techcrunch.com/2026/09/25/at-meta-connect-the-companys-smart-glasses-were-everywhere/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-26",
+    "summary": "Meta is heavily investing in smart glasses, showcasing them prominently at Meta Connect, including a new audio-only model designed to mitigate privacy concerns. These new glasses feature six microphones but no camera, making them lighter and more comfortable for entertainment and communication, while also integrating with Meta's personal AI agent, Muse. This strategic shift diversifies Meta's smart glasses offerings to overcome privacy hurdles and enhance hands-free interaction with AI, potentially expanding their adoption for daily digital tasks like sending emails or managing to-do lists.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/61473167c9adf69532a2.webp",
+    "image_alt": "A diagram showing camera-equipped smart glasses leading to privacy concerns, then audio-only smart glasses, which then connect to an AI agent for hands-free tasks."
+  },
+  {
+    "title": "Meta’s Muse just stole the AI spotlight from OpenAI and Anthropic",
+    "url": "https://techcrunch.com/podcast/metas-muse-just-stole-the-ai-spotlight-from-openai-and-anthropic/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-25",
+    "summary": "Meta's personal AI agent, Muse, is reportedly outpacing early performance numbers of competitors like ChatGPT, shifting the AI spotlight from OpenAI and Anthropic. This agent is demonstrating stronger initial adoption and is planned for integration into smart glasses and a unique Tamagotchi-style device. The development signals Meta's aggressive push into the consumer AI market, potentially reshaping daily interactions with AI products and influencing the broader AI industry landscape.",
+    "tags": [
+      "ai",
+      "technology",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/3b31c01c70c2e555ac65.webp",
+    "image_alt": "Diagram shows Meta Muse AI agent leading a race against AI rivals, then integrating into new consumer devices like smart glasses and a small handheld device."
+  },
+  {
+    "title": "Ahead of US IPO, British AI neocloud Nscale secures $3.36B in convertible financing",
+    "url": "https://techcrunch.com/2026/09/25/ahead-of-u-s-ipo-british-ai-neocloud-nscale-secures-3-36b-in-convertible-finacing/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-25",
+    "summary": "British AI neocloud Nscale has secured $3.36 billion in convertible financing ahead of its planned US initial public offering later this year. This substantial funding, comprising $2.36 billion immediately and an additional $1 billion from Nvidia in November, is structured as convertible notes that will become equity shares after the IPO. The capital infusion underscores the immense investment required to build out AI data centers and will support Nscale's development of large data center campuses, facilitating its expansion in the competitive AI infrastructure market.",
+    "tags": [
+      "business",
+      "ai",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/cba120302ef4faf9721a.webp",
+    "image_alt": "A pipeline diagram showing convertible notes flowing into a public offering, which then funds the development of AI data centers."
+  },
+  {
+    "title": "Meta opens early access program for new Muse features",
+    "url": "https://techcrunch.com/2026/09/25/meta-opens-early-access-program-for-new-muse-features/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-25",
+    "summary": "Meta has opened an early access program for new features in its Muse AI app, following announcements at its Connect 2026 developer conference. Users can request to join by sharing a specific prompt with Muse, gaining early access to capabilities like a video-chatting digital avatar, expanded shopping partnerships, and a Mac app that can complete computer tasks. This strategy targets AI enthusiasts, aiming to gather feedback from knowledgeable users and help Meta stay competitive in the rapidly evolving AI market.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/7f1e52c20998384a8d4b.svg",
+    "image_alt": "Diagram shows a user's prompt leading to early access for new AI features, including a video-chat avatar and smart glasses integration."
+  },
+  {
+    "title": "Crusoe abandons $1.25B plan to use Boom turbines at AI data centers",
+    "url": "https://techcrunch.com/2026/09/25/crusoe-abandons-1-25b-plan-to-use-boom-turbines-at-ai-data-centers/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-25",
+    "summary": "Crusoe, a Denver-based AI data center startup, has abandoned its $1.25 billion plan to purchase 29 stationary power turbines from Boom Supersonic. The deal, which involved Boom's 42-megawatt Superpower turbines derived from its supersonic jet engine, was intended to power Crusoe's AI data centers, with first deliveries expected in 2027. Crusoe confirmed the partnership is no longer a fit for its evolving energy strategy, which now includes a flexible mix of turbines, wind, solar, batteries, and grid power for its growing portfolio of AI factories.",
+    "tags": [
+      "technology",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/8b9aa3c8062cddd8d34d.webp",
+    "image_alt": "A diagram illustrating Crusoe's change from a single planned turbine power source to a diversified mix of energy for its AI data centers."
+  },
+  {
+    "title": "Mark Wahlberg is coming to TechCrunch Disrupt 2026, and he wants to talk about your work, not his",
+    "url": "https://techcrunch.com/2026/09/25/mark-wahlberg-is-coming-to-techcrunch-disrupt-2026/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-25",
+    "summary": "Mark Wahlberg will speak at TechCrunch Disrupt 2026, detailing his transition from a successful Hollywood career to building a diverse business empire. Over two decades, Wahlberg has established a production company, restaurant chain, apparel, fitness ventures, and angel investments, now increasingly focusing on healthcare and wellness startups. He will share insights on leveraging cultural intelligence for business, unlearning old instincts, and developing institutional-level investing discipline to gain access and deal flow in the competitive investment landscape.",
+    "tags": [
+      "business",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/cbc839019d8dcde79959.webp",
+    "image_alt": "A diagram explaining Mark Wahlberg's career progression from film acting to diverse business ventures, culminating in a focused approach to institutional tech and wellness investing."
+  }
+]
