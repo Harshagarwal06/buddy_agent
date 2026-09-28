@@ -1,0 +1,118 @@
+[
+  {
+    "title": "Anthropic’s CEO is about to have dinner with President Trump",
+    "url": "https://techcrunch.com/2026/09/27/anthropics-ceo-is-about-to-have-dinner-with-president-trump/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-27",
+    "summary": "Anthropic CEO Dario Amodei is scheduled to have dinner with President Donald Trump at the White House, marking their first one-on-one meeting. This encounter follows their public disagreement on AI safety, with Amodei advocating for cautious development and Trump dismissing AI backlash as a \"hoax\" while promoting \"super intelligence.\" The high-level discussion could significantly influence future AI regulation and policy, especially given the Pentagon's prior designation of Anthropic as a supply-chain risk due to its safety efforts.",
+    "tags": [
+      "ai",
+      "politics",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/dbe521c6f53caeb7517c.webp",
+    "image_alt": "A diagram comparing two approaches to AI: one with safety guardrails and another for unrestricted development, leading to a policy discussion."
+  },
+  {
+    "title": "Detecting Compromised AI Coding Agents with Jev and Gryph",
+    "url": "https://safedep.io/ai-agent-security-jev-gryph/",
+    "source": "Hacker News AI",
+    "published_at": "2026-09-28",
+    "summary": "A new system, combining Gryph and Jev, has been developed to detect compromised AI coding agents by monitoring their actions. Gryph records every agent action, which TypeSafe's Jev model then compares against a developer's work profile and organizational policies using narrow yes-or-no questions. The system successfully flagged all 14 synthetic attacks and allowed over 97% of real developer actions to pass, helping protect developers' credentials and preventing malicious actions that compromised agents could perform on behalf of the user.",
+    "tags": [
+      "technology",
+      "ai",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/ee9046ea56022102a31a.webp",
+    "image_alt": "A pipeline showing AI agent actions being recorded, compared against a developer's work profile, and then classified as normal or a security alert."
+  },
+  {
+    "title": "Publish facts AI agents can trust, instead of what they scraped",
+    "url": "https://profiles.skin/",
+    "source": "Hacker News AI",
+    "published_at": "2026-09-28",
+    "summary": "Skin introduces a verified profile layer for AI agents, allowing companies and individuals to publish accurate, real-time facts about themselves. This platform replaces outdated training data and scraped information by enabling direct authoring of structured facts, which agents can query on demand for current details. The development ensures AI agents make decisions based on owner-controlled, multi-language native information, preventing hallucinations and enabling reliable automated interactions.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/6f0f6fa4e2fecff9dec6.webp",
+    "image_alt": "A comparison shows an AI agent receiving tangled, scraped data versus a clear path to structured, verified facts, leading to accurate agent decisions."
+  },
+  {
+    "title": "Can Muse overcome Meta’s trust issues?",
+    "url": "https://techcrunch.com/2026/09/27/can-muse-overcome-metas-trust-issues/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-27",
+    "summary": "Meta unveiled its new AI agent, Muse, at its Connect event, signaling a strong consumer-focused push for AI features across its platforms, contrasting with the enterprise-centric strategies of other major AI companies. While competitors like OpenAI and Anthropic prioritize business tools to generate revenue, Meta is leveraging its existing consumer base with products like a Tamagotchi-style AI device. However, the company faces significant user trust issues regarding data privacy and the practical utility of Muse, with early impressions suggesting it might be more of a \"party trick\" than a daily driver.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/93288663aa1716f6850c.webp",
+    "image_alt": "A comparison shows Meta's consumer AI path facing a trust barrier, contrasting with other companies' enterprise AI focus."
+  },
+  {
+    "title": "Anthropic’s Dario Amodei gets the SNL treatment",
+    "url": "https://techcrunch.com/2026/09/27/anthropics-dario-amodei-gets-the-snl-treatment/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-27",
+    "summary": "Anthropic CEO Dario Amodei was impersonated on Saturday Night Live's \"Weekend Update\" segment, satirizing the AI industry's recent public warnings about artificial intelligence's potential to destroy humanity. The skit featured a cast member portraying Amodei delivering halting, self-contradictory answers, at one point confessing, \"AI is the devil and I its maker,\" and urging the audience to \"urge me to stop.\" This comedic treatment highlights the growing media and public scrutiny of AI executives' often dire pronouncements regarding the technology's existential risks, reflecting a cultural moment where serious technological concerns meet popular entertainment.",
+    "tags": [
+      "culture",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/3eeac67cc0e1f97e4e53.webp",
+    "image_alt": "A pipeline diagram showing AI existential warnings leading to a comedic portrayal on a TV screen, which then shapes public perception."
+  },
+  {
+    "title": "Give your AI agent a versioned filesystem",
+    "url": "https://lakefs.io/blog/ai-agent-a-versioned-filesystem-with-e2b-and-lakefs/",
+    "source": "Hacker News AI",
+    "published_at": "2026-09-28",
+    "summary": "A new system enables AI agents to perform real work on real data within secure guardrails, addressing common risks in agent deployment. This is achieved by combining E2B sandboxes, which provide isolated Linux environments for agent execution, with lakeFS, which offers version-controlled data branches for safe data manipulation. This integration allows AI agents to perform tasks like transforming messy data into validated ledgers, ensuring every change is versioned, runs are isolated, and data only reaches production after server-side checks, mitigating both compute and data risks.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/fda384834d2bdf9cb197.webp",
+    "image_alt": "A diagram showing an AI agent operating in an isolated sandbox, processing data on versioned branches, which then pass through a check to update a clean, validated ledger."
+  },
+  {
+    "title": "AI safety field *visual* impact analysis",
+    "url": "https://www.lesswrong.com/posts/fqpSosGwSt3uiZq35/ai-safety-field-visual-impact-analysis",
+    "source": "Hacker News AI",
+    "published_at": "2026-09-28",
+    "summary": "An analysis of the AI safety field's visual impact has been conducted, though specific details beyond the headline are not available. The analysis likely examines how the field is perceived visually, potentially through media representation or public-facing materials, to understand its current public image. Understanding this visual impact could inform strategies for better public engagement and communication regarding AI safety initiatives, which is crucial for broader societal acceptance and support of these critical efforts.",
+    "tags": [
+      "ai",
+      "technology"
+    ],
+    "importance": 2,
+    "image_url": "images/15b18b6895e36cf98a43.webp",
+    "image_alt": "A diagram showing how public visual perception of AI safety is analyzed to understand its impact on the field's communication."
+  },
+  {
+    "title": "Show HN: A website for sharing Muse AI invitation codes",
+    "url": "https://museaicode.cc",
+    "source": "Hacker News AI",
+    "published_at": "2026-09-28",
+    "summary": "A new website facilitates the sharing of Muse AI invitation codes, allowing users to earn free Muse tokens. The platform enables individuals to post their unique invite codes, which, when redeemed by others, grant 1 billion Muse tokens to both the sharer and the redeemer. Community voting and freshness ranking help ensure that working codes are prominently displayed, while expired or non-functional codes are automatically hidden, creating an efficient system for token distribution.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 1,
+    "image_url": "images/4e02aa35210d43e7589f.webp",
+    "image_alt": "Diagram showing how users share Muse AI invite codes on a community-voted website, enabling others to redeem them and both parties to earn Muse tokens."
+  }
+]
