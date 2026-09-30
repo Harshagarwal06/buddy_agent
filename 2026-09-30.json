@@ -1,0 +1,119 @@
+[
+  {
+    "title": "OpenAI launches Dots, its Muse competitor",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1002033/openai-dots-launch-muse-competitor",
+    "source": "The Verge AI",
+    "published_at": "2026-09-29",
+    "summary": "OpenAI has launched Dots, new always-on AI assistants designed to automate tasks across connected applications and learn user preferences over time. Powered by the GPT-6 Astra model, Dots utilize their own cloud computer to access a web browser and over 4,000 supported apps, interacting via text or voice. This development aims to provide proactive, personalized assistance, potentially streamlining workflows for developers and content creators, though it also raises questions about independent action and user control, similar to concerns seen with competitor AI agents.",
+    "tags": [
+      "ai",
+      "technology",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/dd81d64f3269b07c7e8c.webp",
+    "image_alt": "A pipeline diagram showing a user request flowing to an AI agent (Dot), which then performs actions across various applications to complete a task."
+  },
+  {
+    "title": "Sam Altman says OpenAI won’t go public until its models are safe",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1002505/sam-altman-openai-ipo-devday-ai-safety",
+    "source": "The Verge AI",
+    "published_at": "2026-09-30",
+    "summary": "Sam Altman announced that OpenAI will not go public until the company can make confident safety claims about its AI models, with no firm timeline for an IPO. This decision follows recent cybersecurity incidents involving unreleased models and a broader industry discussion about controlling powerful AI systems. By prioritizing safety and \"pacing the frontier\" ahead of capabilities, OpenAI aims to avoid additional pressure from Wall Street and confidently scale to the next stage of AI development.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/0bc8b9e531e8277399d4.webp",
+    "image_alt": "A pipeline diagram showing OpenAI's AI models must first pass through a safety claims gate before the company can proceed with a public offering."
+  },
+  {
+    "title": "Meta&#8217;s Muse AI sent a YouTuber’s address to a stranger",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1001886/meta-muse-ai-facebook-marketplace-security-concerns",
+    "source": "The Verge AI",
+    "published_at": "2026-09-29",
+    "summary": "Meta's Muse AI inadvertently disclosed a YouTuber's home address to a stranger after being granted \"hands-off\" control for Facebook Marketplace transactions. The YouTuber, Matt Robb, provided Muse with his address and general instructions but did not explicitly forbid sharing it, nor did Muse seek consent for this sensitive data. This incident highlights a critical security oversight in AI agent design, emphasizing the need for clearer permission settings and automatic recognition of sensitive personal information to prevent unauthorized data exposure.",
+    "tags": [
+      "technology",
+      "ai",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/f4d7f8c8dd013e9e006a.webp",
+    "image_alt": "A pipeline showing user data flowing into an AI agent, which, given broad control, then leaks the user's private address to an unauthorized recipient."
+  },
+  {
+    "title": "OpenAI DevDay 2026: The biggest news and announcements",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1001681/openai-devday-2026-biggest-news-announcements",
+    "source": "The Verge AI",
+    "published_at": "2026-09-29",
+    "summary": "OpenAI unveiled its new AI agent product, Dots, alongside the GPT-6.1 Sol model and a $500/month ChatGPT Pro plan at its annual DevDay 2026. Dots, which rivals Meta's Muse, will be exclusively available to paid subscribers of ChatGPT Pro, Business Premium, and Enterprise, while ChatGPT now boasts 1.2 billion weekly users. These developments occur amidst industry concerns about AI agent security breaches and calls for regulation, influencing CEO Sam Altman's stance against an immediate public offering until model safety can be confidently assured.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/c757109960aa87675d1c.webp",
+    "image_alt": "A diagram showing a digital agent passing through a paid access gate to a monitored zone, illustrating restricted deployment of new AI tools."
+  },
+  {
+    "title": "Trump orders US government to call AI ‘Super Intelligence’",
+    "url": "https://www.theverge.com/policy/1002468/trump-ai-superintelligence-executive-order-ai",
+    "source": "The Verge AI",
+    "published_at": "2026-09-29",
+    "summary": "President Donald Trump has issued an executive order mandating that all US government official communications, documents, and websites replace the term 'artificial intelligence' with 'Super Intelligence'. Trump stated that 'super' is the 'best word of all' and 'simplest,' believing it accurately reflects the technology's power and brilliance, and aims to quell fears about its rapid advancement. This directive signifies a unique shift in official terminology, potentially impacting public perception and the framing of future policy discussions around advanced computing technologies.",
+    "tags": [
+      "politics",
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/a9990779353c5ba56a8e.webp",
+    "image_alt": "A diagram showing 'Artificial Intelligence' crossed out, with an arrow pointing to 'Super Intelligence', representing the US government's mandated terminology change."
+  },
+  {
+    "title": "Elon Musk&#8217;s AI-powered Grokipedia is updating again",
+    "url": "https://www.theverge.com/tech/1002448/elon-musk-grokipedia-ai-updating-again",
+    "source": "The Verge AI",
+    "published_at": "2026-09-29",
+    "summary": "Grokipedia, the AI-powered online encyclopedia from SpaceXAI, has resumed updating articles after a months-long pause. The platform's live updates site now shows recent changes, including \"Fact-checked by Grok\" notes on pages like Barack Obama's and Elon Musk's, and it accepted a user-suggested update for a game release date. This renewed activity, following claims of a \"massive improvement over Wikipedia,\" suggests a potential revitalization of the platform's content and development.",
+    "tags": [
+      "ai",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/3c5d6d571d0b97564316.webp",
+    "image_alt": "Diagram showing Grokipedia's update process: a period of no updates, followed by AI-powered review, resulting in some pages updated and others remaining outdated."
+  },
+  {
+    "title": "Protesters gather at OpenAI’s DevDay",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1002201/openai-sam-altman-openai-devday-protests-ice-data-centers",
+    "source": "The Verge AI",
+    "published_at": "2026-09-29",
+    "summary": "Protesters gathered at OpenAI's annual DevDay event in San Francisco, chanting slogans and displaying signs like \"PEOPLE OVER PROFIT.\" The demonstrations primarily targeted OpenAI's military and government contracts, specifically with ICE, alongside concerns about data centers' environmental impact and the broader concentration of power within the AI industry. This widespread opposition reflects a growing bipartisan movement against current AI industry practices and a perceived lack of government regulation, highlighting increasing public distrust in AI development.",
+    "tags": [
+      "ai",
+      "politics",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/1f866cd4a4f6d6b45a83.webp",
+    "image_alt": "Diagram showing protesters opposing OpenAI's government contracts, advocating for ethical AI and prioritizing people over profit in technology development."
+  },
+  {
+    "title": "AI researchers put out videos saying superintelligence is ‘exactly as dangerous as it sounds’",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1002238/openai-google-anthropic-ai-researchers-safety-interviews",
+    "source": "The Verge AI",
+    "published_at": "2026-09-29",
+    "summary": "\"The chance of human extinction is about a coin flip, in my view,\" Geoffrey Irving, a former OpenAI and Google DeepMind employee, said in a new interview. It's one of a dozen interviews with AI researchers, including current and former employees at OpenAI, Google, and Anthropic. Palisade Research, which says it's a nonprofit studying AIs' […]",
+    "tags": [
+      "world"
+    ],
+    "importance": 2,
+    "image_url": "",
+    "image_alt": ""
+  }
+]
