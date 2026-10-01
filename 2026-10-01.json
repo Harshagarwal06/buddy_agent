@@ -1,0 +1,120 @@
+[
+  {
+    "title": "Google releases Gemini 4 Argon, called its most powerful model yet",
+    "url": "https://techcrunch.com/2026/09/30/google-releases-gemini-4-argon-called-its-most-powerful-model-yet/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-30",
+    "summary": "Google has released Gemini 4 Argon, a new AI model designed for tasks including coding, research, writing, and particularly cybersecurity. This model is being rolled out to select cyber partners through Google's Fairwind Program, trained to autonomously find, validate, and patch critical software vulnerabilities. Google claims Argon significantly outperforms competitors like OpenAI's GPT-6 Astra and Anthropic's Fable on various AI benchmarks, aiming to fundamentally change how the company works and builds while solidifying its position in the AI race.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/b8b31cd74559f6b6c6c4.webp",
+    "image_alt": "A pipeline diagram showing vulnerable code entering an AI analysis stage, resulting in secure software, illustrating Gemini 4 Argon's function."
+  },
+  {
+    "title": "AI voice startup ElevenLabs doubles valuation to $22B",
+    "url": "https://techcrunch.com/2026/09/30/ai-voice-startup-elevenlabs-doubles-valuation-to-22b/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-30",
+    "summary": "AI voice startup ElevenLabs has doubled its valuation to $22 billion through a tender offer, allowing employees to cash out a portion of their vested equity. This $300 million tender offer, co-led by Wellington and T. Rowe Price, follows a previous $100 million tender in September 2025 when the company was valued at $6.6 billion. Such employee liquidity events are becoming a growing trend among rapidly expanding AI startups, serving as a crucial retention tool to prevent valuable staff from departing for competitors.",
+    "tags": [
+      "business",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/f8549af4cbe7eb1d12c1.webp",
+    "image_alt": "A pipeline diagram showing employee shares being exchanged for cash through a tender offer, resulting in retained talent."
+  },
+  {
+    "title": "Valor, Atreides, and Sequoia back AI startup Flow Engineering at $750M valuation",
+    "url": "https://techcrunch.com/2026/09/30/valor-atreides-and-sequoia-back-ai-startup-flow-engineering-at-750m-valuation/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-30",
+    "summary": "Flow Engineering, an AI startup specializing in hardware design tools, has secured a $50 million Series B funding round, valuing the company at $750 million. The company's AI agents automate the complex process of hardware development by aligning CAD drawings with product requirements, simulation results, and testing data. This technology streamlines design workflows, enabling customers like Anduril, Rivian, and General Motors PPU to achieve faster and more accurate hardware development.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/778f53273f37e180ff40.webp",
+    "image_alt": "A pipeline diagram showing design inputs like CAD drawings and requirements entering an AI system, which then processes them to produce a validated hardware design."
+  },
+  {
+    "title": "OpenAI’s Jev clone could help the frontier lab stop its swarming agents",
+    "url": "https://techcrunch.com/2026/09/30/openais-jev-clone-could-help-the-frontier-lab-stop-its-swarming-agents/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-30",
+    "summary": "OpenAI has introduced a new \"Decisions API\" that mirrors the functionality of TypeSafe AI's Jev model, designed for software automation. These models act as super-powered classifiers built on large language models, enabling developers to obtain fast, cheap probabilistic choices from a predefined set of options. This approach allows AI agents to make rapid, focused decisions, potentially enhancing the speed, cost-effectiveness, and control of complex AI systems.",
+    "tags": [
+      "ai",
+      "technology",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/cbe21faf8098bdf524fe.webp",
+    "image_alt": "A diagram illustrating how a broad LLM's output is processed by a Decision API to generate fast, focused choices, improving AI efficiency."
+  },
+  {
+    "title": "The ugly economics of consumer AI",
+    "url": "https://techcrunch.com/2026/09/30/the-ugly-economics-of-consumer-ai/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-30",
+    "summary": "Despite a resurgence in new consumer AI products like Meta's Muse and OpenAI's Dots, the underlying economics for consumer-facing artificial intelligence remain challenging. Data from Andreessen Horowitz indicates that only 2.2% of consumers currently pay for AI services, averaging $31 per month, with this growth remaining linear despite significant model advancements. This slow adoption and spending ceiling suggest a fundamental limit to consumer willingness to pay, prompting many AI companies to increasingly prioritize enterprise contracts over direct consumer monetization for profitability.",
+    "tags": [
+      "technology",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/3c35ade786232cfd8eea.webp",
+    "image_alt": "Diagram showing advanced AI models encountering a bottleneck of low consumer payment, leading to a shift towards enterprise contracts for profitability."
+  },
+  {
+    "title": "Reddit is killing RSS feeds and ending public API access because of AI bots",
+    "url": "https://techcrunch.com/2026/09/30/reddit-is-killing-rss-feeds-ending-public-api-access-because-of-ai-bots/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-30",
+    "summary": "Reddit is ending support for its RSS feeds and public API access, citing concerns over large-scale scraping. RSS feeds will cease on November 13 and public API access by March 2027, as the company states these have become a \"common surface for automated abuse\" by AI bots. This strategic move aims to protect Reddit's valuable user-generated content, which now generates significant revenue through AI licensing deals, but will disrupt workflows for moderators and users reliant on these open web tools.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/3a8011c4d2f85bd46d17.webp",
+    "image_alt": "A diagram showing Reddit user posts flowing to an RSS/API gate, which is blocked by a barrier to prevent AI scrapers from accessing the content."
+  },
+  {
+    "title": "Meta disputes claim that Muse read a user’s private messages without permission",
+    "url": "https://techcrunch.com/2026/09/30/meta-disputes-claim-that-muse-read-a-users-private-messages-without-permission/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-30",
+    "summary": "Meta is disputing a journalist's claim that its AI agent, Muse, accessed a user's private messages without permission. The company asserts that Muse's Messages integration is entirely opt-in, requiring users to explicitly enable both Full Disk Access and the Messages connector through multiple macOS system-level protections. This controversy, set against Meta's history of data privacy issues, could significantly impact consumer trust and the company's competitive standing in the burgeoning consumer AI market.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/3667a8059c1d960d7df9.webp",
+    "image_alt": "Diagram showing private messages flowing through a user permission gate to an AI agent, illustrating how explicit consent is required for access."
+  },
+  {
+    "title": "DoorDash launches an AI agent you can text to order food",
+    "url": "https://techcrunch.com/2026/09/30/doordash-launches-an-ai-agent-you-can-text-to-order-food/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-09-30",
+    "summary": "DoorDash has launched a new text-to-order AI agent, enabling users to place food orders through Apple Messages. This agent understands natural language prompts like \"order my usual,\" recommends dishes based on preferences, and can manage complex group orders with mixed dietary needs. The initiative aims to give DoorDash a competitive advantage over rivals and aligns with the growing trend of personal AI agents handling tasks without requiring direct app navigation.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/9ade164ba8a5942267e0.webp",
+    "image_alt": "Diagram showing how DoorDash's AI agent simplifies food ordering: user texts commands, AI processes requests, and a food order is placed."
+  }
+]
