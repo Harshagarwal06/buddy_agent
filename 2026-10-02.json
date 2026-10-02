@@ -1,0 +1,119 @@
+[
+  {
+    "title": "Musk’s AI chatbot Grok reportedly encouraged Trump to capture  Venezuela’s president",
+    "url": "https://techcrunch.com/2026/10/01/musks-ai-chatbot-grok-reportedly-encouraged-trump-to-capture-venezuelas-president/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-01",
+    "summary": "Elon Musk's Grok AI chatbot reportedly advised then-President Trump to capture Venezuelan President Nicolás Maduro, suggesting many Venezuelans would celebrate his downfall. During a secret December 2025 meeting, Trump spent hours consulting Grok, which indicated Maduro was deeply unpopular. Following a U.S. invasion and Maduro's capture in January, subsequent celebrations led Trump to view Grok as \"ingenious,\" influencing the Pentagon's later use of \"Gov Grok\" for military target deployment and strikes.",
+    "tags": [
+      "ai",
+      "politics",
+      "security"
+    ],
+    "importance": 5,
+    "image_url": "images/a3a051bd0f16b69dcbeb.webp",
+    "image_alt": "A pipeline diagram illustrates an AI chatbot's counsel leading to a presidential order, which then results in military strikes."
+  },
+  {
+    "title": "OpenAI cuts ties with 3 safety researchers, WSJ reports",
+    "url": "https://techcrunch.com/2026/10/01/openai-cuts-ties-with-three-safety-researchers-wsj-reports/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-01",
+    "summary": "OpenAI has cut ties with three safety researchers following an internal investigation that found they allegedly shared confidential company information with a third-party AI safety organization. The company stated these individuals mishandled sensitive data outside established procedures, violating policies and breaking trust. This development occurs amid recent reports of OpenAI deprioritizing safety warnings from employees and a series of security incidents involving its AI agents, raising concerns about the company's internal safety practices.",
+    "tags": [
+      "ai",
+      "security",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/9764efe829294672f0a4.webp",
+    "image_alt": "A diagram explaining how confidential company data, if shared externally without authorization, results in researcher dismissal."
+  },
+  {
+    "title": "Google thinks SpaceX’s Starship has to launch 1,800 times before space data centers get off the ground",
+    "url": "https://techcrunch.com/2026/10/01/google-thinks-spacexs-starship-has-to-launch-1600-times-before-space-data-centers-get-off-the-ground/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-01",
+    "summary": "Google has launched a prototype orbital compute satellite carrying its Tensor Processing Unit (TPU) into space, marking the first time the tech giant has sent one of its advanced chips beyond Earth. Built by Planet Labs, the satellite will test the TPU's functionality in space, including continuous power supply, cooling, and running models in 15-minute bursts to avoid system strain. This initiative, Project Suncatcher, aims to develop large-scale orbital compute clusters, envisioning a future network of 81 interconnected satellites to process demanding AI workloads.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/d98ca8ad4bf382376bb0.webp",
+    "image_alt": "A pipeline diagram showing a test satellite with a chip, progressing to a small cluster of satellites, and finally to a large orbital data center network."
+  },
+  {
+    "title": "Shopify debuts Canvas, a way to build online stores by chatting with AI",
+    "url": "https://techcrunch.com/2026/10/01/shopify-debuts-canvas-a-way-to-build-online-stores-by-chatting-with-ai/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-01",
+    "summary": "Shopify has launched Canvas, a new AI-powered tool enabling merchants to build and customize their online stores simply by chatting with an AI agent. This system, which uses Shopify's Sidekick AI, displays real-time changes and full interactivity, working directly with the store's theme files for comprehensive site creation. The development aims to democratize online selling by making store setup more accessible to individuals without coding skills or the budget for professional developers.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/14a7cbd4fb8b186ac098.webp",
+    "image_alt": "Diagram showing how merchant chat input flows into an AI builder, which then generates a complete online store, simplifying e-commerce site creation."
+  },
+  {
+    "title": "Opus 5.5 loves to tell you ‘this matters’ (and other AI writing tells)",
+    "url": "https://techcrunch.com/2026/10/01/opus-5-5-loves-to-tell-you-this-matters-and-other-ai-writing-tells/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-01",
+    "summary": "A new study by marketing firm Graphite has identified thousands of distinct linguistic patterns, or \"tells,\" in AI-generated prose. Researchers found 13,000 phrases at least twice as common in AI content compared to human writing, with models like Claude Opus 5.5 frequently using \"this matters\" and OpenAI's Astra employing \"may provide.\" These evolving yet persistent quirks allow humans to better distinguish between AI and human-authored text, highlighting the ongoing challenge for AI models to mimic natural human expression perfectly.",
+    "tags": [
+      "ai",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/59c90e40fefb04cab4fa.webp",
+    "image_alt": "A pipeline diagram illustrates an AI model producing text with unique linguistic patterns, which are then identified by human analysis."
+  },
+  {
+    "title": "ChatGPT can now virtually try on clothes for you",
+    "url": "https://techcrunch.com/2026/10/01/chatgpt-can-now-virtually-try-on-clothes-for-you/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-01",
+    "summary": "OpenAI has launched new shopping features for ChatGPT, including virtual clothing try-on and a product favoriting function. The virtual try-on allows users to upload a selfie or an item photo to visualize how clothing or accessories would look, leveraging the ChatGPT Images 2.5 model for improved realism. These updates aim to enhance online shopping experiences and position ChatGPT as a competitor to existing fashion discovery platforms like Pinterest and Google, though user adoption in this competitive space remains to be seen.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/c1fa8d43fb31af3d022d.webp",
+    "image_alt": "A diagram showing a user's photo entering an AI system that applies virtual clothing, resulting in a visualized outfit."
+  },
+  {
+    "title": "Brian Chesky interview: AI agents need their own operating system",
+    "url": "https://techcrunch.com/2026/10/01/brian-chesky-interview-ai-agents-need-their-own-operating-system/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-01",
+    "summary": "Airbnb CEO Brian Chesky believes current AI chatbots are unsuitable for e-commerce and travel planning, despite the company's recent rollout of AI-powered search. He argues chatbots offer limited options, require multiple turns, and lack collaborative features, which detracts from the browsing and planning enjoyment people derive from travel discovery. This perspective suggests a future where AI interfaces will evolve beyond simple chatbots to incorporate \"multiplayer\" and generative elements, enhancing user experience for complex, collaborative tasks like trip planning.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/6ee42fcacb63f5ac9538.webp",
+    "image_alt": "A comparison showing a single user with a restrictive chatbot interface, leading to limited browsing, versus multiple users with a dynamic, collaborative AI screen for enhanced travel planning."
+  },
+  {
+    "title": "Amazon releases its own Jev clone as decision models flood the web",
+    "url": "https://techcrunch.com/2026/10/01/amazon-releases-its-own-jev-clone-as-decision-models-flood-the-web/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-01",
+    "summary": "Amazon Web Services has released Strands Decider 2B, an open-source decision model inspired by TypeSafe’s Jev, designed for high-speed, low-cost AI automation. This model sorts between pre-decided options and delivers confidence scores, built on the 'torso' of an LLM but optimized for calibrated choices rather than text generation. It offers a more reliable, lower-latency, and cost-effective alternative to fully featured LLMs for specific agentic workflow steps, addressing a growing demand for specialized computer intelligence.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/5eb4c2e99ba09321ddd2.webp",
+    "image_alt": "A pipeline diagram shows diverse workflow steps entering a compact decision model, which quickly processes them to output a calibrated, confident choice."
+  }
+]
