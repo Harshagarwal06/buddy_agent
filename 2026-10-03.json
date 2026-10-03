@@ -1,0 +1,118 @@
+[
+  {
+    "title": "Apple will limit Mac disk access as AI agents ‘substantially’ increase risk",
+    "url": "https://www.theverge.com/tech/1004295/apple-limit-mac-disk-access-ai-agents",
+    "source": "The Verge AI",
+    "published_at": "2026-10-02",
+    "summary": "Apple is implementing new restrictions on \"full disk access\" for Mac applications to mitigate risks posed by increasingly capable AI agents. This update will require very explicit user action to grant apps this extensive permission, which previously allowed backup software to bypass standard privacy controls and access all user data, including messages and browsing history. The change aims to prevent AI agents from exploiting broad disk access to expose sensitive user information without full knowledge or understanding, enhancing Mac security.",
+    "tags": [
+      "technology",
+      "ai",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/8ba343234ed914c95a22.webp",
+    "image_alt": "A diagram showing how Apple's new policy requires explicit user approval to grant Mac disk access, preventing unauthorized data exposure to AI agents."
+  },
+  {
+    "title": "Amazon writes scary blog warning communities not to block data centers",
+    "url": "https://www.theverge.com/tech/1003929/amazon-ai-data-center-blog-warning",
+    "source": "The Verge AI",
+    "published_at": "2026-10-02",
+    "summary": "Amazon Web Services (AWS) CEO Matt Garman issued a public warning, urging communities to support AI data center projects and cautioning against blocking them. Garman's 3,000-word blog post addresses concerns about jobs, power demands, and environmental impact, while also announcing a \"Data Center Commitment\" to create jobs, prevent energy rate hikes, and invest over $1 billion in neighboring communities. This push comes as over 100 data center moratoriums are considered nationwide, with Amazon arguing that blocking these developments risks irreparable harm to the US economy and national security in the global AI race.",
+    "tags": [
+      "technology",
+      "ai",
+      "politics"
+    ],
+    "importance": 4,
+    "image_url": "images/9b32760002aab9c5684e.webp",
+    "image_alt": "A branching diagram shows community opposition to data centers leading to US AI decline, while community support leads to AI leadership."
+  },
+  {
+    "title": "OpenAI’s Dot agent is enterprise software that can also order your dinner",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1004096/openai-chatgpt-dots-hands-on-agent",
+    "source": "The Verge AI",
+    "published_at": "2026-10-02",
+    "summary": "OpenAI has launched \"Dots,\" an AI agent platform designed as enterprise software capable of automating various tasks, including personal ones. Dots operate within a virtual machine, accessing applications like Blender and GIMP, and can also integrate with a user's desktop via the ChatGPT app, initially available to high-tier subscribers. This rollout signals OpenAI's strategic focus on business automation and workplace efficiency, positioning Dots as a sophisticated coworker tool despite its consumer-friendly appearance, though it can encounter limitations like \"human checks.\"",
+    "tags": [
+      "ai",
+      "business",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/50ae2175afe0787a1160.svg",
+    "image_alt": "A pipeline diagram showing an AI agent using work software, which then encounters a human check before completion."
+  },
+  {
+    "title": "Meta open sources code to let you make Muse AI gadgets",
+    "url": "https://www.theverge.com/tech/1004330/meta-muse-ai-gadgets-home-link",
+    "source": "The Verge AI",
+    "published_at": "2026-10-02",
+    "summary": "Meta has open-sourced the code for its Muse AI agent, enabling users to build their own custom AI-powered gadgets. Developers can program off-the-shelf ESP32 boards or Raspberry Pis with Meta's SDKs, connecting Muse to various displays, buttons, and sensors. This initiative allows for the creation of diverse DIY devices, from color E Ink reminder displays to HDMI sticks for big-screen AI interaction, expanding Muse's functionality beyond Meta's proprietary hardware.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/9f799a2369e140a8012b.webp",
+    "image_alt": "A diagram showing Meta's open-sourced Muse AI code being used with DIY hardware components to create custom AI gadgets like smart displays or home controllers."
+  },
+  {
+    "title": "AI hallucinations are making entitled customers even worse",
+    "url": "https://www.theverge.com/report/1002963/ai-hallucinations-customer-service-jobs-agents",
+    "source": "The Verge AI",
+    "published_at": "2026-10-02",
+    "summary": "Restaurant and retail workers are facing increased challenges from customers who rely on generative AI chatbots like ChatGPT for information. These AI tools often \"hallucinate\" incorrect details, leading customers to dispute factual information from staff, such as allergen warnings or wine availability. This trend undermines the authority of human service professionals and creates difficult interactions, potentially impacting customer safety and service quality in the hospitality industry.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/0294699c01d665317743.webp",
+    "image_alt": "Diagram showing how AI chatbot misinformation leads customers to disregard human staff warnings, creating potential safety and service issues in hospitality."
+  },
+  {
+    "title": "AI music maker Suno now generates spoken words",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1003925/suno-speech-ai-voice-feature-beta-availability",
+    "source": "The Verge AI",
+    "published_at": "2026-10-02",
+    "summary": "AI music maker Suno has launched a new public beta feature that generates spoken voices from scripts or prompted descriptions. This Speech feature allows users to simultaneously create voiceovers and optional background music, or just clean speech, with advanced settings for voice style and gender. The expansion aims to diversify Suno's platform, offering unique combined audio tracks for various use cases like poems or dramatic voiceovers, despite the existing landscape of text-to-speech tools.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/9bbfb9cb91410e68269c.webp",
+    "image_alt": "Diagram showing text input flowing into an AI system that synthesizes two distinct audio outputs: speech only, or speech combined with background music."
+  },
+  {
+    "title": "If a data center is camouflaged in the woods, will anyone hate it?",
+    "url": "https://www.theverge.com/tech/1003681/microsoft-data-centers-ai-environment-biomimicry",
+    "source": "The Verge AI",
+    "published_at": "2026-10-02",
+    "summary": "Microsoft is adopting a \"biomimicry\" approach for its data centers to address growing community pushback against their environmental and social impact. This strategy involves blending facilities into natural landscapes with gardens and native trees, alongside investments in repairing damaged local ecosystems. The initiative aims to mitigate concerns about construction, noise, pollution, and visual disruption, fostering better integration and acceptance of data centers within surrounding communities.",
+    "tags": [
+      "technology",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/2a149282f1e07a25b3c5.svg",
+    "image_alt": "A stark, industrial data center transforming into a green, nature-integrated facility, illustrating Microsoft's biomimicry approach to improve community relations."
+  },
+  {
+    "title": "Breaking up (with Elon Musk) is hard to do",
+    "url": "https://www.theverge.com/tech/1004177/elon-musk-unfollows-shivon-zilis",
+    "source": "The Verge AI",
+    "published_at": "2026-10-02",
+    "summary": "Shivon Zilis announced her breakup with Elon Musk on X, following a \"Big Tech Alert\" post noting Musk had unfollowed her on the platform. Zilis stated the split was sudden, while she previously worked extensively across Musk's AI portfolio, including Tesla, Neuralink, and OpenAI. This public separation adds to Musk's history of tumultuous relationships and public disputes with the mothers of his children, often involving NDAs and legal actions.",
+    "tags": [
+      "culture",
+      "technology"
+    ],
+    "importance": 2,
+    "image_url": "images/12f9396a9747ea35d45c.svg",
+    "image_alt": "A pipeline diagram shows an X unfollow action leading to a public breakup announcement, which connects to a stack of private agreements, illustrating the sequence of events."
+  }
+]
