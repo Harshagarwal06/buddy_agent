@@ -31,7 +31,9 @@ timeouts, retry limits, worker count, and failure policy from the `images`
 section of [`config.yaml`](../config.yaml).
 
 - The `nvidia` provider uses NVIDIA's hosted Visual GenAI endpoint and
-  `NVIDIA_API_KEY`.
+  `NVIDIA_API_KEY`. Note that the FLUX.2 model used by NVIDIA does not accept a
+  negative prompt; any configured `images.negative_prompt` is ignored. To
+  express constraints, adjust the positive prompt in the image style guide.
 - Other configured provider names use
   `huggingface_hub.InferenceClient` and a Hugging Face token.
 - Successful provider bytes are decoded, validated with Pillow, fitted to the
@@ -64,9 +66,9 @@ production issue:
   enabled.
 - When `images.enabled` is false, articles continue without generated images.
 
-The current configuration enables both required-brief and require-all behavior,
-so normal publication fails closed instead of silently shipping generic or
-missing visuals.
+The current configuration requires a valid article brief (`require_article_brief: true`) but does not require all articles to have images (`require_all: false`). 
+Thus, if an article lacks a valid brief, the digest will not be published (fail-closed for that article). 
+If the brief is valid but image generation fails, the digest will still be published with a local SVG fallback for that article.
 
 ## Related pages
 

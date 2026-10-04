@@ -15,10 +15,10 @@ All model construction is centralized in
 
 `llm.provider` in [`config.yaml`](../config.yaml) selects one implementation:
 
-- `nvidia`: a small `httpx` adapter over NVIDIA's OpenAI-compatible
-  `/v1/chat/completions` endpoint, authenticated by `NVIDIA_API_KEY`.
 - `google`: `ChatGoogleGenerativeAI`, authenticated by `GOOGLE_API_KEY`, with a
   shared in-memory rate limiter and JSON MIME mode for the sub-model.
+- `nvidia`: a small `httpx` adapter over NVIDIA's OpenAI-compatible
+  `/v1/chat/completions` endpoint, authenticated by `NVIDIA_API_KEY`.
 - `huggingface` / `hf`: a local adapter around
   `huggingface_hub.InferenceClient`, authenticated by `HF_TOKEN` or
   `HUGGINGFACEHUB_API_TOKEN`.
@@ -28,6 +28,11 @@ All model construction is centralized in
 There is no `LLMManager`, `generate_text()`, or model-generated embedding method
 in this module. Article embeddings are a separate Google-specific concern in
 [`news_buddy/rag.py`](../news_buddy/rag.py).
+
+**Current configuration** (as of `config.yaml`):
+- `llm.provider`: `google`
+- `main_model`: `gemini-2.5-flash` (unused by the LangGraph pipeline)
+- `sub_model`: `gemini-2.5-flash` (used by the graph for summarization and article-specific image planning)
 
 ## Summary and image-plan contract
 
