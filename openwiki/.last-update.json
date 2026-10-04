@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-07-30T11:22:47.708Z",
+  "updatedAt": "2026-10-04T22:05:10.149Z",
   "command": "update",
-  "gitHead": "72a3a2a1a2b11695c174dfe0f09a696fef5baa59",
-  "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+  "gitHead": "a4954a526faa163651b57c5cee2681eafb6d79d5",
+  "model": "nvidia/nemotron-3-super-120b-a12b",
   "status": "complete",
   "language": "en"
 }
