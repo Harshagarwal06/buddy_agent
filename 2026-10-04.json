@@ -1,0 +1,116 @@
+[
+  {
+    "title": "All the AI agents that can live in your text messages",
+    "url": "https://techcrunch.com/2026/10/03/all-the-ai-agents-that-can-live-in-your-text-messages/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-03",
+    "summary": "AI agents are increasingly integrating directly into text messaging platforms, allowing users to interact with them without downloading separate applications. These agents, such as Caddy and Fambot, can remember context, connect to existing apps like calendars and email, and perform tasks ranging from scheduling appointments and organizing family life to researching trips and online shopping. This development offers a streamlined and convenient way for users to leverage AI for daily tasks, reducing app clutter and simplifying digital interactions.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/205242f2ca64f7406998.webp",
+    "image_alt": "Diagram showing how a user's text message is processed by an AI agent, which then connects to various apps to complete tasks automatically."
+  },
+  {
+    "title": "OpenAI safety employee resigns, claiming the company’s ‘culture is broken’",
+    "url": "https://techcrunch.com/2026/10/03/openai-safety-employee-resigns-claiming-the-companys-culture-is-broken/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-03",
+    "summary": "OpenAI safety employee David Robinson has resigned, asserting that the company's \"culture is broken\" and inadequate for managing advanced AI risks. Robinson, who led safety report writing for major product launches, argues that OpenAI's \"iterative deployment\" approach, which relies on trial and error, inherently guarantees periodic failures that are growing in scale. He contends that frontier AI companies must adopt rigorous safety protocols akin to nuclear power plants or airports, with layers of redundancy and careful planning, to prevent catastrophic outcomes as AI systems become more capable.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/42469b522997aeda193e.webp",
+    "image_alt": "A comparison showing OpenAI's current 'trial and error' approach leading to growing AI risks, contrasted with a proposed 'safety layers' approach for careful planning to prevent failures."
+  },
+  {
+    "title": "Amazon responds to data center backlash, says it no longer uses NDAs",
+    "url": "https://techcrunch.com/2026/10/03/amazon-responds-to-data-center-backlash-says-it-no-longer-uses-ndas/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-03",
+    "summary": "Amazon Web Services has ceased using nondisclosure agreements (NDAs) in its dealings with government agencies for data center approvals. This policy change comes as CEO Matt Garman addresses widespread suspicion and backlash against data centers, which have faced criticism for lack of transparency, water usage, and electricity costs. By eliminating NDAs, Amazon aims to counter over 100 data center moratoriums being considered across the U.S. and prevent what it calls a \"losing ticket\" for the country's technological future.",
+    "tags": [
+      "business",
+      "technology",
+      "politics"
+    ],
+    "importance": 3,
+    "image_url": "images/3af791997d9b28a0ccd5.webp",
+    "image_alt": "Diagram showing how Amazon's removal of NDAs aims to shift data center projects from facing delays and public backlash to achieving smoother approvals and progress."
+  },
+  {
+    "title": "Gemini 4 Argon Tops Astra, Sonnet 5.5: 12-of-18 Wins [2026] - tech-insider.org",
+    "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOV1IweFNLZC1WSlpnWXlRbUFuRWs3MWZMLUlYdWFUaDFxV1JWOTNuZjhzMzdCV0RCdnIweHpFc05oVGlKV0YxeHdDVnVUTE1nS0pfQTQ4YTZYdlloc0FRTmpmT1hQcmxYVkZlQi1qQ1NSbUdkRnNvdTBuYVRRaF80Q0dWekI2RmlpV2w1aQ?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-10-04",
+    "summary": "Gemini 4 Argon has reportedly achieved superior performance against rival systems Astra and Sonnet 5.5 in recent evaluations. The system secured 12 victories out of 18 contested benchmarks, demonstrating a notable lead in specific performance metrics. This strong showing positions Gemini 4 Argon as a potentially dominant solution in its field, though comprehensive details regarding the nature of these benchmarks and their full implications for 2026 are not available beyond the headline.",
+    "tags": [
+      "technology"
+    ],
+    "importance": 2,
+    "image_url": "images/128599a7283a2b6ca239.webp",
+    "image_alt": "A comparison diagram showing 'Gemini Argon' as a taller block, indicating superior performance, next to shorter blocks representing 'Astra' and 'Sonnet 5.5'."
+  },
+  {
+    "title": "Google's Answer To Meta’s Muse AI? DeepMind Chief Says Gemini 4 Launch Is Coming 'Much Earlier' - Stocktwits",
+    "url": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxQcXJDc1N3VmNFZlpBQ2ZhREdsemZQaFlLZC1BTnNQX21mR1RuQW5GTDY2NHBwd05USzcyRXZ1QVFuVk1QZmhDcXlaeWEwV3lKbkhpa3NZQzlac2MtbVlQbEVTNVR3RGNudVE5aE1VTUdxUVhraDlZRkhUWVdmSmc3NGRWNzRyLTNHVENuQ1dsTkJtaDFOa0doaXBaUEFkQmE4SHI1V2NiUG1ZQnBWNXhnU0xkeHBUaFp3RTVRZGRHYVdENktwNHBnWFdXbGZLc3paVEJzREN3Q0xuRG9fXzBjSTBBUk9mVWx1VWpOTWxtTGQ3M1dWZnhtWTFMem8?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-10-03",
+    "summary": "Google's DeepMind chief announced that the launch of Gemini 4, an advanced AI model, is anticipated \"much earlier\" than previously expected. This development positions Gemini 4 as Google's direct competitor to Meta's Muse AI, signaling an acceleration in the competitive landscape of artificial intelligence. The expedited release suggests Google's intent to rapidly advance its AI capabilities and market presence, based solely on the headline-level information available.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 2,
+    "image_url": "images/430303d5e3860357062f.webp",
+    "image_alt": "A diagram showing a long development timeline shortening, representing an earlier launch for Gemini 4, leading to increased AI market competition."
+  },
+  {
+    "title": "Gemini 4 Argon’s $2/$10 Price Is Half the Later Rate - FourWeekMBA",
+    "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQREI0Yi1GQUxuOGlPUHMyQU5ZV3AtZzFldERZMnRZT01vcDA2ZTZEQ1I2RUhhc0hpUkgwSEVjRGdaZEdjbkgxR3ZnSVVPOXBsbFVMRVZ1TG9mbHFOaXExUkx2S042VThQR3pEUXlNci1YVUhQYVJ4OVllalJzNW5FWQ?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-10-03",
+    "summary": "Gemini 4 Argon's initial pricing structure, offering $2 and $10 rates, has been revealed to be half the cost of its subsequent pricing. This indicates a significant price increase occurred after the initial offering, with the early rates representing a substantial discount compared to future charges. The development suggests that early adopters or initial customers of Gemini 4 Argon benefited from considerably lower costs than those who engaged with the service later, though only headline-level details are currently known.",
+    "tags": [
+      "business",
+      "technology"
+    ],
+    "importance": 2,
+    "image_url": "images/02bb3cad0f04a70b679a.webp",
+    "image_alt": "Diagram showing an initial lower price for Gemini 4 Argon increasing to a higher price over time."
+  },
+  {
+    "title": "Google DeepMind's Robotics Chief Says the Field Is Still GPT-2 — and Foot Speed Is a Sideshow - finance.biggo.com",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBfNUlQYUtTOXk4TzlOdU9uRTR2ZDg4ZHNfWTNjdDJMS3dIdHNSSDF0T3BzWnluT1g5cnQ0VWNkQlN4N3dibGlfbk4xSVVSNnNiY2V5Z2EwMm5pVUE?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-10-03",
+    "summary": "Google DeepMind's Robotics Chief has stated that the current state of the robotics field is akin to GPT-2, an earlier generation of large language models. This comparison suggests that robotics development is still in its nascent stages regarding advanced AI capabilities, emphasizing that physical attributes like \"foot speed\" are a secondary concern. The implication is that significant progress in robotics will depend more on breakthroughs in AI intelligence and understanding rather than mere improvements in mechanical agility or speed.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 2,
+    "image_url": "images/1115fd65ad565bf8df33.webp",
+    "image_alt": "Diagram comparing current robotics as basic AI to advanced AI, showing physical speed as less important."
+  },
+  {
+    "title": "Google announces Gemini 4 flagship AI model after months of delays - DD News",
+    "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOLUs2Q2JnR3E0NUQxRmVnSGxNUXh1UnNVTExaQ085Y1dxNml3Q2JBN0ZocDNQZkRYZkFJc09hTzAxYWVSQ3FEWTRDdE5Md0xkaE5aeDYtTWJ2enNWVWtoRXEtNGsxbFlPSnlJWDQzcUE4dUlKRDJfdlJpYTJ1eXFOWGpxSkZINm1hNUtQUTBYZGl2OVFROE93?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-10-04",
+    "summary": "Google has announced its flagship artificial intelligence model, Gemini 4. This announcement follows months of unspecified delays in the model's development and release. As only headline-level details are available, the specific capabilities, implications, or market impact of Gemini 4 cannot be determined from this information.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 1,
+    "image_url": "images/4e8b6ce6b3e03b9124a8.webp",
+    "image_alt": "A pipeline showing an AI project, followed by a delay, leading to the announcement of the Gemini 4 model."
+  }
+]
