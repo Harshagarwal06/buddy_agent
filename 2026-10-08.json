@@ -1,0 +1,120 @@
+[
+  {
+    "title": "ChatGPT&#8217;s &#8216;Intelligent UI&#8217; update fills its responses with pictures, charts, and buttons",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1007276/openai-chatgpt-intelligent-ui-gpt-6",
+    "source": "The Verge AI",
+    "published_at": "2026-10-07",
+    "summary": "OpenAI is launching a new Intelligent UI feature for ChatGPT, enabling the chatbot to respond with interactive visuals rather than just text. This update, rolling out with GPT-6, allows responses to include diagrams, charts, forms, and tappable buttons, with examples like interactive bicycle diagrams or Mahjong tile visuals. The integration of these interactive elements significantly enhances user engagement and provides practical tools directly within the conversation, making complex information more accessible and actionable.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/464d2594461278a5a8f2.webp",
+    "image_alt": "Diagram showing ChatGPT's text output transforming into interactive visuals like charts, buttons, and diagrams, enhancing user engagement and utility."
+  },
+  {
+    "title": "Everything announced at Microsoft&#8217;s Surface Laptop Ultra event",
+    "url": "https://www.theverge.com/tech/1007147/microsoft-surface-laptop-ultra-windows-event-everything-announced",
+    "source": "The Verge AI",
+    "published_at": "2026-10-07",
+    "summary": "Microsoft unveiled release details for its new Surface Laptop Ultra, powered by Nvidia's RTX Spark Arm-based chip, alongside updates to Windows. The laptop starts at $2,599, features magnetic USB-C charging, and will be released on October 16th, with a developer mini PC also available for preorder. These developments aim to position Microsoft's devices as strong competitors to high-end MacBook Pros, with Copilot gaining \"Hybrid Intelligence\" to access local files and take actions across the OS.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/cc9223c898929c5e1ad2.svg",
+    "image_alt": "Diagram showing the Surface Laptop Ultra powered by an RTX Spark chip, with Copilot AI accessing local files for enhanced functionality."
+  },
+  {
+    "title": "Microsoft is giving Copilot more control over Windows and your files",
+    "url": "https://www.theverge.com/tech/1007113/microsoft-windows-copilot-ai-control-search-hybrid-intelligence",
+    "source": "The Verge AI",
+    "published_at": "2026-10-07",
+    "summary": "Microsoft's Copilot AI system is receiving a significant upgrade, granting it enhanced control over Windows and direct access to local files on a user's PC. This capability, part of Microsoft's \"Hybrid Intelligence\" concept, combines local and cloud AI models to efficiently execute tasks, demonstrated by its ability to find, rename, zip, and draft emails for tax documents. This development enables Copilot to perform complex, multi-step operations directly within the operating system, significantly streamlining user workflows and productivity.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/0d088595bbbc85458d55.webp",
+    "image_alt": "A diagram showing a user's request flowing to a Hybrid AI system that accesses local files and performs automated actions like organizing documents and drafting emails."
+  },
+  {
+    "title": "Google invests millions in Mark Zuckerberg’s efforts to create a ‘virtual cell’",
+    "url": "https://www.theverge.com/tech/1006766/google-meta-biohub-investment-virtual-cell",
+    "source": "The Verge AI",
+    "published_at": "2026-10-07",
+    "summary": "Google DeepMind, Meta, and AI drug discovery startup Isomorphic Labs are jointly investing $300 million into Biohub's \"Virtual Biology\" initiative to create a \"virtual cell.\" This project aims to build AI datasets that will allow researchers to digitally ask, predict, and answer biological questions. An accurate predictive model of biology could dramatically accelerate scientific discovery by enabling scientists to perform experiments digitally, ultimately preventing and curing diseases.",
+    "tags": [
+      "ai",
+      "science",
+      "health"
+    ],
+    "importance": 4,
+    "image_url": "images/76ff37e0409ddb65fc4a.webp",
+    "image_alt": "Diagram showing how joint funding creates AI datasets for a virtual cell, enabling digital experiments to combat disease."
+  },
+  {
+    "title": "AI could upend food delivery",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1005726/doordash-ai-agentic-food-delivery-bites",
+    "source": "The Verge AI",
+    "published_at": "2026-10-07",
+    "summary": "DoorDash has issued a warning to restaurants about Bites, a startup that uses AI agents to list businesses without their consent, potentially disrupting the food delivery industry. Bites' approach allows AI agents to order food directly from restaurants, bypassing established apps like DoorDash and their commission structures. This development signals a brewing battle where AI agents could fundamentally alter consumer interaction with online services, shifting control away from traditional platforms.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/bb1a1cbe8cd6b20d285f.webp",
+    "image_alt": "Diagram shows AI agents directly connecting customers to restaurants, bypassing traditional food delivery apps and disrupting established business models."
+  },
+  {
+    "title": "Surface RTX Spark Dev Box is available for preorder for $5,999",
+    "url": "https://www.theverge.com/tech/1006915/microsoft-surface-rtx-spark-dev-box-preorder",
+    "source": "The Verge AI",
+    "published_at": "2026-10-07",
+    "summary": "Microsoft's Surface RTX Spark Dev Box is now available for preorder at $5,999, with shipments beginning in November. This high-end mini PC runs on Nvidia's Arm-based RTX Spark platform and features 128GB of unified memory, optimized for running local AI models exceeding 120 billion parameters. The device is specifically aimed at developers, enabling them to test AI models, prototype AI agents, and utilize AI coding tools directly on-device, enhancing local development capabilities.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/172820147edd235c0b21.webp",
+    "image_alt": "Diagram showing a compact Dev Box processing large AI models locally, enabling developers to use preinstalled tools for prototyping and testing on-device."
+  },
+  {
+    "title": "ChatGPT is getting college planning tools",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1005194/openai-chatgpt-teens-college-planner-notecards",
+    "source": "The Verge AI",
+    "published_at": "2026-10-07",
+    "summary": "OpenAI is introducing new college planning and study tools for ChatGPT for Teens, a specialized mode designed for younger users. The \"College Planner\" feature will help students track application requirements, deadlines, and financial aid steps for multiple schools, while new study updates enable multi-photo PDF conversion and flashcard generation from notes. These additions aim to streamline the complex college application process and enhance study habits for high school students, despite recent reports raising concerns about the AI tool's safety for teens.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/5be87b7687bf6620ea94.webp",
+    "image_alt": "A diagram showing scattered college application tasks flowing into a ChatGPT tool, which then outputs a clear, organized student plan."
+  },
+  {
+    "title": "Muse launches on the iPad",
+    "url": "https://www.theverge.com/tech/1006813/muse-ai-agent-ios-app-ipad-support",
+    "source": "The Verge AI",
+    "published_at": "2026-10-07",
+    "summary": "Meta's AI agent, Muse, has launched with native support for the iPad, significantly expanding its reach and utility. This update allows Muse to leverage the iPad's larger screen and multitasking features, similar to its iPhone functionality, and also includes new integrations with business tools like Canva, Dropbox, and Notion. The rapid iPad rollout, compared to other Meta apps, signals the company's strong commitment to its AI initiatives and aims to enhance productivity for small business owners by autonomously planning tasks like marketing, client pitches, and developing new product pages.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/374e84a7c299ff2b16c1.svg",
+    "image_alt": "A pipeline showing Muse AI expanding from a mobile app to an iPad, leading to improved business task automation."
+  }
+]
