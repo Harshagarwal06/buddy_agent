@@ -1,0 +1,118 @@
+[
+  {
+    "title": "OpenAI’s revenue is reportedly $20 billion less than previously projected",
+    "url": "https://techcrunch.com/2026/10/08/openais-revenue-is-reportedly-20-billion-less-than-previously-projected/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-08",
+    "summary": "OpenAI has reportedly informed investors that its annualized revenue is approaching $50 billion, which is $20 billion less than previously projected figures. Earlier reports suggested a $70 billion run rate, but this figure was influenced by investor attempts to directly compare with Anthropic, which includes cloud partner sales in its revenue calculation, unlike OpenAI. This downward revision complicates OpenAI's efforts to justify massive investments and has pushed its rumored IPO from this year to early 2027.",
+    "tags": [
+      "business",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/3a0e0c96f763300a81cc.webp",
+    "image_alt": "A diagram showing OpenAI's initial revenue projection being higher than its revised revenue, leading to a delayed IPO."
+  },
+  {
+    "title": "Fired OpenAI safety researchers dispute misconduct claims, warn of chilling effect",
+    "url": "https://techcrunch.com/2026/10/08/fired-openai-safety-researchers-dispute-misconduct-claims-warn-of-chilling-effect/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-08",
+    "summary": "Fired OpenAI safety researchers Jasmine Wang, Tomek Korbak, and Mikita Balesni have publicly disputed the company's claims of mishandling sensitive information, warning of a chilling effect on internal culture. The researchers were dismissed for allegedly sharing confidential company information with a third-party AI safety organization, which they contend was a normal and essential part of their safety work. Their termination, they argue, creates an environment where fear and unclear rules stymie crucial AI safety efforts and weaken external accountability, impacting the open culture OpenAI previously valued.",
+    "tags": [
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/2c0e3216b2434fa5a1f3.webp",
+    "image_alt": "Diagram illustrating how open collaboration among AI safety researchers is replaced by policy restrictions, leading to chilled safety work."
+  },
+  {
+    "title": "Google brings agentic AI to Gemini, starting with businesses",
+    "url": "https://techcrunch.com/2026/10/08/google-brings-agentic-ai-to-gemini-starting-with-businesses/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-08",
+    "summary": "Google is introducing agentic AI capabilities to its Gemini platform, initially targeting businesses. This new unified agent can receive objectives, not just instructions, enabling it to plan work, utilize custom skills, and connect securely to a wide array of internal business systems like Google Workspace, Microsoft 365, and Jira. By acting like another co-worker with its own Workspace account and a 'tasks inbox' for oversight, Gemini aims to solve complex enterprise problems around security, scale, and performance, significantly expanding AI's practical application in corporate environments.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/7f25aa8adc982ae16d5a.webp",
+    "image_alt": "Diagram showing a business objective flowing to a Gemini AI agent, which then connects to various business systems to complete tasks."
+  },
+  {
+    "title": "Popular AI leaderboard Arena nearly doubles valuation to $3.1B valuation in 10 months",
+    "url": "https://techcrunch.com/2026/10/08/popular-ai-leaderboard-arena-nearly-doubles-valuation-to-3-1b-valuation-in-10-months/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-08",
+    "summary": "AI leaderboard Arena has nearly doubled its valuation to $3.1 billion in 10 months after raising a $200 million Series B round. The company, which started as a UC Berkeley project, offers a free crowdsourced platform for users to rate AI models and introduced a commercial AI Evaluations service last year, achieving $100 million in annualized revenue. This rapid growth highlights Arena's role in providing a neutral third-party evaluation for AI models, addressing the limitations of traditional benchmarks that models can game and helping enterprises determine real-world performance.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/5052e48a51bf2cc24ac0.webp",
+    "image_alt": "A comparison showing how AI models can game simple static benchmarks, contrasted with a more reliable crowdsourced evaluation based on diverse user ratings for true performance."
+  },
+  {
+    "title": "Ben Affleck is an AI nerd, and the internet is impressed",
+    "url": "https://techcrunch.com/2026/10/08/ben-affleck-is-an-ai-nerd-and-the-internet-is-impressed/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-08",
+    "summary": "Ben Affleck has gone viral for demonstrating his deep understanding of artificial intelligence, neural networks, and machine learning in recent interviews. The actor explained complex AI concepts like convolutional neural networks, tensors, and Python scripting, relating them to visual effects workflows in filmmaking. This public display of technical knowledge, following the sale of his AI filmmaking startup to Netflix, highlights his significant involvement and expertise in the rapidly evolving AI space.",
+    "tags": [
+      "ai",
+      "technology",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/39fc11baa07535202154.webp",
+    "image_alt": "A pipeline shows image data entering AI processing, which then outputs refined film effects like background removal."
+  },
+  {
+    "title": "Pretend you’re sitting at Elizabeth Holmes’ desk on this weirdly detailed website",
+    "url": "https://techcrunch.com/2026/10/08/pretend-youre-sitting-at-elizabeth-holmes-desk-on-this-weirdly-detailed-website/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-08",
+    "summary": "Extend engineer Bo Lau developed a detailed website that recreates Elizabeth Holmes' virtual desk environment from 2016, allowing users to explore documents from the Theranos trial. The interactive simulation incorporates over a thousand public emails, slides, and texts, accessible via virtual iPhone and MacBook screens, and even features the ill-fated Edison machine. This project offers an engaging and simplified method for perusing complex legal discovery materials, simultaneously promoting a documentary watch party and Lau's company, Extend.",
+    "tags": [
+      "technology",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/dc64462b409b7dd4ed74.webp",
+    "image_alt": "A pipeline diagram showing legal trial documents flowing into a virtual desk simulation, which a user then explores, illustrating how complex data becomes accessible."
+  },
+  {
+    "title": "OpenAI’s math solutions aren’t meeting the field’s standards yet",
+    "url": "https://techcrunch.com/2026/10/08/openais-math-solutions-arent-meeting-the-fields-standards-yet/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-08",
+    "summary": "OpenAI recently released hundreds of claimed solutions to complex math problems, but these solutions are not meeting the standards set by an advisory group of elite mathematicians. The Advisory Group on Mathematics and Artificial Intelligence (AGMAI) emphasized the need for human understanding and formalization, yet OpenAI largely failed to provide these, with only 10 of 719 manuscripts including a chain of thought and less than half of proofs formalized. This raises significant concerns about the meaningfulness and interpretability of AI-generated mathematical results, potentially hindering their integration and utility within the broader mathematical community.",
+    "tags": [
+      "ai",
+      "science"
+    ],
+    "importance": 3,
+    "image_url": "images/fe5825df44e78562ea31.webp",
+    "image_alt": "AI-generated math proofs encounter a bottleneck at human understanding and formalization standards, hindering their acceptance by the mathematical community."
+  },
+  {
+    "title": "Anthropic changes usage policy to ban model abuse and election interference",
+    "url": "https://techcrunch.com/2026/10/08/anthropic-changes-usage-policy-to-ban-model-abuse-and-election-interference/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-08",
+    "summary": "Anthropic has updated its usage policy to explicitly prohibit prolonged verbal abuse of its AI models, election interference, weapons software, and surveillance. The policy change builds on Claude's existing training to end persistently harmful user interactions, now expressly forbidding users from pursuing such conversations. This update aims to prevent extreme cruelty towards AI models and broadly deceptive campaigns, ensuring responsible and ethical use of Anthropic's technology.",
+    "tags": [
+      "ai",
+      "technology",
+      "politics"
+    ],
+    "importance": 3,
+    "image_url": "images/dfd91dfd72f0bb8e700a.webp",
+    "image_alt": "Diagram showing an AI chatbot. A policy filter blocks banned actions like abuse and election interference, while allowing legitimate user queries."
+  }
+]
