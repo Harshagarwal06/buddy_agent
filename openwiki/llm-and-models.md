@@ -25,6 +25,11 @@ All model construction is centralized in
 - `ollama`: `ChatOllama` after verifying that the configured local server
   exposes the requested model.
 
+The current default configuration uses the `google` provider with
+`gemini-2.5-flash` for both `main_model` and `sub_model`. The
+`nvidia` provider's `llama-3.1-8b` model has been retired and is no longer
+used by the LangGraph pipeline.
+
 There is no `LLMManager`, `generate_text()`, or model-generated embedding method
 in this module. Article embeddings are a separate Google-specific concern in
 [`news_buddy/rag.py`](../news_buddy/rag.py).
