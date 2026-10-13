@@ -1,0 +1,120 @@
+[
+  {
+    "title": "Meta releases its first frontier model, Muse Wonder",
+    "url": "https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-12",
+    "summary": "Meta's Superintelligence Lab has released Muse Wonder and Muse Wonder Full, marking the company's first frontier models. These new models are larger and more capable than previous iterations, achieving benchmark scores comparable to Fable 5.1 and GPT-6 Astra, with a particular emphasis on \"active memory\" for long-term information retention. This development represents a significant step on Meta's scaling ladder, aiming toward personal superintelligence and powering the Muse agent.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/74eb2f77aee19bcafc89.webp",
+    "image_alt": "A pipeline showing Meta's AI evolution from lightweight models to advanced frontier models with enhanced active memory, enabling long-term user interaction."
+  },
+  {
+    "title": "WindBorne wins a hefty US Air Force contract for its balloon data",
+    "url": "https://techcrunch.com/2026/10/12/windborne-wins-a-hefty-us-air-force-contract-for-its-balloon-data/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-12",
+    "summary": "WindBorne Systems secured a significant contract with the U.S. Air Force, potentially worth up to $49 million, to provide atmospheric data collected by its fleet of autonomous weather balloons. The company currently operates about 700 global weather balloons, which gather sensor readings that feed into its proprietary AI weather forecasting model, WeatherMesh 6. This agreement supports the expansion of WindBorne's balloon constellation and research and development, enabling the Air Force to access unique global data for more accurate and timely weather predictions.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/d57ab68e72bb23b59e0f.webp",
+    "image_alt": "A pipeline diagram showing weather balloons collecting atmospheric data, which feeds into an AI model, resulting in more accurate weather forecasts for military operations."
+  },
+  {
+    "title": "Microsoft president says UK is best placed to drive AI regulation",
+    "url": "https://techcrunch.com/2026/10/12/microsoft-president-says-uk-is-best-placed-to-drive-ai-regulation/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-12",
+    "summary": "Microsoft president Brad Smith has called for urgent global AI regulation, arguing that consumer products have more oversight than AI companies and that the UK is uniquely positioned to lead this effort. The UK's AI Security Institute (AISI) accesses and tests major AI models from frontier labs before deployment, establishing it as a leader in safety testing, a capability the US and EU lack. This proactive approach, contrasting with voluntary self-regulation, enables the UK to drive the necessary global safety rules to mitigate risks from irresponsible companies and potential rogue AI agents.",
+    "tags": [
+      "technology",
+      "ai",
+      "politics"
+    ],
+    "importance": 4,
+    "image_url": "images/f43bba9b3b1fa9a25d11.webp",
+    "image_alt": "A branching diagram shows AI models passing through UK safety tests to establish global rules, contrasting with an unregulated path."
+  },
+  {
+    "title": "This AI startup says it can generate permit-ready blueprints in minutes",
+    "url": "https://techcrunch.com/2026/10/12/this-ai-startup-says-it-can-generate-permit-ready-blueprints-in-minutes/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-12",
+    "summary": "Blueprints AI, a new startup, has developed AI software capable of generating permit-ready architectural construction blueprints in minutes from a 2D sketch or PDF. The company's second-generation software, unveiled at TechCrunch Disrupt, automates the repetitive drafting work that typically consumes 80% of an architect's time. This innovation aims to free up architects to focus 80% of their efforts on creative design, potentially leading to more innovative and better-designed spaces for people.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/4f43e7d5a5c0cb0f3547.webp",
+    "image_alt": "A pipeline diagram showing a rough sketch entering an AI system, which then produces final construction blueprints."
+  },
+  {
+    "title": "Honeyjar offers AI tools to improve PR and comms at every company",
+    "url": "https://techcrunch.com/2026/10/12/honeyjar-offers-ai-tools-to-improve-pr-and-comms-at-every-company/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-12",
+    "summary": "Honeyjar has launched new AI tools designed to improve public relations and communications for companies of all sizes. The platform automates processes such as writing announcements, identifying journalists for pitches, and finding speaking opportunities, aiming to integrate the entire communications workflow. This innovation makes senior-level PR expertise and strategic judgment accessible to a broader audience, including founders and \"unassigned communicators\" who lack formal PR titles or experience.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/87f41f2be3e43a9750ac.webp",
+    "image_alt": "A pipeline showing Honeyjar AI transforming chaotic communication tasks into strategic public relations, empowering users without prior PR expertise."
+  },
+  {
+    "title": "Meta has some Wonder Full new AI models",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1009479/meta-muse-wonder-full-ai-model",
+    "source": "The Verge AI",
+    "published_at": "2026-10-12",
+    "summary": "Meta has launched two new AI models, Muse Wonder and Muse Wonder Full, which it claims can compete with leading industry models. These models are available to Muse Code subscribers and via the Meta Model API, with Meta citing strong internal benchmark results against rivals like OpenAI's GPT-6 Astra and Anthropic's Claude Opus 5.5. The company plans to integrate these advanced models into its Muse AI agent, signifying a strategic push to re-establish its position as a major force in the artificial intelligence landscape.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/e7b63cab2afc63d6eaa8.webp",
+    "image_alt": "Diagram showing Meta's new AI models undergoing benchmark testing and then being integrated to power the Muse AI agent."
+  },
+  {
+    "title": "Former Plaud exec raises $26M for AI app that listens to you in the background",
+    "url": "https://techcrunch.com/2026/10/12/former-plaud-exec-raises-26m-for-ai-app-that-listens-to-you-in-the-background/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-12",
+    "summary": "Ambi, an AI app developed by former Plaud executive Peter Mo, has raised $26 million across multiple funding rounds to provide continuous, personalized assistance. The app, available on iPhones, Macs, and Apple Watch, listens to users in the background, capturing context from conversations, calendars, and web data to offer real-time intelligence. This approach aims to move beyond traditional meeting notetakers by proactively surfacing relevant knowledge and suggestions during ongoing activities, enhancing user productivity and interaction with AI.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/152d77ba5b0774fa3eec.webp",
+    "image_alt": "A diagram showing a microphone capturing user audio, which is processed by AI to generate smart, real-time suggestions for the user."
+  },
+  {
+    "title": "TechCrunch Disrupt 2026 starts tomorrow: Your final chance to secure up to $100 ticket savings",
+    "url": "https://techcrunch.com/2026/10/12/techcrunch-disrupt-2026-starts-tomorrow-your-final-chance-to-secure-up-to-100-ticket-savings/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-12",
+    "summary": "TechCrunch Disrupt 2026 is set to begin tomorrow, October 13, at 8 a.m. PT in San Francisco, gathering over 10,000 founders, investors, and tech operators for three days. The event features 300+ exhibiting startups, 200+ sessions, and a Startup Battlefield competition with a $100,000 prize. Attendees have a final opportunity to secure ticket savings of up to $100, with additional discounts for multiple passes and a special $75 Expo+ Pass for those recently laid off, before the deadline expires.",
+    "tags": [
+      "technology",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/fee2c9d3d74c97253423.webp",
+    "image_alt": "A diagram showing a discounted event pass available during a limited purchase window, which then changes to a standard, higher-priced pass after the deadline."
+  }
+]
