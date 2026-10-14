@@ -1,0 +1,120 @@
+[
+  {
+    "title": "Science Corporation implants its vision-restoring chip in its first Stargardt disease patient",
+    "url": "https://techcrunch.com/2026/10/13/science-corporation-implants-its-vision-restoring-chip-in-its-first-stargardt-disease-patient/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-13",
+    "summary": "Science Corporation has successfully implanted its PRIMA vision-restoring chip into its first patient suffering from Stargardt disease, an inherited condition that causes central vision loss. The small chip, acting as artificial photoreceptors, is placed in the eye and works in conjunction with camera-equipped glasses to transmit visual signals to the optic nerve. This development offers a potential treatment for Stargardt disease, currently considered incurable, and expands the application of brain-computer interfaces beyond controlling computers to address a range of medical conditions.",
+    "tags": [
+      "science",
+      "health",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/bfb7addc5bfd1605990d.svg",
+    "image_alt": "A pipeline diagram illustrates camera glasses sending light to a retinal chip, which then transmits signals to the brain, restoring vision."
+  },
+  {
+    "title": "Cerebras CEO pushes back on AI doomsday warnings",
+    "url": "https://techcrunch.com/2026/10/13/cerebras-ceo-pushes-back-on-ai-doomsday-warnings/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-13",
+    "summary": "Cerebras Systems CEO Andrew Feldman has pushed back against prevalent AI doomsday warnings, stating that some industry leaders should avoid public commentary on the topic. Feldman argues that the focus should shift to AI's immense potential, such as eradicating diseases like cancer, while acknowledging the inherent risks of powerful technologies. He advocates for reasonable regulation and improved community engagement during data center development to foster positive AI growth and prevent negativity from overshadowing its benefits.",
+    "tags": [
+      "ai",
+      "business",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/89cf114e448238d8126a.webp",
+    "image_alt": "A diagram comparing two perspectives on AI: one side shows warnings, the other shows potential, with an arrow indicating a shift in focus towards benefits."
+  },
+  {
+    "title": "Cerebras CEO says we’re nearing a future where everyone has a personal AI assistant at home",
+    "url": "https://techcrunch.com/2026/10/13/cerebras-ceo-says-were-nearing-a-future-where-everyone-has-a-personal-ai-assistant-at-home/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-13",
+    "summary": "Cerebras Systems CEO Andrew Feldman predicts a future where personal AI assistants will be common home appliances, operating locally on devices while also leveraging cloud services. These advanced AI agents will establish a security perimeter around user data and gain access to credit cards to make purchases and manage tasks. This integration of local processing and cloud intelligence is expected to significantly improve daily lives by automating tasks and enabling new capabilities previously impossible.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/1a5c296d234a3246acdf.webp",
+    "image_alt": "A diagram showing a home AI device processing data locally, connecting to cloud services, and securely accessing user finances to enhance daily life."
+  },
+  {
+    "title": "Facebook is giving users more control over their algorithm",
+    "url": "https://techcrunch.com/2026/10/13/facebook-is-giving-users-more-control-over-their-algorithm/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-13",
+    "summary": "Facebook has launched \"Your Algorithm,\" a new AI-powered feature enabling users to directly influence the content appearing in their Feed and Reels. This tool allows users to describe their content preferences in natural language and use \"Interested\" or \"Not interested\" options on individual posts, with real-time adjustments to recommendations. The development signifies a shift towards greater user control over social media experiences, aiming to make content discovery more relevant and personalized, moving beyond traditional automated recommendation systems.",
+    "tags": [
+      "technology",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/faf09a8b208f71a32101.webp",
+    "image_alt": "Diagram showing how user preferences flow into algorithm refinement, leading to a personalized content feed on Facebook."
+  },
+  {
+    "title": "Industrial Next wants factory robots to switch tasks in minutes, not weeks",
+    "url": "https://techcrunch.com/2026/10/13/industrial-next-wants-factory-robots-to-switch-tasks-in-minutes-not-weeks/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-13",
+    "summary": "Industrial Next is enabling factory robots to switch tasks in minutes, rather than weeks, by developing AI-driven, self-contained robotic stations. These stations utilize proprietary foundation models that integrate vision, task context, and motion, allowing production lines to be retooled without traditional programming. This innovation aims to empower manufacturers to automate complex and delicate tasks that previously required human labor, significantly accelerating production flexibility and efficiency.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/6b73652ce7290d333e5a.webp",
+    "image_alt": "An illustration comparing slow factory robot retooling, taking weeks, with Industrial Next's AI platform enabling rapid task changes in minutes."
+  },
+  {
+    "title": "Judge orders OpenAI to turn over hiring records in Apple trade secrets case",
+    "url": "https://techcrunch.com/2026/10/13/judge-orders-openai-to-turn-over-hiring-records-in-apple-trade-secrets-case/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-13",
+    "summary": "A judge has ordered OpenAI to provide Apple with expedited access to hiring records in Apple's trade secrets lawsuit against the AI company. These documents pertain to OpenAI's interviews with former Apple employees who applied for roles in its consumer hardware and robotics groups, ahead of OpenAI's rumored hardware device launch. The court's decision aims to uncover whether Apple's confidential technologies or components were discussed during these interviews, potentially impacting the ongoing legal battle over alleged intellectual property theft.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/83bbe4fe71e2184a8dcb.webp",
+    "image_alt": "A diagram explaining how Apple's confidential data might transfer to OpenAI via hiring, and a court order for OpenAI to disclose related records."
+  },
+  {
+    "title": "Flox Intelligence is building AI to keep wildlife away from trains, airports, and roads",
+    "url": "https://techcrunch.com/2026/10/13/flox-intelligence-is-building-ai-to-keep-wildlife-away-from-trains-airports-and-roads/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-13",
+    "summary": "Flox Intelligence is developing an AI-powered system to deter wildlife from critical infrastructure like train tracks, airports, and roads. Unlike traditional methods such as sirens or fences, this system uses edge devices with perception systems trained on wildlife to adapt its deterrent responses based on the animal's behavior and species. This innovative approach aims to significantly reduce the estimated $272 million annual cost of wildlife strikes to U.S. civil aviation and prevent thousands of train delays caused by animal collisions.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/500ba290d5201b0855f0.webp",
+    "image_alt": "A diagram showing wildlife approaching infrastructure, an AI system detecting it, and the animal being deterred, preventing collisions."
+  },
+  {
+    "title": "Laplace Intelligence red-teams robots and self-driving cars before they hit the real world",
+    "url": "https://techcrunch.com/2026/10/13/laplace-intelligence-red-teams-robots-and-self-driving-cars-before-they-hit-the-real-world/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-13",
+    "summary": "Laplace Intelligence is developing automated red-teaming solutions to stress-test physical AI systems like robots and self-driving cars before their real-world deployment. The company utilizes AI agents within high-fidelity simulations, reconstructed from real-world data, to constantly probe for weaknesses and potential failure points. This proactive approach aims to discover and fix critical problems in physical AI, ensuring safety and building a foundation of evidence that customers, insurers, and regulators can trust.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/ddb99ae6f701d5283556.webp",
+    "image_alt": "A diagram showing physical AI entering a simulated test environment, where it is stress-tested to ensure safe deployment in the real world."
+  }
+]
