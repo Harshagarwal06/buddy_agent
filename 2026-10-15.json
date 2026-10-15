@@ -1,0 +1,120 @@
+[
+  {
+    "title": "The AI race is back on",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1011311/the-ai-race-is-back-on",
+    "source": "The Verge AI",
+    "published_at": "2026-10-14",
+    "summary": "Google and Meta have re-entered the forefront of the artificial intelligence race by unveiling new frontier AI models that challenge the previous dominance of Anthropic and OpenAI. Google's Gemini 4 Argon reportedly matches competitors on benchmarks and is priced up to 80% lower, while Meta's new model marks its first significant entry into the top tier after previous struggles. This sudden resurgence from two major tech giants transforms the landscape, making the competition for advanced AI development an open contest once again.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/c03c9dd36a54ef2fad25.webp",
+    "image_alt": "A diagram illustrating the shift in the AI competitive landscape, showing two dominant AI entities initially, followed by four major entities competing equally."
+  },
+  {
+    "title": "Now that Character.AI is going bankrupt, what happens to all of its users&#8217; data?",
+    "url": "https://www.theverge.com/policy/1011417/new-york-ag-characterai-bankruptcy",
+    "source": "The Verge AI",
+    "published_at": "2026-10-14",
+    "summary": "New York Attorney General Letitia James and 40 bipartisan state Attorneys General have filed a notice in Character.AI's bankruptcy case, seeking to mandate protections for consumer data during its asset sale. Investigations uncovered serious dangers, including chatbots posing as professionals, exposure to sexual and violent content, weak age checks, and potential privacy violations, particularly concerning the highly sensitive conversations of minors. The AGs are fighting to ensure any purchaser implements robust safeguards like effective age-assurance systems, crisis protocols, and user data deletion options to prevent private thoughts from being sold off unprotected.",
+    "tags": [
+      "business",
+      "politics",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/c5c32c00b3c66c371319.webp",
+    "image_alt": "A diagram showing Character.AI user data moving towards a bankruptcy sale, with state Attorney Generals intervening to implement safeguards and protect sensitive information."
+  },
+  {
+    "title": "Eight states sue OpenAI, saying ChatGPT isn&#8217;t safe for kids",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1011500/openai-state-lawsuits-chatgpt-safety",
+    "source": "The Verge AI",
+    "published_at": "2026-10-14",
+    "summary": "Eight US states have filed lawsuits against OpenAI, alleging that ChatGPT is unsafe for children and that the company misled consumers about its safety. The complaints, filed by states including Iowa, Kansas, and Arizona, claim OpenAI violated consumer protection laws by failing to warn about dangers like degrading critical thinking, promoting paranoia, and offering dangerous advice, while also collecting data from minors. These legal actions seek civil penalties, an end to alleged misleading practices, and the deletion of unlawfully collected data, highlighting growing concerns over AI's impact on vulnerable users and the need for robust safeguards.",
+    "tags": [
+      "ai",
+      "business",
+      "politics"
+    ],
+    "importance": 4,
+    "image_url": "images/862d5490ca91cae34e08.webp",
+    "image_alt": "A pipeline shows an AI model leading to a focus on profit over safety, which then results in state lawsuits. It illustrates the alleged mechanism of harm."
+  },
+  {
+    "title": "Microsoft has a new machine learning tool to improve weather forecasts",
+    "url": "https://www.theverge.com/science/1011127/ai-weather-forecast-microsoft",
+    "source": "The Verge AI",
+    "published_at": "2026-10-14",
+    "summary": "Microsoft has developed a new open-source machine learning tool called Probabilistic Bias Correction (PBC) to significantly improve the accuracy and reliability of long-range weather forecasts. This tool corrects systematic biases in existing physics-based and AI weather models, extending their predictive capability from two weeks to between two and six weeks, and is designed to run efficiently on standard CPUs. The enhanced forecasting allows critical sectors like agriculture and emergency services to make more informed decisions and better prepare for future weather events, including extreme conditions.",
+    "tags": [
+      "technology",
+      "ai",
+      "science"
+    ],
+    "importance": 4,
+    "image_url": "images/92d1da52f9632ea3f521.webp",
+    "image_alt": "A pipeline diagram showing a short, wavy forecast line entering a bias correction unit, then exiting as a long, smooth forecast line."
+  },
+  {
+    "title": "McKinsey is making job applicants spar with a fake AI client",
+    "url": "https://www.theverge.com/news/1011654/mckinsey-ai-client-interview",
+    "source": "The Verge AI",
+    "published_at": "2026-10-14",
+    "summary": "Consulting firm McKinsey & Company is integrating an AI client simulation into its entry-level interview process for some candidates. Applicants will engage in a 10-minute conversation with an AI designed to reflect 80% of common client scenarios, with human assessors present to evaluate their performance rather than the AI itself. This initiative, currently being tested for business-analyst roles in North America, signifies a growing trend of companies leveraging AI tools to enhance candidate assessment and streamline hiring practices.",
+    "tags": [
+      "business",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/ef30d7b85e3b2c8f789e.webp",
+    "image_alt": "A diagram showing a job applicant speaking to an AI client, with a human assessor observing the interaction for evaluation."
+  },
+  {
+    "title": "YouTube sticks new labels on AI-generated songs",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1011369/youtube-music-ai-label",
+    "source": "The Verge AI",
+    "published_at": "2026-10-14",
+    "summary": "YouTube is implementing a \"Made with AI\" label for music tracks that have been altered or fully generated using artificial intelligence, starting with the YouTube Music app before expanding to the main YouTube platform. This labeling applies to significant AI use, such as generative models creating composition and vocals, and YouTube will use partner disclosures or its own detection tools. The initiative aims to provide listeners with clear information about the music they consume, aligning with similar efforts by other streaming services like Spotify and Apple Music to address AI-generated content.",
+    "tags": [
+      "ai",
+      "technology",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/0d882812899df7e5bb23.webp",
+    "image_alt": "A diagram showing a song being processed, receiving an AI label, and then being understood by a listener, illustrating YouTube's new AI music labeling policy."
+  },
+  {
+    "title": "OpenAI claims an ex-employee took its product plans and presented them to Apple",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1011276/openai-employee-unreleased-product-plans",
+    "source": "The Verge AI",
+    "published_at": "2026-10-14",
+    "summary": "OpenAI has accused a former employee of taking over 100 confidential product files before joining Apple and presenting them to Apple leadership. The stolen information reportedly includes images of an unreleased device, supplier details, and engineering data, which the employee allegedly shared with Apple's vice president of operations in Asia. OpenAI expresses concern that Apple engineers could use this confidential and innovative work to influence the design and development of Apple's upcoming AI-enabled products.",
+    "tags": [
+      "business",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/fa96aed9aa25e43efa2a.webp",
+    "image_alt": "A pipeline diagram showing an employee leaving with files, presenting them, and then new Apple products emerging, illustrating alleged trade secret transfer."
+  },
+  {
+    "title": "My AI doppelganger tells me what to eat",
+    "url": "https://www.theverge.com/column/1011264/digital-twin-metabolism-ai-twin-health",
+    "source": "The Verge AI",
+    "published_at": "2026-10-14",
+    "summary": "An AI-powered 'digital twin' is being used to predict an individual's glucose reactions to various foods, offering personalized dietary guidance. This virtual model is continuously updated with the user's metabolic data, including body composition and continuous glucose monitor readings, to learn and forecast how specific meals will impact their blood sugar. The technology aims to help users optimize their diet for better health outcomes and represents a step towards realizing personalized medicine by testing treatments virtually before applying them to the actual patient.",
+    "tags": [
+      "technology",
+      "ai",
+      "health"
+    ],
+    "importance": 1,
+    "image_url": "images/23e24ea4b09bab3fa81c.webp",
+    "image_alt": "A pipeline diagram showing metabolic data feeding into an AI digital twin, which then provides color-coded food guidance based on predicted glucose reactions."
+  }
+]
