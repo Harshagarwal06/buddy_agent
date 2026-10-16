@@ -1,0 +1,119 @@
+[
+  {
+    "title": "Anthropic is letting METR researchers look under the hood with employee-level access",
+    "url": "https://techcrunch.com/2026/10/15/anthropic-is-letting-metr-researchers-look-under-the-hood-with-employee-level-access/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-15",
+    "summary": "Anthropic is granting employee-level access to six researchers from METR, a nonprofit focused on testing frontier AI models, enabling them to independently assess its models, safety practices, and risk management. This arrangement provides the METR team with internal tools and information similar to Anthropic's own risk assessment teams, akin to banking regulators embedded in financial institutions. The initiative aims to enhance public accountability for AI companies and close the knowledge gap between internal and external evaluators, especially as incidents of AI agents acting outside instructions become more frequent.",
+    "tags": [
+      "ai",
+      "business",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/653ab944519d80f0ab39.webp",
+    "image_alt": "A diagram illustrating how independent researchers gain access to Anthropic's internal AI systems to conduct and publish safety assessments."
+  },
+  {
+    "title": "AI agents are coming to Rivian’s cars",
+    "url": "https://techcrunch.com/2026/10/15/ai-agents-are-coming-to-rivians-cars/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-15",
+    "summary": "Rivian plans to integrate third-party AI agents, such as those from Anthropic, into its electric vehicles, expanding the capabilities of its in-car software. The carmaker already employs an in-house AI assistant and an agentic framework that routes user requests, but these new agents will handle more complex tasks, strictly avoiding safety-critical vehicle controls. This development signifies a shift towards an open platform for in-car AI, potentially offering drivers a wider range of advanced interactive features and services beyond Rivian's proprietary offerings.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/2b4655214632227d48b1.webp",
+    "image_alt": "Diagram showing how Rivian's in-car system will route user requests through a central router to integrate and utilize external AI agents for expanded functionality."
+  },
+  {
+    "title": "Bluesky expands its AI-powered Attie app to let anyone build websites, games, and more",
+    "url": "https://techcrunch.com/2026/10/15/bluesky-expands-its-ai-powered-attie-app-to-let-anyone-build-websites-games-and-more/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-15",
+    "summary": "Bluesky has expanded its AI-powered Attie app, enabling users to create websites, games, quizzes, and other interactive digital experiences. This development allows everyday individuals to build content previously requiring software development skills, utilizing AI models and linking to their AT Protocol identity for distribution to Bluesky's 47 million registered users. The initiative aims to democratize content creation on the decentralized social web and boost engagement on the Bluesky network by providing new tools for community-focused \"vibe coding.\"",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/a6cba6f90fa9120a2c20.webp",
+    "image_alt": "Diagram showing how Bluesky's Attie app transforms a user's idea into digital experiences like websites and games, which are then distributed to a broad network."
+  },
+  {
+    "title": "When it came to Cal AI’s viral success, a small army of influencers paid off",
+    "url": "https://techcrunch.com/2026/10/15/when-it-came-to-cal-ais-viral-success-a-small-army-of-influencers-paid-off/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-15",
+    "summary": "Cal AI, an AI-fueled calorie tracking app, achieved viral success and was acquired by MyFitnessPal. Its founder, Zach Yadegari, attributed this to a strategy of paying a \"small army of influencers\" to promote the brand, generating over $30 million in revenue in two years. This approach demonstrated a highly effective, linear conversion model where influencer posts directly translated into user acquisition, highlighting the power of targeted influencer marketing for rapid growth.",
+    "tags": [
+      "business",
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/8891dd6c4c02bae46b38.webp",
+    "image_alt": "Diagram illustrating how influencer posts drive new user acquisition, which in turn leads to significant company growth and revenue for an app."
+  },
+  {
+    "title": "Amazon devices chief Panos Panay sees a future where AI devices replace the need to use apps",
+    "url": "https://techcrunch.com/2026/10/15/amazon-devices-chief-panos-panay-sees-a-future-where-ai-devices-replace-the-need-to-use-apps/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-15",
+    "summary": "Amazon's SVP of Devices, Panos Panay, envisions a future where ambient AI devices replace the need for traditional apps. These devices, exemplified by Amazon's new Bee wearables, operate quietly in the background, using sensors and AI to proactively assist users rather than requiring explicit commands. By processing audio in real-time and deleting raw data for privacy, this shift aims to free users from constant smartphone interaction, fostering greater presence and productivity in their daily lives.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/a24991c335fe6025edc9.webp",
+    "image_alt": "A diagram showing the transition from active app interaction on a smartphone to seamless assistance from an ambient AI wearable, leading to increased user presence."
+  },
+  {
+    "title": "Meta launches an open-weight AI model that runs on Macs",
+    "url": "https://techcrunch.com/2026/10/15/meta-launches-an-open-weight-model-that-runs-on-macs/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-15",
+    "summary": "Meta has launched Muse Spark Open, an open-weight AI model described as its most capable, specifically designed to run locally on Apple's Mac computers. This multimodal model boasts 816 billion parameters and a 1 million token context window, offering superior performance for complex tasks, though it requires at least 1 terabyte of RAM, ideally on a Mac Studio with an M5 Ultra chip. Its local operation enables cost-efficient and transparent AI for demanding workflows like coding fixes, agentic labor, and reviewing/cropping high-end video footage.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/2638a52c206a1ebecbb9.webp",
+    "image_alt": "A pipeline showing an AI model flowing into a Mac computer, which then processes complex tasks like coding and video editing."
+  },
+  {
+    "title": "Last chance to save up to $200 on your TechCrunch Founder Summit pass: Early booking ends October 16",
+    "url": "https://techcrunch.com/2026/10/15/last-chance-to-save-up-to-200-on-techcrunch-founder-summit-early-booking-ends-oct-16/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-15",
+    "summary": "TechCrunch Founder Summit is offering a limited-time early booking discount on passes for its upcoming event. Attendees can save up to $200 on Founder and Investor Passes, but these savings expire on October 16. The summit, scheduled for November 4 in Boston, provides practical guidance on fundraising, hiring, and product-market fit, enabling founders and investors to make informed decisions and network before the discount period concludes.",
+    "tags": [
+      "business",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/2c2d3e095c276473cbaa.webp",
+    "image_alt": "A before-and-after diagram showing a TechCrunch Founder Summit pass price increasing after the October 16 early booking deadline."
+  },
+  {
+    "title": "Google’s Universal Cart shopping tool launches in the US",
+    "url": "https://techcrunch.com/2026/10/15/googles-universal-cart-shopping-tool-launches-in-the-us/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-15",
+    "summary": "Google has launched \"Universal Cart\" in the U.S., a new shopping tool designed to centralize online purchases. This tool allows users to collect and monitor products from various retailers found across Google Search and the Gemini app, keeping track of items and shopping progress. Universal Cart simplifies the shopping experience by sending notifications for price drops or stock availability, considering credit card perks, and surfacing relevant promo codes, leveraging AI to streamline the entire process.",
+    "tags": [
+      "technology",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/a190ca385729c62884f5.webp",
+    "image_alt": "A diagram showing items from multiple online retailer carts consolidating into a single Universal Cart, which then generates price and availability alerts."
+  }
+]
