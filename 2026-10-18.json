@@ -1,0 +1,122 @@
+[
+  {
+    "title": "Meta removes language that may have allowed it to scrape news sites",
+    "url": "https://www.theverge.com/tech/1013409/meta-removes-language-that-may-have-allowed-it-to-scrape-news-sites",
+    "source": "The Verge AI",
+    "published_at": "2026-10-17",
+    "summary": "Meta has updated its commercial terms by removing controversial language that critics interpreted as granting the company permission to scrape content, including news sites, for AI training. The deleted clause suggested Meta could use content from various domains for developing its products, potentially overriding website owners' robots.txt blocking instructions. This revision addresses significant backlash and clarifies that Meta's crawling terms apply only to ads and business products, reassuring content owners that their robots.txt preferences remain respected.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/d7bbcea389a6fcd79975.webp",
+    "image_alt": "A diagram showing Meta's broad data scraping terms being removed, which clarifies content owners' ability to control access to their website data."
+  },
+  {
+    "title": "Websites are closing their doors to AI agents",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1013195/ai-agents-blocked-web",
+    "source": "The Verge AI",
+    "published_at": "2026-10-17",
+    "summary": "Autonomous AI agents from companies like OpenAI and Meta are facing widespread blocks from popular websites, hindering their ability to perform tasks for users. Services such as Yelp, Delta Air Lines, JPMorgan Chase, and Amazon are implementing these restrictions, citing reasons like data licensing requirements, security concerns, and the desire to maintain human engagement for advertising. This growing resistance from web services significantly limits the practical utility of AI agents and sparks ongoing legal and ethical debates regarding their operational rights and access to online platforms.",
+    "tags": [
+      "ai",
+      "business",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/8fae972d2696df5a6c89.webp",
+    "image_alt": "A diagram illustrating an AI agent attempting to connect to a web service but being blocked, showing how website restrictions limit AI agent functionality."
+  },
+  {
+    "title": "Replit makes OpenAI its default over Anthropic, CEO says",
+    "url": "https://techcrunch.com/2026/10/17/replit-is-no-longer-working-with-anthropic-ceo-says/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-17",
+    "summary": "Replit, an AI coding platform, has made OpenAI's models its default choice for powering its platform, shifting away from its previous reliance on Anthropic. This decision was driven by factors including cost, performance, and the strength of the partnership, with Replit's internal benchmarks showing OpenAI's models performing better. While users can still manually select Anthropic models, the change to OpenAI as the default is expected to significantly reduce Replit's spending with Anthropic, impacting a former top-five customer.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/18e72a2fa0217585d829.webp",
+    "image_alt": "A diagram showing Replit's coding platform, with a primary path to OpenAI models as the default, and a secondary, less used path to Anthropic models."
+  },
+  {
+    "title": "Meta removes language that raised scraping and AI training concerns",
+    "url": "https://techcrunch.com/2026/10/17/meta-removes-language-that-raised-scraping-and-ai-training-concerns/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-17",
+    "summary": "Meta has removed controversial language from its commercial terms of use that had raised concerns about web scraping and AI model training. The original provision stated Meta could use content from business accounts' domains and web pages to develop and train its products, which legal experts viewed as broad permission for data collection. This reversal clarifies Meta's data usage policies and addresses publisher anxieties regarding their content being used for AI training without explicit consent.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/1c392699d6f22e7a4203.webp",
+    "image_alt": "A pipeline diagram showing Meta's initial terms of use, which led to publisher concerns, and then the revised terms with the problematic language removed."
+  },
+  {
+    "title": "Anthropic says its workforce has become less junior and is spending more time in meetings",
+    "url": "https://techcrunch.com/2026/10/17/anthropic-says-its-workforce-has-become-less-junior-and-is-spending-more-time-in-meetings/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-17",
+    "summary": "Anthropic's workforce has significantly shifted, becoming less junior and spending more time in meetings, according to a recent company report. The proportion of junior technical hires plummeted from 27% to 9%, while overall meeting time per employee increased by 20% year-over-year. This transformation is attributed to AI tools like Claude boosting productivity and generating a \"deluge\" of output, making human attention and judgment a bottleneck, thereby necessitating more senior oversight and face-to-face coordination.",
+    "tags": [
+      "ai",
+      "business",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/eaeaf41b193e7684597e.webp",
+    "image_alt": "A diagram showing AI output flowing into a human attention bottleneck, which then leads to increased team meetings for coordination and judgment."
+  },
+  {
+    "title": "Sergey Brin says Google’s AI now helps build its next models - The Next Web",
+    "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQa0VHZHFlZkYySzV6a2FqWUI5YTh3UlZzVUhBNHJFN0M2NUFjWlRXdHB2YlJ5NC1RYjhYcVdVdzhlSjV4NHdmenc1bExtMWg3MnN2a0V3VUQ1dkdPOW44VEdyTjRWYkx1b0plbnZlZFBkR2JHOWo1MnlOWmtFb1ZZRHRmYzIyNHJfTXpBQ0o5NXo?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-10-17",
+    "summary": "Sergey Brin, co-founder of Google, has revealed that the company's artificial intelligence systems are now actively involved in the creation and refinement of its next generation of AI models. Only the headline-level development is known, indicating a significant internal shift in how Google approaches its core AI research and development processes. This self-referential capability suggests a potential for accelerated innovation and more efficient model improvement cycles within the tech giant, marking a notable advancement in AI's role in its own evolution.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 2,
+    "image_url": "images/08c24ce829f7840c3ef2.webp",
+    "image_alt": "A pipeline showing Google's AI system contributing to the construction of new AI models, illustrating a self-improving development process."
+  },
+  {
+    "title": "Google releases Gemini 4 Argon, its new frontier model: Benchmarks, how to try it, and pricing - Mashable",
+    "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE02ZGlQM0xOMUw2NkM5ZVBUb0UzeXVFZV9BcEp4cGY4RzdyVjNDRXVPM3pQdUp2UnladkZmeDRYZGVsdDF1VG9qekhNaU5xeXVYVkRQSjVZdnhvTjZmWUtYVi1tUzhwZTQ?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-10-18",
+    "summary": "Google has officially released Gemini 4 Argon, its newest frontier AI model. Based solely on the headline, this release includes details on its performance benchmarks, instructions on how users can try the model, and its associated pricing structure. This launch represents Google's ongoing commitment to advancing artificial intelligence, providing developers and enterprises with access to a new, powerful AI system for integration into diverse applications and services.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 2,
+    "image_url": "images/cbd8cf390f178044ec7f.webp",
+    "image_alt": "Explains the release of Google's new AI model, detailing its performance metrics, and how it can be accessed and priced."
+  },
+  {
+    "title": "Google's Gemini AI helped disprove a 60 year old fusion physics conjecture - Startup Fortune",
+    "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNcU9FV04yMlNqdzNMVjlzNG5BYVdFdU1SRmdxOHlxNnF1Y185ajgyODRaZzljUGZuc1Ayd2RXTGMwcXdOWF90YklWSXRlMW9WSjNWNXlGRV9jeGFjeDVRZDFSU0c0dWNOZjF1VENuOTZZeUI1QkRGd3VjTWFQcFpmT3VuWUE2dG83ZWoxbFJoNXBMc2JCaEJDZlNJcHkwU2J3ZUNV?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-10-17",
+    "summary": "Google's Gemini AI has reportedly played a role in disproving a 60-year-old conjecture within fusion physics, a significant development known solely from the headline. This application highlights the growing utility of advanced artificial intelligence in tackling complex, long-standing scientific problems, demonstrating its potential to re-evaluate foundational theories. The successful use of AI to challenge established scientific understanding could accelerate progress in fusion energy research, potentially paving the way for future breakthroughs in sustainable power generation.",
+    "tags": [
+      "technology",
+      "ai",
+      "science"
+    ],
+    "importance": 2,
+    "image_url": "images/81b11fb9e8e7619adebc.svg",
+    "image_alt": "A pipeline showing an AI model challenging an old physics conjecture, leading to new understanding and progress in fusion energy."
+  }
+]
