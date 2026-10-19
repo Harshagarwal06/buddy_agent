@@ -1,0 +1,116 @@
+[
+  {
+    "title": "Disney agrees to hire the majority of Character.AI’s workforce",
+    "url": "https://techcrunch.com/2026/10/18/disney-agrees-to-hire-the-majority-of-character-ais-workforce/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-18",
+    "summary": "Disney is hiring the majority of Character.AI's workforce after the chatbot startup filed for bankruptcy earlier this week. Disney agreed to offer jobs to at least 60 Character.AI employees, representing the majority of its staff, with an estimated $60 million in annual compensation, following its acquisition of some assets and Character.AI's former CEO becoming Disney's CTO. This move allows Disney to integrate Character.AI's talent and technology, potentially bolstering its AI capabilities while the bankrupt startup's employees find new roles despite its financial and legal challenges.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/eca086c5dcd9d78499be.svg",
+    "image_alt": "A sequential diagram showing a bankrupt startup building, its workforce moving away, and then entering a Disney castle, symbolizing Disney acquiring AI talent."
+  },
+  {
+    "title": "Anthropic says it’s committing 5% of its shares to a ‘public benefit fund’",
+    "url": "https://techcrunch.com/2026/10/18/anthropic-says-its-committing-5-of-its-shares-to-a-public-benefit-fund/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-18",
+    "summary": "Anthropic has announced the creation of a \"public benefit fund\" by committing 5% of its shares, with an option for an additional 2% for every 50% increase in company value. This fund, structured as a wholly-owned entity, aims to provide flexibility for projects like large donations to nonprofits or direct distributions to specific populations. The initiative seeks to address the AI industry's growing \"crisis of trust\" and enable bolder approaches to mitigate AI's societal impact, such as on the job market.",
+    "tags": [
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/a31ecb3fc9790a291d71.webp",
+    "image_alt": "A pipeline diagram illustrates Anthropic's company shares flowing into a public benefit fund, which then supports various public projects."
+  },
+  {
+    "title": "A woman was arrested in Philly for blocking a delivery robot",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1013541/a-woman-was-arrested-in-philly-for-blocking-a-delivery-robot",
+    "source": "The Verge AI",
+    "published_at": "2026-10-18",
+    "summary": "Carolyn Marvin was arrested in Philadelphia and charged with disorderly conduct after intentionally blocking an Uber delivery robot's path. Marvin stated she was protesting the robots because she believes they are taking jobs from human delivery workers, an action she has taken multiple times before. This incident, captured on video, highlights growing public backlash and broader societal concerns regarding how autonomous systems, including delivery robots and AI agents, are impacting employment, particularly for lower-skill workers.",
+    "tags": [
+      "ai",
+      "technology",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/8a234642f1f03be8916c.webp",
+    "image_alt": "A pipeline diagram showing a person blocking a delivery robot, followed by police intervention, and then the robot's path being cleared."
+  },
+  {
+    "title": "Google DeepMind’s Gemini 4 Argon agents finish Minecraft on their own - eGamers.io",
+    "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQMm5WRFBJNy13UUtRRDY5UW5KUVYxcVhrNUdjZVNxWnlYNnZ3WVVRc0N1Q2VfaWMycmJpRGZmZ2RTZjlWZ0N2LTRwNkhfS05ZRGk3T3pHNDNTUGp3MHZoS0NJTTF2LURPbi02RlRrN1l5bmdHV3VpWDVEUVpia1h1alF0VVl2cUk0SlpjVndqN0hSdw?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-10-18",
+    "summary": "Google DeepMind's Gemini 4 Argon agents have autonomously completed the game Minecraft, marking a notable achievement in artificial intelligence. Only the headline-level development is currently known, without further details on the specific methodologies employed or the extent of their independent learning. This accomplishment suggests a significant step forward in AI's capacity to navigate complex, open-ended virtual environments and execute multi-stage objectives without direct human guidance, potentially impacting future AI development for problem-solving.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 2,
+    "image_url": "images/955fe57acaf0d906d460.webp",
+    "image_alt": "A diagram illustrating an AI agent navigating a Minecraft world to achieve game completion."
+  },
+  {
+    "title": "Gemini 4 Argon Agents Beat Minecraft in 27 Hours [2026] - shattered.io",
+    "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBoWk5hTHZpVW9YX0FqaG92ZzZiazlZZlJhWklrTFpkLW8yQVVON0d6T0Y1aV9GZVY5dG5QbkhpZGhYQkFBNXp1UkQ1UVMweFJzZXdJWjdSRC16eFc4NzVLbVctUWJpQUhTdjdSREIxbXY5c3NO?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-10-19",
+    "summary": "Gemini 4 Argon Agents successfully completed the game Minecraft in just 27 hours, marking a significant achievement in artificial intelligence, though only headline-level details are currently known. This accomplishment indicates that advanced AI systems are capable of navigating and mastering open-world, complex environments with remarkable efficiency. The development highlights the increasing sophistication of AI in problem-solving and strategic planning within dynamic digital landscapes, suggesting future applications for AI in more intricate real-world scenarios.",
+    "tags": [
+      "ai",
+      "technology"
+    ],
+    "importance": 2,
+    "image_url": "images/98009135c735e2cb4204.webp",
+    "image_alt": "A diagram showing an Argon AI agent navigating a Minecraft world to achieve game victory, illustrating advanced AI capabilities."
+  },
+  {
+    "title": "Antigravity free for 6 months for 10,000 scientists, applications open - Pasquale Pillitteri",
+    "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQamZNR3lOSTJmeUQ1NlpOQXlQSDl3TE02bmxodUVBR3FOUDU2cXRMUzJCWG5QSnZySEFfeXZaZ24xYlFLdDhWZVhtQW91c1lFZWVaVmJxaXhIazFBMVp2b3kwSUdOdG1NekRvalhQbFFrTEQxTUgzWUMtVHRVbU9iR0FhM2NkVl94elhOSXQtaHdoSDJzTHA2bVEzSU0yb2Fs?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-10-18",
+    "summary": "Antigravity technology is being offered free for six months to 10,000 scientists, with applications now officially open. The headline, attributed to Pasquale Pillitteri, indicates a significant opportunity for researchers, though specific details about the nature of this 'antigravity' or the underlying mechanisms are not provided in the available information. This initiative, if the technology proves viable, could potentially accelerate breakthroughs across various scientific disciplines by granting a wide range of researchers access to a novel and potentially transformative capability.",
+    "tags": [
+      "science",
+      "technology"
+    ],
+    "importance": 2,
+    "image_url": "images/649d1496c8d317abbba7.webp",
+    "image_alt": "A pipeline diagram showing scientists applying for antigravity technology, leading to access to the novel capability."
+  },
+  {
+    "title": "Gemini 4 Argon Scores 97.5% on ARC-AGI-3, Another AI Benchmark Falls - BigGo Finance",
+    "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE55Vm1CRjA3bmc5MDhRRkRVcHZPNGdmaEJfMUFpX0NpdTVWTWlYcjdpcDhoNi1iU3VYNkFZenZxdm1kTjBZZFdPYktiN2V4RktHNkxRdmJJejN3eHNRTXlWYTRnX0xHdzFXcktkWmpEUTdMUnF4MGc?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-10-19",
+    "summary": "Gemini 4 Argon achieved a 97.5% score on the ARC-AGI-3 benchmark, signaling the 'fall' of another significant challenge in artificial intelligence. This development, known only at a headline level from the title, indicates a new milestone in AI's performance on complex tasks. The high score suggests continued advancement in AI's ability to master sophisticated reasoning and problem-solving, pushing the boundaries of what these systems can accomplish in benchmark environments.",
+    "tags": [
+      "ai",
+      "technology"
+    ],
+    "importance": 2,
+    "image_url": "images/72555ab182896f3ccb84.webp",
+    "image_alt": "A pipeline diagram showing an AI model processing a benchmark task, leading to a high score, illustrating the conquest of an AI challenge."
+  },
+  {
+    "title": "Four Gemini 4 Argon agents beat Minecraft without any human help - The Decoder",
+    "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNdVViZFVsamhYNzZfb2xUN3ZkdHlDcVRNWWktdmRjZ3gxUHJwc3F5MnBibHpCVVo2LWRtM0lLM1MxSG82ampTWF9IcGUtUnAyMUtCWmw5X0pReDViVXBTeFh5dXY2SkVFcWlueFBvdGZ2Z19OdWgzc3NOY3kyaDd2SDBDWnhsb0xvNEFVWWo2UXRoaTA?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-10-18",
+    "summary": "Four Gemini 4 Argon agents successfully beat the video game Minecraft without any human intervention, a notable achievement in artificial intelligence. This marks a significant milestone, demonstrating an AI's ability to autonomously navigate complex, open-ended environments and achieve long-term goals. The development highlights the increasing sophistication of AI models in problem-solving and strategic planning, suggesting future applications in diverse fields requiring adaptive intelligence and complex decision-making.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 2,
+    "image_url": "images/4c0de1f3d05a1cf9a270.webp",
+    "image_alt": "Diagram showing AI agents navigating a game world to complete a task."
+  }
+]
