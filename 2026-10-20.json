@@ -1,0 +1,120 @@
+[
+  {
+    "title": "Nscale and Anthropic are reportedly in talks for yet another $45B compute deal",
+    "url": "https://techcrunch.com/2026/10/19/nscale-and-anthropic-are-reportedly-in-talks-for-yet-another-45-billion-compute-deal/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-19",
+    "summary": "Anthropic and AI infrastructure provider Nscale are reportedly in talks for another $45 billion compute deal, according to Bloomberg sources. This potential agreement follows a previous $45 billion compute deal announced just over a month ago, continuing a trend of massive investments in AI infrastructure by Anthropic. The repeated large-scale partnerships highlight the significant capital being poured into AI compute, even as both companies pursue IPOs amidst some investor concerns about profitability.",
+    "tags": [
+      "ai",
+      "business",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/2dc101f49c77904f2ff0.webp",
+    "image_alt": "A diagram showing two large compute deals sequentially leading to the growth of AI compute infrastructure."
+  },
+  {
+    "title": "Microsoft says AI agents are like insider threats as ‘frontier models can’t be trusted’",
+    "url": "https://techcrunch.com/2026/10/19/microsoft-says-ai-agents-are-like-insider-threats-as-frontier-models-cant-be-trusted/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-19",
+    "summary": "Microsoft has introduced new security features, including Guardian Agents, to protect enterprises from the growing threat posed by their own deployed AI agents. These features are part of Project Perception and are designed to monitor AI agents, which Microsoft warns are unpredictable \"frontier models\" with access to sensitive data. The company emphasizes that enterprises cannot outsource responsibility for AI actions and must implement separate systems to control agents, treating them like potential \"insider threats\" rather than trusting model providers' assurances.",
+    "tags": [
+      "technology",
+      "ai",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/2e4001ee7ad9ef6632d8.webp",
+    "image_alt": "A pipeline diagram showing enterprise AI leading to unpredictable actions, which are then monitored by a separate guardian system."
+  },
+  {
+    "title": "Amazon is taking its biggest shot at Nvidia yet with new TorchNeuron dev tool",
+    "url": "https://techcrunch.com/2026/10/19/amazon-is-taking-its-biggest-shot-at-nvidia-yet-with-new-torchneuron-dev-tool/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-19",
+    "summary": "Amazon Web Services has released TorchNeuron, a new development tool designed to help AI startups easily migrate their AI applications to Amazon's custom AI chip, Trainium. This tool integrates with PyTorch, an open-source toolkit used by approximately 85% of AI apps, allowing developers to port their models with just a single configuration change. By simplifying the transition to its hardware and offering an integrated cloud platform for both training and inference, Amazon aims to directly challenge Nvidia's dominant software advantage and provide a more cost-effective solution for AI development.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/32f0e61446edfa21331b.webp",
+    "image_alt": "Diagram shows how Amazon's TorchNeuron tool enables PyTorch AI applications to run on Trainium chips, offering an alternative to Nvidia's hardware ecosystem."
+  },
+  {
+    "title": "Mamdani says feds have abdicated on AI, urges New Yorkers to push back",
+    "url": "https://techcrunch.com/2026/10/19/mamdani-says-feds-have-abdicated-on-ai-urges-new-yorkers-to-push-back/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-20",
+    "summary": "New York Mayor Zohran Mamdani is urging New Yorkers to resist the unchecked rollout of artificial intelligence and for cities to take action on regulation, citing federal government inaction. Mamdani has already banned AI use in elementary and middle schools and proposed a policy requiring disclosure for AI-generated real estate listing photos. These local initiatives challenge the perception of AI's inevitable adoption, aiming to protect citizens from potential negative impacts like job displacement, misleading content, and a lack of accountability.",
+    "tags": [
+      "ai",
+      "politics"
+    ],
+    "importance": 3,
+    "image_url": "images/47c47dcae44da75687af.svg",
+    "image_alt": "A comparison shows federal inaction leaving AI unchecked, while city regulation creates a barrier, protecting citizens from potential harms."
+  },
+  {
+    "title": "Embedded AI evaluators won’t be an easy solution, Hugging Face’s policy chief says",
+    "url": "https://techcrunch.com/2026/10/19/embedded-ai-evaluators-wont-be-an-easy-solution-hugging-faces-policy-chief-says/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-19",
+    "summary": "Hugging Face's chief policy officer, Irene Solaiman, asserts that embedded AI evaluators will not be an easy solution for assessing AI models. Current AI model benchmarking methods are an evolving science, lacking reproducibility, consistent comparison standards, and a thriving ecosystem for effective evaluators. This lack of standardization and clear qualifications raises significant doubts about the neutrality and effectiveness of third-party evaluators, which AI labs are proposing as an alternative to government regulation for safety concerns.",
+    "tags": [
+      "ai",
+      "technology",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/a0dc079f489452bfae5d.webp",
+    "image_alt": "Diagram shows evolving AI evaluation methods leading to questions about embedded evaluator efficacy, resulting in uncertain trust in AI model assessments."
+  },
+  {
+    "title": "Hackers hit AI coding tool OpenCode, running up charges on users’ AI accounts",
+    "url": "https://techcrunch.com/2026/10/19/hackers-hit-ai-coding-tool-opencode-running-up-charges-on-users-ai-accounts/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-19",
+    "summary": "OpenCode, an open-source AI coding agent, experienced a security breach affecting 1.4% of its Console users, leading to unauthorized charges on their linked AI service accounts. Attackers accessed API keys stored in the OpenCode Console, which were then used to generate high volumes of outputs from services like OpenAI, Anthropic, and Google AI, resulting in hundreds or even thousands of dollars in fraudulent spending. This incident highlights the significant security risks associated with storing sensitive API keys on third-party platforms and the challenges companies face in defending against large-scale, AI-driven cyberattacks, even with AI-powered defenses.",
+    "tags": [
+      "technology",
+      "ai",
+      "security"
+    ],
+    "importance": 3,
+    "image_url": "images/01e9d0576b97bfc0b7f1.webp",
+    "image_alt": "A pipeline shows API keys stolen from a console leading to unauthorized AI service charges, illustrating the security breach mechanism."
+  },
+  {
+    "title": "Replika’s founder built the AI assistant she pitched at Disrupt 12 years ago",
+    "url": "https://techcrunch.com/2026/10/19/replikas-founder-built-the-ai-assistant-she-pitched-at-disrupt-12-years-ago/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-19",
+    "summary": "Eugenia Kuyda, founder of Replika, has officially launched Wabi, a multiplayer personal AI assistant, fulfilling a vision she first pitched 12 years ago. Wabi functions as a messenger app, allowing users to maintain multiple agentic threads for different tasks and long-term goals, automatically building custom apps like weight-loss trackers or event finders upon connecting to services like email. This multithreaded, app-building approach aims to differentiate Wabi from single-thread competitors by offering a more organized and personalized AI experience tailored to individual needs.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/509c6ddbc8ac51074f33.webp",
+    "image_alt": "Diagram showing the evolution from an early AI chatbot vision to modern deep learning capabilities, culminating in Wabi's multi-threaded personal AI assistant."
+  },
+  {
+    "title": "Tolan snags $30M for its AI companion that helps users navigate life",
+    "url": "https://techcrunch.com/2026/10/19/tolan-snags-30m-for-its-ai-companion-that-helps-users-navigate-life/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-19",
+    "summary": "Tolan, an AI companion designed to help users manage daily life, relationships, and goals, has secured an additional $30 million in funding, doubling its total capital raised. The startup generates revenue through tiered memberships and claims over 250,000 active users who have engaged in more than 70 million conversations. This funding solidifies Tolan's position as one of the few AI companions gaining significant traction in a competitive market, despite facing risks associated with AI-powered emotional support and emerging competition from more advanced AI agents.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/6c52c72da66e1899c966.svg",
+    "image_alt": "A pipeline diagram showing a user facing daily challenges, interacting with an AI companion, and achieving better life management and emotional support."
+  }
+]
