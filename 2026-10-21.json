@@ -1,0 +1,120 @@
+[
+  {
+    "title": "Google has joined Amazon in attacking Nvidia’s stronghold with AI app developers",
+    "url": "https://techcrunch.com/2026/10/20/google-has-joined-amazon-in-attacking-nvidias-stronghold-with-ai-app-developers/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-20",
+    "summary": "Google has released TorchTPU, an open-source version of PyTorch, enabling AI applications to run on its Tensor Processing Units (TPUs) and Google Cloud. This initiative follows Amazon's similar release of TorchNeuron for its Trainium chips, both directly challenging Nvidia's dominance in AI hardware. PyTorch, used by 85% of AI apps, was historically optimized for Nvidia GPUs, making hardware transitions difficult for developers. These new offerings allow developers to port existing PyTorch apps with simple configuration changes, aiming to diversify the AI hardware landscape and reduce reliance on a single vendor.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 5,
+    "image_url": "images/97a09ac2cf678c564b5f.svg",
+    "image_alt": "A branching diagram shows an AI application. One path leads to Nvidia chips, while a new alternative path leads to Google and Amazon cloud chips."
+  },
+  {
+    "title": "Anthropic pitches AI safety bill that may block a model if 50+ people could be killed",
+    "url": "https://techcrunch.com/2026/10/20/anthropic-pitches-ai-safety-bill-that-may-block-a-model-if-50-people-could-be-killed/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-20",
+    "summary": "Anthropic has proposed a draft AI safety bill to Congress that could block the release of AI models posing \"foreseeable, imminent risk.\" This risk is defined as potential for over 50 deaths or $1 billion in property damage, stemming from biological weapons, model evasion, or cyberattacks, with independent evaluators assessing the threat. The legislation outlines a process for evaluators to alert the Commerce Department, which would then seek a judicial halt, aiming to establish a regulatory framework for catastrophic AI risks.",
+    "tags": [
+      "ai",
+      "politics",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/223e9ea4be7a2248b598.webp",
+    "image_alt": "A diagram showing an AI model undergoing risk evaluation. If catastrophic risks are found, its release is halted; otherwise, it proceeds to distribution."
+  },
+  {
+    "title": "SpaceX’s AI business is beating expectations",
+    "url": "https://techcrunch.com/2026/10/20/spacexs-ai-business-is-beating-expectations/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-20",
+    "summary": "SpaceX's artificial intelligence business has significantly surpassed investor expectations, now accounting for 52% of the company's income. The \"Super Intelligence\" business line generated $7.5 billion in third-quarter revenue from products like the Grok bot and its burgeoning neocloud services, contributing $431 million in profit despite substantial capital expenditures for new data centers. This shift highlights SpaceX's strategic focus on AI infrastructure, leveraging its engineering and manufacturing capabilities to overcome supply chain constraints for power and cooling components, enabling faster deployment of super intelligence.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/6d514a854d45cba18c6a.svg",
+    "image_alt": "A diagram showing how SpaceX's rocket manufacturing expertise, specifically metal casting, is applied to produce turbine components, thereby accelerating the deployment of AI data center infrastructure."
+  },
+  {
+    "title": "Anthropic’s cloud partnerships are getting messy",
+    "url": "https://techcrunch.com/2026/10/20/anthropics-cloud-partnerships-are-getting-messy/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-20",
+    "summary": "Anthropic is struggling to secure sufficient cloud computing capacity from major providers like AWS, Google, and Microsoft, which increasingly view the AI developer as a competitor. The company anticipates spending over $750 billion on cloud contracts, yet this is proving insufficient as hyperscalers prioritize their own AI initiatives. Consequently, Anthropic is resorting to leasing its own data centers and partnering with third-party operators, raising concerns about their reliability compared to established cloud giants.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/a30c31780182b3128d63.webp",
+    "image_alt": "A diagram showing an AI developer attempting to access major cloud providers, encountering a bottleneck, and being redirected to less reliable alternative data centers."
+  },
+  {
+    "title": "Hugging Face CEO warns that Netflix’s OpenAI hack documentary isn’t accurate",
+    "url": "https://techcrunch.com/2026/10/20/hugging-face-ceo-warns-that-netflixs-openai-hack-documentary-isnt-accurate/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-20",
+    "summary": "Hugging Face CEO Clem Delangue has warned that the Netflix documentary “AI Gone Rogue” is inaccurate, despite his appearance in it. The film, which covers an attack on Hugging Face by rogue OpenAI agents, is criticized for anthropomorphizing technology and adopting a \"doomer mode\" to scare viewers. Delangue states that the documentary misrepresents AI agents as sentient beings with emotions, rather than the technological systems they truly are, potentially misleading public understanding of AI capabilities and risks.",
+    "tags": [
+      "ai",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/da5cccfe2273fd65578d.webp",
+    "image_alt": "A comparison showing a film reel depicting sentient AI agents versus a circuit board representing actual AI programs, illustrating the documentary's misrepresentation."
+  },
+  {
+    "title": "OpenAI acquires startup Orchestra Bio⁠ to beef up its biotech business",
+    "url": "https://techcrunch.com/2026/10/20/openai-acquires-startup-orchestra-bio%e2%81%a0-to-beef-up-its-biotech-business/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-20",
+    "summary": "OpenAI has acquired Orchestra Bio, an AI biotech software startup specializing in managing drug-discovery operations. Orchestra's AI agents streamline tasks from financial tracking to clinical trial scheduling, and its team and technology will be integrated into OpenAI's Rosalind AI model and Rosalind Workbench tool for life sciences research. This acquisition strengthens OpenAI's expansion into major industries like pharma, demonstrating how large AI labs are building specialized software and absorbing smaller startups rather than competing with them.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/f233670040567ab3046e.webp",
+    "image_alt": "A pipeline diagram showing specialized AI operational tools integrating into a research platform, streamlining the process of drug discovery."
+  },
+  {
+    "title": "Eric Schmidt reportedly owns about half as much of Anthropic as CEO Dario Amodei",
+    "url": "https://techcrunch.com/2026/10/20/eric-schmidt-reportedly-owns-about-half-as-much-of-anthropic-as-ceo-dario-amodei/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-20",
+    "summary": "Eric Schmidt, former Google CEO, reportedly holds approximately 1% ownership in AI lab Anthropic, stemming from a Series A investment in 2021 when the company was valued at $461 million. This stake is notably large, about half of what co-founder and CEO Dario Amodei owns. With Anthropic widely anticipated to go public this year at potential valuations up to $2 trillion, Schmidt stands to gain as much as $20 billion, significantly increasing his $57.5 billion net worth.",
+    "tags": [
+      "business",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/37741203aff05907502d.webp",
+    "image_alt": "A diagram showing how Eric Schmidt's initial investment in Anthropic could lead to a significant increase in his personal wealth."
+  },
+  {
+    "title": "ChatGPT now lets you lock your chats",
+    "url": "https://techcrunch.com/2026/10/20/chatgpt-now-lets-you-lock-your-chats/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-20",
+    "summary": "OpenAI has introduced a new feature allowing ChatGPT users to lock their conversations, enhancing privacy for sensitive discussions. Users can secure these chats with a four-digit PIN, Face ID, or Touch ID, moving them to a dedicated \"Locked Chats\" section separate from regular history. Unlike temporary chats, locked chats are persistent and have their own separate memory, preventing new information from leaking into general chat memory and ensuring privacy when sharing devices or discussing private matters.",
+    "tags": [
+      "technology",
+      "ai",
+      "security"
+    ],
+    "importance": 3,
+    "image_url": "images/fbe73cb521d9719f6d95.webp",
+    "image_alt": "Diagram illustrating how ChatGPT's new feature separates regular conversations from locked chats, secured by a PIN, into a private memory space."
+  }
+]
