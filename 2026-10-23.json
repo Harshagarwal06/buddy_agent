@@ -1,0 +1,120 @@
+[
+  {
+    "title": "Sure, let’s smoosh SpaceX and Tesla together, who cares",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1016879/spacex-tesla-cursed-katamari",
+    "source": "The Verge AI",
+    "published_at": "2026-10-22",
+    "summary": "SpaceX and Tesla are reportedly forming special committees to discuss a potential merger, driven by Elon Musk's ambition to accelerate \"superintelligence software\" development. This proposed consolidation aims to combine Tesla's self-driving cars and humanoid robots with SpaceX's large language models and data centers, creating a unified AI development ecosystem. The merger is presented as crucial for advancing technology needed for future space colonization, while also significantly increasing Musk's control and financial leverage across both ventures.",
+    "tags": [
+      "business",
+      "technology",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/ff09a965a075cd212d51.webp",
+    "image_alt": "A branching diagram showing ground-based AI and space-based AI converging to form superintelligence software, enabling future space colonization."
+  },
+  {
+    "title": "In Meta’s version of the future, I’ll have my Muse call your Muse",
+    "url": "https://www.theverge.com/tech/1016905/meta-earnings-fall-2026-muse-network",
+    "source": "The Verge AI",
+    "published_at": "2026-10-22",
+    "summary": "Mark Zuckerberg is staking Meta's future on a large-scale network of personal AI agents called Muse, which he predicts will eventually run users' lives by handling tasks and interacting with other Muses. Released last month, Muse is envisioned as an \"extremely capable\" personal AI that will assist billions of users with goals like improving relationships, saving time, or building businesses. This ecosystem of autonomous agents is expected to generate more revenue per user for Meta than Instagram and Facebook, unlocking tremendous value by facilitating interactions and transactions between Muses.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/f13705b9a572c6be9649.webp",
+    "image_alt": "A diagram showing a human user delegating tasks to their personal AI agent, which then connects and interacts with other AI agents in a network."
+  },
+  {
+    "title": "Microsoft says its AI tool is better than doctors at diagnosing conditions",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1016690/suleyman-microsoft-diagnostic-orchestrator-science-medical-superintelligence",
+    "source": "The Verge AI",
+    "published_at": "2026-10-22",
+    "summary": "Microsoft has developed an AI-powered tool, the Diagnostic Orchestrator, which it claims can diagnose medical conditions up to four times more accurately than human doctors. Published in Science, tests showed the system achieved 83% accuracy on cases from The New England Journal of Medicine, compared to 36% for generalist physicians, by using multiple AI agents to reason through symptoms and order tests. This development suggests a significant leap in AI's potential for medical diagnostics, offering a path to improved accuracy and potentially lower costs in healthcare, though widespread deployment is still distant.",
+    "tags": [
+      "ai",
+      "health",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/2734798ea898782afff5.webp",
+    "image_alt": "A branching diagram compares medical diagnosis by human doctors versus an AI system, showing the AI achieving significantly higher accuracy from the same patient case."
+  },
+  {
+    "title": "Canva’s first AI image model plans designs before generating them",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1017151/canva-craft-in-house-ai-model",
+    "source": "The Verge AI",
+    "published_at": "2026-10-22",
+    "summary": "Canva has launched Craft, its first in-house AI image generation model, directly competing with offerings from OpenAI and Google. This model employs a unique two-stage architecture that plans a design before generating the image, and was trained on millions of human-made templates from Canva's content library, currently ranking fourth on Design Arena's benchmark. This innovative approach provides users with greater precision, consistency, and control, enabling more accurate generation of complex images requiring legible text and precise object placement.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/4ad7bc7b20ede7689689.webp",
+    "image_alt": "A pipeline diagram shows a text prompt leading to a design planning stage, then to image generation, resulting in a precise, high-resolution image."
+  },
+  {
+    "title": "Meta&#8217;s AI could still scrape news sites, legal experts say",
+    "url": "https://www.theverge.com/tech/1017082/meta-terms-update-ai-training-concerns",
+    "source": "The Verge AI",
+    "published_at": "2026-10-22",
+    "summary": "Meta has updated its business terms, removing explicit language that allowed its AI models to be trained on news sites, but legal experts warn the changes are insufficient. Initially, the terms permitted Meta to use any content from associated websites to \"develop, research, and train\" its products, potentially overriding robots.txt directives. Despite the tweak, experts believe the revised terms still broadly allow Meta to \"develop\" AI business products using scraped content, implying continued unauthorized data use and raising ongoing concerns for publishers.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/10a1ca7f8763b44a16c3.webp",
+    "image_alt": "A comparison showing Meta's original and revised business terms both allowing news content to be used for AI training, despite a minor language change."
+  },
+  {
+    "title": "Discord now formats Markdown previews right",
+    "url": "https://www.theverge.com/news/1017012/discord-markdown-previews-organize-servers-channels",
+    "source": "The Verge AI",
+    "published_at": "2026-10-22",
+    "summary": "Discord has released an update that correctly formats Markdown file previews, eliminating the previous display of raw symbols and making content \"nice and neat.\" This enhancement means tables, formatting, and other structured elements within Markdown (.md) files now render clearly within the platform. The improved previews are particularly beneficial for users sharing instructions and context for AI projects, making it significantly easier to collaborate and understand complex, structured information.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/a7ef1304a9ce14a8efdd.webp",
+    "image_alt": "A visual showing raw Markdown code transforming into a neatly formatted document after Discord's update, making structured information readable."
+  },
+  {
+    "title": "Meta turns Muse sharing back on",
+    "url": "https://www.theverge.com/tech/1017066/meta-muse-sharing-back-on-artifiacts",
+    "source": "The Verge AI",
+    "published_at": "2026-10-22",
+    "summary": "Meta has re-enabled Muse sharing after temporarily pausing the feature due to a security vulnerability. Researchers discovered that public conversation links, named after their titles and written into public DNS, exposed sensitive user data such as internal revenue reviews and loan applications. To address this, Meta issued new URLs for all previously shared Muse artifacts, requiring users to obtain and distribute these updated links, prioritizing user data protection over the inconvenience of re-sharing.",
+    "tags": [
+      "technology",
+      "security",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/74588260738dba4ec8e9.webp",
+    "image_alt": "A before-and-after image showing an exposed document with an old link replaced by a secure document with a new link, illustrating data protection."
+  },
+  {
+    "title": "Someone hacked the Switch 2 by using an old game and AI",
+    "url": "https://www.theverge.com/games/1016862/nintendo-switch-2-jailbreak-ai",
+    "source": "The Verge AI",
+    "published_at": "2026-10-22",
+    "summary": "The Nintendo Switch 2 has reportedly been jailbroken, with a modder demonstrating custom Mario Kart World content featuring new characters like Peter Griffin and Steve from Minecraft. This software-only, tethered exploit utilizes the old game SmileBASIC 4 and was developed with assistance from OpenAI's Codex AI, requiring users to run it from the game each time the console powers on. While currently complex, this jailbreak could signal the beginning of further exploits for the Switch 2, particularly as modders increasingly leverage AI tools for such developments.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/a1d4bbdde1a79174594b.svg",
+    "image_alt": "A diagram showing an old game and AI code combining to enable custom gameplay on a Nintendo Switch 2."
+  }
+]
