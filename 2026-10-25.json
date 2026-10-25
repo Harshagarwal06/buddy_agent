@@ -1,0 +1,120 @@
+[
+  {
+    "title": "Block’s new voice model sounds eerily human",
+    "url": "https://techcrunch.com/2026/10/24/blocks-new-voice-model-sounds-eerily-human/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-24",
+    "summary": "Block has unveiled Dessa, a new voice model from its research lab that runs locally on consumer hardware and generates eerily human-sounding speech, complete with expressions like laughs and cries. Unlike traditional models that convert voice to text, Dessa is trained directly on human speech and conversational data, allowing emotion to be built into its output. This development could enable more natural and cost-effective business and consumer AI experiences, though Block is currently seeking safety researchers to test its potential for misuse.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/7be00a0a308f3d949d80.webp",
+    "image_alt": "A comparison showing how traditional voice AI converts speech to text, losing emotion, versus Block's Dessa model, which processes human speech directly for natural, emotional output."
+  },
+  {
+    "title": "Cognition Open-Sources an Agent Plugin that Helps Secure Systems against Recent Cybersecurity Threats",
+    "url": "https://www.marktechpost.com/2026/10/24/cognition-devin-vulnerability-fixes-plugin-php2shell-nodejs-gitlab/",
+    "source": "MarkTechPost",
+    "published_at": "2026-10-25",
+    "summary": "Cognition has released the Devin Vulnerability Fixes plugin, a free, open-source set of agent skills designed to secure systems against recent cybersecurity threats. This plugin targets three critical remote code execution (RCE) advisories, including PHP2Shell, a Node.js security release, and a CVSS 10.0 self-managed GitLab bug, by automating inventory, patching, and testing workflows. The initiative provides developers with an automated solution to quickly address severe, widespread vulnerabilities, potentially reducing the risk of exploitation across various software deployments.",
+    "tags": [
+      "technology",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/53e2e2b1bf0a776f0098.webp",
+    "image_alt": "An agent scans for vulnerabilities, then applies patches, resulting in secure systems."
+  },
+  {
+    "title": "Microsoft Open-Sources Agensh: A Multi-Agent Harness for 1,024 Agents",
+    "url": "https://www.marktechpost.com/2026/10/24/microsoft-agensh-multi-agent-harness-1024-agents/",
+    "source": "MarkTechPost",
+    "published_at": "2026-10-25",
+    "summary": "Microsoft Research has open-sourced Agensh, a multi-agent harness designed to coordinate large teams of coding agents without a central orchestrator. Unlike traditional frameworks, Agensh allows each worker to independently select sub-tasks, share findings, and merge code into a common Git repository, demonstrating scalability from 1 to 1,024 agents with improved performance on ProgramBench tasks. This decentralized approach enables more efficient and larger AI agent teams to tackle complex software development challenges, potentially accelerating code generation and problem-solving capabilities.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/3284fcaa18426773dd45.webp",
+    "image_alt": "A comparison showing a crossed-out central orchestrator versus multiple independent agents merging work into a shared codebase, explaining Agensh's decentralized AI agent coordination."
+  },
+  {
+    "title": "The AI graveyard: a running list of projects and startups that didn’t make it",
+    "url": "https://techcrunch.com/2026/10/24/the-ai-graveyard-a-running-list-of-projects-and-startups-that-didnt-make-it/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-24",
+    "summary": "Numerous AI projects and startups are failing, contributing to a growing \"AI graveyard\" as they struggle to find sustainable market positions. Reasons for these failures include intense competition from larger platforms like OpenAI and Google, insufficient funding, technical hurdles, and weak user demand, with S&P Global Market Intelligence reporting 42% of corporate AI initiatives are abandoned. This high rate of discontinuation, even among major players like OpenAI, underscores the significant challenges and rapid evolution within the AI sector, highlighting the difficulty in sustaining standalone products.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/d72f1844547efb8881da.webp",
+    "image_alt": "A diagram explaining how AI projects either merge into larger platforms or fail due to various challenges."
+  },
+  {
+    "title": "Forced to pick, Grok’s AI model chooses Republicans. OpenAI’s picks Democrats.",
+    "url": "https://techcrunch.com/2026/10/24/forced-to-pick-groks-ai-model-chooses-republicans-openais-picks-democrats/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-24",
+    "summary": "A new study reveals that when forced to recommend candidates, AI models Grok 4.7 and GPT-6.1 Sol exhibit strong political biases. Grok 4.7 recommended Republican candidates in 92% of cases, while GPT-6.1 Sol favored Democrats in 97% across nearly 500 simulated races, with the models agreeing less than 10% of the time. These inherent biases, even if consumer apps refuse direct recommendations, could subtly influence users seeking general election information or candidate stances, highlighting concerns about AI neutrality in political discourse.",
+    "tags": [
+      "ai",
+      "politics"
+    ],
+    "importance": 3,
+    "image_url": "images/68f22152ceb37236b750.webp",
+    "image_alt": "A branching diagram showing how AI models, when given a forced choice, split into different political party recommendations, revealing inherent biases."
+  },
+  {
+    "title": "Pennsylvania will require labels on AI-generated ads",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1018187/pennsylvania-ai-deceptive-advertising-act",
+    "source": "The Verge AI",
+    "published_at": "2026-10-24",
+    "summary": "Pennsylvania Governor Josh Shapiro signed the Artificial Intelligence Deceptive Advertising Act into law, mandating disclosures on AI-generated advertisements. This legislation requires any ad, including still images, video, audio, or text, that has been significantly modified or generated by AI to include a label in the same format, applying even if created outside Pennsylvania but aired within the state. While aiming to inform consumers about synthetic content, the law contains subjective loopholes regarding what constitutes \"significantly modified\" or \"evidently fictional,\" potentially leaving questions about its enforcement and scope.",
+    "tags": [
+      "ai",
+      "politics",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/16a276631b2f666db08b.webp",
+    "image_alt": "A pipeline showing unlabelled AI ad content entering a labeling rule process, resulting in a disclosed ad, explaining Pennsylvania's new law."
+  },
+  {
+    "title": "Blue Planet III is keeping the rough edges in the age of AI",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1018205/blue-planet-iii-authentic-organic-ai",
+    "source": "The Verge AI",
+    "published_at": "2026-10-24",
+    "summary": "Blue Planet III is keeping less-than-perfect shots in its new series to prove authenticity in an age of increasingly polished AI-generated content. Previously, such footage, featuring elements like visible plankton or distant boats, would have been cut to maintain a pristine look, but now these 'rough edges' are intentionally included. This deliberate choice aims to showcase a more organic and real version of the oceans, asserting that genuine natural phenomena are more remarkable than anything AI could imagine.",
+    "tags": [
+      "culture",
+      "technology",
+      "science"
+    ],
+    "importance": 3,
+    "image_url": "images/e7c1c5199eda979410a5.webp",
+    "image_alt": "A comparison showing how Blue Planet III includes imperfect shots, like visible plankton, to prove authenticity against overly polished AI-generated content."
+  },
+  {
+    "title": "Here are the top AI agents that can live in your text messages",
+    "url": "https://techcrunch.com/2026/10/24/all-the-ai-agents-that-can-live-in-your-text-messages/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-24",
+    "summary": "AI agents are increasingly available directly through text messages, eliminating the need for separate app downloads. These agents can remember context, connect to existing apps and services, and complete various tasks such as scheduling appointments, organizing calendars, researching trips, or making reservations on a user's behalf. This development simplifies interaction with AI, integrating advanced assistance seamlessly into everyday communication platforms and offering proactive support for personal and professional needs.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/ce8f942b4fc99ea9191f.webp",
+    "image_alt": "A pipeline showing a user's text message entering an AI agent, which then processes and completes a task, illustrating how AI agents work in messaging apps."
+  }
+]
