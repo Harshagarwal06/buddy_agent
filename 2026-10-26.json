@@ -1,0 +1,117 @@
+[
+  {
+    "title": "Google’s AI search changes upended online publishing",
+    "url": "https://www.theverge.com/column/1017983/google-ai-search-online-publishing",
+    "source": "The Verge AI",
+    "published_at": "2026-10-25",
+    "summary": "Google's new AI search features have significantly disrupted online publishing, making it harder for content creators to rely on traffic from the search engine. The company's AI Overviews now place AI-generated summaries of web pages at the top of search results, appearing for nearly a quarter of news-related queries by May 2024 and impacting publisher visibility. This shift means publishers are increasingly beholden to an AI system that regurgitates content, offering no guarantee that users will click through to their original sources, thereby threatening their long-standing business model.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/2dc4ff49eae2933f75a0.webp",
+    "image_alt": "Explains how Google's AI search features divert user attention from publisher websites by providing AI-generated summaries first."
+  },
+  {
+    "title": "Hugging Face Releases Carbon-X, a 14B Open DNA Language Model that Brings DNA and Natural Language Together for the First Time",
+    "url": "https://www.marktechpost.com/2026/10/25/hugging-face-carbon-x-14b-dna-language-model/",
+    "source": "MarkTechPost",
+    "published_at": "2026-10-25",
+    "summary": "Hugging Face has released Carbon-X, an open 14.8 billion parameter DNA language model designed to integrate DNA and natural language processing. This decoder-only model utilizes a hybrid tokenizer to process raw DNA and English text within a single token stream, enabling it to predict mutations, flag regulatory regions, and classify organisms. Carbon-X's open-source nature and ability to run on standard GPUs allow research labs to analyze sensitive genetic sequences on-premises, potentially accelerating biological discovery and drug development.",
+    "tags": [
+      "technology",
+      "ai",
+      "science"
+    ],
+    "importance": 4,
+    "image_url": "images/16c7b8fb0a1721f14255.webp",
+    "image_alt": "A pipeline showing raw DNA and natural language merging into a single stream, which then transforms into a gene sequence with highlighted biological annotations."
+  },
+  {
+    "title": "Researchers from Stanford and UC Berkeley Introduce TokenGate: Token-Gated Attention Makes Long-Context Prefill Up to 11.3x Faster",
+    "url": "https://www.marktechpost.com/2026/10/25/stanford-berkeley-tokengate-learned-token-pruning-llm-prefill/",
+    "source": "MarkTechPost",
+    "published_at": "2026-10-25",
+    "summary": "Stanford and UC Berkeley researchers have introduced TokenGate, a novel module designed to significantly accelerate the prefill process for large language models (LLMs) handling long contexts. TokenGate utilizes learned token pruning, where a small MLP gate identifies and processes only the most relevant tokens in an input, while subsequent layers ignore the pruned tokens. This innovative approach achieves 1.4x to 11.3x faster time-to-first-token and 1.5x to 3.4x lower peak memory usage without any loss in accuracy, making long-context LLM applications more efficient and accessible.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/833ee3a57545f67c4f6b.webp",
+    "image_alt": "A pipeline diagram showing many input tokens entering a gate, which prunes some and passes a smaller set of selected tokens to a final processing stage, illustrating how TokenGate speeds up LLM prefill."
+  },
+  {
+    "title": "AI delivers ‘zero financial payoff’ to most companies, Apollo economist says",
+    "url": "https://techcrunch.com/2026/10/25/ai-delivers-zero-financial-payoff-to-most-companies-according-to-apollo-economist/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-25",
+    "summary": "Apollo Global Management's chief economist, Torsten Slok, reports that artificial intelligence has delivered \"zero financial payoff\" to most companies outside the tech industry. His analysis of the S&P 493, excluding major tech firms, shows flat profit margins and revenue per worker, indicating no evidence of AI improving productivity in these sectors. This suggests that despite significant investments and widespread hype, non-tech corporate America struggles to translate AI into higher revenue growth and profit margins, primarily due to AI's limitations in understanding judgment, accountability, and ethical trade-offs.",
+    "tags": [
+      "business",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/a63310236de71292e2f9.webp",
+    "image_alt": "A bottleneck diagram showing AI investment entering non-tech firms, but resulting in flat profits, illustrating the lack of financial payoff from AI for most companies."
+  },
+  {
+    "title": "Nanbeige Releases Nanbeige4.3-33B, a 33B Open Agentic Coding Model",
+    "url": "https://www.marktechpost.com/2026/10/25/nanbeige-releases-nanbeige4-3-33b-open-agentic-coding-model/",
+    "source": "MarkTechPost",
+    "published_at": "2026-10-25",
+    "summary": "Nanbeige LLM Lab has released Nanbeige4.3-33B, a 33-billion parameter open agentic coding model, on Hugging Face under an Apache 2.0 license. This dense language model, designed for agentic coding and office-style 'cowork' tasks, supports a 524,288-token context window and leads 17 of 20 benchmarks against three comparable open models in the lab's own evaluations. Its release provides a powerful new open-source tool for developing advanced AI agents, with plans to distill its agentic skills into smaller models for broader application.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/e1d799c6fa5fe8f70e14.webp",
+    "image_alt": "Diagram showing a large AI model, Nanbeige4.3-33B, transferring its agentic coding skills through distillation to create multiple smaller, more accessible AI models."
+  },
+  {
+    "title": "The hottest AI wearables and gadgets you should know about",
+    "url": "https://techcrunch.com/2026/10/25/the-hottest-ai-wearables-and-gadgets-you-should-know-about/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-25",
+    "summary": "A new wave of AI-powered wearables and gadgets is emerging, aiming to seamlessly integrate artificial intelligence into daily life. Devices like the Bee pendant, Friend companion, and Limitless recorder offer features such as transcribing conversations, generating reminders, and providing emotional support, often requiring monthly subscriptions. This development promises enhanced productivity and companionship through always-on AI, but also raises significant privacy concerns regarding constant data collection and potential surveillance.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/84ad06349e3a3f08a5ca.webp",
+    "image_alt": "Diagram illustrating how AI wearables capture audio, process it with artificial intelligence, and provide personal assistance like notes or emotional support."
+  },
+  {
+    "title": "Grok releases the first seven minutes of its AI-generated ‘Odyssey’",
+    "url": "https://techcrunch.com/2026/10/25/grok-releases-the-first-seven-minutes-of-its-ai-generated-odyssey/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-25",
+    "summary": "Grok has released the first seven minutes of its AI-generated \"Odyssey\" series, three months after Elon Musk announced plans for a full-length, \"historically accurate\" film. This initial footage, created with Wonder Studios, follows Musk's prior criticism of Christopher Nolan's version for casting nonwhite and transgender actors, despite Nolan's film achieving significant box office success. While visually realistic in moments, the AI-generated clip ultimately lacks artistry, inspiration, and human interest, raising questions about AI's current capacity for compelling creative storytelling.",
+    "tags": [
+      "technology",
+      "ai",
+      "culture"
+    ],
+    "importance": 3,
+    "image_url": "images/d4b5d3b8c7bad11fd917.webp",
+    "image_alt": "A comparison showing an AI engine producing uninspired film output, contrasted with a vibrant film reel representing human artistry."
+  },
+  {
+    "title": "r/opensource just banned AI, non-English speakers, and more",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1018217/reddit-opensource-ai-ban",
+    "source": "The Verge AI",
+    "published_at": "2026-10-25",
+    "summary": "The r/opensource subreddit has implemented new submission rules, banning projects that use, are made by, or are intended for AI, along with non-English speakers and new, solo-developed projects. These restrictions require projects to be at least one year old, actively maintained, and have multiple contributors, while the non-English ban is attributed to difficulties distinguishing AI-written content. The controversial changes have ignited significant community backlash, leading to the creation of a rival subreddit, r/trueopensource, and raising concerns about the broadness and impact on diverse developers.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/5cdca1744d7e7d1f2dae.webp",
+    "image_alt": "A branching diagram shows new r/opensource rules blocking AI projects and non-English speakers, leading to a new community."
+  }
+]
