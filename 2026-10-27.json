@@ -1,0 +1,120 @@
+[
+  {
+    "title": "OpenAI announces three big science discoveries and a new way to work with academics",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1019143/openai-eth-kaseya-science-math-physics",
+    "source": "The Verge AI",
+    "published_at": "2026-10-26",
+    "summary": "OpenAI has announced three new \"major\" scientific discoveries in mathematics, computer science, and physics, following its previous release of math solutions. This time, the company is experimenting with a new academic collaboration model, utilizing external \"shepherds\" to guide results in computer science and physics, while directly releasing the math problem's AI output for researchers to explain. This evolving approach to sharing AI-generated scientific breakthroughs aims to foster understanding but has already drawn criticism from advisory panels regarding potential issues like unequal access, prompting recommendations for public scholarly repositories.",
+    "tags": [
+      "ai",
+      "science"
+    ],
+    "importance": 4,
+    "image_url": "images/05989c6ad62f188f4030.webp",
+    "image_alt": "A diagram explaining OpenAI's new methods for releasing scientific discoveries, contrasting current approaches with recommended public repositories."
+  },
+  {
+    "title": "Anthropic is burning gas to feed the AI boom",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1018994/anthropic-ipo-ai-data-center-energy-climate-risk",
+    "source": "The Verge AI",
+    "published_at": "2026-10-26",
+    "summary": "Anthropic's S-1 filing reveals its generative AI data centers are increasingly reliant on natural gas, a primary source of methane, as the company plans a $50 billion expansion. Intense competition for electrical supply and data center locations is driving some developers to install less efficient, more polluting on-site gas turbines due to grid connection delays and turbine shortages. This dependency exposes Anthropic to rising fuel costs, supply chain constraints, and increased operating expenses from climate change, while contributing to significant air quality degradation and greenhouse gas emissions.",
+    "tags": [
+      "ai",
+      "business",
+      "climate"
+    ],
+    "importance": 4,
+    "image_url": "images/80cd875c0da96b644fae.webp",
+    "image_alt": "A diagram showing natural gas flowing into AI data centers, which then face rising operational costs and environmental impact."
+  },
+  {
+    "title": "Can AI help solve the COBOL code crisis?",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1018434/cobol-migration-legacy-code-openai-anthropic",
+    "source": "The Verge AI",
+    "published_at": "2026-10-26",
+    "summary": "OpenAI's latest AI models have shown substantial improvements in migrating aging software written in legacy programming languages like COBOL to modern code. COBOL, created in 1959, still underpins over 40% of online banking, 80% of credit card transactions, and many government systems, but is notoriously difficult and risky to replace due to its complexity and lack of current experts. This AI development offers a promising path to modernize vital global infrastructure, potentially reducing significant inefficiencies and security risks without disrupting essential services.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/1da8b4d6df29d18b64f9.webp",
+    "image_alt": "A pipeline shows how AI models can transform complex, outdated legacy code, like COBOL, into clean, functional modern programming languages for critical systems."
+  },
+  {
+    "title": "Anthropic’s IPO filing lays out a plan to &#8216;revolutionize every area of human endeavor&#8217; with AI",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1018476/anthropic-ipo-details-s1-filed-sec",
+    "source": "The Verge AI",
+    "published_at": "2026-10-26",
+    "summary": "AI company Anthropic has filed its S-1 prospectus with the SEC, preparing for an initial public offering on the Nasdaq exchange under the ticker \"ANT.\" The filing reveals substantial financial commitments, including billions monthly to SpaceX for Nvidia GPUs and multi-billion dollar deals with Microsoft, Google, and Amazon for compute access, alongside an $80.7 billion net loss on $16.3 billion revenue in the first half of the year, largely due to accounting charges. This IPO aims to fund Anthropic's ambitious plan to leverage AI to \"revolutionize every area of human endeavor,\" accelerating innovation and solving major problems while navigating inherent technological risks.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/8888d6cad81ff89a80ff.webp",
+    "image_alt": "A pipeline diagram illustrating how Anthropic's massive compute resource deals power AI development, leading to broad global societal and scientific impact."
+  },
+  {
+    "title": "The RealReal won’t let AI agents hog designer clothing",
+    "url": "https://www.theverge.com/news/1018713/meta-muse-agentic-shopping-ai-the-realreal",
+    "source": "The Verge AI",
+    "published_at": "2026-10-26",
+    "summary": "The RealReal, a luxury fashion consignment retailer, has updated its bot defense system to prevent AI agents from monopolizing designer clothing on its site. This action follows reports that AI agents, like Meta's Muse, could exploit the retailer's 20-minute shopping cart hold feature, effectively blocking other customers from purchasing items for extended periods. The change aims to ensure fair access to products and addresses growing concerns about AI agents disrupting online retail and potentially removing human interaction from e-commerce platforms.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/7ed91cef6ac692bd6edc.webp",
+    "image_alt": "A pipeline showing an AI agent exploiting an item hold system, then being blocked by bot defense, illustrating The RealReal's fix."
+  },
+  {
+    "title": "Five weird details from Anthropic’s IPO filing",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1018738/anthropic-ipo-s1-filing-weird-details",
+    "source": "The Verge AI",
+    "published_at": "2026-10-26",
+    "summary": "Anthropic's S-1 prospectus filing has revealed several unusual details about the AI company's operations and future outlook. The filing highlights substantial compensation for co-founders Dario and Daniela Amodei, including millions for personal security and private jet access, alongside billions committed to securing computing power. It also includes unique risk factors, such as the potential for \"catastrophic\" AI harm and the development of AI sentience, underscoring the company's distinctive approach to AI development and its significant financial commitments.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/72f6446e58f229bfbd2f.webp",
+    "image_alt": "A branching diagram showing an S-1 document leading to three paths: high executive compensation, warnings about catastrophic AI risks, and massive computing power commitments."
+  },
+  {
+    "title": "Microsoft offers buyouts to 60,000 employees",
+    "url": "https://www.theverge.com/tech/1018666/microsoft-expands-buyouts-60000-employees-eligible",
+    "source": "The Verge AI",
+    "published_at": "2026-10-26",
+    "summary": "Microsoft is offering voluntary buyouts to approximately 60,000 employees across the US, UK, Canada, and India. This new \"Voluntary Exit Offer\" provides financial support and career planning resources to staff members across various teams, including AI experiences, Copilot, Windows + Devices, and Xbox, but excludes others like marketing and security. The initiative aims to reduce staff without resorting to another round of layoffs, following previous workforce reductions, and represents a flexible approach to managing business needs and employee opportunities.",
+    "tags": [
+      "business",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/6925d42d1649b5de7bc6.webp",
+    "image_alt": "A branching diagram shows eligible employees choosing between continued employment or a voluntary exit offer, leading to staff reduction without forced layoffs."
+  },
+  {
+    "title": "Kevin Roose is AGI-pilled. Why aren’t you?",
+    "url": "https://www.theverge.com/podcast/1018264/kevin-roose-the-agi-chronicles-machine-gods-podcast-youtube-openai-anthropic",
+    "source": "The Verge AI",
+    "published_at": "2026-10-26",
+    "summary": "Kevin Roose, formerly of The New York Times, has launched a new tech podcast called Machine Gods and authored \"The AGI Chronicles,\" a book detailing the rapid transformation of the artificial intelligence industry. His book meticulously reports on the frontier labs and the cultural shift within companies racing to develop artificial general intelligence. This development highlights the increasing commercialization of AI and prompts philosophical discussions about its future trajectory and societal implications.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/55e44b64600fdbb4725b.webp",
+    "image_alt": "A branching diagram showing foundational AI leading to an industry shift and then to multiple advanced AGI systems."
+  }
+]
