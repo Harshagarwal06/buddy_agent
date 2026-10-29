@@ -1,0 +1,120 @@
+[
+  {
+    "title": "Microsoft hits 10 quarters of record-breaking revenue in a row",
+    "url": "https://techcrunch.com/2026/10/28/microsoft-hits-10-quarters-of-record-breaking-revenue-in-a-row/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-28",
+    "summary": "Microsoft has achieved its tenth consecutive quarter of record-breaking revenue, reporting $92.3 billion, a 19% increase year-over-year, with net income rising 32% to $36.6 billion. This sustained growth was primarily fueled by Microsoft Cloud, which generated $63.9 billion, a 30% increase, alongside $10 billion from OpenAI-related services. The company's commercial remaining performance obligation surged 73% to $677 billion, indicating substantial future revenue commitments, though it also incurred a record $45.2 billion in capital expenditures to support this expansion.",
+    "tags": [
+      "business",
+      "technology",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/ef272cd0a1e5ef91a9b4.svg",
+    "image_alt": "A diagram showing Microsoft Cloud revenue leading to record company revenue, which in turn necessitates significant capital expenditures for future growth."
+  },
+  {
+    "title": "Google expands AI Search ads globally as core ad growth slows",
+    "url": "https://techcrunch.com/2026/10/28/google-expands-ai-search-ads-globally-as-core-ad-growth-slows/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-28",
+    "summary": "Google is expanding its AI-powered Search ads to international markets, aiming to generate new revenue as growth in its traditional search advertising business decelerates. The company reported a 12% year-over-year growth in Search revenue, down from previous quarters, prompting the global rollout of AI ad formats. Early results show comparable click-through rates for sponsored product listings in AI Mode, indicating these new ad types, which leverage longer and multimodal user queries, could become a significant revenue source.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/1d440a5c082b04876b69.webp",
+    "image_alt": "A branching diagram shows slowing core ad growth leading to a new path of global AI Search ads, generating new revenue for Google."
+  },
+  {
+    "title": "Microsoft recorded $10 billion in revenue from OpenAI",
+    "url": "https://techcrunch.com/2026/10/28/microsoft-recorded-10-billion-in-revenue-from-openai/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-28",
+    "summary": "Microsoft recorded $10 billion in revenue from commercial arrangements with OpenAI in the quarter ended September 30, 2026. This substantial figure represents nearly 11% of Microsoft’s total quarterly revenue and follows $24.1 billion for the full 2026 fiscal year, stemming from revenue-sharing payments and Azure cloud computing services. The development underscores the significant financial interdependence between the two companies, even as their partnership terms loosen and they increasingly compete for customers.",
+    "tags": [
+      "business",
+      "technology",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/8fd13231839f1d625819.webp",
+    "image_alt": "A branching diagram illustrates an AI startup's payments to Microsoft, flowing through two channels: revenue sharing and Azure cloud services."
+  },
+  {
+    "title": "The ‘Vulnpocalypse’ is coming for the internet’s aging code, says Wiz’s CTO",
+    "url": "https://techcrunch.com/podcast/the-vulnpocalypse-is-coming-for-the-internets-aging-code-says-wizs-cto/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-28",
+    "summary": "Critical vulnerabilities in PHP, an open-source language powering 70% of websites, recently caused organizations to scramble for fixes, with some taking sites offline. These bugs, some existing for over a decade, were rapidly uncovered and exploited due to advancements in AI, which accelerates vulnerability discovery and testing. This \"Vulnpocalypse\" signifies a future where manual patching cannot keep pace with AI-driven vulnerability generation, posing a significant challenge for internet security and unpatched systems.",
+    "tags": [
+      "technology",
+      "ai",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/0c126c4ff4ca9556b08f.webp",
+    "image_alt": "A pipeline showing old, vulnerable code being rapidly scanned by AI, leading to overwhelmed manual patching efforts and widespread system compromise."
+  },
+  {
+    "title": "Wiz’s CTO on PHP2Shell and the coming ‘vulnpocalypse’",
+    "url": "https://techcrunch.com/video/wizs-cto-on-php2shell-and-the-coming-vulnpocalypse/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-28",
+    "summary": "Two critical bugs in PHP, an open-source language powering roughly 70% of websites, recently caused organizations to scramble for fixes, with some taking sites offline. These vulnerabilities, known as PHP2Shell, highlighted a growing challenge as artificial intelligence accelerates the discovery and exploitation of novel security flaws. This development suggests that manual patching methods are becoming unsustainable, necessitating new approaches to cybersecurity as the pace of a potential 'vulnpocalypse' increases.",
+    "tags": [
+      "technology",
+      "ai",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/3159b8d2fc2ab9c515fa.webp",
+    "image_alt": "A diagram showing AI rapidly discovering vulnerabilities in PHP systems, creating a bottleneck for traditional manual patching efforts."
+  },
+  {
+    "title": "Microsoft just shared Azure’s actual revenue in dollars: $33.2 billion",
+    "url": "https://techcrunch.com/2026/10/28/microsoft-just-shared-azures-actual-revenue-in-dollars-33-2-billion/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-28",
+    "summary": "Microsoft Azure has for the first time disclosed its quarterly revenue in dollars, reporting $33.2 billion for the July-September quarter. This figure represents a 48% increase from the previous year, establishing Azure as Microsoft's largest and fastest-growing product line, accounting for 36% of the company's total quarterly revenue. This new transparency allows investors and analysts to directly compare Azure's financial performance against competitors like Amazon Web Services and Google Cloud, intensifying the competitive landscape in the rapidly expanding cloud computing market.",
+    "tags": [
+      "business",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/fd6f0c21182a0d4cbec1.svg",
+    "image_alt": "A diagram showing how Microsoft's new Azure dollar revenue disclosure allows for direct comparison of its market share against other major cloud providers."
+  },
+  {
+    "title": "Anthropic just launched tools to show companies what their AI spending is buying",
+    "url": "https://techcrunch.com/2026/10/28/anthropic-just-launched-tools-to-show-companies-what-their-ai-spending-is-buying/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-28",
+    "summary": "Anthropic has launched new reporting tools designed to help enterprise customers understand the value of their AI spending. These tools provide managers with granular insights into team work, production, costs, and workflow breakdowns, utilizing internal analytics and employee surveys. This initiative aims to demonstrate the return on investment for Anthropic's AI tools and offer recommendations for optimizing results, addressing a significant concern among large businesses struggling to see major gains from AI deployment.",
+    "tags": [
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/846fef606d6fbe0460c5.webp",
+    "image_alt": "A pipeline showing how companies' AI token spend flows into reporting tools, which then lead to optimized value and improved return on investment."
+  },
+  {
+    "title": "Chrome’s AI-powered Autofill can now dig through your Gmail to fill out forms",
+    "url": "https://techcrunch.com/2026/10/28/chromes-ai-powered-autofill-can-now-dig-through-your-gmail-to-fill-out-forms/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-28",
+    "summary": "Chrome's AI-powered Autofill now integrates with Gmail to automatically populate online forms with relevant personal information. This enhanced capability allows Chrome to suggest details such as flight confirmation numbers, membership IDs, tracking information, or addresses by referencing a user's email content. The update, an extension of Google's Personal Intelligence, aims to streamline user experience, potentially encouraging continued use of Google's browser and its broader AI ecosystem, while remaining user-enabled with encrypted sensitive data.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/87142397d95c697e9b36.webp",
+    "image_alt": "A pipeline diagram showing a blank web form, then data flowing from Gmail, resulting in the form being automatically filled."
+  }
+]
