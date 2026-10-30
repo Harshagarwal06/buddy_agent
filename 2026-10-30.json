@@ -1,0 +1,121 @@
+[
+  {
+    "title": "As search traffic dries up, Reddit announces it’s shifting to a logged-in experience",
+    "url": "https://techcrunch.com/2026/10/29/as-search-traffic-dries-up-reddit-announces-its-shifting-to-a-logged-in-experience/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-29",
+    "summary": "Reddit is transitioning to a primarily logged-in user experience in response to declining search traffic referrals caused by AI-powered search summaries. The company reported over 1 million fewer weekly search referrals in October and a drop in U.S. daily active users, prompting a strategic shift to protect its data from AI scraping and enhance monetization. This move aims to secure lucrative data licensing deals and increase advertising revenue from its more valuable logged-in audience, helping Reddit adapt to the evolving AI-centered web despite user growth challenges.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/593ab09c4e956ed19f36.webp",
+    "image_alt": "A pipeline showing declining web traffic leading to a login wall, which then leads to increased data value."
+  },
+  {
+    "title": "OpenAI-backed Thrive Holdings acquires ADT",
+    "url": "https://techcrunch.com/2026/10/29/openai-backed-thrive-holdings-acquires-adt/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-29",
+    "summary": "Thrive Holdings, an OpenAI-backed holding company, has acquired physical security giant ADT for $7.6 billion in equity, totaling an enterprise value of $15.3 billion. Thrive's mission is to revitalize acquired companies with AI, with OpenAI supplying advanced models and forward-deployed engineers to its portfolio of over 75 firms. This acquisition positions ADT as the foundation of Thrive's smart home security business, signaling a significant push towards new AI-powered security products in a rapidly expanding market for smart home security solutions.",
+    "tags": [
+      "business",
+      "technology",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/2cdaafb660c114f12600.webp",
+    "image_alt": "A pipeline diagram showing AI models flowing into a security company, leading to the creation of new smart home security products."
+  },
+  {
+    "title": "AWS will be a $1T business, Jassy says — but first, it will spend big",
+    "url": "https://techcrunch.com/2026/10/29/aws-will-be-a-1t-business-jassy-says-but-first-it-will-spend-big/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-29",
+    "summary": "Amazon CEO Andy Jassy projects AWS will become a trillion-dollar annual revenue business within five to ten years, driven by surging AI demand. To achieve this, Amazon plans significant capital expenditures, with approximately $220 billion in 2026 primarily for AWS infrastructure, and expects to spend \"meaningfully more\" in 2027. This substantial investment, aimed at capitalizing on a \"once-in-a-lifetime opportunity\" in cloud and AI, has raised investor concerns, despite AWS's 39% year-over-year revenue growth and projected 40% growth in 2027 and 2028.",
+    "tags": [
+      "business",
+      "technology",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/99fe23462fab72b5afa9.webp",
+    "image_alt": "A pipeline diagram showing large capital investment flowing into new cloud infrastructure, leading to a projected trillion-dollar revenue for AWS."
+  },
+  {
+    "title": "Mistral releases weights for its trillion-parameter AI model, targeting cybersecurity",
+    "url": "https://techcrunch.com/2026/10/29/mistral-releases-weights-for-its-trillion-parameter-ai-model-targeting-cybersecurity/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-29",
+    "summary": "French AI company Mistral has released the weights for its trillion-parameter open-source AI model, Mistral Large 4 (ML4), enabling businesses and governments to download and deploy the system directly. Nicknamed \"Le Chonk,\" the model offers state-of-the-art performance, particularly in cybersecurity, and is more economical than competitors, using 47% fewer tokens per task. This release aims to provide sovereign cyber defense capabilities, empowering organizations with greater control over their data and systems, reducing reliance on external AI providers for critical security operations.",
+    "tags": [
+      "technology",
+      "ai",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/f0f63c8c58ae70663abc.webp",
+    "image_alt": "A branching diagram showing AI model weights leading to direct deployment for businesses and governments, resulting in enhanced cyber defense."
+  },
+  {
+    "title": "Rivian expands joint venture with VW to include AI assistant",
+    "url": "https://techcrunch.com/2026/10/29/rivian-expands-joint-venture-with-vw-to-include-ai-assistant/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-29",
+    "summary": "Rivian has expanded its $5.8 billion joint venture with Volkswagen Group to include licensing elements of its AI voice assistant technology. This AI assistant, which recently rolled out to Rivian's R1S, R1T, and R2 vehicles, could debut in Volkswagen's low-cost EV, the ID EVERY1, which already uses Rivian's software and electrical architecture. The expansion highlights the extensibility of Rivian's in-house platform and its vertical integration strategy, promising enhanced in-vehicle interaction and control for future Volkswagen drivers.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/e361f1e8d01b808dd1d7.svg",
+    "image_alt": "A pipeline showing Rivian's AI assistant technology being licensed to Volkswagen, enabling advanced voice interaction in VW vehicles."
+  },
+  {
+    "title": "You don’t need to believe in a god to get a religious exemption from using AI at work",
+    "url": "https://techcrunch.com/2026/10/29/you-dont-need-to-believe-in-a-god-to-get-a-religious-exemption-from-using-ai-at-work/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-30",
+    "summary": "David Durman, a nontheistic humanist, recently secured a religious exemption from using AI in his workplace, marking a significant precedent. His humanistic beliefs, which prioritize human well-being and critical thinking, led him to view AI use as detrimental to human dignity, creativity, and the environment. This development establishes a legal pathway for other nontheists and humanists to seek similar workplace accommodations, broadening the scope of protected beliefs under religious exemption laws.",
+    "tags": [
+      "technology",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/47cde2acb7888529215c.webp",
+    "image_alt": "A diagram illustrating how a humanist's beliefs led to a workplace AI exemption, creating a new path for others seeking similar protections."
+  },
+  {
+    "title": "Meta quietly launches an AI fashion app called Style Sketch",
+    "url": "https://techcrunch.com/2026/10/29/meta-quietly-launches-an-ai-fashion-app-called-style-sketch/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-29",
+    "summary": "Meta has quietly launched Style Sketch, an AI fashion app designed to help users create outfit ideas from their existing wardrobe. The app integrates with Instagram to build a virtual closet from posted photos or manually added items, then suggests combinations that users can try on realistic models matched to their body shape and skin tone. This development leverages Meta's existing social media ecosystem and is part of a broader company strategy to release more AI-powered applications, potentially offering a competitive edge in the AI fashion market.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/477030ca661ed9052407.webp",
+    "image_alt": "A pipeline diagram showing user's clothes entering an AI system, which then generates new virtual outfit combinations for a model."
+  },
+  {
+    "title": "Granola crunches up a dictation feature to compete with Wispr",
+    "url": "https://techcrunch.com/2026/10/29/granola-crunches-up-a-dictation-feature-to-compete-with-wispr/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-29",
+    "summary": "Granola, a prominent meeting notetaker app, has launched a new dictation feature, directly competing with rivals like Wispr. The dictation tool functions on Mac, allowing users to speak naturally while the app cleans, formats, and posts text across various applications, available without limits on all plans. This development signifies a broader trend of convergence in the consumer voice AI market, where previously specialized apps are expanding into multifeature platforms to capture more user speech.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/6c4a3d5914bc45bbce08.webp",
+    "image_alt": "A diagram showing a meeting notetaker app adding a dictation tool, transforming into a multifeature application, illustrating market convergence in voice AI."
+  }
+]
