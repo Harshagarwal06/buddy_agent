@@ -1,0 +1,119 @@
+[
+  {
+    "title": "Nvidia weighs playing the cosigner for Nscale’s AI data center in West Virginia",
+    "url": "https://techcrunch.com/2026/10/30/nvidia-weighs-playing-the-cosigner-for-nscales-ai-data-center-in-west-virginia/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-31",
+    "summary": "Nvidia is reportedly considering co-signing billions in debt financing for AI cloud provider Nscale's planned Anthropic data center in West Virginia. Under a residual value guarantee, Nvidia would step in if Nscale defaulted on construction payments, temporarily taking over the facility and finding a new buyer. Such a guarantee would help Nscale secure crucial funding for its ambitious data center projects, deepen Nvidia's financial ties to a key customer, and reflects the AI industry's efforts to maintain rapid buildout plans amidst investor caution.",
+    "tags": [
+      "business",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/7122d886312c1aa67567.svg",
+    "image_alt": "A pipeline diagram showing how Nvidia's financial guarantee helps Nscale secure project debt, enabling the construction of an AI data center."
+  },
+  {
+    "title": "Cracks are emerging in the AI spending boom",
+    "url": "https://techcrunch.com/2026/10/30/cracks-are-emerging-in-the-ai-spending-boom/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-30",
+    "summary": "Big Tech companies are facing growing investor apprehension regarding their massive AI infrastructure spending, despite plans to invest over $740 billion this year. This substantial capital outlay is causing negative free cash flow for some major players like Alphabet and Amazon, a shift from previous investor enthusiasm. Consequently, Wall Street is questioning the returns on these enormous investments and their impact on core business profitability, leading to significant market drops for tech and chip stocks.",
+    "tags": [
+      "business",
+      "ai",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/a0deaaa57707072c6416.webp",
+    "image_alt": "A pipeline showing high AI infrastructure spending leading to negative free cash flow, causing investor concern and market declines."
+  },
+  {
+    "title": "Google’s first data center satellite is online and writing poetry",
+    "url": "https://techcrunch.com/2026/10/30/googles-first-data-center-satellite-is-online-and-writing-poetry/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-30",
+    "summary": "Google Suncatcher's prototype space data center is now online and communicating with Earth, carrying four Tensor Processing Units (TPUs) to perform AI inference workloads in orbit. The satellite, which generates up to 1 kW, can run one TPU for about 20 minutes and has already successfully generated poetry, but engineers are primarily testing how the chips perform under thermal stress and space radiation. This ongoing test campaign aims to assess the real-world impact of radiation on data integrity and processing, paving the way for future networks of close-flying satellites supporting distributed AI workloads.",
+    "tags": [
+      "technology",
+      "ai",
+      "science"
+    ],
+    "importance": 4,
+    "image_url": "images/cdbaea1195dd071dac64.webp",
+    "image_alt": "A branching diagram illustrating Google's satellite TPUs exposed to space radiation, leading to either maintained data integrity or potential data corruption."
+  },
+  {
+    "title": "Anthropic expected to receive high ‘junk’ rating from credit agencies following IPO, FT report says",
+    "url": "https://techcrunch.com/2026/10/30/anthropic-expected-to-receive-high-junk-rating-from-credit-agencies-following-ipo-report-says/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-30",
+    "summary": "Anthropic is projected to receive a high \"junk\" credit rating following its initial public offering, according to a Financial Times report. Investment firm Blackstone, a major financier of Anthropic's chip deals, reportedly informed its investors of this expectation, reversing a prior forecast of an investment-grade rating by 2027 to a double B range. This speculative rating would likely increase Anthropic's borrowing costs and make it more challenging to secure funding for its substantial compute spending, a concern for existing investors.",
+    "tags": [
+      "business",
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/a7198a303e79bd97b2da.webp",
+    "image_alt": "A diagram showing Anthropic's credit outlook changing from investment grade to junk rating, leading to higher borrowing costs."
+  },
+  {
+    "title": "Intel’s stock crashes, knocking $12B from government’s stake",
+    "url": "https://techcrunch.com/2026/10/30/intels-stock-crashes-knocking-12b-from-governments-stake/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-30",
+    "summary": "Intel's stock crashed approximately 28% after the chip giant reported a weaker-than-expected fourth-quarter outlook. This rout reduced the U.S. government's stake by $12 billion, as Intel forecast Q4 revenue of $15-16 billion against analyst expectations of $17 billion and a gross profit margin decline to 37%. The downturn is primarily attributed to rising PC prices due to AI industry demand for components, impacting Intel's core market despite strong data center business growth, which is constrained by fab capacity.",
+    "tags": [
+      "business",
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/05800914899b801c20ca.webp",
+    "image_alt": "A diagram showing Intel's business: declining PC sales, strong data center growth, and manufacturing capacity limits impacting overall performance."
+  },
+  {
+    "title": "Ollie, a privacy-focused AI assistant, is shutting down",
+    "url": "https://techcrunch.com/2026/10/30/ollie-a-privacy-focused-ai-assistant-is-shutting-down/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-30",
+    "summary": "Ollie, a privacy-focused AI assistant startup, is shutting down its operations on November 6th, despite recently announcing a $7.5 million seed round. The subscription-based service aimed to help families with organization, connecting to emails and calendars, and notably achieved SOC 2 privacy compliance. Despite its unique privacy stance and features like appointment booking and meal planning, the company struggled to compete and raise capital in the rapidly expanding AI assistant market.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/bcac4e2ce74e00914fd2.webp",
+    "image_alt": "A bottleneck diagram illustrating a privacy-focused AI assistant unable to enter a market due to intense competition from many other AI services."
+  },
+  {
+    "title": "Zest’s new AI agent finds restaurants and books reservations over text",
+    "url": "https://techcrunch.com/2026/10/30/zests-new-ai-agent-finds-restaurants-and-books-reservations-over-text/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-30",
+    "summary": "Restaurant discovery app Zest has introduced an AI-powered \"restaurant concierge\" that operates entirely within text messages. This agent leverages users' credit card transaction history, imported via Plaid, to understand dining preferences and integrates with services like OpenTable to find and book reservations. The development reflects a broader industry shift towards conversational AI agents handling tasks previously requiring dedicated apps, streamlining personalized restaurant recommendations and group bookings.",
+    "tags": [
+      "technology",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/a1288f13552ee8dfb42c.webp",
+    "image_alt": "A pipeline shows a text message leading to an AI processing user dining preferences, which then results in a booked restaurant table."
+  },
+  {
+    "title": "Last-minute Halloween costumes for tech nerds",
+    "url": "https://techcrunch.com/2026/10/30/last-minute-halloween-costumes-for-tech-nerds/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-30",
+    "summary": "TechCrunch provides last-minute Halloween costume ideas tailored for tech enthusiasts who have procrastinated on preparations. The suggestions include embodying \"recursive self-improvement\" by carrying self-help books and a yoga mat, dressing as a \"deceptively cute AI agent\" with fluffy attire and a ChatGPT-like dot, or portraying \"a guy actively recording you with Meta glasses\" using eyewear with a red recording light. These creative concepts offer quick, relevant options for celebrating Halloween by leveraging current technology trends and concerns for humorous or spooky effect.",
+    "tags": [
+      "technology",
+      "culture"
+    ],
+    "importance": 1,
+    "image_url": "images/2f87e8305d01fb000108.svg",
+    "image_alt": "A branching diagram showing three last-minute tech Halloween costume ideas: a person with self-help items, a fluffy AI avatar, and someone wearing recording glasses."
+  }
+]
