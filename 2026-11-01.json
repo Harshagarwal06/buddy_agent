@@ -1,0 +1,117 @@
+[
+  {
+    "title": "OpenAI reportedly lowers funding target for new round",
+    "url": "https://techcrunch.com/2026/10/31/openai-reportedly-lowers-funding-target-for-new-round/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-31",
+    "summary": "OpenAI has reportedly lowered its funding target for a new investment round from an initial $30 billion to $20 billion, with $11 billion secured so far. The company previously aimed for a $1.4 trillion valuation, later adjusted to $1.25 trillion, but has faced a \"tepid\" response from some large investors. This development suggests growing investor caution regarding heavy AI infrastructure spending and broader tech stock sell-offs, potentially impacting future fundraising for AI companies like OpenAI.",
+    "tags": [
+      "business",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/ad69d9d7eb7268ab4bd1.webp",
+    "image_alt": "A diagram showing OpenAI's initial high funding goal, which was then lowered due to investor caution, illustrating the company's reduced fundraising target."
+  },
+  {
+    "title": "Apple CEO says the company doesn’t ‘want to ship AI for AI’s sake’",
+    "url": "https://techcrunch.com/2026/10/31/apple-ceo-says-the-company-doesnt-want-to-ship-ai-for-ais-sake/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-31",
+    "summary": "Apple CEO John Ternus defended the company's artificial intelligence strategy, stating they will not \"ship AI for AI's sake\" but will leverage it to build products users love. Ternus acknowledged perceptions of Apple being behind in AI, but emphasized integrating AI seamlessly into products so users don't distinguish it from traditional software. This approach indicates Apple's focus on practical, user-centric AI applications embedded within its ecosystem, rather than standalone, highly visible AI features.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/988abb003f0d09eabd34.webp",
+    "image_alt": "A comparison showing Apple's rejected approach of standalone AI versus its preferred method of seamless AI integration into products for user benefit."
+  },
+  {
+    "title": "Judge allows NAACP lawsuit over xAI data center pollution to move forward",
+    "url": "https://techcrunch.com/2026/10/31/judge-allows-naacp-lawsuit-over-xai-data-center-pollution-to-move-forward/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-31",
+    "summary": "A federal judge allowed an NAACP lawsuit against xAI to proceed, alleging the SpaceX-owned company operated gas turbines powering its Colossus data center without necessary air permits, violating the Clean Air Act. xAI sought dismissal, claiming the turbines were mobile and exempt from permitting, and that plaintiffs lacked standing, but the judge rejected these arguments, affirming the plaintiffs' right to sue. This ruling marks an important victory for environmental advocates, holding xAI accountable for alleged pollution and reflecting growing public and governmental scrutiny of data center operations and their environmental impact.",
+    "tags": [
+      "business",
+      "technology",
+      "climate"
+    ],
+    "importance": 3,
+    "image_url": "images/2929d3a80529a7a98bf1.webp",
+    "image_alt": "A branching diagram shows xAI's 'Mobile Turbines' argument rejected, while the 'No Permits' lawsuit proceeds against gas turbines."
+  },
+  {
+    "title": "I built an AI Tamagotchi before Meta could",
+    "url": "https://www.theverge.com/gadgets/1013375/muse-charm-gadgets-preview-waveshare-esp32-claude-vibe-code",
+    "source": "The Verge AI",
+    "published_at": "2026-10-31",
+    "summary": "An individual successfully built a functional AI companion device, akin to a Tamagotchi, for just $50 using a Meta-sanctioned devkit and AI coding assistance. The author programmed a Waveshare ESP32-S3 1.75C pendant, which connects to Meta's Muse AI cloud, to overcome initial limitations like slow responses and lack of features. This project highlights the accessibility of creating personalized AI gadgets with off-the-shelf hardware and AI tools, offering a customizable alternative to upcoming commercial offerings.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/8448f85c17b87de128c6.webp",
+    "image_alt": "A pipeline showing a basic circuit board becoming an AI companion gadget through AI code."
+  },
+  {
+    "title": "4 days left: How TechCrunch Founder Summit helps you make more useful connections to scale",
+    "url": "https://techcrunch.com/2026/10/31/4-days-left-how-techcrunch-founder-summit-helps-you-make-more-useful-connections-to-scale/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-10-31",
+    "summary": "The TechCrunch Founder Summit is implementing structured networking opportunities to help attendees make more intentional and useful connections. Through the Braindate-powered Networking Lounge, participants can schedule one-on-one or small-group discussions on specific topics like fundraising strategies or hiring challenges, and continue conversations initiated during sessions. This approach aims to move beyond chance encounters, enabling founders and VCs to build relevant relationships that can directly impact their startup's trajectory and foster growth.",
+    "tags": [
+      "business"
+    ],
+    "importance": 2,
+    "image_url": "images/a8ab28c8ef68245e8dd0.webp",
+    "image_alt": "Explains how a summit transforms random networking into intentional, topic-based connections for founders to scale their startups."
+  },
+  {
+    "title": "Speeding up planning decisions with AI - Google DeepMind",
+    "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1ZRkZVQ0t5dFRsRXBfRWJnemFrRXJmRWh3UHFkT21Lak1SWnNVTUlfSkN3X0FpWWRfbno3MjhTMC10X0FxZkhfWXdrc0ctcmczNjV0UUNndDlxLTJFYkIxemNKUWxmdVREaHJSQkFpNDhfd200ZFhz?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-10-31",
+    "summary": "Google DeepMind is reportedly employing artificial intelligence to accelerate planning decisions, a development indicated solely by the headline. The specific methodologies, technologies, or evidence supporting this application are not detailed in the provided information, leaving the exact mechanism of AI integration unclear. This initiative suggests a potential future where AI tools could significantly streamline bureaucratic processes in urban planning, potentially reducing wait times for development approvals, although the full scope and impact remain to be elaborated.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 2,
+    "image_url": "images/28eae9b9a755c2961e68.webp",
+    "image_alt": "A pipeline diagram showing slow planning decisions entering an AI processing stage, resulting in fast approvals."
+  },
+  {
+    "title": "Where is Gemini 3.5 Pro? The case of the missing AI model. - Mashable",
+    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFB2aTNiejdCUW45NDE1Vmp5OWt2VHptYnA5dnlYUHdRczh4Y0lPLVBwV0tyeFhjOXlkN2FqTWFESzFnVVQ1aGVnRWFycDZDSy0xeVFRUURWRmtwZ3JqX0NDc09ZVHd0d1dxTmx6Zm1B?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-10-31",
+    "summary": "Google's anticipated AI model, Gemini 3.5 Pro, appears to be missing from public view, raising questions about its status and release timeline. Only the headline-level development is known, indicating a significant lack of official information regarding its whereabouts or development progress, leaving the tech community to speculate. This absence suggests potential delays or a strategic shift in the model's rollout, impacting expectations for Google's next-generation AI capabilities.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 2,
+    "image_url": "images/57b422ca1128d2eef2d5.webp",
+    "image_alt": "Explains the absence of an expected AI model, showing its anticipated release path leading to an empty space."
+  },
+  {
+    "title": "Google’s Gemini Tool Cut UK Planners’ Assessment Time 58% - FourWeekMBA",
+    "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQY1pOVlIxNTI4bml4N0REdXNLUWdad3VvcjZzelQwY1JfaGlnMV9tY19fTVYxUmR1MldlaGRTeEtEUHh3aGREMG9PN1Z6cHg5QllSTWQ4bXo2RC15Z3BGMmtSZ1dMMTNlaEtvTXpoaURiY0V2YTA0MVhDTFVkR2V6ZThzeDlNNEVXTVE?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-10-31",
+    "summary": "Google's Gemini AI tool has significantly reduced the assessment time for UK urban planners, cutting it by 58% in a recent application. This substantial efficiency gain streamlines the often-lengthy process of evaluating planning proposals, which traditionally involves extensive manual review of documents and data. The development suggests considerable time savings and increased productivity for local authorities, potentially accelerating urban development projects and improving responsiveness to community needs by freeing up planner resources.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 2,
+    "image_url": "images/92eb6a79d9288875bbb8.webp",
+    "image_alt": "A before-and-after diagram showing how Google's Gemini AI tool reduces the time for UK planners' assessments, leading to faster planning."
+  }
+]
