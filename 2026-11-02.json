@@ -1,0 +1,118 @@
+[
+  {
+    "title": "Proton's AI manifesto for software engineering",
+    "url": "https://proton.me/blog/ai-manifesto",
+    "source": "Hacker News AI",
+    "published_at": "2026-11-02",
+    "summary": "Proton has released an AI manifesto for software engineering, declaring that AI models, particularly LLMs, have fundamentally transformed the industry by making manual code writing largely obsolete. The manifesto explains that AI can now efficiently handle tasks like code generation, documentation, testing, and boilerplate, which were previously time-consuming and often neglected by human engineers. This shift necessitates rapid AI adoption for companies to remain competitive and secure, transforming engineering roles and offering new opportunities for professionals who adapt to these AI-driven workflows.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 5,
+    "image_url": "images/c7b3bed530446d69a5fa.webp",
+    "image_alt": "A diagram illustrating the evolution of software engineering from manual coding to AI-generated code, with engineers shifting to system design and oversight."
+  },
+  {
+    "title": "China's First Frontier AI Export Controls: Mofcom Announcement No. 48",
+    "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-china-ai-export-controls-announcement-48-2/",
+    "source": "Hacker News AI",
+    "published_at": "2026-11-02",
+    "summary": "China's Ministry of Commerce (MOFCOM) and Ministry of Science and Technology (MOST) issued Announcement No. 48, proposing new export controls on 40 technologies, including 23 in artificial intelligence, and implementing an interim pre-export registration requirement. The draft controls target frontier model weights, agent architectures, and AI-enabled offensive cyber capabilities, with specific technical thresholds like 10^26 FLOPs or 2 trillion parameters for models. These measures aim to regulate the outbound transfer of advanced AI, impacting product exports, licensing deals, changes of ownership, and potentially intra-group code sharing for multinational companies.",
+    "tags": [
+      "ai",
+      "business",
+      "politics"
+    ],
+    "importance": 4,
+    "image_url": "images/e2e66d65fa0005d996ab.webp",
+    "image_alt": "Explains China's new export controls on frontier AI models and agents, showing technology passing through a regulatory checkpoint for overseas transfer."
+  },
+  {
+    "title": "AI can make tech CEOs’ lives easier. What about everyone else?",
+    "url": "https://techcrunch.com/2026/11/01/ai-can-make-tech-ceos-lives-easier-what-about-everyone-else/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-01",
+    "summary": "Tech CEOs, including Marissa Mayer, Sam Altman, and Mark Zuckerberg, are drawing criticism for seemingly out-of-touch comments promoting AI's use in personal life, such as parenting tasks and social interactions. These leaders have suggested AI for school assignments, personalized children's podcasts, and even meeting romantic needs, highlighting a perceived disconnect from everyday experiences. Such statements fuel public skepticism about whether AI executives truly understand \"normal people's\" needs, raising concerns that the industry is optimizing out basic human interaction and potentially alienating users as AI investment cools.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/bad41e2a924628c85d6b.webp",
+    "image_alt": "A branching diagram showing tech CEOs promoting AI for personal life, leading to public skepticism and concern."
+  },
+  {
+    "title": "Google Trends data on \"will AI replace [job]\" searches for 56 jobs",
+    "url": "https://scrollytelling.ai/what-jobs-will-ai-replace/",
+    "source": "Hacker News AI",
+    "published_at": "2026-11-02",
+    "summary": "Google Trends data reveals a significant increase in worldwide searches for \"will AI replace [job]\" since ChatGPT's launch, peaking in March 2026. Searches for AI job replacement are 2.5 times their 2023 level, with initial programmer worries shifting to new highs for teachers, doctors, and lawyers in 2026, while \"how to become a...\" searches fell for tech and writing jobs but rose for trades. This trend indicates growing public anxiety about AI's impact on employment across various sectors and a potential shift in career aspirations towards roles perceived as more \"AI-proof.\"",
+    "tags": [
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/8e0f79a7cfbdb7bd7406.webp",
+    "image_alt": "A branching diagram showing public worry about AI replacing jobs leading to declining interest in tech and writing careers and increasing interest in skilled trades."
+  },
+  {
+    "title": "Show HN: AgentTM – A time-travel debugger for AI coding agents built in Go",
+    "url": "https://github.com/Jyotishmoy12/AgentTM",
+    "source": "Hacker News AI",
+    "published_at": "2026-11-02",
+    "summary": "AgentTM is a new local Go CLI time-travel debugger designed for AI coding agents, enabling developers to record and inspect their noninteractive code generation runs. It captures real Codex executions in SQLite, providing a React/TypeScript UI to view stored sessions, timelines, historical files, and parent diffs. This tool allows developers to precisely review and debug the step-by-step evolution of an AI agent's code, offering critical insights into its decision-making and error points.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/0db504caa18d364f5928.webp",
+    "image_alt": "Diagram showing how an AI agent's coding process is recorded in sequential states, enabling developers to inspect and debug historical code changes."
+  },
+  {
+    "title": "OpenAI might rebrand its data centers as ‘AI compute campuses’",
+    "url": "https://techcrunch.com/2026/11/01/openai-might-rebrand-its-data-centers-as-ai-compute-campuses/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-01",
+    "summary": "OpenAI is reportedly considering rebranding its data centers as \"AI compute campuses\" as part of a broader public relations initiative. This effort aims to influence the ongoing AI debate, which the company anticipates will be a central issue in the 2028 presidential election. The strategy also includes proposals for AI \"speed limits\" and establishing global AI standards, seeking to shift public perception towards viewing AI infrastructure as empowering and beneficial.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/c415c9d681e051d37a83.webp",
+    "image_alt": "A diagram showing a 'Data Center' transforming through a 'Rebrand Effort' into an 'AI Campus', illustrating OpenAI's strategy to improve public perception of its infrastructure."
+  },
+  {
+    "title": "Creative Coding in the Age of AI",
+    "url": "https://www.gorillasun.de/blog/creative-coding-in-the-age-of-ai/",
+    "source": "Hacker News AI",
+    "published_at": "2026-11-02",
+    "summary": "Creative coding, which involves writing code to generate art, is undergoing a significant transformation with the advent of AI tools. Historically, artists like Vera Molnár used computers to automate image generation and introduce randomness, extending their practice beyond manual capabilities. However, new AI systems automate the entire creative search and decision-making process, raising questions about the value of artistic effort and the appreciation of art when advanced generative capabilities become universally accessible.",
+    "tags": [
+      "technology",
+      "ai",
+      "culture"
+    ],
+    "importance": 3,
+    "image_url": "images/73a98d8d3a70ed3ac30e.webp",
+    "image_alt": "A before-and-after diagram showing how art creation shifts from manual coding and a winding creative journey to AI generation and an automated, direct process."
+  },
+  {
+    "title": "Haas: Postgres 19 is late, and it's AI's fault",
+    "url": "https://lwn.net/Articles/1104210/",
+    "source": "Hacker News AI",
+    "published_at": "2026-11-02",
+    "summary": "PostgreSQL 19's release is delayed due to an unexpected influx of bug reports generated by large language models (LLMs). These AI tools have proven highly effective at discovering decades-old bugs that human developers previously missed, leading to a significant increase in the workload for the open-source database project. This development raises concerns about the long-term ability of projects like PostgreSQL to maintain their release schedules and continue innovating while addressing a backlog of AI-identified issues.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 1,
+    "image_url": "images/7eaee2aa20161f01f5d5.webp",
+    "image_alt": "A bottleneck diagram showing database code entering a process where AI finds bugs, leading to a delayed software release."
+  }
+]
