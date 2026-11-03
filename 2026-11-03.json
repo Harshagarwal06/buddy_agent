@@ -1,0 +1,121 @@
+[
+  {
+    "title": "The New York Times sues Brave web browser for AI scraping and bypassing paywalls",
+    "url": "https://www.theverge.com/tech/1024588/brave-lawsuit-ai-scraping-new-york-times",
+    "source": "The Verge AI",
+    "published_at": "2026-11-02",
+    "summary": "The New York Times and other major publications have filed lawsuits against Brave Software, alleging the web browser unlawfully scrapes copyrighted content to train AI models and enables users to bypass publisher paywalls. The complaints state Brave monetizes its index of scraped websites by providing real-time content access to AI companies like Anthropic and Mistral, without permission or compensation. This legal action seeks to hold Brave accountable for alleged copyright infringement and the unauthorized distribution of journalistic content, impacting publishers' control over their intellectual property and revenue streams.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/3033d92e6cd29f817893.svg",
+    "image_alt": "A diagram illustrates Brave browser bypassing publisher paywalls to scrape content, which is then used to train AI models, leading to a lawsuit."
+  },
+  {
+    "title": "OpenAI pitches data center power plants as a way to protect nearby areas",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1024604/openai-data-center-grid-protection-program",
+    "source": "The Verge AI",
+    "published_at": "2026-11-02",
+    "summary": "OpenAI is piloting its 'Grid Protectors Program' at an upcoming data center in Effingham County, Georgia. This initiative promises to free up to 1,000 megawatts of power during extreme weather or emergencies, enough to supply air conditioning to approximately 700,000 homes. The program aims to transform public perception of data centers from energy consumers to vital grid resources, offering stability and protection to nearby communities when the electrical system is under strain.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/ae12c1c5f4f04ead8d85.webp",
+    "image_alt": "Diagram showing a compute campus supplying power to a utility grid, which then provides power to local homes during emergencies."
+  },
+  {
+    "title": "Google takes Dreambeans to India in bid to bring AI-generated personal stories to the masses",
+    "url": "https://techcrunch.com/2026/11/02/google-takes-dreambeans-to-india-in-bid-to-bring-ai-generated-personal-stories-to-the-masses/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-03",
+    "summary": "Google has launched its experimental AI app Dreambeans in India, marking its first international market expansion outside the U.S. The app leverages information from connected Google services like Calendar, Gmail, and Photos to proactively generate personalized, illustrated stories for users, now supporting 13 local languages. This strategic move aims to tap into India's vast internet user base and widespread Google service adoption, despite the app's mixed initial reception and declining downloads in the U.S.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/4edc651066f16dffb7bb.webp",
+    "image_alt": "A pipeline shows user data from Google services entering an AI engine, which then creates personalized visual stories for users."
+  },
+  {
+    "title": "Apple Watch’s AI features for rewinding and recapping conversations begin beta testing",
+    "url": "https://techcrunch.com/2026/11/02/apple-watchs-ai-features-for-rewinding-and-recapping-conversations-begin-beta-testing/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-03",
+    "summary": "Apple Watch's new AI-powered \"Audio Intelligence\" features, including Live Rewind and Siri Recaps, have begun beta testing for developers. Live Rewind allows users to double-press the digital crown to view the last 15 seconds of spoken audio as a text snippet, while Siri Recaps provide high-level conversation summaries. These features offer utility for catching missed information or taking notes, with Apple addressing privacy concerns through audible chimes, visual cues, and automatic deletion of unsaved snippets after 30 seconds.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/8d941dee08c25150963e.webp",
+    "image_alt": "A diagram showing how Apple Watch's Live Rewind captures spoken words when the digital crown is pressed, displaying them as a text snippet."
+  },
+  {
+    "title": "Anthropic clamps down on Claude’s AI video game clones",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1024632/anthropic-claude-ai-video-game-clones",
+    "source": "The Verge AI",
+    "published_at": "2026-11-02",
+    "summary": "Anthropic has updated its Claude Code AI tool's system prompt to prevent users from re-creating existing video games. The revised prompt explicitly instructs the AI to \"build original games, games in a genre, and games from the user's own designs and assets,\" while prohibiting the \"recreation of a specific existing game.\" This policy adjustment aims to curb intellectual property infringement, aligning with Anthropic's usage guidelines, though it still encourages and supports the development of entirely new and original game concepts by users.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/21b5a69b03877aa5297d.webp",
+    "image_alt": "A branching diagram showing Claude Code AI. One path, labeled 'Game Clones', is blocked. Another path, labeled 'Original Games', is open, illustrating the AI's updated usage policy."
+  },
+  {
+    "title": "Apple may try to increase revenue by doing…something with third-party AI apps",
+    "url": "https://techcrunch.com/2026/11/02/apple-may-try-to-increase-revenue-by-doing-something-with-third-party-ai-apps/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-03",
+    "summary": "Apple signaled its intent to explore new revenue streams from third-party AI applications to bolster its services business. Chief Financial Officer Kevan Parekh indicated \"opportunities across third-party apps and partnerships\" for AI to contribute to revenue growth, alongside first-party efforts. This strategic shift aims to counteract recent App Store headwinds, including regulatory pressures reducing commission revenue and a slump in mobile gaming, by potentially leveraging the distribution of AI agents.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/ef825df1309f8d9f442a.webp",
+    "image_alt": "A branching diagram shows Apple's App Store revenue facing regulatory and gaming headwinds, leading to a new path for growth through third-party AI applications."
+  },
+  {
+    "title": "Y Combinator’s Garry Tan uses AI agents so much, he spends up to $200K a year on tokens",
+    "url": "https://techcrunch.com/2026/11/02/y-combinators-garry-tan-uses-ai-agents-so-much-he-spends-up-to-200k-a-year-on-tokens/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-03",
+    "summary": "Y Combinator CEO Garry Tan revealed he spends up to $200,000 annually on AI agent tokens, utilizing them extensively for work projects, coding, and personal life management, including reading emails and notes. His personal agent, and YC's internal agent \"Stray Light,\" leverage vast contextual data to assist with diverse tasks. Tan believes personal AI agents will become mainstream only if their current high operational costs significantly decrease, as his spending represents a \"crazy privilege.\"",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/03a02c7cad805d2214e1.webp",
+    "image_alt": "A diagram showing a user interacting with an AI agent, leading to high token costs, which then acts as a barrier preventing widespread mainstream adoption."
+  },
+  {
+    "title": "Trajectory raises $45M to make AI model training accessible to nontechnical experts",
+    "url": "https://techcrunch.com/2026/11/02/trajectory-raises-45m-to-make-ai-model-training-accessible-to-nontechnical-experts/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-02",
+    "summary": "Trajectory, an AI startup, has raised $45 million in Series A funding to make AI model training accessible to non-technical experts. Its platform automates continual learning by connecting to applications, collecting user feedback on open-source AI models, and then retraining them to improve at specialized tasks. This enables professionals like lawyers and doctors to near-automatically refine AI models, making the deployment of specialized AI faster and more cost-effective for businesses.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/bf16960e7ff30af537fb.webp",
+    "image_alt": "Diagram shows how Trajectory's platform uses user feedback to transform a base AI model into a specialized expert AI for specific tasks, making it accessible to non-technical users."
+  }
+]
