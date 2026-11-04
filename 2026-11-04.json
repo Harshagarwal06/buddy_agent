@@ -1,0 +1,120 @@
+[
+  {
+    "title": "AI inference startup Fal doubles its valuation to $16B as demand surges",
+    "url": "https://techcrunch.com/2026/11/03/ai-inference-startup-fal-doubles-its-valuation-to-16b-as-demand-surges/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-03",
+    "summary": "AI inference startup Fal has doubled its valuation to $16 billion after raising $1.3 billion in its latest funding round, led by Bessemer Venture Partners. This significant increase, from $8 billion in April, is driven by soaring demand for its services, which host and run trained AI models to generate outputs, particularly for open-source model users. The rapid growth in valuation and revenue, surpassing $800 million annualized, highlights the booming market for AI inference services despite challenges like thin gross margins due to high compute costs.",
+    "tags": [
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/7fa395fc0dd2bb04850f.webp",
+    "image_alt": "A pipeline showing trained AI models entering Fal's service, generating AI outputs."
+  },
+  {
+    "title": "Data centers are turning to old jet engines as the wait for power grows",
+    "url": "https://techcrunch.com/2026/11/03/data-centers-are-turning-to-old-jet-engines-as-the-wait-for-power-grows/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-03",
+    "summary": "AI data centers are increasingly using converted jet engines to generate electricity due to years-long waits for traditional grid connections. These engines, pulled from retired aircraft and rebuilt to burn natural gas, can power a data center in 24 months, compared to seven years for a 100-megawatt grid hookup. This rapid deployment allows companies like xAI and OpenAI to quickly establish operations, addressing the critical power supply shortfall for the burgeoning AI industry, despite the engines being less efficient and more polluting than conventional power plants.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/27bc4b7171ea0d51695e.webp",
+    "image_alt": "A comparison showing slow grid power connection versus fast jet engine deployment to power AI data centers, highlighting the trade-offs."
+  },
+  {
+    "title": "Google will let schools disable its AI tools, but not without sacrificing Search",
+    "url": "https://techcrunch.com/2026/11/03/google-will-let-schools-disable-its-ai-tools-but-not-without-sacrificing-search/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-03",
+    "summary": "Google announced it will disable its AI tools for K-12 students by default next year, requiring school administrators to explicitly enable them. This change means that schools opting to restrict AI will lose access to Google Search, as AI features like AI Overviews are now deeply integrated and inseparable from the search engine. Consequently, schools must either accept the integration of AI into Google Search or forgo access to the widely used search platform for their students, impacting educational resource access.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/ee8b2de6d55bc1159bf9.webp",
+    "image_alt": "A branching diagram shows schools choosing to disable AI tools, which blocks Google Search access, versus accepting AI to retain Search."
+  },
+  {
+    "title": "Anthropic is working on a system to prove AI models’ identity",
+    "url": "https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-03",
+    "summary": "Anthropic is developing FlashProve, an open-source system designed to cryptographically verify the identity of AI models producing specific outputs. This system requires AI labs to publish unique \"fingerprints\" for their models, which can be matched to outputs without revealing proprietary internal weights. FlashProve aims to prevent companies from secretly swapping AI models, ensure users receive responses from the intended model, and validate third-party claims about advanced AI usage.",
+    "tags": [
+      "technology",
+      "ai",
+      "security"
+    ],
+    "importance": 3,
+    "image_url": "images/aaf4815dae4fb30e76bb.webp",
+    "image_alt": "A diagram explaining how AI model outputs are verified against cryptographic fingerprints to confirm their identity and prevent model swapping."
+  },
+  {
+    "title": "Hiding inside Palantir’s skyrocketing quarter is a foreboding signal",
+    "url": "https://techcrunch.com/2026/11/03/hiding-inside-palantirs-skyrocketing-quarter-is-a-foreboding-signal/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-03",
+    "summary": "Palantir reported a strong third-quarter earnings, exceeding expectations with $2.31 billion in revenue and adjusted earnings per share of 44 cents, yet its stock traded slightly down due to concerns about enterprise sales. For the first time, U.S. commercial revenue ($984 million) surpassed U.S. government revenue, driven by demand for its secure AI software. However, the company noted a trend of enterprises signing shorter-term trials, indicating a market where businesses are quicker to adopt AI but also more willing to cancel contracts.",
+    "tags": [
+      "business",
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/3ecf445bdc055fa4fdfa.webp",
+    "image_alt": "Diagram showing how short enterprise AI trial contracts can either expand into long-term agreements or be quickly canceled, illustrating market volatility."
+  },
+  {
+    "title": "Ted Schlein’s Ballistic Ventures seeks $490M for new funds amid AI-driven cybersecurity boom",
+    "url": "https://techcrunch.com/2026/11/03/ted-schleins-ballistic-ventures-seeks-490m-for-new-funds-amid-ai-driven-cybersecurity-boom/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-03",
+    "summary": "Ballistic Ventures, a cybersecurity-focused venture capital firm, is seeking to raise $490 million across two new funds: a $360 million third flagship fund and a $130 million Ballistic Ventures Fund B. This fundraising effort follows its previous $360 million fund in 2024 and comes amidst a significant boom in AI-driven cybersecurity, with U.S. cybersecurity startups raising $11.5 billion in 2025. The capital infusion aims to capitalize on both the increased sophistication of AI-powered cyberattacks and the emerging opportunities for cybersecurity startups developing new defenses.",
+    "tags": [
+      "business",
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/1b88046aeb7638354018.webp",
+    "image_alt": "A pipeline showing venture capital funds flowing into cybersecurity startups, driven by the rise of AI-powered cyber threats and opportunities."
+  },
+  {
+    "title": "Anthropic is still grappling with the economics of compute",
+    "url": "https://techcrunch.com/2026/11/03/anthropic-is-still-grappling-with-the-economics-of-compute/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-03",
+    "summary": "Anthropic's latest financial filing reveals a worsening trend in its compute margins, with costs consuming 58% of revenue in the most recent quarter, up from 48% previously. This decline is attributed to the company's rapid growth in demand, forcing it to procure more expensive short-term compute commitments from \"neoclouds\" like SpaceX, Nscale, and Akamai, rather than relying solely on cheaper multi-year deals. Consequently, despite significant revenue growth to $17 billion, Anthropic's operating loss expanded, raising concerns for potential IPO investors who typically seek improving profitability.",
+    "tags": [
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/e02f2b5f5927a45c8c77.webp",
+    "image_alt": "Diagram shows high compute demand leading to expensive urgent compute, which causes Anthropic's profit margins to decline."
+  },
+  {
+    "title": "Netflix’s new AI Discover tab helps you find something to watch based on your mood",
+    "url": "https://techcrunch.com/2026/11/03/netflixs-new-ai-discover-tab-helps-you-find-something-to-watch-based-on-your-mood/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-03",
+    "summary": "Netflix is rolling out a new \"AI Discover\" tab, allowing users to find content recommendations based on their current mood and viewing preferences. This experimental feature lets users select curated themes like \"scare me\" or \"quick watches,\" powered by a new intelligence layer that responds in real-time. The addition aims to shift content discovery from endless scrolling to a more personalized, AI-powered experience, making Netflix's expanding library easier for subscribers to navigate and enjoy.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/7d6b945c1fe541f9753f.webp",
+    "image_alt": "A branching diagram showing how user moods are processed by an AI layer to generate tailored show recommendations on Netflix."
+  }
+]
