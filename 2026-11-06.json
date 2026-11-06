@@ -1,0 +1,122 @@
+[
+  {
+    "title": "OpenAI released a new cybersecurity model. Is that enough?",
+    "url": "https://techcrunch.com/2026/11/05/openai-released-a-new-cybersecurity-model-is-that-enough/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-05",
+    "summary": "OpenAI has released ChatGPT Cyber, a new cybersecurity model, following a researcher's use of an earlier OpenAI model (GPT 5.6 Sol) to uncover a severe vulnerability in Ubuntu servers. The researcher, Max Justicz, found the complex bug in just two hours by directing the AI at existing code, highlighting its advanced capability. This development underscores AI's growing potential to rapidly identify critical system flaws, suggesting a significant increase in both discovered vulnerabilities and the urgent need for robust defensive measures against potential exploitation.",
+    "tags": [
+      "technology",
+      "ai",
+      "security"
+    ],
+    "importance": 5,
+    "image_url": "images/b49c9422884090ef5697.webp",
+    "image_alt": "A pipeline diagram showing an AI model scanning code, identifying a vulnerability, and leading to a security patch, illustrating AI's role in cybersecurity."
+  },
+  {
+    "title": "Palo Alto Networks in talks to buy AI agent security startup Clutch for $500M",
+    "url": "https://techcrunch.com/2026/11/05/palo-alto-networks-in-talks-to-buy-ai-agent-security-startup-clutch-for-500m/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-06",
+    "summary": "Palo Alto Networks is reportedly in talks to acquire Clutch Security, an AI agent security startup, for $500 million in cash plus potential milestone payouts. Clutch specializes in securing AI agents' access to sensitive company systems and currently has nearly $10 million in annual recurring revenue, valuing the potential acquisition at approximately 50 times its ARR. This high valuation reflects the cybersecurity market's intense focus on securing software against increasingly sophisticated AI-driven cyberattacks and aligns with Palo Alto Networks' strategy of acquiring innovative solutions.",
+    "tags": [
+      "business",
+      "technology",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/eaf676c5f7b2f5d87157.webp",
+    "image_alt": "A diagram showing an AI agent attempting to access a company system, with a security gate representing Clutch's technology controlling and securing that access."
+  },
+  {
+    "title": "Axiom Math wants to keep AI slop out of mathematics",
+    "url": "https://techcrunch.com/2026/11/05/axiom-math-wants-to-keep-ai-slop-out-of-mathematics/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-05",
+    "summary": "Axiom Math has formally verified the Stacks Project, one of the largest bodies of human-written mathematics, to create a reliable foundation for AI. The company's AI agents translated the project's 7,654 pages into 16 million lines of computer-checked code using a proof assistant in the Lean programming language. This rigorous formal verification ensures logical soundness and consistency, aiming to prevent \"AI slop\" and provide a trustworthy base for AI agents to develop software and conduct scientific research.",
+    "tags": [
+      "technology",
+      "ai",
+      "science"
+    ],
+    "importance": 4,
+    "image_url": "images/bb923eb9e3b2f2e425a1.webp",
+    "image_alt": "Diagram showing human-written mathematics entering an AI verification process, resulting in a robust, computer-checked foundation for future AI applications."
+  },
+  {
+    "title": "OpenAI president Greg Brockman says company could be IPO ready in 2027",
+    "url": "https://techcrunch.com/2026/11/05/openai-president-greg-brockman-says-company-could-be-ipo-ready-in-2027/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-05",
+    "summary": "OpenAI President Greg Brockman stated the company could be ready for an Initial Public Offering (IPO) by 2027, citing significant growth in its enterprise revenue. The company experienced a 70% quarterly growth in annualized revenue during Q3 2026, primarily driven by its enterprise segment doubling and now constituting the majority of its total income. This strategic shift from a perceived consumer company to a strong enterprise player, marked by successful client partnerships, underpins OpenAI's increased confidence in its business trajectory and future public offering.",
+    "tags": [
+      "technology",
+      "business",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/a455be9438b0aae3c4e4.webp",
+    "image_alt": "A diagram illustrating OpenAI's revenue shift from consumer to enterprise, showing how enterprise growth leads to increased confidence for a potential 2027 IPO."
+  },
+  {
+    "title": "Meta warns that election backlash against data centers could make AI expansion harder",
+    "url": "https://techcrunch.com/2026/11/05/metas-warns-that-election-backlash-against-data-centers-could-make-ai-expansion-harder/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-05",
+    "summary": "Meta warns that recent election outcomes, where politicians ran on anti-data-center platforms, will make it significantly harder for companies to build essential infrastructure for AI expansion. The company's president, Dina Powell McCormick, stated that public backlash against data centers is tied to broader negative sentiment about AI technology, which is visibly manifested by these facilities. Meta believes demonstrating the value of both data centers to local communities and AI technology itself is crucial to overcome this opposition and ensure future technological development.",
+    "tags": [
+      "business",
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/bdca2508693e2633c9e0.webp",
+    "image_alt": "A diagram showing community backlash against data centers creating a bottleneck, hindering the progress and expansion of artificial intelligence development."
+  },
+  {
+    "title": "Airbnb says it’s launching an AI travel agent in the first half of 2027",
+    "url": "https://techcrunch.com/2026/11/05/airbnb-says-its-launching-an-ai-travel-agent-in-the-first-half-of-2027/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-05",
+    "summary": "Airbnb announced plans to launch its custom-designed AI travel agent in the first half of 2027, aiming to offer a more engaging planning experience than traditional chatbots. Unlike text-heavy general-purpose agents, Airbnb's AI will draw from hundreds of travel-specific interface components like maps, photos, and itineraries, composing them in real-time to match user needs. This \"generative UI\" approach seeks to preserve the aspirational and discovery aspects of trip planning, allowing users to interact with a personalized interface rather than just a chat response.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/ec6743cd29ddbfa3e589.webp",
+    "image_alt": "A comparison showing how a simple chatbot query is processed by Airbnb's AI to generate a rich, dynamic travel planning interface with maps, photos, and calendars."
+  },
+  {
+    "title": "Meta says US users can now video chat with their Muse AI avatar",
+    "url": "https://techcrunch.com/2026/11/05/meta-says-us-users-can-now-video-chat-with-their-muse-ai-avatar/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-05",
+    "summary": "Meta has rolled out Muse Voice, enabling all U.S. users to video chat with their customizable Muse AI avatar. This feature, powered by new Muse Realtime Avatar and Voice technologies, allows users to interact with an animated digital character that responds with subtle expressions and gestures, even though it doesn't visually perceive the user. By anthropomorphizing the AI agent and offering real-time visual interaction, Meta aims to foster a stronger emotional connection between users and their AI, potentially increasing engagement across mobile, web, Mac, and future wearable devices.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/be09a1b7d37369df7838.svg",
+    "image_alt": "A pipeline shows a user's voice leading to an AI avatar chat, which fosters a stronger user connection."
+  },
+  {
+    "title": "Claude can now analyze your spending with its new Personal Finance tool",
+    "url": "https://techcrunch.com/2026/11/05/claude-can-now-analyze-your-spending-with-its-new-personal-finance-tool/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-05",
+    "summary": "Anthropic has launched a new \"Personal Finance\" tool for its AI chatbot, Claude, allowing users to connect bank and credit card accounts to analyze spending. This read-only feature uses Plaid to access balances, transaction history, and credit limits, enabling Claude to categorize expenses, identify issues like duplicate charges, and explain financial concepts. The development positions Claude as a financial companion, offering personalized insights into spending patterns and financial health, similar to tools already offered by competitors like ChatGPT.",
+    "tags": [
+      "ai",
+      "business",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/b88f46e43a608a0a3800.webp",
+    "image_alt": "A pipeline shows bank accounts feeding into AI review, which then generates personalized spending insights, explaining how Claude's new finance tool works."
+  }
+]
