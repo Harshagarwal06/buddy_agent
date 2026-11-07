@@ -1,0 +1,120 @@
+[
+  {
+    "title": "Hundreds of Artex AI hacking tools found publicly exposed to the web",
+    "url": "https://techcrunch.com/2026/11/06/hundreds-of-artex-ai-hacking-tools-found-publicly-exposed-to-the-web/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-06",
+    "summary": "Security researchers have discovered hundreds of copies of a Chinese-made AI hacking tool publicly exposed to the internet, allowing outsiders to launch cyberattacks. The open-source Artex software, an autonomous penetration testing tool linked to several cyberattacks, has over 800 distinct deployments accessible without a password, despite not requiring internet exposure. This misconfiguration increases the chance of misuse, exposing attack tools like implants and enabling broad-scale cyberattacks, including those against the Korean finance industry and ConnectWise.",
+    "tags": [
+      "ai",
+      "security",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/086a0c9ffda526376125.webp",
+    "image_alt": "A pipeline shows Artex AI hacking tools, meant for security testing, are publicly exposed, leading to unauthorized access to attack data."
+  },
+  {
+    "title": "OpenAI reportedly raises an additional $11 billion at a $1.25 trillion valuation",
+    "url": "https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-06",
+    "summary": "OpenAI has reportedly secured $11 billion in a new funding round, valuing the artificial intelligence lab at $1.25 trillion. This initial sum is part of a larger, ongoing round that could reach $20 billion, though it falls short of an earlier $30 billion target, and comes as competitor Anthropic also faces lower-than-expected valuations. The development suggests a potentially cautious investment climate for major AI companies, influencing future fundraising and public offering strategies amidst market jitters and anticipated regulatory challenges.",
+    "tags": [
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/6e09fd6fe48b3ca8d50e.webp",
+    "image_alt": "A comparison shows OpenAI's high initial funding target next to a lower actual raised amount, with a thermometer indicating a cooling investment market."
+  },
+  {
+    "title": "How a Blue Wave midterm might reshape the AI industry",
+    "url": "https://techcrunch.com/podcast/how-a-blue-wave-midterm-might-reshape-the-ai-industry/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-06",
+    "summary": "Democrats' historic victories in the recent U.S. midterm elections are poised to reshape the technology industry, particularly concerning artificial intelligence infrastructure. Voters approved restrictions on data center development in 40 out of 41 ballot measures, signaling a strong public mandate for increased oversight of tech's physical footprint. This electoral shift implies that newly-elected Democratic governors and congressmembers will likely advocate for greater government scrutiny of Big Tech, potentially influencing future expansion and operational practices.",
+    "tags": [
+      "technology",
+      "politics",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/1c2cae1d9462573edb23.webp",
+    "image_alt": "A diagram showing how election votes lead to data center restrictions, impacting the broader tech industry and its future development."
+  },
+  {
+    "title": "After blocking Muse, Amazon now lets users text Alexa to help them shop",
+    "url": "https://techcrunch.com/2026/11/06/after-blocking-muse-amazon-now-lets-users-text-alexa-to-help-them-shop/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-06",
+    "summary": "Amazon has launched a new feature enabling select U.S. customers to text its Alexa AI agent for shopping assistance directly on its platform. Users can interact with Alexa using natural language queries to search for items, add them to carts, make purchases, manage lists, track prices, and even share images for similar product searches. This initiative aims to leverage the growing market for consumer-focused AI agents, enhancing the shopping experience and learning user preferences, particularly ahead of the holiday season.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/6eb2fb7d641be3313f3e.svg",
+    "image_alt": "A pipeline diagram showing a user texting, leading to Alexa processing shopping requests, and resulting in personalized purchases."
+  },
+  {
+    "title": "Meta introduces Spaces, a new way to collaborate with your Muse agent",
+    "url": "https://techcrunch.com/2026/11/06/meta-introduces-spaces-a-new-way-to-collaborate-with-your-muse-agent/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-06",
+    "summary": "Meta has introduced \"Spaces,\" a new feature designed to enhance collaboration with its Muse AI agents. These Spaces function as topic-specific breakout conversations, allowing users to dedicate a Muse agent to a particular goal like vacation planning or recipe collection. They integrate with third-party apps, enabling automatic updates for information such as concert dates or price changes, thereby streamlining task management and keeping relevant data current without constant user prompting.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/940b5d0a23cde72eb124.webp",
+    "image_alt": "A branching diagram shows a central AI agent creating multiple topic-specific spaces, each managing a distinct project with automatically updated information."
+  },
+  {
+    "title": "After the midterms, is the AI industry in for a rough two years?",
+    "url": "https://techcrunch.com/video/after-the-midterms-is-the-ai-industry-in-for-a-rough-two-years/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-06",
+    "summary": "U.S. midterm elections resulted in historic Democratic victories and public support for increased restrictions on data center development. Voters approved more limitations in 40 out of 41 data center-related ballot measures, indicating a strong public desire for greater oversight. This shift suggests the tech industry, especially data centers and Big Tech, will face heightened government scrutiny and potential new regulations in the coming two years.",
+    "tags": [
+      "business",
+      "politics",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/e8ba3986ef129ac19468.webp",
+    "image_alt": "A diagram showing a voter ballot leading to new restrictions being placed on data centers, illustrating the impact of elections on tech regulation."
+  },
+  {
+    "title": "Crusoe sells troubled Wyoming data center project to Google",
+    "url": "https://techcrunch.com/2026/11/06/crusoe-sells-troubled-wyoming-data-center-project-to-google/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-07",
+    "summary": "Crusoe, a Denver-based data center developer, sold an unfinished Wyoming data center project to Google, which will now invest $17 billion to complete the campus. Google, initially a target customer, reportedly raised concerns about Crusoe's cost and construction timeline for the 10-gigawatt project. This transaction underscores the substantial difficulties independent developers encounter in delivering massive data center projects on budget and schedule, often due to securing equipment, power, and managing local community opposition.",
+    "tags": [
+      "technology",
+      "business",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/0f00b53302fe78bd6edc.webp",
+    "image_alt": "A pipeline diagram showing an unfinished data center project facing build challenges, leading to a new development phase under substantial investment."
+  },
+  {
+    "title": "Ramp data shows AI spending stalling just as Anthropic nears its IPO",
+    "url": "https://techcrunch.com/2026/11/06/ramp-data-shows-ai-spending-stalling-just-as-anthropic-nears-its-ipo/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-06",
+    "summary": "AI spending by companies has flatlined over late summer despite a significant increase in AI token usage, according to new data from Ramp. Token spend grew only 1.5% in August and September, a sharp decline from 42% growth in July, primarily due to intense price competition among AI providers and more cost-aware customers. This slowdown suggests that the era of hypergrowth for AI companies, particularly as Anthropic approaches its IPO, may be ending, potentially impacting investor expectations and future revenue trajectories.",
+    "tags": [
+      "business",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/0bf67a6acfa01cc71a5d.webp",
+    "image_alt": "A diagram showing high AI token usage entering a bottleneck labeled \"Price Competition,\" resulting in stalled AI spending."
+  }
+]
