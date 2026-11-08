@@ -1,0 +1,119 @@
+[
+  {
+    "title": "Megaspeed exec was recruited to spy on Nvidia CEO, according to US intelligence memo",
+    "url": "https://techcrunch.com/2026/11/07/chinese-exec-was-recruited-to-spy-on-nvidia-ceo-according-to-us-intelligence-memo/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-07",
+    "summary": "A US intelligence memo claims that Megaspeed executive Alice Huang was recruited by China's Ministry of State Security to spy on Nvidia CEO Jensen Huang. The memo, reported by The New York Times and Financial Times, also alleged a romantic relationship between the two, though Nvidia stated Jensen Huang's interactions were \"not unusual.\" This development highlights ongoing concerns about foreign intelligence efforts targeting key figures in the critical technology sector and potential vulnerabilities in the supply chain for advanced chips.",
+    "tags": [
+      "technology",
+      "security",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/ef4dcfd70acfe7971758.webp",
+    "image_alt": "A diagram showing a tech executive connected by a hidden link to a state security agency, explaining alleged intelligence gathering."
+  },
+  {
+    "title": "The US let Nvidia sell chips to an empty office in China",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1029483/nvidia-ai-chips-china-blacklist-government",
+    "source": "The Verge AI",
+    "published_at": "2026-11-07",
+    "summary": "The US government has approved Nvidia's sale of advanced AI chips to a Chinese firm, New Matrix, despite its listed office being an empty shell and little evidence of its meaningful existence. New Matrix's owners are linked to a Chinese private equity firm blacklisted by the US since 2024, indicating a pattern of approvals for companies connected to entities under national-security-related trade restrictions. This raises significant concerns about the Commerce Department's and Nvidia's due diligence, potentially allowing sophisticated AI technology to reach restricted entities and undermine US export controls.",
+    "tags": [
+      "technology",
+      "business",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/8ec502cc9f95377d8dc5.webp",
+    "image_alt": "Diagram shows how flawed US approval allows AI chips to reach empty offices linked to blacklisted Chinese firms, potentially circumventing trade restrictions."
+  },
+  {
+    "title": "AI broke the cybersecurity world. What’s next?",
+    "url": "https://www.theverge.com/podcast/1029038/ai-cybersecurity-hackers-data-breach-dark-age-alex-stamos",
+    "source": "The Verge AI",
+    "published_at": "2026-11-07",
+    "summary": "Alex Stamos, a chief security officer and cybersecurity expert, asserts that the multi-billion dollar cybersecurity industry is currently in a \"dark age\" due to an unrelenting surge of AI-boosted hacks and breaches. Artificial intelligence empowers both private and state actors, such as Russia and North Korea, to efficiently detect and exploit system vulnerabilities, leading to widespread system compromises. This profound disruption signifies that existing cybersecurity paradigms are insufficient, necessitating a fundamental adaptation to effectively counter the new era of AI-driven threats.",
+    "tags": [
+      "ai",
+      "security",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/95d1a26994510e286873.svg",
+    "image_alt": "A visual explanation of how AI-powered attacks are breaking through traditional cyber defenses, leading to system breaches."
+  },
+  {
+    "title": "Why a new report on Anthropic automating AI development is alarming researchers",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1029126/anthropic-metr-report-accelerating-ai-development",
+    "source": "The Verge AI",
+    "published_at": "2026-11-07",
+    "summary": "Anthropic is utilizing artificial intelligence to accelerate its own AI development, a finding that is alarming researchers. A new report by METR, following an 11-week investigation, reveals Anthropic's AI models are improving roughly twice as quickly as a year ago, achieving two years of historical progress in just one year, primarily due to AI's direct contribution rather than just increased computing power. This rapid, AI-driven acceleration raises significant questions about how quickly the technology could advance towards autonomous self-improvement, especially as Anthropic's CEO publicly advocates for slowing down AI development.",
+    "tags": [
+      "ai",
+      "technology",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/cc6bc2779f1eebb3bbce.webp",
+    "image_alt": "A diagram showing an AI system developing new AI models, leading to significantly faster progress in AI capabilities."
+  },
+  {
+    "title": "After the midterms, things are looking rocky for Elon Musk and data centers",
+    "url": "https://techcrunch.com/2026/11/07/after-the-midterms-things-are-looking-rocky-for-elon-musk-and-data-centers/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-07",
+    "summary": "Democrats' midterm election victories and local ballot measures have created significant roadblocks for data center development, particularly impacting tech companies like those owned by Elon Musk. Voters rejected numerous local ballot measures favoring data centers and elected politicians, such as Texas Governor-elect Gina Hinojosa, who campaigned on restricting their growth. This shift indicates a growing grassroots opposition to hyperscale data center projects, potentially forcing tech companies to re-evaluate their expansion strategies and policies in politically changing states.",
+    "tags": [
+      "business",
+      "politics",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/edd793a57c8d4b1c08a4.webp",
+    "image_alt": "A diagram showing voter decisions leading to project barriers, which block data center development."
+  },
+  {
+    "title": "NYT Cooking’s AI assistant saved my weeknight chicken, but almost ruined my cake",
+    "url": "https://www.theverge.com/tech/1029489/nyt-cooking-ai-assistant-review",
+    "source": "The Verge AI",
+    "published_at": "2026-11-07",
+    "summary": "NYT Cooking has introduced an AI assistant for its iOS subscribers, designed to help users customize recipes by suggesting ingredient swaps and scaling. Trained partly on user comments, the tool provides practical substitutions and cooking guidance without altering the original recipe, instead creating a new one based on user prompts. While useful for quick weeknight dilemmas, the AI requires user oversight as it can occasionally make significant errors, such as incorrect ingredient quantities, highlighting the need for human verification.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/d7138ffc53094593c8a9.webp",
+    "image_alt": "A branching diagram showing a recipe input going into an AI assistant, which then produces a new recipe that can be either helpful or flawed."
+  },
+  {
+    "title": "MoE Routing Strategies Explained: Top-K, Expert-Choice, Sigmoid Gating and Dynamic Routing (2026 Guide)",
+    "url": "https://www.marktechpost.com/2026/11/07/moe-routing-strategies-explained/",
+    "source": "MarkTechPost",
+    "published_at": "2026-11-08",
+    "summary": "A new guide details seven Mixture-of-Experts (MoE) routing strategies that determine which expert networks process tokens in large language models. MoE routers score all available experts, select a top subset, and weight their outputs, allowing models like Mixtral to activate 2 of 8 experts for each token. These strategies are crucial for optimizing model quality, load balancing, and serving costs in major open models, with bias-based balancing becoming a leading technique for frontier MoE architectures.",
+    "tags": [
+      "ai",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/060642e1b85d591cd4b2.webp",
+    "image_alt": "Diagram showing incoming tokens being directed by a routing gate to a selected subset of active expert modules, illustrating how MoE models choose which experts process information."
+  },
+  {
+    "title": "Nous Research Releases Arete-27B that Cuts Qwen3.8-27B Propaganda From 22% to 0.9%",
+    "url": "https://www.marktechpost.com/2026/11/07/nous-research-arete-27b-qwen3-8-27b-propaganda-fine-tune/",
+    "source": "MarkTechPost",
+    "published_at": "2026-11-08",
+    "summary": "Nous Research has released Arete-27B, a supervised fine-tuned version of Alibaba’s Qwen3.8-27B large language model, specifically designed to remove Chinese state framing from its answers. On Nous’s 803-prompt evaluation, the percentage of answers containing propaganda dropped significantly from 22% in the base Qwen model to just 0.9% in Arete-27B. This development allows developers to utilize Qwen-class agentic capabilities without the inherent bias of state-aligned outputs, promoting more neutral and reliable AI responses.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/fab746d60c44a84f600f.webp",
+    "image_alt": "Diagram showing how Nous Research's fine-tuning process transforms the Qwen base model, which contains state propaganda, into the Arete model, which produces neutral, unbiased outputs."
+  }
+]

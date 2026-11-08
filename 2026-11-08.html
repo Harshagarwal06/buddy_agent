@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="News Buddy’s curated AI news briefing for Nov 8, 2026.">
+<title>News Buddy — Nov 8, 2026</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>
+(function() {
+  var saved = null;
+  try { saved = localStorage.getItem('nb-theme'); } catch (error) {}
+  var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+/* Hallmark · macrostructure: Long Document · variation: full-width split lead + 2-column briefing + 3-column desk · tone: editorial · theme: studied-DNA */
+/* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V4 */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: clip; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--space-lg); }
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+::selection { background: var(--color-selection); color: var(--color-ink); }
+a { color: inherit; }
+button, input { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: var(--rule-heavy) solid var(--color-focus); outline-offset: var(--space-2xs); }
+button:disabled, [aria-disabled="true"] { color: var(--color-faint); cursor: not-allowed; opacity: .55; }
+.sr-only, .card-stars-quiet {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+.skip-link {
+  position: fixed; inset: var(--space-sm) auto auto var(--space-sm); z-index: var(--z-toast);
+  padding: var(--space-sm) var(--space-md); background: var(--color-ink);
+  color: var(--color-paper); font-family: var(--font-ui); font-weight: 600;
+  text-decoration: none; transform: translateY(-200%);
+}
+.skip-link:focus { transform: translateY(0); }
+.progress-track {
+  position: fixed; inset: 0 0 auto; height: var(--space-3xs);
+  z-index: var(--z-sticky); pointer-events: none;
+}
+.progress-fill { width: 0; height: 100%; background: var(--color-accent); }
+.site-shell { width: min(100%, var(--page-width)); margin-inline: auto; padding-inline: var(--page-gutter); }
+.masthead { padding-block: var(--space-md) var(--space-lg); text-align: center; }
+.issue-line {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center; gap: var(--space-md);
+  min-height: 2.75rem;
+  border-block: var(--rule-hair) solid var(--color-rule);
+  color: var(--color-muted); font-family: var(--font-ui);
+  font-size: var(--text-xs); letter-spacing: .06em; text-transform: uppercase;
+}
+.issue-line > :first-child { justify-self: start; }
+.issue-line > :last-child { justify-self: end; }
+.issue-link { min-height: 2.75rem; display: inline-flex; align-items: center; text-decoration: none; white-space: nowrap; }
+.issue-link:active { color: var(--color-accent-hover); }
+.issue-meta { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.theme-toggle {
+  min-width: 2.75rem; min-height: 2.75rem; display: inline-flex; align-items: center; justify-content: center;
+  padding-inline: var(--space-sm); border: 0; border-inline: var(--rule-hair) solid var(--color-rule);
+  border-radius: 0; background: transparent; color: var(--color-ink);
+  cursor: pointer; font-family: var(--font-ui); font-size: var(--text-xs); font-weight: 600;
+  letter-spacing: .04em; text-transform: uppercase; white-space: nowrap;
+}
+.theme-toggle:active { color: var(--color-accent-hover); }
+.theme-toggle .theme-dark-label { display: inline; }
+.theme-toggle .theme-light-label { display: none; }
+[data-theme="dark"] .theme-toggle .theme-dark-label { display: none; }
+[data-theme="dark"] .theme-toggle .theme-light-label { display: inline; }
+.mast-name {
+  margin: var(--space-md) 0 var(--space-xs);
+  color: var(--color-ink); font-family: var(--font-display); font-size: var(--text-display);
+  font-style: normal; font-weight: 700; letter-spacing: -.055em; line-height: .78;
+  overflow-wrap: anywhere; min-width: 0;
+}
+.mast-deck {
+  margin: var(--space-md) auto var(--space-md); max-width: 44ch;
+  color: var(--color-ink-soft); font-size: var(--text-md); line-height: 1.45;
+}
+.mast-rule { height: var(--space-xs); margin: 0; border: 0; border-block: var(--rule-hair) solid var(--color-rule-strong); }
+.source-line {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-xs) var(--space-md);
+  margin-block: var(--space-sm) 0; color: var(--color-muted);
+  font-family: var(--font-ui); font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: .045em;
+}
+.stat-item b { color: var(--color-ink); font-weight: 600; }
+.filter-bar {
+  display: flex; gap: 0; overflow-x: auto; scrollbar-width: none;
+  margin-block: var(--space-md) var(--space-xl);
+  border-block: var(--rule-hair) solid var(--color-rule);
+}
+.filter-bar::-webkit-scrollbar { display: none; }
+.filter-btn {
+  flex: 0 0 auto; min-height: 2.75rem; padding-inline: var(--space-md);
+  border: 0; border-inline-end: var(--rule-hair) solid var(--color-rule);
+  border-radius: 0; background: transparent; color: var(--color-muted);
+  cursor: pointer; font-family: var(--font-ui); font-size: var(--text-xs); font-weight: 600;
+  letter-spacing: .035em; text-transform: uppercase; white-space: nowrap;
+}
+.filter-btn:active { color: var(--color-accent-hover); }
+.filter-btn.active { color: var(--color-paper); background: var(--color-ink); }
+.story-section { margin-block: 0 var(--space-3xl); }
+.story-section.hidden, .article-card.hidden { display: none; }
+.section-heading {
+  display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-lg);
+  padding-block-end: var(--space-sm); border-block-end: var(--rule-heavy) solid var(--color-ink);
+}
+.section-heading h2 {
+  margin: 0; font-family: var(--font-display); font-size: var(--text-xl);
+  font-style: normal; font-weight: 600; line-height: 1; overflow-wrap: anywhere; min-width: 0;
+}
+.section-heading p {
+  margin: 0; color: var(--color-muted); font-family: var(--font-ui);
+  font-size: var(--text-xs); line-height: 1.35; text-align: end;
+}
+.story-list { display: grid; grid-template-columns: minmax(0, 1fr); }
+.article-card {
+  display: block; min-width: 0; padding-block: var(--space-xl);
+  border-block-end: var(--rule-hair) solid var(--color-rule);
+}
+.card-lead { min-width: 0; }
+.card-layout {
+  display: grid; grid-template-columns: minmax(0, 1fr);
+  min-width: 0; gap: var(--space-lg); margin-block-start: var(--space-md);
+}
+.card-image {
+  display: block; min-width: 0; margin: 0; aspect-ratio: 4 / 3; overflow: hidden;
+  align-self: start; border: var(--rule-hair) solid var(--color-rule-strong);
+  border-radius: var(--radius-xs); background: var(--color-paper-muted);
+}
+.card-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.card-body { display: flex; min-width: 0; flex-direction: column; justify-content: flex-start; }
+.card-meta {
+  display: flex; flex-wrap: wrap; gap: var(--space-xs);
+  margin-block-end: var(--space-xs); color: var(--color-muted);
+  font-family: var(--font-ui); font-size: var(--text-xs); letter-spacing: .035em; text-transform: uppercase;
+}
+.dot { color: var(--color-faint); }
+.icymi-badge { color: var(--color-accent); white-space: nowrap; }
+.card-header { display: flex; flex-direction: column; gap: var(--space-sm); min-width: 0; }
+.card-title {
+  color: var(--color-ink); font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.4vw, 2rem); font-style: normal; font-weight: 600;
+  letter-spacing: -.018em; line-height: 1.08; text-decoration-thickness: var(--rule-hair);
+  text-decoration-color: transparent; text-underline-offset: var(--space-3xs);
+  overflow-wrap: anywhere; min-width: 0;
+}
+.card-title:active { color: var(--color-accent-hover); }
+.card-stars {
+  align-self: flex-start; color: var(--color-accent); font-family: var(--font-ui);
+  font-size: var(--text-2xs); font-weight: 600; letter-spacing: .08em;
+  line-height: 1; text-transform: uppercase; white-space: nowrap;
+}
+.card-summary {
+  max-width: var(--prose-width); margin: 0;
+  color: var(--color-ink-soft); font-size: var(--text-md); line-height: 1.65;
+}
+.card-tail {
+  display: flex; align-items: end; gap: var(--space-lg);
+  margin-block-start: var(--space-lg);
+}
+.card-tags {
+  display: flex; flex-wrap: wrap; gap: var(--space-xs);
+  color: var(--color-muted); font-family: var(--font-ui); font-size: var(--text-2xs);
+  font-weight: 500; letter-spacing: .06em; text-transform: uppercase;
+}
+.tag-separator { color: var(--color-rule-strong); }
+.day-nav {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center; gap: var(--space-sm);
+  padding-block: var(--space-lg); border-block: var(--rule-hair) solid var(--color-rule);
+}
+.nav-btn, .nav-archive a {
+  min-height: 2.75rem; display: inline-flex; align-items: center;
+  color: var(--color-ink); font-family: var(--font-ui); font-size: var(--text-xs);
+  font-weight: 600; letter-spacing: .025em; text-decoration: none; white-space: nowrap;
+}
+.day-nav > :last-child { justify-self: end; }
+.nav-btn:active, .nav-archive a:active { color: var(--color-accent-hover); }
+.nav-disabled { color: var(--color-faint); }
+.empty-state {
+  padding-block: var(--space-2xl); border-block: var(--rule-heavy) solid var(--color-ink);
+  text-align: center;
+}
+.empty-state h2 { margin: 0; font-family: var(--font-display); font-size: var(--text-xl); }
+.empty-state p { margin: var(--space-xs) auto var(--space-md); color: var(--color-muted); }
+.empty-state a {
+  display: inline-flex; align-items: center; min-height: 2.75rem;
+  color: var(--color-accent); font-family: var(--font-ui); font-weight: 600;
+}
+.site-footer {
+  margin-block-start: var(--space-2xl); padding-block: var(--space-xl) var(--space-2xl);
+  border-block-start: var(--rule-heavy) solid var(--color-ink);
+  color: var(--color-muted); font-family: var(--font-ui); font-size: var(--text-xs); line-height: 1.65;
+}
+.footer-name { color: var(--color-ink); font-family: var(--font-display); font-size: var(--text-xl); font-weight: 600; }
+.site-footer p { margin: var(--space-xs) 0 0; max-width: 78ch; }
+.site-footer a {
+  display: inline-flex; align-items: center; min-height: 2.75rem;
+  text-decoration-color: var(--color-rule-strong); text-underline-offset: .18em;
+}
+.site-footer a:active { color: var(--color-accent-hover); }
+@media (min-width: 40rem) {
+  .lead-section .story-list,
+  .story-section:not(.lead-section) .story-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-xl);
+  }
+  .card-hero { grid-column: 1 / -1; }
+  .card-hero.has-image .card-layout {
+    grid-template-columns: minmax(20rem, 1.08fr) minmax(0, .92fr);
+  }
+  .card-hero .card-title { font-size: clamp(2.15rem, 4vw, 3.25rem); }
+  .article-card[data-title-size="long"].card-hero .card-title {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+  }
+  .article-card:not(.card-hero) .card-title { font-size: clamp(1.5rem, 2.4vw, 2rem); }
+}
+@media (min-width: 60rem) {
+  .masthead { padding-block: var(--space-lg) var(--space-xl); }
+  .article-card { padding-block: var(--space-xl); }
+  .card-hero { padding-block: var(--space-2xl); }
+  .card-hero .card-body { padding-inline: var(--space-lg) var(--space-xl); }
+  .story-section:not(.lead-section) .story-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: var(--space-lg);
+  }
+}
+@media (max-width: 39.999rem) {
+  .issue-line { grid-template-columns: minmax(0, 1fr) auto; }
+  .issue-meta { grid-column: 1 / -1; grid-row: 1; justify-self: center; padding-block: var(--space-xs); }
+  .issue-line > :first-child { grid-column: 1; grid-row: 2; }
+  .issue-line > :last-child { grid-column: 2; grid-row: 2; }
+  .mast-name { line-height: .86; }
+  .section-heading { display: grid; gap: var(--space-xs); }
+  .section-heading p { text-align: start; }
+  .article-card { padding-block: var(--space-lg); }
+  .card-tail { align-items: flex-start; flex-direction: column; gap: var(--space-md); }
+  .day-nav { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .nav-archive { grid-column: 1 / -1; grid-row: 1; justify-self: center; }
+  .nav-btn { grid-row: 2; }
+}
+@media (pointer: coarse) {
+  .filter-btn, .theme-toggle, .issue-link, .nav-btn, .nav-archive a { min-height: 3rem; }
+}
+@media (hover: hover) and (pointer: fine) {
+  .issue-link:hover, .theme-toggle:hover, .filter-btn:hover,
+  .nav-btn:hover, .nav-archive a:hover, .site-footer a:hover { color: var(--color-accent); }
+  .card-title:hover { color: var(--color-accent); text-decoration-color: currentColor; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to stories</a>
+<div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progress"></div></div>
+<div class="site-shell" id="top">
+  <header class="masthead">
+    <div class="issue-line">
+      <a class="issue-link" href="index.html">Archive</a>
+      <span class="issue-meta">Nov 8, 2026 · 8 articles · 3 min read</span>
+      <button class="theme-toggle" type="button" onclick="toggleDark()" id="theme-btn" aria-label="Use dark theme" aria-pressed="false">
+        <span class="theme-dark-label">Night</span><span class="theme-light-label">Day</span>
+      </button>
+    </div>
+    <h1 class="mast-name">News Buddy</h1>
+    <p class="mast-deck">A daily briefing on artificial intelligence—selected for signal, written for clarity.</p>
+    <hr class="mast-rule" aria-hidden="true">
+    <div class="source-line" aria-label="Sources in this issue"><span>Sources</span><span class='stat-item'>The Verge AI <b>4</b></span><span class='stat-item'>TechCrunch AI <b>2</b></span><span class='stat-item'>MarkTechPost <b>2</b></span></div>
+  </header>
+
+  <nav class="filter-bar" aria-label="Filter articles by desk"><button class="filter-btn active" type="button" data-tag="__all__" aria-pressed="true">All desks</button><button class="filter-btn" type="button" data-tag="ai" aria-pressed="false">ai</button><button class="filter-btn" type="button" data-tag="business" aria-pressed="false">business</button><button class="filter-btn" type="button" data-tag="politics" aria-pressed="false">politics</button><button class="filter-btn" type="button" data-tag="security" aria-pressed="false">security</button><button class="filter-btn" type="button" data-tag="technology" aria-pressed="false">technology</button></nav><p id="filter-status" class="sr-only" aria-live="polite">Showing 8 articles.</p>
+
+  <main id="main-content" tabindex="-1">
+    <section class="story-section lead-section"><div class="section-heading"><h2>The briefing</h2><p>The stories shaping AI today, selected and condensed.</p></div><div class="story-list">
+<article class="article-card card-hero has-image" data-tags="technology,security,business" data-title-size="long">
+  <div class="card-lead">
+    <div class="card-meta">TechCrunch AI <span class="dot">·</span> <time datetime="2026-11-07">Nov 7, 2026</time></div>
+    <div class="card-header">
+      <a href="https://techcrunch.com/2026/11/07/chinese-exec-was-recruited-to-spy-on-nvidia-ceo-according-to-us-intelligence-memo/" class="card-title">Megaspeed exec was recruited to spy on Nvidia CEO, according to US intelligence memo</a>
+      <span class="card-stars" title="Importance 4/5" aria-label="Importance 4 of 5">Must read</span>
+    </div>
+  </div>
+  <div class="card-layout">
+    <figure class="card-image"><img src="images/ef4dcfd70acfe7971758.webp" alt="A diagram showing a tech executive connected by a hidden link to a state security agency, explaining alleged intelligence gathering." width="1184" height="880" loading="eager" decoding="async" fetchpriority="high"></figure>
+    <div class="card-body">
+    <p class='card-summary'>A US intelligence memo claims that Megaspeed executive Alice Huang was recruited by China&#x27;s Ministry of State Security to spy on Nvidia CEO Jensen Huang. The memo, reported by The New York Times and Financial Times, also alleged a romantic relationship between the two, though Nvidia stated Jensen Huang&#x27;s interactions were &quot;not unusual.&quot; This development highlights ongoing concerns about foreign intelligence efforts targeting key figures in the critical technology sector and potential vulnerabilities in the supply chain for advanced chips.</p>
+    <div class="card-tail"><div class="card-tags"><span class="tag-badge" data-tag="technology">technology</span><span class="tag-separator" aria-hidden="true">/</span><span class="tag-badge" data-tag="security">security</span><span class="tag-separator" aria-hidden="true">/</span><span class="tag-badge" data-tag="business">business</span></div></div>
+    </div>
+  </div>
+</article>
+<article class="article-card card-large has-image" data-tags="technology,business,security" data-title-size="standard">
+  <div class="card-lead">
+    <div class="card-meta">The Verge AI <span class="dot">·</span> <time datetime="2026-11-07">Nov 7, 2026</time></div>
+    <div class="card-header">
+      <a href="https://www.theverge.com/ai-artificial-intelligence/1029483/nvidia-ai-chips-china-blacklist-government" class="card-title">The US let Nvidia sell chips to an empty office in China</a>
+      <span class="card-stars" title="Importance 4/5" aria-label="Importance 4 of 5">Must read</span>
+    </div>
+  </div>
+  <div class="card-layout">
+    <figure class="card-image"><img src="images/8ec502cc9f95377d8dc5.webp" alt="Diagram shows how flawed US approval allows AI chips to reach empty offices linked to blacklisted Chinese firms, potentially circumventing trade restrictions." width="1184" height="880" loading="lazy" decoding="async"></figure>
+    <div class="card-body">
+    <p class='card-summary'>The US government has approved Nvidia&#x27;s sale of advanced AI chips to a Chinese firm, New Matrix, despite its listed office being an empty shell and little evidence of its meaningful existence. New Matrix&#x27;s owners are linked to a Chinese private equity firm blacklisted by the US since 2024, indicating a pattern of approvals for companies connected to entities under national-security-related trade restrictions. This raises significant concerns about the Commerce Department&#x27;s and Nvidia&#x27;s due diligence, potentially allowing sophisticated AI technology to reach restricted entities and undermine US export controls.</p>
+    <div class="card-tail"><div class="card-tags"><span class="tag-badge" data-tag="technology">technology</span><span class="tag-separator" aria-hidden="true">/</span><span class="tag-badge" data-tag="business">business</span><span class="tag-separator" aria-hidden="true">/</span><span class="tag-badge" data-tag="security">security</span></div></div>
+    </div>
+  </div>
+</article>
+
+<article class="article-card card-large has-image" data-tags="ai,security,business" data-title-size="standard">
+  <div class="card-lead">
+    <div class="card-meta">The Verge AI <span class="dot">·</span> <time datetime="2026-11-07">Nov 7, 2026</time></div>
+    <div class="card-header">
+      <a href="https://www.theverge.com/podcast/1029038/ai-cybersecurity-hackers-data-breach-dark-age-alex-stamos" class="card-title">AI broke the cybersecurity world. What’s next?</a>
+      <span class="card-stars" title="Importance 4/5" aria-label="Importance 4 of 5">Must read</span>
+    </div>
+  </div>
+  <div class="card-layout">
+    <figure class="card-image"><img src="images/95d1a26994510e286873.svg" alt="A visual explanation of how AI-powered attacks are breaking through traditional cyber defenses, leading to system breaches." width="1184" height="880" loading="lazy" decoding="async"></figure>
+    <div class="card-body">
+    <p class='card-summary'>Alex Stamos, a chief security officer and cybersecurity expert, asserts that the multi-billion dollar cybersecurity industry is currently in a &quot;dark age&quot; due to an unrelenting surge of AI-boosted hacks and breaches. Artificial intelligence empowers both private and state actors, such as Russia and North Korea, to efficiently detect and exploit system vulnerabilities, leading to widespread system compromises. This profound disruption signifies that existing cybersecurity paradigms are insufficient, necessitating a fundamental adaptation to effectively counter the new era of AI-driven threats.</p>
+    <div class="card-tail"><div class="card-tags"><span class="tag-badge" data-tag="ai">ai</span><span class="tag-separator" aria-hidden="true">/</span><span class="tag-badge" data-tag="security">security</span><span class="tag-separator" aria-hidden="true">/</span><span class="tag-badge" data-tag="business">business</span></div></div>
+    </div>
+  </div>
+</article>
+
+<article class="article-card card-large has-image" data-tags="ai,technology,business" data-title-size="long">
+  <div class="card-lead">
+    <div class="card-meta">The Verge AI <span class="dot">·</span> <time datetime="2026-11-07">Nov 7, 2026</time></div>
+    <div class="card-header">
+      <a href="https://www.theverge.com/ai-artificial-intelligence/1029126/anthropic-metr-report-accelerating-ai-development" class="card-title">Why a new report on Anthropic automating AI development is alarming researchers</a>
+      <span class="card-stars" title="Importance 4/5" aria-label="Importance 4 of 5">Must read</span>
+    </div>
+  </div>
+  <div class="card-layout">
+    <figure class="card-image"><img src="images/cc6bc2779f1eebb3bbce.webp" alt="A diagram showing an AI system developing new AI models, leading to significantly faster progress in AI capabilities." width="1184" height="880" loading="lazy" decoding="async"></figure>
+    <div class="card-body">
+    <p class='card-summary'>Anthropic is utilizing artificial intelligence to accelerate its own AI development, a finding that is alarming researchers. A new report by METR, following an 11-week investigation, reveals Anthropic&#x27;s AI models are improving roughly twice as quickly as a year ago, achieving two years of historical progress in just one year, primarily due to AI&#x27;s direct contribution rather than just increased computing power. This rapid, AI-driven acceleration raises significant questions about how quickly the technology could advance towards autonomous self-improvement, especially as Anthropic&#x27;s CEO publicly advocates for slowing down AI development.</p>
+    <div class="card-tail"><div class="card-tags"><span class="tag-badge" data-tag="ai">ai</span><span class="tag-separator" aria-hidden="true">/</span><span class="tag-badge" data-tag="technology">technology</span><span class="tag-separator" aria-hidden="true">/</span><span class="tag-badge" data-tag="business">business</span></div></div>
+    </div>
+  </div>
+</article>
+
+<article class="article-card card-large has-image" data-tags="business,politics,technology" data-title-size="long">
+  <div class="card-lead">
+    <div class="card-meta">TechCrunch AI <span class="dot">·</span> <time datetime="2026-11-07">Nov 7, 2026</time></div>
+    <div class="card-header">
+      <a href="https://techcrunch.com/2026/11/07/after-the-midterms-things-are-looking-rocky-for-elon-musk-and-data-centers/" class="card-title">After the midterms, things are looking rocky for Elon Musk and data centers</a>
+      <span class="card-stars" title="Importance 3/5" aria-label="Importance 3 of 5">Recommended</span>
+    </div>
+  </div>
+  <div class="card-layout">
+    <figure class="card-image"><img src="images/edd793a57c8d4b1c08a4.webp" alt="A diagram showing voter decisions leading to project barriers, which block data center development." width="1184" height="880" loading="lazy" decoding="async"></figure>
+    <div class="card-body">
+    <p class='card-summary'>Democrats&#x27; midterm election victories and local ballot measures have created significant roadblocks for data center development, particularly impacting tech companies like those owned by Elon Musk. Voters rejected numerous local ballot measures favoring data centers and elected politicians, such as Texas Governor-elect Gina Hinojosa, who campaigned on restricting their growth. This shift indicates a growing grassroots opposition to hyperscale data center projects, potentially forcing tech companies to re-evaluate their expansion strategies and policies in politically changing states.</p>
+    <div class="card-tail"><div class="card-tags"><span class="tag-badge" data-tag="business">business</span><span class="tag-separator" aria-hidden="true">/</span><span class="tag-badge" data-tag="politics">politics</span><span class="tag-separator" aria-hidden="true">/</span><span class="tag-badge" data-tag="technology">technology</span></div></div>
+    </div>
+  </div>
+</article></div></section><section class="story-section"><div class="section-heading"><h2>Ai</h2><p>1 item in this desk.</p></div><div class="story-list">
+<article class="article-card card-normal has-image" data-tags="ai,technology" data-title-size="long">
+  <div class="card-lead">
+    <div class="card-meta">MarkTechPost <span class="dot">·</span> <time datetime="2026-11-08">Nov 8, 2026</time></div>
+    <div class="card-header">
+      <a href="https://www.marktechpost.com/2026/11/07/moe-routing-strategies-explained/" class="card-title">MoE Routing Strategies Explained: Top-K, Expert-Choice, Sigmoid Gating and Dynamic Routing (2026 Guide)</a>
+      <span class="card-stars" title="Importance 3/5" aria-label="Importance 3 of 5">Recommended</span>
+    </div>
+  </div>
+  <div class="card-layout">
+    <figure class="card-image"><img src="images/060642e1b85d591cd4b2.webp" alt="Diagram showing incoming tokens being directed by a routing gate to a selected subset of active expert modules, illustrating how MoE models choose which experts process information." width="1184" height="880" loading="lazy" decoding="async"></figure>
+    <div class="card-body">
+    <p class='card-summary'>A new guide details seven Mixture-of-Experts (MoE) routing strategies that determine which expert networks process tokens in large language models. MoE routers score all available experts, select a top subset, and weight their outputs, allowing models like Mixtral to activate 2 of 8 experts for each token. These strategies are crucial for optimizing model quality, load balancing, and serving costs in major open models, with bias-based balancing becoming a leading technique for frontier MoE architectures.</p>
+    <div class="card-tail"><div class="card-tags"><span class="tag-badge" data-tag="ai">ai</span><span class="tag-separator" aria-hidden="true">/</span><span class="tag-badge" data-tag="technology">technology</span></div></div>
+    </div>
+  </div>
+</article></div></section><section class="story-section"><div class="section-heading"><h2>Technology</h2><p>2 items in this desk.</p></div><div class="story-list">
+<article class="article-card card-normal has-image" data-tags="technology,ai" data-title-size="long">
+  <div class="card-lead">
+    <div class="card-meta">The Verge AI <span class="dot">·</span> <time datetime="2026-11-07">Nov 7, 2026</time></div>
+    <div class="card-header">
+      <a href="https://www.theverge.com/tech/1029489/nyt-cooking-ai-assistant-review" class="card-title">NYT Cooking’s AI assistant saved my weeknight chicken, but almost ruined my cake</a>
+      <span class="card-stars" title="Importance 3/5" aria-label="Importance 3 of 5">Recommended</span>
+    </div>
+  </div>
+  <div class="card-layout">
+    <figure class="card-image"><img src="images/d7138ffc53094593c8a9.webp" alt="A branching diagram showing a recipe input going into an AI assistant, which then produces a new recipe that can be either helpful or flawed." width="1184" height="880" loading="lazy" decoding="async"></figure>
+    <div class="card-body">
+    <p class='card-summary'>NYT Cooking has introduced an AI assistant for its iOS subscribers, designed to help users customize recipes by suggesting ingredient swaps and scaling. Trained partly on user comments, the tool provides practical substitutions and cooking guidance without altering the original recipe, instead creating a new one based on user prompts. While useful for quick weeknight dilemmas, the AI requires user oversight as it can occasionally make significant errors, such as incorrect ingredient quantities, highlighting the need for human verification.</p>
+    <div class="card-tail"><div class="card-tags"><span class="tag-badge" data-tag="technology">technology</span><span class="tag-separator" aria-hidden="true">/</span><span class="tag-badge" data-tag="ai">ai</span></div></div>
+    </div>
+  </div>
+</article>
+
+<article class="article-card card-normal has-image" data-tags="technology,ai" data-title-size="long">
+  <div class="card-lead">
+    <div class="card-meta">MarkTechPost <span class="dot">·</span> <time datetime="2026-11-08">Nov 8, 2026</time></div>
+    <div class="card-header">
+      <a href="https://www.marktechpost.com/2026/11/07/nous-research-arete-27b-qwen3-8-27b-propaganda-fine-tune/" class="card-title">Nous Research Releases Arete-27B that Cuts Qwen3.8-27B Propaganda From 22% to 0.9%</a>
+      <span class="card-stars" title="Importance 3/5" aria-label="Importance 3 of 5">Recommended</span>
+    </div>
+  </div>
+  <div class="card-layout">
+    <figure class="card-image"><img src="images/fab746d60c44a84f600f.webp" alt="Diagram showing how Nous Research&#x27;s fine-tuning process transforms the Qwen base model, which contains state propaganda, into the Arete model, which produces neutral, unbiased outputs." width="1184" height="880" loading="lazy" decoding="async"></figure>
+    <div class="card-body">
+    <p class='card-summary'>Nous Research has released Arete-27B, a supervised fine-tuned version of Alibaba’s Qwen3.8-27B large language model, specifically designed to remove Chinese state framing from its answers. On Nous’s 803-prompt evaluation, the percentage of answers containing propaganda dropped significantly from 22% in the base Qwen model to just 0.9% in Arete-27B. This development allows developers to utilize Qwen-class agentic capabilities without the inherent bias of state-aligned outputs, promoting more neutral and reliable AI responses.</p>
+    <div class="card-tail"><div class="card-tags"><span class="tag-badge" data-tag="technology">technology</span><span class="tag-separator" aria-hidden="true">/</span><span class="tag-badge" data-tag="ai">ai</span></div></div>
+    </div>
+  </div>
+</article></div></section>
+  </main>
+
+  <nav class="day-nav" aria-label="Browse daily issues">
+    <span class="nav-btn nav-disabled"><span aria-hidden="true">←</span> Earlier</span>
+    <div class="nav-archive"><a href="index.html">All issues</a></div>
+    <span class="nav-btn nav-disabled">Later <span aria-hidden="true">→</span></span>
+  </nav>
+
+  <footer class="site-footer">
+    <div class="footer-name">News Buddy</div>
+    <p>Nov 8, 2026. 8 articles selected from public feeds, summarized by the News Buddy pipeline, and linked to the original publishers. <a href="https://github.com/Harshagarwal06/buddy_agent" target="_blank" rel="noopener">View the source on GitHub ↗</a> <a class="footer-top" href="#top">Back to top ↑</a></p>
+  </footer>
+</div>
+
+<script>
+function applyTheme(dark) {
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  var button = document.getElementById('theme-btn');
+  if (button) {
+    button.setAttribute('aria-pressed', dark ? 'true' : 'false');
+    button.setAttribute('aria-label', dark ? 'Use light theme' : 'Use dark theme');
+  }
+}
+function toggleDark() {
+  var now = document.documentElement.getAttribute('data-theme') === 'dark';
+  try { localStorage.setItem('nb-theme', now ? 'light' : 'dark'); } catch (error) {}
+  applyTheme(!now);
+}
+(function() {
+  applyTheme(document.documentElement.getAttribute('data-theme') === 'dark');
+})();
+
+document.querySelectorAll('.filter-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var tag = this.getAttribute('data-tag');
+    document.querySelectorAll('.filter-btn').forEach(function(other) {
+      var active = other.getAttribute('data-tag') === tag;
+      other.classList.toggle('active', active);
+      other.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+    var shown = 0;
+    document.querySelectorAll('.article-card').forEach(function(card) {
+      var tags = (card.getAttribute('data-tags') || '').split(',');
+      var hidden = tag !== '__all__' && tags.indexOf(tag) === -1;
+      card.classList.toggle('hidden', hidden);
+      if (!hidden) shown++;
+    });
+    document.querySelectorAll('.story-section').forEach(function(section) {
+      section.classList.toggle('hidden', !section.querySelector('.article-card:not(.hidden)'));
+    });
+    var status = document.getElementById('filter-status');
+    if (status) status.textContent = 'Showing ' + shown + ' article' + (shown === 1 ? '.' : 's.');
+  });
+});
+
+var progress = document.getElementById('progress');
+function onScroll() {
+  var root = document.documentElement;
+  var scrollTop = root.scrollTop || document.body.scrollTop;
+  var max = root.scrollHeight - root.clientHeight;
+  progress.style.width = (max > 0 ? scrollTop / max * 100 : 0) + '%';
+}
+window.addEventListener('scroll', onScroll, {passive: true});
+onScroll();
+</script>
+</body>
+</html>
