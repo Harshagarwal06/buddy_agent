@@ -1,0 +1,121 @@
+[
+  {
+    "title": "OpenAI, Anthropic face new oversight as New York’s AI safety law takes effect",
+    "url": "https://techcrunch.com/2026/11/10/openai-anthropic-face-new-oversight-as-new-yorks-ai-safety-law-takes-effect/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-10",
+    "summary": "New York's significant AI safety law, the RAISE Act, is taking effect, requiring large frontier AI developers like OpenAI and Anthropic to register by January 1, 2027, and comply with new oversight. The law mandates companies with over $500 million in annual revenue to publish safety frameworks, report critical safety incidents within 72 hours, and issue public model transparency reports. This initiative aims to establish a national model for smart AI regulation, prioritizing community and people over powerful technology, with penalties for non-compliance reaching up to $3 million.",
+    "tags": [
+      "ai",
+      "politics",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/7d2e645ea3e2c6afead5.webp",
+    "image_alt": "Diagram explaining how New York's RAISE Act imposes new safety and transparency requirements on large AI developers, leading to increased AI safety."
+  },
+  {
+    "title": "Nvidia’s crisis has corporate governance experts reaching for the popcorn",
+    "url": "https://techcrunch.com/2026/11/10/nvidias-crisis-has-corporate-governance-experts-reaching-for-the-popcorn/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-11",
+    "summary": "Nvidia CEO Jensen Huang is under internal investigation by the company's board after an extramarital affair with Alice Huang, whom U.S. intelligence agencies suspect of spying for China, became public. This led to a 9.5% stock drop in two days, prompting the board to hire a law firm to probe potential legal breaches, policy violations, or misleading information from Huang, a situation experts call unprecedented. The crisis raises critical questions about corporate oversight and national security implications, with the investigation's findings determining practical consequences for Nvidia's leadership.",
+    "tags": [
+      "business",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/cf5d869667b83eeda3be.webp",
+    "image_alt": "A sequence showing a corporate executive, an open vault door with a spy symbol, and a magnifying glass over a board table, explaining a CEO's affair leading to security concerns and an investigation."
+  },
+  {
+    "title": "All 7 Anthropic founders will each cash out about $250M in IPO",
+    "url": "https://techcrunch.com/2026/11/10/all-7-anthropic-founders-will-each-cash-out-about-250m-in-ipo/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-10",
+    "summary": "Anthropic's seven co-founders are each set to cash out approximately $250 million by selling shares in the company's upcoming initial public offering. Each founder plans to sell 3,378,378 shares, with an initial price range of $70 to $78 per share, yielding between $236 million and $264 million individually. This significant payout occurs while the founders collectively retain 51.1% of voting control through supervoting shares, underscoring their continued influence in a company founded on AI safety principles after their departure from OpenAI.",
+    "tags": [
+      "ai",
+      "business",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/66361bb59122fd33d001.webp",
+    "image_alt": "Diagram explaining how Anthropic founders sell company shares for cash while retaining voting control."
+  },
+  {
+    "title": "Oura to acquire AI-native primary care startup Counsel Health for $625M",
+    "url": "https://techcrunch.com/2026/11/10/oura-to-acquire-ai-native-primary-care-startup-counsel-health-for-625m/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-10",
+    "summary": "Oura is acquiring AI-native primary care company Counsel Health for $625 million, marking a significant expansion beyond its smart ring market dominance. Counsel Health provides an AI-powered platform offering chat-based medical advice and direct access to licensed physicians, a service already integrated into the Oura app since June. This strategic acquisition enables Oura to leverage its members' physiological data to offer comprehensive preventative, acute, and chronic medical care, empowering users to take direct action on a wide range of health needs.",
+    "tags": [
+      "business",
+      "technology",
+      "health"
+    ],
+    "importance": 3,
+    "image_url": "images/f29a57fa78f2eda748b5.webp",
+    "image_alt": "A pipeline showing Oura ring data flowing to AI-powered medical advice and physician access, resulting in comprehensive health actions for users."
+  },
+  {
+    "title": "OpenAI acquires Odessia, travel startup created by Sonder founder",
+    "url": "https://techcrunch.com/2026/11/10/openai-acquires-odessia-travel-startup-created-by-sonder-founder/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-10",
+    "summary": "OpenAI has acquired Odessia, an AI travel agent startup founded by Francis Davidson, who will now join OpenAI to work on the future of travel. Odessia, which had raised $6 million and helped early adopters plan millions of dollars in travel, was an acqui-hire, with its tool now shut down. This acquisition signals OpenAI's strategic interest in the travel sector, leveraging Davidson's expertise and Odessia's technology to potentially develop new AI-powered travel products for its widely used platforms.",
+    "tags": [
+      "ai",
+      "business",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/646698dca06753d3fbe8.webp",
+    "image_alt": "Diagram showing Odessia's AI travel agent capabilities being acquired by OpenAI, leading to enhanced future AI-powered travel planning assistance."
+  },
+  {
+    "title": "Anthropic launches Claude Meetings to turn workplace discussions into plans and tasks",
+    "url": "https://techcrunch.com/2026/11/10/anthropic-launches-claude-meetings-to-turn-workplace-discussions-into-plans-and-tasks/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-10",
+    "summary": "Anthropic has launched new workplace features, including Claude Meetings, Whiteboards, and Sheets, to enhance real-time productivity. Claude Meetings allows the AI to join video calls, drafting plans, mapping timelines, and accessing information as participants speak, while Whiteboards enable collaborative visual workspaces and Sheets facilitate co-creation. This development aims to transform discussions into immediate actions, streamlining workflows and intensifying competition among major AI developers in the office productivity suite market.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/c5b288c6c90d726a6106.webp",
+    "image_alt": "A pipeline showing meeting discussion flowing into Claude AI processing, resulting in generated action items."
+  },
+  {
+    "title": "OpenAI rolls out new business profiles, making ChatGPT just a little bit more like Google",
+    "url": "https://techcrunch.com/2026/11/10/openai-rolls-out-new-business-profiles-making-chatgpt-just-a-little-bit-more-like-google/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-10",
+    "summary": "OpenAI has launched new business profiles and a Business Hub for ChatGPT, aiming to transform it into a consumer discovery engine. Companies can now verify and update information about their products and services, create specialized business agents for user inquiries, and access limited insights on user interactions. This initiative seeks to deepen the connection between people and businesses through AI, positioning ChatGPT more like a search engine for product and service discovery.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/29846b7aee21b2ba96e8.webp",
+    "image_alt": "A pipeline showing businesses creating profiles and AI agents in ChatGPT, leading to users discovering products and services."
+  },
+  {
+    "title": "PSI is trying to make a business out of AI-driven scientific discovery",
+    "url": "https://techcrunch.com/2026/11/10/psi-is-trying-to-make-a-business-out-of-ai-driven-scientific-discovery/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-10",
+    "summary": "Physical Superintelligence (PSI), utilizing Anthropic's Fable 5.2 AI model, has reportedly solved the 18-year-old Aaronson-Ambainis conjecture in quantum computing. This complex problem concerns the ability of quantum computers to solve certain problems faster than classical ones, and the AI-generated proof was autoformalized in Lean, a mathematical coding language. The solution represents a \"negative result,\" closing one specific avenue for quantum computers to achieve high-speed problem-solving and redirecting future research efforts in quantum query complexity.",
+    "tags": [
+      "ai",
+      "science",
+      "technology"
+    ],
+    "importance": 2,
+    "image_url": "images/897c20483ff624df9b6c.webp",
+    "image_alt": "A pipeline diagram shows an AI system solving a quantum problem, leading to a research path being closed, illustrating AI's impact on scientific discovery."
+  }
+]
