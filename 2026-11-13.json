@@ -1,0 +1,119 @@
+[
+  {
+    "title": "The Jensen Huang scandal is hardly over",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1032069/jensen-huang-resignation-affair-chips-smuggling",
+    "source": "The Verge AI",
+    "published_at": "2026-11-12",
+    "summary": "Nvidia CEO Jensen Huang has resigned following reports of a second affair and a board meeting considering his ouster. This development is speculated to be a pretext for deeper concerns, specifically an alleged \"honeypot\" by a Chinese spy and the illegal diversion of Nvidia's high-end chips to China through Southeast Asian intermediaries like Megaspeed. The situation raises significant questions about Nvidia's adherence to US export controls and the actual scope of its business operations within China.",
+    "tags": [
+      "business",
+      "technology",
+      "politics"
+    ],
+    "importance": 5,
+    "image_url": "images/a11871b788f69e68e89c.webp",
+    "image_alt": "Diagram showing high-end chips diverted around export controls via an intermediary route to reach a market."
+  },
+  {
+    "title": "Google’s new Gemini model is better at understanding complicated questions",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1032505/google-search-ai-mode-gemini-4-hydrogen",
+    "source": "The Verge AI",
+    "published_at": "2026-11-12",
+    "summary": "Google has launched its new Gemini 4 Hydrogen model, significantly improving its ability to understand and answer complex questions. This model can break down multi-part inquiries, handle typos, and specific requests, while also conducting simultaneous queries across subtopics to provide a wider range of links and more visuals like tables and maps. Now the new default in AI Mode and for AI Overviews, this update offers users more thinking level options and delivers significant leaps in speed and intelligence, matching or outperforming competing models.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/6bd17caeec7e440b60f2.webp",
+    "image_alt": "A pipeline diagram showing a complex question entering a Gemini processing unit, which then produces multiple helpful and visual answers."
+  },
+  {
+    "title": "Read Nvidia’s internal emails about the ‘extraordinarily difficult period’ amid CEO shakeup",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1032028/read-nvidias-internal-emails-jensen-huang",
+    "source": "The Verge AI",
+    "published_at": "2026-11-12",
+    "summary": "Jensen Huang has resigned as CEO of Nvidia, the company he co-founded in 1993, following a board investigation into multiple extramarital affairs and an alleged Chinese spy connection. CFO Colette Kress has been appointed interim CEO, with Harvey Jones becoming the first Chair of the Board. This significant leadership change marks a new era for Nvidia, a global leader in accelerated computing and artificial intelligence, as it navigates internal challenges and seeks to maintain its market position under new leadership.",
+    "tags": [
+      "business",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/fe98dae4a4d530f1e1a2.webp",
+    "image_alt": "A diagram showing a CEO departing, followed by a board inquiry, leading to an interim leader."
+  },
+  {
+    "title": "Jensen Huang is out. What did China want from him?",
+    "url": "https://www.theverge.com/podcast/1031260/nvidia-jensen-huang-resign-china-spy-scandal-ai-chips-trump",
+    "source": "The Verge AI",
+    "published_at": "2026-11-12",
+    "summary": "Jensen Huang, CEO of Nvidia, has resigned amidst allegations of an affair with an alleged Chinese spy, a development that rapidly escalated. The scandal centers on what China might seek to gain from such proximity, particularly regarding influence over US policy on AI chips and export controls. This situation highlights the intense US-China conflict over technological dominance and Beijing's perceived strategies to navigate restrictions on advanced computing hardware.",
+    "tags": [
+      "ai",
+      "business",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/d1cbd68598dff4cd3b38.webp",
+    "image_alt": "A diagram showing how foreign influence on a tech CEO attempts to bypass export controls to gain access to advanced AI chips."
+  },
+  {
+    "title": "Oh, Palantir is ‘progressive’ now, is it?",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1032126/alex-baby-you-were-recorded-on-video",
+    "source": "The Verge AI",
+    "published_at": "2026-11-12",
+    "summary": "Palantir CEO Alex Karp recently claimed the company's products are \"essentially progressive\" and that he has been a lifelong Democrat. This statement contradicts numerous past public remarks by Karp, including defending U.S. government border operations, stating Palantir makes America \"more lethal,\" declaring the company \"anti-woke,\" and expressing views on \"high-testosterone males\" and \"real Nazis.\" The article implies Karp's recent pivot to a progressive stance is a strategic response to recent election results unfavorable to the right, attempting to realign Palantir's public image.",
+    "tags": [
+      "business",
+      "politics"
+    ],
+    "importance": 3,
+    "image_url": "images/2d4b21a361921c2a07da.webp",
+    "image_alt": "Explains the contrast between a CEO's past 'anti-woke' and 'lethal' statements and a recent 'progressive' claim, illustrating a strategic shift."
+  },
+  {
+    "title": "No, AI agents did not discover a previously unknown Maya site",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1032125/ai-agents-maya-site-archeology-discovery",
+    "source": "The Verge AI",
+    "published_at": "2026-11-12",
+    "summary": "Google researcher Pietro Miotti falsely claimed his AI agents discovered a previously unknown Maya site in Mexico, sparking criticism from archeologists. The supposed discovery was, in fact, already published in an academic journal last year, with Miotti's AI agents having combed NASA lidar data for undocumented locations. This incident highlights a growing tension in science as amateurs, equipped with powerful AI tools, venture into specialist fields without the necessary expertise, often leading to erroneous claims and underscoring the need for domain-specific knowledge.",
+    "tags": [
+      "technology",
+      "ai",
+      "science"
+    ],
+    "importance": 3,
+    "image_url": "images/8ad9fcfc4bb7c89e1b67.webp",
+    "image_alt": "A comparison showing AI processing lidar data, leading to a false claim of a new archeological discovery, contrasted with the site's actual status as already known."
+  },
+  {
+    "title": "AI chatbots are recommending fake retail websites, study finds",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1032020/gemini-chatgpt-perplexity-shopping-test-risky-fake-websites-citations",
+    "source": "The Verge AI",
+    "published_at": "2026-11-12",
+    "summary": "AI chatbots are directing shoppers to fake retail websites, according to a new study by IP protection firm Podqi. The study, which tested Gemini, Perplexity, and ChatGPT with shopping queries for 151 brands, found that up to 15 percent of answers included \"risky\" URLs, such as imposter sites, knockoff sellers, or inactive domains. This issue poses a significant risk for consumers, especially during peak shopping seasons, and creates a major headache for legitimate brands and retailers.",
+    "tags": [
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/327e7f7b1543a4b72d41.webp",
+    "image_alt": "A diagram showing an AI chatbot generating two paths: one leading to a legitimate online store, and another to a risky or fake retail website."
+  },
+  {
+    "title": "More game developers are starting to use generative AI",
+    "url": "https://www.theverge.com/games/1032085/gdc-festival-of-gaming-annual-survey-ai-layoffs",
+    "source": "The Verge AI",
+    "published_at": "2026-11-12",
+    "summary": "Game developers are increasingly adopting generative AI tools, with 40% now using them as part of their job, up from 36% last year, according to the GDC Festival of Gaming's annual survey. Usage is particularly high among free-to-play (58%) and mobile-only (70%) studio workers, primarily for research, brainstorming, data analysis, and code generation. This growing integration suggests AI could significantly streamline development processes, potentially enabling smaller teams to create complex game worlds more efficiently and reshape industry production models.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/74d7851ccc13b83ed337.webp",
+    "image_alt": "A pipeline diagram shows game development tasks, like coding and art, flowing into generative AI tools. These tools then produce game worlds, illustrating AI's role in streamlining creation."
+  }
+]
