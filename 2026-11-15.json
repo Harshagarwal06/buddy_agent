@@ -1,0 +1,119 @@
+[
+  {
+    "title": "Asian governments react to Nvidia CEO Jensen Huang’s exit",
+    "url": "https://techcrunch.com/2026/11/14/asian-governments-react-to-nvidia-ceo-jensen-huangs-exit/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-14",
+    "summary": "Jensen Huang's departure from Nvidia has prompted varied reactions from Asian governments, with some seeking to confirm chip supply commitments while others monitor local project impacts or address ongoing investigations. Nvidia's board launched an independent investigation after reports linked Huang to a Chinese spy operation and an affair with a former chip executive, while Singapore authorities investigated the executive for false declarations regarding server purchases. This development creates uncertainty for over $3 billion in Chinese AI computing projects reliant on Nvidia's restricted processors and highlights the fragility of global chip supply chains.",
+    "tags": [
+      "technology",
+      "business",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/a228cd9f376b3325f8d5.webp",
+    "image_alt": "A diagram showing a CEO's exit, triggered by spy allegations and an affair, leading to government reactions and uncertainty in global chip supply chains."
+  },
+  {
+    "title": "Where was Nvidia’s security team?",
+    "url": "https://techcrunch.com/2026/11/14/where-was-nvidias-security-team/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-15",
+    "summary": "Nvidia CEO Jensen Huang resigned amidst growing questions about his extramarital relationships, including one with an executive at Megaspeed, a data center company suspected by U.S. investigators of funneling Nvidia chips to China. This development follows the departure of Nvidia's chief security officer two and a half months prior, raising questions about what the security team knew regarding the government's scrutiny of Megaspeed and Huang's relationships. While employee relationships typically fall to HR, security experts note that affairs, especially with individuals at companies under federal investigation, can create significant leverage for foreign intelligence services, posing a potential security risk.",
+    "tags": [
+      "business",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/0657c03f0d52fda8e4f5.webp",
+    "image_alt": "Explains how an executive's personal relationships can be exploited by foreign intelligence, leading to corporate security vulnerabilities."
+  },
+  {
+    "title": "Elon Musk, other tech execs sign petition calling on Nvidia to reinstate Jensen Huang",
+    "url": "https://techcrunch.com/2026/11/14/elon-musk-other-tech-execs-sign-petition-calling-on-nvidia-to-reinstate-jensen-huang/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-14",
+    "summary": "Nvidia's former CEO, Jensen Huang, was ousted from his position, prompting a petition signed by over 115,000 individuals, including Elon Musk, 63,063 shareholders, and 5,965 current Nvidia employees, calling for his reinstatement. Huang resigned after confessing to an affair with a chip executive suspected by U.S. intelligence to be a Chinese spy. His departure led to a sharp fall in Nvidia's stock price and is expected to create a significant gap in AI industry funding, while the petition demands due process and an independent investigation.",
+    "tags": [
+      "business",
+      "technology",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/cb963dea783a9e51ed8a.webp",
+    "image_alt": "A pipeline showing a suspected spy leading to a CEO's removal, which then prompts a public petition for reinstatement."
+  },
+  {
+    "title": "The AI graveyard: a running list of projects and startups that didn’t make it",
+    "url": "https://techcrunch.com/2026/11/14/the-ai-graveyard-a-running-list-of-projects-and-startups-that-didnt-make-it/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-14",
+    "summary": "Many AI projects and startups are failing or being abandoned, contributing to a growing \"AI graveyard\" across the industry. Approximately 42% of corporate AI initiatives are ultimately abandoned due to insufficient funding, technical challenges, competition, or weak user demand, exemplified by chatbot platform Character.ai's bankruptcy and OpenAI's failed ChatGPT \"super app\" redesign. This trend underscores the significant hurdles in AI development and offers crucial lessons for the industry regarding scaling, user demand, and strategic integration of new technologies.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/106a659ed95cc4584d80.webp",
+    "image_alt": "A pipeline showing new AI projects facing market hurdles, leading to project shutdowns and an AI graveyard."
+  },
+  {
+    "title": "Google unveils Gemini 4, new TPUs, smart glasses in five-day AI blitz - TechGig",
+    "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNR015Y0VmdlpILXBpeGRCWURYT0lKdEZqdV8wYV9qeFYtNkRxbWxwaDd6ejYxYnNQQ3NsN3BhckcxYnA2UWxZUExKOTUxV1hpNU1XcUo5WkNFdjhiSjJNNFE0SHg3NkFmUXExUWhmZmhCcnlpSkNFaWlxdzJrWHBUdTdjc0ZiUm9FNGhNdndCLUdnYm9oM0hub05jMkg0S0Ztc3NHYnJMQmtXcDhEOEE?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-11-14",
+    "summary": "Google has unveiled its next-generation AI model, Gemini 4, alongside new Tensor Processing Units (TPUs) and smart glasses, as part of a concentrated five-day artificial intelligence event. Only the headline-level development is known, indicating a significant multi-product launch designed to showcase advancements across its AI software and hardware portfolio. This rapid succession of announcements underscores Google's intensified commitment to expanding its artificial intelligence ecosystem and integrating AI capabilities into new consumer devices.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 2,
+    "image_url": "images/7eab83e38562b938a1f9.webp",
+    "image_alt": "A branching diagram showing an AI blitz leading to the unveiling of the Gemini 4 AI model and new AI hardware like TPUs and smart glasses."
+  },
+  {
+    "title": "AI Week in Review 26.11.14 - Substack",
+    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1TSG5kMVp4XzNldTFTdjRjSnJQM2NZaDhWTFlpSkVuSnNuWWI0SFhEN1EwQlFSQlkwWHBLd3JkNFBJaTFSMDFRUWwzWUVlaEtyWGlYaWtjeWdPQ3Qyei1sMmdmVWRnNTQ5Q2VUTWZB?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-11-15",
+    "summary": "An \"AI Week in Review\" for November 26, 2014, was published on Substack. This publication likely compiles significant developments and news within the artificial intelligence field from the preceding week, offering readers a curated overview of the latest advancements and discussions. As only the headline-level development is known, the specific contents or implications of this particular review, such as key breakthroughs or emerging trends, cannot be detailed.",
+    "tags": [
+      "ai"
+    ],
+    "importance": 2,
+    "image_url": "images/a148b858c9311084e8b3.webp",
+    "image_alt": "A pipeline showing AI news being compiled weekly into a Substack review."
+  },
+  {
+    "title": "As Gemini 4 Krypton & Oxygen loom large, here is how Google AI’s element-themed Gemini 4 lineup is conceived - nokiapoweruser.com",
+    "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFAzdk9wMVd2U1pyOVdCRThfa1lweTVSWnlzbi1ZdDd5VGl2amszOTgxemZJa0toQ2FPOERvRGlMMEZ6N19UQS02Q1puN2ZoNUpRN1ZvSTRCUXdwZXoxZFR4X3B6Y0NCOVZFNFRZNjlhNXk0VWlmc3JkRnZTRlBtZw?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-11-15",
+    "summary": "Google AI is reportedly preparing to launch new iterations of its Gemini 4 lineup, specifically named Krypton and Oxygen, continuing its established element-themed naming convention. This approach suggests a systematic development and release schedule for its artificial intelligence models, with each element potentially signifying a distinct version or capability within the Gemini 4 series. The impending introduction of these new models indicates Google's ongoing commitment to advancing and expanding its AI offerings, potentially bringing enhanced features or performance to users and developers, though only headline-level details are currently known.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 2,
+    "image_url": "images/bc91cdb6986cb37041cc.webp",
+    "image_alt": "A pipeline showing a core AI model receiving element names to produce distinct AI versions."
+  },
+  {
+    "title": "Google Launches Gemini 4 Hydrogen With 2.5x Faster Performance, Challenging GPT-6.1 and Claude - Brave New Coin",
+    "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQajhXcnM0QWtWZU9NUTVMLTlhaUtXQjkzQ3BYdjZsZU9uUUQ5VmtNZ3laZUpkUU1MMVVLelJ2dWZIMXB5d0ViWHZGVmxZbkJnY1hQOGlCRmZiZEZaOVNuX0puZXAxc2tCekhWbjdLREdHT1ExUEFwdkVyN1pMa3UzSFFicHRyY1ZZajRPaUhZSVIxam0yNVhLcjcxYkhzbFNOTWQxR2VqeUdURDJIU0QxVUJ1dzlnUTNYSHBpUFlja0djNTJKWkE?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-11-14",
+    "summary": "Google has launched Gemini 4 Hydrogen, an advanced AI model boasting 2.5 times faster performance, positioning it as a direct competitor to existing leading models like GPT-6.1 and Claude. As only headline-level development is known, specific technical details or benchmarks beyond its speed advantage are not available. This development signifies Google's continued aggressive push to challenge established players and gain a larger share in the rapidly evolving artificial intelligence landscape.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 2,
+    "image_url": "images/6da82aa80a35f55450d9.webp",
+    "image_alt": "A comparison showing Gemini 4 Hydrogen outperforming GPT-6.1 and Claude in speed, illustrating its 2.5x faster performance in the AI model race."
+  }
+]
