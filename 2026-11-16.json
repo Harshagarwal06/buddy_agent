@@ -1,0 +1,119 @@
+[
+  {
+    "title": "An overview of Jensen Huang’s messy days",
+    "url": "https://www.theverge.com/column/1033943/jensen-huang-nvidia-china-spying-scandal-resignation",
+    "source": "The Verge AI",
+    "published_at": "2026-11-15",
+    "summary": "Jensen Huang, former CEO of Nvidia, resigned amidst reports of a Chinese spy plot targeting him. The New York Times reported Huang had a \"close relationship\" with Alice Huang, a data center executive under US investigation for allegedly smuggling Nvidia AI chips to China and passing information to Beijing, despite US trade restrictions on advanced chip sales. This development is significant because Nvidia's chips are central to US AI capabilities and national security, and Jensen Huang had previously advocated for loosening trade restrictions with China.",
+    "tags": [
+      "business",
+      "technology",
+      "security"
+    ],
+    "importance": 5,
+    "image_url": "images/5661f3aafb1fffe493be.svg",
+    "image_alt": "Diagram showing Nvidia chips moving towards a trade barrier, with a smuggling route bypassing the barrier to reach a restricted market."
+  },
+  {
+    "title": "Congress wants to tighten export rules on AI chips after Nvidia spy scandal",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1033984/congress-export-rules-ai-chips-china",
+    "source": "The Verge AI",
+    "published_at": "2026-11-15",
+    "summary": "Following a suspected Chinese spy scandal involving former Nvidia CEO Jensen Huang, Congress is moving to tighten export rules on advanced AI chips. Both Democrats and Republicans support various measures, including renewed interest in bills like the Remote Access Security Act, and have demanded testimony from Nvidia leaders. These efforts aim to limit China's access to powerful AI chips from companies like Nvidia, reflecting a growing consensus in Congress on restricting technology exports for national security reasons.",
+    "tags": [
+      "politics",
+      "technology",
+      "business"
+    ],
+    "importance": 5,
+    "image_url": "images/b38c5f6423feb2ef71a9.webp",
+    "image_alt": "A diagram showing how Congress's tightened export rules create a bottleneck, restricting the flow of AI chips to limit access for specific nations."
+  },
+  {
+    "title": "Is bad news for Jensen Huang also bad news for the AI industry?",
+    "url": "https://techcrunch.com/2026/11/15/is-bad-news-for-jensen-huang-also-bad-news-for-the-ai-industry/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-15",
+    "summary": "Jensen Huang, CEO of Nvidia, resigned after an internal investigation into an alleged affair with an executive at a client company, Megaspeed, which reportedly has ties to Chinese intelligence. Huang's departure was unexpected, as he was widely seen as synonymous with Nvidia, a company whose technology underpins much of the current AI industry. His sudden exit, without a clear succession plan, raises questions about Nvidia's future leadership and its ongoing investments across the broader AI ecosystem.",
+    "tags": [
+      "business",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/3261159fe053aece6801.webp",
+    "image_alt": "A pipeline diagram illustrating an internal investigation leading to a CEO's resignation, causing uncertainty for the AI industry."
+  },
+  {
+    "title": "Indian chip startup Bharat Semi lands $24M seed round as it eyes global AI sensor market",
+    "url": "https://techcrunch.com/2026/11/15/indian-chip-startup-bharat-semi-lands-24m-seed-round-as-it-eyes-global-ai-sensor-market/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-15",
+    "summary": "Indian semiconductor startup Bharat Semi has secured $24 million in seed funding to develop AI-enabled image sensors for global markets. These programmable sensors integrate image capture, processing, and artificial intelligence capabilities onto a single chip, aiming to reduce system costs by at least 70% compared to conventional setups using separate components. This integrated approach could enable more efficient and cost-effective AI applications in smart homes, industrial automation, and aerospace by minimizing the need for additional, expensive computing hardware.",
+    "tags": [
+      "business",
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/f3cc4617630c66afcba5.webp",
+    "image_alt": "A comparison showing three separate chips connected by data paths versus a single integrated AI chip, illustrating reduced complexity and cost."
+  },
+  {
+    "title": "Apple launches new app to study how people use AI for health",
+    "url": "https://techcrunch.com/2026/11/15/apple-launches-new-app-to-study-how-people-use-ai-for-health/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-16",
+    "summary": "Apple has launched a new study app in partnership with healthcare AI company OpenEvidence to understand how people use AI for health. The app allows iPhone 15 or later users with Apple Intelligence to ask health questions, receiving answers grounded in clinical data from sources like The New England Journal of Medicine. Participants can rate responses and share HealthKit data, with all information anonymized and deleted after 24 hours. This initiative aims to gather insights into how clinically grounded AI can support individuals' health journeys and inform the development of trusted future health tools.",
+    "tags": [
+      "technology",
+      "ai",
+      "health"
+    ],
+    "importance": 3,
+    "image_url": "images/9b402e91f57d41851715.webp",
+    "image_alt": "A pipeline showing a user's health query accessing clinical data, leading to user feedback that generates study insights for future AI health tools."
+  },
+  {
+    "title": "Apple’s new study looks to improve the effectiveness of AI health tools",
+    "url": "https://www.theverge.com/tech/1033355/apples-new-study-looks-to-improve-the-effectiveness-of-ai-health-tools",
+    "source": "The Verge AI",
+    "published_at": "2026-11-16",
+    "summary": "Apple has launched a new study in collaboration with OpenEvidence to understand how people interact with and evaluate conversational AI health tools. Participants in the US will use a new iOS app to ask medical questions, receive responses based on peer-reviewed sources, and then rate them for accuracy, detail, and relevance, with an option to share personal HealthKit data for contextualized answers. This initiative aims to improve the design and functionality of AI-powered health tools, ensuring they deliver more relevant, understandable, and actionable health information to users.",
+    "tags": [
+      "technology",
+      "ai",
+      "health"
+    ],
+    "importance": 3,
+    "image_url": "images/8cfe4f7e7f51374b031d.webp",
+    "image_alt": "A pipeline showing users asking health questions to an AI, the AI providing responses, and users rating these responses to improve the AI health tool."
+  },
+  {
+    "title": "Jensen Huang might be plotting a return and more of the latest Nvidia drama",
+    "url": "https://www.theverge.com/tech/1033999/jensen-huang-return-nvidia-megaspeed",
+    "source": "The Verge AI",
+    "published_at": "2026-11-15",
+    "summary": "Jensen Huang, Nvidia's co-founder and former CEO, is reportedly exploring a return to his leadership role amidst growing public and internal pressure. This follows a public letter, reportedly signed by over 150,000 people including Elon Musk, demanding his reinstatement, though the authenticity of many signatures is questionable. The potential return is controversial, with some allies acknowledging a \"fireable offense\" related to an alleged affair, reflecting broader Silicon Valley concerns about powerful individuals abusing their positions.",
+    "tags": [
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/ca92dc3ff03a08a2594b.webp",
+    "image_alt": "A branching path illustrating how public pressure and ethical concerns are influencing the potential return of a former CEO to their leadership position."
+  },
+  {
+    "title": "SNL gathers all the tech tycoons for a lesson in dating and spycraft",
+    "url": "https://techcrunch.com/2026/11/15/snl-gathers-all-the-tech-tycoons-for-a-lesson-in-dating-and-spycraft/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-15",
+    "summary": "Saturday Night Live recently featured a sketch where a CIA agent briefed prominent tech executives, including Peter Thiel, Sam Altman, and Mark Zuckerberg, on how to identify and avoid foreign spies. The segment highlighted the vulnerability of these leaders, using the fictional ouster of Jensen Huang due to an affair with a suspected Chinese spy as a plot device. This comedic portrayal underscores a serious concern about national security and the potential for espionage targeting influential figures in the technology industry.",
+    "tags": [
+      "culture",
+      "technology",
+      "security"
+    ],
+    "importance": 2,
+    "image_url": "images/a92cbe7670556ecead14.webp",
+    "image_alt": "A pipeline shows tech leaders receiving a CIA warning to identify and avoid spy deception, illustrating the SNL sketch's theme."
+  }
+]
