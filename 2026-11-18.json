@@ -1,0 +1,119 @@
+[
+  {
+    "title": "OpenAI Releases GPT-6.2 Astra and Sol With a 20% Cheaper Astra API",
+    "url": "https://www.marktechpost.com/2026/11/17/openai-gpt-6-2-astra-sol-release/",
+    "source": "MarkTechPost",
+    "published_at": "2026-11-17",
+    "summary": "OpenAI has released GPT-6.2 Astra and GPT-6.2 Sol, two new closed models designed for professional and agentic work. GPT-6.2 Astra targets complex, long-horizon tasks, while GPT-6.2 Sol handles efficient everyday operations, with Astra's API token prices reduced by 20% and both models using fewer output tokens. This development offers developers frontier AI capabilities at a significantly lower cost per task, despite independent benchmarks indicating persistent high hallucination rates for both models.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/8fdee3a58a51e79043a5.svg",
+    "image_alt": "Diagram showing how OpenAI's new Astra model handles complex tasks and Sol handles everyday tasks, both leading to lower operational costs."
+  },
+  {
+    "title": "Nvidia’s startup stakes ballooned to $65B, but Huang’s exit puts future  deals in doubt",
+    "url": "https://techcrunch.com/2026/11/17/nvidias-startup-stakes-ballooned-to-65b-but-huangs-exit-puts-future-deals-in-doubt/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-18",
+    "summary": "Nvidia's equity stakes in private companies have surged to $65.5 billion, a significant increase from $22 billion reported in January, driven by $58 billion invested in equities over the past nine months to expand the AI ecosystem. The chipmaker has backed nearly 350 startups, including major players like Anthropic and OpenAI, aiming to foster \"game changers and market makers.\" However, the future of this aggressive investment strategy is uncertain following CEO Jensen Huang's exit, as his successor is expected to adopt a more conservative approach to startup funding.",
+    "tags": [
+      "business",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/2458b7a540a78d419b0e.svg",
+    "image_alt": "A bottleneck diagram showing Nvidia's large startup investments entering a restrictive gate representing a new CEO's conservative policy, leading to uncertain future funding for startups."
+  },
+  {
+    "title": "Nvidia promises that revenue will keep soaring — for now",
+    "url": "https://techcrunch.com/2026/11/17/nvidia-promises-that-revenue-will-keep-soaring-for-now/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-18",
+    "summary": "Nvidia reported robust third-quarter revenue of $115.8 billion, exceeding its own guidance and reassuring investors about continued financial strength. The company's revenue surged 103% year-over-year, with projections for the next quarter reaching $130 billion and a raised fiscal year 2028 outlook of 75% growth. This sustained performance, despite recent leadership changes, signals strong and durable demand for Nvidia's data center products and solidifies its market position.",
+    "tags": [
+      "business",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/7e2da4f084a0ec0083a9.svg",
+    "image_alt": "A diagram showing Nvidia's current high revenue, an arrow indicating a raised financial outlook, and a taller bar representing even higher projected future revenue."
+  },
+  {
+    "title": "SID AI Releases SID-2 Agentic Search Model With 0.720 NDCG Swarm Mode",
+    "url": "https://www.marktechpost.com/2026/11/17/sid-ai-sid-2-agentic-search-swarm/",
+    "source": "MarkTechPost",
+    "published_at": "2026-11-18",
+    "summary": "SID AI has released SID-2, its second-generation agentic search model, and SID-2 Swarm, designed to revolutionize data retrieval. Unlike traditional fixed RAG pipelines, SID-2 adaptively searches, reads results, and searches again, while Swarm mode employs multiple agents that communicate to explore different parts of a corpus. This new approach achieves frontier-level retrieval quality, with SID-2 Swarm outperforming models like GPT-6 Astra on NDCG scores, offering significantly lower latency for efficient data access.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/c7218d677621d7f26864.svg",
+    "image_alt": "Diagram comparing a fixed search pipeline to SID-2's adaptive agentic search and multi-agent swarm mode for improved data retrieval."
+  },
+  {
+    "title": "Anthropic Adds Code Mode to Claude Code: Claude Now Chains Tool Calls in JavaScript",
+    "url": "https://www.marktechpost.com/2026/11/17/anthropic-claude-code-code-mode-javascript-tool-calls/",
+    "source": "MarkTechPost",
+    "published_at": "2026-11-18",
+    "summary": "Anthropic has introduced \"Code Mode\" to its Claude Code agent, an experimental, opt-in feature enabling Claude to write and execute JavaScript that chains multiple tool calls in a single step. Previously, Claude executed each command sequentially, reading results before proceeding; now, Code Mode allows parallel execution, feeding results between calls, and returning only necessary output, streamlining multi-step development tasks. This enhancement aims to reduce round-trips for developers, potentially accelerating complex coding workflows, though it is currently an opt-in feature with narrow availability and no published performance benchmarks.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/58ded265613f64df6e00.svg",
+    "image_alt": "A diagram explaining how Claude Code's new Code Mode changes tool execution, moving from separate, sequential commands to a single JavaScript program that chains multiple actions."
+  },
+  {
+    "title": "NVIDIA Open-Sources NVKE and NVKR for Managed Kubernetes on GPU Infrastructure",
+    "url": "https://www.marktechpost.com/2026/11/17/nvidia-nvke-nvkr-managed-kubernetes-gpu/",
+    "source": "MarkTechPost",
+    "published_at": "2026-11-17",
+    "summary": "NVIDIA released two open-source projects, NVIDIA Kubernetes Engine (NVKE) and NVIDIA Kubernetes Recipes (NVKR), to facilitate running managed Kubernetes on GPU infrastructure. NVKE functions as the control plane for managed Kubernetes services, while NVKR is a build system that produces OS images, container images, and validated software \"recipes\" for various GPU generations. These tools empower AI factories to deploy certified, upstream Kubernetes on their own NVIDIA GPU servers, providing an open solution for GPU clouds despite current limitations in security and lifecycle management.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/6cf8dc1fa73a96096c41.svg",
+    "image_alt": "Explains how NVIDIA's NVKR builds components for NVKE, which then manages Kubernetes clusters on GPU servers."
+  },
+  {
+    "title": "Clearing Up the Confusion on AI Data Retention: Two Standard Designs Explained",
+    "url": "https://www.marktechpost.com/2026/11/17/zero-data-retention-ai-apis-explained/",
+    "source": "MarkTechPost",
+    "published_at": "2026-11-17",
+    "summary": "AI data retention policies are clarified by two standard API designs that dictate how user data is handled. Zero Data Retention (ZDR) APIs process prompts and return results without persisting data, whereas customer-managed retention APIs store uploaded datasets until the user explicitly deletes them. Understanding these distinct designs is crucial for developers to manage data lifecycle control, ensuring privacy and compliance by choosing appropriate endpoints and actively managing uploaded information.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/b439843e6ff6656e1596.svg",
+    "image_alt": "Explains two AI API data retention designs: one where prompts are processed and not stored, and another where uploaded data is stored until the user deletes it."
+  },
+  {
+    "title": "Perplexity Computer Adds Multiagent: Up to 16 AI Agents That Cross-Check Work",
+    "url": "https://www.marktechpost.com/2026/11/17/perplexity-computer-multiagent-effort-level/",
+    "source": "MarkTechPost",
+    "published_at": "2026-11-17",
+    "summary": "Perplexity Computer has introduced Multiagent, a new highest effort level for its AI agent platform designed for research and multistep tasks. This system allows a lead agent to coordinate a team of up to 16 supporting AI agents, which work in parallel on different frontier models, directly sharing findings and cross-checking each other's work. This structural change means supporting agents no longer report solely to a single lead, enabling more complex, verified, and collaborative AI-driven research for developers and analysts.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/6c3b64c2edcf2219e49e.svg",
+    "image_alt": "A diagram showing a lead AI agent delegating tasks to multiple supporting agents who work in parallel, directly share findings, and cross-check each other's work."
+  }
+]
