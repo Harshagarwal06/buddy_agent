@@ -1,0 +1,118 @@
+[
+  {
+    "title": "Anthropic prices IPO at $83 a share, above projected range",
+    "url": "https://techcrunch.com/2026/11/18/anthropic-reportedly-prices-ipo-at-83-a-share-above-projected-range/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-18",
+    "summary": "Anthropic has priced its initial public offering at $83 per share, exceeding its projected range and setting a new record for IPO proceeds. The AI company sold 980 million shares, generating $81.3 billion and achieving a $1.5 trillion valuation, surpassing SpaceX's previous record. This strong market debut signals robust investor appetite for AI companies and is expected to establish benchmarks for other private AI firms, including rival OpenAI.",
+    "tags": [
+      "business",
+      "ai"
+    ],
+    "importance": 5,
+    "image_url": "images/75af0b007c6d14e9fdf1.svg",
+    "image_alt": "A pipeline diagram showing Anthropic's IPO pricing above its initial range, leading to record proceeds and signaling strong investor confidence in the AI market."
+  },
+  {
+    "title": "Microsoft CEO Satya Nadella explains why he asked 60K employees to quit",
+    "url": "https://techcrunch.com/2026/11/18/microsoft-ceo-satya-nadella-explains-why-he-asked-60k-employees-to-quit/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-19",
+    "summary": "Microsoft CEO Satya Nadella explained that the company offered buyouts to 60,000 employees not to replace them with AI, but to reorganize the workforce for an AI-first future. This strategic shift aims for every job to involve managing AI agents, transforming roles like software engineering into overseeing \"software factories\" rather than direct product building. The initiative seeks to empower employees with agency in adapting to new AI-driven workflows, acknowledging that some individuals may choose alternative career paths during this significant company-wide transformation.",
+    "tags": [
+      "business",
+      "ai",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/f8c911c33b6e18649615.svg",
+    "image_alt": "A diagram explaining Microsoft's workforce shift, showing direct employee work transitioning to managing AI, with a branching path for employees to adapt or exit."
+  },
+  {
+    "title": "Amidst fears of AI cyberattacks, Satya Nadella says lots of critical infrastructure is ‘unpatchable’",
+    "url": "https://techcrunch.com/2026/11/18/amidst-fears-of-ai-cyberattacks-satya-nadella-says-lots-of-critical-infrastructure-is-unpatchable/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-18",
+    "summary": "Microsoft CEO Satya Nadella highlighted that much of the world's critical infrastructure, including firmware in HVAC and transportation systems, contains \"unpatchable\" software vulnerabilities. These internet-connected systems are increasingly susceptible to exploitation, especially with the rise of AI-aided cyberattacks that can quickly discover and leverage flaws. This situation necessitates urgent modernization of systems and enhanced real-time detection and defense capabilities to mitigate the growing risks posed by sophisticated AI-powered threats.",
+    "tags": [
+      "technology",
+      "ai",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/7352b28e43fa68eb1efe.svg",
+    "image_alt": "A pipeline diagram illustrates critical infrastructure systems with unpatchable software flaws, making them vulnerable to AI cyberattacks and potential system disruption."
+  },
+  {
+    "title": "Satya Nadella predicts AI agents will reshuffle the economics of the web",
+    "url": "https://techcrunch.com/2026/11/18/satya-nadella-predicts-ai-agents-will-reshuffle-the-economics-of-the-web/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-18",
+    "summary": "Microsoft CEO Satya Nadella predicts that the rise of AI agents will fundamentally reshape the economics of the internet. This shift will impact current ad-based business models, moving value from \"human web\" traffic and eyeballs towards transactional or cost-per-click interactions. Companies that embrace AI agents and adapt their models are poised to gain an advantage, while those that block them risk losing out to more flexible competitors.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/1202aa71d68f66bc588e.svg",
+    "image_alt": "Diagram showing an AI agent leading to a branching path: one to transactional payments, the other to diminished ad revenue, illustrating the web's economic shift."
+  },
+  {
+    "title": "Microsoft CEO Satya Nadella remains confident in Nvidia after Huang’s exit",
+    "url": "https://techcrunch.com/2026/11/18/microsoft-ceo-satya-nadella-remains-confident-in-nvidia-after-huangs-exit/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-18",
+    "summary": "Microsoft CEO Satya Nadella expressed confidence in Nvidia's future leadership after Jensen Huang's unexpected departure from his 33-year role. Huang stepped down amid controversies, including an alleged affair with a suspected Chinese spy and other workplace relationships, which questioned his judgment. Nadella's endorsement of interim CEO Colette Kress and the existing Nvidia team suggests a stable partnership between the tech giants despite the high-profile leadership change.",
+    "tags": [
+      "business",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/d386ddc4e972987097de.svg",
+    "image_alt": "A before-and-after diagram showing former CEO Jensen Huang departing, followed by new leadership from Colette Kress and the Nvidia team, maintaining company confidence."
+  },
+  {
+    "title": "Elon Musk says ousting Jensen Huang is like ‘kicking Michael Jordan off your team’",
+    "url": "https://techcrunch.com/2026/11/18/elon-musk-says-ousting-jensen-huang-is-like-kicking-michael-jordan-off-your-team/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-18",
+    "summary": "Elon Musk criticized Nvidia's board for ousting CEO Jensen Huang following revelations of extramarital affairs, including one with an alleged Chinese spy. Musk likened Huang's removal to \"kicking Michael Jordan off your team,\" emphasizing Huang's irreplaceable talent, deep industry relationships, and team loyalty, which he believes are crucial for Nvidia's success. This decision, despite a petition for reinstatement and concerns from other industry figures about national security implications and market cap loss, is seen by Musk as detrimental to shareholders and the company's future.",
+    "tags": [
+      "business",
+      "technology",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/0b6dc0911c1e51bba643.svg",
+    "image_alt": "A diagram illustrating how a key leader's removal from a successful company could lead to a decline in its future trajectory, as criticized by Elon Musk."
+  },
+  {
+    "title": "Nvidia created a weird bit of intrigue by not filing a routine SEC report",
+    "url": "https://techcrunch.com/2026/11/18/nvidia-created-a-weird-bit-of-intrigue-by-not-filing-a-routine-sec-report/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-18",
+    "summary": "Nvidia delayed filing its routine quarterly 10-Q report with the SEC, an unusual move that has raised concerns among analysts and investors. The 10-Q provides detailed operational information, including legal proceedings and risk factors, and Nvidia typically files it the same day as earnings. This delay is reportedly linked to whether additional disclosures are needed regarding ongoing investigations into CEO Jensen Huang and allegations of restricted AI chip sales to China, suggesting the company may have significant new information to disclose about its mounting legal and regulatory scrutiny.",
+    "tags": [
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/33ff549649a1aa31d0db.svg",
+    "image_alt": "A diagram illustrating a quarterly financial report being held up by multiple legal investigations, representing the delay in Nvidia's SEC filing."
+  },
+  {
+    "title": "Palmer Luckey warns AI-powered cyberattacks are outpacing defenses: ‘It’s time to start running’",
+    "url": "https://techcrunch.com/2026/11/18/palmer-luckey-warns-ai-powered-cyberattacks-are-outpacing-defenses-its-time-to-start-running/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-18",
+    "summary": "Palmer Luckey warned that AI-powered cyberattacks are rapidly outpacing current defense capabilities, creating significant vulnerabilities. Older technology systems are struggling to keep pace with new hacking methods enabled by AI, a mismatch actively exploited by adversaries like North Korea for strategic and financial gain. Organizations must accelerate their adoption of AI for defense to counter these advanced threats and secure their systems against increasingly sophisticated exploits.",
+    "tags": [
+      "technology",
+      "ai",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/90c4d9b0208707ea0d9b.svg",
+    "image_alt": "A comparison showing fast AI cyberattacks bypassing slow, outdated defense systems, leading to vulnerable digital infrastructure."
+  }
+]
