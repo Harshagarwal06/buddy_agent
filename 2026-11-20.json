@@ -1,0 +1,119 @@
+[
+  {
+    "title": "A brief history of Nvidia’s recent stock fluctuations",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1038063/nvidia-stock-market-price-earnings",
+    "source": "The Verge AI",
+    "published_at": "2026-11-19",
+    "summary": "Nvidia's stock price recently plummeted by nearly 40% from its October peak, despite the company reporting a blockbuster third quarter with revenue more than doubling year-over-year, driven by a 110% increase in data center revenue. This significant drop was fueled by a broader market sell-off of chip stocks and the resignation of former CEO Jensen Huang amidst reports of extramarital affairs and an alleged spy scandal. Investors are struggling to reconcile Nvidia's stellar financial performance and central role in the AI economy with serious concerns over its future leadership, impacting its market valuation.",
+    "tags": [
+      "business",
+      "technology",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/718b7d732c7cfa7d32d4.svg",
+    "image_alt": "A comparison showing Nvidia's strong earnings contrasted with a departing CEO and a falling stock price, illustrating investor uncertainty."
+  },
+  {
+    "title": "Apple is hiring engineers to build its own AI agent",
+    "url": "https://www.theverge.com/tech/1038227/apple-ai-agent-engineer-job-listing",
+    "source": "The Verge AI",
+    "published_at": "2026-11-19",
+    "summary": "Apple is actively hiring engineers to develop its own advanced AI agent, aiming to significantly enhance its device capabilities. This agent is designed to perform diverse functions such as web browsing, cross-application tasks, code writing, and service calls, positioning Apple to compete with existing AI assistants from Meta, OpenAI, and Google. The development promises to evolve Siri into a more agentic assistant, enabling seamless multi-step tasks across various apps and APIs, ultimately empowering users with more integrated and efficient device interactions.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/88deda0e570924f0114f.svg",
+    "image_alt": "A branching diagram shows an AI agent connecting to multiple app tools like a browser and editor, enabling complex, multi-step user tasks."
+  },
+  {
+    "title": "Anthropic starts trading on Wall Street",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1035384/anthropic-ipo-trading-nasdaq",
+    "source": "The Verge AI",
+    "published_at": "2026-11-19",
+    "summary": "Anthropic, an AI company, has gone public, with its shares beginning to trade on the Nasdaq under the ticker symbol \"ANT\" at $111.50 per share. This debut follows an S-1 filing revealing an $80.7 billion net loss, largely from an accounting charge, alongside $16.3 billion in revenue, and outlines a governance structure designed to keep control with founders. The company's CEO emphasized a commitment to pacing AI development for safety and human control, despite potential \"catastrophic\" risks like AI models exhibiting self-preserving or unintended behaviors.",
+    "tags": [
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/4f5477b10eecf1fb9c57.svg",
+    "image_alt": "Explains Anthropic's public trading, contrasting rising shares with AI safety risks and the company's commitment to human control."
+  },
+  {
+    "title": "With the biggest IPO of all time, Anthropic’s ‘good guy’ reputation is on the line",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1037459/anthropic-ipo-safe-ai-reputation-power-structure",
+    "source": "The Verge AI",
+    "published_at": "2026-11-19",
+    "summary": "Anthropic has launched the biggest IPO of all time, raising $81.3 billion, but its \"good guy\" reputation for prioritizing AI safety is now under scrutiny. The company operates with an unusual power structure, including a Public Benefit Corporation registration and a Long-Term Benefit Trust, which grants founders controlling voting rights and allows trustees to select board members. This unique governance insulates Anthropic from typical shareholder pressure for profit maximization, yet it also removes external checks on its power, potentially conflicting with its stated mission of thoughtful, safe AI development.",
+    "tags": [
+      "business",
+      "ai"
+    ],
+    "importance": 4,
+    "image_url": "images/80c105bdcb7a1b57ab04.svg",
+    "image_alt": "A diagram showing how Anthropic's Long-Term Benefit Trust acts as a gate, filtering investor demands to protect the company's AI safety mission."
+  },
+  {
+    "title": "Gemini on Mac can now use your computer",
+    "url": "https://www.theverge.com/tech/1037902/google-gemini-macos-ai-computer-use",
+    "source": "The Verge AI",
+    "published_at": "2026-11-19",
+    "summary": "Google's Gemini app for macOS has gained a new \"computer use\" feature, enabling it to perform multi-step tasks across local files, desktop applications, and the web. Users can control which apps Gemini accesses and monitor its actions through a live preview window, enhancing workflow efficiency. This development allows Gemini to speed up processes like form filling and presentation creation, rolling out in the US ahead of new Apple restrictions on AI agents requiring full disk access.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/1087239ca08da6eccfdc.svg",
+    "image_alt": "A pipeline showing Gemini App gaining Computer Access to perform User Tasks, explaining the new feature."
+  },
+  {
+    "title": "Meta’s Muse Charm might cost $300",
+    "url": "https://www.theverge.com/tech/1038087/meta-muse-charm-ai-price",
+    "source": "The Verge AI",
+    "published_at": "2026-11-19",
+    "summary": "Meta's Muse Charm, a small gadget with a screen for interacting with an AI agent, is reportedly priced at $300, with a planned holiday release. The device integrates real-time voice and avatar technology, featuring a fingerprint sensor for quick access and a free 12-month 5G data plan from Verizon. This development offers users a dedicated, phone-free method to engage with Meta's AI, potentially simplifying daily interactions and expanding AI accessibility.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/28eb77ae5ade1a2aeee3.svg",
+    "image_alt": "A diagram explaining how a charm gadget provides direct access to an AI agent, bypassing the need for a smartphone."
+  },
+  {
+    "title": "Google is putting AI chats right on the homepage",
+    "url": "https://www.theverge.com/tech/1038059/google-search-homepage-ai-chats",
+    "source": "The Verge AI",
+    "published_at": "2026-11-19",
+    "summary": "Google is integrating AI chat functionality directly onto its homepage via a new collapsible sidebar, rolling out globally on desktop. This update allows users to view and continue recent AI searches, start new threads, or connect to Gemini Notebooks from the familiar search interface. The change aims to support users with multi-turn questions, facilitating deeper exploration and progress beyond single, isolated queries by making ongoing conversations readily accessible.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/e7192013cd2907c7e0a8.svg",
+    "image_alt": "A diagram showing the evolution of Google Search from a single query bar to a new interface with an AI chat sidebar for ongoing conversations."
+  },
+  {
+    "title": "ChatGPT can transcribe as you speak now with Live Dictation",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1037634/openai-chatgpt-live-dictation",
+    "source": "The Verge AI",
+    "published_at": "2026-11-19",
+    "summary": "ChatGPT has introduced a new Live Dictation feature, enabling faster audio prompt transcription by processing speech in real-time rather than waiting for recording completion. This update removes the previous 10-minute recording limit and is rolling out globally across all ChatGPT plans on web, desktop, iOS, and Android platforms. The enhancement significantly improves the efficiency and reliability of voice input, making interactions with the AI more seamless and accessible for users.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/34100d45f2f8d491c5a9.svg",
+    "image_alt": "A pipeline diagram showing voice input being processed into live transcription, resulting in instant text output, illustrating the new continuous dictation feature."
+  }
+]
