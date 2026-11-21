@@ -1,0 +1,118 @@
+[
+  {
+    "title": "AI claimed a solution to the 167-year-old Riemann hypothesis — and a human did, too",
+    "url": "https://techcrunch.com/2026/11/20/ai-claimed-a-solution-to-the-167-year-old-riemann-hypothesis-and-a-human-did-too/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-20",
+    "summary": "Mathematician Levent Alpöge, an employee at Anthropic, has claimed to solve the 167-year-old Riemann hypothesis, one of the Millennium Prize problems. His solution is presented as a Lean-compilable proof, allowing for formal verification by the mathematics community, which is currently scrutinizing the complex arguments. If confirmed, this breakthrough could reveal fundamental hidden structures underlying prime numbers, offering profound insights into the universe's mathematical mysteries.",
+    "tags": [
+      "science",
+      "technology"
+    ],
+    "importance": 5,
+    "image_url": "images/a00865cd5678165745f7.svg",
+    "image_alt": "A diagram showing how a mathematician used Lean formal verification to prove the Riemann hypothesis, revealing hidden structures within prime numbers."
+  },
+  {
+    "title": "The fallout from Nvidia’s Jensen Huang scandal continues",
+    "url": "https://techcrunch.com/podcast/the-fallout-from-nvidias-jensen-huang-scandal-continues/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-20",
+    "summary": "Nvidia delivered a strong earnings report this week, showcasing healthy growth and promising continued success, despite the ongoing fallout from the recent ouster of CEO Jensen Huang. The company's financial performance provides a crucial update amidst leadership changes, while the broader AI industry's unique circular funding model is being critically examined. This situation highlights Nvidia's resilience in a period of internal upheaval and tests the sustainability of the AI sector's financial ecosystem, particularly with Anthropic's recent public offering.",
+    "tags": [
+      "business",
+      "ai",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/8ddb4c6e93e5c4f690c9.svg",
+    "image_alt": "A diagram showing Nvidia's strong earnings growth overcoming the impact of a CEO ouster, leading to a stable future path."
+  },
+  {
+    "title": "Anthropic mathematician claims to have solved prestigious Millennium Prize problem with Claude",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1010051/anthropic-riemann-hypothesis-millennium-prize-problem",
+    "source": "The Verge AI",
+    "published_at": "2026-11-20",
+    "summary": "Anthropic mathematician Levent Alpöge claims to have solved the Riemann hypothesis, a notoriously difficult mathematical problem, with the assistance of the AI model Claude. This hypothesis, proposed in 1859, concerns the distribution of prime numbers and is one of seven Millennium Prize problems, carrying a $1 million bounty if verified. If independently confirmed, this achievement would mark a significant advancement for artificial intelligence in mathematics, potentially transforming the field's approach to long-standing challenges.",
+    "tags": [
+      "ai",
+      "science"
+    ],
+    "importance": 4,
+    "image_url": "images/c68371e52ca0adfaed3b.svg",
+    "image_alt": "A pipeline shows the Riemann Hypothesis leading to AI assistance, which results in a prize claim, illustrating AI's potential in solving complex math problems."
+  },
+  {
+    "title": "Chips can survive the space environment — can their financing?",
+    "url": "https://techcrunch.com/2026/11/20/chips-can-survive-the-space-environment-can-their-financing/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-20",
+    "summary": "Space data centers face significant financing hurdles because the chips used in orbit cannot serve as collateral for loans, unlike their terrestrial counterparts. Current data center financing models depend on lenders being able to repossess chips if a borrower defaults, a safeguard that reduces borrowing costs. This inability to secure loans with unrecoverable orbital assets could make funding space-based compute infrastructure more expensive and challenging, potentially slowing its development despite future cost predictions.",
+    "tags": [
+      "business",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/a713c73210c522803ddc.svg",
+    "image_alt": "A comparison showing how ground-based data center chips can serve as loan collateral, making financing easier, while orbital chips cannot be repossessed, complicating space data center funding."
+  },
+  {
+    "title": "Six AI-powered gadgets that could make your home office smarter",
+    "url": "https://techcrunch.com/2026/11/20/6-ai-powered-gadgets-that-could-make-your-home-office-smarter/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-20",
+    "summary": "Tech companies are introducing AI-powered gadgets designed to enhance productivity in home office environments. Devices like the Flowtica Scribe Pen combine handwriting with audio recording for transcription and summarization, while the Anker Soundcore Work pin captures meetings for AI-driven note organization. These innovations aim to streamline common office tasks such as note-taking, transcription, and task management, offering users more efficient ways to manage their daily workflows.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/88fcdeae88e68e19bab0.svg",
+    "image_alt": "A pipeline diagram showing handwritten notes and audio entering an AI system, which then processes them into smart summaries and action items."
+  },
+  {
+    "title": "Daniel Ek backs AI researcher’s fusion power startup. Here’s what they’re building.",
+    "url": "https://techcrunch.com/2026/11/20/daniel-ek-backs-ai-researchers-fusion-power-startup-heres-what-theyre-building/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-20",
+    "summary": "Spotify founder Daniel Ek is backing Europa Fusion, a new startup founded by AI researcher Nantas Nardelli, which is pursuing a distinct, simulation-heavy approach to developing fusion power. Unlike many fusion companies that prioritize physical hardware testing, Europa Fusion will focus on advanced data and computational models to achieve pulsed-power fusion. This strategy aims to accelerate the development of carbon-free energy, potentially addressing climate change and the growing energy demands of AI technologies.",
+    "tags": [
+      "technology",
+      "science",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/33b35a6a226c466c8757.svg",
+    "image_alt": "A comparison shows two paths to fusion power: one relying on physical hardware testing, the other on advanced simulations, both aiming for commercial fusion energy."
+  },
+  {
+    "title": "Trump threatens ‘tremendous tax’ for moving AI data centers outside the US",
+    "url": "https://www.theverge.com/policy/1038892/trump-foreign-data-centers-tax",
+    "source": "The Verge AI",
+    "published_at": "2026-11-20",
+    "summary": "Donald Trump has threatened to impose a \"tremendous tax\" on US companies that choose to build data centers outside the United States. This proposal comes as many US states and cities are already implementing restrictions and moratoriums on new data center construction domestically, potentially pushing companies to seek international locations. The proposed tax aims to deter this outward migration, with Trump asserting that foreign data centers would be vulnerable to seizure by countries like China, thereby impacting national security and economic standing.",
+    "tags": [
+      "politics",
+      "business",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/d611996e069dbcc800b8.svg",
+    "image_alt": "A branching diagram showing US companies facing domestic restrictions or an overseas build, which would incur a tremendous tax."
+  },
+  {
+    "title": "The week everything fell apart",
+    "url": "https://www.theverge.com/podcast/1038419/outage-outlook-ground-stop-tech-failure-vergecast",
+    "source": "The Verge AI",
+    "published_at": "2026-11-20",
+    "summary": "A recent week saw multiple significant technology outages, including Microsoft Outlook, a nationwide ground stop, banking services, and iCloud, creating a perception of widespread system collapse. While individual incidents were generally less severe than feared, their simultaneous occurrence raises concerns about the increasing integration of AI and reduced human oversight in critical infrastructure. This trend suggests a future where new types of complex problems emerge, making solutions more challenging to identify and implement across interconnected digital systems.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/bd0c522100642f077855.svg",
+    "image_alt": "Diagram illustrating how simultaneous technology outages across multiple systems, potentially influenced by AI, lead to complex and difficult resolution challenges."
+  }
+]
