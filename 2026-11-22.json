@@ -1,0 +1,120 @@
+[
+  {
+    "title": "Signal restricts mobile screenshots as it confronts ‘existential threat’ of AI surveillance",
+    "url": "https://techcrunch.com/2026/11/21/signal-restricts-mobile-screenshots-as-it-confronts-existential-threat-of-ai-surveillance/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-21",
+    "summary": "Signal is restricting users' ability to take screenshots within its secure messaging app on Android and iOS, following similar measures on Windows. This action responds to the \"existential threat\" posed by operating systems integrating agentic AI, which can scan and access sensitive user data from screens. Signal's president states that once data is captured by OS-level AI agents, it falls outside Signal's control, imperiling the privacy of conversation participants and undermining the app's privacy guarantees.",
+    "tags": [
+      "technology",
+      "ai",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/f15cbbf7bfc118c7c913.svg",
+    "image_alt": "A pipeline showing a secure message, an AI agent scanning the screen, and the resulting privacy risk."
+  },
+  {
+    "title": "The UN fails to agree on rules regulating ‘killer robots’",
+    "url": "https://www.theverge.com/tech/1039554/un-regulations-killer-robots",
+    "source": "The Verge AI",
+    "published_at": "2026-11-21",
+    "summary": "The United Nations failed to agree on legally binding rules for autonomous weapons, often called \"killer robots,\" after a week of negotiations in Geneva. Instead of urgent regulations, countries agreed to a two-year window to propose options, with some potentially remaining non-binding, despite calls from the Red Cross and UN Secretary-General for rules within a year. This delay means the development and deployment of these weapons, which humanitarian organizations link to significant civilian deaths in conflicts like Ukraine and Gaza, will continue largely unregulated for the foreseeable future.",
+    "tags": [
+      "politics",
+      "technology",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/cf55ece290fabedcf443.svg",
+    "image_alt": "A visual explanation of UN negotiations failing to establish rules, resulting in autonomous weapons advancing without regulation."
+  },
+  {
+    "title": "Is selling an AI version of your face to this microdrama startup the future of Hollywood?",
+    "url": "https://techcrunch.com/2026/11/21/is-selling-an-ai-version-of-your-face-to-this-microdrama-startup-the-future-of-hollywood/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-21",
+    "summary": "Microdrama startup Shortical has premiered an AI-generated series starring Israeli actor Aki Avni, who licensed his face to create a digital avatar for the production. This marks Shortical's first such licensing deal, leveraging AI to significantly reduce production overhead compared to live-action content. The development signals a potential new era for artists and content creation, enabling smaller teams to produce \"movie-scale\" productions and epic fantasies previously limited by budget.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/5a3e022e367f2e51976e.svg",
+    "image_alt": "A pipeline showing an actor's likeness being used for AI generation to create digital micro-drama content, illustrating a new licensing model."
+  },
+  {
+    "title": "Here are the top AI agents that can live in your text messages",
+    "url": "https://techcrunch.com/2026/11/21/all-the-ai-agents-that-can-live-in-your-text-messages/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-21",
+    "summary": "AI agents are increasingly available directly through text messages, allowing users to interact with them like an ordinary contact rather than downloading dedicated applications. These agents leverage conversational context, connect to existing apps and services, and can execute a range of tasks such as scheduling appointments, organizing calendars, researching trips, or making reservations. This integration offers a streamlined approach to task management, providing proactive assistance and eliminating the need for additional app installations, thereby simplifying daily digital interactions.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/708f2b064a32d0a90bdc.svg",
+    "image_alt": "A pipeline showing a user sending a text message to an AI agent, which then performs various tasks like scheduling or research."
+  },
+  {
+    "title": "Can Anthropic afford to put safety first?",
+    "url": "https://www.theverge.com/podcast/1038701/anthropic-ipo-ai-safety-openai-nvidia-structure",
+    "source": "The Verge AI",
+    "published_at": "2026-11-21",
+    "summary": "Anthropic, the AI lab behind Claude, recently went public on Nasdaq, raising significant questions about its future direction. This IPO challenges the company's ability to uphold its safety-first mission while simultaneously facing shareholder pressures and immense compute costs, projected at $900 billion over the coming years. Its unique corporate governance structure and safety branding, which also serves as its primary customer pitch, are now in direct tension with the profit-oriented demands of public markets, potentially impacting the trajectory of AI development.",
+    "tags": [
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/dc9b605d4b7b2d9816a7.svg",
+    "image_alt": "A comparison showing a protective shield for AI safety and a rising stock chart for shareholder profit, illustrating the conflict between them."
+  },
+  {
+    "title": "Chess.com’s next move is a new hub for classic games, from mahjong to sudoku",
+    "url": "https://www.theverge.com/games/1038099/chess-classic-games-expansion-ai",
+    "source": "The Verge AI",
+    "published_at": "2026-11-21",
+    "summary": "Chess.com has launched a new \"Classic Games\" platform, expanding its offerings beyond chess to include 10 additional titles like backgammon, mahjong, sudoku, and go. This new hub, available in public beta on web and mobile, provides familiar features such as lessons, leaderboards, rating systems, and bot opponents for multiplayer games. The initiative aims to replicate Chess.com's success in fostering large, engaged communities for a wider array of classic games that offer a lifelong learning journey.",
+    "tags": [
+      "business",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/a54abac2c251901bd371.svg",
+    "image_alt": "A pipeline diagram showing a chess piece leading to an expansion, then to a hub of diverse classic game pieces, illustrating Chess.com's platform growth."
+  },
+  {
+    "title": "A tale of two Nvidias",
+    "url": "https://techcrunch.com/2026/11/21/a-tale-of-two-nvidias/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-21",
+    "summary": "Nvidia is navigating a complex period marked by strong financial performance and calls for former CEO Jensen Huang's return, alongside new US restrictions impacting its sales to China. Despite reporting soaring revenue, the company has halted H200 chip sales directly to China and closed remote access loopholes from neighboring data centers, affecting an estimated 20% of its business. These developments underscore the significant geopolitical and leadership pressures on Nvidia, influencing its market strategy and future growth prospects amidst evolving trade policies.",
+    "tags": [
+      "technology",
+      "business",
+      "politics"
+    ],
+    "importance": 2,
+    "image_url": "images/0b46bb0e0f4893425e54.svg",
+    "image_alt": "A branching diagram showing Nvidia's AI chips being blocked from reaching the China market, both through direct sales and via remote access from nearby data centers."
+  },
+  {
+    "title": "A psychology PhD taught AI to hear when you're sad, stressed or happy; now Google DeepMind has hired him to bring that empathy to Gemini - The Economic Times",
+    "url": "https://news.google.com/rss/articles/CBMitgJBVV95cUxQcjM1T24xcHBneTVCdlFSM0hGckNtbU9qTDlhbWhBUlE3VGFMQUdaRmlocldMYTdCMHN4MjRxN2xEWDYxZGRXRW13RHFCZTdVcmt4ajNBNjZnU1lsTmY0WExSZTl6WjZmMndCYTM0a3haWWV1MWV6ZVJib242VE5wbVBUT3cyejNNQXBRbVdQNFlsaU9QSTBMUTUzNmktMjJjbzVnaVhBTml4UEJDRzV6eGhmY1ZRa29JRmQyNG9IZUphWE5PUVBLSkpfMmpxS3dLTHZXc1E2c05sem92b1VTQV9kZlBOMkNxcE1WQmFmaDFmRDR3Vk1MNUpRMUFTellvdmo2QmlNMUlPOUZtT2trakFmSzhBalE3YUpWRWVxM3ZEcUtPbk1vQTgwODZNbEg0c1ZKM0tn?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-11-21",
+    "summary": "A psychology PhD has successfully taught artificial intelligence to discern human emotions, including sadness, stress, and happiness, from vocal cues. This expert has now been hired by Google DeepMind to integrate this specialized emotional understanding into their Gemini AI model. This significant development aims to imbue AI assistants with a greater sense of empathy, potentially leading to more nuanced, supportive, and human-like interactions with users.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 2,
+    "image_url": "images/dbf3af95f150909323e3.svg",
+    "image_alt": "A pipeline showing human emotion input, processed by AI training, resulting in an empathetic AI assistant."
+  }
+]
