@@ -1,0 +1,116 @@
+[
+  {
+    "title": "How Notable Capital, GIC, and Baillie Gifford bet big on Anthropic before its IPO",
+    "url": "https://techcrunch.com/2026/11/22/how-notable-capital-gic-and-baillie-gifford-bet-big-on-anthropic-before-its-ipo/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-23",
+    "summary": "AI company Anthropic recently completed the largest IPO in history, achieving a $1.5 trillion valuation, following substantial early investments from firms like Notable Capital, GIC, and Baillie Gifford. Notable Capital committed 10% of its U.S. fund to Anthropic's Series E at a $61.5 billion valuation, driven by data showing developers favored Claude 70% of the time. GIC invested later, noting Claude Code's early popularity. These high-conviction investments yielded significant paper returns, with Notable Capital seeing an approximate 15-fold return, demonstrating immense financial upside for early backers of successful generative AI ventures.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 5,
+    "image_url": "images/1154ab2a03de7519bd39.svg",
+    "image_alt": "A pipeline diagram showing investor funds flowing to an AI company based on high developer usage, leading to significant IPO returns."
+  },
+  {
+    "title": "We haven’t seen the last of the major tech outages",
+    "url": "https://www.theverge.com/tech/1039851/major-tech-outages",
+    "source": "The Verge AI",
+    "published_at": "2026-11-22",
+    "summary": "Director of National Intelligence Jay Clayton and Microsoft President Brad Smith warn that major tech outages, like recent disruptions to the FAA, Outlook, and JPMorgan Chase, will continue. This trend is attributed to a global information infrastructure undergoing a significant technological upgrade, where AI can identify system flaws that are then either patched or exploited by bad actors. Consequently, the public should anticipate ongoing disruptions and a substantial need for investment in system upgrades and cybersecurity measures as this digital transformation unfolds.",
+    "tags": [
+      "technology",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/e3485c53e2af71cd7027.svg",
+    "image_alt": "A diagram showing how aging technology systems, when scanned by AI for flaws, can lead to either system upgrades or malicious hacks, both resulting in service outages."
+  },
+  {
+    "title": "OpenAI’s chief scientist has thoughts on how to limit AI development",
+    "url": "https://techcrunch.com/2026/11/22/openais-chief-scientist-has-thoughts-on-how-to-limit-ai-development/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-22",
+    "summary": "OpenAI's chief scientist, Jakub Pachocki, has proposed using \"perplexity\" as a standard measurement to limit AI development. Perplexity quantifies how well a model predicts the next token, with lower scores indicating better predictions and correlating with advanced capabilities like chain-of-thought reasoning and transformative applications in cybersecurity and mathematics. This metric could serve as a shared benchmark for general intelligence, enabling AI companies to establish common limits on progress until understanding and monitoring AI behavior reach concrete safety milestones.",
+    "tags": [
+      "ai",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/817415d59d383b14f59f.svg",
+    "image_alt": "A pipeline shows AI progress, measured by decreasing perplexity scores, leading to a gate representing a common development limit for safety."
+  },
+  {
+    "title": "Why data centers are at the center of the Big Tech backlash",
+    "url": "https://techcrunch.com/2026/11/22/why-data-centers-are-at-the-center-of-the-big-tech-backlash/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-22",
+    "summary": "Journalist Paris Marx's new book \"Hyperscale\" investigates the growing political backlash against data centers, which have become a significant point of contention amidst broader anger at the tech industry. Marx argues that the physical presence and environmental impact of these facilities, including their substantial energy and water consumption and noise pollution, directly affect local communities and their quality of life. This tangible local impact makes data centers an obvious target for public opposition, contributing to recent political shifts and signaling a wider movement against the physical manifestations of technology.",
+    "tags": [
+      "technology",
+      "politics",
+      "climate"
+    ],
+    "importance": 4,
+    "image_url": "images/dff5d90f128fda5bb62e.svg",
+    "image_alt": "A pipeline diagram showing a data center leading to high resource use, which then causes community backlash and political opposition."
+  },
+  {
+    "title": "Binding of Isaac developer removes AI music from Repentance Plus",
+    "url": "https://www.theverge.com/games/1039770/binding-of-isaac-ai-music",
+    "source": "The Verge AI",
+    "published_at": "2026-11-22",
+    "summary": "Binding of Isaac: Repentance Plus developers removed AI-generated music from a game segment after players discovered its presence, leading to significant backlash. Reddit users found Suno metadata within audio files used in a Grand Theft Auto-themed section, prompting developer Edmund McMillen to claim ignorance and apologize. The quick removal followed review-bombing on Steam and a failure to meet Valve's disclosure requirements for AI content, highlighting ongoing industry tensions regarding generative AI in game development.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/6c11a07d8b0a04c677ca.svg",
+    "image_alt": "A pipeline diagram showing game music files, followed by the discovery of AI metadata, leading to the removal of those files."
+  },
+  {
+    "title": "The vibe-coding revolution is coming to all the gadgets",
+    "url": "https://www.theverge.com/column/1039139/vibe-coding-gadgets-tv-camera",
+    "source": "The Verge AI",
+    "published_at": "2026-11-22",
+    "summary": "Large language models (LLMs) are enabling a \"vibe-coding\" revolution, allowing users to easily customize their gadgets. Developers are leveraging tools like Claude Code to redesign device interfaces, such as one user who transformed his ad-filled Android TV into a clean, personalized display in under two hours. This trend democratizes hardware customization, fostering a market for more developer-friendly devices and inspiring widespread improvements in device software.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/edf2c89000eafc7ea75a.svg",
+    "image_alt": "Diagram illustrating how an AI chatbot transforms a cluttered, ad-filled TV interface into a clean, customized display based on user prompts."
+  },
+  {
+    "title": "Google Launches Gemini 4 Neon With Faster Reasoning for Complex Work - Kingy AI",
+    "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE96bGllcTJmWC0yTWoxYXZYcGRxeVl5Y2JSOEd1b1hNUzNhc2FJdGdlcE40SGV6aW1hVUtrd29XWjBpMWRzbDROOTA3bmlTTGROdnBYM09tblM4QW5BUl9Eb2N2SnI0UmNadVI0Q0lCT2pkNXJLSHhj?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-11-23",
+    "summary": "Google has officially launched its new artificial intelligence model, Gemini 4 Neon, as announced in the headline. This latest iteration is specifically highlighted for its enhanced capability to perform faster reasoning, particularly when tackling complex work. While further details are not available, this development indicates Google's continued focus on improving AI efficiency and problem-solving prowess, potentially leading to more sophisticated and quicker AI-driven solutions across various industries.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 2,
+    "image_url": "images/793944ba243df1171f7d.svg",
+    "image_alt": "A diagram showing a complex task transforming into a quick solution through AI reasoning, illustrating Gemini 4 Neon's enhanced processing speed for intricate problems."
+  },
+  {
+    "title": "How To Create And Edit Images With Google Nano Banana In Python - Dataconomy",
+    "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE51TnJjVW83Ti1hU0E1RnVTNUNXSHI5YVJaUjRCcmdtd05JeVJoMGJTekl4SzZ1VWg0M1pUYUZRMWJhSUpQRTdKa3VCaFNHelBuV2VXNHFlMm9MNmFyOUs4cVVMWGxtemhYdy1obGl4WThzSFo5YldhcXRhUQ?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-11-23",
+    "summary": "Google Nano Banana allows users to create and edit images directly within Python environments. The available information indicates this tool facilitates image manipulation through Python, though specific functionalities, underlying mechanisms, or practical applications are not detailed. Further information would be needed to understand its full impact on developers and image processing workflows, as only the headline-level development is known.",
+    "tags": [
+      "technology"
+    ],
+    "importance": 1,
+    "image_url": "images/1745393b50a91217a246.svg",
+    "image_alt": "Explains how Python code can create and edit images using a specific tool."
+  }
+]
