@@ -1,0 +1,118 @@
+[
+  {
+    "title": "In all-hands meeting, Jensen Huang thanks White House and says he’s in therapy",
+    "url": "https://techcrunch.com/2026/11/24/in-all-hands-meeting-jensen-huang-thanks-white-house-and-says-hes-in-therapy/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-24",
+    "summary": "Nvidia CEO Jensen Huang, recently reinstated, held an all-hands meeting where he expressed remorse for past actions, admitting he hurt staff and flouted the company's code of conduct. He revealed he is in therapy and thanked the White House for providing intelligence that helped the board assess low national security risks for his return. Huang now faces a challenging path, balancing reasserting authority with acknowledging mistakes, while preparing for upcoming congressional scrutiny from a newly Democrat-led government.",
+    "tags": [
+      "business",
+      "politics",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/c49761000558df80570a.svg",
+    "image_alt": "A pipeline showing a CEO's code violation, followed by intelligence aid, leading to future congressional scrutiny."
+  },
+  {
+    "title": "Yale’s Sonnenfeld: Nvidia is a ‘detriment’ to US industrial might — not a champion",
+    "url": "https://techcrunch.com/2026/11/24/yales-sonnenfeld-nvidia-is-a-detriment-to-u-s-industrial-might-not-a-champion/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-25",
+    "summary": "Yale academic Jeffrey Sonnenfeld asserts that Nvidia is detrimental to U.S. industrial might, accusing the company of enabling adversaries by allegedly allowing advanced chips to reach them. He points to research suggesting Nvidia's most sophisticated chips have bypassed U.S. export controls to reach China, linking this to the emergence of seemingly copied Chinese open-source AI models. This situation raises significant concerns about national security and the efficacy of U.S. technology safeguards, potentially undermining America's competitive advantage in critical technological sectors.",
+    "tags": [
+      "business",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/fe95cb1bec9e1512db0d.svg",
+    "image_alt": "A pipeline showing U.S. chips bypassing broken export controls, leading to the growth of adversary technology."
+  },
+  {
+    "title": "Amazon says hackers' AI agents found and exploited 0-day with little human input",
+    "url": "https://arstechnica.com/security/2026/11/amazon-says-hackers-ai-agents-found-and-exploited-0-day-with-little-human-input/",
+    "source": "Ars Technica AI",
+    "published_at": "2026-11-24",
+    "summary": "Amazon reported that AI agents autonomously discovered and exploited a zero-day vulnerability with minimal human input. These agents, operating on the open-source Cairn framework, were given a simple goal to gain root access on an East Asian university server and successfully found and exploited a flaw in a medical imaging AI application. This development demonstrates that autonomous AI-driven offensive operations are already occurring, highlighting a new level of speed and persistence that cybersecurity defenders must prepare for.",
+    "tags": [
+      "security",
+      "ai",
+      "technology"
+    ],
+    "importance": 4,
+    "image_url": "images/b799949b71500e5c03a1.svg",
+    "image_alt": "A pipeline showing AI agents discovering and exploiting a zero-day vulnerability to gain system control."
+  },
+  {
+    "title": "Jensen Huang still thinks a succession plan creates unnecessary hierarchy",
+    "url": "https://techcrunch.com/2026/11/24/jensen-huang-still-thinks-a-succession-plan-creates-unnecessary-hierarchy/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-24",
+    "summary": "Nvidia CEO Jensen Huang, following his return to the company, reiterated his belief that a succession plan creates unnecessary hierarchy, despite his recent resignation and investor concerns. Huang reportedly told staff that Nvidia's unique business model, characterized by a flat organization with only five executive officers and approximately 60 direct reports to him, negates the need for traditional succession planning. This stance, which contrasts with recent events and shareholder anxieties, may not alleviate long-term concerns from the board and investors regarding leadership continuity.",
+    "tags": [
+      "business",
+      "technology"
+    ],
+    "importance": 3,
+    "image_url": "images/c9de4681a0e77f2c439c.svg",
+    "image_alt": "A comparison of Nvidia's flat organizational structure versus a traditional tiered hierarchy, illustrating investor concerns about the lack of a formal succession plan."
+  },
+  {
+    "title": "How Gemini is changing the game for Golden State's organization and fans.",
+    "url": "https://blog.google/products-and-platforms/products/gemini/gemini-golden-state/",
+    "source": "Google AI Blog",
+    "published_at": "2026-11-24",
+    "summary": "Google Gemini has been named the Official AI Assistant Partner and Generative AI & Enterprise LLM Partner for the Golden State Warriors, the 2026 WNBA Champion Valkyries, and Chase Center. This expanded collaboration integrates Gemini across the entire franchise ecosystem, providing a more interactive game-day experience for fans and enabling Golden State to deploy custom AI agents for business and basketball operations. The partnership aims to help teams work smarter, streamline operations, and enhance fan engagement both at the arena and digitally.",
+    "tags": [
+      "technology",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/e9c4d90d29218a83e487.svg",
+    "image_alt": "A branching diagram shows Google Gemini AI integrating into a sports franchise, leading to improved fan experience and more efficient team operations."
+  },
+  {
+    "title": "Maple raises $5.3M to build AI products that protect your data, even from itself",
+    "url": "https://techcrunch.com/2026/11/24/maple-raises-5-3m-to-build-ai-products-that-protect-your-data-even-from-itself/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-24",
+    "summary": "Maple, an AI startup, has raised $5.3 million to develop AI products focused on user data privacy. The company employs encryption, open-source code, and trusted execution environments, allowing users to verify that even Maple itself cannot access their personal information. This approach aims to offer the convenience of AI agents without requiring users to compromise their privacy, positioning Maple as a competitive alternative to other consumer AI services.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/a2562bb0797a300a17e7.svg",
+    "image_alt": "Diagram showing user data flowing into a secure AI processing environment, with a barrier preventing company access, ensuring data privacy."
+  },
+  {
+    "title": "Even the best AI agents struggle with everyday life",
+    "url": "https://techcrunch.com/2026/11/24/even-the-best-ai-agents-struggle-with-everyday-life/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-24",
+    "summary": "New research indicates that even the most advanced personal AI agents struggle significantly with everyday tasks, failing over a third of the time according to the ShellBench benchmark. This benchmark, developed with multiple research institutions, analyzed over 10 million real-world interactions, revealing that 15.7% of attempts failed at least one safety requirement, often leading to unintended consequences. Despite growing consumer popularity and widespread marketing, these AI assistants currently lack the reliability and consistency needed for unsupervised operation in complex personal digital environments.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/bd5ee665eadac1c893d2.svg",
+    "image_alt": "A branching diagram illustrates AI agents attempting everyday tasks, showing a small path for successful completion and a large path for frequent failures and safety risks."
+  },
+  {
+    "title": "Walmart teams up with Meta to bring Black Friday deals to AI agent Muse",
+    "url": "https://techcrunch.com/2026/11/24/walmart-teams-up-with-meta-to-bring-black-friday-deals-to-ai-agent-muse/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-24",
+    "summary": "Walmart has partnered with Meta to enable customers to shop Black Friday deals directly through Muse, Meta’s AI agent. Users can tell Muse what they are looking for, and the AI, powered by Walmart's Agent Gateway, will find products and build a shopping cart without direct website browsing. This initiative positions Walmart to embrace third-party AI shopping agents, contrasting with Amazon's approach and potentially expanding how consumers interact with online retail.",
+    "tags": [
+      "business",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/7af6aefb094e994c3491.svg",
+    "image_alt": "Diagram showing a customer's request processed by an AI agent to fill a shopping cart, illustrating Walmart's AI shopping integration."
+  }
+]
