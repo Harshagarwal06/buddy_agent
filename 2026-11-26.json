@@ -1,0 +1,119 @@
+[
+  {
+    "title": "FCC signs off on SpaceX’s plan to put up to 1 million data center satellites into space",
+    "url": "https://www.theverge.com/science/1042278/spacex-fcc-starmind-ai-space-data-centers",
+    "source": "The Verge AI",
+    "published_at": "2026-11-25",
+    "summary": "The FCC has authorized SpaceX to deploy up to one million AI chip-equipped satellites for its \"Starmind\" initiative, marking the first approval for a full constellation of space-based AI data centers. These satellites are designed to capture solar energy in space and transmit high-speed AI data to Earth using lasers, connecting with Starlink. This development paves the way for a new era of space-based computing infrastructure, potentially enhancing global AI capabilities and setting a precedent for other companies pursuing similar ventures.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/1e816eb053e06632ecfd.svg",
+    "image_alt": "Diagram showing SpaceX's Starmind satellites capturing solar energy and sending AI data via lasers to power AI processing on Earth."
+  },
+  {
+    "title": "Amazon is reportedly in talks to end Muse AI shopping block",
+    "url": "https://www.theverge.com/tech/1042071/meta-amazon-muse-ai-shopping-discussions",
+    "source": "The Verge AI",
+    "published_at": "2026-11-25",
+    "summary": "Amazon has held talks with Meta regarding potentially allowing its Muse AI shopping agent to operate on Amazon's online marketplace. The e-commerce giant's hesitation stems from concerns over the AI's potential impact on its advertising revenue, which relies on human ad views, and the quality of product recommendations. Resolving these discussions could integrate AI shopping agents more broadly into major e-commerce platforms, potentially reshaping how consumers interact with online retail and affecting platform revenue models.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/997d0183dffa3faba324.svg",
+    "image_alt": "A diagram shows an Amazon shopping cart, a 'Muse AI Block' bottleneck, and 'Ad Revenue' with a downward arrow, explaining Amazon's concerns about allowing Meta's AI agent."
+  },
+  {
+    "title": "Google’s patent for custom AI video feeds paints a bleak picture of entertainment’s future",
+    "url": "https://www.theverge.com/entertainment/1042221/google-my-channel-ai-video-patent",
+    "source": "The Verge AI",
+    "published_at": "2026-11-25",
+    "summary": "Google's My Channel patent, recently rejected, proposed a system for creating personalized, AI-generated video feeds and advertisements for users. This system would leverage demographic data, viewing history, and device context to generate prompts for large language models, producing videos where users could even become the main characters. The development raises concerns about the future of entertainment, potentially replacing imaginative engagement with an endless supply of bespoke, AI-generated content that lacks artistic depth.",
+    "tags": [
+      "ai",
+      "technology",
+      "culture"
+    ],
+    "importance": 3,
+    "image_url": "images/0721311aa82f7ce151f7.svg",
+    "image_alt": "A pipeline diagram showing user data flowing into an AI system that generates personalized video prompts, resulting in custom AI-created video content for individual users."
+  },
+  {
+    "title": "Nothing offers a full look at its AI earbuds and charging case",
+    "url": "https://www.theverge.com/gadgets/1042162/nothing-ear-note-ai-earbuds-reveal",
+    "source": "The Verge AI",
+    "published_at": "2026-11-25",
+    "summary": "Nothing has revealed a detailed look at its upcoming AI earbuds, the Ear Note, which feature call recording capabilities and a charging case that can record, transcribe, and summarize conversations. The case includes dedicated \"Talk\" and \"Record\" buttons for capturing voice and discussions, with recordings managed via a connected app. This development aims to provide a \"hardware context layer for AI,\" enabling users to interact with various AI agents and engage in back-and-forth conversations through the device.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/092f8aac76bc93680b60.svg",
+    "image_alt": "Spoken conversation flows into earbuds and case, which record and process it using AI to generate a concise summary."
+  },
+  {
+    "title": "42 state AGs are trying to stop Character.AI from selling users’ chats",
+    "url": "https://www.theverge.com/policy/1042620/character-ai-sale-state-ags-block-selling-users-chats",
+    "source": "The Verge AI",
+    "published_at": "2026-11-26",
+    "summary": "A coalition of 42 state attorneys general is attempting to block Character.AI from selling private user chat histories during its Chapter 11 bankruptcy proceedings. The company plans to auction data from over 21 million U.S. accounts, including 2.1 million belonging to minors, without requiring the buyer to honor existing privacy policies or allowing users to delete their information. This lack of safeguards raises concerns about potential data misuse, resale to other parties, and possible violations of new state chatbot regulations set to take effect.",
+    "tags": [
+      "business",
+      "security"
+    ],
+    "importance": 3,
+    "image_url": "images/689b134ee9352ab2efa1.svg",
+    "image_alt": "A pipeline diagram shows user chats moving to a data auction, which then leads to a broken shield, representing the lack of data protections."
+  },
+  {
+    "title": "S&P considers Nvidia credit downgrade over governance and ‘key man’ risks",
+    "url": "https://techcrunch.com/2026/11/25/sp-considers-nvidia-credit-downgrade-over-governance-and-key-man-risks/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-25",
+    "summary": "S&P Global Ratings is considering downgrading Nvidia's credit rating from AA to AA- due to concerns over management and governance practices. This review stems from \"weak executive oversight and lack of succession planning\" and \"key man risk\" following CEO Jensen Huang's recent ouster and reinstatement. A potential downgrade, expected within 90 days, could increase Nvidia's borrowing costs and force it to provide larger guarantees for the $500 billion in AI infrastructure financing it is arranging.",
+    "tags": [
+      "business",
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/80f152c5080ddf795ebb.svg",
+    "image_alt": "Explains how governance risks trigger a credit review, potentially leading to a lower rating and higher borrowing costs."
+  },
+  {
+    "title": "OpenAI says heavy ChatGPT users may hit limits sooner as it merges Chat and Work",
+    "url": "https://techcrunch.com/2026/11/25/openai-says-heavy-chatgpt-users-may-hit-limits-sooner-as-it-merges-chat-and-work/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-25",
+    "summary": "OpenAI is rolling out a unified Chat and Work experience in ChatGPT, merging previously separate usage limits for some Pro subscribers. This update means Chat and Work will share a single usage meter, though conversations using the Instant model will remain unlimited and won't count towards the allowance. While most users may not see changes, a small fraction of heavy users could hit their limits sooner, potentially restricting access to advanced models despite ongoing subscription fees.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 3,
+    "image_url": "images/ee5088b7de86376b9be9.svg",
+    "image_alt": "A diagram illustrating how ChatGPT's separate Chat and Work usage limits are merging into a single shared limit, while the Instant model remains unlimited."
+  },
+  {
+    "title": "Has vibe coding made open source the new normal for synths?",
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1040081/vibe-coding-open-source-music-firmware",
+    "source": "The Verge AI",
+    "published_at": "2026-11-25",
+    "summary": "Music gear companies like inMusic (parent of Akai, Moog) and Behringer are increasingly making their devices open source, responding to the rise of \"vibe coding\" and AI tools that enable extensive firmware modification. This shift provides modders with SDKs and access to internal workings, allowing for community-driven customization and new product development, as seen with M-Vave's hackable FM-1 synth. Consequently, the industry is moving towards a new normal where collaboration with the modding community is embraced, potentially fostering innovation while challenging traditional proprietary models.",
+    "tags": [
+      "technology",
+      "business"
+    ],
+    "importance": 3,
+    "image_url": "images/94b79bf02de2ac9937e8.svg",
+    "image_alt": "A diagram showing how AI-driven 'vibe coding' is transforming proprietary music gear into open-source devices, enabling community modifications."
+  }
+]
