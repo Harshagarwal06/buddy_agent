@@ -1,0 +1,120 @@
+[
+  {
+    "title": "Nvidia hits pause on chip shipments to Southeast Asia",
+    "url": "https://techcrunch.com/2026/11/26/nvidia-hits-pause-on-chip-shipments-to-southeast-asia/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-26",
+    "summary": "Nvidia has paused server chip shipments to Malaysia, Singapore, Thailand, and Indonesia as it assesses whether regional partners meet U.S. export requirements. This action follows reports that Chinese companies have been remotely accessing Nvidia chips from data centers in these Southeast Asian countries, a loophole recently closed by the U.S. Commerce Department. The move aims to enforce U.S. restrictions on advanced technology access, potentially impacting a significant portion of China's AI computing power previously supplied through such remote data centers.",
+    "tags": [
+      "technology",
+      "business",
+      "security"
+    ],
+    "importance": 4,
+    "image_url": "images/559d1f86b2e84d7a859b.svg",
+    "image_alt": "Diagram shows server chips flowing to Southeast Asia, then blocked, restricting China's remote AI computing access due to export controls."
+  },
+  {
+    "title": "Grand Theft Auto VI proves why efficiency isn’t a virtue",
+    "url": "https://techcrunch.com/2026/11/26/as-anthropic-ipos-grand-theft-auto-vi-proves-why-efficiency-isnt-a-virtue/",
+    "source": "TechCrunch AI",
+    "published_at": "2026-11-26",
+    "summary": "Grand Theft Auto VI launched to unprecedented success, becoming the highest-rated game of all time on Metacritic and generating $3.79 billion on release day. This record-breaking achievement was notable because the game was developed entirely without generative AI, contrasting sharply with the tech industry's current focus on AI-driven efficiency. Its success suggests a potential end to a development era, raising questions about the future of large-scale creative projects and the value of non-AI artistic processes in an increasingly automated world.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 4,
+    "image_url": "images/44874bf25e8d8c0a9b8b.svg",
+    "image_alt": "Explains how human craft achieved record success, contrasting with AI generation's efficiency and its impact on game development."
+  },
+  {
+    "title": "DeepMind says Gemini 4 found leaner quantum circuits. The hardware still has catching up to do. - Digg",
+    "url": "https://news.google.com/rss/articles/CBMiQkFVX3lxTFBxX1N5c1FYMXhEMk5KaWRsN005YUNDbS1WUEgxalgxYVVxeEdsSDNnc0EySndsRm56SmhIbVNZNlMxUQ?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-11-27",
+    "summary": "DeepMind's Gemini 4 AI has reportedly discovered leaner quantum circuits, a development that could enhance the efficiency of quantum computations. Only the headline-level development is currently known, with no further details provided on the specific methods or extent of the optimization achieved by the AI. While this suggests a potential advancement in quantum computing efficiency, the practical application of these leaner circuits remains limited by the current capabilities of quantum hardware, which still needs significant development.",
+    "tags": [
+      "technology",
+      "ai",
+      "science"
+    ],
+    "importance": 2,
+    "image_url": "images/0dadc64e11f24354e64c.svg",
+    "image_alt": "AI transforms complex quantum circuits into leaner, optimized versions."
+  },
+  {
+    "title": "DeepMind Says Gemini Cut a Quantum Circuit’s Estimated Resource Cost About 290-Fold - The Defiant",
+    "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPdFR5bXBocV81UkdZV1NBUm95aEg4Yl9KcFlQMlJYVW1wTjZmdXRwbV9nUklCMVpFdVc2SE9WTmZxdGhqcGI4Qk5CNkNJSmpwNU50V1RyMDktMExvVml4UllORDk1Z2pISmd3RVhGdXZvM09wMmh5b3k2TXhSNHhXTHNhRjBTZzFWbENnZDdBZTF0NkY4RVhLR055ei14RzhtdVlQVzJsTmE1WUdXQ0tyVWZfWGU2YlBS?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-11-26",
+    "summary": "DeepMind's Gemini AI has achieved a substantial reduction in the estimated resource cost for quantum circuits, according to the company. The AI reportedly cut the resources required for these complex computations by approximately 290-fold, a significant improvement in efficiency. This development, known only at a headline level, suggests a potential acceleration in quantum computing research and practical applications by making quantum experiments more feasible and less resource-intensive, potentially lowering barriers to innovation.",
+    "tags": [
+      "technology",
+      "ai",
+      "science"
+    ],
+    "importance": 2,
+    "image_url": "images/176158d653c36bd125e5.svg",
+    "image_alt": "A before-and-after diagram showing DeepMind's Gemini AI reducing the high resource cost of quantum circuits to a low resource cost."
+  },
+  {
+    "title": "DeepMind agents cut quantum algorithm costs up to 290x, proven in Lean - MLQ.ai",
+    "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNNTNrNkQzckl4c2pONWk4R1ZFczBjZURvOHVCdlJVVWdETzFPR1Vucjh3QnhQNFVXWWtEaXZveFBTTDNDdmRjdnR3NjZsX2RRQU96MjJ3TXlQRnpHdmQtMDE1OGVrelM4cXgxXzZROUdVY2dDeGs5T1Ewd3pHdUFJbmpTWVpvX3JSUTN0cTNSS0JoNmF2?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-11-27",
+    "summary": "DeepMind agents have achieved substantial reductions in the computational cost of quantum algorithms. These agents have demonstrated cost cuts of up to 290 times, with the efficiency improvements formally verified using the Lean theorem prover. This breakthrough, known only from the headline, suggests a significant step towards making quantum computing more practical and accessible by lowering the substantial resource demands typically associated with complex quantum operations.",
+    "tags": [
+      "technology",
+      "ai",
+      "science"
+    ],
+    "importance": 2,
+    "image_url": "images/54b3c29a04621ba5420a.svg",
+    "image_alt": "A pipeline showing AI agents optimizing a high-cost quantum algorithm, resulting in a significantly lower-cost quantum algorithm."
+  },
+  {
+    "title": "Autonomous AI Agents Take Partial Compute Control for Gemini Experiments as DeepMind Warns Against Recursive Self-Improvement Hype + Video - Howl.Link",
+    "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTFB4VzdRa281Zm1jT1hFbU9SdVFfVmpEcUNhX0kzSTFlNXdjTG43b3VxeC1jR1dxU0J1TVRr?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-11-27",
+    "summary": "The headline reports that autonomous AI agents are now taking partial compute control for experiments involving Google's Gemini models. This operational shift occurs as DeepMind, a leading AI research lab, has issued a public warning against the growing hype surrounding recursive self-improvement capabilities in artificial intelligence. The concurrent developments highlight a dual strategy within advanced AI research, balancing active experimentation with agent autonomy against a cautious stance on potentially exaggerated claims about AI's capacity for rapid, independent self-enhancement.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 2,
+    "image_url": "images/e6132a47e66a09ee9426.svg",
+    "image_alt": "A comparison showing AI agents gaining compute control alongside a warning against recursive self-improvement hype, illustrating a balanced approach to advanced AI development."
+  },
+  {
+    "title": "What Is Gemini 4 Neon? Google’s Model, Price and Scores - FourWeekMBA",
+    "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPS2dMdjRJMnZ1bDRoWWNZTnpHNzJzN1NXNXk3ZnRDTjZ4UWRtRlI3RXlFWkFNLURTNzB6bEFSUkpzUkxZRk96cjBhQnJUTHVmZ2FWT0p5Q1h2ODkya2RXZWdVSWkwZ0pwdXdHQUdvWlE2Y3I3Q2VfTFk2SnR4Tkd3d0o1U05iWFE?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-11-27",
+    "summary": "Google's new AI model, Gemini 4 Neon, is being discussed in terms of its specific model characteristics, pricing structure, and performance scores, though only headline-level details are currently available. The article title indicates a focus on these key attributes of the AI offering, suggesting an evaluation of its market position and capabilities. Without further information, the practical implications or specific advancements of Gemini 4 Neon remain undisclosed, limiting a deeper understanding of its potential impact or technological significance.",
+    "tags": [
+      "technology",
+      "ai"
+    ],
+    "importance": 2,
+    "image_url": "images/5eebcb3ed5f26f5dbf08.svg",
+    "image_alt": "A diagram showing Gemini 4 Neon branching into three aspects: its AI model specifications, its cost, and its performance scores."
+  },
+  {
+    "title": "Google’s AI Investment in Colombia Is About Talent, Not Just Tools - WeRSM",
+    "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE81OHJFdzdLSlJBeDNZeC1NbjZEXzBMb1h6TzZMSUh5TVVKX2Jhd2Ewd2dNSU45dEstNzhGRHhfeWRvT3pkb0RldEg5VUhxU2V1bUs2NHU4RUlOMTZlc1F4SHdUUDF0Z0xHZWNxckFjZ29aSnY4Tnk5SnFR?oc=5",
+    "source": "Google News Gemini",
+    "published_at": "2026-11-26",
+    "summary": "Google is making a significant AI investment in Colombia, focusing specifically on talent development rather than solely on technological tools. Only the headline-level development is known, indicating a strategic emphasis on cultivating human capital within the region's burgeoning artificial intelligence sector. This approach suggests Google aims to foster local expertise and innovation, potentially shaping the future of AI capabilities and economic growth in Latin America.",
+    "tags": [
+      "technology",
+      "ai",
+      "business"
+    ],
+    "importance": 2,
+    "image_url": "images/d36d3b942392452ce931.svg",
+    "image_alt": "Diagram compares Google's AI investment prioritizing human talent over generic tools, leading to AI capability growth."
+  }
+]
